@@ -396,3 +396,19 @@ export function ceramicCap({ dia = 4 } = {}) {
   for (const x of [-1.27, 1.27]) g.add(box(0.4, 2.6, 0.4, M.solder, x, 0, 0, { cast: false }));
   return g;
 }
+
+// ── DIP 스위치 (n개). setBits([true, false, ...]) 로 손잡이 위치를 바꾼다
+export function dipSwitch({ n = 4, color = M.redPlastic } = {}) {
+  const g = new THREE.Group();
+  const w = n * 2.54;
+  g.add(box(w + 1, 3, 6, color));
+  const knobs = [];
+  for (let i = 0; i < n; i++) {
+    g.add(box(1.4, 0.1, 3.6, M.hole, (i - (n - 1) / 2) * 2.54, 3, 0, { cast: false }));
+    const k = box(1.2, 1, 1.4, M.whitePlastic, (i - (n - 1) / 2) * 2.54, 3, 0);
+    g.add(k);
+    knobs.push(k);
+  }
+  g.userData.setBits = (bits) => knobs.forEach((k, i) => { k.position.z = bits[i] ? -1 : 1; });
+  return g;
+}

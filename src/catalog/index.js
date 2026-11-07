@@ -20,14 +20,18 @@ import hinge3x3 from './parts/hinge-3x3/spec.js';
 import grab from './parts/grab/spec.js';
 import nutM3 from './parts/nut-m3/spec.js';
 import capNutM3 from './parts/cap-nut-m3/spec.js';
+import sNutBlue from './parts/s-nut-blue/spec.js';
+import nutFrame4 from './parts/nut-frame-4/spec.js';
+import irRemoteTx from './parts/ir-remote-tx/spec.js';
+import irRemoteRx from './parts/ir-remote-rx/spec.js';
 
 // 7호 키트 부품목록(CHECKLIST.md)에 있는 부품만 넣는다
 export const catalog = [
-  cpuBoard8m, motorDriveA3, motorDriveLinkS, buzzerBoardS, ledBoardRedS, ledBoardGreenS, ledBoardOrangeS, rgbLedBright,
+  cpuBoard8m, motorDriveA3, motorDriveLinkS, buzzerBoardS, ledBoardRedS, ledBoardGreenS, ledBoardOrangeS, rgbLedBright, irRemoteTx, irRemoteRx,
   sensorTouch, sensorIrTr, sensorSound, sensorColor,
   dcMotor130Rs, dcMotor130Dual, dcMotor400Rs, servoDigital,
   wheelSet130,
-  hinge3x3, grab, nutM3, capNutM3,
+  hinge3x3, grab, nutM3, capNutM3, sNutBlue, nutFrame4,
 ];
 
 export const categories = [['board', '보드'], ['sensor', '센서'], ['motor', '모터'], ['wheel', '바퀴'], ['hardware', '조립 부품']];
