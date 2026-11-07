@@ -57,7 +57,8 @@ async function select(id) {
   const c = box.getCenter(new THREE.Vector3());
   model.object3d.position.set(-c.x, -box.min.y, -c.z);
   const fitted = partBounds(root);
-  view.frame(fitted);
+  // 카메라는 시연용 물체(볼트, 공 등, model.frameWith)까지 보이도록 맞춘다
+  view.frame(partBounds(root, { include: model.frameWith || [] }));
   overlay.setLabels(model.labels);
   overlay.setDims(fitted, spec.size);
 

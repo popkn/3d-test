@@ -15,6 +15,7 @@ export function build() {
   return {
     object3d: root,
     labels: [{ name: 'M3 NUT', sub: 'SUS · 맞변 5.5mm', object: nut, anchor: [0, 2.4, 0], off: [60, -60] }],
+    frameWith: [bolt],
     handles: { nut, bolt },
   };
 }

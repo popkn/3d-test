@@ -46,6 +46,7 @@ export function build() {
       { name: 'MOUNT BODY', sub: '고정 구멍', object: grab, anchor: [0, 10, -10], off: [-120, -50] },
       { name: 'TEETH ×5', sub: '물체를 감싸 쥠', object: grab, anchor: [0, 5, 16], off: [60, 40] },
     ],
+    frameWith: [pair, ball],
     handles: { grab, pair, ball },
   };
 }

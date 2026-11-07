@@ -42,7 +42,7 @@ const box = partBounds(holder);
 const c = box.getCenter(new THREE.Vector3());
 model.object3d.position.set(-c.x, -box.min.y, -c.z);
 const fitted = partBounds(holder);
-view.frame(fitted);
+view.frame(partBounds(holder, { include: model.frameWith || [] }));
 overlay.setLabels(model.labels);
 overlay.setDims(fitted, spec.size);
 panel.showSpec(spec);

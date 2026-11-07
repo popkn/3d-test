@@ -20,11 +20,13 @@ export function build() {
   nut.position.y = 6;
   root.add(nut);
   const bolt = makeBolt({ length: 10 });
+  bolt.position.y = 6 + 10 + 0.2; // 시작 위치: 캡너트 위 (체결 기능과 같은 값)
   bolt.userData.noBounds = true;
   root.add(bolt);
   return {
     object3d: root,
     labels: [{ name: 'CAP NUT', sub: 'M3 · ABS 회색', object: nut, anchor: [0, 3, 0], off: [60, -60] }],
+    frameWith: [bolt],
     handles: { nut, bolt },
   };
 }

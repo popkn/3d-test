@@ -73,12 +73,12 @@ export function createScene(container) {
 }
 
 // 측정용 경계 상자: noBounds 표시된 물체(케이블, 바닥 라인, 바퀴 등)는 뺀다
-export function partBounds(root) {
+export function partBounds(root, { include = [] } = {}) {
   root.updateMatrixWorld(true);
   const box = new THREE.Box3();
   const tmp = new THREE.Box3();
   (function walk(o) {
-    if (o.userData.noBounds) return;
+    if (o.userData.noBounds && !include.includes(o)) return;
     if (o.isMesh && !o.isPoints) {
       if (!o.geometry.boundingBox) o.geometry.computeBoundingBox();
       tmp.copy(o.geometry.boundingBox).applyMatrix4(o.matrixWorld);
