@@ -150,13 +150,12 @@
 | [ ] | 컬러볼 [Ø15 / Green] | 3 |
 | [ ] | 컬러볼 [Ø15 / Yellow] | 4 |
 
-## 이미 구현했지만 7호 목록에 없는 부품
+## 목록 밖이라 삭제한 부품
 
-| 부품 | 처리 |
+AVR USB ISP 보드, CPU-블랙라인프로W, Interface Board [서보], LED Dot Matrix Board, DC Motor 600rpm [HT600]
+
+## 확인 중
+
+| 부품 | 내용 |
 |---|---|
-| AVR USB ISP 보드 | 결정 필요 (목록 밖) |
-| CPU-블랙라인프로W | 결정 필요 (목록 밖) |
-| Interface Board [서보] | 결정 필요 (목록 밖) |
-| LED Dot Matrix Board | 결정 필요 (목록 밖) |
-| DC Motor 600rpm [HT600] | 결정 필요 (목록 밖) |
-| DC Motor 130rpm [RS/M] | 7호 130rpm 모터가 RS면 목록 밖 |
+| DC Motor 130rpm [RS/M] | 7호 130rpm 모터가 RS면 삭제 |
