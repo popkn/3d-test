@@ -13,15 +13,24 @@ import rgbLedBright from './parts/rgb-led-bright/spec.js';
 import sensorSound from './parts/sensor-sound/spec.js';
 import sensorIrTr from './parts/sensor-ir-tr/spec.js';
 import sensorTouch from './parts/sensor-touch/spec.js';
+import sensorColor from './parts/sensor-color/spec.js';
+import servoDigital from './parts/servo-digital/spec.js';
+import wheelSet130 from './parts/wheel-set-130/spec.js';
+import hinge3x3 from './parts/hinge-3x3/spec.js';
+import grab from './parts/grab/spec.js';
+import nutM3 from './parts/nut-m3/spec.js';
+import capNutM3 from './parts/cap-nut-m3/spec.js';
 
 // 7호 키트 부품목록(CHECKLIST.md)에 있는 부품만 넣는다
 export const catalog = [
   cpuBoard8m, motorDriveA3, motorDriveLinkS, buzzerBoardS, ledBoardRedS, ledBoardGreenS, ledBoardOrangeS, rgbLedBright,
-  sensorTouch, sensorIrTr, sensorSound,
-  dcMotor130Rs, dcMotor130Dual, dcMotor400Rs,
+  sensorTouch, sensorIrTr, sensorSound, sensorColor,
+  dcMotor130Rs, dcMotor130Dual, dcMotor400Rs, servoDigital,
+  wheelSet130,
+  hinge3x3, grab, nutM3, capNutM3,
 ];
 
-export const categories = [['board', '보드'], ['sensor', '센서'], ['motor', '모터']];
+export const categories = [['board', '보드'], ['sensor', '센서'], ['motor', '모터'], ['wheel', '바퀴'], ['hardware', '조립 부품']];
 
 // 부품의 3D 모양과 기능은 선택할 때 불러온다
 export async function loadPart(id) {
