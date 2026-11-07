@@ -4,7 +4,7 @@ import { M } from '../../../kit/materials.js';
 
 export function build() {
   const root = new THREE.Group();
-  const motor = makeMotorCase({ shaft: 'top', hubColor: M.matteBlack, sticker: null, bodyHeight: 33 });
+  const motor = makeMotorCase({ shaft: 'top', hubColor: M.matteBlack, sticker: null });
   root.add(motor);
   const wheel = attachWheel(motor);
   const hubs = motor.userData.hubs;

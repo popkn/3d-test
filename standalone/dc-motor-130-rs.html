@@ -166,7 +166,7 @@ var spec_default = {
   category: "motor",
   productNo: 355,
   url: "https://roboroboshop.com/product/detail.html?product_no=355&cate_no=194",
-  size: { x: 60, y: 36, z: 25, estimated: true, note: "\uC0C1\uD488 \uD398\uC774\uC9C0\uC5D0 \uD06C\uAE30 \uC5C6\uC74C \xB7 HT600 \uACF5\uC2DD \uADDC\uACA9 \uCF00\uC774\uC2A4 \uAE30\uC900 \uCD94\uC815" },
+  size: { x: 60, y: 40, z: 20, estimated: true, note: "\uC0C1\uD488 \uD398\uC774\uC9C0\uC5D0 \uD06C\uAE30 \uC5C6\uC74C \xB7 \uAC19\uC740 \uCF00\uC774\uC2A4\uC778 HT600 \uACF5\uC2DD \uADDC\uACA9(60\xD740\xD720mm) \uAE30\uC900 \uCD94\uC815" },
   specs: [
     ["\uC804\uC555", "6 V"],
     ["\uD68C\uC804 \uC18D\uB3C4", "130 rpm"],
@@ -175,7 +175,7 @@ var spec_default = {
   function: "\uB85C\uBD07\uC758 \uAD6C\uB3D9\uC774\uB098 \uD68C\uC804\uC6B4\uB3D9\uC5D0 \uC4F0\uB294 \uAE30\uC5B4\uB4DC \uBAA8\uD130. 1\uBD84\uC5D0 130\uBC88 \uD68C\uC804.",
   motor: { ratedVoltage: 6, ratedRpm: 130, maxVoltage: 7.5 },
   ports: [
-    { id: "shaft", type: "\uCD9C\uB825\uCD95 (\uC606\uBA74)", role: "\uBC14\uD034 \xB7 \uBD80\uD488 \uC5F0\uACB0" },
+    { id: "shaft", type: "\uCD9C\uB825\uCD95 (\uC717\uBA74)", role: "\uBC14\uD034 \xB7 \uBD80\uD488 \uC5F0\uACB0" },
     { id: "power", type: "2\uD540 \uCEE4\uB125\uD130", role: "\uBAA8\uD130 \uB4DC\uB77C\uC774\uBE0C \uBCF4\uB4DC \uC5F0\uACB0" },
     { id: "mount", type: "\uACE0\uC815 \uADC0 \uAD6C\uBA4D 4\uAC1C", role: "\uD504\uB808\uC784\uC5D0 \uB098\uC0AC \uACE0\uC815" }
   ]
@@ -263,8 +263,8 @@ var box = (w, h, d, mat, x = 0, y = 0, z = 0, opt) => {
 };
 
 // src/kit/motorCase.js
-var MOTOR = { bodyLength: 40, bodyHeight: 36, width: 20, earSpan: 60, earThickness: 2.4 };
-function makeMotorCase({ shaft = "side", hubColor = M.bluePlastic, sticker = null, topLabel = "ROBOROBO", bodyHeight = MOTOR.bodyHeight } = {}) {
+var MOTOR = { bodyLength: 40, bodyHeight: 33, width: 20, earSpan: 60, earThickness: 2.4 };
+function makeMotorCase({ shaft = "top", hubColor = M.bluePlastic, sticker = null, topLabel = "ROBOROBO", bodyHeight = MOTOR.bodyHeight } = {}) {
   const { bodyLength: L, width: W, earSpan, earThickness } = MOTOR;
   const H = bodyHeight;
   const g = new THREE4.Group();
@@ -325,23 +325,20 @@ function makeMotorCase({ shaft = "side", hubColor = M.bluePlastic, sticker = nul
     hub.userData.spin = spin;
     return hub;
   }
-  const sideHubPos = new THREE4.Vector3(-L / 2 + 11, 11, 0);
-  if (shaft === "side" || shaft === "dual") {
-    for (const s of shaft === "dual" ? [1, -1] : [1]) {
-      const hub = makeHub();
-      hub.rotation.x = s * Math.PI / 2;
-      hub.position.set(sideHubPos.x, sideHubPos.y, s * W / 2);
-      g.add(hub);
-      hubs.push({ hub, axis: new THREE4.Vector3(0, 0, s) });
-    }
-  } else {
-    const boss = mesh(new THREE4.CylinderGeometry(6, 6, 2, 32), M.blackPlastic);
-    boss.position.set(-L / 2 + 10, H + 1, 0);
-    g.add(boss);
-    const hub = makeHub();
-    hub.position.set(-L / 2 + 10, H + 2, 0);
-    g.add(hub);
-    hubs.push({ hub, axis: new THREE4.Vector3(0, 1, 0) });
+  const shaftX = -L / 2 + 10;
+  const boss = mesh(new THREE4.CylinderGeometry(6, 6, 2, 32), M.blackPlastic);
+  boss.position.set(shaftX, H + 1, 0);
+  g.add(boss);
+  const topHub = makeHub();
+  topHub.position.set(shaftX, H + 2, 0);
+  g.add(topHub);
+  hubs.push({ hub: topHub, axis: new THREE4.Vector3(0, 1, 0) });
+  if (shaft === "dual") {
+    const bottomHub = makeHub();
+    bottomHub.rotation.x = Math.PI;
+    bottomHub.position.set(shaftX, 0, 0);
+    g.add(bottomHub);
+    hubs.push({ hub: bottomHub, axis: new THREE4.Vector3(0, -1, 0) });
   }
   if (sticker) {
     const st = mesh(new THREE4.PlaneGeometry(9, 9), new THREE4.MeshStandardMaterial({
@@ -356,7 +353,8 @@ function makeMotorCase({ shaft = "side", hubColor = M.bluePlastic, sticker = nul
         c2.fillText(sticker.sub || "", 0.6, 8.4);
       }, 32)
     }), { cast: false });
-    st.position.set(6, 12, W / 2 + 0.03);
+    st.rotation.x = -Math.PI / 2;
+    st.position.set(2, H + 0.05, 0);
     g.add(st);
   }
   const start = new THREE4.Vector3(L / 2 - 4, H - 3, -W / 2 + 4);
@@ -406,7 +404,7 @@ function attachWheel(motor, { dia = 52, width = 18 } = {}) {
 // src/catalog/parts/dc-motor-130-rs/model.js
 function build() {
   const root = new THREE5.Group();
-  const motor = makeMotorCase({ shaft: "side", hubColor: M.bluePlastic, sticker: null });
+  const motor = makeMotorCase({ shaft: "top", hubColor: M.bluePlastic, sticker: null });
   root.add(motor);
   const wheel = attachWheel(motor);
   const hubs = motor.userData.hubs;
@@ -414,8 +412,8 @@ function build() {
     object3d: root,
     labels: [
       { name: "OUTPUT SHAFT", sub: "130 rpm \xB7 6V", object: hubs[0].hub, anchor: [0, 5, 0], off: [70, -60] },
-      { name: "MOUNT EARS", sub: "\uACE0\uC815 \uAD6C\uBA4D 4\uAC1C", object: motor, anchor: [-27, 27, 0], off: [-120, -50] },
-      { name: "POWER LEAD", sub: "\uBE68\uAC15(+) \xB7 \uAC80\uC815(-)", object: motor, anchor: [42, 22, 10], off: [40, 60] }
+      { name: "MOUNT EARS", sub: "\uACE0\uC815 \uAD6C\uBA4D 4\uAC1C", object: motor, anchor: [-27, 24, 0], off: [-120, -50] },
+      { name: "POWER LEAD", sub: "\uBE68\uAC15(+) \xB7 \uAC80\uC815(-)", object: motor, anchor: [42, 19, 10], off: [40, 60] }
     ],
     handles: { hubs, wheel }
   };

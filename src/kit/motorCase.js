@@ -6,13 +6,12 @@ import { canvasTexture, FONT } from './textures.js';
 
 // 로보로보 기어드 DC 모터 케이스 (서보 모터 모양의 검은 상자 + 양쪽 고정 귀).
 // 크기는 HT600의 공식 규격(60 × 40 × 20mm, 귀 포함)을 기준으로 한다.
-//   shaft: 'side'  = 넓은 옆면(+Z)으로 축이 나온다 (RS 시리즈, 파란 허브)
-//          'dual'  = 양쪽 옆면(±Z)으로 축이 나온다 (양축)
-//          'top'   = 윗면(+Y)으로 축이 나온다 (HT600)
-//   sticker: 옆면 스티커 { color, text }
-export const MOTOR = { bodyLength: 40, bodyHeight: 36, width: 20, earSpan: 60, earThickness: 2.4 };
+//   shaft: 'top'   = 윗면(+Y)으로 축이 나온다 (서보 모터와 같은 배치, 한쪽 끝 가까이)
+//          'dual'  = 윗면과 아랫면 양쪽으로 축이 나온다 (양축)
+//   sticker: 윗면 축 옆 스티커 { color, text }
+export const MOTOR = { bodyLength: 40, bodyHeight: 33, width: 20, earSpan: 60, earThickness: 2.4 };
 
-export function makeMotorCase({ shaft = 'side', hubColor = M.bluePlastic, sticker = null, topLabel = 'ROBOROBO', bodyHeight = MOTOR.bodyHeight } = {}) {
+export function makeMotorCase({ shaft = 'top', hubColor = M.bluePlastic, sticker = null, topLabel = 'ROBOROBO', bodyHeight = MOTOR.bodyHeight } = {}) {
   const { bodyLength: L, width: W, earSpan, earThickness } = MOTOR;
   const H = bodyHeight;
   const g = new THREE.Group();
@@ -72,27 +71,25 @@ export function makeMotorCase({ shaft = 'side', hubColor = M.bluePlastic, sticke
     hub.userData.spin = spin;
     return hub;
   }
-  const sideHubPos = new THREE.Vector3(-L / 2 + 11, 11, 0);
-  if (shaft === 'side' || shaft === 'dual') {
-    for (const s of shaft === 'dual' ? [1, -1] : [1]) {
-      const hub = makeHub();
-      hub.rotation.x = s * Math.PI / 2;
-      hub.position.set(sideHubPos.x, sideHubPos.y, s * W / 2);
-      g.add(hub);
-      hubs.push({ hub, axis: new THREE.Vector3(0, 0, s) });
-    }
-  } else {
-    // 윗면 출력 (서보 모양): 둥근 받침 위에 축
-    const boss = mesh(new THREE.CylinderGeometry(6, 6, 2, 32), M.blackPlastic);
-    boss.position.set(-L / 2 + 10, H + 1, 0);
-    g.add(boss);
-    const hub = makeHub();
-    hub.position.set(-L / 2 + 10, H + 2, 0);
-    g.add(hub);
-    hubs.push({ hub, axis: new THREE.Vector3(0, 1, 0) });
+  // 윗면 출력: 한쪽 끝 가까이 둥근 받침 위에 축 (사진 기준)
+  const shaftX = -L / 2 + 10;
+  const boss = mesh(new THREE.CylinderGeometry(6, 6, 2, 32), M.blackPlastic);
+  boss.position.set(shaftX, H + 1, 0);
+  g.add(boss);
+  const topHub = makeHub();
+  topHub.position.set(shaftX, H + 2, 0);
+  g.add(topHub);
+  hubs.push({ hub: topHub, axis: new THREE.Vector3(0, 1, 0) });
+  if (shaft === 'dual') {
+    // 양축: 같은 축이 아랫면으로도 나온다
+    const bottomHub = makeHub();
+    bottomHub.rotation.x = Math.PI;
+    bottomHub.position.set(shaftX, 0, 0);
+    g.add(bottomHub);
+    hubs.push({ hub: bottomHub, axis: new THREE.Vector3(0, -1, 0) });
   }
 
-  // 옆면 스티커
+  // 윗면 스티커 (축 옆)
   if (sticker) {
     const st = mesh(new THREE.PlaneGeometry(9, 9), new THREE.MeshStandardMaterial({
       roughness: 0.4,
@@ -102,7 +99,8 @@ export function makeMotorCase({ shaft = 'side', hubColor = M.bluePlastic, sticke
         c.font = `600 1px ${FONT}`; c.fillText(sticker.sub || '', 0.6, 8.4);
       }, 32),
     }), { cast: false });
-    st.position.set(6, 12, W / 2 + 0.03);
+    st.rotation.x = -Math.PI / 2;
+    st.position.set(2, H + 0.05, 0);
     g.add(st);
   }
 
