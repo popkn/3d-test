@@ -40,3 +40,9 @@ export function mesh(geo, mat, { cast = true, receive = true } = {}) {
   m.receiveShadow = receive;
   return m;
 }
+
+// 만든 물체를 그 자리에 놓아서 돌려준다 (position은 읽기 전용이라 set으로 바꾼다)
+export function placed(obj, x = 0, y = 0, z = 0) {
+  obj.position.set(x, y, z);
+  return obj;
+}

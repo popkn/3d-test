@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { M, mesh } from './materials.js';
+import { M, mesh, placed } from './materials.js';
 
 // 캐터필러 부품 공통 모양 (단위 mm)
 export const LINK = { pitch: 10, width: 22, thick: 3 };
@@ -8,7 +8,7 @@ export const LINK = { pitch: 10, width: 22, thick: 3 };
 export function makeLink(withRubber = false) {
   const g = new THREE.Group();
   const black = new THREE.MeshStandardMaterial({ color: 0x1a1a1c, roughness: 0.55 });
-  g.add(Object.assign(mesh(new THREE.BoxGeometry(LINK.pitch * 0.8, LINK.thick, LINK.width), black), { position: new THREE.Vector3(0, LINK.thick / 2, 0) }));
+  g.add(placed(mesh(new THREE.BoxGeometry(LINK.pitch * 0.8, LINK.thick, LINK.width), black), 0, LINK.thick / 2, 0));
   for (const z of [-LINK.width / 2 + 2.5, LINK.width / 2 - 2.5]) {
     const knuckle = mesh(new THREE.CylinderGeometry(1.8, 1.8, 4, 12), black);
     knuckle.rotation.x = Math.PI / 2;
@@ -16,7 +16,7 @@ export function makeLink(withRubber = false) {
     g.add(knuckle);
   }
   // 안쪽 돌기 (톱니가 걸리는 자리)
-  g.add(Object.assign(mesh(new THREE.BoxGeometry(3, 3, 6), black), { position: new THREE.Vector3(0, -1.5, 0) }));
+  g.add(placed(mesh(new THREE.BoxGeometry(3, 3, 6), black), 0, -1.5, 0));
   if (withRubber) g.add(makeRubber(LINK.thick));
   return g;
 }

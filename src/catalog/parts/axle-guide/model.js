@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { mesh } from '../../../kit/materials.js';
+import { mesh, placed } from '../../../kit/materials.js';
 
 // 받침판 28 × 18 (구멍 4개) + 가운데 가로 원통(축 구멍). 축 방향 = X
 export function build() {
@@ -19,7 +19,7 @@ export function build() {
   const cyl = mesh(bg, blue);
   cyl.position.y = 5;
   root.add(cyl);
-  root.add(Object.assign(mesh(new THREE.BoxGeometry(12, 3, 9), blue), { position: new THREE.Vector3(0, 3, 0) }));
+  root.add(placed(mesh(new THREE.BoxGeometry(12, 3, 9), blue), 0, 3, 0));
   // 시연용 축 (75mm Ø3)
   const shaft = mesh(new THREE.CylinderGeometry(1.5, 1.5, 75, 16), new THREE.MeshStandardMaterial({ color: 0x3a3c40, metalness: 0.9, roughness: 0.35 }));
   shaft.rotation.z = Math.PI / 2;
