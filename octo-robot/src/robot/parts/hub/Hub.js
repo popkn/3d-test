@@ -5,7 +5,7 @@ import { faceAlong } from '../common/index.js';
 // 하부 허브: 머리 아래 검은 몸통. 팔 8개가 꽂히는 소켓이 둘러 있다.
 // mounts[i]: 팔을 붙일 위치. 그 물체의 +Z가 팔이 뻗어 나갈 방향이다.
 export class Hub {
-  constructor({ sockets, socketOffset, socketRadius, socketY, socketTilt }) {
+  constructor({ sockets, socketOffset, socketSize, socketRadius, socketY, socketTilt }) {
     this.object3d = new THREE.Group();
     this.object3d.name = 'hub';
 
@@ -22,9 +22,10 @@ export class Hub {
     this.object3d.add(seam);
 
     this.mounts = [];
-    const collarGeo = new THREE.CylinderGeometry(0.15, 0.17, 0.26, 32);
-    const ringGeo = new THREE.TorusGeometry(0.155, 0.02, 8, 32);
-    const bootGeo = new THREE.CylinderGeometry(0.12, 0.12, 0.06, 24);
+    const k = socketSize;
+    const collarGeo = new THREE.CylinderGeometry(k * 1.15, k * 1.25, 0.26, 32);
+    const ringGeo = new THREE.TorusGeometry(k * 1.17, 0.022, 8, 32);
+    const bootGeo = new THREE.CylinderGeometry(k * 0.85, k * 0.85, 0.06, 24);
     const Y = new THREE.Vector3(0, 1, 0);
     for (let i = 0; i < sockets; i++) {
       const lon = Math.PI / 2 + socketOffset + (i / sockets) * Math.PI * 2;

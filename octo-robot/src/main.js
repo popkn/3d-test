@@ -26,3 +26,4 @@ loop.start();
 
 // 개발용: 콘솔에서 카메라 위치 지정 (__cam(x, y, z))
 window.__cam = (x, y, z) => { ctx.camera.position.set(x, y, z); ctx.controls.update(); };
+window.__info = () => ctx.renderer.info.render;

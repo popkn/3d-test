@@ -41,6 +41,7 @@ export const bodyConfig = {
   hub: {
     sockets: 8,
     socketOffset: Math.PI / 8, // 정면에 팔이 오지 않게 반 칸 돌린다
+    socketSize: 0.2,          // 소켓(= 팔 뿌리) 반지름
     socketRadius: 0.74,
     socketY: -0.84,
     socketTilt: -0.35,        // 팔 뿌리가 아래로 기울어진 각도

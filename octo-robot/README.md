@@ -14,7 +14,7 @@ npm run dev
 - [x] 1단계: 기본 세팅 (화면, 조명, 바닥 그림자, 카메라, 마우스 조작)
 - [x] 2단계: 재질과 공통 부품
 - [x] 3단계: 몸체 부품 (맨틀, 눈, 사이펀, 부리)
-- [ ] 4단계: 팔
+- [x] 4단계: 팔
 - [ ] 5단계: 전체 조립
 - [ ] 6단계: 모드
 - [ ] 7단계: 진행 순서와 연출
@@ -55,3 +55,6 @@ npm run dev
 - `src/robot/parts/beak/`: 부리 (덮개 `beakHousing.js`, 턱 `jaw.js`, 톱니 `radulaRing.js`, 조립 `Beak.js`)
 - `src/robot/parts/hub/Hub.js`: 하부 허브 (팔 소켓 8개와 팔 부착 위치)
 - `src/dev/bodyPreview.js`, `src/dev/devPanel.js`: 몸체 확인용 조립과 슬라이더 (5단계에서 정리)
+- `src/robot/config/armConfig.js`: 팔 수치 (이름, 마디 수, 굵기, 가늘어지는 비율, 유리 마디 위치, 기본 자세)
+- `src/robot/parts/arm/`: 팔 (뿌리 구동부 `rootActuator.js`, 마디 `segment.js`, 빨판 바퀴 `sucker.js`, 연결부 `link.js`, 끝 마디 `tip.js`, 조립 `Arm.js`, 도형 합치기 `geometryBuckets.js`)
+- `src/robot/rig/armRig.js`: 팔 리그 (말림, 끝 나선, 들기, 옆 휨, 흔들림 → 관절 각도)
