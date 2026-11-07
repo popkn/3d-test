@@ -1,6 +1,8 @@
 import * as THREE from 'three';
 import { labelDefs } from './labelDefs.js';
-import './labels.css';
+import { loadCss } from '../loadCss.js';
+
+loadCss(new URL('./labels.css', import.meta.url));
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 

@@ -3,8 +3,10 @@ import {
   createAssembliesPanel, createDisplayPanel, createSubsystemsPanel, createOperationLog,
   createModeTitle, createFooter,
 } from './panels/index.js';
-import './styles/theme.css';
-import './styles/hud.css';
+import { loadCss } from '../loadCss.js';
+
+loadCss(new URL('./styles/theme.css', import.meta.url));
+loadCss(new URL('./styles/hud.css', import.meta.url));
 
 // HUD 조립: 상단 바, 왼쪽 열(분사, 전원, 팔), 오른쪽 열(수심, 부위 선택, 표시 옵션, 서브시스템),
 // 모드 이름, 하단 진행 패널, 맨 아래 설명 줄.

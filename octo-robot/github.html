@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OCTO-8 Field Simulator</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@500;600&display=swap" />
+    <!-- three.js는 공개 CDN에서 불러온다 -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="viewport"></canvas>
+      <div id="hud"></div>
+    </div>
+    <script type="module">
+      // 로봇 코드는 열 때마다 GitHub(main 브랜치)에서 불러온다. 레포가 공개여야 한다.
+      const SRC = 'https://cdn.jsdelivr.net/gh/popkn/3d-test@main/octo-robot/src/';
+      const css = document.createElement('link');
+      css.rel = 'stylesheet';
+      css.href = SRC + 'style.css';
+      document.head.appendChild(css);
+      import(SRC + 'main.js');
+    </script>
+  </body>
+</html>

@@ -19,6 +19,15 @@ npm run build
 npm run preview
 ```
 
+## GitHub 연동 HTML (설치 없이 보기)
+
+`github.html` 파일 하나만 브라우저로 열면, 로봇 코드를 GitHub(main 브랜치)에서 바로 불러와 실행한다.
+GitHub의 코드를 고치면 이 파일은 그대로 두어도 반영된다.
+
+- 레포가 **공개**여야 한다 (비공개면 불러오지 못한다).
+- 코드는 jsDelivr(GitHub 파일 중계 CDN)를 거쳐 불러온다. 고친 내용이 반영되기까지 최대 12시간 걸릴 수 있다.
+  바로 보려면 `github.html`의 `@main`을 커밋 번호(예: `@d6d1fd9`)로 바꾼다.
+
 ## 조작
 
 | 조작 | 하는 일 |
@@ -35,10 +44,12 @@ URL 옵션: `?t=12` 12초부터 시작 · `?pause=1` 정지 상태로 시작 · 
 
 ```
 octo-robot/
-├── index.html              3D 캔버스 + HUD 자리
+├── index.html              3D 캔버스 + HUD 자리 (npm run dev 용)
+├── github.html             GitHub에서 코드를 불러와 실행하는 HTML (설치 없이 열기)
 ├── vite.config.js          빌드 설정
 └── src/
     ├── main.js             모든 부분을 연결하고 실행 루프를 돌린다
+    ├── loadCss.js          CSS를 <link>로 불러온다 (빌드 없이 실행할 때도 동작)
     ├── style.css           기본 페이지 스타일
     ├── scene/              화면 환경 (렌더러, 카메라, 조작, 조명, 반사 환경, 바닥, 장식선, 루프, 자동 해상도)
     ├── materials/          색상표와 공유 재질
