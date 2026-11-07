@@ -34,13 +34,16 @@ import boltM3x6 from './parts/bolt-m3x6/spec.js';
 import boltM3x10 from './parts/bolt-m3x10/spec.js';
 import supportSpacer from './parts/support-spacer/spec.js';
 import spongeBall from './parts/sponge-ball/spec.js';
+import inner80Buggy from './parts/inner-80-buggy/spec.js';
+import inner130Giant from './parts/inner-130-giant/spec.js';
+import shaft75 from './parts/shaft-75/spec.js';
 
 // 7호 키트 부품목록(CHECKLIST.md)에 있는 부품만 넣는다
 export const catalog = [
   cpuBoard8m, motorDriveA3, motorDriveLinkS, buzzerBoardS, ledBoardRedS, ledBoardGreenS, ledBoardOrangeS, rgbLedBright, irRemoteTx, irRemoteRx, melodyBoard, btWirelessBoard2,
   sensorTouch, sensorIrTr, sensorSound, sensorColor,
   dcMotor130Rs, dcMotor130Dual, dcMotor400Rs, servoDigital,
-  wheelSet130, wheelAxle,
+  wheelSet130, wheelAxle, inner80Buggy, inner130Giant, shaft75,
   batteryCase4aa,
   hinge3x3, grab, nutM3, capNutM3, sNutBlue, nutFrame4, motorGuide, boltM26x10, boltM3x6, boltM3x10, supportSpacer, spongeBall,
 ];
