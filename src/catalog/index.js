@@ -43,16 +43,18 @@ import caterpillarSprocket from './parts/caterpillar-sprocket/spec.js';
 import caterpillarWheelGuide from './parts/caterpillar-wheel-guide/spec.js';
 import caterpillarRubber from './parts/caterpillar-rubber/spec.js';
 import colorBall from './parts/color-ball/spec.js';
+import cable3pin from './parts/cable-3pin/spec.js';
+import tire50 from './parts/tire-50/spec.js';
 
 // 7호 키트 부품목록(CHECKLIST.md)에 있는 부품만 넣는다
 export const catalog = [
   cpuBoard8m, motorDriveA3, motorDriveLinkS, buzzerBoardS, ledBoardRedS, ledBoardGreenS, ledBoardOrangeS, rgbLedBright, irRemoteTx, irRemoteRx, melodyBoard, btWirelessBoard2,
   sensorTouch, sensorIrTr, sensorSound, sensorColor,
   dcMotor130Rs, dcMotor130Dual, dcMotor400Rs, servoDigital,
-  wheelSet130, wheelAxle, inner80Buggy, inner130Giant, shaft75, axleGuide,
+  wheelSet130, wheelAxle, inner80Buggy, inner130Giant, shaft75, axleGuide, tire50,
   caterpillarLink, caterpillarSprocket, caterpillarWheelGuide, caterpillarRubber,
   batteryCase4aa,
-  hinge3x3, grab, nutM3, capNutM3, sNutBlue, nutFrame4, motorGuide, boltM26x10, boltM3x6, boltM3x10, supportSpacer, spongeBall, colorBall,
+  hinge3x3, grab, nutM3, capNutM3, sNutBlue, nutFrame4, motorGuide, boltM26x10, boltM3x6, boltM3x10, supportSpacer, spongeBall, colorBall, cable3pin,
 ];
 
 export const categories = [['board', '보드'], ['sensor', '센서'], ['motor', '모터'], ['wheel', '바퀴'], ['power', '전원'], ['hardware', '조립 부품']];
