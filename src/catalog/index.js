@@ -24,17 +24,26 @@ import sNutBlue from './parts/s-nut-blue/spec.js';
 import nutFrame4 from './parts/nut-frame-4/spec.js';
 import irRemoteTx from './parts/ir-remote-tx/spec.js';
 import irRemoteRx from './parts/ir-remote-rx/spec.js';
+import melodyBoard from './parts/melody-board/spec.js';
+import btWirelessBoard2 from './parts/bt-wireless-board2/spec.js';
+import motorGuide from './parts/motor-guide/spec.js';
+import wheelAxle from './parts/wheel-axle/spec.js';
+import batteryCase4aa from './parts/battery-case-4aa/spec.js';
+import boltM26x10 from './parts/bolt-m26x10/spec.js';
+import boltM3x6 from './parts/bolt-m3x6/spec.js';
+import boltM3x10 from './parts/bolt-m3x10/spec.js';
 
 // 7호 키트 부품목록(CHECKLIST.md)에 있는 부품만 넣는다
 export const catalog = [
-  cpuBoard8m, motorDriveA3, motorDriveLinkS, buzzerBoardS, ledBoardRedS, ledBoardGreenS, ledBoardOrangeS, rgbLedBright, irRemoteTx, irRemoteRx,
+  cpuBoard8m, motorDriveA3, motorDriveLinkS, buzzerBoardS, ledBoardRedS, ledBoardGreenS, ledBoardOrangeS, rgbLedBright, irRemoteTx, irRemoteRx, melodyBoard, btWirelessBoard2,
   sensorTouch, sensorIrTr, sensorSound, sensorColor,
   dcMotor130Rs, dcMotor130Dual, dcMotor400Rs, servoDigital,
-  wheelSet130,
-  hinge3x3, grab, nutM3, capNutM3, sNutBlue, nutFrame4,
+  wheelSet130, wheelAxle,
+  batteryCase4aa,
+  hinge3x3, grab, nutM3, capNutM3, sNutBlue, nutFrame4, motorGuide, boltM26x10, boltM3x6, boltM3x10,
 ];
 
-export const categories = [['board', '보드'], ['sensor', '센서'], ['motor', '모터'], ['wheel', '바퀴'], ['hardware', '조립 부품']];
+export const categories = [['board', '보드'], ['sensor', '센서'], ['motor', '모터'], ['wheel', '바퀴'], ['power', '전원'], ['hardware', '조립 부품']];
 
 // 부품의 3D 모양과 기능은 선택할 때 불러온다
 export async function loadPart(id) {
