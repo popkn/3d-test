@@ -358,3 +358,41 @@ export function magneticBuzzer({ dia = 12, height = 9.5 } = {}) {
   g.userData.top = top;
   return g;
 }
+
+// ── 반고정 가변저항 (파란 사각형 + 돌리는 십자 홈). setAngle(라디안)
+export function trimpot({ size = 6.5, height = 4.5 } = {}) {
+  const g = new THREE.Group();
+  g.add(box(size, height, size, M.bluePlastic));
+  const knob = new THREE.Group();
+  const disc = mesh(new THREE.CylinderGeometry(size * 0.36, size * 0.36, 0.6, 24), M.whitePlastic);
+  knob.add(disc);
+  knob.add(box(size * 0.6, 0.25, 0.7, M.matteBlack, 0, 0.25, 0, { cast: false }));
+  knob.add(box(0.7, 0.25, size * 0.6, M.matteBlack, 0, 0.25, 0, { cast: false }));
+  knob.position.y = height + 0.3;
+  g.add(knob);
+  g.userData.setAngle = (a) => { knob.rotation.y = -a; };
+  return g;
+}
+
+// ── 콘덴서 마이크 (검은 원통 + 윗면 천 덮개)
+export function electretMic({ dia = 9.7, height = 6.7 } = {}) {
+  const g = new THREE.Group();
+  const body = mesh(new THREE.CylinderGeometry(dia / 2, dia / 2, height, 32), M.matteBlack);
+  body.position.y = height / 2;
+  g.add(body);
+  const cloth = mesh(new THREE.CylinderGeometry(dia / 2 - 0.6, dia / 2 - 0.6, 0.1, 32), new THREE.MeshStandardMaterial({ color: 0x2a2a2c, roughness: 1 }), { cast: false });
+  cloth.position.y = height + 0.03;
+  g.add(cloth);
+  return g;
+}
+
+// ── 세라믹 콘덴서 (노란 동글납작 머리, 다리 2개)
+export function ceramicCap({ dia = 4 } = {}) {
+  const g = new THREE.Group();
+  const head = mesh(new THREE.SphereGeometry(dia / 2, 16, 12), new THREE.MeshStandardMaterial({ color: 0xe8b52a, roughness: 0.5 }));
+  head.scale.set(1, 1, 0.5);
+  head.position.y = 2.5 + dia / 2;
+  g.add(head);
+  for (const x of [-1.27, 1.27]) g.add(box(0.4, 2.6, 0.4, M.solder, x, 0, 0, { cast: false }));
+  return g;
+}
