@@ -24,7 +24,7 @@ function textColumns(str) {
 const ROBO = textColumns('ROBO ROBO ');
 
 export function create(model, ui) {
-  const { tex, SCREEN } = model.handles;
+  const { tex, colorTex } = model.handles;
   const st = { power: true, pattern: 'text', color: 'red', bright: 100, t: 0 };
 
   ui.controls([
@@ -61,6 +61,20 @@ export function create(model, ui) {
       }
       let count = 0;
       const used = new Set();
+      // 표면 색: 꺼진 도트는 옅은 회색 점, 켜진 도트는 그 색
+      redraw(colorTex, (g, w, h) => {
+        g.fillStyle = '#e4e3df'; g.fillRect(0, 0, w, h);
+        const px = w / DOTS.cols, py = h / DOTS.rows;
+        for (let r = 0; r < DOTS.rows; r++) {
+          for (let c = 0; c < DOTS.cols; c++) {
+            const col = grid[r][c];
+            g.fillStyle = col ? COLORS[col] : '#cfcdc8';
+            g.globalAlpha = col ? 0.35 + 0.65 * (st.bright / 100) : 1;
+            g.beginPath(); g.arc((c + 0.5) * px, (r + 0.5) * py, px * (col ? 0.42 : 0.3), 0, Math.PI * 2); g.fill();
+          }
+        }
+        g.globalAlpha = 1;
+      });
       redraw(tex, (g, w, h) => {
         g.fillStyle = '#000'; g.fillRect(0, 0, w, h);
         const px = w / DOTS.cols, py = h / DOTS.rows;
@@ -78,9 +92,6 @@ export function create(model, ui) {
               g.fillStyle = grad;
               g.fillRect(x - px, y - py, px * 2, py * 2);
               g.globalAlpha = 1;
-            } else {
-              g.fillStyle = '#141414';
-              g.beginPath(); g.arc(x, y, px * 0.28, 0, Math.PI * 2); g.fill();
             }
           }
         }

@@ -22,8 +22,10 @@ export function build() {
   }));
 
   // LED 화면: 흰 확산판 윗면에 도트를 그린다 (켜진 도트는 빛난다)
+  // 화면 색(확산판 표면 + 켜진 도트 색)과 빛(켜진 도트만) 두 장을 함께 그린다
+  const colorTex = canvasTexture(SCREEN.w, SCREEN.d, (g, w, h) => { g.fillStyle = '#e4e3df'; g.fillRect(0, 0, w, h); }, 12);
   const tex = canvasTexture(SCREEN.w, SCREEN.d, (g, w, h) => { g.fillStyle = '#000'; g.fillRect(0, 0, w, h); }, 12);
-  const top = new THREE.MeshStandardMaterial({ color: 0xf3f4f2, roughness: 0.35, emissive: 0xffffff, emissiveMap: tex, emissiveIntensity: 1.6 });
+  const top = new THREE.MeshStandardMaterial({ color: 0xffffff, map: colorTex, roughness: 0.35, emissive: 0xffffff, emissiveMap: tex, emissiveIntensity: 1.2 });
   const screen = mesh(new THREE.BoxGeometry(SCREEN.w, SCREEN.h, SCREEN.d), [M.diffuser, M.diffuser, top, M.diffuser, M.diffuser, M.diffuser]);
   screen.position.set(-4, T + SCREEN.h / 2, -1);
   root.add(screen);
@@ -41,6 +43,6 @@ export function build() {
       { name: 'SIGNAL', sub: 'CPU 보드 연결', object: conn, anchor: [0, 6, 0], off: [40, -70] },
       { name: 'FRAME HOLES', sub: '1~15 · A~I', object: root, anchor: [-38.5, T, 0], off: [-110, 60] },
     ],
-    handles: { tex, SCREEN },
+    handles: { tex, colorTex, SCREEN },
   };
 }
