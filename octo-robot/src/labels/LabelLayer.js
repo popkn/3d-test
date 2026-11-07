@@ -57,7 +57,11 @@ export class LabelLayer {
       const ay = (-p.y * 0.5 + 0.5) * h;
       const [dx, dy] = it.def.screen;
       const left = dx < 0;
-      const lx = THREE.MathUtils.clamp(ax + dx * scale, 90, w - 90);
+      // 이름표 전체가 화면 안에 들어오도록 (왼쪽 이름표는 오른쪽 끝 기준)
+      const lw = it.el.offsetWidth;
+      const lx = left
+        ? THREE.MathUtils.clamp(ax + dx * scale, lw + 16, w - 16)
+        : THREE.MathUtils.clamp(ax + dx * scale, 16, w - lw - 16);
       const ly = THREE.MathUtils.clamp(ay + dy * scale, 40, h - 40);
       // 기준점 → 꺾이는 점 → 이름표 옆
       const elbowX = lx + (left ? 18 : -18);

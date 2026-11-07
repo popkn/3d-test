@@ -92,7 +92,7 @@ export const labelDefs = [
   {
     id: 'tdMantle', title: 'MANTLE SHELL', sub: '8 PETALS · GLASS PORT',
     anchor: (r) => ({ object: r.mantle.petals[2].object3d, offset: r.mantle.petals[2].centerOffset }),
-    screen: [-170, -70], modes: ['teardown'],
+    screen: [150, -150], modes: ['teardown'],
   },
   {
     id: 'tdOptics', title: 'OPTIC ARRAY', sub: '2 × 4-LAYER',
@@ -102,11 +102,11 @@ export const labelDefs = [
   {
     id: 'tdBeak', title: 'BEAK', sub: 'TWIN JAW · RADULA',
     anchor: (r) => ({ object: r.beak.object3d, offset: v(0, -0.3, 0) }),
-    screen: [170, 70], modes: ['teardown'],
+    screen: [-190, 50], modes: ['teardown'],
   },
   {
     id: 'tdArms', title: 'ARM CHAINS', sub: '8 × 16 LINKS',
     anchor: (r) => ({ object: r.arms.L2.joints[5], offset: v(0, 0.2, 0) }),
-    screen: [-150, 80], modes: ['teardown'],
+    screen: [200, 100], modes: ['teardown'],
   },
 ];

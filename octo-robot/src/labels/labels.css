@@ -16,6 +16,8 @@
   white-space: nowrap;
   opacity: 0;
   transition: opacity 0.4s ease;
+  /* 로봇 위에 겹쳐도 읽히도록 배경색 테두리 */
+  text-shadow: 0 0 3px var(--bg), 0 0 3px var(--bg), 0 0 6px var(--bg);
 }
 .part-label.on { opacity: 1; }
 .part-label b { display: flex; align-items: center; gap: 6px; font-weight: 700; }
