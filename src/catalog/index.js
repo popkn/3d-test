@@ -1,0 +1,29 @@
+// 부품 목록. 새 부품은 parts/<id>/ 폴더(spec.js, model.js, function.js)를 만들고 여기에 한 줄 추가한다.
+import avrUsbIsp from './parts/avr-usb-isp/spec.js';
+import buzzerBoardS from './parts/buzzer-board-s/spec.js';
+import ledBoardRedS from './parts/led-board-red-s/spec.js';
+import ledDotMatrix from './parts/led-dot-matrix/spec.js';
+import interfaceBoardServo from './parts/interface-board-servo/spec.js';
+import cpuBoard8m from './parts/cpu-board-8m/spec.js';
+import cpuBlacklineProW from './parts/cpu-blackline-pro-w/spec.js';
+import dcMotor130Rs from './parts/dc-motor-130-rs/spec.js';
+import dcMotor130Rsm from './parts/dc-motor-130-rsm/spec.js';
+import dcMotor130Dual from './parts/dc-motor-130-dual/spec.js';
+import dcMotor400Rs from './parts/dc-motor-400-rs/spec.js';
+import dcMotor600Ht600 from './parts/dc-motor-600-ht600/spec.js';
+
+export const catalog = [
+  avrUsbIsp, cpuBoard8m, cpuBlacklineProW, interfaceBoardServo, buzzerBoardS, ledBoardRedS, ledDotMatrix,
+  dcMotor130Rs, dcMotor130Rsm, dcMotor130Dual, dcMotor400Rs, dcMotor600Ht600,
+];
+
+export const categories = [['board', '보드'], ['motor', '모터']];
+
+// 부품의 3D 모양과 기능은 선택할 때 불러온다
+export async function loadPart(id) {
+  const [model, fn] = await Promise.all([
+    import(`./parts/${id}/model.js`),
+    import(`./parts/${id}/function.js`),
+  ]);
+  return { build: model.build, createFunction: fn.create };
+}
