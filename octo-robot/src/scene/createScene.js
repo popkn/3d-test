@@ -6,6 +6,7 @@ import { createControls } from './createControls.js';
 import { createLights } from './createLights.js';
 import { createGround } from './createGround.js';
 import { createBackdrop } from './createBackdrop.js';
+import { createEnvironment } from './createEnvironment.js';
 
 // 화면 환경 전체를 조립해서 돌려준다.
 export function createScene(canvas) {
@@ -18,6 +19,9 @@ export function createScene(canvas) {
   const renderer = createRenderer(canvas);
   const camera = createCamera();
   const controls = createControls(camera, canvas);
+
+  scene.environment = createEnvironment(renderer);
+  scene.environmentIntensity = sceneConfig.environmentIntensity;
 
   scene.add(createLights());
   scene.add(createGround());

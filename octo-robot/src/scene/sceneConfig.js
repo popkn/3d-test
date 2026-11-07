@@ -7,6 +7,7 @@ export const sceneConfig = {
     lineAccent: 0xf0482a,
   },
   fog: { near: 18, far: 45 },
+  environmentIntensity: 0.55,
 
   camera: {
     fov: 35,
@@ -25,7 +26,7 @@ export const sceneConfig = {
   },
 
   lights: {
-    hemisphere: { sky: 0xffffff, ground: 0xd8d4cc, intensity: 1.6 },
+    hemisphere: { sky: 0xffffff, ground: 0xd8d4cc, intensity: 1.1 },
     key: { color: 0xffffff, intensity: 2.4, position: [5, 10, 6], shadowMapSize: 2048, shadowArea: 8 },
     fill: { color: 0xfff4ec, intensity: 0.6, position: [-6, 4, -4] },
     rim: { color: 0xffffff, intensity: 0.8, position: [0, 5, -9] },
