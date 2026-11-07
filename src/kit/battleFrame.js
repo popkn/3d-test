@@ -4,7 +4,7 @@ import { PITCH } from './frame.js';
 
 // 배틀 프레임 (흰 FR-4 1.6T + 빨간 인쇄 무늬, 10mm 간격 구멍). 외곽선과 구멍은 사진으로 추정.
 //   outline: [[x, z], ...] mm, holes: [[x, z], ...], pattern: 'stars' | 'flame'
-export function makeBattleFrame({ outline, holes, pattern, width, depth }) {
+export function makeBattleFrame({ outline, holes, pattern, width, depth, paint = null }) {
   const pcb = makePcb({
     width, depth, color: 'white', outline, corner: 2, pxPerMm: 12,
     holes: holes.map(([x, z]) => ({ x, z, r: 1.6, ring: true })),
@@ -16,7 +16,8 @@ export function makeBattleFrame({ outline, holes, pattern, width, depth }) {
       outline.forEach(([x, z], i) => (i ? g.lineTo(X(x), Y(z)) : g.moveTo(X(x), Y(z))));
       g.closePath();
       g.clip();
-      if (pattern === 'stars') {
+      if (paint) paint(g, X, Y);
+      else if (pattern === 'stars') {
         const xs = holes.map(([x]) => x).filter((x, i, a) => a.indexOf(x) === i).sort((a, b) => a - b);
         for (let i = 0; i < xs.length - 1; i += 2) star(g, X((xs[i] + xs[i + 1]) / 2), Y(0), 7, 3);
       } else {
