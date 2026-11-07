@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AVR USB ISP Board</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" />
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
+  }
+}
+</script>
+<style>
+  :root { --bg: #efede9; --ink: #1d1d1f; --soft: #8a8884; --accent: #e8432a; --panel: rgba(250, 249, 247, 0.9); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg); color: var(--ink);
+    font-family: "JetBrains Mono", ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.04em; }
+  canvas { display: block; }
+  .panel { position: absolute; top: 16px; left: 16px; width: 270px; padding: 14px 16px; background: var(--panel);
+    border: 1px solid rgba(0,0,0,0.08); border-radius: 4px; backdrop-filter: blur(6px); }
+  .panel h1 { font-size: 15px; margin-bottom: 2px; }
+  .panel .sub { color: var(--soft); font-size: 9px; text-transform: uppercase; margin-bottom: 10px; }
+  .panel dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; }
+  .panel dt { color: var(--soft); font-size: 9px; text-transform: uppercase; padding-top: 1px; }
+  .panel dd { font-weight: 600; }
+  .bar { width: 2px; height: 11px; background: var(--accent); display: inline-block; margin-right: 6px; vertical-align: -1px; }
+  .toggles { position: absolute; right: 16px; top: 16px; display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; max-width: 60%; }
+  .toggles button { font: inherit; font-size: 10px; font-weight: 600; padding: 6px 10px; border: 1px solid rgba(0,0,0,0.14);
+    border-radius: 3px; background: #fff; color: var(--ink); cursor: pointer; }
+  .toggles button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .labels { position: absolute; inset: 0; pointer-events: none; }
+  .tag { position: absolute; left: 0; top: 0; font-size: 10px; font-weight: 700; white-space: nowrap;
+    text-shadow: 0 0 3px var(--bg), 0 0 3px var(--bg), 0 0 6px var(--bg); transition: opacity 0.3s; }
+  .tag::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--accent); margin-right: 5px; }
+  .tag small { display: block; padding-left: 11px; color: var(--soft); font-weight: 400; font-size: 9px; }
+  .dim { position: absolute; left: 0; top: 0; font-size: 10px; font-weight: 700; color: var(--accent);
+    text-shadow: 0 0 3px var(--bg), 0 0 3px var(--bg); transition: opacity 0.3s; }
+  .hint { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); color: var(--soft); font-size: 9px; }
+  @media (max-width: 640px) {
+    .panel { width: auto; right: 16px; padding: 10px 12px; }
+    .panel dl { display: none; }
+    .toggles { top: auto; bottom: 34px; right: 16px; left: 16px; max-width: none; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+<div class="panel">
+  <h1><span class="bar"></span>AVR USB ISP 보드</h1>
+  <div class="sub">ROBOROBO · AVR In System Programmer</div>
+  <dl>
+    <dt>Size</dt><dd>62 × 19 × 18 mm</dd>
+    <dt>Parts</dt><dd>ATmega8, CP2102</dd>
+    <dt>Clock</dt><dd>7.3728 MHz</dd>
+    <dt>Voltage</dt><dd>5 VDC (4–5.5 V)</dd>
+    <dt>PCB</dt><dd>FR-4 1.6T double side</dd>
+    <dt>Protocol</dt><dd>STK500</dd>
+    <dt>Ports</dt><dd>USB-B · 6P modular</dd>
+    <dt>Temp</dt><dd>-20 ~ +70 °C</dd>
+  </dl>
+</div>
+<div class="toggles">
+  <button data-k="labels" class="on">LABELS</button>
+  <button data-k="dims" class="on">DIMENSIONS</button>
+  <button data-k="explode">EXPLODE</button>
+  <button data-k="spin">TURNTABLE</button>
+</div>
+<div class="labels" id="labels"></div>
+<div class="hint">DRAG TO ORBIT · SCROLL TO ZOOM · 1 UNIT = 1 MM</div>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+
+// ───────────────────────── 규격 (단위 mm, 상품 페이지 기준) ─────────────────────────
+// 보드 62 × 19, PCB 1.6T, 가장 높은 부품(6P 모듈러 잭) 포함 높이 18
+const SPEC = { length: 62, width: 19, pcb: 1.6, height: 18 };
+const TOP = SPEC.pcb; // PCB 윗면 높이
+// X: 보드 길이 방향 (-31 USB 쪽 ~ +31 잭 쪽), Z: 폭 방향, Y: 위
+
+// ───────────────────────── 화면 ─────────────────────────
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.prepend(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xefede9);
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+scene.environmentIntensity = 0.6;
+
+const camera = new THREE.PerspectiveCamera(35, innerWidth / innerHeight, 1, 2000);
+camera.position.set(-62, 58, 78);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.target.set(0, 5, 0);
+controls.enableDamping = true;
+controls.minDistance = 30;
+controls.maxDistance = 300;
+controls.maxPolarAngle = Math.PI * 0.95;
+controls.autoRotateSpeed = 1.2;
+
+scene.add(new THREE.HemisphereLight(0xffffff, 0xd8d4cc, 1.1));
+const key = new THREE.DirectionalLight(0xffffff, 2.2);
+key.position.set(-40, 90, 50);
+key.castShadow = true;
+key.shadow.mapSize.set(2048, 2048);
+Object.assign(key.shadow.camera, { left: -60, right: 60, top: 60, bottom: -60, near: 10, far: 250 });
+key.shadow.bias = -0.0004;
+scene.add(key);
+const fill = new THREE.DirectionalLight(0xfff4ec, 0.5);
+fill.position.set(60, 30, -40);
+scene.add(fill);
+
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(600, 600), new THREE.ShadowMaterial({ opacity: 0.14 }));
+ground.rotation.x = -Math.PI / 2;
+ground.position.y = -6;
+ground.receiveShadow = true;
+scene.add(ground);
+
+// ───────────────────────── 재질 ─────────────────────────
+const M = {
+  pcbTop: null, pcbBottom: null, // 실크 인쇄 텍스처 (아래에서 만든다)
+  pcbEdge: new THREE.MeshStandardMaterial({ color: 0xe9e4d4, roughness: 0.8 }),       // FR-4 단면
+  shellMetal: new THREE.MeshStandardMaterial({ color: 0xd6d8db, metalness: 1, roughness: 0.28 }), // USB 금속 껍데기
+  darkPlastic: new THREE.MeshStandardMaterial({ color: 0x17181a, roughness: 0.55 }),  // 모듈러 잭
+  darkHole: new THREE.MeshStandardMaterial({ color: 0x060607, roughness: 0.9 }),
+  whitePlastic: new THREE.MeshStandardMaterial({ color: 0xf1efe8, roughness: 0.6 }),  // USB 안쪽 혀
+  chip: new THREE.MeshStandardMaterial({ color: 0x1b1c1e, roughness: 0.45 }),
+  lead: new THREE.MeshStandardMaterial({ color: 0xc9ccd0, metalness: 1, roughness: 0.3 }),
+  gold: new THREE.MeshStandardMaterial({ color: 0xd8b25a, metalness: 1, roughness: 0.3 }),
+  crystal: new THREE.MeshStandardMaterial({ color: 0xcfd2d6, metalness: 1, roughness: 0.22 }),
+  capBody: new THREE.MeshStandardMaterial({ color: 0x232427, roughness: 0.4, metalness: 0.3 }),
+  capTop: new THREE.MeshStandardMaterial({ color: 0x3a3c40, metalness: 0.8, roughness: 0.35 }),
+  resistor: new THREE.MeshStandardMaterial({ color: 0x1e1e20, roughness: 0.5 }),
+  ceramic: new THREE.MeshStandardMaterial({ color: 0xb79a6e, roughness: 0.6 }),
+  solder: new THREE.MeshStandardMaterial({ color: 0xd9dbde, metalness: 1, roughness: 0.25 }),
+};
+
+// 글자/무늬 텍스처 만들기 (칩 윗면 각인, PCB 실크 인쇄)
+function canvasTexture(wmm, hmm, draw, pxPerMm = 24) {
+  const c = document.createElement('canvas');
+  c.width = Math.round(wmm * pxPerMm);
+  c.height = Math.round(hmm * pxPerMm);
+  const g = c.getContext('2d');
+  g.scale(pxPerMm, pxPerMm);
+  draw(g, wmm, hmm);
+  const t = new THREE.CanvasTexture(c);
+  t.colorSpace = THREE.SRGBColorSpace;
+  t.anisotropy = 8;
+  return t;
+}
+
+// ───────────────────────── 보드 ─────────────────────────
+const board = new THREE.Group();
+scene.add(board);
+const parts = []; // { name, sub, object, anchor(Vector3, 부품 기준), explode(Vector3) }
+
+// 부품 배치 (PCB 윗면 기준 X, Z 중심). 실크 인쇄 외곽선도 이 값으로 그린다.
+const LAYOUT = {
+  usb:     { x: -22.8, z: 0,    w: 16.5, d: 12.0 },   // USB-B 리셉터클 (보드 끝에 맞춤)
+  jack:    { x: 22.5,  z: 0,    w: 17.0, d: 14.0 },   // 6P 모듈러 잭
+  cp2102:  { x: -7.2,  z: 3.6,  w: 5.0,  d: 5.0 },    // USB-UART 변환 칩 (QFN-28)
+  atmega:  { x: 3.2,   z: -1.2, w: 7.0,  d: 7.0 },    // ATmega8 (TQFP-32)
+  crystal: { x: 2.6,   z: -6.6, w: 11.0, d: 4.7 },    // 7.3728MHz 크리스털 (HC-49/S)
+  ecap:    { x: 10.6,  z: 4.4,  w: 5.3,  d: 5.3 },    // SMD 전해 콘덴서
+};
+// 작은 칩 부품 (0805 저항/콘덴서, SOD 다이오드): [x, z, 회전(라디안), 종류, 이름]
+const SMALL = [
+  [-12.6, -5.2, 0, 'diode', 'D1'], [-12.6, -2.4, 0, 'diode', 'D2'], [-9.4, -6.6, Math.PI / 2, 'res', 'R1'],
+  [-7.0, -6.6, Math.PI / 2, 'res', 'R2'], [-4.6, -6.6, Math.PI / 2, 'cap', 'C1'], [-11.6, 3.4, Math.PI / 2, 'cap', 'C2'],
+  [-3.2, 6.6, 0, 'cap', 'C3'], [-3.4, 2.0, Math.PI / 2, 'res', 'R3'], [8.6, -2.0, Math.PI / 2, 'cap', 'C4'],
+  [8.6, -5.6, Math.PI / 2, 'cap', 'C5'], [3.0, 5.6, 0, 'res', 'R4'], [6.2, 6.8, 0, 'res', 'R5'],
+  [-1.6, -3.6, Math.PI / 2, 'cap', 'C6'], [11.8, -6.4, 0, 'diode', 'D3'],
+];
+
+// PCB 윗면 실크 인쇄
+M.pcbTop = new THREE.MeshStandardMaterial({
+  roughness: 0.55,
+  map: canvasTexture(SPEC.length, SPEC.width, (g, w, h) => {
+    g.fillStyle = '#f6f5f0'; g.fillRect(0, 0, w, h);
+    const X = (x) => x + w / 2;      // 보드 좌표 → 캔버스 좌표
+    const Y = (z) => z + h / 2;
+    g.strokeStyle = '#1d1d1f'; g.fillStyle = '#1d1d1f'; g.lineWidth = 0.18;
+    // 부품 외곽선
+    for (const k of ['cp2102', 'atmega', 'ecap']) {
+      const p = LAYOUT[k];
+      g.strokeRect(X(p.x - p.w / 2 - 0.8), Y(p.z - p.d / 2 - 0.8), p.w + 1.6, p.d + 1.6);
+    }
+    const c = LAYOUT.crystal;
+    g.beginPath(); g.roundRect(X(c.x - c.w / 2 - 0.6), Y(c.z - c.d / 2 - 0.6), c.w + 1.2, c.d + 1.2, 2.6); g.stroke();
+    // 납땜 패드 (은색)
+    g.fillStyle = '#c7c9cc';
+    for (const [x, z, r] of SMALL) {
+      g.save(); g.translate(X(x), Y(z)); g.rotate(-r);
+      g.fillRect(-1.45, -0.75, 0.9, 1.5); g.fillRect(0.55, -0.75, 0.9, 1.5);
+      g.restore();
+    }
+    // 글자
+    g.fillStyle = '#1d1d1f';
+    g.font = '600 1.15px "JetBrains Mono", monospace';
+    for (const [x, z, , , name] of SMALL) g.fillText(name, X(x) - 1.0, Y(z) - 1.3);
+    g.fillText('IC1', X(LAYOUT.atmega.x) - 1.2, Y(LAYOUT.atmega.z - 5.0));
+    g.fillText('IC2', X(LAYOUT.cp2102.x) - 1.2, Y(LAYOUT.cp2102.z + 4.6));
+    g.fillText('X1', X(LAYOUT.crystal.x + 6.4), Y(LAYOUT.crystal.z + 0.4));
+    g.fillText('C7', X(LAYOUT.ecap.x + 3.4), Y(LAYOUT.ecap.z + 0.4));
+    g.font = '700 1.3px "JetBrains Mono", monospace';
+    g.save(); g.translate(X(-30.2), Y(8.2)); g.rotate(-Math.PI / 2); g.fillText('MADE IN KOREA', 0, 0); g.restore();
+    g.fillText('WWW.ROBOROBO.CO.KR', X(-1.5), Y(9.0));
+    // 1번 핀 표시 등 작은 점
+    g.beginPath(); g.arc(X(LAYOUT.atmega.x - 4.3), Y(LAYOUT.atmega.z - 4.3), 0.35, 0, Math.PI * 2); g.fill();
+  }),
+});
+// PCB 아랫면: 스루홀 납땜 자국
+M.pcbBottom = new THREE.MeshStandardMaterial({
+  roughness: 0.55,
+  map: canvasTexture(SPEC.length, SPEC.width, (g, w, h) => {
+    g.fillStyle = '#f6f5f0'; g.fillRect(0, 0, w, h);
+    g.fillStyle = '#c7c9cc';
+    const X = (x) => w / 2 - x; // 아랫면이라 좌우가 뒤집힌다
+    const Y = (z) => z + h / 2;
+    for (const z of [-3.5, -1.0, 1.0, 3.5]) { g.beginPath(); g.arc(X(-16.5), Y(z), 0.7, 0, Math.PI * 2); g.fill(); }
+    for (const z of [-6, 6]) { g.beginPath(); g.arc(X(-24.5), Y(z), 1.2, 0, Math.PI * 2); g.fill(); }
+    for (let i = 0; i < 6; i++) { g.beginPath(); g.arc(X(17.5), Y(-3.2 + i * 1.27), 0.55, 0, Math.PI * 2); g.fill(); }
+    for (const z of [-5.1, 5.1]) { g.beginPath(); g.arc(X(23.5), Y(z), 1.4, 0, Math.PI * 2); g.fill(); }
+    g.strokeStyle = '#1d1d1f'; g.lineWidth = 0.15;
+    g.font = '600 1.3px "JetBrains Mono", monospace'; g.fillStyle = '#1d1d1f';
+    g.fillText('AVR USB ISP', X(4) , Y(0.5));
+  }),
+});
+
+const pcbGeo = new THREE.BoxGeometry(SPEC.length, SPEC.pcb, SPEC.width);
+// BoxGeometry 면 순서: +X, -X, +Y(윗면), -Y(아랫면), +Z, -Z
+const pcb = new THREE.Mesh(pcbGeo, [M.pcbEdge, M.pcbEdge, M.pcbTop, M.pcbBottom, M.pcbEdge, M.pcbEdge]);
+pcb.position.y = SPEC.pcb / 2;
+pcb.castShadow = pcb.receiveShadow = true;
+board.add(pcb);
+parts.push({ name: 'PCB', sub: 'FR-4 1.6T · 62 × 19', object: pcb, anchor: new THREE.Vector3(-14, 0.8, 9.5), explode: new THREE.Vector3(0, -6, 0), labelOff: [-90, 40] });
+
+function addMesh(parent, geo, mat, x, y, z) {
+  const m = new THREE.Mesh(geo, mat);
+  m.position.set(x, y, z);
+  m.castShadow = true;
+  m.receiveShadow = true;
+  parent.add(m);
+  return m;
+}
+
+// ── USB Type-B 리셉터클: 금속 껍데기 + 앞면 입구(위 모서리가 깎인 모양) + 안쪽 흰 혀
+function makeUsbB() {
+  const g = new THREE.Group();
+  const { w, d } = LAYOUT.usb; // w: X 길이, d: Z 폭
+  const h = 10.9;
+  addMesh(g, new RoundedBoxGeometry(w, h, d, 2, 0.5), M.shellMetal, 0, h / 2, 0);
+  // 입구: USB-B 단면 (8.45 × 7.78, 위쪽 두 모서리 깎임)
+  const s = new THREE.Shape();
+  const ow = 8.45, oh = 7.78, ch = 1.6;
+  s.moveTo(-ow / 2, 0); s.lineTo(ow / 2, 0); s.lineTo(ow / 2, oh - ch); s.lineTo(ow / 2 - ch, oh);
+  s.lineTo(-ow / 2 + ch, oh); s.lineTo(-ow / 2, oh - ch); s.closePath();
+  const hole = new THREE.Mesh(new THREE.ShapeGeometry(s), M.darkHole);
+  hole.rotation.y = -Math.PI / 2;        // 입구는 보드 바깥쪽(-X)을 향한다
+  hole.position.set(-w / 2 - 0.02, 1.6, 0);
+  g.add(hole);
+  // 혀 (가운데 흰 플라스틱 + 금속 접점)
+  const tongue = addMesh(g, new THREE.BoxGeometry(0.6, 3.0, 5.2), M.whitePlastic, -w / 2 - 0.05, 1.6 + 3.6, 0);
+  for (let i = 0; i < 4; i++) addMesh(g, new THREE.BoxGeometry(0.62, 0.35, 0.9), M.gold, -w / 2 - 0.06, 1.6 + 2.4 + (i % 2) * 2.4, i < 2 ? -1.4 : 1.4);
+  tongue.castShadow = false;
+  // 껍데기 위쪽 홈 선 (찍어낸 금속판 느낌)
+  for (const x of [-3, 3]) addMesh(g, new THREE.BoxGeometry(0.4, 0.15, d - 2), M.lead, x, h + 0.02, 0);
+  // 옆면 고정 탭
+  for (const z of [-d / 2, d / 2]) addMesh(g, new THREE.BoxGeometry(2.4, 2.2, 0.3), M.shellMetal, 1.8, 1.1, z + Math.sign(z) * 0.15);
+  return g;
+}
+const usb = makeUsbB();
+usb.position.set(LAYOUT.usb.x, TOP, LAYOUT.usb.z);
+board.add(usb);
+parts.push({ name: 'USB TYPE-B', sub: 'HOST · 5V POWER', object: usb, anchor: new THREE.Vector3(0, 11, 0), explode: new THREE.Vector3(-10, 8, 0), labelOff: [-110, -60] });
+
+// ── 6P 모듈러 잭 (RJ12): 검은 몸통 + 앞면 구멍 + 걸쇠 홈 + 금색 접점 6개
+function makeModularJack() {
+  const g = new THREE.Group();
+  const { w, d } = LAYOUT.jack;
+  const h = SPEC.height - SPEC.pcb; // 16.4 → 전체 높이 18mm
+  addMesh(g, new RoundedBoxGeometry(w, h, d, 2, 0.6), M.darkPlastic, 0, h / 2, 0);
+  // 입구 (6.6 × 6.0) + 아래 걸쇠 홈 (3.2 × 2.2)
+  const s = new THREE.Shape();
+  s.moveTo(-3.3, 0); s.lineTo(-1.6, 0); s.lineTo(-1.6, -2.2); s.lineTo(1.6, -2.2); s.lineTo(1.6, 0);
+  s.lineTo(3.3, 0); s.lineTo(3.3, 6.0); s.lineTo(-3.3, 6.0); s.closePath();
+  const hole = new THREE.Mesh(new THREE.ShapeGeometry(s), M.darkHole);
+  hole.rotation.y = Math.PI / 2;          // 입구는 보드 바깥쪽(+X)을 향한다
+  hole.position.set(w / 2 + 0.02, 6.2, 0);
+  g.add(hole);
+  for (let i = 0; i < 6; i++) {
+    addMesh(g, new THREE.BoxGeometry(0.2, 2.2, 0.45), M.gold, w / 2 - 0.05, 6.2 + 4.6, -3.2 + i * 1.27).castShadow = false;
+  }
+  // 위쪽 성형 자국
+  addMesh(g, new THREE.BoxGeometry(w - 4, 0.3, d - 4), M.chip, 0, h + 0.05, 0);
+  return g;
+}
+const jack = makeModularJack();
+jack.position.set(LAYOUT.jack.x, TOP, LAYOUT.jack.z);
+board.add(jack);
+parts.push({ name: '6P MODULAR JACK', sub: 'ISP OUT · RJ12', object: jack, anchor: new THREE.Vector3(0, 16.4, 0), explode: new THREE.Vector3(10, 8, 0), labelOff: [70, -70] });
+
+// ── 칩 윗면 각인 텍스처
+function chipTop(w, d, lines) {
+  return new THREE.MeshStandardMaterial({
+    color: 0xffffff, roughness: 0.45,
+    map: canvasTexture(w, d, (g) => {
+      g.fillStyle = '#1b1c1e'; g.fillRect(0, 0, w, d);
+      g.fillStyle = '#8f9196';
+      g.font = `600 ${Math.min(1.1, w / 6)}px "JetBrains Mono", monospace`;
+      lines.forEach((t, i) => g.fillText(t, 0.6, d / 2 - (lines.length - 1) * 0.7 + i * 1.4 + 0.4));
+      g.beginPath(); g.arc(0.9, 0.9, 0.35, 0, Math.PI * 2); g.fillStyle = '#2b2c2f'; g.fill();
+    }, 48),
+  });
+}
+function chipBody(w, h, d, topMat) {
+  const geo = new THREE.BoxGeometry(w, h, d);
+  return new THREE.Mesh(geo, [M.chip, M.chip, topMat, M.chip, M.chip, M.chip]);
+}
+
+// ── ATmega8 (TQFP-32): 7×7 몸통 + 네 변에 핀 8개씩
+function makeTqfp() {
+  const g = new THREE.Group();
+  const body = chipBody(7, 1.0, 7, chipTop(7, 7, ['ATMEGA8', '16AU 2341']));
+  body.position.y = 0.2 + 0.5;
+  body.castShadow = true;
+  g.add(body);
+  const leadGeo = new THREE.BoxGeometry(1.1, 0.15, 0.37);
+  for (let side = 0; side < 4; side++) {
+    for (let i = 0; i < 8; i++) {
+      const t = -2.8 + i * 0.8;
+      const l = new THREE.Mesh(leadGeo, M.lead);
+      const a = (side * Math.PI) / 2;
+      l.position.set(Math.cos(a) * 4.0 - Math.sin(a) * t, 0.1, Math.sin(a) * 4.0 + Math.cos(a) * t);
+      l.rotation.y = -a;
+      g.add(l);
+    }
+  }
+  return g;
+}
+const atmega = makeTqfp();
+atmega.position.set(LAYOUT.atmega.x, TOP, LAYOUT.atmega.z);
+board.add(atmega);
+parts.push({ name: 'ATMEGA8', sub: 'MCU · TQFP-32', object: atmega, anchor: new THREE.Vector3(0, 1.2, 0), explode: new THREE.Vector3(0, 14, 0), labelOff: [60, 40] });
+
+// ── CP2102 (QFN-28): 5×5 얇은 몸통 + 옆면 패드
+function makeQfn() {
+  const g = new THREE.Group();
+  const body = chipBody(5, 0.9, 5, chipTop(5, 5, ['CP2102', 'GMR']));
+  body.position.y = 0.45;
+  body.castShadow = true;
+  g.add(body);
+  const padGeo = new THREE.BoxGeometry(0.3, 0.2, 0.25);
+  for (let side = 0; side < 4; side++) {
+    for (let i = 0; i < 7; i++) {
+      const t = -1.5 + i * 0.5;
+      const a = (side * Math.PI) / 2;
+      const p = new THREE.Mesh(padGeo, M.lead);
+      p.position.set(Math.cos(a) * 2.55 - Math.sin(a) * t, 0.1, Math.sin(a) * 2.55 + Math.cos(a) * t);
+      p.rotation.y = -a;
+      g.add(p);
+    }
+  }
+  return g;
+}
+const cp2102 = makeQfn();
+cp2102.position.set(LAYOUT.cp2102.x, TOP, LAYOUT.cp2102.z);
+board.add(cp2102);
+parts.push({ name: 'CP2102', sub: 'USB ↔ UART · QFN-28', object: cp2102, anchor: new THREE.Vector3(0, 1.0, 0), explode: new THREE.Vector3(0, 12, 0), labelOff: [-80, 60] });
+
+// ── 크리스털 HC-49/S: 양 끝이 둥근 은색 몸통 (11 × 4.7 × 3.5)
+function makeCrystal() {
+  const g = new THREE.Group();
+  const { w, d } = LAYOUT.crystal;
+  const r = d / 2;
+  const s = new THREE.Shape();
+  s.absarc(-w / 2 + r, 0, r, Math.PI / 2, (Math.PI * 3) / 2, false);
+  s.absarc(w / 2 - r, 0, r, -Math.PI / 2, Math.PI / 2, false);
+  const geo = new THREE.ExtrudeGeometry(s, { depth: 3.3, bevelEnabled: true, bevelThickness: 0.2, bevelSize: 0.2, bevelSegments: 3, curveSegments: 20 });
+  geo.rotateX(-Math.PI / 2);
+  const body = addMesh(g, geo, M.crystal, 0, 0.2, 0);
+  // 윗면 글자
+  const label = new THREE.Mesh(new THREE.PlaneGeometry(7, 2.2), new THREE.MeshBasicMaterial({
+    transparent: true,
+    map: canvasTexture(7, 2.2, (gg) => {
+      gg.fillStyle = '#6f7277'; gg.font = '700 1.25px "JetBrains Mono", monospace'; gg.fillText('7.3728', 1.4, 1.5);
+    }, 48),
+  }));
+  label.rotation.x = -Math.PI / 2;
+  label.position.y = 0.2 + 3.3 + 0.21;
+  g.add(label);
+  body.castShadow = true;
+  return g;
+}
+const crystal = makeCrystal();
+crystal.position.set(LAYOUT.crystal.x, TOP, LAYOUT.crystal.z);
+board.add(crystal);
+parts.push({ name: 'CRYSTAL', sub: '7.3728 MHZ · HC-49/S', object: crystal, anchor: new THREE.Vector3(0, 3.7, 0), explode: new THREE.Vector3(0, 10, -4), labelOff: [-40, 70] });
+
+// ── SMD 전해 콘덴서: 사각 받침 + 원통 + 윗면 표시
+function makeEcap() {
+  const g = new THREE.Group();
+  const base = addMesh(g, new THREE.BoxGeometry(5.3, 0.9, 5.3), M.darkPlastic, 0, 0.45, 0);
+  base.geometry.translate(0, 0, 0);
+  addMesh(g, new THREE.CylinderGeometry(2.5, 2.5, 4.6, 40), M.capBody, 0, 0.9 + 2.3, 0);
+  const top = addMesh(g, new THREE.CylinderGeometry(2.42, 2.42, 0.08, 40), M.capTop, 0, 0.9 + 4.6 + 0.04, 0);
+  top.castShadow = false;
+  // 극성 표시 (반원 부분)
+  const mark = new THREE.Mesh(new THREE.CircleGeometry(2.2, 32, 0, Math.PI), new THREE.MeshStandardMaterial({ color: 0x55585e, metalness: 0.6, roughness: 0.4 }));
+  mark.rotation.x = -Math.PI / 2;
+  mark.position.y = 0.9 + 4.6 + 0.09;
+  g.add(mark);
+  return g;
+}
+const ecap = makeEcap();
+ecap.position.set(LAYOUT.ecap.x, TOP, LAYOUT.ecap.z);
+board.add(ecap);
+parts.push({ name: 'E-CAP', sub: 'SMD ELECTROLYTIC', object: ecap, anchor: new THREE.Vector3(0, 5.6, 0), explode: new THREE.Vector3(0, 12, 4), labelOff: [-170, -120] });
+
+// ── 작은 칩 부품 (0805 저항/콘덴서, SOD 다이오드)
+const smallGroup = new THREE.Group();
+board.add(smallGroup);
+for (const [x, z, r, kind] of SMALL) {
+  const g = new THREE.Group();
+  if (kind === 'diode') {
+    addMesh(g, new THREE.BoxGeometry(2.7, 1.1, 1.6), M.resistor, 0, 0.55, 0);
+    addMesh(g, new THREE.BoxGeometry(0.35, 1.12, 1.62), M.lead, -0.9, 0.55, 0).castShadow = false; // 극성 띠
+  } else {
+    addMesh(g, new THREE.BoxGeometry(1.4, 0.6, 1.25), kind === 'res' ? M.resistor : M.ceramic, 0, 0.3, 0);
+    for (const sx of [-0.85, 0.85]) addMesh(g, new THREE.BoxGeometry(0.4, 0.62, 1.27), M.solder, sx, 0.31, 0);
+  }
+  g.position.set(x, TOP, z);
+  g.rotation.y = r;
+  smallGroup.add(g);
+}
+parts.push({ name: 'SMD PARTS', sub: '0805 R/C · SOD DIODE', object: smallGroup, anchor: new THREE.Vector3(-12.6, 2.4, -3.8), explode: new THREE.Vector3(0, 6, 0), labelOff: [-60, -100] });
+
+// 보드 전체를 가운데로
+board.position.y = 0;
+
+// ───────────────────────── 치수선 (62 / 19 / 18 mm) ─────────────────────────
+const dimGroup = new THREE.Group();
+scene.add(dimGroup);
+const dimMat = new THREE.LineBasicMaterial({ color: 0xe8432a });
+function dimLine(a, b, tickDir) {
+  const t = tickDir.clone().multiplyScalar(1.5);
+  const pts = [a, b, a.clone().add(t), a.clone().sub(t), b.clone().add(t), b.clone().sub(t)];
+  const geo = new THREE.BufferGeometry().setFromPoints([pts[0], pts[1], pts[2], pts[3], pts[4], pts[5]]);
+  dimGroup.add(new THREE.LineSegments(geo, dimMat));
+}
+const L2 = SPEC.length / 2, W2 = SPEC.width / 2;
+const dims = [
+  { a: new THREE.Vector3(-L2, 0, W2 + 6), b: new THREE.Vector3(L2, 0, W2 + 6), tick: new THREE.Vector3(0, 0, 1), text: '62 MM' },
+  { a: new THREE.Vector3(L2 + 6, 0, -W2), b: new THREE.Vector3(L2 + 6, 0, W2), tick: new THREE.Vector3(1, 0, 0), text: '19 MM' },
+  { a: new THREE.Vector3(L2 + 4, 0, W2 + 4), b: new THREE.Vector3(L2 + 4, SPEC.height, W2 + 4), tick: new THREE.Vector3(1, 0, 0), text: '18 MM' },
+];
+// 치수선 끝의 보조선 (보드 모서리에서 치수선까지)
+const extPts = [
+  new THREE.Vector3(-L2, 0, W2), new THREE.Vector3(-L2, 0, W2 + 7), new THREE.Vector3(L2, 0, W2), new THREE.Vector3(L2, 0, W2 + 7),
+  new THREE.Vector3(L2, 0, -W2), new THREE.Vector3(L2 + 7, 0, -W2), new THREE.Vector3(L2, 0, W2), new THREE.Vector3(L2 + 7, 0, W2),
+  new THREE.Vector3(L2, SPEC.height, W2 - 6), new THREE.Vector3(L2 + 5, SPEC.height, W2 + 5),
+];
+dimGroup.add(new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints(extPts),
+  new THREE.LineDashedMaterial({ color: 0xe8432a, dashSize: 0.8, gapSize: 0.6, transparent: true, opacity: 0.6 })).computeLineDistances());
+for (const d of dims) dimLine(d.a, d.b, d.tick);
+
+// ───────────────────────── 이름표와 치수 글자 ─────────────────────────
+const labelLayer = document.getElementById('labels');
+for (const p of parts) {
+  p.el = document.createElement('div');
+  p.el.className = 'tag';
+  p.el.innerHTML = `${p.name}<small>${p.sub}</small>`;
+  labelLayer.appendChild(p.el);
+  p.base = p.object.position.clone();
+}
+const svgNS = 'http://www.w3.org/2000/svg';
+const svg = document.createElementNS(svgNS, 'svg');
+svg.setAttribute('style', 'position:absolute;inset:0;width:100%;height:100%');
+labelLayer.prepend(svg);
+for (const p of parts) {
+  p.line = document.createElementNS(svgNS, 'polyline');
+  p.line.setAttribute('style', 'fill:none;stroke:#e8432a;stroke-width:1');
+  svg.appendChild(p.line);
+}
+for (const d of dims) {
+  d.el = document.createElement('div');
+  d.el.className = 'dim';
+  d.el.textContent = d.text;
+  labelLayer.appendChild(d.el);
+}
+
+// ───────────────────────── 조작 버튼 ─────────────────────────
+const opts = { labels: true, dims: true, explode: false, spin: false };
+document.querySelectorAll('.toggles button').forEach((b) => {
+  b.addEventListener('click', () => {
+    const k = b.dataset.k;
+    opts[k] = !opts[k];
+    b.classList.toggle('on', opts[k]);
+    controls.autoRotate = opts.spin;
+  });
+});
+
+// ───────────────────────── 실행 루프 ─────────────────────────
+const v = new THREE.Vector3();
+let explodeT = 0;
+const clock = new THREE.Timer();
+function toScreen(vec) {
+  v.copy(vec).project(camera);
+  return [(v.x * 0.5 + 0.5) * innerWidth, (-v.y * 0.5 + 0.5) * innerHeight, v.z];
+}
+renderer.setAnimationLoop((ts) => {
+  clock.update(ts);
+  const dt = Math.min(clock.getDelta(), 0.1);
+  explodeT += ((opts.explode ? 1 : 0) - explodeT) * Math.min(1, dt * 4);
+  for (const p of parts) p.object.position.copy(p.base).addScaledVector(p.explode, explodeT);
+  dimGroup.visible = opts.dims && explodeT < 0.05;
+  controls.update();
+  scene.updateMatrixWorld();
+
+  for (const p of parts) {
+    const show = opts.labels;
+    p.el.style.opacity = show ? 1 : 0;
+    p.line.style.opacity = show ? 1 : 0;
+    if (!show) continue;
+    const world = p.anchor.clone().applyMatrix4(p.object.matrixWorld);
+    const [ax, ay] = toScreen(world);
+    const s = Math.min(1, innerWidth / 1100);
+    const lx = Math.max(12, Math.min(innerWidth - 150, ax + p.labelOff[0] * s));
+    const ly = Math.max(70, Math.min(innerHeight - 30, ay + p.labelOff[1] * s)); // 위쪽 버튼을 피한다
+    p.el.style.transform = `translate(${lx}px, ${ly - 8}px)`;
+    p.line.setAttribute('points', `${ax},${ay} ${lx - 4},${ly}`);
+  }
+  for (const d of dims) {
+    const mid = d.a.clone().lerp(d.b, 0.5).add(d.tick.clone().multiplyScalar(2.5));
+    const [x, y] = toScreen(mid);
+    d.el.style.opacity = dimGroup.visible ? 1 : 0;
+    d.el.style.transform = `translate(${x - 18}px, ${y - 7}px)`;
+  }
+  renderer.render(scene, camera);
+});
+
+addEventListener('resize', () => {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+</script>
+</body>
+</html>
