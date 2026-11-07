@@ -49,3 +49,16 @@ html, body {
 .dev-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .dev-row input[type="range"] { width: 110px; accent-color: var(--accent); }
 .dev-row input[type="checkbox"] { accent-color: var(--accent); }
+.dev-modes { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+.dev-modes button {
+  font: inherit;
+  font-size: 10px;
+  padding: 5px 6px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+}
+.dev-modes button.active { background: var(--accent); border-color: var(--accent); color: #fff; }

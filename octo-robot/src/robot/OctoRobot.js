@@ -68,9 +68,16 @@ export class OctoRobot {
     this.beak.object3d.position.y = body.beak.y;
     this.body.add(this.beak.object3d);
 
+    // 분해할 때 움직일 부품들의 원래 위치와 방향
+    this.explodeTargets = [
+      ...this.eyes.map((e) => ({ obj: e.object3d, distance: 0.9 })),
+      { obj: this.siphon.object3d, distance: 0.8 },
+    ].map((x) => ({ ...x, base: x.obj.position.clone(), dir: x.obj.position.clone().normalize() }));
+    this.beakBaseY = this.beak.object3d.position.y;
+
     // 현재 상태 (HUD가 읽어 간다)
     this.state = {
-      mantle: 0, optics: 0, siphon: 0, beak: 0,
+      mantle: 0, optics: 0, siphon: 0, beak: 0, explode: 0,
       bodyPose: { x: 0, y: 0, z: 0, pitch: 0, yaw: 0, roll: 0 },
     };
 
@@ -99,6 +106,16 @@ export class OctoRobot {
   setSiphon(t) { this.state.siphon = t; this.siphon.setOpen(t); }
 
   setBeak(t) { this.state.beak = t; this.beak.setOpen(t); }
+
+  // 분해 0~1: 머리 꽃잎판, 눈, 사이펀, 부리, 팔이 몸체에서 떨어져 바깥으로 흩어진다.
+  // (팔 마디 사이 벌어짐은 팔 자세의 spread로 따로 준다)
+  setExplode(e) {
+    this.state.explode = e;
+    this.mantle.setExplode(e);
+    for (const x of this.explodeTargets) x.obj.position.copy(x.base).addScaledVector(x.dir, x.distance * e);
+    this.beak.object3d.position.y = this.beakBaseY - e * 0.9;
+    for (const a of Object.values(this.arms)) a.object3d.position.z = e * 0.55;
+  }
 
   // ── 팔 ── names: 'R2' 같은 이름, 이름 배열, 또는 생략하면 전체
   setArmPose(pose, names) {

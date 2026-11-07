@@ -16,7 +16,7 @@ npm run dev
 - [x] 3단계: 몸체 부품 (맨틀, 눈, 사이펀, 부리)
 - [x] 4단계: 팔
 - [x] 5단계: 전체 조립
-- [ ] 6단계: 모드
+- [x] 6단계: 모드
 - [ ] 7단계: 진행 순서와 연출
 - [ ] 8단계: 이름표
 - [ ] 9단계: HUD
@@ -59,12 +59,32 @@ npm run dev
 - `src/robot/OctoRobot.js`: 로봇 전체 조립과 조작 메서드 (부위 열기, 팔 자세, 몸체 자세, 부위 이름표)
 - `src/robot/config/robotConfig.js`: 떠 있는 높이, 전체 크기, 위아래 흔들림
 - `src/robot/config/index.js`: 설정 파일 모음
-- `src/dev/devPanel.js`: 확인용 슬라이더 (9단계 HUD로 교체)
+- `src/dev/devPanel.js`: 확인용 모드 버튼 (9단계 HUD로 교체). `?mode=teardown`으로 시작 모드, `?auto=1`로 자동 반복
 
 ## 로봇 조작 (OctoRobot)
 
 - `setMantle(t)`, `setOptics(t)`, `setSiphon(t)`, `setBeak(t)`: 0 = 닫힘, 1 = 열림
 - `setArmPose(pose, names)`: 팔 자세. names는 `'R2'`, `['L1','L2']`, 생략하면 전체
+- `setExplode(t)`: 분해 정도 (꽃잎판, 눈, 사이펀, 부리, 팔이 바깥으로 흩어진다)
 - `setBodyPose({ x, y, z, pitch, yaw, roll })`: 몸체 위치와 기울기
 - `parts`: 부위 이름 → 3D 물체 (부위 선택, 이름표용)
 - `state`: 현재 상태 (HUD가 읽는다)
+- `src/modes/`: 모드 파일 (모드 하나에 파일 하나: `holding`, `jetting`, `mantleOpen`, `opticsOpen`, `siphonOpen`, `beakOpen`, `armApart`, `teardown`, `departing`)
+- `src/modes/ModeController.js`: 현재 모드의 목표 자세로 로봇을 부드럽게 옮긴다
+- `src/modes/index.js`: 모드 목록과 순서
+
+## 모드 파일 형식
+
+```js
+export default {
+  id: 'beakOpen',              // 이름
+  label: 'BEAK OPEN',          // 화면 표시
+  description: '...',          // 부가 설명
+  parts: { beak: 1 },          // mantle, optics, siphon, beak, explode (0~1)
+  body: { y: 0.7, pitch: -1.15 }, // 몸체 위치/기울기
+  arms: { all: {...}, R2: {...} }, // 팔 자세 (전체 + 팔별 덮어쓰기)
+  motion(elapsed) { return { x: ... }; }, // 시간에 따른 추가 움직임 (선택)
+  blend: 1.3,                  // 넘어가는 빠르기
+};
+```
+적지 않은 값은 대기(holding) 모드 값을 쓴다.

@@ -22,6 +22,8 @@ export class ShellPetal {
     this.object3d = new THREE.Group();
     this.object3d.name = `petal${index}`;
     this.object3d.position.copy(hinge);
+    this.hinge = hinge.clone();
+    this.outward = new THREE.Vector3(Math.cos(lonC), 0.35, Math.sin(lonC)).normalize();
 
     // 내용물은 머리 중심 기준 좌표로 만들고, 경첩만큼 되돌려 놓는다
     const content = new THREE.Group();
@@ -76,5 +78,10 @@ export class ShellPetal {
   // 0 = 닫힘, 1 = 활짝 열림
   setOpen(t) {
     this.object3d.quaternion.setFromAxisAngle(this.axis, -t * this.openAngle);
+  }
+
+  // 분해: 경첩 자리에서 바깥으로 떨어져 나간다 (distance = 이동 거리)
+  setDetach(distance) {
+    this.object3d.position.copy(this.hinge).addScaledVector(this.outward, distance);
   }
 }

@@ -45,21 +45,37 @@ export class Mantle {
     this.object3d.add(this.core.object3d);
 
     this.open = 0;
+    this.explode = 0;
   }
 
   // 0 = 닫힘, 1 = 활짝 열림. 꽃잎판이 순서대로 살짝 시차를 두고 열린다.
   setOpen(t) {
     this.open = t;
+    this.apply();
+  }
+
+  // 분해 정도 0~1: 꽃잎판이 떨어져 나가고 정수리가 높이 뜬다
+  setExplode(e) {
+    this.explode = e;
+    this.apply();
+  }
+
+  apply() {
+    const e = this.explode;
+    const t = Math.max(this.open, Math.min(1, e * 1.5)); // 분해할 때는 저절로 열린다
     const n = this.petals.length;
     this.petals.forEach((p, i) => {
       const delay = (i / n) * 0.25;
       const local = THREE.MathUtils.clamp((t - delay) / (1 - 0.25), 0, 1);
       p.setOpen(THREE.MathUtils.smootherstep(local, 0, 1));
+      p.setDetach(e * 0.9);
     });
+    this.crown.baseY = e * 1.1;
     this.crown.setOpen(THREE.MathUtils.smootherstep(t, 0, 1));
+    this.core.object3d.position.y = e * 0.25;
   }
 
   update(t, dt) {
-    this.core.update(t, dt, this.open);
+    this.core.update(t, dt, Math.max(this.open, this.explode));
   }
 }
