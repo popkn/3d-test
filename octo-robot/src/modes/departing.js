@@ -13,5 +13,6 @@ export default {
     const e = Math.max(0, elapsed - 1.2);
     return { x: 0.9 * e * e, y: 0.15 * e };
   },
+  wake: 1.0,
   blend: 2.0,
 };

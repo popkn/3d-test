@@ -13,5 +13,6 @@ export default {
     const pulse = Math.max(0, Math.sin(elapsed * 4)) ** 3;
     return { x: pulse * 0.12, pitch: pulse * 0.05 };
   },
+  wake: 0.8,  // 물살 흔적 세기
   blend: 1.6,
 };

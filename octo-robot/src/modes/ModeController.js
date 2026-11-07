@@ -7,6 +7,7 @@ import holding from './holding.js';
 //   body:   { x, y, z, pitch, yaw, roll }              떠 있는 위치 기준
 //   arms:   { all: {팔 자세}, R2: {팔 자세}, ... }     팔 이름별로 덮어쓴다
 //   motion(elapsed) → { body 값 }                     목표 위에 더해지는 시간 움직임
+//   wake:   분사 물살 흔적 세기 (0~1)
 //   blend:  넘어가는 빠르기
 const PART_KEYS = ['mantle', 'optics', 'siphon', 'beak', 'explode'];
 const BODY_KEYS = ['x', 'y', 'z', 'pitch', 'yaw', 'roll'];

@@ -62,3 +62,10 @@ html, body {
   text-align: left;
 }
 .dev-modes button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.dev-play {
+  font: inherit; width: 28px; height: 22px; border: 0; border-radius: 3px;
+  background: var(--accent); color: #fff; cursor: pointer;
+}
+.dev-scrub { flex: 1; accent-color: var(--accent); }
+.dev-time { width: 40px; text-align: right; }
+.dev-current { color: var(--accent); font-size: 10px; }
