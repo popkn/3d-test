@@ -48,10 +48,11 @@ import tire50 from './parts/tire-50/spec.js';
 import frameBigMain from './parts/frame-big-main/spec.js';
 import lFrame6x6 from './parts/l-frame-6x6/spec.js';
 import tire80Buggy from './parts/tire-80-buggy/spec.js';
+import btModule from './parts/bt-module/spec.js';
 
 // 7호 키트 부품목록(CHECKLIST.md)에 있는 부품만 넣는다
 export const catalog = [
-  cpuBoard8m, motorDriveA3, motorDriveLinkS, buzzerBoardS, ledBoardRedS, ledBoardGreenS, ledBoardOrangeS, rgbLedBright, irRemoteTx, irRemoteRx, melodyBoard, btWirelessBoard2,
+  cpuBoard8m, motorDriveA3, motorDriveLinkS, buzzerBoardS, ledBoardRedS, ledBoardGreenS, ledBoardOrangeS, rgbLedBright, irRemoteTx, irRemoteRx, melodyBoard, btWirelessBoard2, btModule,
   sensorTouch, sensorIrTr, sensorSound, sensorColor,
   dcMotor130Rs, dcMotor130Dual, dcMotor400Rs, servoDigital,
   wheelSet130, wheelAxle, inner80Buggy, inner130Giant, shaft75, axleGuide, tire50, tire80Buggy,
