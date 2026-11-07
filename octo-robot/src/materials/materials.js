@@ -3,6 +3,9 @@ import { palette } from './palette.js';
 
 // 로봇 전체가 공유하는 재질. 부품은 새로 만들지 않고 여기서 가져다 쓴다.
 // (같은 재질을 공유해야 메모리를 아끼고 한 번에 색을 바꿀 수 있다)
+// 그림자를 만드는 재질 (작은 부품, 안쪽 면, 유리는 그림자가 거의 보이지 않아 생략해 가볍게 한다)
+export const SHADOW_CASTERS = new Set(['shell', 'rubber', 'lens', 'metalDark']);
+
 export const materials = {
   // 흰색 무광 껍데기: 머리, 팔 마디
   shell: new THREE.MeshPhysicalMaterial({

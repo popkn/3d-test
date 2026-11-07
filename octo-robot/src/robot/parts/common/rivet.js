@@ -19,7 +19,6 @@ export function createRivet({ radius = RIVET_RADIUS, material = materials.metalD
   const mesh = new THREE.Mesh(rivetGeometry(), material);
   mesh.name = 'rivet';
   mesh.scale.setScalar(radius);
-  mesh.castShadow = true;
   return mesh;
 }
 
@@ -28,6 +27,6 @@ export function createRivetField(placements, { radius = RIVET_RADIUS, material =
   const mesh = new THREE.InstancedMesh(rivetGeometry(), material, placements.length);
   mesh.name = 'rivetField';
   writeInstances(mesh, placements, radius);
-  mesh.castShadow = true;
+  mesh.castShadow = false; // 너무 작아 그림자가 보이지 않는다
   return mesh;
 }

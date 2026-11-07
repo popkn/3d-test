@@ -57,8 +57,9 @@ export class Arm {
       const meshes = Object.entries(templates[kind]).map(([matKey, geo]) => {
         const m = new THREE.InstancedMesh(geo, materials[matKey], indices.length);
         m.name = `${name}.${kind}.${matKey}`;
-        m.castShadow = true;
-        m.receiveShadow = matKey !== 'glass';
+        // 팔은 수가 많으므로 흰 껍데기와 바퀴 고무만 그림자를 만든다
+        m.castShadow = matKey === 'shell' || matKey === 'rubber';
+        m.receiveShadow = matKey === 'shell';
         m.frustumCulled = false; // 팔이 움직이면 경계 상자가 계속 바뀌므로 잘라내기를 끈다
         if (matKey === 'glass') m.renderOrder = 2;
         this.object3d.add(m);

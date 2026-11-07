@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { SHADOW_CASTERS } from '../../../materials/index.js';
 
 // 구 표면의 사각형 조각. 경도 [lonA, lonB], 극각 theta [thA, thB] (theta: 꼭대기 0, 적도 PI/2)
 // three.js 구의 phi는 경도와 방향이 반대라 여기서 변환한다.
@@ -10,8 +11,8 @@ export function spherePatchGeometry(radius, lonA, lonB, thA, thB, density = 0.05
 
 export function spherePatch(radius, lonA, lonB, thA, thB, material, density) {
   const mesh = new THREE.Mesh(spherePatchGeometry(radius, lonA, lonB, thA, thB, density), material);
-  mesh.castShadow = true;
-  mesh.receiveShadow = true;
+  mesh.castShadow = SHADOW_CASTERS.has(material.name);
+  mesh.receiveShadow = material.name === 'shell';
   return mesh;
 }
 

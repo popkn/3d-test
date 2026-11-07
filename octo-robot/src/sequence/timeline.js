@@ -11,12 +11,12 @@ export const timeline = [
   },
   { mode: 'opticsOpen', start: 3.5, camera: { position: [4.2, 2.4, 4.6], target: [0.6, 1.8, 0.6] } },
   { mode: 'mantleOpen', start: 5.5, camera: { position: [2.5, 5.4, 5.6], target: [0, 2.0, 0] } },
-  { mode: 'holding', start: 7.5, camera: { position: [0.5, 2.8, 8.4], target: [0, 1.5, 0] } },
+  { mode: 'holding', start: 7.5, camera: { position: [0.6, 3.3, 9.8], target: [0, 1.4, 0] } },
   { mode: 'armApart', start: 9.0, camera: { position: [-5.8, 3.6, 5.8], target: [-0.8, 1.4, 0.6] } },
   { mode: 'siphonOpen', start: 11.5, camera: { position: [5.6, 2.6, 4.8], target: [0, 1.6, 0] } },
   { mode: 'beakOpen', start: 13.5, camera: { position: [0.8, 1.2, 7.2], target: [0, 2.3, 0] } },
   { mode: 'teardown', start: 15.5, camera: { position: [6.8, 4.8, 8.2], target: [0, 1.8, 0] } },
-  { mode: 'holding', start: 19.5, camera: { position: [-2.5, 3.0, 7.8], target: [0, 1.5, 0] } },
+  { mode: 'holding', start: 19.5, camera: { position: [-3.0, 3.5, 9.3], target: [0, 1.4, 0] } },
   { mode: 'departing', start: 21.5, camera: { position: [-1.0, 3.2, 9.0], target: [1.0, 2.0, 0] } },
 ];
 

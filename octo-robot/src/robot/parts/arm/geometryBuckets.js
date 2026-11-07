@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
-import { materials } from '../../../materials/index.js';
+import { materials, SHADOW_CASTERS } from '../../../materials/index.js';
 
 // 부품 하나를 이루는 작은 도형들을 재질별로 모아서 하나로 합친다.
 // 마디 하나가 수십 개 도형 대신 재질 수만큼의 메시로 그려져 훨씬 가볍다.
@@ -35,8 +35,8 @@ export function meshesFromMerged(merged, name) {
   group.name = name;
   for (const [key, geo] of Object.entries(merged)) {
     const mesh = new THREE.Mesh(geo, materials[key]);
-    mesh.castShadow = true;
-    mesh.receiveShadow = key !== 'glass';
+    mesh.castShadow = SHADOW_CASTERS.has(key);
+    mesh.receiveShadow = key === 'shell';
     if (key === 'glass') mesh.renderOrder = 2;
     group.add(mesh);
   }

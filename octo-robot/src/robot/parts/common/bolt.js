@@ -41,7 +41,6 @@ export function createBoltField(placements, { size = BOLT_SIZE } = {}) {
   const heads = new THREE.InstancedMesh(headGeometry(), materials.metalDark, placements.length);
   for (const m of [washers, heads]) {
     writeInstances(m, placements, size);
-    m.castShadow = true;
     group.add(m);
   }
   return group;

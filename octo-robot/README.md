@@ -1,6 +1,9 @@
-# OCTO Robot
+# OCTO-8 Field Simulator
 
-three.js로 만드는 문어형 수중 로봇 시뮬레이터.
+three.js로 만든 문어형 수중 로봇 시뮬레이터.
+모든 부품은 외부 3D 파일 없이 코드로 만들고, 25.5초 동안 모드가 차례로 바뀌며 반복된다.
+
+분사 이동 → 눈 확장 → 맨틀 열기 → 대기 → R2 팔 분리 → 사이펀 열기 → 부리 열기 → 전체 분해 → 대기 → 출발
 
 ## 실행
 
@@ -9,100 +12,105 @@ npm install
 npm run dev
 ```
 
-## 진행 단계
+빌드 (결과는 `dist/`, 상대 경로라 어느 주소에 올려도 동작):
 
-- [x] 1단계: 기본 세팅 (화면, 조명, 바닥 그림자, 카메라, 마우스 조작)
-- [x] 2단계: 재질과 공통 부품
-- [x] 3단계: 몸체 부품 (맨틀, 눈, 사이펀, 부리)
-- [x] 4단계: 팔
-- [x] 5단계: 전체 조립
-- [x] 6단계: 모드
-- [x] 7단계: 진행 순서와 연출
-- [x] 8단계: 이름표
-- [x] 9단계: HUD
-- [ ] 10단계: 마무리
+```bash
+npm run build
+npm run preview
+```
 
-## 구조 (현재)
+## 조작
 
-- `index.html`: 3D 캔버스와 HUD 자리
-- `src/main.js`: 시작점. 화면, 로봇, 모드, 진행, 연출, 이름표, HUD를 연결하고 실행 루프를 돌린다. URL: `?t=12` 12초부터, `?pause=1` 정지 상태로 시작, `?cam=0` 카메라 연출 끄기. 스페이스로 재생/정지
-- `src/style.css`: 기본 페이지 스타일
-- `src/scene/sceneConfig.js`: 색, 카메라, 조명, 바닥, 장식선 수치
-- `src/scene/createScene.js`: 화면 환경 전체 조립
-- `src/scene/createRenderer.js`: 렌더러 (그림자, 색 공간)
-- `src/scene/createCamera.js`: 카메라
-- `src/scene/createControls.js`: 마우스 회전/확대 조작
-- `src/scene/createLights.js`: 스튜디오 조명
-- `src/scene/createGround.js`: 그림자만 받는 바닥
-- `src/scene/createBackdrop.js`: 바닥 궤도선, 표식, 뒤쪽 십자 격자
-- `src/scene/loop.js`: 매 프레임 실행 루프
-- `src/scene/createEnvironment.js`: 금속, 렌즈 반사용 환경맵
-- `src/materials/palette.js`: 로봇 색상표
-- `src/materials/materials.js`: 공유 재질 (껍데기, 빨간 포인트, 발광, 렌즈, 유리, 금속, 어두운 금속, 고무)
-- `src/robot/parts/common/rivet.js`: 리벳 (하나 / 여러 개 한 번에)
-- `src/robot/parts/common/bolt.js`: 볼트 (와셔 + 육각 머리)
-- `src/robot/parts/common/cap.js`: 관절 캡 (볼록 원판 + 빨간 링 + 허브 + 둘레 볼트)
-- `src/robot/parts/common/placement.js`: 원 둘레, 구 표면에 부품을 줄지어 배치하는 위치 계산
-- `src/robot/parts/common/geometryCache.js`: 같은 도형 재사용
-- `src/robot/config/bodyConfig.js`: 몸체 수치 (머리 반지름, 꽃잎판, 눈/사이펀/부리 위치, 팔 소켓)
-- `src/robot/parts/common/spherePatch.js`: 구 표면 조각, 창문 뚫린 조각, 방향 계산
-- `src/robot/parts/common/gear.js`: 톱니바퀴 도형
-- `src/robot/parts/common/random.js`: 항상 같은 결과가 나오는 난수
-- `src/robot/parts/mantle/`: 맨틀 (꽃잎판 8장 `shellPetal.js`, 정수리 `crown.js`, 적도 띠 `equatorBelt.js`, 아래 껍데기 `lowerShell.js`, 속 기계 `core.js`, 조립 `Mantle.js`)
-- `src/robot/parts/optics/`: 눈 (소켓 `eyeSocket.js`, 적외선 링 `irRim.js`, 렌즈 덮개 `outerDome.js`, 조리개 `iris.js`, 조립 `Eye.js`)
-- `src/robot/parts/siphon/`: 사이펀 (받침과 슬리브 `sleeve.js`, 4장 노즐 `nozzle.js`, 조립 `Siphon.js`)
-- `src/robot/parts/beak/`: 부리 (덮개 `beakHousing.js`, 턱 `jaw.js`, 톱니 `radulaRing.js`, 조립 `Beak.js`)
-- `src/robot/parts/hub/Hub.js`: 하부 허브 (팔 소켓 8개와 팔 부착 위치)
-- `src/robot/config/armConfig.js`: 팔 수치 (이름, 마디 수, 굵기, 가늘어지는 비율, 유리 마디 위치, 기본 자세)
-- `src/robot/parts/arm/`: 팔 (뿌리 구동부 `rootActuator.js`, 마디 `segment.js`, 빨판 바퀴 `sucker.js`, 연결부 `link.js`, 끝 마디 `tip.js`, 조립 `Arm.js`, 도형 합치기 `geometryBuckets.js`)
-- `src/robot/rig/armRig.js`: 팔 리그 (말림, 끝 나선, 들기, 옆 휨, 흔들림 → 관절 각도)
-- `src/robot/OctoRobot.js`: 로봇 전체 조립과 조작 메서드 (부위 열기, 팔 자세, 몸체 자세, 부위 이름표)
-- `src/robot/config/robotConfig.js`: 떠 있는 높이, 전체 크기, 위아래 흔들림
-- `src/robot/config/index.js`: 설정 파일 모음
+| 조작 | 하는 일 |
+|---|---|
+| 마우스 끌기 / 휠 | 화면 회전 / 확대 (5초 뒤 카메라 연출로 돌아감) |
+| 스페이스 | 재생 / 정지 |
+| OPERATION LOG 진행 막대 | 누르거나 끌어서 원하는 시각으로 이동 |
+| ASSEMBLIES | 그 부위를 보여주는 구간으로 이동 |
+| DISPLAY | LABELS 이름표 · EXPLODED 분해 보기 · JET WAKE 물살 · TURNTABLE 회전 보기 |
+
+URL 옵션: `?t=12` 12초부터 시작 · `?pause=1` 정지 상태로 시작 · `?cam=0` 카메라 연출 끄기
+
+## 폴더 구조
+
+```
+octo-robot/
+├── index.html              3D 캔버스 + HUD 자리
+├── vite.config.js          빌드 설정
+└── src/
+    ├── main.js             모든 부분을 연결하고 실행 루프를 돌린다
+    ├── style.css           기본 페이지 스타일
+    ├── scene/              화면 환경 (렌더러, 카메라, 조작, 조명, 반사 환경, 바닥, 장식선, 루프, 자동 해상도)
+    ├── materials/          색상표와 공유 재질
+    ├── robot/
+    │   ├── OctoRobot.js    로봇 전체 조립과 조작 메서드
+    │   ├── config/         수치 (robotConfig 전체, bodyConfig 몸체, armConfig 팔)
+    │   ├── parts/
+    │   │   ├── common/     리벳, 볼트, 관절 캡, 톱니, 구 표면 조각, 배치 계산
+    │   │   ├── mantle/     머리: 꽃잎판 8장, 정수리, 적도 띠, 아래 껍데기, 속 기계
+    │   │   ├── optics/     눈: 소켓, 적외선 링, 렌즈 덮개, 조리개
+    │   │   ├── siphon/     사이펀: 받침과 슬리브, 4장 노즐
+    │   │   ├── beak/       부리: 덮개, 턱, 톱니 링
+    │   │   ├── hub/        하부 허브: 팔 소켓 8개
+    │   │   └── arm/        팔: 뿌리 구동부, 마디, 빨판 바퀴, 연결부, 끝 마디
+    │   └── rig/            팔 리그: 자세 값 → 관절 각도
+    ├── modes/              모드 9개 (파일 하나에 모드 하나) + 모드 컨트롤러
+    ├── sequence/           진행표, 재생 관리, 카메라 연출
+    ├── effects/            분사 물살, 분해 안내선
+    ├── labels/             부품 이름표와 연결선
+    ├── state/              시뮬레이터 상태 (HUD가 읽는 숫자)
+    └── hud/
+        ├── Hud.js          HUD 조립
+        ├── panels/         패널 하나에 파일 하나
+        └── styles/         색상/글꼴, 배치
+```
+
+조립 순서는 **부품 → 부위 → 로봇** 이다. 부품 하나는 파일 하나이고, 크기·위치·색은 `config/`와 `materials/palette.js`에서 바꾼다.
 
 ## 로봇 조작 (OctoRobot)
 
 - `setMantle(t)`, `setOptics(t)`, `setSiphon(t)`, `setBeak(t)`: 0 = 닫힘, 1 = 열림
+- `setExplode(t)`: 분해 정도
 - `setArmPose(pose, names)`: 팔 자세. names는 `'R2'`, `['L1','L2']`, 생략하면 전체
-- `setExplode(t)`: 분해 정도 (꽃잎판, 눈, 사이펀, 부리, 팔이 바깥으로 흩어진다)
+  - pose: `curl` 전체 말림, `spiral` 끝 나선(- 위로, + 아래로), `lift` 뿌리 들기, `side` 옆 휨, `wave` 흔들림, `waveSpeed`, `spread` 마디 분리
 - `setBodyPose({ x, y, z, pitch, yaw, roll })`: 몸체 위치와 기울기
-- `parts`: 부위 이름 → 3D 물체 (부위 선택, 이름표용)
-- `state`: 현재 상태 (HUD가 읽는다)
-- `src/modes/`: 모드 파일 (모드 하나에 파일 하나: `holding`, `jetting`, `mantleOpen`, `opticsOpen`, `siphonOpen`, `beakOpen`, `armApart`, `teardown`, `departing`)
-- `src/modes/ModeController.js`: 현재 모드의 목표 자세로 로봇을 부드럽게 옮긴다
-- `src/modes/index.js`: 모드 목록과 순서
+- `parts`, `state`: 부위 이름표, 현재 상태
 
-## 모드 파일 형식
+## 늘리는 방법
+
+**모드 추가**: `src/modes/`에 파일을 만들고 `modes/index.js` 목록에 넣는다. 적지 않은 값은 대기 모드 값을 쓴다.
 
 ```js
 export default {
-  id: 'beakOpen',              // 이름
-  label: 'BEAK OPEN',          // 화면 표시
-  description: '...',          // 부가 설명
-  parts: { beak: 1 },          // mantle, optics, siphon, beak, explode (0~1)
-  body: { y: 0.7, pitch: -1.15 }, // 몸체 위치/기울기
-  arms: { all: {...}, R2: {...} }, // 팔 자세 (전체 + 팔별 덮어쓰기)
-  motion(elapsed) { return { x: ... }; }, // 시간에 따른 추가 움직임 (선택)
-  blend: 1.3,                  // 넘어가는 빠르기
+  id: 'wave',
+  label: 'WAVE',
+  description: 'GREETING · ARM L1',
+  parts: { optics: 0.5 },                  // mantle, optics, siphon, beak, explode (0~1)
+  body: { yaw: 0.3 },                      // 몸체 위치/기울기
+  arms: { all: { wave: 0.3 }, L1: { lift: 0.9, curl: 0, spiral: -1 } },
+  motion(elapsed) { return { roll: Math.sin(elapsed) * 0.05 }; }, // 시간 움직임 (선택)
+  wake: 0,                                 // 분사 물살 세기 (선택)
+  blend: 1.5,                              // 넘어가는 빠르기
 };
 ```
-적지 않은 값은 대기(holding) 모드 값을 쓴다.
-- `src/sequence/timeline.js`: 진행표 (모드 순서, 시작 시각, 구간별 카메라 자리, 25.5초 반복)
-- `src/sequence/Sequencer.js`: 재생/정지/구간 이동/반복
-- `src/sequence/cameraDirector.js`: 구간마다 카메라를 천천히 옮긴다 (마우스로 돌리면 5초간 양보)
-- `src/effects/jetWake.js`: 분사할 때 사이펀에서 나오는 거품 물살
-- `src/effects/explodeGuides.js`: 분해할 때 부품까지 이어지는 점선과 궤도 고리
-- `src/labels/labelDefs.js`: 이름표 목록 (글자, 붙일 부품, 화면 위치, 나타나는 모드)
-- `src/labels/LabelLayer.js`: 부품 위치를 따라다니는 이름표와 연결선
-- `src/labels/labels.css`: 이름표 모양
-- `src/state/simState.js`: 시뮬레이터 상태 (진행, 분사 압력/추력, 전원, 팔 말림, 수심/자세, 서브시스템, 표시 옵션). 로봇의 실제 자세와 모드에서 계산한다
-- `src/hud/Hud.js`: HUD 조립 (상단 바, 왼쪽/오른쪽 패널 열, 모드 이름, 하단 진행 패널)
-- `src/hud/panels/`: 패널 하나에 파일 하나 (`topBar`, `jetPanel`, `powerPanel`, `armCurlPanel`, `depthPanel`, `assembliesPanel`, `displayPanel`, `subsystemsPanel`, `operationLog`, `modeTitle`, `footer`, 공통 틀 `common`)
-- `src/hud/styles/theme.css`: 색상과 글꼴
-- `src/hud/styles/hud.css`: HUD 배치 (좁은 화면에서는 양쪽 패널을 숨긴다)
 
-## HUD 조작
+**진행 순서 바꾸기**: `src/sequence/timeline.js`에서 구간(모드, 시작 시각, 카메라 자리)을 고친다.
 
-- ASSEMBLIES: 누르면 그 부위를 보여주는 구간으로 이동
-- DISPLAY: LABELS 이름표 / EXPLODED 분해 보기 / JET WAKE 물살 / TURNTABLE 회전 보기
-- OPERATION LOG: 재생/정지 버튼, 진행 막대를 누르거나 끌어서 이동
+**이름표 추가**: `src/labels/labelDefs.js`에 글자, 붙일 부품, 화면 방향, 나타날 모드를 적는다.
+
+**부품 추가**: 해당 부위 폴더에 부품 파일을 만들고 그 부위의 조립 파일(`Mantle.js`, `Eye.js` 등)에서 붙인다. 재질은 `materials`에서 가져다 쓴다.
+
+## 성능
+
+- 팔 마디는 같은 종류끼리 `InstancedMesh` 하나로 묶어 그린다 (마디 수백 개 → 재질 수만큼).
+- 작은 부품(리벳, 볼트, 축, 스프링), 안쪽 면, 유리는 그림자를 만들지 않는다.
+- 프레임이 느리면 픽셀 밀도를 자동으로 낮춘다 (`scene/adaptiveResolution.js`).
+- 한 프레임: 그리기 약 600회, 삼각형 약 78만 개 (그림자 포함).
+
+## 개발용 콘솔 도구
+
+`__robot` 로봇 · `__modes` 모드 컨트롤러 · `__seq` 진행 · `__state` 상태 · `__cam(x, y, z)` 카메라 위치 · `__info()` 그리기 통계
+
+## 참고
+
+HUD와 이름표의 수치(압력, 토크, 지름 등)는 화면 연출용 가짜 값이다.

@@ -67,7 +67,7 @@ export class Core {
         boxMesh.setMatrixAt(i, m);
       }
     }
-    pipeMesh.castShadow = boxMesh.castShadow = true;
+    // 배관은 머리 속에 있어 그림자를 만들지 않는다
     this.object3d.add(pipeMesh, boxMesh);
   }
 
