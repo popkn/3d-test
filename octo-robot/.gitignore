@@ -1,0 +1,5 @@
+node_modules/
+dist/
+# 루트 .gitignore가 parts/, lib/ 폴더를 무시하므로 로봇 부품 폴더는 다시 포함시킨다
+!src/robot/parts/
+!src/robot/parts/**
