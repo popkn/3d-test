@@ -29,3 +29,23 @@ html, body {
   inset: 0;
   pointer-events: none;
 }
+
+/* 확인용 개발 패널 (HUD 완성 후 삭제) */
+.dev-panel {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  display: grid;
+  gap: 8px;
+  min-width: 220px;
+}
+.dev-title { color: var(--accent); font-weight: 700; }
+.dev-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.dev-row input[type="range"] { width: 110px; accent-color: var(--accent); }
+.dev-row input[type="checkbox"] { accent-color: var(--accent); }

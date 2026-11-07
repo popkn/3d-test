@@ -5,3 +5,8 @@ export { createCap } from './cap.js';
 export {
   placeOnCircle, placeOnSphereRow, placeOnSphereMeridian, writeInstances,
 } from './placement.js';
+export { gearGeometry } from './gear.js';
+export { seededRandom } from './random.js';
+export {
+  spherePatch, spherePatchGeometry, spherePatchWithHole, directionFrom, faceAlong,
+} from './spherePatch.js';

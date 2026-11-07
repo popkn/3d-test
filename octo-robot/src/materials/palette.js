@@ -2,7 +2,7 @@
 export const palette = {
   shell: 0xf2f1ee,      // 흰색 무광 껍데기
   shellShade: 0xd9d7d2, // 껍데기 안쪽, 이음새
-  accent: 0xe8432a,     // 빨간 포인트 (링, 바퀴, 표시등)
+  accent: 0xdc3418,     // 빨간 포인트 (링, 바퀴, 표시등)
   accentDark: 0xa82a18,
   lens: 0x0b0c0e,       // 검은 렌즈
   metal: 0x8d9096,      // 금속 부품

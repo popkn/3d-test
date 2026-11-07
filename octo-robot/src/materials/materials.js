@@ -13,6 +13,10 @@ export const materials = {
   shellShade: new THREE.MeshStandardMaterial({
     name: 'shellShade', color: palette.shellShade, roughness: 0.7,
   }),
+  // 껍데기 안쪽 면: 꽃잎판이 열렸을 때 보이는 안쪽 (뒷면만 그린다)
+  shellInner: new THREE.MeshStandardMaterial({
+    name: 'shellInner', color: palette.shellShade, roughness: 0.75, side: THREE.BackSide,
+  }),
   // 빨간 포인트: 눈 링, 바퀴, 표시
   accent: new THREE.MeshPhysicalMaterial({
     name: 'accent', color: palette.accent, roughness: 0.38,
@@ -27,6 +31,12 @@ export const materials = {
   lens: new THREE.MeshPhysicalMaterial({
     name: 'lens', color: palette.lens, roughness: 0.04, metalness: 0.1,
     clearcoat: 1, clearcoatRoughness: 0.02, reflectivity: 0.9,
+  }),
+  // 어두운 반투명 렌즈 덮개: 안쪽 조리개가 비쳐 보인다
+  lensGlass: new THREE.MeshPhysicalMaterial({
+    name: 'lensGlass', color: palette.lens, roughness: 0.03, metalness: 0,
+    transparent: true, opacity: 0.55, depthWrite: false,
+    clearcoat: 1, clearcoatRoughness: 0.02,
   }),
   // 유리 마디: 반투명
   glass: new THREE.MeshPhysicalMaterial({
@@ -45,5 +55,9 @@ export const materials = {
   // 검은 고무: 타이어, 패킹
   rubber: new THREE.MeshStandardMaterial({
     name: 'rubber', color: palette.rubber, roughness: 0.85,
+  }),
+  // 어두운 부품의 안쪽 면 (뒷면만)
+  darkInner: new THREE.MeshStandardMaterial({
+    name: 'darkInner', color: palette.rubber, roughness: 0.9, side: THREE.BackSide,
   }),
 };
