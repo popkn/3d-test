@@ -49,6 +49,12 @@ import frameBigMain from './parts/frame-big-main/spec.js';
 import lFrame6x6 from './parts/l-frame-6x6/spec.js';
 import tire80Buggy from './parts/tire-80-buggy/spec.js';
 import btModule from './parts/bt-module/spec.js';
+import battleG from './parts/battle-g/spec.js';
+import battleI from './parts/battle-i/spec.js';
+import battleJ from './parts/battle-j/spec.js';
+import frameHalfPcb from './parts/frame-half-pcb/spec.js';
+import frameMainPcb from './parts/frame-main-pcb/spec.js';
+import frameMainPlastic from './parts/frame-main-plastic/spec.js';
 
 // 7호 키트 부품목록(CHECKLIST.md)에 있는 부품만 넣는다
 export const catalog = [
@@ -58,11 +64,12 @@ export const catalog = [
   wheelSet130, wheelAxle, inner80Buggy, inner130Giant, shaft75, axleGuide, tire50, tire80Buggy,
   caterpillarLink, caterpillarSprocket, caterpillarWheelGuide, caterpillarRubber,
   batteryCase4aa,
-  frameBigMain, lFrame6x6,
+  frameBigMain, frameMainPcb, frameMainPlastic, frameHalfPcb, lFrame6x6,
+  battleG, battleI, battleJ,
   hinge3x3, grab, nutM3, capNutM3, sNutBlue, nutFrame4, motorGuide, boltM26x10, boltM3x6, boltM3x10, supportSpacer, spongeBall, colorBall, cable3pin,
 ];
 
-export const categories = [['board', '보드'], ['sensor', '센서'], ['motor', '모터'], ['wheel', '바퀴'], ['power', '전원'], ['frame', '프레임'], ['hardware', '조립 부품']];
+export const categories = [['board', '보드'], ['sensor', '센서'], ['motor', '모터'], ['wheel', '바퀴'], ['power', '전원'], ['frame', '프레임'], ['battle', '배틀무기'], ['hardware', '조립 부품']];
 
 // 부품의 3D 모양과 기능은 선택할 때 불러온다
 export async function loadPart(id) {

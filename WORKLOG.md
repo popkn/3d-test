@@ -21,7 +21,7 @@
   - 시연용 물체(볼트, 공, 판 등)는 `userData.noBounds = true` (치수에서 뺌), 카메라에 담으려면 `frameWith`에 넣는다.
 - `function.js`의 `create(model, ui)` → `ui.controls([...])`, `ui.readouts([...])`, `{ onControl, update, dispose }`.
 - three.js 주의: `mesh.position`은 읽기 전용 → `Object.assign`으로 바꾸지 말고 `placed(mesh, x, y, z)` 또는 `position.set()`.
-- 공통 키트 (`src/kit/`): pcb, components, sBoard(22×32 S보드), ecvBoard(48×28 센서보드), motorCase(60×40×20), frame(10mm 구멍 격자 · L자), fasteners · boltSim · capNut · fastenSim, caterpillar, innerSponge, ledBoardS, audio.
+- 공통 키트 (`src/kit/`): pcb, components, sBoard(22×32 S보드), ecvBoard(48×28 센서보드), motorCase(60×40×20), frame(10mm 구멍 격자 · L자), fasteners · boltSim · capNut · fastenSim, caterpillar, innerSponge, ledBoardS, audio, battleFrame · battleSim (배틀무기: 흰 FR-4 + 빨간 무늬, 크기는 추정).
 
 ## 테스트 방법
 
@@ -32,14 +32,13 @@
 
 | 페이지 | 상태 |
 |---|---|
-| 1 ~ 10 | 완료 (자세한 내용은 CHECKLIST.md 아래 표) |
-| 11 ~ 17 | 남음 |
+| 1 ~ 11 | 완료 (자세한 내용은 CHECKLIST.md 아래 표) |
+| 12 ~ 17 | 남음 |
 
 ## 다음 페이지에서 할 일 (이미 목록을 확인해 둔 것)
 
 | 페이지 | 구현할 부품 (상품 번호) |
 |---|---|
-| 11 | 배틀무기 G(446) · I(448) · J(449), 하프프레임 6×8 PCB(148), 메인프레임 PCB(124), 메인프레임 플라스틱(130, 120×80×1.6) |
 | 12 | 모터프레임 3×3(120), PC프레임 45×60(149), 배틀무기 S(458) · T(462) · U(463) · V(464) |
 | 13 | ㅁ자 PCB(140), 소7 PCB(139) · 소3 · 소4 · 소5 · 소8은 **PCB인지 플라스틱인지 사용자 확인 필요** (126 · 132 / 127 · 133 / 128 · 134 / 129 · 135) |
 | 14 | 옵션 PCB(143) · 옵션 플라스틱(136, 40×20), 중6 PCB(141), 중 PCB(125), 중 플라스틱(138), L자 1×2(111) · 2×2(112) · 2×6(113), 120도 2×2 L자(119), 5×13 PCB(147) |
