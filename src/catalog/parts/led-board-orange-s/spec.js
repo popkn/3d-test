@@ -1,0 +1,18 @@
+// LED 보드[주황/S]: 불을 켜는 출력 모듈 (주황 LED)
+export default {
+  id: 'led-board-orange-s',
+  name: 'LED 보드[주황/S]',
+  category: 'board',
+  productNo: 506,
+  url: 'https://roboroboshop.com/product/detail.html?product_no=506&cate_no=194',
+  size: { x: 22, y: 12, z: 32, estimated: true, note: '상품 페이지에 크기 없음 · S 모듈 기판(사진 비율과 2.54mm 핀 간격)으로 추정' },
+  specs: [
+    ['종류', '출력 모듈 (LED)'],
+    ['LED', '주황 5mm (D1)'],
+    ['저항', '전류 제한 저항 (R1)'],
+    ['연결', '3핀 헤더 (J2)'],
+    ['고정', '구멍 3개 (1 · 2 · 3)'],
+  ],
+  function: 'CPU 보드 출력 포트에 연결하고, 프로그램 신호로 주황 LED를 켜고 끈다. PWM으로 밝기 조절.',
+  ports: [{ id: 'signal', type: '3핀 2.54mm', role: 'CPU 출력 포트 연결' }],
+};

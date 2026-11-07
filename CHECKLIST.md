@@ -8,11 +8,11 @@
 
 | 상태 | 부품 | 수량 | 비고 |
 |---|---|---|---|
-| [~] | CPU보드 | 1 | CPU Board 8M[12V/S] 구현됨 · 7호 CPU보드와 같은 제품인지 확인 필요 |
+| [x] | CPU보드 | 1 | CPU Board 8M[12V/S] (같은 제품 확인) |
 | [ ] | 멜로디보드 | 1 | |
 | [ ] | 리모컨 송신보드 | 1 | |
 | [ ] | 리모컨 수신보드 | 1 | |
-| [~] | LED보드 | 3 | LED 보드[빨강/S] 구현됨 · 색이 다른 LED보드가 있는지 확인 필요 |
+| [x] | LED보드 | 3 | 빨강 · 초록 · 주황 각 1 (LED 보드[빨강/S] · [초록/S] · [주황/S]) |
 | [x] | 버저보드 | 1 | Buzzer 보드[S] |
 | [ ] | 접촉센서보드 | 3 | |
 | [ ] | 적외선센서보드 | 3 | |
@@ -29,7 +29,7 @@
 
 | 상태 | 부품 | 수량 | 비고 |
 |---|---|---|---|
-| [~] | DC모터 (130rpm) | 4 | DC Motor 130rpm [RS] 구현됨 · RS / RS-M 중 어느 쪽인지 확인 필요 |
+| [x] | DC모터 (130rpm) | 4 | DC Motor 130rpm [RS] (확인) |
 | [x] | DC모터 (400rpm) | 2 | DC Motor 400rpm [RS] |
 | [x] | 양축모터 (130rpm) | 1 | DC Motor 130rpm 양축 |
 | [ ] | 서보모터 | 2 | |
@@ -152,10 +152,4 @@
 
 ## 목록 밖이라 삭제한 부품
 
-AVR USB ISP 보드, CPU-블랙라인프로W, Interface Board [서보], LED Dot Matrix Board, DC Motor 600rpm [HT600]
-
-## 확인 중
-
-| 부품 | 내용 |
-|---|---|
-| DC Motor 130rpm [RS/M] | 7호 130rpm 모터가 RS면 삭제 |
+AVR USB ISP 보드, CPU-블랙라인프로W, Interface Board [서보], LED Dot Matrix Board, DC Motor 600rpm [HT600], DC Motor 130rpm [RS/M]
