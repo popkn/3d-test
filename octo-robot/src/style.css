@@ -1,8 +1,4 @@
-:root {
-  --bg: #efede9;
-  --ink: #1d1d1f;
-  --accent: #f0482a;
-}
+/* 색상 토큰은 hud/styles/theme.css에 있다 */
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -12,7 +8,7 @@ html, body {
   overflow: hidden;
   background: var(--bg);
   color: var(--ink);
-  font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  font-family: var(--font-mono, ui-monospace, monospace);
 }
 
 #app { position: fixed; inset: 0; }
@@ -29,43 +25,3 @@ html, body {
   inset: 0;
   pointer-events: none;
 }
-
-/* 확인용 개발 패널 (HUD 완성 후 삭제) */
-.dev-panel {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  padding: 12px 14px;
-  background: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 6px;
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  display: grid;
-  gap: 8px;
-  min-width: 220px;
-}
-.dev-title { color: var(--accent); font-weight: 700; }
-.dev-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.dev-row input[type="range"] { width: 110px; accent-color: var(--accent); }
-.dev-row input[type="checkbox"] { accent-color: var(--accent); }
-.dev-modes { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
-.dev-modes button {
-  font: inherit;
-  font-size: 10px;
-  padding: 5px 6px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 3px;
-  background: #fff;
-  color: var(--ink);
-  cursor: pointer;
-  text-align: left;
-}
-.dev-modes button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
-.dev-play {
-  font: inherit; width: 28px; height: 22px; border: 0; border-radius: 3px;
-  background: var(--accent); color: #fff; cursor: pointer;
-}
-.dev-scrub { flex: 1; accent-color: var(--accent); }
-.dev-time { width: 40px; text-align: right; }
-.dev-current { color: var(--accent); font-size: 10px; }

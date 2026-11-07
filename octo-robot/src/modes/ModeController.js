@@ -25,6 +25,9 @@ export class ModeController {
     this.target = this.resolve(holding);
     this.mode = holding;
     this.elapsed = 0;
+    // 표시 옵션 '분해 보기': 켜면 어느 모드에서든 분해된다
+    this.forceExplode = false;
+    this.explodeOverride = 0;
     this.apply(0);
   }
 
@@ -70,6 +73,7 @@ export class ModeController {
     this.elapsed += dt;
     // 지수 감쇠: 목표와의 차이가 매초 일정 비율씩 줄어든다 (프레임 속도와 무관)
     const k = 1 - Math.exp(-dt * (this.mode.blend ?? 2));
+    this.explodeOverride += ((this.forceExplode ? 1 : 0) - this.explodeOverride) * (1 - Math.exp(-dt * 1.5));
     const c = this.current;
     const g = this.target;
     for (const key of PART_KEYS) c.parts[key] += (g.parts[key] - c.parts[key]) * k;
@@ -87,10 +91,14 @@ export class ModeController {
     r.setOptics(c.parts.optics);
     r.setSiphon(c.parts.siphon);
     r.setBeak(c.parts.beak);
-    r.setExplode(c.parts.explode);
+    const ov = this.explodeOverride;
+    r.setExplode(Math.max(c.parts.explode, ov));
     const m = this.motionOffset();
     r.setBodyPose(Object.fromEntries(BODY_KEYS.map((key) => [key, c.body[key] + m[key]])));
-    for (const name of this.armNames) r.setArmPose(c.arms[name], name);
+    for (const name of this.armNames) {
+      const pose = c.arms[name];
+      r.setArmPose(ov > 0.001 ? { ...pose, spread: Math.max(pose.spread, ov * 0.7) } : pose, name);
+    }
   }
 }
 

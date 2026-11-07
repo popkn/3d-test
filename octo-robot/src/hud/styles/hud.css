@@ -1,0 +1,184 @@
+/* HUD 배치: 3D 화면 위에 겹친다. 패널만 마우스를 받고 나머지는 3D 조작으로 통과시킨다. */
+.hud {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+.hud > * { pointer-events: auto; }
+.hud > .label-layer { pointer-events: none; } /* 이름표 층은 마우스를 3D 화면으로 통과시킨다 */
+
+/* ── 상단 바 ── */
+.hud-top {
+  position: absolute; top: 0; left: 0; right: 0;
+  display: flex; align-items: stretch; gap: 28px;
+  height: 74px; padding-right: 28px;
+}
+.hud-logo {
+  display: flex; align-items: center; gap: 10px;
+  width: 128px; justify-content: center;
+  background: var(--accent); color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 0.18em;
+}
+.hud-title { display: flex; flex-direction: column; justify-content: center; gap: 2px; }
+.hud-title h1 { font-family: var(--font-title); font-size: 26px; letter-spacing: 0; font-weight: 600; text-transform: none; line-height: 1; }
+.hud-title h1 em { color: var(--accent); font-style: normal; }
+.hud-title small, .hud-meta small, .hud-k { color: var(--ink-faint); font-size: 9px; }
+.hud-load { display: flex; flex-direction: column; justify-content: center; gap: 4px; flex: 1; max-width: 360px; margin-left: auto; }
+.hud-load-head, .hud-load-scale { display: flex; justify-content: space-between; color: var(--ink-faint); font-size: 8px; }
+.hud-load-bar { display: flex; gap: 2px; height: 12px; }
+.hud-load-bar i { flex: 1; background: #dcd9d4; }
+.hud-load-bar i.on { background: var(--ink); }
+.hud-meta { display: flex; flex-direction: column; justify-content: center; gap: 4px; }
+.hud-meta b { font-size: 11px; font-weight: 600; white-space: nowrap; }
+.hud-status b { display: flex; align-items: center; gap: 6px; color: var(--accent); }
+.hud-status i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+/* ── 양쪽 패널 열 ── */
+.hud-col {
+  position: absolute; top: 96px; bottom: 120px; width: 270px;
+  display: flex; flex-direction: column; gap: 10px;
+  pointer-events: none;
+}
+.hud-col > * { pointer-events: auto; }
+.hud-col-left { left: 20px; }
+.hud-col-right { right: 20px; }
+
+.hud-panel {
+  background: var(--panel);
+  border: 1px solid var(--panel-line);
+  border-radius: 4px;
+  padding: 10px 12px 12px;
+  backdrop-filter: blur(6px);
+}
+.hud-panel-head { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 10px; margin-bottom: 8px; }
+.hud-bar { width: 2px; height: 11px; background: var(--accent); }
+.hud-idx { margin-left: auto; color: var(--ink-faint); font-weight: 400; font-size: 8px; }
+
+.hud-big-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.hud-big { font-family: var(--font-title); font-size: 30px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; }
+.hud-mid { font-family: var(--font-title); font-size: 20px; font-weight: 600; line-height: 1; }
+.hud-unit { margin-left: 2px; color: var(--ink-soft); font-size: 9px; }
+.hud-right { text-align: right; }
+.hud-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 8px; }
+.hud-row.three { grid-template-columns: 1fr 1fr 1fr; }
+.hud-stat { display: flex; flex-direction: column; gap: 3px; }
+.hud-v { font-weight: 600; font-size: 10px; }
+.hud-sub { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+
+.hud-graph { width: 100%; height: 54px; margin-top: 6px; }
+.hud-grid { stroke: rgba(0, 0, 0, 0.12); stroke-width: 1; }
+.hud-grid.dashed { stroke-dasharray: 3 3; }
+.hud-line { fill: none; stroke: var(--accent); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.hud-cursor { stroke: var(--accent); stroke-width: 1; stroke-dasharray: 2 2; }
+
+.hud-cells { display: flex; gap: 3px; align-items: center; padding-top: 6px; }
+.hud-cells i { width: 9px; height: 18px; background: #dcd9d4; border-radius: 1px; }
+.hud-cells i.ok { background: var(--ok); }
+.hud-cells i.warn { background: var(--accent); }
+
+.hud-arms { display: grid; gap: 5px; }
+.hud-arm { display: grid; grid-template-columns: 20px 1fr 54px; align-items: center; gap: 8px; }
+.hud-arm span { font-weight: 600; }
+.hud-arm b { text-align: right; font-weight: 600; }
+.hud-track { height: 4px; background: #e2dfda; border-radius: 2px; overflow: hidden; }
+.hud-track i { display: block; height: 100%; background: var(--accent); transition: width 0.25s linear; }
+.hud-arm.detached b { color: var(--accent); font-size: 8px; }
+
+.hud-badge {
+  padding: 2px 6px; border-radius: 2px; font-size: 8px; font-weight: 700; color: #fff; background: var(--idle);
+  white-space: nowrap;
+}
+.hud-badge.ok { background: var(--ok); }
+.hud-badge.alert { background: var(--accent); }
+.hud-badge.idle { background: var(--idle); color: var(--ink-soft); }
+
+.hud-depth { display: grid; grid-template-columns: 92px 1fr; gap: 12px; align-items: center; }
+.hud-attitude { width: 92px; height: 92px; }
+.att-ring { fill: #f4f2ee; stroke: rgba(0, 0, 0, 0.12); }
+.att-ground { fill: rgba(0, 0, 0, 0.04); }
+.att-line { stroke: var(--accent); stroke-width: 1.5; }
+.att-tick { stroke: rgba(0, 0, 0, 0.25); }
+.att-wing { fill: none; stroke: var(--ink); stroke-width: 1.5; }
+.hud-list { display: grid; gap: 6px; }
+.hud-list .hud-stat { flex-direction: row; justify-content: space-between; }
+
+.hud-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.hud-chips button {
+  font: inherit; font-size: 9px; letter-spacing: 0.08em; font-weight: 600;
+  padding: 5px 8px; border: 1px solid rgba(0, 0, 0, 0.12); border-radius: 2px;
+  background: #fff; color: var(--ink); cursor: pointer;
+}
+.hud-chips button:hover { border-color: var(--accent); }
+.hud-chips button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+.hud-subsys { list-style: none; display: grid; gap: 7px; }
+.hud-subsys li { display: grid; grid-template-columns: 18px 1fr auto; align-items: center; gap: 6px; }
+.hud-subsys b { display: block; font-size: 9px; }
+.hud-subsys small { display: block; color: var(--ink-faint); font-size: 8px; }
+.hud-subsys li.alert b { color: var(--accent); }
+
+/* ── 모드 이름 ── */
+.hud-mode {
+  position: absolute; left: 316px; bottom: 140px; pointer-events: none;
+}
+.hud-mode small { color: var(--ink-faint); font-size: 9px; }
+.hud-mode h2 {
+  font-family: var(--font-title); font-size: 34px; font-weight: 600; letter-spacing: 0;
+  color: var(--accent); line-height: 1.1; margin: 4px 0;
+}
+.hud-mode.swap h2, .hud-mode.swap .hud-mode-sub { animation: hud-rise 0.5s ease both; }
+@keyframes hud-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* ── 하단 진행 패널 ── */
+.hud-log { position: absolute; left: 50%; bottom: 28px; transform: translateX(-50%); width: min(820px, calc(100% - 640px)); min-width: 420px; }
+.hud-log-body { display: flex; align-items: center; gap: 16px; }
+.hud-play {
+  flex: none; width: 38px; height: 38px; border-radius: 50%; border: 0; cursor: pointer;
+  background: var(--accent); position: relative;
+}
+.hud-play::before, .hud-play::after {
+  content: ''; position: absolute; top: 13px; width: 3px; height: 12px; background: #fff;
+}
+.hud-play::before { left: 15px; }
+.hud-play::after { left: 20px; }
+.hud-play.paused::before {
+  left: 15px; width: 0; height: 0; background: none;
+  border-left: 11px solid #fff; border-top: 7px solid transparent; border-bottom: 7px solid transparent; top: 12px;
+}
+.hud-play.paused::after { display: none; }
+.hud-log-main { flex: 1; display: grid; gap: 6px; }
+.hud-log-labels { display: flex; justify-content: space-between; }
+.hud-log-current { color: var(--accent); font-weight: 700; font-size: 9px; }
+.hud-timeline { position: relative; height: 14px; cursor: pointer; touch-action: none; }
+.hud-timeline::before { content: ''; position: absolute; left: 0; right: 0; top: 6px; height: 2px; background: #dcd9d4; }
+.hud-tl-fill { position: absolute; left: 0; top: 6px; height: 2px; background: var(--accent); }
+.hud-tl-ticks i { position: absolute; top: 2px; width: 1px; height: 10px; background: rgba(0, 0, 0, 0.3); }
+.hud-tl-head {
+  position: absolute; top: 1px; width: 12px; height: 12px; margin-left: -6px; border-radius: 50%;
+  background: #fff; border: 2px solid var(--accent);
+}
+
+/* ── 맨 아래 설명 줄 ── */
+.hud-footer {
+  position: absolute; left: 28px; right: 28px; bottom: 6px;
+  display: flex; justify-content: space-between; color: var(--ink-faint); font-size: 8px; pointer-events: none;
+}
+
+/* ── 좁은 화면: 양쪽 열을 숨기고 핵심만 ── */
+@media (max-width: 1100px) {
+  .hud-col { display: none; }
+  .hud-mode { left: 20px; bottom: 130px; }
+  .hud-mode h2 { font-size: 26px; }
+  .hud-log { width: calc(100% - 32px); min-width: 0; }
+  .hud-load, .hud-meta:not(.hud-status) { display: none; }
+}
+@media (max-width: 600px) {
+  .hud-top { height: 56px; gap: 12px; padding-right: 12px; }
+  .hud-logo { width: 64px; font-size: 0; }
+  .hud-title h1 { font-size: 18px; }
+  .hud-title small { display: none; }
+  .hud-status { margin-left: auto; }
+  .hud-log { bottom: 22px; }
+  .hud-footer { display: none; }
+}

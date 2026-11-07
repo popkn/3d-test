@@ -3,13 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OCTO Robot</title>
+    <title>OCTO-8 Field Simulator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@500;600&display=swap" />
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
     <div id="app">
       <canvas id="viewport"></canvas>
-      <!-- 9단계에서 HUD 패널이 이 위에 올라간다 -->
+      <!-- HUD 패널과 부품 이름표가 3D 화면 위에 겹쳐진다 -->
       <div id="hud"></div>
     </div>
     <script type="module" src="/src/main.js"></script>

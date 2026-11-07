@@ -10,6 +10,8 @@ const SVG_NS = 'http://www.w3.org/2000/svg';
 export class LabelLayer {
   constructor(robot, container, defs = labelDefs) {
     this.enabled = true;
+    // 이름표가 들어갈 수 있는 화면 영역 (HUD 패널을 피한다)
+    this.safe = { left: 16, right: 16, top: 40, bottom: 40 };
     this.root = document.createElement('div');
     this.root.className = 'label-layer';
     this.svg = document.createElementNS(SVG_NS, 'svg');
@@ -60,9 +62,9 @@ export class LabelLayer {
       // 이름표 전체가 화면 안에 들어오도록 (왼쪽 이름표는 오른쪽 끝 기준)
       const lw = it.el.offsetWidth;
       const lx = left
-        ? THREE.MathUtils.clamp(ax + dx * scale, lw + 16, w - 16)
-        : THREE.MathUtils.clamp(ax + dx * scale, 16, w - lw - 16);
-      const ly = THREE.MathUtils.clamp(ay + dy * scale, 40, h - 40);
+        ? THREE.MathUtils.clamp(ax + dx * scale, this.safe.left + lw, w - this.safe.right)
+        : THREE.MathUtils.clamp(ax + dx * scale, this.safe.left, w - this.safe.right - lw);
+      const ly = THREE.MathUtils.clamp(ay + dy * scale, this.safe.top, h - this.safe.bottom);
       // 기준점 → 꺾이는 점 → 이름표 옆
       const elbowX = lx + (left ? 18 : -18);
       it.line.setAttribute('points', `${ax},${ay} ${elbowX},${ly} ${lx + (left ? 4 : -4)},${ly}`);

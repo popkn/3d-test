@@ -19,13 +19,13 @@ npm run dev
 - [x] 6단계: 모드
 - [x] 7단계: 진행 순서와 연출
 - [x] 8단계: 이름표
-- [ ] 9단계: HUD
+- [x] 9단계: HUD
 - [ ] 10단계: 마무리
 
 ## 구조 (현재)
 
 - `index.html`: 3D 캔버스와 HUD 자리
-- `src/main.js`: 시작점. 화면과 로봇을 만들고 실행 루프를 돌린다 (지금은 확인용 슬라이더 패널도 띄운다)
+- `src/main.js`: 시작점. 화면, 로봇, 모드, 진행, 연출, 이름표, HUD를 연결하고 실행 루프를 돌린다. URL: `?t=12` 12초부터, `?pause=1` 정지 상태로 시작, `?cam=0` 카메라 연출 끄기. 스페이스로 재생/정지
 - `src/style.css`: 기본 페이지 스타일
 - `src/scene/sceneConfig.js`: 색, 카메라, 조명, 바닥, 장식선 수치
 - `src/scene/createScene.js`: 화면 환경 전체 조립
@@ -59,7 +59,6 @@ npm run dev
 - `src/robot/OctoRobot.js`: 로봇 전체 조립과 조작 메서드 (부위 열기, 팔 자세, 몸체 자세, 부위 이름표)
 - `src/robot/config/robotConfig.js`: 떠 있는 높이, 전체 크기, 위아래 흔들림
 - `src/robot/config/index.js`: 설정 파일 모음
-- `src/dev/devPanel.js`: 확인용 패널 (재생/정지, 진행 막대, 모드 버튼, 카메라 연출 켜기, 이름표 켜기). 9단계 HUD로 교체. URL: `?t=12` 12초부터, `?mode=teardown` 진행 멈추고 해당 모드, `?cam=0` 카메라 연출 끄기
 
 ## 로봇 조작 (OctoRobot)
 
@@ -96,3 +95,14 @@ export default {
 - `src/labels/labelDefs.js`: 이름표 목록 (글자, 붙일 부품, 화면 위치, 나타나는 모드)
 - `src/labels/LabelLayer.js`: 부품 위치를 따라다니는 이름표와 연결선
 - `src/labels/labels.css`: 이름표 모양
+- `src/state/simState.js`: 시뮬레이터 상태 (진행, 분사 압력/추력, 전원, 팔 말림, 수심/자세, 서브시스템, 표시 옵션). 로봇의 실제 자세와 모드에서 계산한다
+- `src/hud/Hud.js`: HUD 조립 (상단 바, 왼쪽/오른쪽 패널 열, 모드 이름, 하단 진행 패널)
+- `src/hud/panels/`: 패널 하나에 파일 하나 (`topBar`, `jetPanel`, `powerPanel`, `armCurlPanel`, `depthPanel`, `assembliesPanel`, `displayPanel`, `subsystemsPanel`, `operationLog`, `modeTitle`, `footer`, 공통 틀 `common`)
+- `src/hud/styles/theme.css`: 색상과 글꼴
+- `src/hud/styles/hud.css`: HUD 배치 (좁은 화면에서는 양쪽 패널을 숨긴다)
+
+## HUD 조작
+
+- ASSEMBLIES: 누르면 그 부위를 보여주는 구간으로 이동
+- DISPLAY: LABELS 이름표 / EXPLODED 분해 보기 / JET WAKE 물살 / TURNTABLE 회전 보기
+- OPERATION LOG: 재생/정지 버튼, 진행 막대를 누르거나 끌어서 이동
