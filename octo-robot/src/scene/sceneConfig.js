@@ -13,8 +13,8 @@ export const sceneConfig = {
     fov: 35,
     near: 0.1,
     far: 200,
-    position: [7.5, 4.2, 9.5],
-    target: [0, 1.2, 0],
+    position: [6.2, 4.0, 8.2],
+    target: [0, 1.4, 0],
   },
 
   controls: {
@@ -27,7 +27,7 @@ export const sceneConfig = {
 
   lights: {
     hemisphere: { sky: 0xffffff, ground: 0xd8d4cc, intensity: 1.1 },
-    key: { color: 0xffffff, intensity: 2.4, position: [5, 10, 6], shadowMapSize: 2048, shadowArea: 8 },
+    key: { color: 0xffffff, intensity: 2.4, position: [5, 10, 6], shadowMapSize: 2048, shadowArea: 6 },
     fill: { color: 0xfff4ec, intensity: 0.6, position: [-6, 4, -4] },
     rim: { color: 0xffffff, intensity: 0.8, position: [0, 5, -9] },
   },

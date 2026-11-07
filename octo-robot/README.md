@@ -15,7 +15,7 @@ npm run dev
 - [x] 2단계: 재질과 공통 부품
 - [x] 3단계: 몸체 부품 (맨틀, 눈, 사이펀, 부리)
 - [x] 4단계: 팔
-- [ ] 5단계: 전체 조립
+- [x] 5단계: 전체 조립
 - [ ] 6단계: 모드
 - [ ] 7단계: 진행 순서와 연출
 - [ ] 8단계: 이름표
@@ -25,7 +25,7 @@ npm run dev
 ## 구조 (현재)
 
 - `index.html`: 3D 캔버스와 HUD 자리
-- `src/main.js`: 시작점. 화면을 만들고 실행 루프를 돌린다 (지금은 확인용 몸체와 슬라이더 패널을 띄운다. `?view=parts`는 2단계 진열대)
+- `src/main.js`: 시작점. 화면과 로봇을 만들고 실행 루프를 돌린다 (지금은 확인용 슬라이더 패널도 띄운다)
 - `src/style.css`: 기본 페이지 스타일
 - `src/scene/sceneConfig.js`: 색, 카메라, 조명, 바닥, 장식선 수치
 - `src/scene/createScene.js`: 화면 환경 전체 조립
@@ -44,7 +44,6 @@ npm run dev
 - `src/robot/parts/common/cap.js`: 관절 캡 (볼록 원판 + 빨간 링 + 허브 + 둘레 볼트)
 - `src/robot/parts/common/placement.js`: 원 둘레, 구 표면에 부품을 줄지어 배치하는 위치 계산
 - `src/robot/parts/common/geometryCache.js`: 같은 도형 재사용
-- `src/dev/showcase.js`: 재질 견본과 공통 부품 확인용 진열대 (5단계에서 삭제)
 - `src/robot/config/bodyConfig.js`: 몸체 수치 (머리 반지름, 꽃잎판, 눈/사이펀/부리 위치, 팔 소켓)
 - `src/robot/parts/common/spherePatch.js`: 구 표면 조각, 창문 뚫린 조각, 방향 계산
 - `src/robot/parts/common/gear.js`: 톱니바퀴 도형
@@ -54,7 +53,18 @@ npm run dev
 - `src/robot/parts/siphon/`: 사이펀 (받침과 슬리브 `sleeve.js`, 4장 노즐 `nozzle.js`, 조립 `Siphon.js`)
 - `src/robot/parts/beak/`: 부리 (덮개 `beakHousing.js`, 턱 `jaw.js`, 톱니 `radulaRing.js`, 조립 `Beak.js`)
 - `src/robot/parts/hub/Hub.js`: 하부 허브 (팔 소켓 8개와 팔 부착 위치)
-- `src/dev/bodyPreview.js`, `src/dev/devPanel.js`: 몸체 확인용 조립과 슬라이더 (5단계에서 정리)
 - `src/robot/config/armConfig.js`: 팔 수치 (이름, 마디 수, 굵기, 가늘어지는 비율, 유리 마디 위치, 기본 자세)
 - `src/robot/parts/arm/`: 팔 (뿌리 구동부 `rootActuator.js`, 마디 `segment.js`, 빨판 바퀴 `sucker.js`, 연결부 `link.js`, 끝 마디 `tip.js`, 조립 `Arm.js`, 도형 합치기 `geometryBuckets.js`)
 - `src/robot/rig/armRig.js`: 팔 리그 (말림, 끝 나선, 들기, 옆 휨, 흔들림 → 관절 각도)
+- `src/robot/OctoRobot.js`: 로봇 전체 조립과 조작 메서드 (부위 열기, 팔 자세, 몸체 자세, 부위 이름표)
+- `src/robot/config/robotConfig.js`: 떠 있는 높이, 전체 크기, 위아래 흔들림
+- `src/robot/config/index.js`: 설정 파일 모음
+- `src/dev/devPanel.js`: 확인용 슬라이더 (9단계 HUD로 교체)
+
+## 로봇 조작 (OctoRobot)
+
+- `setMantle(t)`, `setOptics(t)`, `setSiphon(t)`, `setBeak(t)`: 0 = 닫힘, 1 = 열림
+- `setArmPose(pose, names)`: 팔 자세. names는 `'R2'`, `['L1','L2']`, 생략하면 전체
+- `setBodyPose({ x, y, z, pitch, yaw, roll })`: 몸체 위치와 기울기
+- `parts`: 부위 이름 → 3D 물체 (부위 선택, 이름표용)
+- `state`: 현재 상태 (HUD가 읽는다)
