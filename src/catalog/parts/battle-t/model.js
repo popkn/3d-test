@@ -6,9 +6,8 @@ export function build() {
   const root = new THREE.Group();
   const frame = new THREE.Group();
   root.add(frame);
-  const outline = [];
-  for (let i = 0; i <= 12; i++) { const t = i / 12; outline.push([36 - t * 72, -23 + t * t * 46 * 0.15 + Math.sin(t * Math.PI) * -2]); }
-  for (let i = 12; i >= 0; i--) { const t = i / 12; outline.push([36 - t * 72 + (1 - t) * 4, 23 - (1 - t) * 0 - t * 40 - Math.sin(t * Math.PI) * 8]); }
+  // 뿌리(오른쪽 위, 넓음)에서 끝(왼쪽 아래, 뾰족)으로 휘어진 칼날
+  const outline = [[28, -23], [36, -18], [36, 2], [24, 4], [6, 8], [-12, 14], [-36, 23], [-22, 8], [-6, -4], [12, -16]];
   const holes = [[28, -14], [28, -4]];
   frame.add(makeBattleFrame({
     outline, holes, width: 72, depth: 46,

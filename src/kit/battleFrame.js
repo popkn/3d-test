@@ -34,6 +34,12 @@ export function makeBattleFrame({ outline, holes, pattern, width, depth, paint =
         }
       }
       g.restore();
+      // 바깥 테두리 (밝은 배경에서도 모양이 보이도록 회색 선)
+      g.strokeStyle = '#8a8884'; g.lineWidth = 0.7;
+      g.beginPath();
+      outline.forEach(([x, z], i) => (i ? g.lineTo(X(x), Y(z)) : g.moveTo(X(x), Y(z))));
+      g.closePath();
+      g.stroke();
       // 구멍 둘레는 흰색 테두리로 다시 (무늬 위)
       g.fillStyle = '#f4f3ee';
       for (const [x, z] of holes) { g.beginPath(); g.arc(X(x), Y(z), 3, 0, Math.PI * 2); g.fill(); }
