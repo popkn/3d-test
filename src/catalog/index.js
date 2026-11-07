@@ -32,6 +32,8 @@ import batteryCase4aa from './parts/battery-case-4aa/spec.js';
 import boltM26x10 from './parts/bolt-m26x10/spec.js';
 import boltM3x6 from './parts/bolt-m3x6/spec.js';
 import boltM3x10 from './parts/bolt-m3x10/spec.js';
+import supportSpacer from './parts/support-spacer/spec.js';
+import spongeBall from './parts/sponge-ball/spec.js';
 
 // 7호 키트 부품목록(CHECKLIST.md)에 있는 부품만 넣는다
 export const catalog = [
@@ -40,7 +42,7 @@ export const catalog = [
   dcMotor130Rs, dcMotor130Dual, dcMotor400Rs, servoDigital,
   wheelSet130, wheelAxle,
   batteryCase4aa,
-  hinge3x3, grab, nutM3, capNutM3, sNutBlue, nutFrame4, motorGuide, boltM26x10, boltM3x6, boltM3x10,
+  hinge3x3, grab, nutM3, capNutM3, sNutBlue, nutFrame4, motorGuide, boltM26x10, boltM3x6, boltM3x10, supportSpacer, spongeBall,
 ];
 
 export const categories = [['board', '보드'], ['sensor', '센서'], ['motor', '모터'], ['wheel', '바퀴'], ['power', '전원'], ['hardware', '조립 부품']];

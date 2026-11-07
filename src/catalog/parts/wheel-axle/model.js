@@ -16,7 +16,7 @@ export function build() {
   const groove = mesh(new THREE.TorusGeometry(3.5, 0.25, 6, 32), M.ivoryPlastic, { cast: false });
   groove.position.z = -8;
   const mark = mesh(new THREE.BoxGeometry(0.6, 0.3, 12), new THREE.MeshStandardMaterial({ color: 0xe8432a }), { cast: false });
-  mark.position.set(0, 3.5, -3);
+  mark.position.set(0, 3.4, -3); // 축 표면에 붙인 회전 표시선
   spin.add(body, hex, groove, mark);
   return {
     object3d: root,
