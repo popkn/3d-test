@@ -149,7 +149,11 @@
 .hud-play.paused::after { display: none; }
 .hud-log-main { flex: 1; display: grid; gap: 6px; }
 .hud-log-labels { display: flex; justify-content: space-between; }
-.hud-log-current { color: var(--accent); font-weight: 700; font-size: 9px; }
+.hud-log-labels { gap: 10px; }
+.hud-log-current {
+  flex: 1; min-width: 0; text-align: center; color: var(--accent); font-weight: 700; font-size: 9px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
 .hud-timeline { position: relative; height: 14px; cursor: pointer; touch-action: none; }
 .hud-timeline::before { content: ''; position: absolute; left: 0; right: 0; top: 6px; height: 2px; background: #dcd9d4; }
 .hud-tl-fill { position: absolute; left: 0; top: 6px; height: 2px; background: var(--accent); }
@@ -180,5 +184,6 @@
   .hud-title small { display: none; }
   .hud-status { margin-left: auto; }
   .hud-log { bottom: 22px; }
+  .hud-log-labels > .hud-k:first-child:not(.hud-log-time), .hud-log-labels > .hud-k:last-child:not(.hud-log-actions) { display: none; }
   .hud-footer { display: none; }
 }

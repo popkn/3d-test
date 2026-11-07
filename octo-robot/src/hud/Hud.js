@@ -41,15 +41,15 @@ export class Hud {
   }
 
   update(S, dt) {
-    this.acc += dt;
-    if (this.acc >= 0.1) {
-      this.acc = 0;
-      for (const p of this.slow) p.update(S);
-      return true; // 이번 프레임에 숫자 패널을 갱신했다
-    }
+    // 진행 막대와 모드 이름은 매 프레임
     this.modeTitle.update(S);
     this.log.update(S);
-    return false;
+    // 숫자 패널은 초당 10번
+    this.acc += dt;
+    if (this.acc < 0.1) return false;
+    this.acc = 0;
+    for (const p of this.slow) p.update(S);
+    return true; // 이번 프레임에 숫자 패널을 갱신했다
   }
 
   // 이름표가 들어갈 수 있는 화면 영역: 패널에 가리지 않는 가운데 부분
