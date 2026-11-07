@@ -24,7 +24,6 @@ export function build() {
   // 고정 클립: 아래 받침 + 양쪽 날개
   root.add(box(16, 2, 14, M.whitePlastic, -2, 0, 0));
   for (const z of [-7.5, 7.5]) root.add(box(10, 6, 1.2, M.whitePlastic, -6, 1, z));
-  root.add(box(5, 3, 14, M.whitePlastic, -L / 2 - 1, R * 2 - 1, 0));
 
   // 안쪽 빛
   const light = new THREE.PointLight(0xffffff, 0, 60, 2);

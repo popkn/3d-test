@@ -33,8 +33,10 @@ export function create(model, ui) {
       }
       color.setRGB(r / 255, g / 255, b / 255, THREE.SRGBColorSpace);
       const lvl = Math.max(r, g, b) / 255;
+      // 흰 덮개가 안쪽 빛으로 물드는 모습: 표면색도 빛 색 쪽으로 섞는다
+      shellMat.color.setRGB(1, 1, 1).lerp(color, 0.85 * lvl);
       shellMat.emissive.copy(color);
-      shellMat.emissiveIntensity = 0.9 * lvl;
+      shellMat.emissiveIntensity = 1.8 * lvl;
       light.color.copy(color);
       light.intensity = 900 * lvl;
       ui.readout('rgb', `${r}, ${g}, ${b}`);
