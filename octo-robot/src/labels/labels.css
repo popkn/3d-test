@@ -1,0 +1,26 @@
+/* 부품 이름표: 3D 화면 위에 겹쳐지는 글자와 연결선 */
+.label-layer { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.label-lines { position: absolute; inset: 0; width: 100%; height: 100%; }
+.label-lines line, .label-lines polyline { stroke: var(--accent); stroke-width: 1; fill: none; }
+.label-lines circle { fill: var(--accent); }
+
+.part-label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-9999px, 0);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  color: var(--ink);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.part-label.on { opacity: 1; }
+.part-label b { display: flex; align-items: center; gap: 6px; font-weight: 700; }
+.part-label b::before { content: ''; width: 6px; height: 6px; background: var(--accent); }
+.part-label small { display: block; padding-left: 12px; color: #8a8884; font-size: 9px; }
+.part-label.left { text-align: right; }
+.part-label.left b { flex-direction: row-reverse; }
+.part-label.left small { padding-left: 0; padding-right: 12px; }

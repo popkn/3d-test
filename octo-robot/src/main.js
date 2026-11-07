@@ -4,6 +4,7 @@ import { OctoRobot } from './robot/index.js';
 import { modes, ModeController } from './modes/index.js';
 import { Sequencer, CameraDirector } from './sequence/index.js';
 import { JetWake, ExplodeGuides } from './effects/index.js';
+import { LabelLayer } from './labels/index.js';
 import { createDevPanel } from './dev/devPanel.js';
 
 const canvas = document.getElementById('viewport');
@@ -29,6 +30,11 @@ ctx.scene.add(wake.object3d);
 const guides = new ExplodeGuides(robot);
 ctx.scene.add(guides.object3d);
 
+// 부품 이름표: 모드에 맞는 이름표만 나타난다
+const labels = new LabelLayer(robot, document.getElementById('hud'));
+labels.setMode(controller.mode.id);
+controller.onChange((mode) => labels.setMode(mode.id));
+
 loop.add((t, dt) => {
   sequencer.update(dt);
   controller.update(dt);
@@ -39,10 +45,14 @@ loop.add((t, dt) => {
   wake.strength += (goal - wake.strength) * Math.min(1, dt * 4);
   wake.update(dt, robot.siphon.nozzle.object3d, robot.siphon.object3d);
   guides.update(t);
+  // 이번 프레임의 부품/카메라 위치를 확정한 뒤 이름표를 옮긴다
+  robot.object3d.updateMatrixWorld();
+  ctx.camera.updateMatrixWorld();
+  labels.update(ctx.camera, dt);
 });
 
 // 확인용 패널 (9단계 HUD로 교체)
-const panel = createDevPanel({ controller, sequencer, director });
+const panel = createDevPanel({ controller, sequencer, director, labels });
 loop.add((t, dt) => panel.update(dt));
 
 loop.start();

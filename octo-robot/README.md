@@ -18,7 +18,7 @@ npm run dev
 - [x] 5단계: 전체 조립
 - [x] 6단계: 모드
 - [x] 7단계: 진행 순서와 연출
-- [ ] 8단계: 이름표
+- [x] 8단계: 이름표
 - [ ] 9단계: HUD
 - [ ] 10단계: 마무리
 
@@ -59,7 +59,7 @@ npm run dev
 - `src/robot/OctoRobot.js`: 로봇 전체 조립과 조작 메서드 (부위 열기, 팔 자세, 몸체 자세, 부위 이름표)
 - `src/robot/config/robotConfig.js`: 떠 있는 높이, 전체 크기, 위아래 흔들림
 - `src/robot/config/index.js`: 설정 파일 모음
-- `src/dev/devPanel.js`: 확인용 패널 (재생/정지, 진행 막대, 모드 버튼, 카메라 연출 켜기). 9단계 HUD로 교체. URL: `?t=12` 12초부터, `?mode=teardown` 진행 멈추고 해당 모드, `?cam=0` 카메라 연출 끄기
+- `src/dev/devPanel.js`: 확인용 패널 (재생/정지, 진행 막대, 모드 버튼, 카메라 연출 켜기, 이름표 켜기). 9단계 HUD로 교체. URL: `?t=12` 12초부터, `?mode=teardown` 진행 멈추고 해당 모드, `?cam=0` 카메라 연출 끄기
 
 ## 로봇 조작 (OctoRobot)
 
@@ -93,3 +93,6 @@ export default {
 - `src/sequence/cameraDirector.js`: 구간마다 카메라를 천천히 옮긴다 (마우스로 돌리면 5초간 양보)
 - `src/effects/jetWake.js`: 분사할 때 사이펀에서 나오는 거품 물살
 - `src/effects/explodeGuides.js`: 분해할 때 부품까지 이어지는 점선과 궤도 고리
+- `src/labels/labelDefs.js`: 이름표 목록 (글자, 붙일 부품, 화면 위치, 나타나는 모드)
+- `src/labels/LabelLayer.js`: 부품 위치를 따라다니는 이름표와 연결선
+- `src/labels/labels.css`: 이름표 모양

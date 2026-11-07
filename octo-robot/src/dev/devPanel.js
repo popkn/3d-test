@@ -2,7 +2,7 @@ import { modeList } from '../modes/index.js';
 
 // 확인용 패널 (9단계 HUD가 완성되면 삭제): 재생/정지, 진행 막대, 모드 버튼.
 // URL: ?t=12 (12초부터 시작), ?mode=teardown (진행 멈추고 해당 모드), ?cam=0 (카메라 연출 끄기)
-export function createDevPanel({ controller, sequencer, director }) {
+export function createDevPanel({ controller, sequencer, director, labels }) {
   const params = new URLSearchParams(location.search);
   const panel = document.createElement('div');
   panel.className = 'dev-panel';
@@ -15,7 +15,8 @@ export function createDevPanel({ controller, sequencer, director }) {
     </div>
     <div class="dev-current"></div>
     <div class="dev-modes"></div>
-    <label class="dev-row"><span>카메라 연출</span><input class="dev-cam" type="checkbox" checked></label>`;
+    <label class="dev-row"><span>카메라 연출</span><input class="dev-cam" type="checkbox" checked></label>
+    <label class="dev-row"><span>이름표</span><input class="dev-labels" type="checkbox" checked></label>`;
   document.getElementById('app').appendChild(panel);
 
   const playBtn = panel.querySelector('.dev-play');
@@ -29,6 +30,8 @@ export function createDevPanel({ controller, sequencer, director }) {
   playBtn.addEventListener('click', () => { sequencer.toggle(); refreshPlay(); });
   scrub.addEventListener('input', () => { sequencer.seek(Number(scrub.value)); director.setShot(sequencer.entry.camera); });
   camBox.addEventListener('change', () => { director.enabled = camBox.checked; });
+  const labelBox = panel.querySelector('.dev-labels');
+  labelBox.addEventListener('change', () => { labels.enabled = labelBox.checked; });
 
   const buttons = {};
   for (const mode of modeList) {

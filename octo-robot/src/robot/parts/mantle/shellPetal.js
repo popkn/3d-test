@@ -23,6 +23,8 @@ export class ShellPetal {
     this.object3d.name = `petal${index}`;
     this.object3d.position.copy(hinge);
     this.hinge = hinge.clone();
+    // 꽃잎판 가운데 위치 (경첩 기준) — 이름표를 붙일 자리
+    this.centerOffset = directionFrom(lonC, Math.PI / 2 - (thetaTop + thetaBottom) / 2).multiplyScalar(R).sub(hinge);
     this.outward = new THREE.Vector3(Math.cos(lonC), 0.35, Math.sin(lonC)).normalize();
 
     // 내용물은 머리 중심 기준 좌표로 만들고, 경첩만큼 되돌려 놓는다
