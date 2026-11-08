@@ -76,7 +76,7 @@ export function makeHolder(a, mods) {
     const box = partBounds(inner);
     const size = box.getSize(new THREE.Vector3()), c = box.getCenter(new THREE.Vector3());
     model.object3d.position.sub(c);
-    if (a.euler) holder.rotation.set(...a.euler.map((d) => THREE.MathUtils.degToRad(d)), 'XYZ');
+    if (a.euler) holder.rotation.set(...a.euler.map((d) => THREE.MathUtils.degToRad(d)), a.eorder || 'XYZ');
     else holder.quaternion.setFromRotationMatrix(chooseRotation([size.x, size.y, size.z], a.z, a));
     // flip: 자동으로 고른 방향을 월드 축으로 180° 더 돌린다 (예: 부리 갈고리를 아래로)
     if (a.flip) holder.quaternion.premultiply(new THREE.Quaternion().setFromAxisAngle(axisVec('xyz'.indexOf(a.flip)), Math.PI));

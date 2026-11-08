@@ -17,41 +17,21 @@
 <text x="365.0" y="172.0" font-size="10" fill="#1d2230" font-weight="700" text-anchor="middle">배터리</text>
 <text x="365.0" y="188.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="middle">AA × 4 (6V)</text>
 <line x1="305" y1="175" x2="320" y2="175" stroke="#c8231d" stroke-width="2"/>
-<rect x="60" y="240" width="70" height="22" rx="4" fill="#f2c21b"/>
-<text x="95.0" y="255.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">IN1</text>
-<line x1="130" y1="251" x2="150" y2="251" stroke="#f2c21b" stroke-width="2"/>
-<text x="156.0" y="250.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">꺾임 센서 1-2 왼쪽</text>
-<text x="156.0" y="264.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">연결봉이 왼쪽으로 꺾임</text>
-<rect x="60" y="292" width="70" height="22" rx="4" fill="#f2c21b"/>
-<text x="95.0" y="307.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">IN2</text>
-<line x1="130" y1="303" x2="150" y2="303" stroke="#f2c21b" stroke-width="2"/>
-<text x="156.0" y="302.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">꺾임 센서 1-2 오른쪽</text>
-<text x="156.0" y="316.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">연결봉이 오른쪽으로 꺾임</text>
-<rect x="60" y="344" width="70" height="22" rx="4" fill="#f2c21b"/>
-<text x="95.0" y="359.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">IN3</text>
-<line x1="130" y1="355" x2="150" y2="355" stroke="#f2c21b" stroke-width="2"/>
-<text x="156.0" y="354.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">앞 장애물 센서 (적외선)</text>
-<text x="156.0" y="368.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">앞에 물체</text>
-<rect x="60" y="396" width="70" height="22" rx="4" fill="#f2c21b"/>
-<text x="95.0" y="411.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">OUT1</text>
-<line x1="130" y1="407" x2="150" y2="407" stroke="#f2c21b" stroke-width="2"/>
-<text x="156.0" y="406.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">전조등 RGB</text>
-<text x="156.0" y="420.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">내 조종 방향 색</text>
-<rect x="60" y="448" width="70" height="22" rx="4" fill="#f2c21b"/>
-<text x="95.0" y="463.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">OUT2</text>
-<line x1="130" y1="459" x2="150" y2="459" stroke="#f2c21b" stroke-width="2"/>
-<text x="156.0" y="458.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">기적 (부저)</text>
-<text x="156.0" y="472.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">엇갈림 경고 · 출발 신호</text>
-<rect x="60" y="500" width="70" height="22" rx="4" fill="#c8231d"/>
-<text x="95.0" y="515.0" font-size="9.5" fill="#fff" font-weight="700" text-anchor="middle">M1 · M2</text>
-<line x1="130" y1="511" x2="150" y2="511" stroke="#c8231d" stroke-width="2"/>
-<text x="156.0" y="510.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">구동 모터 왼 · 오른</text>
-<text x="156.0" y="524.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">내 리모컨 명령 그대로</text>
-<rect x="60" y="552" width="70" height="22" rx="4" fill="#3a7bd5"/>
-<text x="95.0" y="567.0" font-size="9.5" fill="#fff" font-weight="700" text-anchor="middle">UART</text>
-<line x1="130" y1="563" x2="150" y2="563" stroke="#3a7bd5" stroke-width="2"/>
-<text x="156.0" y="562.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">블루투스</text>
-<text x="156.0" y="576.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">조종자 A</text>
+<rect x="60" y="240" width="70" height="22" rx="4" fill="#c8231d"/>
+<text x="95.0" y="255.0" font-size="9.5" fill="#fff" font-weight="700" text-anchor="middle">M1 · M2</text>
+<line x1="130" y1="251" x2="150" y2="251" stroke="#c8231d" stroke-width="2"/>
+<text x="156.0" y="250.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">구동 모터 왼 · 오른 (DC 130rpm)</text>
+<text x="156.0" y="264.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">조종자 A의 명령 그대로</text>
+<rect x="60" y="292" width="70" height="22" rx="4" fill="#3a7bd5"/>
+<text x="95.0" y="307.0" font-size="9.5" fill="#fff" font-weight="700" text-anchor="middle">UART</text>
+<line x1="130" y1="303" x2="150" y2="303" stroke="#3a7bd5" stroke-width="2"/>
+<text x="156.0" y="302.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">블루투스 모듈</text>
+<text x="156.0" y="316.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">조종자 A의 스마트폰</text>
+<rect x="60" y="344" width="70" height="22" rx="4" fill="#3a7bd5"/>
+<text x="95.0" y="359.0" font-size="9.5" fill="#fff" font-weight="700" text-anchor="middle">BATT</text>
+<line x1="130" y1="355" x2="150" y2="355" stroke="#3a7bd5" stroke-width="2"/>
+<text x="156.0" y="354.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">배터리 AA × 4 (6V)</text>
+<text x="156.0" y="368.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">이 칸 전용</text>
 <rect x="450" y="90" width="390" height="610" rx="10" fill="#fff" stroke="#1d2230"/>
 <text x="466.0" y="118.0" font-size="14" fill="#1d2230" font-weight="700" text-anchor="start">중간칸 객차</text>
 <text x="824.0" y="118.0" font-size="12" fill="#e8432a" font-weight="700" text-anchor="end">조종자 B</text>
@@ -66,38 +46,21 @@
 <text x="775.0" y="172.0" font-size="10" fill="#1d2230" font-weight="700" text-anchor="middle">배터리</text>
 <text x="775.0" y="188.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="middle">AA × 4 (6V)</text>
 <line x1="715" y1="175" x2="730" y2="175" stroke="#c8231d" stroke-width="2"/>
-<rect x="470" y="240" width="70" height="22" rx="4" fill="#f2c21b"/>
-<text x="505.0" y="255.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">IN1</text>
-<line x1="540" y1="251" x2="560" y2="251" stroke="#f2c21b" stroke-width="2"/>
-<text x="566.0" y="250.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">꺾임 센서 2-3 왼쪽</text>
-<rect x="470" y="292" width="70" height="22" rx="4" fill="#f2c21b"/>
-<text x="505.0" y="307.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">IN2</text>
-<line x1="540" y1="303" x2="560" y2="303" stroke="#f2c21b" stroke-width="2"/>
-<text x="566.0" y="302.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">꺾임 센서 2-3 오른쪽</text>
-<rect x="470" y="344" width="70" height="22" rx="4" fill="#f2c21b"/>
-<text x="505.0" y="359.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">OUT1</text>
-<line x1="540" y1="355" x2="560" y2="355" stroke="#f2c21b" stroke-width="2"/>
-<text x="566.0" y="354.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">지붕 방향 램프 RGB</text>
-<text x="566.0" y="368.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">내 조종 방향 색</text>
-<rect x="470" y="396" width="70" height="22" rx="4" fill="#f2c21b"/>
-<text x="505.0" y="411.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">OUT2</text>
-<line x1="540" y1="407" x2="560" y2="407" stroke="#f2c21b" stroke-width="2"/>
-<text x="566.0" y="406.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">실내등 LED 주황 ×2 (OUT2 · OUT3)</text>
-<text x="566.0" y="420.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">달리는 중 켜짐</text>
-<rect x="470" y="448" width="70" height="22" rx="4" fill="#f2c21b"/>
-<text x="505.0" y="463.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">OUT4</text>
-<line x1="540" y1="459" x2="560" y2="459" stroke="#f2c21b" stroke-width="2"/>
-<text x="566.0" y="458.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">경고음 (부저)</text>
-<text x="566.0" y="472.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">엇갈림 경고</text>
-<rect x="470" y="500" width="70" height="22" rx="4" fill="#c8231d"/>
-<text x="505.0" y="515.0" font-size="9.5" fill="#fff" font-weight="700" text-anchor="middle">M1 · M2</text>
-<line x1="540" y1="511" x2="560" y2="511" stroke="#c8231d" stroke-width="2"/>
-<text x="566.0" y="510.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">구동 모터 왼 · 오른</text>
-<rect x="470" y="552" width="70" height="22" rx="4" fill="#3a7bd5"/>
-<text x="505.0" y="567.0" font-size="9.5" fill="#fff" font-weight="700" text-anchor="middle">UART</text>
-<line x1="540" y1="563" x2="560" y2="563" stroke="#3a7bd5" stroke-width="2"/>
-<text x="566.0" y="562.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">블루투스</text>
-<text x="566.0" y="576.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">조종자 B</text>
+<rect x="470" y="240" width="70" height="22" rx="4" fill="#c8231d"/>
+<text x="505.0" y="255.0" font-size="9.5" fill="#fff" font-weight="700" text-anchor="middle">M1 · M2</text>
+<line x1="540" y1="251" x2="560" y2="251" stroke="#c8231d" stroke-width="2"/>
+<text x="566.0" y="250.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">구동 모터 왼 · 오른 (DC 130rpm)</text>
+<text x="566.0" y="264.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">조종자 B의 명령 그대로</text>
+<rect x="470" y="292" width="70" height="22" rx="4" fill="#3a7bd5"/>
+<text x="505.0" y="307.0" font-size="9.5" fill="#fff" font-weight="700" text-anchor="middle">UART</text>
+<line x1="540" y1="303" x2="560" y2="303" stroke="#3a7bd5" stroke-width="2"/>
+<text x="566.0" y="302.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">블루투스 모듈</text>
+<text x="566.0" y="316.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">조종자 B의 스마트폰</text>
+<rect x="470" y="344" width="70" height="22" rx="4" fill="#3a7bd5"/>
+<text x="505.0" y="359.0" font-size="9.5" fill="#fff" font-weight="700" text-anchor="middle">BATT</text>
+<line x1="540" y1="355" x2="560" y2="355" stroke="#3a7bd5" stroke-width="2"/>
+<text x="566.0" y="354.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">배터리 AA × 4 (6V)</text>
+<text x="566.0" y="368.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">이 칸 전용</text>
 <rect x="860" y="90" width="390" height="610" rx="10" fill="#fff" stroke="#1d2230"/>
 <text x="876.0" y="118.0" font-size="14" fill="#1d2230" font-weight="700" text-anchor="start">마지막칸 화물 · 꼬리칸</text>
 <text x="1234.0" y="118.0" font-size="12" fill="#e8432a" font-weight="700" text-anchor="end">조종자 C</text>
@@ -112,33 +75,19 @@
 <text x="1185.0" y="172.0" font-size="10" fill="#1d2230" font-weight="700" text-anchor="middle">배터리</text>
 <text x="1185.0" y="188.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="middle">AA × 4 (6V)</text>
 <line x1="1125" y1="175" x2="1140" y2="175" stroke="#c8231d" stroke-width="2"/>
-<rect x="880" y="240" width="70" height="22" rx="4" fill="#f2c21b"/>
-<text x="915.0" y="255.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">IN1</text>
-<line x1="950" y1="251" x2="970" y2="251" stroke="#f2c21b" stroke-width="2"/>
-<text x="976.0" y="250.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">뒤 범퍼 (접촉)</text>
-<text x="976.0" y="264.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">뒤에 부딪힘</text>
-<rect x="880" y="292" width="70" height="22" rx="4" fill="#f2c21b"/>
-<text x="915.0" y="307.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">OUT1</text>
-<line x1="950" y1="303" x2="970" y2="303" stroke="#f2c21b" stroke-width="2"/>
-<text x="976.0" y="302.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">방향 램프 RGB</text>
-<text x="976.0" y="316.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">내 조종 방향 색</text>
-<rect x="880" y="344" width="70" height="22" rx="4" fill="#f2c21b"/>
-<text x="915.0" y="359.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">OUT2</text>
-<line x1="950" y1="355" x2="970" y2="355" stroke="#f2c21b" stroke-width="2"/>
-<text x="976.0" y="354.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">꼬리등 LED 빨강 ×2 (OUT2 · OUT3)</text>
-<text x="976.0" y="368.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">후진 · 정지 때 켜짐</text>
-<rect x="880" y="396" width="70" height="22" rx="4" fill="#f2c21b"/>
-<text x="915.0" y="411.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">OUT4</text>
-<line x1="950" y1="407" x2="970" y2="407" stroke="#f2c21b" stroke-width="2"/>
-<text x="976.0" y="406.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">경고음 (부저)</text>
-<text x="976.0" y="420.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">엇갈림 · 범퍼 경고</text>
-<rect x="880" y="448" width="70" height="22" rx="4" fill="#c8231d"/>
-<text x="915.0" y="463.0" font-size="9.5" fill="#fff" font-weight="700" text-anchor="middle">M1 · M2</text>
-<line x1="950" y1="459" x2="970" y2="459" stroke="#c8231d" stroke-width="2"/>
-<text x="976.0" y="458.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">구동 모터 왼 · 오른</text>
-<rect x="880" y="500" width="70" height="22" rx="4" fill="#3a7bd5"/>
-<text x="915.0" y="515.0" font-size="9.5" fill="#fff" font-weight="700" text-anchor="middle">UART</text>
-<line x1="950" y1="511" x2="970" y2="511" stroke="#3a7bd5" stroke-width="2"/>
-<text x="976.0" y="510.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">블루투스</text>
-<text x="976.0" y="524.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">조종자 C</text>
-<text x="40.0" y="726.0" font-size="10.5" fill="#3a4050" font-weight="700" text-anchor="start">세 칸의 CPU는 서로 연결되지 않는다. 엇갈림을 맞추는 것은 사람의 몫 — 램프 색과 부저를 보고 말로 맞춘다.</text></svg>
+<rect x="880" y="240" width="70" height="22" rx="4" fill="#c8231d"/>
+<text x="915.0" y="255.0" font-size="9.5" fill="#fff" font-weight="700" text-anchor="middle">M1 · M2</text>
+<line x1="950" y1="251" x2="970" y2="251" stroke="#c8231d" stroke-width="2"/>
+<text x="976.0" y="250.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">구동 모터 왼 · 오른 (DC 130rpm)</text>
+<text x="976.0" y="264.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">조종자 C의 명령 그대로</text>
+<rect x="880" y="292" width="70" height="22" rx="4" fill="#3a7bd5"/>
+<text x="915.0" y="307.0" font-size="9.5" fill="#fff" font-weight="700" text-anchor="middle">UART</text>
+<line x1="950" y1="303" x2="970" y2="303" stroke="#3a7bd5" stroke-width="2"/>
+<text x="976.0" y="302.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">블루투스 모듈</text>
+<text x="976.0" y="316.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">조종자 C의 스마트폰</text>
+<rect x="880" y="344" width="70" height="22" rx="4" fill="#3a7bd5"/>
+<text x="915.0" y="359.0" font-size="9.5" fill="#fff" font-weight="700" text-anchor="middle">BATT</text>
+<line x1="950" y1="355" x2="970" y2="355" stroke="#3a7bd5" stroke-width="2"/>
+<text x="976.0" y="354.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">배터리 AA × 4 (6V)</text>
+<text x="976.0" y="368.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">이 칸 전용</text>
+<text x="40.0" y="726.0" font-size="10.5" fill="#3a4050" font-weight="700" text-anchor="start">세 칸의 CPU는 서로 연결되지 않는다. 엇갈림을 맞추는 것은 사람의 몫 — 서로 말로 맞춘다.</text></svg>
