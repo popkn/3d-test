@@ -6,12 +6,13 @@ import { makeBolt } from './fasteners.js';
 // 휠가이드: 모터 축(또는 서보 혼)에 끼워, 10mm 간격 구멍으로 프레임 · 휠을 붙이는 원판. 회전축 = Y
 // dia: 지름, thick: 전체 두께(허브 포함), hub: 'dcut'(DC 모터 축) | 'servo'(서보 축 육각) | 'round'
 // hex: 구멍마다 M3 너트 육각 테두리 (나일론 · 서보형)
-export function makeWheelGuide({ dia, thick = 8, plate = 2.4, color, hub = 'dcut', hex = false, holeR = 10, holes = 6 }) {
+export function makeWheelGuide({ dia, thick = 8, plate = 2.4, color, hub = 'dcut', hex = false, holeR = 10, holes = 4 }) {
   const g = new THREE.Group();
   const mat = new THREE.MeshStandardMaterial({ color, roughness: color === 0xf2f1ec ? 0.6 : 0.45, metalness: 0 });
-  const pos = Array.from({ length: holes }, (_, i) => { const a = (i / holes) * Math.PI * 2 + Math.PI / 2; return [Math.cos(a) * holeR, Math.sin(a) * holeR]; });
+  // 구멍: Ø3.2 · 십자 4개 (반지름 10) → 모두 5 mm 격자 위 (마주 보는 구멍 20, 이웃 대각 구멍은 10 × 10)
+  const pos = Array.from({ length: holes }, (_, i) => { const a = (i / holes) * Math.PI * 2 + Math.PI / 2; return [Math.round(Math.cos(a) * holeR * 1000) / 1000, Math.round(Math.sin(a) * holeR * 1000) / 1000]; });
   const s = new THREE.Shape(); s.absarc(0, 0, dia / 2, 0, Math.PI * 2, false);
-  for (const [x, z] of pos) { const p = new THREE.Path(); p.absarc(x, z, 1.65, 0, Math.PI * 2, true); s.holes.push(p); }
+  for (const [x, z] of pos) { const p = new THREE.Path(); p.absarc(x, z, 1.6, 0, Math.PI * 2, true); s.holes.push(p); }
   const hp = new THREE.Path(); hp.absarc(0, 0, 1.6, 0, Math.PI * 2, true); s.holes.push(hp);
   const pg = new THREE.ExtrudeGeometry(s, { depth: plate, bevelEnabled: true, bevelThickness: 0.3, bevelSize: 0.3, bevelSegments: 2, curveSegments: 48 });
   pg.rotateX(-Math.PI / 2);
@@ -83,7 +84,7 @@ export function createGuideFunction(model, ui, { motors }) {
       model.handles.att.visible = st.att;
       st.a += (st.rpm / 60) * Math.PI * 2 * dt;
       model.handles.spin.rotation.y = st.a;
-      ui.readout('holes', '6개 · 반지름 10 mm (이웃 구멍 10 mm, 마주 보는 구멍 20 mm → 프레임 구멍과 맞음)');
+      ui.readout('holes', '4개 십자 · 반지름 10 mm + 가운데 (모두 5 mm 격자 위 → 프레임 구멍과 맞음)');
       ui.readout('spin', st.rpm ? `${st.rpm} rpm${st.att ? ' · 붙인 프레임이 함께 돈다' : ''}` : '정지');
     },
   };

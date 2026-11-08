@@ -8,6 +8,7 @@ import { SHEETS, BOM_TOTAL } from './eagle/assembly.js';
 import { buildBattlebot, EXPLODE as BB_EXPLODE } from './battlebot/assemble.js';
 import { SHEETS as BB_SHEETS, BOM_TOTAL as BB_TOTAL } from './battlebot/assembly.js';
 import { buildTrain, SPEED as TRAIN_SPEED } from './train/assemble.js';
+import { buildTrainSteps } from './train/build.js';
 
 // 로보로보 부품 뷰어: 왼쪽 목록에서 부품을 고르면 3D 모양과 기능(조작 패널)을 불러온다.
 const stage = document.getElementById('stage');
@@ -19,7 +20,7 @@ const opts = { labels: true, dims: true, spin: false };
 
 // 목록
 const nav = document.getElementById('parts');
-nav.innerHTML = `<a href="#eagle" data-id="eagle" class="all"><b>🦅 독수리 조립 (설계도면)</b><small>부품으로 조립한 독수리 · 날갯짓 · 분해 보기</small></a><a href="#battlebot" data-id="battlebot" class="all"><b>⚔ 배틀로봇 썬더 웨지</b><small>무한궤도 · 스피너 · 들어올림 웨지</small></a><a href="#train" data-id="train" class="all"><b>🚂 협동 기차 하나로 열차</b><small>3칸 · 칸마다 CPU · 3명이 따로 조종</small></a><a href="#all" data-id="all" class="all"><b>▦ 전체 펼쳐보기</b><small>${catalog.length}개 부품 · 실제 크기로 한 화면에</small></a>` + categories.map(([cat, title]) => `
+nav.innerHTML = `<a href="#eagle" data-id="eagle" class="all"><b>🦅 독수리 조립 (설계도면)</b><small>부품으로 조립한 독수리 · 날갯짓 · 분해 보기</small></a><a href="#battlebot" data-id="battlebot" class="all"><b>⚔ 배틀로봇 썬더 웨지</b><small>무한궤도 · 스피너 · 들어올림 웨지</small></a><a href="#train" data-id="train" class="all"><b>🚂 협동 기차 하나로 열차</b><small>3칸 · 칸마다 CPU · 3명이 따로 조종</small></a><a href="#train-build" data-id="train-build" class="all"><b>🔧 기차 단계별 조립</b><small>부품 하나씩 · 모듈은 따로 조립 후 끼우기</small></a><a href="#all" data-id="all" class="all"><b>▦ 전체 펼쳐보기</b><small>${catalog.length}개 부품 · 실제 크기로 한 화면에</small></a>` + categories.map(([cat, title]) => `
   <h3>${title}</h3>
   ${catalog.filter((p) => p.category === cat).map((p) => `
     <a href="#${p.id}" data-id="${p.id}"><b>${p.name}</b><small>${p.size.x} × ${p.size.z} × ${p.size.y} mm${p.size.estimated ? ' · 추정' : ''}</small></a>`).join('')}
@@ -206,7 +207,90 @@ function trainFunction(e) {
   };
 }
 
+// 단계별 조립: 재생 · 한 단계씩 · 단계 이동 · 속도 · 카메라 따라가기
+let trainSteps = null;
+function stepFunction(e) {
+  const st = { T: 0, play: true, speed: 1, follow: true, bolts: true, goal: null };
+  panel.ui.controls([
+    { type: 'toggle', id: 'play', label: '재생', value: true },
+    { type: 'button', id: 'prev', label: '◀ 이전 단계' },
+    { type: 'button', id: 'next', label: '다음 단계 ▶' },
+    { type: 'slider', id: 'step', label: '단계로 이동', min: 0, max: e.N, step: 1, value: 0 },
+    { type: 'slider', id: 'speed', label: '속도 (단계 / 초)', min: 0.25, max: 6, step: 0.25, value: 1 },
+    { type: 'toggle', id: 'follow', label: '카메라가 지금 부품을 따라감', value: true },
+    { type: 'toggle', id: 'bolts', label: '볼트 · 너트 보기', value: true },
+    { type: 'button', id: 'restart', label: '처음부터' },
+  ]);
+  panel.ui.readouts([['step', '단계'], ['now', '지금'], ['module', '모듈'], ['total', '전체']]);
+  const slider = () => [...document.querySelectorAll('.p-controls label')].find((l) => l.textContent.includes('단계로 이동'))?.querySelector('input');
+  const playBox = () => [...document.querySelectorAll('.p-controls label')].find((l) => l.textContent.startsWith('재생'))?.querySelector('input');
+  const pause = () => { st.play = false; const b = playBox(); if (b) b.checked = false; };
+  const tgt = new THREE.Vector3();
+  let lastShown = -1;
+  return {
+    onControl(id, v) {
+      if (id === 'play') { st.play = v; if (v && st.T >= e.N) st.T = 0; }
+      else if (id === 'prev') { pause(); st.goal = Math.max(0, Math.ceil(st.T) - 1); }
+      else if (id === 'next') { pause(); st.goal = Math.min(e.N, Math.floor(st.T) + 1); }
+      else if (id === 'step') { pause(); st.T = Number(v); st.goal = null; }
+      else if (id === 'restart') { st.T = 0; st.goal = null; st.play = true; const b = playBox(); if (b) b.checked = true; }
+      else if (id === 'bolts') { st.bolts = v; e.setBolts(v); }
+      else st[id] = v;
+    },
+    update(dt) {
+      dt = Math.min(dt, 0.05);
+      if (st.goal !== null) { const d = st.goal - st.T; st.T += Math.sign(d) * Math.min(Math.abs(d), dt * 2.5); if (Math.abs(d) < 1e-3) { st.T = st.goal; st.goal = null; } }
+      else if (st.play) { st.T = Math.min(e.N, st.T + dt * st.speed); if (st.T >= e.N) pause(); }
+      e.pose(st.T);
+      const s = Math.min(e.N, Math.max(1, Math.floor(st.T) + 1));
+      const sl = slider(); if (sl && document.activeElement !== sl) { sl.value = String(Math.floor(st.T)); sl.nextElementSibling.textContent = String(Math.floor(st.T)); }
+      panel.ui.readout('step', `${Math.floor(st.T) >= e.N ? e.N : s} / ${e.N}`);
+      if (s !== lastShown) { panel.ui.readout('now', st.T >= e.N ? '완성!' : e.describe(s)); panel.ui.readout('module', st.T >= e.N ? '—' : e.moduleOf(s)); lastShown = s; }
+      panel.ui.readout('total', `부품 ${e.count}개 · 볼트 · 너트 ${e.nFast}개 · 모듈 ${e.groups}개`);
+      if (st.follow && st.T < e.N) {
+        tgt.copy(e.focusOf(s));
+        const d = tgt.sub(view.controls.target).multiplyScalar(Math.min(1, dt * 3));
+        view.controls.target.add(d); view.camera.position.add(d);
+      }
+    },
+  };
+}
+
 async function select(id) {
+  if (id === 'train-build') {
+    if (current?.id === 'train-build') return;
+    const token = ++loadToken;
+    const loading = document.getElementById('loading');
+    loading.style.display = 'block';
+    nav.querySelectorAll('a').forEach((a) => a.classList.toggle('on', a.dataset.id === 'train-build'));
+    const e = trainSteps ?? await buildTrainSteps(loadPart, (k) => { loading.textContent = `부품 불러오는 중… ${Math.round(k * 100)}%`; });
+    loading.textContent = '불러오는 중…';
+    if (token !== loadToken) return;
+    trainSteps = e;
+    if (current) { current.fn?.dispose?.(); view.scene.remove(current.root); }
+    overlay.clear();
+    picks.length = 0;
+    view.controls.zoomToCursor = true;
+    view.scene.add(e.root);
+    e.pose(e.N);
+    e.root.updateMatrixWorld(true);
+    const box = partBounds(e.root);
+    e.pose(0);
+    view.frame(box, { dir: [-1, 0.7, -0.8], fit: 0.55, minDist: 20 });
+    panel.showSpec({
+      name: '협동 기차 — 단계별 조립', url: 'https://github.com/popkn/3d-test/blob/로보로보-3d-test/src/train/tree.js',
+      size: { x: Math.round(box.max.x - box.min.x), z: Math.round(box.max.z - box.min.z), y: Math.round(box.max.y - box.min.y), estimated: false, note: '단계 하나 = 부품 하나 + 그 단계의 볼트 · 너트. 모듈은 옆(또는 위) 작업대에서 따로 조립한 뒤 통째로 끼운다. 바퀴 · 바퀴 축 · 버기 바퀴는 세트 부품 하나.' },
+      function: '재생하면 바닥판부터 한 단계씩 조립된다. 이상한 곳이 보이면 일시정지하고 이전/다음 단계로 확인하세요. 부품에 마우스를 올리면 이름이 나온다.',
+      specs: [['단계', `${e.N}단계 (부품 ${e.count} · 모듈 ${e.groups})`], ['규칙 검사', e.errors.length ? `오류 ${e.errors.length}건` : '오류 0건']],
+      ports: [],
+    });
+    let fn = null;
+    panel.reset((cid, v) => fn?.onControl?.(cid, v));
+    fn = stepFunction(e);
+    current = { id: 'train-build', root: e.root, fn: { ...fn, dispose() {} } };
+    loading.style.display = 'none';
+    return;
+  }
   if (id === 'train') {
     if (current?.id === 'train') return;
     const token = ++loadToken;
@@ -387,7 +471,7 @@ tipEl.className = 'tag hover-tip';
 tipEl.style.cssText = 'position:absolute;pointer-events:none;opacity:0;z-index:5';
 stage.appendChild(tipEl);
 view.renderer.domElement.addEventListener('pointermove', (e) => {
-  const asm = current?.id === 'eagle' ? eagle : current?.id === 'battlebot' ? bot : current?.id === 'train' ? train : null;
+  const asm = current?.id === 'eagle' ? eagle : current?.id === 'battlebot' ? bot : current?.id === 'train' ? train : current?.id === 'train-build' ? trainSteps : null;
   if (!asm) { tipEl.style.opacity = 0; return; }
   const r = view.renderer.domElement.getBoundingClientRect();
   const v = new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
@@ -395,7 +479,7 @@ view.renderer.domElement.addEventListener('pointermove', (e) => {
   const hit = rc.intersectObject(asm.root, true).find((h) => h.object.visible);
   let o = hit?.object; while (o && !o.userData?.id) o = o.parent;
   if (!o) { tipEl.style.opacity = 0; return; }
-  tipEl.innerHTML = `${o.userData.name}<small>${o.userData.id} · ${current?.id === "train" ? "조립" : "도면"} ${o.userData.sheet}</small>`;
+  tipEl.innerHTML = `${o.userData.name}<small>${o.userData.id} · ${current?.id?.startsWith("train") ? "조립" : "도면"} ${o.userData.sheet}</small>`;
   tipEl.style.opacity = 1;
   tipEl.style.transform = `translate(${e.clientX - r.left + 14}px, ${e.clientY - r.top + 10}px)`;
 });

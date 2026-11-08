@@ -11,10 +11,10 @@ export function makeEcvBoard({ name = 'ECV', holeEdge = 'back', header = { x: 14
   const { width: W, depth: D } = ECV;
   const zEdge = holeEdge === 'back' ? -D / 2 + 3 : D / 2 - 3;
   const holes = [];
-  for (let i = 0; i < 9; i++) holes.push({ x: -W / 2 + 3.2 + i * ((W - 6.4) / 8), z: zEdge, r: 1.55, ring: true, n: i + 1 });
+  for (let i = 0; i < 9; i++) holes.push({ x: -20 + i * 5, z: zEdge, r: 1.6, ring: true, n: i + 1 });   // 지름 3.2 · 간격 5 mm (공통 격자)
   for (let j = 1; j < 5; j++) {
-    const z = zEdge + (holeEdge === 'back' ? 1 : -1) * j * 5.3;
-    holes.push({ x: -W / 2 + 3.2, z, r: 1.55, ring: true, l: j }, { x: W / 2 - 3.2, z, r: 1.55, ring: true, l: j });
+    const z = zEdge + (holeEdge === 'back' ? 1 : -1) * j * 5;
+    holes.push({ x: -20, z, r: 1.6, ring: true, l: j }, { x: 20, z, r: 1.6, ring: true, l: j });
   }
   const group = new THREE.Group();
   group.add(makePcb({
@@ -26,7 +26,7 @@ export function makeEcvBoard({ name = 'ECV', holeEdge = 'back', header = { x: 14
         if (h.n) g.fillText(String(h.n), X(h.x), Y(h.z) + (holeEdge === 'back' ? 3.6 : -2.4));
         if (h.l) g.fillText('ABCDE'[h.l], X(h.x) + (h.x < 0 ? 3 : -3), Y(h.z) + 0.5);
       }
-      g.fillText('ABCDE'[0], X(-W / 2 + 6.2), Y(zEdge) + 0.5);
+      g.fillText('ABCDE'[0], X(-17), Y(zEdge) + 0.5);
       g.textAlign = 'left';
       g.font = `700 1.2px ${FONT}`;
       g.fillText(name, X(-W / 2 + 7), Y(holeEdge === 'back' ? D / 2 - 2 : -D / 2 + 3));

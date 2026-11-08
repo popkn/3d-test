@@ -10,8 +10,9 @@ export function build() {
   const T = 1.6;
   const { x: W, z: D } = spec.size;
   const holes = [];
-  for (let i = 0; i < 9; i++) holes.push({ x: -W / 2 + 3.2 + i * 5.2, z: -D / 2 + 3, r: 1.55, ring: true });
-  for (let j = 1; j < 5; j++) holes.push({ x: -W / 2 + 3.2, z: -D / 2 + 3 + j * 5.3, r: 1.55, ring: true });
+  // 구멍: 지름 3.2 (M3) · 간격 5 mm (모든 부품 공통 격자)
+  for (let i = 0; i < 9; i++) holes.push({ x: -20 + i * 5, z: -D / 2 + 3, r: 1.6, ring: true });
+  for (let j = 1; j < 5; j++) holes.push({ x: -20, z: -D / 2 + 3 + j * 5, r: 1.6, ring: true });
   const root = new THREE.Group();
   root.add(makePcb({
     width: W, depth: D, color: 'black', holes, corner: 2, outline: scallopOutline(W, D, holes),

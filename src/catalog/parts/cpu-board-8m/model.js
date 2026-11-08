@@ -15,7 +15,7 @@ export function build() {
   const root = new THREE.Group();
   root.add(makePcb({
     width: W, depth: D, color: 'black',
-    frame: { pitch: 5.5, inset: 3, r: 1.7, numbers: true, letters: true, scallop: 1.3 },
+    frame: { pitch: 5, inset: 3, r: 1.6, numbers: true, letters: true, scallop: 1.3 },
     silk: (g, w, d, X, Y) => {
       g.font = `700 1.3px ${FONT}`;
       IN_X.forEach((x, i) => g.fillText(`IN${i + 1}`, X(x) - 1.6, Y(21.6)));

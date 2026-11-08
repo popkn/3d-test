@@ -88,14 +88,21 @@ import lFrame2x1 from './parts/l-frame-2x1/spec.js';
 import lFrame2x2 from './parts/l-frame-2x2/spec.js';
 import lFrame2x6 from './parts/l-frame-2x6/spec.js';
 import lFrame1202x2 from './parts/l-frame-120-2x2/spec.js';
+import wheel50Set from './parts/wheel-50-set/spec.js';
+import wheel80BuggySet from './parts/wheel-80-buggy-set/spec.js';
+import axleWheel50Set from './parts/axle-wheel-50-set/spec.js';
+import caterpillarTrack from './parts/caterpillar-track/spec.js';
+import motorDriveSet from './parts/motor-drive-set/spec.js';
 
-// 7호 키트 부품목록(CHECKLIST.md)에 있는 부품만 넣는다
+// 7호 키트 부품목록(CHECKLIST.md)에 있는 부품만 넣는다.
+// 세트 부품: 늘 함께 쓰는 부품은 처음부터 한 부품으로 만든다 (spec.set = 구성). 세트 안에만 쓰이는 부품
+// (타이어 · 인너 · 캐터필러 마디 · 러버 · 연결 보드 단품)은 목록에서 빼고 폴더만 남겨 세트 모델이 가져다 쓴다.
 export const catalog = [
-  cpuBoard8m, motorDriveA3, motorDriveLinkS, buzzerBoardS, ledBoardRedS, ledBoardGreenS, ledBoardOrangeS, rgbLedBright, irRemoteTx, irRemoteRx, melodyBoard, btWirelessBoard2, btModule,
+  cpuBoard8m, motorDriveA3, motorDriveSet, buzzerBoardS, ledBoardRedS, ledBoardGreenS, ledBoardOrangeS, rgbLedBright, irRemoteTx, irRemoteRx, melodyBoard, btWirelessBoard2, btModule,
   sensorTouch, sensorIrTr, sensorSound, sensorColor,
   dcMotor130Rs, dcMotor130Dual, dcMotor400Rs, servoDigital,
-  wheelSet130, wheelAxle, inner80Buggy, inner130Giant, shaft75, axleGuide, tire50, tire80Buggy, wheel50V2, wheelBuggy80, wheelGuide30Nylon, wheelGuide40Yellow, wheelGuide30Servo,
-  caterpillarLink, caterpillarSprocket, caterpillarWheelGuide, caterpillarRubber,
+  wheel50Set, wheel80BuggySet, axleWheel50Set, wheelSet130, wheelAxle, shaft75, axleGuide, wheel50V2, wheelBuggy80, wheelGuide30Nylon, wheelGuide40Yellow, wheelGuide30Servo,
+  caterpillarTrack, caterpillarSprocket, caterpillarWheelGuide,
   batteryCase4aa,
   frameBigMain, frameMainPcb, frameMainPlastic, frameHalfPcb, lFrame6x6, motorFrame3x3, pcFrame45x60,
   frameS3Pcb, frameS4Pcb, frameS5Pcb, frameS7Pcb, frameS8Pcb, frameS3Plastic, frameS4Plastic, frameS5Plastic, frameMPcb,
@@ -114,3 +121,6 @@ export async function loadPart(id) {
   ]);
   return { build: model.build, createFunction: fn.create };
 }
+
+// 세트에 들어가 목록에서 뺀 부품 (폴더는 남아 세트 · 예전 조립에서 쓴다)
+export const setOnly = ['tire-50', 'tire-80-buggy', 'inner-80-buggy', 'inner-130-giant', 'caterpillar-link', 'caterpillar-rubber', 'motor-drive-link-s'];

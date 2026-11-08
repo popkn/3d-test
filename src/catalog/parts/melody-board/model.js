@@ -11,7 +11,7 @@ export function build() {
   const root = new THREE.Group();
   root.add(makePcb({
     width: W, depth: D, color: 'black',
-    frame: { pitch: 5.5, inset: 3, r: 1.6, scallop: 1.3 },
+    frame: { pitch: 5, inset: 3, r: 1.6, scallop: 1.3 },
     silk: (g, w, d, X, Y) => {
       g.font = `700 1.4px ${FONT}`;
       g.fillText('LEFT', X(1), Y(20)); g.fillText('RIGHT', X(15.5), Y(20)); g.fillText('INPUT', X(-26), Y(18));

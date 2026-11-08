@@ -10,16 +10,17 @@ export function build() {
   const T = 1.6;
   const { x: W, z: D } = spec.size;
   const holes = [];
-  for (let i = 0; i < 9; i++) holes.push({ x: -22 + i * 5.5, z: -22, r: 1.7, ring: true });
-  for (let j = 1; j < 9; j++) for (const x of [-22, 22]) holes.push({ x, z: -22 + j * 5.5, r: 1.7, ring: true });
+  // 구멍: 지름 3.2 (M3) · 간격 5 mm (공통 격자)
+  for (let i = 0; i < 9; i++) holes.push({ x: -20 + i * 5, z: -22, r: 1.6, ring: true });
+  for (let j = 1; j < 9; j++) for (const x of [-20, 20]) holes.push({ x, z: -22 + j * 5, r: 1.6, ring: true });
   const root = new THREE.Group();
   root.add(makePcb({
     width: W, depth: D, color: 'black', holes,
     silk: (g, w, d, X, Y) => {
       g.font = `700 1.5px ${FONT}`;
       g.textAlign = 'center';
-      'ABCDEFGHI'.split('').forEach((ch, i) => g.fillText(ch, X(-22 + i * 5.5), Y(-24.4)));
-      for (let j = 0; j < 9; j++) { g.fillText(String(j + 1), X(-19.2), Y(-22 + j * 5.5) + 0.5); g.fillText(String(j + 1), X(19.2), Y(-22 + j * 5.5) + 0.5); }
+      'ABCDEFGHI'.split('').forEach((ch, i) => g.fillText(ch, X(-20 + i * 5), Y(-24.4)));
+      for (let j = 0; j < 9; j++) { g.fillText(String(j + 1), X(-17.2), Y(-22 + j * 5) + 0.5); g.fillText(String(j + 1), X(17.2), Y(-22 + j * 5) + 0.5); }
       g.textAlign = 'left';
     },
   }));

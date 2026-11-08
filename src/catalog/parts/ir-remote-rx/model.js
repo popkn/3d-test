@@ -11,7 +11,7 @@ export function build() {
   const root = new THREE.Group();
   root.add(makePcb({
     width: W, depth: D, color: 'black',
-    frame: { pitch: 5.5, inset: 3, r: 1.6, numbers: true, letters: true, scallop: 1.3 },
+    frame: { pitch: 5, inset: 3, r: 1.6, numbers: true, letters: true, scallop: 1.3 },
     silk: (g, w, d, X, Y) => {
       g.font = `italic 800 3px ${FONT}`;
       g.fillText('ROBOROBO', X(-24), Y(-11));

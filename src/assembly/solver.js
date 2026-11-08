@@ -8,7 +8,35 @@ export const TOL = 0.2;                    // 구멍 중심 허용 오차 (mm)
 const PLATE_T = new Set(['M3', 'TAP', 'M3X', 'HEXNUT']);   // 양면을 쓰는 판 구멍
 
 export class Assembly {
-  constructor() { this.parts = []; this.byId = {}; this.fastens = []; this.errors = []; this.warnings = []; this.joints = []; }
+  constructor() { this.parts = []; this.byId = {}; this.fastens = []; this.errors = []; this.warnings = []; this.joints = []; this.steps = 0; this.groups = []; this.stack = []; }
+
+  // ── 조립 단계 · 모듈 (단계별 조립 모션용)
+  // 부품마다 단계 번호(step)가 붙는다. begin() ~ end() 사이는 한 모듈: 옆 작업대에서 따로 조립한 뒤 end() 단계에 통째로 끼운다.
+  // opt.with = true 인 부품은 앞 부품과 같은 단계 (좌우 대칭 등).
+  begin(name, opt = {}) {
+    const g = { id: this.groups.length, name, parent: this.stack[this.stack.length - 1] ?? null, bench: opt.bench || null, startStep: this.steps + 1, parts: [] };
+    this.groups.push(g); this.stack.push(g);
+    return g;
+  }
+  end(opt = {}) {
+    const g = this.stack.pop();
+    g.joinStep = opt.with ? this.steps : ++this.steps;
+    return g;
+  }
+  _stamp(part, opt) {
+    part.step = opt.with ? Math.max(this.steps, 1) : ++this.steps;
+    part.groups = [...this.stack];
+    for (const g of this.stack) g.parts.push(part);
+  }
+  // 체결 부품(볼트 · 너트)이 나타나는 단계: 두 부품이 같은 작업대에 있을 때 (모듈 밖과 잇는 볼트는 모듈을 끼우는 단계)
+  finalize() {
+    for (const f of this.fastens) {
+      const inner = f.part.groups.filter((g) => !(f.other.groups || []).includes(g));
+      f.step = inner.length ? inner[0].joinStep : f.part.step;
+      f.group = inner[0] ?? null;
+    }
+    return this;
+  }
 
   // ── 연결점 (부품 표준 좌표). face: 'top'(정의된 면) | 'bottom'(반대 면, 두께만큼 안쪽)
   static local(part, conn, face = 'top') {
@@ -51,6 +79,8 @@ export class Assembly {
     const q = new THREE.Quaternion().setFromEuler(new THREE.Euler(...(opt.rot || [0, 0, 0]).map((d) => d * Math.PI / 180)));
     part.m.compose(new THREE.Vector3(...(opt.pos || [0, 0, 0])), q, new THREE.Vector3(1, 1, 1));
     this.parts.push(part); this.byId[id] = part;
+    this._stamp(part, opt);
+    part.approach = new THREE.Vector3(0, 60, 0);
     return part;
   }
 
@@ -88,6 +118,10 @@ export class Assembly {
     const t = p0.pc.p.clone().sub(p0.cc.p.clone().applyQuaternion(q)).addScaledVector(axis, opt.offset || 0);
     part.m.compose(t, q, new THREE.Vector3(1, 1, 1));
     this.parts.push(part); this.byId[id] = part;
+    this._stamp(part, opt);
+    // 다가오는 방향: 첫 짝의 축 (끼움은 축을 따라 길게, 판 맞댐은 면에서 떨어져)
+    part.approach = opt.approach ? new THREE.Vector3(...opt.approach) : p0.pc.a.clone().multiplyScalar(part.kind === 'insert' ? 60 : 35);
+    part.cfg = opt.cfg;
     // 3) 검사: 모든 짝의 중심 거리 · 축 방향
     for (const pr of pairs) {
       const w = pr.cc.p.clone().applyMatrix4(part.m);
@@ -129,11 +163,12 @@ export class Assembly {
 
   // 시도: fn 안에서 붙인 부품이 규칙 오류를 내면 모두 되돌리고 null (구멍 짝의 좌우 순서를 모를 때 두 가지를 시험)
   attempt(fn) {
-    const n = { p: this.parts.length, f: this.fastens.length, e: this.errors.length, w: this.warnings.length, j: this.joints.length };
+    const n = { p: this.parts.length, f: this.fastens.length, e: this.errors.length, w: this.warnings.length, j: this.joints.length, s: this.steps };
     let r = null;
     try { r = fn(); } catch (err) { this.errors.push(String(err.message || err)); if (globalThis.DEBUG_ASM) console.log('시도 실패:', err.message, this.errors.slice(n.e)); }
     if (this.errors.length === n.e) return r;
-    for (const part of this.parts.splice(n.p)) { delete this.byId[part.id]; if (part.parent) part.parent.children = part.parent.children.filter((c) => c !== part); }
+    for (const part of this.parts.splice(n.p)) { delete this.byId[part.id]; if (part.parent) part.parent.children = part.parent.children.filter((c) => c !== part); for (const g of part.groups || []) g.parts = g.parts.filter((x) => x !== part); }
+    this.steps = n.s;
     this.fastens.length = n.f; this.errors.length = n.e; this.warnings.length = n.w; this.joints.length = n.j;
     return null;
   }

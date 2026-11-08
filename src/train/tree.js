@@ -54,25 +54,28 @@ function overlay(A, id, pid, wall, pairs, name, sub, ok = () => true, faces = ['
   return A.either(mk(1, 1), mk(-1, 1), mk(1, -1), mk(-1, -1));
 }
 
-// ── 공통 차대 (3칸 같음): 바닥판 · 구동 모터 2 · 바퀴 4 · 배터리 · 위층 판 · CPU · 블루투스
+// ── 공통 차대 (3칸 같음). 모듈: 구동 모듈 2 · 앞바퀴 모듈 2 · 위층 판 모듈 (CPU · 블루투스)
 function chassis(A, k, label, elec) {
   const P = (n) => `${k}_${n}`, S = '01';
   const plate = A.base(P('plate'), 'frame-big-main', { name: `${label} 바닥판 (빅 메인 PCB)`, rot: [0, 90, 0], pos: [0, PLATE_Y, 0], sub: S });
   for (const s of [-1, 1]) {
     const side = s > 0 ? '오른' : '왼';
+    A.begin(`${side} 구동 모듈 (L자 6×6 + 모터 + 버기 바퀴)`);
     const lb = standL(A, P(`motorL${s}`), 'l-frame-6x6', plate, 'x', 59 * s, 60, s, TOP, `${side} 모터 받침 (L자 6×6)`, S);
     const m = A.attach(P(`motor${s}`), 'dc-motor-130-rs', { parent: lb, name: `${side} 구동 모터 (DC 130)`, sub: S,
       mate: [['왼 귀 앞', '세운 다리 2-3'], ['왼 귀 뒤', '세운 다리 2-1']] });
-    const w = A.attach(P(`wheelR${s}`), 'wheel-buggy-80', { parent: m, kind: 'insert', offset: 12, name: `${side} 뒤 구동 바퀴 (휠 Ø80 버기)`, sub: S,
+    A.attach(P(`wheelR${s}`), 'wheel-80-buggy-set', { parent: m, kind: 'insert', offset: 12, name: `${side} 뒤 구동 바퀴 (Ø80 버기 세트)`, sub: S,
       mate: [['DCUT_HUB', '출력 축']], joint: { type: 'motor', side: s, r: 40 } });
-    A.attach(P(`tireR${s}`), 'tire-80-buggy', { parent: w, kind: 'insert', name: `${side} 뒤 타이어 Ø80 버기`, sub: S, mate: [['TIRE', 'RIM']] });
+    A.end();
+  }
+  for (const s of [-1, 1]) {
+    const side = s > 0 ? '오른' : '왼';
+    A.begin(`${side} 앞바퀴 모듈 (L자 6×6 2개 + 바퀴 축 세트)`);
     const lo = standL(A, P(`axleLo${s}`), 'l-frame-6x6', plate, 'x', 59 * s, -60, s, TOP, `${side} 앞 축 받침 바깥 (L자 6×6)`, S);
     const li = standL(A, P(`axleLi${s}`), 'l-frame-6x6', plate, 'x', 49 * s, -60, s, TOP, `${side} 앞 축 받침 안쪽 (L자 6×6)`, S);
-    const sh = A.attach(P(`axle${s}`), 'shaft-75', { parent: lo, kind: 'insert', offset: 57, name: `${side} 앞 축 (75 mm)`, sub: S,
-      mate: [[{ t: 'SHAFT3', near: [-37.5, 1.5, 0] }, '세운 다리 2-2'], [{ t: 'SHAFT3', near: [-37.5, 1.5, 0] }, { part: li, sel: '세운 다리 2-2' }]] });
-    const fw = A.attach(P(`wheelF${s}`), 'wheel-50-v2', { parent: sh, kind: 'insert', offset: -9, name: `${side} 앞 바퀴 (휠 Ø50 · 축에서 헛돎)`, sub: S,
-      mate: [['DCUT_HUB', { t: 'SHAFT3', near: [37.5, 1.5, 0] }]], joint: { type: 'free', side: s, r: 25 } });
-    A.attach(P(`tireF${s}`), 'tire-50', { parent: fw, kind: 'insert', name: `${side} 앞 타이어 Ø50`, sub: S, mate: [['TIRE', 'RIM']] });
+    A.attach(P(`axle${s}`), 'axle-wheel-50-set', { parent: lo, kind: 'insert', offset: 54, cfg: { wheels: 1 }, approach: [80 * s, 0, 0], name: `${side} 앞바퀴 (바퀴 축 세트 · 한쪽 바퀴, 헛돎)`, sub: S,
+      mate: [[{ t: 'SHAFT3', near: [-37.5, 25, 0] }, '세운 다리 2-2'], [{ t: 'SHAFT3', near: [-37.5, 25, 0] }, { part: li, sel: '세운 다리 2-2' }]], joint: { type: 'free', side: s, r: 25 } });
+    A.end();
   }
   A.attach(P('battery'), 'battery-case-4aa', { parent: plate, name: `${label} 배터리 (AA 4개)`, sub: S,
     mate: [[{ t: 'M3', near: [35, 1, 20] }, A.near(plate, [35, TOP, 15]), 'bottom', 'top'], [{ t: 'M3', near: [-35, 1, -20] }, A.near(plate, [-35, TOP, -25]), 'bottom', 'top']] });
@@ -81,114 +84,145 @@ function chassis(A, k, label, elec) {
     const a = post(A, P(`post${x}${z}a`), plate, [x, TOP, z], 40, '위층 기둥 아래 (서포트 40)', S);
     tops.push(postOn(A, P(`post${x}${z}b`), a, 35, '위층 기둥 위 (서포트 35)', S));
   }
+  // 위층 판 모듈: 판 + CPU (서포트 10 두 개, 간격 50) + 블루투스 (서포트 30 두 개, CPU 위 2층)
+  A.begin('위층 판 모듈 (CPU · 블루투스)');
   const deck = plateOn(A, P('deck'), 'frame-big-main', tops[0], tops.map((t) => ({ part: t, sel: 'FEM' })), plate.m, [0, 0], `${label} 위층 판 (빅 메인 PCB)`, S, ['bottom', 'top']);
   const DT = topY(deck);
-  // CPU: 서포트 10 두 개 (X 0 · 55, 간격 55 = CPU 구멍 10칸). CPU 가운데가 판 안에 들도록 구멍 줄을 고른다
-  const c1 = post(A, P('cpuPost1'), deck, [0, DT, elec.cz], 10, 'CPU 받침 (서포트 10)', S);
-  const c2 = post(A, P('cpuPost2'), deck, [55, DT, elec.cz], 10, 'CPU 받침 (서포트 10)', S);
-  const cpuOk = (p) => { const c = at(p); return Math.abs(c.x - 16.5) < 1 && Math.abs(c.z - elec.cpu) < 1; };
+  const c1 = post(A, P('cpuPost1'), deck, [25, DT, elec.cz], 10, 'CPU 받침 (서포트 10)', S);
+  const c2 = post(A, P('cpuPost2'), deck, [25, DT, elec.cz + 50], 10, 'CPU 받침 (서포트 10)', S);
   const cpuTry = (hz, a, b) => () => {
     const p = A.attach(P('cpu'), 'cpu-board-8m', { parent: c1, name: `${label} CPU 보드 8M`, sub: S,
       mate: [[{ t: 'M3', near: [a, 1.6, hz] }, 'FEM', 'bottom'], [{ t: 'M3', near: [b, 1.6, hz] }, { part: c2, sel: 'FEM' }, 'bottom']] });
-    if (!cpuOk(p)) throw new Error('CPU 위치 검사 ' + at(p).toArray().map((v) => v.toFixed(1)));
+    const c = at(p); if (Math.abs(c.x + 2.5) > 1 || Math.abs(c.z - elec.cz - 25) > 3) throw new Error('CPU 위치 검사');
     return p;
   };
-  A.either(...[27.5, -27.5].flatMap((hz) => [[16.5, -38.5], [-16.5, 38.5]].map(([a, b]) => cpuTry(hz, a, b))));
-  // 블루투스: 구멍 간격 5.2 (격자와 다름) → 받침 하나에 1곳 체결 (규칙 14장 예외, 경고)
-  const bp = post(A, P('btPost'), deck, [-45, DT, elec.bz], 10, '블루투스 받침 (서포트 10)', S);
-  const btTry = (ang) => () => {
-    const p = A.attach(P('bt'), 'bt-module', { parent: bp, name: `${label} 블루투스 모듈`, sub: S, allowOne: true, angle: ang, mate: [[{ t: 'M3', near: [0, 2, -11] }, 'FEM', 'bottom']] });
-    const c = at(p); if (Math.abs(c.x + 45) > 1 || Math.abs(c.z - elec.bz) < 5) throw new Error('BT 방향');
+  A.either(...[27.5, -27.5].flatMap((hz) => [[-27.5, 22.5], [22.5, -27.5], [27.5, -22.5], [-22.5, 27.5]].map(([a, b]) => cpuTry(hz, a, b))));
+  const b1 = post(A, P('btPost1'), deck, [35, DT, elec.bz], 30, '블루투스 받침 (서포트 30)', S);
+  const b2 = post(A, P('btPost2'), deck, [45, DT, elec.bz], 30, '블루투스 받침 (서포트 30)', S);
+  const btTry = (a, b) => () => {
+    const p = A.attach(P('bt'), 'bt-module', { parent: b1, name: `${label} 블루투스 모듈`, sub: S,
+      mate: [[{ t: 'M3', near: [a, 2, -11] }, 'FEM', 'bottom'], [{ t: 'M3', near: [b, 2, -11] }, { part: b2, sel: 'FEM' }, 'bottom']] });
+    const c = at(p); if (Math.abs(c.x - 25) > 1 || Math.abs(c.z - elec.bz) > 12) throw new Error('BT 위치 검사');
     return p;
   };
-  A.either(btTry(0), btTry(180), btTry(90), btTry(270));
+  A.either(btTry(10, 20), btTry(-10, -20), btTry(20, 10), btTry(-20, -10));
+  A.end();
   return { plate, deck, DT };
 }
 
-// ── 앞칸: 기관차 (보일러 + 2단 운전실 + 굴뚝 + 배포장치)
+// 벽 모듈: 세운 L자들 + 벽 판 (+ 덧대기). L자의 바닥 볼트는 모듈을 판에 끼울 때 조인다
+function wallModule(A, name, fn) { A.begin(name); const r = fn(); A.end(); return r; }
+
+// ── 앞칸: 기관차 (보일러 모듈 · 운전실 모듈 · 배포장치)
 function locomotive(A, k, { plate, deck, DT }) {
   const P = (n) => `${k}_${n}`;
   const B = '02a', C = '02b', W = '02c';
-  // 보일러: 양옆 m PCB (L자 2×2), 앞 m6 + 노란 휠가이드 문, 지붕 half PCB, 굴뚝
+  A.begin('보일러 모듈');
   const bw = [];
   for (const s of [-1, 1]) {
-    const Ls = [-75, -5].map((z, i) => standL(A, P(`bL${s}${i}`), 'l-frame-2x2', deck, 'x', 29 * s, z, s, DT, '보일러 벽 받침 (L자 2×2)', B));
-    const wall = wallOn(A, P(`bW${s}`), 'frame-m-pcb', Ls, [-35, 35], [15, 5], ['세운 다리 1', '세운 다리 2'], `보일러 ${s > 0 ? '오른' : '왼'} 벽 (m PCB)`, B);
-    bw.push(wall);
-    overlay(A, P(`bG${s}`), 'battle-g', wall, [[[-40, 5], [-35, -15]], [[30, 5], [35, -15]]], `보일러 난간 (배틀 G)`, B, (p) => Math.abs(at(p).z + 40) < 12);
+    bw.push(wallModule(A, `보일러 ${s > 0 ? '오른' : '왼'} 벽 모듈`, () => {
+      const Ls = [-75, -5].map((z, i) => standL(A, P(`bL${s}${i}`), 'l-frame-2x2', deck, 'x', 29 * s, z, s, DT, '보일러 벽 받침 (L자 2×2)', B));
+      const wall = wallOn(A, P(`bW${s}`), 'frame-m-pcb', Ls, [-35, 35], [15, 5], ['세운 다리 1', '세운 다리 2'], `보일러 ${s > 0 ? '오른' : '왼'} 벽 (m PCB)`, B);
+      overlay(A, P(`bG${s}`), 'battle-g', wall, [[[-40, 5], [-35, -15]], [[30, 5], [35, -15]]], `보일러 난간 (배틀 G)`, B, (p) => Math.abs(at(p).z + 40) < 12);
+      return wall;
+    }));
   }
-  const fL = [-5, 5].map((x, i) => standL(A, P(`bfL${i}`), 'l-frame-2x2', deck, 'z', -79, x, -1, DT, '보일러 앞 받침 (L자 2×2)', B));
-  const front = wallOn(A, P('bF'), 'frame-m6-pcb', fL, [-5, 5], [5, -5], ['세운 다리 1', '세운 다리 2'], '보일러 앞판 (m6 PCB)', B);
-  overlay(A, P('door'), 'wheel-guide-40-yellow', front, [[[0, 0, 9.9], [0, 5]], [[0, 10, 9.9], [0, -5]]], '연기실 문 (휠가이드 40 노랑)', B, (p) => at(p).z < -81, ['top', 'bottom']);
-  const rL = [];
-  bw.forEach((wall, i) => [-35, 35].forEach((c, j) => rL.push(hangL(A, P(`brL${i}${j}`), wall, c, [-15, -5], '보일러 지붕 받침 (L자 2×2)', B))));
-  const broof = plateOn(A, P('bRoof'), 'frame-half-pcb', bw[0], rL.map((L) => ({ part: L, sel: '바닥 다리 1-1' })), new THREE.Matrix4(), [0, -40], '보일러 지붕 (half PCB)', B);
-  const RT = topY(broof);
-  const ch = [-65, -45].map((z, i) => post(A, P(`chimney${i}`), broof, [0, RT, z], 20, '굴뚝 기둥 (서포트 20)', B));
-  A.attach(P('chimneyTop'), 'wheel-guide-30-nylon', { parent: ch[0], name: '굴뚝 갓 (휠가이드 30 나일론)', sub: B,
-    mate: [[H(0, -10), 'FEM', 'bottom'], [H(0, 10), { part: ch[1], sel: 'FEM' }, 'bottom']] });
-  // 증기 돔: 서포트를 암나사 쪽으로 세워 아래에서 볼트, 위 수나사에 캡너트
-  const dome = A.attach(P('dome'), 'support-spacer', { parent: broof, length: 10, name: '증기 돔 (서포트 10)', sub: B, allowOne: true, mate: [['FEM', A.near(broof, [0, RT, -15]), 'top', 'top']] });
-  A.attach(P('domeCap'), 'cap-nut-m3', { parent: dome, kind: 'stack', name: '증기 돔 덮개 (캡너트)', sub: B, mate: [['FEM', 'MALE']] });
-  // 운전실: 옆벽 m PCB 2단 (L자 2×6 기둥), 앞 · 뒤 메인 PCB, 지붕 메인 PCB, 창 PC 프레임
+  wallModule(A, '보일러 앞판 모듈 (연기실 문)', () => {
+    const fL = [-5, 5].map((x, i) => standL(A, P(`bfL${i}`), 'l-frame-2x2', deck, 'z', -79, x, -1, DT, '보일러 앞 받침 (L자 2×2)', B));
+    const front = wallOn(A, P('bF'), 'frame-m6-pcb', fL, [-5, 5], [5, -5], ['세운 다리 1', '세운 다리 2'], '보일러 앞판 (m6 PCB)', B);
+    overlay(A, P('door'), 'wheel-guide-40-yellow', front, [[[-10, 0, 8], [-5, 0]], [[10, 0, 8], [15, 0]]], '연기실 문 (휠가이드 40 노랑)', B, (p) => at(p).z < -81, ['top', 'bottom']);
+  });
+  wallModule(A, '보일러 지붕 모듈 (굴뚝 · 증기 돔)', () => {
+    const rL = [];
+    bw.forEach((wall, i) => [-35, 35].forEach((c, j) => rL.push(hangL(A, P(`brL${i}${j}`), wall, c, [-15, -5], '보일러 지붕 받침 (L자 2×2)', B))));
+    const broof = plateOn(A, P('bRoof'), 'frame-half-pcb', rL[0], rL.map((L) => ({ part: L, sel: '바닥 다리 1-1' })), new THREE.Matrix4(), [0, -40], '보일러 지붕 (half PCB)', B);
+    const RT = topY(broof);
+    const ch = [-65, -45].map((z, i) => post(A, P(`chimney${i}`), broof, [0, RT, z], 20, '굴뚝 기둥 (서포트 20)', B));
+    A.attach(P('chimneyTop'), 'wheel-guide-30-nylon', { parent: ch[0], name: '굴뚝 갓 (휠가이드 30 나일론)', sub: B,
+      mate: [[{ t: 'M3', near: [0, 2.7, -10] }, 'FEM', 'bottom'], [{ t: 'M3', near: [0, 2.7, 10] }, { part: ch[1], sel: 'FEM' }, 'bottom']] });
+    const dome = A.attach(P('dome'), 'support-spacer', { parent: broof, length: 10, name: '증기 돔 (서포트 10)', sub: B, mate: [['FEM', A.near(broof, [0, RT, -15]), 'top', 'top']] });
+    A.attach(P('domeCap'), 'cap-nut-m3', { parent: dome, kind: 'stack', name: '증기 돔 덮개 (캡너트)', sub: B, mate: [['FEM', 'MALE']] });
+  });
+  A.end();
+  A.begin('운전실 모듈');
   const cw = [];
   for (const s of [-1, 1]) {
-    const Ls = [5, 75].map((z, i) => standL(A, P(`cL${s}${i}`), 'l-frame-2x6', deck, 'x', 59 * s, z, s, DT, '운전실 기둥 (L자 2×6)', C));
-    wallOn(A, P(`cW1${s}`), 'frame-m-pcb', Ls, [-35, 35], [15, 5], ['세운 다리 1', '세운 다리 2'], '운전실 옆벽 아래 (m PCB)', C);
-    const up = wallOn(A, P(`cW2${s}`), 'frame-m-pcb', Ls, [-35, 35], [15, 5], ['세운 다리 5', '세운 다리 6'], '운전실 옆벽 위 (m PCB)', C);
-    cw.push(up);
-    overlay(A, P(`cWin${s}`), 'pc-frame-45x60', up, [[[-5, -26], [-5, -15]], [[5, -26], [5, -15]]], '운전실 창 (PC 프레임)', C, (p) => at(p).y < DT + 60);
+    cw.push(wallModule(A, `운전실 ${s > 0 ? '오른' : '왼'} 벽 모듈 (2단 + 창)`, () => {
+      const Ls = [5, 75].map((z, i) => standL(A, P(`cL${s}${i}`), 'l-frame-2x6', deck, 'x', 59 * s, z, s, DT, '운전실 기둥 (L자 2×6)', C));
+      wallOn(A, P(`cW1${s}`), 'frame-m-pcb', Ls, [-35, 35], [15, 5], ['세운 다리 1', '세운 다리 2'], '운전실 옆벽 아래 (m PCB)', C);
+      const up = wallOn(A, P(`cW2${s}`), 'frame-m-pcb', Ls, [-35, 35], [15, 5], ['세운 다리 5', '세운 다리 6'], '운전실 옆벽 위 (m PCB)', C);
+      overlay(A, P(`cWin${s}`), 'pc-frame-45x60', up, [[[-5, -26], [-5, -15]], [[5, -26], [5, -15]]], '운전실 창 (PC 프레임)', C, (p) => at(p).y < DT + 60);
+      return up;
+    }));
   }
-  const cfL = [-25, 25].map((x, i) => standL(A, P(`cfL${i}`), 'l-frame-2x2', deck, 'z', 1, x, -1, DT, '운전실 앞벽 받침 (L자 2×2)', C));
-  const cf = wallOn(A, P('cF'), 'frame-main-pcb', cfL, [-25, 25], [35, 25], ['세운 다리 1', '세운 다리 2'], '운전실 앞벽 (메인 PCB)', C);
-  overlay(A, P('plateJ'), 'battle-j', cf, [[[-35, 0], [-35, -25]], [[25, 0], [25, -25]]], '기관차 이름판 (배틀 J)', C);
-  const cbL = [-25, 25].map((x, i) => standL(A, P(`cbL${i}`), 'l-frame-2x2', deck, 'z', 79, x, 1, DT, '운전실 뒷벽 받침 (L자 2×2)', C));
-  const cb = wallOn(A, P('cB'), 'frame-main-pcb', cbL, [-25, 25], [35, 25], ['세운 다리 1', '세운 다리 2'], '운전실 뒷벽 (메인 PCB)', C);
-  overlay(A, P('plateI'), 'battle-i', cb, [[[-25, 0], [-25, -25]], [[35, 0], [35, -25]]], '뒷벽 장식 (배틀 I)', C);
-  const crL = [];
-  cw.forEach((wall, i) => [-35, 35].forEach((c, j) => crL.push(hangL(A, P(`crL${i}${j}`), wall, c, [-15, -5], '운전실 지붕 받침 (L자 2×2)', C))));
-  plateOn(A, P('cRoof'), 'frame-main-pcb', cw[0], crL.map((L) => ({ part: L, sel: '바닥 다리 1-1' })), new THREE.Matrix4(), [0, 40], '운전실 지붕 (메인 PCB)', C);
-  // 배포장치 (바닥판 아래 앞, 배틀 U)
+  wallModule(A, '운전실 앞벽 모듈 (배틀 J 이름판)', () => {
+    const L = [-35, 35].map((x, i) => standL(A, P(`cfL${i}`), 'l-frame-2x2', deck, 'z', 1, x, -1, DT, '운전실 앞벽 받침 (L자 2×2)', C));
+    const w = wallOn(A, P('cF'), 'frame-main-pcb', L, [-35, 35], [35, 25], ['세운 다리 1', '세운 다리 2'], '운전실 앞벽 (메인 PCB)', C);
+    overlay(A, P('plateJ'), 'battle-j', w, [[[-35, 0], [-35, -25]], [[25, 0], [25, -25]]], '기관차 이름판 (배틀 J)', C);
+  });
+  wallModule(A, '운전실 뒷벽 모듈 (배틀 I)', () => {
+    const L = [-35, 35].map((x, i) => standL(A, P(`cbL${i}`), 'l-frame-2x2', deck, 'z', 79, x, 1, DT, '운전실 뒷벽 받침 (L자 2×2)', C));
+    const w = wallOn(A, P('cB'), 'frame-main-pcb', L, [-35, 35], [35, 25], ['세운 다리 1', '세운 다리 2'], '운전실 뒷벽 (메인 PCB)', C);
+    overlay(A, P('plateI'), 'battle-i', w, [[[-25, 0], [-25, -25]], [[35, 0], [35, -25]]], '뒷벽 장식 (배틀 I)', C);
+  });
+  wallModule(A, '운전실 지붕 모듈', () => {
+    const crL = [];
+    cw.forEach((wall, i) => [-35, 35].forEach((c, j) => crL.push(hangL(A, P(`crL${i}${j}`), wall, c, [-15, -5], '운전실 지붕 받침 (L자 2×2)', C))));
+    plateOn(A, P('cRoof'), 'frame-main-pcb', crL[0], crL.map((L) => ({ part: L, sel: '바닥 다리 1-1' })), new THREE.Matrix4(), [0, 40], '운전실 지붕 (메인 PCB)', C);
+  });
+  A.end();
   overlay(A, P('cow'), 'battle-u', plate, [[[-5, 12], [75, -5]], [[5, 12], [75, 5]]], '배포장치 (배틀 U)', W, (p) => at(p).z < -75, ['top', 'bottom']);
 }
 
-// ── 중간칸: 객차 (메인 PCB 옆벽 · 끝벽, 빅 메인 지붕, 창 4, 배틀 G 띠, 양끝 난간)
+// ── 중간칸: 객차 (옆벽 모듈 2 · 끝벽 모듈 2 · 난간 모듈 2 · 지붕 모듈)
 function passenger(A, k, { deck, DT }) {
   const P = (n) => `${k}_${n}`, S = '03';
   const sw = [];
   for (const s of [-1, 1]) {
-    const Ls = [-45, 45].map((z, i) => standL(A, P(`L${s}${i}`), 'l-frame-2x2', deck, 'x', 59 * s, z, s, DT, '옆벽 받침 (L자 2×2)', S));
-    const wall = wallOn(A, P(`W${s}`), 'frame-main-pcb', Ls, [-45, 45], [35, 25], ['세운 다리 1', '세운 다리 2'], `객차 ${s > 0 ? '오른' : '왼'} 옆벽 (메인 PCB)`, S);
-    sw.push(wall);
-    for (const c of [-30, 30]) overlay(A, P(`win${s}${c}`), 'pc-frame-45x60', wall, [[[-5, -26], [c - 5, -35]], [[5, -26], [c + 5, -35]]], '객차 창 (PC 프레임)', S, (p) => at(p).y < DT + 70);
-    overlay(A, P(`G${s}`), 'battle-g', wall, [[[-30, -5], [-25, 25]], [[-30, 5], [-25, 35]], [[30, 5], [35, 35]]], '객차 띠 (배틀 G)', S);
+    sw.push(wallModule(A, `객차 ${s > 0 ? '오른' : '왼'} 옆벽 모듈 (창 2 · 배틀 G)`, () => {
+      const Ls = [-45, 45].map((z, i) => standL(A, P(`L${s}${i}`), 'l-frame-2x2', deck, 'x', 59 * s, z, s, DT, '옆벽 받침 (L자 2×2)', S));
+      const wall = wallOn(A, P(`W${s}`), 'frame-main-pcb', Ls, [-45, 45], [35, 25], ['세운 다리 1', '세운 다리 2'], `객차 ${s > 0 ? '오른' : '왼'} 옆벽 (메인 PCB)`, S);
+      for (const c of [-30, 30]) overlay(A, P(`win${s}${c}`), 'pc-frame-45x60', wall, [[[-5, -26], [c - 5, -35]], [[5, -26], [c + 5, -35]]], '객차 창 (PC 프레임)', S, (p) => at(p).y < DT + 70);
+      overlay(A, P(`G${s}`), 'battle-g', wall, [[[-30, -5], [-25, 25]], [[-30, 5], [-25, 35]], [[30, 5], [35, 35]]], '객차 띠 (배틀 G)', S);
+      return wall;
+    }));
   }
   for (const e of [-1, 1]) {
-    const Ls = [-25, 25].map((x, i) => standL(A, P(`eL${e}${i}`), 'l-frame-2x2', deck, 'z', 59 * e, x, e, DT, '끝벽 받침 (L자 2×2)', S));
-    wallOn(A, P(`E${e}`), 'frame-main-pcb', Ls, [-25, 25], [35, 25], ['세운 다리 1', '세운 다리 2'], `객차 ${e > 0 ? '뒤' : '앞'} 끝벽 (메인 PCB)`, S);
-    const R = [-35, 35].map((x, i) => standL(A, P(`rP${e}${i}`), 'l-frame-2x6', deck, 'z', 79 * e, x, e, DT, '난간 기둥 (L자 2×6)', S));
-    for (const [n, leg] of [['위', '세운 다리 6'], ['가운데', '세운 다리 3']])
-      A.either(...[1, -1].map((sg) => () => A.attach(P(`rail${e}${n}`), 'frame-s8-pcb', { parent: R[0], name: `난간 ${n} (s8 PCB)`, sub: S,
-        mate: [[H(-35 * sg, 0), { part: R[0], sel: leg }, 'top', 'bottom'], [H(35 * sg, 0), { part: R[1], sel: leg }, 'top', 'bottom']] })));
+    wallModule(A, `객차 ${e > 0 ? '뒤' : '앞'} 끝벽 모듈`, () => {
+      const Ls = [-25, 25].map((x, i) => standL(A, P(`eL${e}${i}`), 'l-frame-2x2', deck, 'z', 59 * e, x, e, DT, '끝벽 받침 (L자 2×2)', S));
+      wallOn(A, P(`E${e}`), 'frame-main-pcb', Ls, [-25, 25], [35, 25], ['세운 다리 1', '세운 다리 2'], `객차 ${e > 0 ? '뒤' : '앞'} 끝벽 (메인 PCB)`, S);
+    });
+    wallModule(A, `객차 ${e > 0 ? '뒤' : '앞'} 난간 모듈`, () => {
+      const R = [-35, 35].map((x, i) => standL(A, P(`rP${e}${i}`), 'l-frame-2x6', deck, 'z', 79 * e, x, e, DT, '난간 기둥 (L자 2×6)', S));
+      for (const [n, leg] of [['위', '세운 다리 6'], ['가운데', '세운 다리 3']])
+        A.either(...[1, -1].map((sg) => () => A.attach(P(`rail${e}${n}`), 'frame-s8-pcb', { parent: R[0], name: `난간 ${n} (s8 PCB)`, sub: S,
+          mate: [[H(-35 * sg, 0), { part: R[0], sel: leg }, 'top', 'bottom'], [H(35 * sg, 0), { part: R[1], sel: leg }, 'top', 'bottom']] })));
+    });
   }
-  const rL = [];
-  sw.forEach((wall, i) => [-45, 45].forEach((c, j) => rL.push(hangL(A, P(`rL${i}${j}`), wall, c, [-35, -25], '지붕 받침 (L자 2×2)', S))));
-  plateOn(A, P('roof'), 'frame-big-main', sw[0], rL.map((L) => ({ part: L, sel: '바닥 다리 1-1' })), deck.m, [0, 0], '객차 지붕 (빅 메인 PCB)', S);
+  wallModule(A, '객차 지붕 모듈', () => {
+    const rL = [];
+    sw.forEach((wall, i) => [-45, 45].forEach((c, j) => rL.push(hangL(A, P(`rL${i}${j}`), wall, c, [-35, -25], '지붕 받침 (L자 2×2)', S))));
+    plateOn(A, P('roof'), 'frame-big-main', rL[0], rL.map((L) => ({ part: L, sel: '바닥 다리 1-1' })), deck.m, [0, 0], '객차 지붕 (빅 메인 PCB)', S);
+  });
 }
 
-// ── 마지막칸: 화물칸 (m16 PCB 2단 옆벽 · 5×13 끝벽 · 브레이크 휠 · 배틀 J)
+// ── 마지막칸: 화물칸 (옆벽 모듈 2 · 끝벽 모듈 2)
 function freight(A, k, { deck, DT }) {
   const P = (n) => `${k}_${n}`, S = '04';
   for (const s of [-1, 1]) {
-    const Ls = [-55, 0, 55].map((z, i) => standL(A, P(`L${s}${i}`), 'l-frame-2x6', deck, 'x', 59 * s, z, s, DT, '옆벽 기둥 (L자 2×6)', S));
-    wallOn(A, P(`W1${s}`), 'frame-m16-pcb', Ls, [-55, 0, 55], [5, -5], ['세운 다리 1', '세운 다리 2'], '화물칸 옆벽 아래 (m16 PCB)', S);
-    wallOn(A, P(`W2${s}`), 'frame-m16-pcb', Ls, [-55, 0, 55], [5, -5], ['세운 다리 3', '세운 다리 4'], '화물칸 옆벽 위 (m16 PCB)', S);
+    wallModule(A, `화물칸 ${s > 0 ? '오른' : '왼'} 옆벽 모듈 (2단)`, () => {
+      const Ls = [-55, 0, 55].map((z, i) => standL(A, P(`L${s}${i}`), 'l-frame-2x6', deck, 'x', 59 * s, z, s, DT, '옆벽 기둥 (L자 2×6)', S));
+      wallOn(A, P(`W1${s}`), 'frame-m16-pcb', Ls, [-55, 0, 55], [5, -5], ['세운 다리 1', '세운 다리 2'], '화물칸 옆벽 아래 (m16 PCB)', S);
+      wallOn(A, P(`W2${s}`), 'frame-m16-pcb', Ls, [-55, 0, 55], [5, -5], ['세운 다리 3', '세운 다리 4'], '화물칸 옆벽 위 (m16 PCB)', S);
+    });
   }
   for (const e of [-1, 1]) {
-    const Ls = [-25, 25].map((x, i) => standL(A, P(`eL${e}${i}`), 'l-frame-2x2', deck, 'z', 79 * e, x, e, DT, '끝벽 받침 (L자 2×2)', S));
-    const w = wallOn(A, P(`E${e}`), 'frame-5x13-pcb', Ls, [-25, 25], [15, 5], ['세운 다리 1', '세운 다리 2'], `화물칸 ${e > 0 ? '뒤' : '앞'} 끝벽 (5×13 PCB)`, S);
-    if (e > 0) overlay(A, P('brake'), 'wheel-guide-40-yellow', w, [[[0, -10, 8], [0, -5]], [[0, 10, 8], [0, 15]]], '브레이크 휠 (휠가이드 40 노랑)', S, (p) => at(p).z > 81, ['top', 'bottom']);
-    else overlay(A, P('plateJ'), 'battle-j', w, [[[-35, 0], [-35, -5]], [[25, 0], [25, -5]]], '화물칸 이름판 (배틀 J)', S, (p) => at(p).z < -81);
+    wallModule(A, `화물칸 ${e > 0 ? '뒤 끝벽 모듈 (브레이크 휠)' : '앞 끝벽 모듈 (배틀 J)'}`, () => {
+      const Ls = [-25, 25].map((x, i) => standL(A, P(`eL${e}${i}`), 'l-frame-2x2', deck, 'z', 79 * e, x, e, DT, '끝벽 받침 (L자 2×2)', S));
+      const w = wallOn(A, P(`E${e}`), 'frame-5x13-pcb', Ls, [-25, 25], [15, 5], ['세운 다리 1', '세운 다리 2'], `화물칸 ${e > 0 ? '뒤' : '앞'} 끝벽 (5×13 PCB)`, S);
+      if (e > 0) overlay(A, P('brake'), 'wheel-guide-40-yellow', w, [[[-10, 0, 8], [-5, 0]], [[10, 0, 8], [15, 0]]], '브레이크 휠 (휠가이드 40 노랑)', S, (p) => at(p).z > 81, ['top', 'bottom']);
+      else overlay(A, P('plateJ'), 'battle-j', w, [[[-35, 0], [-35, -5]], [[25, 0], [25, -5]]], '화물칸 이름판 (배틀 J)', S, (p) => at(p).z < -81);
+    });
   }
 }
 
@@ -203,7 +237,7 @@ function coupler(A, i) {
 }
 
 export const SUBS = {
-  '01': '공통 차대 (칸마다): 바닥판 · 세운 구동 모터 2 · 바퀴 4 · 배터리 · 위층 판 · CPU · 블루투스',
+  '01': '공통 차대 (칸마다): 바닥판 · 구동 모듈 2 (모터 + Ø80 버기 바퀴 세트) · 앞바퀴 모듈 2 (바퀴 축 세트) · 배터리 · 위층 판 모듈 (CPU · 블루투스 2층)',
   '02a': '기관차 보일러: m PCB 옆벽 · 노란 연기실 문 · 굴뚝 · 증기 돔 · 배틀 G 난간',
   '02b': '기관차 운전실: 2단 옆벽 (L자 2×6 기둥) · 창 · 앞뒤 벽 · 배틀 J/I 장식 · 지붕',
   '02c': '기관차 배포장치: 바닥판 아래 배틀 U',
@@ -215,13 +249,14 @@ export const SUBS = {
 export function buildTrainTree() {
   const A = new Assembly();
   const labels = ['앞칸 기관차', '중간칸 객차', '마지막칸 화물칸'];
-  const elec = [{ cz: 15, cpu: 42.5, bz: 40 }, { cz: -25, cpu: 2.5, bz: 0 }, { cz: -25, cpu: 2.5, bz: 0 }];
+  const elec = [{ cz: 15, bz: 40 }, { cz: -25, bz: 15 }, { cz: -25, bz: 15 }];   // CPU 받침 Z (간격 50) · 블루투스 받침 Z
   const cars = labels.map((label, k) => {
     const first = A.parts.length;
     const c = chassis(A, k, label, elec[k]);
     [locomotive, passenger, freight][k](A, k, c);
     return { ...c, label, parts: A.parts.slice(first) };
   });
-  const couplers = [0, 1].map((i) => { const first = A.parts.length; const c = coupler(A, i); return { ...c, parts: A.parts.slice(first) }; });
+  const couplers = [0, 1].map((i) => { const first = A.parts.length; A.begin(`${i + 1}–${i + 2}칸 연결봉 모듈`); const c = coupler(A, i); A.end(); return { ...c, parts: A.parts.slice(first) }; });
+  A.finalize();
   return { A, cars, couplers };
 }

@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import CONN from '../catalog/connectors.js';
+import { makeRenderer } from '../assembly/render.js';
 import { buildTrainTree, REAR_PIN, FRONT_PIN, BAR, SUBS } from './tree.js';
 
 // 협동 기차 "하나로 열차" — 조립 규칙(ASSEMBLY_GUIDE.md)으로 계산한 트리를 화면에 놓고 움직인다.
@@ -9,54 +9,11 @@ import { buildTrainTree, REAR_PIN, FRONT_PIN, BAR, SUBS } from './tree.js';
 export const CAR_Z = [-200, 0, 200];
 const RPM = 130;
 export const SPEED = RPM / 60 * Math.PI * 80;            // mm/s (뒤 구동 바퀴 Ø80 버기)
-const Y = new THREE.Vector3(0, 1, 0);
-
-function hideDemo(obj) { obj.traverse((o) => { if (o !== obj && o.userData?.noBounds) o.visible = false; }); }
 
 export async function buildTrain(loadPart, onProgress) {
   const tree = buildTrainTree();
   const { A } = tree;
-  const ids = [...new Set([...A.parts.map((p) => p.pid), ...A.fastens.flatMap((f) => [f.item, f.nut]).filter(Boolean)])];
-  const mods = {};
-  let done = 0;
-  await Promise.all(ids.map(async (id) => { mods[id] = await loadPart(id); onProgress?.(++done / ids.length); }));
-
-  const model = (pid, length) => {
-    const m = mods[pid].build();
-    hideDemo(m.object3d);
-    if (pid === 'support-spacer' && length && m.handles?.setLength) m.handles.setLength(length);
-    m.object3d.position.add(new THREE.Vector3(...CONN[pid].off));
-    return m.object3d;
-  };
-  const holderOf = (p) => {
-    const h = new THREE.Group();
-    h.userData = { name: p.name, id: p.pid, sheet: p.sub };
-    h.add(model(p.pid, p.length));
-    h.matrixAutoUpdate = false;
-    h.matrix.copy(p.m);
-    return h;
-  };
-  // 볼트 · 너트 (조립 계산이 고른 것). 같은 종류는 한 번 만든 모델을 복제
-  const proto = {};
-  const fastener = (pid) => (proto[pid] ??= model(pid)).clone();
-  const fastenObj = (f) => {
-    const g = new THREE.Group();
-    const L = f.item === 'bolt-m3x10' || f.item === 'bolt-m26x10' ? 10 : 6;
-    const b = fastener(f.item);
-    b.quaternion.setFromUnitVectors(Y, f.axis);
-    b.position.copy(f.at).addScaledVector(f.axis, f.tc - L);
-    b.userData = { name: `${f.item === 'bolt-m3x10' ? '볼트 M3×10' : f.item === 'bolt-m26x10' ? '볼트 M2.6×10 (축 고정)' : f.item === 'nut-m3' ? '너트 M3' : '볼트 M3×6'} · 겹친 두께 ${f.T.toFixed(1)} mm`, id: f.item, sheet: f.part.sub };
-    g.add(b);
-    if (f.nut) {
-      const n = fastener(f.nut);
-      n.quaternion.setFromUnitVectors(Y, f.axis.clone().negate());
-      n.position.copy(f.at).addScaledVector(f.axis, -f.tp);
-      n.userData = { name: '너트 M3', id: f.nut, sheet: f.part.sub };
-      g.add(n);
-    }
-    if (f.item === 'nut-m3') { b.quaternion.setFromUnitVectors(Y, f.axis.clone().negate()); b.position.copy(f.at).addScaledVector(f.axis, -f.tp); }
-    return g;
-  };
+  const { holderOf, fastenObj } = await makeRenderer(A, loadPart, onProgress);
 
   const root = new THREE.Group();
   const carOf = (p) => +p.id.split('_')[0];
