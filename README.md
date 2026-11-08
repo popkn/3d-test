@@ -103,3 +103,10 @@ src/
 
 `standalone/roborobo-parts.html` — 브라우저로 열면 전체 부품(목록 · 3D · 기능)을 볼 수 있다. 목록 맨 위 **전체 펼쳐보기**(`#all`)는 모든 부품을 실제 크기로 한 화면에 늘어놓고, 부품을 누르면 그 부품 화면으로 간다. three.js만 인터넷(CDN)에서 받는다.
 부품을 고친 뒤 다시 만들기: `node tools/build-all.mjs`
+
+## 독수리 로봇 (설계도면 → 3D 조립)
+
+- 조립 규칙: `ASSEMBLY_RULES.md`
+- 설계도면: `eagle/BLUEPRINT.md`, `eagle/blueprint.html` (도면 9장)
+- 3D 조립: 뷰어 목록 맨 위 **🦅 독수리 조립** (`#eagle`). 도면 좌표(`src/eagle/assembly.js`, 생성기가 만듦)대로 실제 부품 모델을 놓는다. 날갯짓 · 머리 돌리기 · 분해 보기 · 파트별 숨기기.
+- 도면을 고치면: `python3 tools/eagle_blueprint.py` → `node tools/build-all.mjs`

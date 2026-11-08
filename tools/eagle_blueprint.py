@@ -82,7 +82,7 @@ for sx in (-1, 1):
     side = '오른' if sx > 0 else '왼'
     add(S2, 'support-spacer', f'{side}발목 (서포트 10)', (15 * sx, 5, 15), (6.4, 10, 6.4), METAL, 'cyl', '수나사가 아래, 받침판 + 너트', axis=1, length=10)
     plate(S2, 'frame-option-pcb', f'{side}발바닥 (옵션 PCB)', (15 * sx, 10.8, 0), (18, 1.6, 38), BLACK, OPT_U, OPT_V, 2, 0, '긴 쪽이 앞뒤')
-    add(S2, 'grab', f'{side}앞발톱 (그랩)', (15 * sx, 17.6, -8), (22, 12, 32), GRAY, note='빗살이 앞 · 아래로 횃대를 감쌈')
+    add(S2, 'grab', f'{side}앞발톱 (그랩)', (15 * sx, 17.6, -8), (22, 12, 32), GRAY, note='빗살이 앞 · 아래로 횃대를 감쌈', zdir=(0, 0, -1))
     add(S2, 'l-frame-2x1', f'{side}뒷발톱 (L자 2×1)', (15 * sx, 6, 22), (8, 10, 10), METAL, note='발바닥 뒤 끝 아래로')
     add(S2, 'support-spacer', f'{side}정강이 (서포트 35)', (15 * sx, 29.1, 15), (6.4, 35, 6.4), METAL, 'cyl', '', axis=1, length=35)
     add(S2, 'support-spacer', f'{side}허벅지 (서포트 30)', (15 * sx, 61.6, 15), (6.4, 30, 6.4), METAL, 'cyl', '아래층 판에 M3 × 6', axis=1, length=30)
@@ -100,8 +100,8 @@ add(S3, 'battery-case-4aa', '배터리케이스 (AA 4개, 6V)', (0, 87.2, -2), (
 for sx in (-1, 1):
     add(S3, 'support-spacer', '블루투스 받침 (서포트 5)', (20 * sx, 80.7, 45), (6.4, 5, 6.4), METAL, 'cyl', '', axis=1, length=5)
 add(S3, 'bt-module', '블루투스 모듈 (스마트폰 조종)', (0, 88.2, 45), (48, 9, 28), BLACK, note='아래층 뒤, UART → CPU')
-add(S3, 'sensor-ir-tr', '가슴 적외선 센서 (앞 감지)', (0, 62, -61), (48, 28, 9), BLACK, note='판 아래 매달림, 앞(−Z)을 봄')
-add(S3, 'sensor-sound', '목 앞 소리 센서', (0, 96, -61), (48, 28, 9), BLACK, note='세움, 마이크가 앞')
+add(S3, 'sensor-ir-tr', '가슴 적외선 센서 (앞 감지)', (0, 62, -61), (48, 28, 9), BLACK, note='판 아래 매달림, 앞(−Z)을 봄', up=(0, 0, -1))
+add(S3, 'sensor-sound', '목 앞 소리 센서', (0, 96, -61), (48, 28, 9), BLACK, note='세움, 마이크가 앞', up=(0, 0, -1))
 for sx in (-1, 1):
     add(S3, 'l-frame-2x2', '가슴 센서 L자 2×2', (14 * sx, 71, -57), (8, 10, 10), METAL, note='판 아래로')
     add(S3, 'l-frame-2x2', '소리 센서 L자 2×2', (14 * sx, 83, -57), (8, 10, 10), METAL, note='판 위로')
@@ -114,7 +114,7 @@ for sx in (-1, 1):
     for sz in (-1, 1):
         add(S3, 'support-spacer', 'CPU 받침 (서포트 10)', (35 * sx, 119.8, 28 + 25 * sz), (6.4, 10, 6.4), METAL, 'cyl', '', axis=1, length=10)
 add(S3, 'cpu-board-8m', 'CPU 보드 8M', (0, 131.8, 28), (83, 14, 61), BLACK, note='전압 스위치 6V')
-add(S3, 'servo-digital', '목 서보', (0, 134.8, -29), (20, 40, 60), BLACK, 'servo', '눕힘, 축이 위 · 앞쪽 끝 (0, 154.8, −49)', shaft=(0, 154.8, -49))
+add(S3, 'servo-digital', '목 서보', (0, 134.8, -29), (20, 40, 60), BLACK, 'servo', '눕힘, 축이 위 · 앞쪽 끝 (0, 154.8, −49)', shaft=(0, 154.8, -49), up=(0, 1, 0), xdir=(0, 0, 1))
 for x in (-15, 0, 15):
     strip(S3, 'frame-s5-pcb', '가슴 깃 (소5 PCB)', (x, 112.4, -59), (8, 1.6, 48), BLACK, 5, 2, '위층 판 아래, 앞으로 24 mm')
 
@@ -128,13 +128,13 @@ for sx in (-1, 1):
     add(S4, 'l-frame-2x2', '볼 아래 L자 2×2', (6 * sx, 168, -40), (8, 10, 10), METAL)
     add(S4, 'battle-s', f'{side}쪽 흰 머리판 (배틀무기 S)', (10.8 * sx, 189.4, -52), (1.6, 50, 56), WHITE, 'poly', '세움(YZ 평면), 흰 FR-4 = 흰머리', plane=(2, 1), outline=SHIELD)
     add(S4, 'l-frame-2x2', '머리 위 L자 2×2', (6 * sx, 210, -45), (8, 10, 10), METAL)
-    add(S4, 'led-board-orange-s', f'{side}눈 (LED 주황)', (14.8 * sx, 196, -64), (6, 32, 22), ORANGE, note='머리판 바깥 앞쪽')
+    add(S4, 'led-board-orange-s', f'{side}눈 (LED 주황)', (14.8 * sx, 196, -64), (6, 32, 22), ORANGE, note='머리판 바깥 앞쪽', up=(sx, 0, 0))
     add(S4, 'l-frame-2x1', f'{side}눈썹 (L자 2×1)', (13.6 * sx, 213, -66), (8, 6, 10), METAL, note='눈 위로 튀어나온 눈썹뼈')
 plate(S4, 'frame-option-pcb', '머리 덮개 (옵션 PCB)', (0, 215.4, -45), (18, 1.6, 38), BLACK, OPT_U, OPT_V, 2, 0)
 add(S4, 'l-frame-2x2', '부리 L자 2×2', (0, 169, -70), (8, 10, 10), METAL, note='머리 바닥 앞 끝, 위로')
-add(S4, 'wheel-guide-40-yellow', '부리 뿌리 (노란 휠가이드 Ø40)', (0, 186, -79), (40, 40, 8), YELLOW, 'disc', '세움(XY 평면), 노란 납막', axis=2)
+add(S4, 'wheel-guide-40-yellow', '부리 뿌리 (노란 휠가이드 Ø40)', (0, 186, -79), (40, 40, 8), YELLOW, 'disc', '세움(XY 평면), 노란 납막', axis=2, up=(0, 0, -1))
 BEAK = [(36, -12), (20, 10), (-4, 22), (-24, 18), (-36, 2), (-30, -8), (-18, -2), (-6, -6), (8, -14), (24, -23)]
-add(S4, 'battle-t', '부리 (배틀무기 T, 갈고리)', (0, 182, -112), (1.6, 46, 72), WHITE, 'poly', '세움(YZ 평면), 갈고리 끝이 앞 · 아래', plane=(2, 1), outline=[(-z, y) for z, y in BEAK])
+add(S4, 'battle-t', '부리 (배틀무기 T, 갈고리)', (0, 182, -112), (1.6, 46, 72), WHITE, 'poly', '세움(YZ 평면), 갈고리 끝이 앞 · 아래', plane=(2, 1), outline=[(-z, y) for z, y in BEAK], flip='z')
 
 # ── 05 날개
 S5 = '05'
@@ -147,8 +147,8 @@ for sx in (-1, 1):
     side = '오른' if sx > 0 else '왼'
     for z in (-48, -24):
         add(S5, 'motor-frame-3x3', '날개 서보 받침 (모터프레임 3×3)', (36 * sx, 124.8, z), (8, 20, 8), METAL, note='위층 판 옆 끝')
-    add(S5, 'servo-digital', f'{side}날개 서보', (52 * sx, 124.8, -36), (40, 20, 40), BLACK, 'servo', '축이 앞(−Z), 날갯짓 축 = Z', shaft=(62 * sx, 124.8, -56))
-    add(S5, 'wheel-guide-30-servo', '날개 휠가이드 (서보)', (62 * sx, 124.8, -60), (30, 30, 8), WHITE, 'disc', '구멍이 수평(0° · 180°)이 되게 돌려 끼움', axis=2)
+    add(S5, 'servo-digital', f'{side}날개 서보', (52 * sx, 124.8, -36), (40, 20, 40), BLACK, 'servo', '축이 앞(−Z), 날갯짓 축 = Z', shaft=(62 * sx, 124.8, -56), up=(0, 0, -1), xdir=(-sx, 0, 0))
+    add(S5, 'wheel-guide-30-servo', '날개 휠가이드 (서보)', (62 * sx, 124.8, -60), (30, 30, 8), WHITE, 'disc', '구멍이 수평(0° · 180°)이 되게 돌려 끼움', axis=2, up=(0, 0, -1))
     plate(S5, 'frame-mid-pcb', f'{side}팔뼈 (중 PCB 9×3)', (87 * sx, 124.8, -64.8), (78, 18, 1.6), BLACK, MID_U, ROW3, 0, 1, '세움(XY 평면), x = 48 ~ 126')
     plate(S5, 'frame-m16-pcb', f'{side}손뼈 (중16 PCB 17×3)', (187 * sx, 124.8, -66.4), (158, 18, 1.6), BLACK, M16_U, ROW3, 0, 1, '팔뼈 앞에 2칸 겹침, x = 108 ~ 266')
     for i, (x, ln) in enumerate(SEC + PRI):
@@ -158,7 +158,8 @@ for sx in (-1, 1):
     for x, ln in TIP:
         pid, nm, us = FEATHER[ln]
         add(S5, 'l-frame-120-2x2', '날개 끝 120도 L자 (탭)', (x * sx, 112.8, -60), (8, 10, 12), METAL, note='깃이 30° 아래로 처짐')
-        strip(S5, pid, f'날개 끝 처진 깃 ({nm} PCB)', (x * sx, 112.8 - ln / 2 * S30, -60 + ln / 2 * C30), (8, ln * S30, ln * C30), BLACK, [u * C30 for u in (range(0, 10 * us, 10) if isinstance(us, int) else us)], 2, '뒤로 30° 처짐 (윗면도에서 짧아 보임)')
+        P_tip = strip(S5, pid, f'날개 끝 처진 깃 ({nm} PCB)', (x * sx, 112.8 - ln / 2 * S30, -60 + ln / 2 * C30), (8, ln * S30, ln * C30), BLACK, [u * C30 for u in (range(0, 10 * us, 10) if isinstance(us, int) else us)], 2, '뒤로 30° 처짐 (윗면도에서 짧아 보임)')
+        P_tip['euler'] = (30, -90, 0)
     for x0 in COV:
         for dx in (5, 35):
             add(S5, 'l-frame-2x2', '덮깃 L자 2×2', ((x0 + dx) * sx, 134.6, -61), (8, 10, 8), METAL, note='뼈 위 끝 뒷면에서 뒤로')
@@ -715,3 +716,18 @@ for no in SHEET_INFO:
     html.append(f'<section id="s{no}">' + open(os.path.join(SHEETS, f'{no}.svg')).read() + '</section>')
 html.append('</body></html>')
 open(os.path.join(OUT, 'blueprint.html'), 'w').write('\n'.join(html))
+
+# 3D 조립용 데이터 (src/eagle/assembly.js): 뷰어가 각 부품 모델을 이 위치 · 크기 · 방향에 맞춰 놓는다
+import json
+asm = []
+for p in P:
+    d = {'s': p['sheet'], 'id': p['id'], 'n': p['name'], 'c': [round(v, 2) for v in p['c']], 'z': [round(v, 2) for v in p['s']]}
+    for k in ('up', 'xdir', 'zdir', 'euler', 'length', 'flip'):
+        if k in p: d[k] = list(p[k]) if isinstance(p[k], tuple) else p[k]
+    asm.append(d)
+os.makedirs(os.path.join(ROOT, 'src', 'eagle'), exist_ok=True)
+with open(os.path.join(ROOT, 'src', 'eagle', 'assembly.js'), 'w') as f:
+    f.write('// 독수리 로봇 조립 데이터 — tools/eagle_blueprint.py가 만든다 (직접 고치지 말 것)\n')
+    f.write('export const SHEETS = ' + json.dumps({k: v[0] for k, v in SHEET_INFO.items() if v[1]}, ensure_ascii=False) + ';\n')
+    f.write('export const BOM_TOTAL = ' + str(sum(bom.values())) + ';\n')
+    f.write('export default ' + json.dumps(asm, ensure_ascii=False) + ';\n')

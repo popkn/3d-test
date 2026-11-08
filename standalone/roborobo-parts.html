@@ -8235,7 +8235,7 @@ var init_function91 = __esm({
 });
 
 // src/main.js
-import * as THREE101 from "three";
+import * as THREE102 from "three";
 
 // src/catalog/parts/buzzer-board-s/spec.js
 var spec_default = {
@@ -10249,6 +10249,125 @@ function createPanel(root) {
   return { ui, showSpec, reset };
 }
 
+// src/eagle/assemble.js
+import * as THREE101 from "three";
+
+// src/eagle/assembly.js
+var SHEETS = { "01": "\uBC1B\uCE68\uB300 \xB7 \uD683\uB300 \xB7 \uBA39\uC774 \uC811\uC2DC", "02": "\uB2E4\uB9AC \xB7 \uBC1C (\uAE43\uD138 \uBC14\uC9C0 \xB7 \uBC1C\uD1B1)", "03": "\uB3D9\uCCB4 (2\uCE35 \xB7 \uC804\uC790 \uBD80\uD488 \xB7 \uAE43)", "04": "\uBAA9 \xB7 \uBA38\uB9AC (\uD770\uBA38\uB9AC \xB7 \uB208 \xB7 \uBD80\uB9AC)", "05": "\uB0A0\uAC1C (\uD314\uBF08 \xB7 \uC190\uBF08 \xB7 \uAE43 17\uAC1C \xB7 \uB36E\uAE43)", "06": "\uAF2C\uB9AC (\uBD80\uCC44\uAF34 \uAF41\uC9C0\uAE43)" };
+var BOM_TOTAL = 802;
+var assembly_default = [{ "s": "01", "id": "frame-big-main", "n": "\uBC1B\uCE68\uD310 (\uBE45 \uBA54\uC778 PCB)", "c": [0, -0.8, 0], "z": [158, 1.6, 118] }, { "s": "01", "id": "support-spacer", "n": "\uBC1B\uCE68 \uBC1C (\uC11C\uD3EC\uD2B8 10)", "c": [-65, -6.6, -45], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "01", "id": "cap-nut-m3", "n": "\uBC1B\uCE68 \uBC1C \uCEA1\uB108\uD2B8", "c": [-65, 3, -45], "z": [6.4, 6, 6.4] }, { "s": "01", "id": "support-spacer", "n": "\uBC1B\uCE68 \uBC1C (\uC11C\uD3EC\uD2B8 10)", "c": [-65, -6.6, 45], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "01", "id": "cap-nut-m3", "n": "\uBC1B\uCE68 \uBC1C \uCEA1\uB108\uD2B8", "c": [-65, 3, 45], "z": [6.4, 6, 6.4] }, { "s": "01", "id": "support-spacer", "n": "\uBC1B\uCE68 \uBC1C (\uC11C\uD3EC\uD2B8 10)", "c": [65, -6.6, -45], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "01", "id": "cap-nut-m3", "n": "\uBC1B\uCE68 \uBC1C \uCEA1\uB108\uD2B8", "c": [65, 3, -45], "z": [6.4, 6, 6.4] }, { "s": "01", "id": "support-spacer", "n": "\uBC1B\uCE68 \uBC1C (\uC11C\uD3EC\uD2B8 10)", "c": [65, -6.6, 45], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "01", "id": "cap-nut-m3", "n": "\uBC1B\uCE68 \uBC1C \uCEA1\uB108\uD2B8", "c": [65, 3, 45], "z": [6.4, 6, 6.4] }, { "s": "01", "id": "axle-guide", "n": "\uD683\uB300 \uCD95\uAC00\uC774\uB4DC", "c": [-35, 5, -20], "z": [28, 10, 18] }, { "s": "01", "id": "axle-guide", "n": "\uD683\uB300 \uCD95\uAC00\uC774\uB4DC", "c": [35, 5, -20], "z": [28, 10, 18] }, { "s": "01", "id": "shaft-75", "n": "\uD683\uB300 (\uCD95 75mm)", "c": [0, 7, -20], "z": [75, 3, 3] }, { "s": "01", "id": "support-spacer", "n": "\uBA39\uC774 \uC811\uC2DC \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 5)", "c": [40, 2.5, 34], "z": [6.4, 5, 6.4], "length": 5 }, { "s": "01", "id": "support-spacer", "n": "\uBA39\uC774 \uC811\uC2DC \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 5)", "c": [60, 2.5, 34], "z": [6.4, 5, 6.4], "length": 5 }, { "s": "01", "id": "sensor-color", "n": "\uBA39\uC774 \uC811\uC2DC (\uCEEC\uB7EC \uC13C\uC11C, \uCC3D\uC774 \uC704)", "c": [50, 10, 34], "z": [50, 10, 50] }, { "s": "01", "id": "color-ball", "n": "\uBA39\uC774 (\uCEEC\uB7EC\uBCFC \uBE68\uAC15)", "c": [50, 22.5, 34], "z": [15, 15, 15] }, { "s": "01", "id": "color-ball", "n": "\uBA39\uC774 (\uCEEC\uB7EC\uBCFC \uCD08\uB85D)", "c": [-55, 7.5, 40], "z": [15, 15, 15] }, { "s": "01", "id": "color-ball", "n": "\uBA39\uC774 (\uCEEC\uB7EC\uBCFC \uB178\uB791)", "c": [-38, 7.5, 47], "z": [15, 15, 15] }, { "s": "02", "id": "support-spacer", "n": "\uC67C\uBC1C\uBAA9 (\uC11C\uD3EC\uD2B8 10)", "c": [-15, 5, 15], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "02", "id": "frame-option-pcb", "n": "\uC67C\uBC1C\uBC14\uB2E5 (\uC635\uC158 PCB)", "c": [-15, 10.8, 0], "z": [18, 1.6, 38] }, { "s": "02", "id": "grab", "n": "\uC67C\uC55E\uBC1C\uD1B1 (\uADF8\uB7A9)", "c": [-15, 17.6, -8], "z": [22, 12, 32], "zdir": [0, 0, -1] }, { "s": "02", "id": "l-frame-2x1", "n": "\uC67C\uB4B7\uBC1C\uD1B1 (L\uC790 2\xD71)", "c": [-15, 6, 22], "z": [8, 10, 10] }, { "s": "02", "id": "support-spacer", "n": "\uC67C\uC815\uAC15\uC774 (\uC11C\uD3EC\uD2B8 35)", "c": [-15, 29.1, 15], "z": [6.4, 35, 6.4], "length": 35 }, { "s": "02", "id": "support-spacer", "n": "\uC67C\uD5C8\uBC85\uC9C0 (\uC11C\uD3EC\uD2B8 30)", "c": [-15, 61.6, 15], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "02", "id": "l-frame-2x2", "n": "\uAE43\uD138 \uBC14\uC9C0 L\uC790 2\xD72", "c": [-21, 72, 5], "z": [10, 10, 8] }, { "s": "02", "id": "frame-s7-pcb", "n": "\uC67C\uAE43\uD138 \uBC14\uC9C0 (\uC18C7 PCB)", "c": [-26.6, 42.6, 5], "z": [1.6, 68, 8] }, { "s": "02", "id": "l-frame-2x2", "n": "\uAE43\uD138 \uBC14\uC9C0 L\uC790 2\xD72", "c": [-21, 72, 25], "z": [10, 10, 8] }, { "s": "02", "id": "frame-s7-pcb", "n": "\uC67C\uAE43\uD138 \uBC14\uC9C0 (\uC18C7 PCB)", "c": [-26.6, 42.6, 25], "z": [1.6, 68, 8] }, { "s": "02", "id": "support-spacer", "n": "\uC624\uB978\uBC1C\uBAA9 (\uC11C\uD3EC\uD2B8 10)", "c": [15, 5, 15], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "02", "id": "frame-option-pcb", "n": "\uC624\uB978\uBC1C\uBC14\uB2E5 (\uC635\uC158 PCB)", "c": [15, 10.8, 0], "z": [18, 1.6, 38] }, { "s": "02", "id": "grab", "n": "\uC624\uB978\uC55E\uBC1C\uD1B1 (\uADF8\uB7A9)", "c": [15, 17.6, -8], "z": [22, 12, 32], "zdir": [0, 0, -1] }, { "s": "02", "id": "l-frame-2x1", "n": "\uC624\uB978\uB4B7\uBC1C\uD1B1 (L\uC790 2\xD71)", "c": [15, 6, 22], "z": [8, 10, 10] }, { "s": "02", "id": "support-spacer", "n": "\uC624\uB978\uC815\uAC15\uC774 (\uC11C\uD3EC\uD2B8 35)", "c": [15, 29.1, 15], "z": [6.4, 35, 6.4], "length": 35 }, { "s": "02", "id": "support-spacer", "n": "\uC624\uB978\uD5C8\uBC85\uC9C0 (\uC11C\uD3EC\uD2B8 30)", "c": [15, 61.6, 15], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "02", "id": "l-frame-2x2", "n": "\uAE43\uD138 \uBC14\uC9C0 L\uC790 2\xD72", "c": [21, 72, 5], "z": [10, 10, 8] }, { "s": "02", "id": "frame-s7-pcb", "n": "\uC624\uB978\uAE43\uD138 \uBC14\uC9C0 (\uC18C7 PCB)", "c": [26.6, 42.6, 5], "z": [1.6, 68, 8] }, { "s": "02", "id": "l-frame-2x2", "n": "\uAE43\uD138 \uBC14\uC9C0 L\uC790 2\xD72", "c": [21, 72, 25], "z": [10, 10, 8] }, { "s": "02", "id": "frame-s7-pcb", "n": "\uC624\uB978\uAE43\uD138 \uBC14\uC9C0 (\uC18C7 PCB)", "c": [26.6, 42.6, 25], "z": [1.6, 68, 8] }, { "s": "03", "id": "frame-main-pcb", "n": "\uC544\uB798\uCE35 \uD310 (\uBA54\uC778 PCB)", "c": [0, 77.4, 0], "z": [78, 1.6, 118] }, { "s": "03", "id": "support-spacer", "n": "\uCE35 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 35)", "c": [-35, 95.7, -55], "z": [6.4, 35, 6.4], "length": 35 }, { "s": "03", "id": "support-spacer", "n": "\uCE35 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 35)", "c": [-35, 95.7, 55], "z": [6.4, 35, 6.4], "length": 35 }, { "s": "03", "id": "support-spacer", "n": "\uCE35 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 35)", "c": [35, 95.7, -55], "z": [6.4, 35, 6.4], "length": 35 }, { "s": "03", "id": "support-spacer", "n": "\uCE35 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 35)", "c": [35, 95.7, 55], "z": [6.4, 35, 6.4], "length": 35 }, { "s": "03", "id": "battery-case-4aa", "n": "\uBC30\uD130\uB9AC\uCF00\uC774\uC2A4 (AA 4\uAC1C, 6V)", "c": [0, 87.2, -2], "z": [74, 18, 62] }, { "s": "03", "id": "support-spacer", "n": "\uBE14\uB8E8\uD22C\uC2A4 \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 5)", "c": [-20, 80.7, 45], "z": [6.4, 5, 6.4], "length": 5 }, { "s": "03", "id": "support-spacer", "n": "\uBE14\uB8E8\uD22C\uC2A4 \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 5)", "c": [20, 80.7, 45], "z": [6.4, 5, 6.4], "length": 5 }, { "s": "03", "id": "bt-module", "n": "\uBE14\uB8E8\uD22C\uC2A4 \uBAA8\uB4C8 (\uC2A4\uB9C8\uD2B8\uD3F0 \uC870\uC885)", "c": [0, 88.2, 45], "z": [48, 9, 28] }, { "s": "03", "id": "sensor-ir-tr", "n": "\uAC00\uC2B4 \uC801\uC678\uC120 \uC13C\uC11C (\uC55E \uAC10\uC9C0)", "c": [0, 62, -61], "z": [48, 28, 9], "up": [0, 0, -1] }, { "s": "03", "id": "sensor-sound", "n": "\uBAA9 \uC55E \uC18C\uB9AC \uC13C\uC11C", "c": [0, 96, -61], "z": [48, 28, 9], "up": [0, 0, -1] }, { "s": "03", "id": "l-frame-2x2", "n": "\uAC00\uC2B4 \uC13C\uC11C L\uC790 2\xD72", "c": [-14, 71, -57], "z": [8, 10, 10] }, { "s": "03", "id": "l-frame-2x2", "n": "\uC18C\uB9AC \uC13C\uC11C L\uC790 2\xD72", "c": [-14, 83, -57], "z": [8, 10, 10] }, { "s": "03", "id": "l-frame-2x2", "n": "\uC606\uAD6C\uB9AC \uAE43 L\uC790 2\xD72", "c": [-36, 108, -25], "z": [10, 10, 8] }, { "s": "03", "id": "l-frame-2x2", "n": "\uC606\uAD6C\uB9AC \uAE43 L\uC790 2\xD72", "c": [-36, 108, 15], "z": [10, 10, 8] }, { "s": "03", "id": "frame-s7-pcb", "n": "\uC606\uAD6C\uB9AC \uAE43 (\uC18C7 PCB)", "c": [-40, 109, 5], "z": [1.6, 8, 68] }, { "s": "03", "id": "frame-s7-pcb", "n": "\uC606\uAD6C\uB9AC \uAE43 (\uC18C7 PCB)", "c": [-40, 99, 5], "z": [1.6, 8, 68] }, { "s": "03", "id": "l-frame-2x2", "n": "\uAC00\uC2B4 \uC13C\uC11C L\uC790 2\xD72", "c": [14, 71, -57], "z": [8, 10, 10] }, { "s": "03", "id": "l-frame-2x2", "n": "\uC18C\uB9AC \uC13C\uC11C L\uC790 2\xD72", "c": [14, 83, -57], "z": [8, 10, 10] }, { "s": "03", "id": "l-frame-2x2", "n": "\uC606\uAD6C\uB9AC \uAE43 L\uC790 2\xD72", "c": [36, 108, -25], "z": [10, 10, 8] }, { "s": "03", "id": "l-frame-2x2", "n": "\uC606\uAD6C\uB9AC \uAE43 L\uC790 2\xD72", "c": [36, 108, 15], "z": [10, 10, 8] }, { "s": "03", "id": "frame-s7-pcb", "n": "\uC606\uAD6C\uB9AC \uAE43 (\uC18C7 PCB)", "c": [40, 109, 5], "z": [1.6, 8, 68] }, { "s": "03", "id": "frame-s7-pcb", "n": "\uC606\uAD6C\uB9AC \uAE43 (\uC18C7 PCB)", "c": [40, 99, 5], "z": [1.6, 8, 68] }, { "s": "03", "id": "frame-main-pcb", "n": "\uC704\uCE35 \uD310 (\uBA54\uC778 PCB)", "c": [0, 114, 0], "z": [78, 1.6, 118] }, { "s": "03", "id": "support-spacer", "n": "CPU \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 10)", "c": [-35, 119.8, 3], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "03", "id": "support-spacer", "n": "CPU \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 10)", "c": [-35, 119.8, 53], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "03", "id": "support-spacer", "n": "CPU \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 10)", "c": [35, 119.8, 3], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "03", "id": "support-spacer", "n": "CPU \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 10)", "c": [35, 119.8, 53], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "03", "id": "cpu-board-8m", "n": "CPU \uBCF4\uB4DC 8M", "c": [0, 131.8, 28], "z": [83, 14, 61] }, { "s": "03", "id": "servo-digital", "n": "\uBAA9 \uC11C\uBCF4", "c": [0, 134.8, -29], "z": [20, 40, 60], "up": [0, 1, 0], "xdir": [0, 0, 1] }, { "s": "03", "id": "frame-s5-pcb", "n": "\uAC00\uC2B4 \uAE43 (\uC18C5 PCB)", "c": [-15, 112.4, -59], "z": [8, 1.6, 48] }, { "s": "03", "id": "frame-s5-pcb", "n": "\uAC00\uC2B4 \uAE43 (\uC18C5 PCB)", "c": [0, 112.4, -59], "z": [8, 1.6, 48] }, { "s": "03", "id": "frame-s5-pcb", "n": "\uAC00\uC2B4 \uAE43 (\uC18C5 PCB)", "c": [15, 112.4, -59], "z": [8, 1.6, 48] }, { "s": "04", "id": "wheel-guide-30-servo", "n": "\uBAA9 \uD720\uAC00\uC774\uB4DC (\uC11C\uBCF4)", "c": [0, 158.8, -49], "z": [30, 8, 30] }, { "s": "04", "id": "frame-option-pcb", "n": "\uBA38\uB9AC \uBC14\uB2E5 (\uC635\uC158 PCB)", "c": [0, 163.6, -49], "z": [18, 1.6, 38] }, { "s": "04", "id": "l-frame-2x2", "n": "\uBCFC \uC544\uB798 L\uC790 2\xD72", "c": [-6, 168, -40], "z": [8, 10, 10] }, { "s": "04", "id": "battle-s", "n": "\uC67C\uCABD \uD770 \uBA38\uB9AC\uD310 (\uBC30\uD2C0\uBB34\uAE30 S)", "c": [-10.8, 189.4, -52], "z": [1.6, 50, 56] }, { "s": "04", "id": "l-frame-2x2", "n": "\uBA38\uB9AC \uC704 L\uC790 2\xD72", "c": [-6, 210, -45], "z": [8, 10, 10] }, { "s": "04", "id": "led-board-orange-s", "n": "\uC67C\uB208 (LED \uC8FC\uD669)", "c": [-14.8, 196, -64], "z": [6, 32, 22], "up": [-1, 0, 0] }, { "s": "04", "id": "l-frame-2x1", "n": "\uC67C\uB208\uC379 (L\uC790 2\xD71)", "c": [-13.6, 213, -66], "z": [8, 6, 10] }, { "s": "04", "id": "l-frame-2x2", "n": "\uBCFC \uC544\uB798 L\uC790 2\xD72", "c": [6, 168, -40], "z": [8, 10, 10] }, { "s": "04", "id": "battle-s", "n": "\uC624\uB978\uCABD \uD770 \uBA38\uB9AC\uD310 (\uBC30\uD2C0\uBB34\uAE30 S)", "c": [10.8, 189.4, -52], "z": [1.6, 50, 56] }, { "s": "04", "id": "l-frame-2x2", "n": "\uBA38\uB9AC \uC704 L\uC790 2\xD72", "c": [6, 210, -45], "z": [8, 10, 10] }, { "s": "04", "id": "led-board-orange-s", "n": "\uC624\uB978\uB208 (LED \uC8FC\uD669)", "c": [14.8, 196, -64], "z": [6, 32, 22], "up": [1, 0, 0] }, { "s": "04", "id": "l-frame-2x1", "n": "\uC624\uB978\uB208\uC379 (L\uC790 2\xD71)", "c": [13.6, 213, -66], "z": [8, 6, 10] }, { "s": "04", "id": "frame-option-pcb", "n": "\uBA38\uB9AC \uB36E\uAC1C (\uC635\uC158 PCB)", "c": [0, 215.4, -45], "z": [18, 1.6, 38] }, { "s": "04", "id": "l-frame-2x2", "n": "\uBD80\uB9AC L\uC790 2\xD72", "c": [0, 169, -70], "z": [8, 10, 10] }, { "s": "04", "id": "wheel-guide-40-yellow", "n": "\uBD80\uB9AC \uBFCC\uB9AC (\uB178\uB780 \uD720\uAC00\uC774\uB4DC \xD840)", "c": [0, 186, -79], "z": [40, 40, 8], "up": [0, 0, -1] }, { "s": "04", "id": "battle-t", "n": "\uBD80\uB9AC (\uBC30\uD2C0\uBB34\uAE30 T, \uAC08\uACE0\uB9AC)", "c": [0, 182, -112], "z": [1.6, 46, 72], "flip": "z" }, { "s": "05", "id": "motor-frame-3x3", "n": "\uB0A0\uAC1C \uC11C\uBCF4 \uBC1B\uCE68 (\uBAA8\uD130\uD504\uB808\uC784 3\xD73)", "c": [-36, 124.8, -48], "z": [8, 20, 8] }, { "s": "05", "id": "motor-frame-3x3", "n": "\uB0A0\uAC1C \uC11C\uBCF4 \uBC1B\uCE68 (\uBAA8\uD130\uD504\uB808\uC784 3\xD73)", "c": [-36, 124.8, -24], "z": [8, 20, 8] }, { "s": "05", "id": "servo-digital", "n": "\uC67C\uB0A0\uAC1C \uC11C\uBCF4", "c": [-52, 124.8, -36], "z": [40, 20, 40], "up": [0, 0, -1], "xdir": [1, 0, 0] }, { "s": "05", "id": "wheel-guide-30-servo", "n": "\uB0A0\uAC1C \uD720\uAC00\uC774\uB4DC (\uC11C\uBCF4)", "c": [-62, 124.8, -60], "z": [30, 30, 8], "up": [0, 0, -1] }, { "s": "05", "id": "frame-mid-pcb", "n": "\uC67C\uD314\uBF08 (\uC911 PCB 9\xD73)", "c": [-87, 124.8, -64.8], "z": [78, 18, 1.6] }, { "s": "05", "id": "frame-m16-pcb", "n": "\uC67C\uC190\uBF08 (\uC91116 PCB 17\xD73)", "c": [-187, 124.8, -66.4], "z": [158, 18, 1.6] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [-82, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s7-pcb", "n": "\uB458\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C7 PCB, 68)", "c": [-82, 112.2, -31], "z": [8, 1.6, 68] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [-92, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s7-pcb", "n": "\uB458\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C7 PCB, 68)", "c": [-92, 112.2, -31], "z": [8, 1.6, 68] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [-102, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s7-pcb", "n": "\uB458\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C7 PCB, 68)", "c": [-102, 112.2, -31], "z": [8, 1.6, 68] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [-132, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s7-pcb", "n": "\uCCAB\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C7 PCB, 68)", "c": [-132, 112.2, -31], "z": [8, 1.6, 68] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [-142, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s7-pcb", "n": "\uCCAB\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C7 PCB, 68)", "c": [-142, 112.2, -31], "z": [8, 1.6, 68] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [-152, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s7-pcb", "n": "\uCCAB\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C7 PCB, 68)", "c": [-152, 112.2, -31], "z": [8, 1.6, 68] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [-162, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s8-pcb", "n": "\uCCAB\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C8 PCB, 78)", "c": [-162, 112.2, -26], "z": [8, 1.6, 78] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [-172, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s8-pcb", "n": "\uCCAB\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C8 PCB, 78)", "c": [-172, 112.2, -26], "z": [8, 1.6, 78] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [-182, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s8-pcb", "n": "\uCCAB\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C8 PCB, 78)", "c": [-182, 112.2, -26], "z": [8, 1.6, 78] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [-192, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s8-pcb", "n": "\uCCAB\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C8 PCB, 78)", "c": [-192, 112.2, -26], "z": [8, 1.6, 78] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [-202, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s8-pcb", "n": "\uCCAB\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C8 PCB, 78)", "c": [-202, 112.2, -26], "z": [8, 1.6, 78] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [-212, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s12-pcb", "n": "\uCCAB\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C12 PCB, 118)", "c": [-212, 112.2, -6], "z": [8, 1.6, 118] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [-222, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s12-pcb", "n": "\uCCAB\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C12 PCB, 118)", "c": [-222, 112.2, -6], "z": [8, 1.6, 118] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [-232, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s12-pcb", "n": "\uCCAB\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C12 PCB, 118)", "c": [-232, 112.2, -6], "z": [8, 1.6, 118] }, { "s": "05", "id": "l-frame-120-2x2", "n": "\uB0A0\uAC1C \uB05D 120\uB3C4 L\uC790 (\uD0ED)", "c": [-242, 112.8, -60], "z": [8, 10, 12] }, { "s": "05", "id": "frame-s8-pcb", "n": "\uB0A0\uAC1C \uB05D \uCC98\uC9C4 \uAE43 (\uC18C8 PCB)", "c": [-242, 93.3, -26.23], "z": [8, 39, 67.55], "euler": [30, -90, 0] }, { "s": "05", "id": "l-frame-120-2x2", "n": "\uB0A0\uAC1C \uB05D 120\uB3C4 L\uC790 (\uD0ED)", "c": [-252, 112.8, -60], "z": [8, 10, 12] }, { "s": "05", "id": "frame-s8-pcb", "n": "\uB0A0\uAC1C \uB05D \uCC98\uC9C4 \uAE43 (\uC18C8 PCB)", "c": [-252, 93.3, -26.23], "z": [8, 39, 67.55], "euler": [30, -90, 0] }, { "s": "05", "id": "l-frame-120-2x2", "n": "\uB0A0\uAC1C \uB05D 120\uB3C4 L\uC790 (\uD0ED)", "c": [-262, 112.8, -60], "z": [8, 10, 12] }, { "s": "05", "id": "frame-s8-pcb", "n": "\uB0A0\uAC1C \uB05D \uCC98\uC9C4 \uAE43 (\uC18C8 PCB)", "c": [-262, 93.3, -26.23], "z": [8, 39, 67.55], "euler": [30, -90, 0] }, { "s": "05", "id": "l-frame-2x2", "n": "\uB36E\uAE43 L\uC790 2\xD72", "c": [-86, 134.6, -61], "z": [8, 10, 8] }, { "s": "05", "id": "l-frame-2x2", "n": "\uB36E\uAE43 L\uC790 2\xD72", "c": [-116, 134.6, -61], "z": [8, 10, 8] }, { "s": "05", "id": "pc-frame-45x60", "n": "\uB0A0\uAC1C\uB36E\uAE43 (\uD22C\uBA85 PC \uD504\uB808\uC784)", "c": [-103.5, 135.4, -34], "z": [45, 1.6, 60] }, { "s": "05", "id": "motor-frame-3x3", "n": "\uB0A0\uAC1C \uC11C\uBCF4 \uBC1B\uCE68 (\uBAA8\uD130\uD504\uB808\uC784 3\xD73)", "c": [36, 124.8, -48], "z": [8, 20, 8] }, { "s": "05", "id": "motor-frame-3x3", "n": "\uB0A0\uAC1C \uC11C\uBCF4 \uBC1B\uCE68 (\uBAA8\uD130\uD504\uB808\uC784 3\xD73)", "c": [36, 124.8, -24], "z": [8, 20, 8] }, { "s": "05", "id": "servo-digital", "n": "\uC624\uB978\uB0A0\uAC1C \uC11C\uBCF4", "c": [52, 124.8, -36], "z": [40, 20, 40], "up": [0, 0, -1], "xdir": [-1, 0, 0] }, { "s": "05", "id": "wheel-guide-30-servo", "n": "\uB0A0\uAC1C \uD720\uAC00\uC774\uB4DC (\uC11C\uBCF4)", "c": [62, 124.8, -60], "z": [30, 30, 8], "up": [0, 0, -1] }, { "s": "05", "id": "frame-mid-pcb", "n": "\uC624\uB978\uD314\uBF08 (\uC911 PCB 9\xD73)", "c": [87, 124.8, -64.8], "z": [78, 18, 1.6] }, { "s": "05", "id": "frame-m16-pcb", "n": "\uC624\uB978\uC190\uBF08 (\uC91116 PCB 17\xD73)", "c": [187, 124.8, -66.4], "z": [158, 18, 1.6] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [82, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s7-pcb", "n": "\uB458\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C7 PCB, 68)", "c": [82, 112.2, -31], "z": [8, 1.6, 68] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [92, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s7-pcb", "n": "\uB458\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C7 PCB, 68)", "c": [92, 112.2, -31], "z": [8, 1.6, 68] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [102, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s7-pcb", "n": "\uB458\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C7 PCB, 68)", "c": [102, 112.2, -31], "z": [8, 1.6, 68] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [132, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s7-pcb", "n": "\uCCAB\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C7 PCB, 68)", "c": [132, 112.2, -31], "z": [8, 1.6, 68] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [142, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s7-pcb", "n": "\uCCAB\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C7 PCB, 68)", "c": [142, 112.2, -31], "z": [8, 1.6, 68] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [152, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s7-pcb", "n": "\uCCAB\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C7 PCB, 68)", "c": [152, 112.2, -31], "z": [8, 1.6, 68] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [162, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s8-pcb", "n": "\uCCAB\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C8 PCB, 78)", "c": [162, 112.2, -26], "z": [8, 1.6, 78] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [172, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s8-pcb", "n": "\uCCAB\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C8 PCB, 78)", "c": [172, 112.2, -26], "z": [8, 1.6, 78] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [182, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s8-pcb", "n": "\uCCAB\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C8 PCB, 78)", "c": [182, 112.2, -26], "z": [8, 1.6, 78] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [192, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s8-pcb", "n": "\uCCAB\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C8 PCB, 78)", "c": [192, 112.2, -26], "z": [8, 1.6, 78] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [202, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s8-pcb", "n": "\uCCAB\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C8 PCB, 78)", "c": [202, 112.2, -26], "z": [8, 1.6, 78] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [212, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s12-pcb", "n": "\uCCAB\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C12 PCB, 118)", "c": [212, 112.2, -6], "z": [8, 1.6, 118] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [222, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s12-pcb", "n": "\uCCAB\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C12 PCB, 118)", "c": [222, 112.2, -6], "z": [8, 1.6, 118] }, { "s": "05", "id": "l-frame-2x2", "n": "\uAE43 L\uC790 2\xD72", "c": [232, 113.8, -61], "z": [8, 10, 8] }, { "s": "05", "id": "frame-s12-pcb", "n": "\uCCAB\uC9F8\uB0A0\uAC1C\uAE43 (\uC18C12 PCB, 118)", "c": [232, 112.2, -6], "z": [8, 1.6, 118] }, { "s": "05", "id": "l-frame-120-2x2", "n": "\uB0A0\uAC1C \uB05D 120\uB3C4 L\uC790 (\uD0ED)", "c": [242, 112.8, -60], "z": [8, 10, 12] }, { "s": "05", "id": "frame-s8-pcb", "n": "\uB0A0\uAC1C \uB05D \uCC98\uC9C4 \uAE43 (\uC18C8 PCB)", "c": [242, 93.3, -26.23], "z": [8, 39, 67.55], "euler": [30, -90, 0] }, { "s": "05", "id": "l-frame-120-2x2", "n": "\uB0A0\uAC1C \uB05D 120\uB3C4 L\uC790 (\uD0ED)", "c": [252, 112.8, -60], "z": [8, 10, 12] }, { "s": "05", "id": "frame-s8-pcb", "n": "\uB0A0\uAC1C \uB05D \uCC98\uC9C4 \uAE43 (\uC18C8 PCB)", "c": [252, 93.3, -26.23], "z": [8, 39, 67.55], "euler": [30, -90, 0] }, { "s": "05", "id": "l-frame-120-2x2", "n": "\uB0A0\uAC1C \uB05D 120\uB3C4 L\uC790 (\uD0ED)", "c": [262, 112.8, -60], "z": [8, 10, 12] }, { "s": "05", "id": "frame-s8-pcb", "n": "\uB0A0\uAC1C \uB05D \uCC98\uC9C4 \uAE43 (\uC18C8 PCB)", "c": [262, 93.3, -26.23], "z": [8, 39, 67.55], "euler": [30, -90, 0] }, { "s": "05", "id": "l-frame-2x2", "n": "\uB36E\uAE43 L\uC790 2\xD72", "c": [86, 134.6, -61], "z": [8, 10, 8] }, { "s": "05", "id": "l-frame-2x2", "n": "\uB36E\uAE43 L\uC790 2\xD72", "c": [116, 134.6, -61], "z": [8, 10, 8] }, { "s": "05", "id": "pc-frame-45x60", "n": "\uB0A0\uAC1C\uB36E\uAE43 (\uD22C\uBA85 PC \uD504\uB808\uC784)", "c": [103.5, 135.4, -34], "z": [45, 1.6, 60] }, { "s": "06", "id": "frame-5x13-pcb", "n": "\uAF2C\uB9AC \uBC1B\uCE68 (5\xD713 PCB)", "c": [0, 75.8, 60], "z": [118, 1.6, 38] }, { "s": "06", "id": "frame-s12-pcb", "n": "\uAF41\uC9C0\uAE43 (\uC18C12 PCB)", "c": [0, 77.4, 120], "z": [8, 1.6, 118] }, { "s": "06", "id": "frame-s12-pcb", "n": "\uAF41\uC9C0\uAE43 (\uC18C12 PCB)", "c": [-15, 77.4, 120], "z": [8, 1.6, 118] }, { "s": "06", "id": "frame-s12-pcb", "n": "\uAF41\uC9C0\uAE43 (\uC18C12 PCB)", "c": [15, 77.4, 120], "z": [8, 1.6, 118] }, { "s": "06", "id": "frame-s8-pcb", "n": "\uAF41\uC9C0\uAE43 (\uC18C8 PCB)", "c": [-35, 77.4, 100], "z": [8, 1.6, 78] }, { "s": "06", "id": "frame-s8-pcb", "n": "\uAF41\uC9C0\uAE43 (\uC18C8 PCB)", "c": [35, 77.4, 100], "z": [8, 1.6, 78] }, { "s": "06", "id": "frame-s8-pcb", "n": "\uAF41\uC9C0\uAE43 (\uC18C8 PCB)", "c": [-55, 77.4, 100], "z": [8, 1.6, 78] }, { "s": "06", "id": "frame-s8-pcb", "n": "\uAF41\uC9C0\uAE43 (\uC18C8 PCB)", "c": [55, 77.4, 100], "z": [8, 1.6, 78] }, { "s": "06", "id": "sensor-touch", "n": "\uAF2C\uB9AC \uC811\uCD09 \uC13C\uC11C (\uC4F0\uB2E4\uB4EC\uAE30)", "c": [0, 82.7, 100], "z": [48, 9, 28] }, { "s": "06", "id": "battle-v", "n": "\uAF2C\uB9AC \uB05D \uD770 \uBB34\uB2AC\uD310 (\uBC30\uD2C0\uBB34\uAE30 V)", "c": [0, 79, 150], "z": [84, 1.6, 46] }];
+
+// src/eagle/assemble.js
+var ROTS = [];
+for (const perm of [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]]) {
+  for (let s = 0; s < 8; s++) {
+    const sg = [s & 1 ? -1 : 1, s & 2 ? -1 : 1, s & 4 ? -1 : 1];
+    const m = new THREE101.Matrix4();
+    const e = new Array(16).fill(0);
+    for (let j = 0; j < 3; j++) e[j * 4 + perm[j]] = sg[j];
+    e[15] = 1;
+    m.fromArray(e);
+    if (Math.abs(m.determinant() - 1) < 1e-6) ROTS.push({ m, perm, sg });
+  }
+}
+var axisVec = (j) => new THREE101.Vector3(j === 0 ? 1 : 0, j === 1 ? 1 : 0, j === 2 ? 1 : 0);
+var same = (v, arr) => arr && Math.abs(v.x - arr[0]) < 1e-6 && Math.abs(v.y - arr[1]) < 1e-6 && Math.abs(v.z - arr[2]) < 1e-6;
+function chooseRotation(native, target, hint) {
+  let best = null;
+  for (const r of ROTS) {
+    if (hint.up && !same(axisVec(1).applyMatrix4(r.m), hint.up)) continue;
+    if (hint.xdir && !same(axisVec(0).applyMatrix4(r.m), hint.xdir)) continue;
+    if (hint.zdir && !same(axisVec(2).applyMatrix4(r.m), hint.zdir)) continue;
+    const mapped = [0, 0, 0];
+    for (let j = 0; j < 3; j++) mapped[r.perm[j]] = native[j];
+    let err = 0;
+    for (let i = 0; i < 3; i++) err += Math.abs(Math.log(Math.max(mapped[i], 0.5) / Math.max(target[i], 0.5)));
+    if (!best || err < best.err - 1e-6) best = { r, err };
+  }
+  return best ? best.r.m : new THREE101.Matrix4();
+}
+function hideDemo(obj) {
+  obj.traverse((o) => {
+    if (o !== obj && o.userData?.noBounds) o.visible = false;
+  });
+}
+async function buildEagle(loadPart2, onProgress) {
+  const ids = [...new Set(assembly_default.map((a) => a.id))];
+  const mods = {};
+  let done = 0;
+  await Promise.all(ids.map(async (id) => {
+    mods[id] = await loadPart2(id);
+    onProgress?.(++done / ids.length);
+  }));
+  const root = new THREE101.Group();
+  const groups = {};
+  const wing = { l: new THREE101.Group(), r: new THREE101.Group() };
+  const head = new THREE101.Group();
+  wing.r.position.set(62, 124.8, 0);
+  wing.l.position.set(-62, 124.8, 0);
+  head.position.set(0, 0, -49);
+  const pickables = [];
+  for (const a of assembly_default) {
+    const model = mods[a.id].build();
+    hideDemo(model.object3d);
+    if (a.id === "color-ball" && model.handles?.balls) {
+      const k = a.n.includes("\uBE68\uAC15") ? 0 : a.n.includes("\uCD08\uB85D") ? 1 : 2;
+      model.handles.balls.forEach((b, i) => {
+        b.visible = i === k;
+        if (i === k) b.position.x = 0;
+      });
+      model.handles.balls.filter((b, i) => i !== k).forEach((b) => b.removeFromParent());
+    }
+    const holder = new THREE101.Group();
+    holder.userData = { name: a.n, id: a.id, sheet: a.s };
+    if (a.id === "support-spacer" && a.length && model.handles?.setLength) {
+      model.handles.setLength(a.length);
+      holder.add(model.object3d);
+      holder.position.set(a.c[0], a.c[1] - a.z[1] / 2, a.c[2]);
+    } else {
+      const inner = new THREE101.Group();
+      inner.add(model.object3d);
+      holder.add(inner);
+      inner.updateMatrixWorld(true);
+      const box2 = partBounds(inner);
+      const size = box2.getSize(new THREE101.Vector3()), c = box2.getCenter(new THREE101.Vector3());
+      model.object3d.position.sub(c);
+      if (a.euler) holder.rotation.set(...a.euler.map((d) => THREE101.MathUtils.degToRad(d)), "XYZ");
+      else holder.quaternion.setFromRotationMatrix(chooseRotation([size.x, size.y, size.z], a.z, a));
+      if (a.flip) holder.quaternion.premultiply(new THREE101.Quaternion().setFromAxisAngle(axisVec("xyz".indexOf(a.flip)), Math.PI));
+      holder.position.set(...a.c);
+    }
+    let parent;
+    if (a.s === "05" && Math.abs(a.c[0]) > 46 && a.id !== "servo-digital" && a.id !== "motor-frame-3x3") {
+      parent = a.c[0] > 0 ? wing.r : wing.l;
+      holder.position.sub(parent.position);
+    } else if (a.s === "04") {
+      parent = head;
+      holder.position.sub(head.position);
+    } else {
+      parent = groups[a.s] ??= new THREE101.Group();
+    }
+    parent.add(holder);
+    pickables.push(holder);
+  }
+  groups["05"] ??= new THREE101.Group();
+  groups["05"].add(wing.l, wing.r);
+  groups["04"] = new THREE101.Group();
+  groups["04"].add(head);
+  for (const g of Object.values(groups)) root.add(g);
+  root.position.y = 11.6;
+  return { root, groups, wing, head, pickables, count: assembly_default.length };
+}
+var EXPLODE = {
+  "01": [0, -60, 0],
+  "02": [0, -30, 0],
+  "03": [0, 0, 0],
+  "04": [0, 70, -30],
+  "05": [0, 30, 0],
+  "06": [0, 0, 90]
+};
+var WING_SPREAD = 160;
+
 // src/main.js
 var stage = document.getElementById("stage");
 var view = createScene(stage);
@@ -10257,7 +10376,7 @@ view.scene.add(overlay.dimGroup);
 var panel = createPanel(document.getElementById("panel"));
 var opts = { labels: true, dims: true, spin: false };
 var nav = document.getElementById("parts");
-nav.innerHTML = `<a href="#all" data-id="all" class="all"><b>\u25A6 \uC804\uCCB4 \uD3BC\uCCD0\uBCF4\uAE30</b><small>${catalog.length}\uAC1C \uBD80\uD488 \xB7 \uC2E4\uC81C \uD06C\uAE30\uB85C \uD55C \uD654\uBA74\uC5D0</small></a>` + categories.map(([cat, title]) => `
+nav.innerHTML = `<a href="#eagle" data-id="eagle" class="all"><b>\u{1F985} \uB3C5\uC218\uB9AC \uC870\uB9BD (\uC124\uACC4\uB3C4\uBA74)</b><small>\uBD80\uD488\uC73C\uB85C \uC870\uB9BD\uD55C \uB3C5\uC218\uB9AC \xB7 \uB0A0\uAC2F\uC9D3 \xB7 \uBD84\uD574 \uBCF4\uAE30</small></a><a href="#all" data-id="all" class="all"><b>\u25A6 \uC804\uCCB4 \uD3BC\uCCD0\uBCF4\uAE30</b><small>${catalog.length}\uAC1C \uBD80\uD488 \xB7 \uC2E4\uC81C \uD06C\uAE30\uB85C \uD55C \uD654\uBA74\uC5D0</small></a>` + categories.map(([cat, title]) => `
   <h3>${title}</h3>
   ${catalog.filter((p) => p.category === cat).map((p) => `
     <a href="#${p.id}" data-id="${p.id}"><b>${p.name}</b><small>${p.size.x} \xD7 ${p.size.z} \xD7 ${p.size.y} mm${p.size.estimated ? " \xB7 \uCD94\uC815" : ""}</small></a>`).join("")}
@@ -10277,7 +10396,7 @@ var picks = [];
 async function showAll(token) {
   const parts = await Promise.all(catalog.map((p) => loadPart(p.id)));
   if (token !== loadToken) return null;
-  const root = new THREE101.Group();
+  const root = new THREE102.Group();
   const labels = [];
   let z = 0;
   picks.length = 0;
@@ -10287,12 +10406,12 @@ async function showAll(token) {
     let x = 0, rowDepth = 0, first = true;
     for (const [spec, part] of list) {
       const model = part.build();
-      const g = new THREE101.Group();
+      const g = new THREE102.Group();
       g.add(model.object3d);
       root.add(g);
       g.updateMatrixWorld(true);
       const box2 = partBounds(g);
-      const size = box2.getSize(new THREE101.Vector3()), c = box2.getCenter(new THREE101.Vector3());
+      const size = box2.getSize(new THREE102.Vector3()), c = box2.getCenter(new THREE102.Vector3());
       if (x > 0 && x + size.x > ROW_W) {
         z += rowDepth + GAP * 2;
         x = 0;
@@ -10312,7 +10431,90 @@ async function showAll(token) {
   }
   return { root, labels };
 }
+var eagle = null;
+async function showEagle(token) {
+  const loading = document.getElementById("loading");
+  const e = await buildEagle(loadPart, (k) => {
+    loading.textContent = `\uBD80\uD488 \uBD88\uB7EC\uC624\uB294 \uC911\u2026 ${Math.round(k * 100)}%`;
+  });
+  loading.textContent = "\uBD88\uB7EC\uC624\uB294 \uC911\u2026";
+  if (token !== loadToken) return null;
+  return e;
+}
+function eagleFunction(e) {
+  const st = { flap: -20, auto: false, head: 90, scan: false, explode: 0, t: 0, hidden: {} };
+  panel.ui.controls([
+    { type: "toggle", id: "auto", label: "\uC790\uB3D9 \uB0A0\uAC2F\uC9D3", value: false },
+    { type: "slider", id: "flap", label: "\uB0A0\uAC1C \uAC01\uB3C4", min: -20, max: 45, step: 1, value: -20, unit: "\xB0" },
+    { type: "toggle", id: "scan", label: "\uBA38\uB9AC \uB458\uB7EC\uBCF4\uAE30", value: false },
+    { type: "slider", id: "head", label: "\uBA38\uB9AC \uBC29\uD5A5 (90 = \uC815\uBA74)", min: 45, max: 135, step: 1, value: 90, unit: "\xB0" },
+    { type: "slider", id: "explode", label: "\uBD84\uD574 \uBCF4\uAE30", min: 0, max: 1, step: 0.01, value: 0 },
+    ...Object.entries(SHEETS).map(([no, t]) => ({ type: "toggle", id: "g" + no, label: `${no} ${t}`, value: true, compact: true }))
+  ]);
+  panel.ui.readouts([["parts", "\uB193\uC778 \uBD80\uD488"], ["wing", "\uB0A0\uAC1C \uB05D \uB192\uC774"], ["state", "\uB3D9\uC791"]]);
+  return {
+    onControl(id, v) {
+      if (id.startsWith("g")) st.hidden[id.slice(1)] = !v;
+      else st[id] = id === "auto" || id === "scan" ? v : Number(v);
+    },
+    update(dt) {
+      st.t += dt;
+      const flap = st.auto ? 12.5 + 32.5 * Math.sin(st.t * Math.PI * 2 / 1.2) : st.flap;
+      const head = st.scan ? 90 + 45 * Math.sin(st.t * 0.8) : st.head;
+      const a = THREE102.MathUtils.degToRad(flap);
+      e.wing.r.rotation.z = a;
+      e.wing.l.rotation.z = -a;
+      e.head.rotation.y = THREE102.MathUtils.degToRad(head - 90);
+      for (const [no, g] of Object.entries(e.groups)) {
+        const d = EXPLODE[no] || [0, 0, 0];
+        g.position.set(d[0] * st.explode, d[1] * st.explode, d[2] * st.explode);
+        g.visible = !st.hidden[no];
+      }
+      e.wing.r.position.x = 62 + WING_SPREAD * st.explode;
+      e.wing.l.position.x = -62 - WING_SPREAD * st.explode;
+      panel.ui.readout("parts", `${e.count}\uAC1C (\uBCFC\uD2B8 \xB7 \uB108\uD2B8 \uD3EC\uD568 ${BOM_TOTAL}\uAC1C)`);
+      panel.ui.readout("wing", `${(204 * Math.sin(a)).toFixed(0)} mm (${flap.toFixed(0)}\xB0)`);
+      panel.ui.readout("state", st.auto ? "\uB0A0\uAC2F\uC9D3 (1.2\uCD08\uC5D0 \uD55C \uBC88)" : st.explode > 0.02 ? "\uBD84\uD574 \uBCF4\uAE30" : "\uC815\uC9C0");
+    }
+  };
+}
 async function select(id) {
+  if (id === "eagle") {
+    if (current?.id === "eagle") return;
+    const token2 = ++loadToken;
+    document.getElementById("loading").style.display = "block";
+    nav.querySelectorAll("a").forEach((a) => a.classList.toggle("on", a.dataset.id === "eagle"));
+    const e = eagle ?? await showEagle(token2);
+    if (!e) return;
+    eagle = e;
+    if (current) {
+      current.fn?.dispose?.();
+      view.scene.remove(current.root);
+    }
+    overlay.clear();
+    picks.length = 0;
+    view.controls.zoomToCursor = true;
+    view.scene.add(e.root);
+    e.root.updateMatrixWorld(true);
+    const box3 = partBounds(e.root);
+    view.frame(box3, { dir: [-0.9, 0.55, -1], fit: 1.15, minDist: 20 });
+    const size = box3.getSize(new THREE102.Vector3());
+    panel.showSpec({
+      name: "\uB3C5\uC218\uB9AC \uB85C\uBD07 (\uC124\uACC4\uB3C4\uBA74 \uC870\uB9BD)",
+      url: "https://github.com/popkn/3d-test/blob/\uB85C\uBCF4\uB85C\uBCF4-3d-test/eagle/BLUEPRINT.md",
+      size: { x: Math.round(size.x), z: Math.round(size.z), y: Math.round(size.y), estimated: false, note: "eagle/BLUEPRINT.md \uB3C4\uBA74\uC758 \uC88C\uD45C\uB300\uB85C \uC774 \uC800\uC7A5\uC18C\uC758 \uBD80\uD488 \uBAA8\uB378\uC744 \uD558\uB098\uC529 \uB193\uC544 \uC870\uB9BD\uD588\uC2B5\uB2C8\uB2E4. \uBCFC\uD2B8 \xB7 \uB108\uD2B8 \xB7 \uCF00\uC774\uBE14\uC740 \uC0DD\uB7B5." },
+      function: "\uD770\uBA38\uB9AC\uC218\uB9AC\uAC00 \uD683\uB300\uB97C \uC6C0\uCF1C\uC950\uACE0 \uC549\uC740 \uBAA8\uC2B5. \uC11C\uBCF4 2\uAC1C\uB85C \uB0A0\uAC2F\uC9D3, \uC11C\uBCF4 1\uAC1C\uB85C \uBA38\uB9AC\uB97C \uB3CC\uB9B0\uB2E4. \uBD80\uD488\uC5D0 \uB9C8\uC6B0\uC2A4\uB97C \uC62C\uB9AC\uBA74 \uC774\uB984\uC774 \uBCF4\uC785\uB2C8\uB2E4.",
+      specs: Object.entries(SHEETS).map(([no, t]) => [`\uB3C4\uBA74 ${no}`, t]),
+      ports: []
+    });
+    let fn2 = null;
+    panel.reset((cid, v) => fn2?.onControl?.(cid, v));
+    fn2 = eagleFunction(e);
+    current = { id: "eagle", root: e.root, fn: { ...fn2, dispose() {
+    } } };
+    document.getElementById("loading").style.display = "none";
+    return;
+  }
   if (id === "all") {
     if (current?.id === "all") return;
     const token2 = ++loadToken;
@@ -10333,7 +10535,7 @@ async function select(id) {
     const d0 = view.camera.position.distanceTo(view.controls.target);
     for (const l of res.labels) if (l.small) l.maxDist = d0 * 0.4;
     overlay.setLabels(res.labels);
-    const size = box3.getSize(new THREE101.Vector3());
+    const size = box3.getSize(new THREE102.Vector3());
     panel.showSpec({
       name: "\uC804\uCCB4 \uBD80\uD488 \uD3BC\uCCD0\uBCF4\uAE30",
       url: "#all",
@@ -10363,11 +10565,11 @@ async function select(id) {
   }
   overlay.clear();
   const model = part.build();
-  const root = new THREE101.Group();
+  const root = new THREE102.Group();
   root.add(model.object3d);
   view.scene.add(root);
   const box2 = partBounds(root);
-  const c = box2.getCenter(new THREE101.Vector3());
+  const c = box2.getCenter(new THREE102.Vector3());
   model.object3d.position.set(-c.x, -box2.min.y, -c.z);
   const fitted = partBounds(root);
   view.frame(partBounds(root, { include: model.frameWith || [] }));
@@ -10381,8 +10583,32 @@ async function select(id) {
   document.getElementById("loading").style.display = "none";
 }
 window.addEventListener("hashchange", () => select(location.hash.slice(1)));
-var ray = new THREE101.Raycaster();
-var ptr = new THREE101.Vector2();
+var tipEl = document.createElement("div");
+tipEl.className = "tag hover-tip";
+tipEl.style.cssText = "position:absolute;pointer-events:none;opacity:0;z-index:5";
+stage.appendChild(tipEl);
+view.renderer.domElement.addEventListener("pointermove", (e) => {
+  if (current?.id !== "eagle" || !eagle) {
+    tipEl.style.opacity = 0;
+    return;
+  }
+  const r = view.renderer.domElement.getBoundingClientRect();
+  const v = new THREE102.Vector2((e.clientX - r.left) / r.width * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+  const rc = new THREE102.Raycaster();
+  rc.setFromCamera(v, view.camera);
+  const hit = rc.intersectObject(eagle.root, true).find((h) => h.object.visible);
+  let o = hit?.object;
+  while (o && !o.userData?.id) o = o.parent;
+  if (!o) {
+    tipEl.style.opacity = 0;
+    return;
+  }
+  tipEl.innerHTML = `${o.userData.name}<small>${o.userData.id} \xB7 \uB3C4\uBA74 ${o.userData.sheet}</small>`;
+  tipEl.style.opacity = 1;
+  tipEl.style.transform = `translate(${e.clientX - r.left + 14}px, ${e.clientY - r.top + 10}px)`;
+});
+var ray = new THREE102.Raycaster();
+var ptr = new THREE102.Vector2();
 var down = null;
 view.renderer.domElement.addEventListener("pointerdown", (e) => {
   down = [e.clientX, e.clientY];
@@ -10405,7 +10631,7 @@ view.renderer.domElement.addEventListener("pointerup", (e) => {
   if (pick) location.hash = pick.id;
 });
 select(location.hash.slice(1) || catalog[0].id);
-var timer = new THREE101.Timer();
+var timer = new THREE102.Timer();
 view.renderer.setAnimationLoop((ts) => {
   timer.update(ts);
   const dt = Math.min(timer.getDelta(), 0.1);

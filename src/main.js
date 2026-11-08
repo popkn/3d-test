@@ -3,6 +3,8 @@ import { catalog, categories, loadPart } from './catalog/index.js';
 import { createScene, partBounds } from './viewer/scene.js';
 import { createOverlay } from './viewer/overlay.js';
 import { createPanel } from './viewer/panel.js';
+import { buildEagle, EXPLODE, WING_SPREAD } from './eagle/assemble.js';
+import { SHEETS, BOM_TOTAL } from './eagle/assembly.js';
 
 // 로보로보 부품 뷰어: 왼쪽 목록에서 부품을 고르면 3D 모양과 기능(조작 패널)을 불러온다.
 const stage = document.getElementById('stage');
@@ -14,7 +16,7 @@ const opts = { labels: true, dims: true, spin: false };
 
 // 목록
 const nav = document.getElementById('parts');
-nav.innerHTML = `<a href="#all" data-id="all" class="all"><b>▦ 전체 펼쳐보기</b><small>${catalog.length}개 부품 · 실제 크기로 한 화면에</small></a>` + categories.map(([cat, title]) => `
+nav.innerHTML = `<a href="#eagle" data-id="eagle" class="all"><b>🦅 독수리 조립 (설계도면)</b><small>부품으로 조립한 독수리 · 날갯짓 · 분해 보기</small></a><a href="#all" data-id="all" class="all"><b>▦ 전체 펼쳐보기</b><small>${catalog.length}개 부품 · 실제 크기로 한 화면에</small></a>` + categories.map(([cat, title]) => `
   <h3>${title}</h3>
   ${catalog.filter((p) => p.category === cat).map((p) => `
     <a href="#${p.id}" data-id="${p.id}"><b>${p.name}</b><small>${p.size.x} × ${p.size.z} × ${p.size.y} mm${p.size.estimated ? ' · 추정' : ''}</small></a>`).join('')}
@@ -67,7 +69,80 @@ async function showAll(token) {
   return { root, labels };
 }
 
+// 독수리 조립: eagle/BLUEPRINT.md 도면의 부품 배치대로 실제 부품 모델을 조립한다
+let eagle = null;
+async function showEagle(token) {
+  const loading = document.getElementById('loading');
+  const e = await buildEagle(loadPart, (k) => { loading.textContent = `부품 불러오는 중… ${Math.round(k * 100)}%`; });
+  loading.textContent = '불러오는 중…';
+  if (token !== loadToken) return null;
+  return e;
+}
+function eagleFunction(e) {
+  const st = { flap: -20, auto: false, head: 90, scan: false, explode: 0, t: 0, hidden: {} };
+  panel.ui.controls([
+    { type: 'toggle', id: 'auto', label: '자동 날갯짓', value: false },
+    { type: 'slider', id: 'flap', label: '날개 각도', min: -20, max: 45, step: 1, value: -20, unit: '°' },
+    { type: 'toggle', id: 'scan', label: '머리 둘러보기', value: false },
+    { type: 'slider', id: 'head', label: '머리 방향 (90 = 정면)', min: 45, max: 135, step: 1, value: 90, unit: '°' },
+    { type: 'slider', id: 'explode', label: '분해 보기', min: 0, max: 1, step: 0.01, value: 0 },
+    ...Object.entries(SHEETS).map(([no, t]) => ({ type: 'toggle', id: 'g' + no, label: `${no} ${t}`, value: true, compact: true })),
+  ]);
+  panel.ui.readouts([['parts', '놓인 부품'], ['wing', '날개 끝 높이'], ['state', '동작']]);
+  return {
+    onControl(id, v) { if (id.startsWith('g')) st.hidden[id.slice(1)] = !v; else st[id] = id === 'auto' || id === 'scan' ? v : Number(v); },
+    update(dt) {
+      st.t += dt;
+      const flap = st.auto ? 12.5 + 32.5 * Math.sin(st.t * Math.PI * 2 / 1.2) : st.flap;
+      const head = st.scan ? 90 + 45 * Math.sin(st.t * 0.8) : st.head;
+      const a = THREE.MathUtils.degToRad(flap);
+      e.wing.r.rotation.z = a; e.wing.l.rotation.z = -a;
+      e.head.rotation.y = THREE.MathUtils.degToRad(head - 90);
+      for (const [no, g] of Object.entries(e.groups)) {
+        const d = EXPLODE[no] || [0, 0, 0];
+        g.position.set(d[0] * st.explode, d[1] * st.explode, d[2] * st.explode);
+        g.visible = !st.hidden[no];
+      }
+      e.wing.r.position.x = 62 + WING_SPREAD * st.explode; e.wing.l.position.x = -62 - WING_SPREAD * st.explode;
+      panel.ui.readout('parts', `${e.count}개 (볼트 · 너트 포함 ${BOM_TOTAL}개)`);
+      panel.ui.readout('wing', `${(204 * Math.sin(a)).toFixed(0)} mm (${flap.toFixed(0)}°)`);
+      panel.ui.readout('state', st.auto ? '날갯짓 (1.2초에 한 번)' : st.explode > 0.02 ? '분해 보기' : '정지');
+    },
+  };
+}
+
 async function select(id) {
+  if (id === 'eagle') {
+    if (current?.id === 'eagle') return;
+    const token = ++loadToken;
+    document.getElementById('loading').style.display = 'block';
+    nav.querySelectorAll('a').forEach((a) => a.classList.toggle('on', a.dataset.id === 'eagle'));
+    const e = eagle ?? await showEagle(token);
+    if (!e) return;
+    eagle = e;
+    if (current) { current.fn?.dispose?.(); view.scene.remove(current.root); }
+    overlay.clear();
+    picks.length = 0;
+    view.controls.zoomToCursor = true;
+    view.scene.add(e.root);
+    e.root.updateMatrixWorld(true);
+    const box = partBounds(e.root);
+    view.frame(box, { dir: [-0.9, 0.55, -1], fit: 1.15, minDist: 20 });
+    const size = box.getSize(new THREE.Vector3());
+    panel.showSpec({
+      name: '독수리 로봇 (설계도면 조립)', url: 'https://github.com/popkn/3d-test/blob/로보로보-3d-test/eagle/BLUEPRINT.md',
+      size: { x: Math.round(size.x), z: Math.round(size.z), y: Math.round(size.y), estimated: false, note: 'eagle/BLUEPRINT.md 도면의 좌표대로 이 저장소의 부품 모델을 하나씩 놓아 조립했습니다. 볼트 · 너트 · 케이블은 생략.' },
+      function: '흰머리수리가 횃대를 움켜쥐고 앉은 모습. 서보 2개로 날갯짓, 서보 1개로 머리를 돌린다. 부품에 마우스를 올리면 이름이 보입니다.',
+      specs: Object.entries(SHEETS).map(([no, t]) => [`도면 ${no}`, t]),
+      ports: [],
+    });
+    let fn = null;
+    panel.reset((cid, v) => fn?.onControl?.(cid, v));
+    fn = eagleFunction(e);
+    current = { id: 'eagle', root: e.root, fn: { ...fn, dispose() {} } };
+    document.getElementById('loading').style.display = 'none';
+    return;
+  }
   if (id === 'all') {
     if (current?.id === 'all') return;
     const token = ++loadToken;
@@ -140,6 +215,24 @@ async function select(id) {
 }
 
 window.addEventListener('hashchange', () => select(location.hash.slice(1)));
+
+// 독수리 화면: 마우스를 올린 부품 이름 표시
+const tipEl = document.createElement('div');
+tipEl.className = 'tag hover-tip';
+tipEl.style.cssText = 'position:absolute;pointer-events:none;opacity:0;z-index:5';
+stage.appendChild(tipEl);
+view.renderer.domElement.addEventListener('pointermove', (e) => {
+  if (current?.id !== 'eagle' || !eagle) { tipEl.style.opacity = 0; return; }
+  const r = view.renderer.domElement.getBoundingClientRect();
+  const v = new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+  const rc = new THREE.Raycaster(); rc.setFromCamera(v, view.camera);
+  const hit = rc.intersectObject(eagle.root, true).find((h) => h.object.visible);
+  let o = hit?.object; while (o && !o.userData?.id) o = o.parent;
+  if (!o) { tipEl.style.opacity = 0; return; }
+  tipEl.innerHTML = `${o.userData.name}<small>${o.userData.id} · 도면 ${o.userData.sheet}</small>`;
+  tipEl.style.opacity = 1;
+  tipEl.style.transform = `translate(${e.clientX - r.left + 14}px, ${e.clientY - r.top + 10}px)`;
+});
 
 // 펼쳐보기에서 부품 누르기 (끌어서 돌린 경우는 무시)
 const ray = new THREE.Raycaster(), ptr = new THREE.Vector2();
