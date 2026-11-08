@@ -10,16 +10,17 @@ export const frameSize = (n) => (n - 1) * PITCH + 8;
 
 // 판 프레임: cols × rows 구멍 격자. material: 'pcb'(검은 FR-4, 금색 테) / 'plastic'(검은 플라스틱)
 //   skip(c, r): true면 그 자리 구멍을 뺀다 (ㅁ자 · 하프 등 모양용), outline: 직접 외곽선
-export function makeFrame({ cols, rows, material = 'pcb', thickness = 1.6, skip = null, outline = null, color = null, margin = 4 }) {
-  const W = (cols - 1) * PITCH + margin * 2, D = (rows - 1) * PITCH + margin * 2;
+export function makeFrame({ cols, rows, material = 'pcb', thickness = 1.6, skip = null, outline = null, color = null, margin = 4, marginZ = null, cutouts = [] }) {
+  const mz = marginZ ?? margin;
+  const W = (cols - 1) * PITCH + margin * 2, D = (rows - 1) * PITCH + mz * 2;
   const holes = [];
   for (let c = 0; c < cols; c++) for (let r = 0; r < rows; r++) {
     if (skip && skip(c, r)) continue;
-    holes.push({ x: -W / 2 + margin + c * PITCH, z: -D / 2 + margin + r * PITCH, r: 1.6, ring: material === 'pcb' });
+    holes.push({ x: -W / 2 + margin + c * PITCH, z: -D / 2 + mz + r * PITCH, r: 1.6, ring: material === 'pcb' });
   }
   let obj;
   if (material === 'pcb') {
-    obj = makePcb({ width: W, depth: D, thickness, holes, color: 'black', outline, corner: 2, pxPerMm: 8 });
+    obj = makePcb({ width: W, depth: D, thickness, holes, color: 'black', outline, corner: 2, pxPerMm: 8, cutouts });
   } else {
     const s = new THREE.Shape();
     if (outline) { outline.forEach(([x, z], i) => (i ? s.lineTo(x, -z) : s.moveTo(x, -z))); s.closePath(); }

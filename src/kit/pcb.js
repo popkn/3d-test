@@ -10,7 +10,7 @@ import { canvasTexture, FONT } from './textures.js';
 //   silk(g, w, d, X, Y): 실크 인쇄 그리기 (X(x), Y(z)로 기판 좌표 → 캔버스 좌표)
 export function makePcb({
   width, depth, thickness = 1.6, color = 'black', outline = null, corner = 1.2,
-  holes = [], frame = null, silk = null, pxPerMm = 20,
+  holes = [], frame = null, silk = null, pxPerMm = 20, cutouts = [],
 }) {
   const dark = color === 'black';
   const allHoles = [...holes];
@@ -55,6 +55,13 @@ export function makePcb({
     shape.holes.push(p);
   }
 
+  // 네모난 창 (ㅁ자 프레임 등): { x, z, w, d }
+  for (const c of cutouts) {
+    const p = new THREE.Path();
+    p.moveTo(c.x - c.w / 2, -(c.z - c.d / 2)); p.lineTo(c.x - c.w / 2, -(c.z + c.d / 2));
+    p.lineTo(c.x + c.w / 2, -(c.z + c.d / 2)); p.lineTo(c.x + c.w / 2, -(c.z - c.d / 2)); p.closePath();
+    shape.holes.push(p);
+  }
   const geo = new THREE.ExtrudeGeometry(shape, { depth: thickness, bevelEnabled: false, curveSegments: 16 });
   geo.rotateX(-Math.PI / 2);
 

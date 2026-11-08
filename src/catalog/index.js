@@ -61,6 +61,15 @@ import battleU from './parts/battle-u/spec.js';
 import battleV from './parts/battle-v/spec.js';
 import motorFrame3x3 from './parts/motor-frame-3x3/spec.js';
 import pcFrame45x60 from './parts/pc-frame-45x60/spec.js';
+import frameS3Pcb from './parts/frame-s3-pcb/spec.js';
+import frameS4Pcb from './parts/frame-s4-pcb/spec.js';
+import frameS5Pcb from './parts/frame-s5-pcb/spec.js';
+import frameS7Pcb from './parts/frame-s7-pcb/spec.js';
+import frameS8Pcb from './parts/frame-s8-pcb/spec.js';
+import frameS3Plastic from './parts/frame-s3-plastic/spec.js';
+import frameS4Plastic from './parts/frame-s4-plastic/spec.js';
+import frameS5Plastic from './parts/frame-s5-plastic/spec.js';
+import frameMPcb from './parts/frame-m-pcb/spec.js';
 
 // 7호 키트 부품목록(CHECKLIST.md)에 있는 부품만 넣는다
 export const catalog = [
@@ -71,6 +80,7 @@ export const catalog = [
   caterpillarLink, caterpillarSprocket, caterpillarWheelGuide, caterpillarRubber,
   batteryCase4aa,
   frameBigMain, frameMainPcb, frameMainPlastic, frameHalfPcb, lFrame6x6, motorFrame3x3, pcFrame45x60,
+  frameS3Pcb, frameS4Pcb, frameS5Pcb, frameS7Pcb, frameS8Pcb, frameS3Plastic, frameS4Plastic, frameS5Plastic, frameMPcb,
   battleG, battleI, battleJ, battleS, battleT, battleU, battleV,
   hinge3x3, grab, nutM3, capNutM3, sNutBlue, nutFrame4, motorGuide, boltM26x10, boltM3x6, boltM3x10, supportSpacer, spongeBall, colorBall, cable3pin,
 ];
