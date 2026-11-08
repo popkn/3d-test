@@ -45,6 +45,9 @@ import caterpillarRubber from './parts/caterpillar-rubber/spec.js';
 import colorBall from './parts/color-ball/spec.js';
 import cable3pin from './parts/cable-3pin/spec.js';
 import tire50 from './parts/tire-50/spec.js';
+import wheelGuide30Nylon from './parts/wheel-guide-30-nylon/spec.js';
+import wheelGuide40Yellow from './parts/wheel-guide-40-yellow/spec.js';
+import wheelGuide30Servo from './parts/wheel-guide-30-servo/spec.js';
 import frameBigMain from './parts/frame-big-main/spec.js';
 import lFrame6x6 from './parts/l-frame-6x6/spec.js';
 import tire80Buggy from './parts/tire-80-buggy/spec.js';
@@ -93,7 +96,7 @@ export const catalog = [
   cpuBoard8m, motorDriveA3, motorDriveLinkS, buzzerBoardS, ledBoardRedS, ledBoardGreenS, ledBoardOrangeS, rgbLedBright, irRemoteTx, irRemoteRx, melodyBoard, btWirelessBoard2, btModule,
   sensorTouch, sensorIrTr, sensorSound, sensorColor,
   dcMotor130Rs, dcMotor130Dual, dcMotor400Rs, servoDigital,
-  wheelSet130, wheelAxle, inner80Buggy, inner130Giant, shaft75, axleGuide, tire50, tire80Buggy, wheel50V2, wheelBuggy80,
+  wheelSet130, wheelAxle, inner80Buggy, inner130Giant, shaft75, axleGuide, tire50, tire80Buggy, wheel50V2, wheelBuggy80, wheelGuide30Nylon, wheelGuide40Yellow, wheelGuide30Servo,
   caterpillarLink, caterpillarSprocket, caterpillarWheelGuide, caterpillarRubber,
   batteryCase4aa,
   frameBigMain, frameMainPcb, frameMainPlastic, frameHalfPcb, lFrame6x6, motorFrame3x3, pcFrame45x60,

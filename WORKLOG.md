@@ -25,7 +25,7 @@
 - three.js 주의: `mesh.position`은 읽기 전용 → `Object.assign`으로 바꾸지 말고 `placed(mesh, x, y, z)` 또는 `position.set()`.
 - 규격 찾기: `scratchpad/shop/fetch.py 번호...` → `batch.json`의 desc 이미지 내려받기 → 회색 제품 사진 띠 바로 아래 "크기" 줄을 잘라 확인 (OCR 없음).
 - 프레임 생성: 줄·판 = `makeFrame({cols, rows, material, margin, marginZ, skip, cutouts})` + `cornerBolts` + `createFrameFunction` (예: `frame-s3-pcb`). L자 = `makeLFrame({a, b, w, angle})` (예: `l-frame-2x2`). PCB 여백 4, 플라스틱 여백 5.
-- 공통 키트 (`src/kit/`): pcb, components, sBoard(22×32 S보드), ecvBoard(48×28 센서보드), motorCase(60×40×20), frame(10mm 구멍 격자 · L자), fasteners · boltSim · capNut · fastenSim, caterpillar, innerSponge, wheelRim (휠 림 · 살 · D컷 허브 + 타이어 미리보기 · 속도 기능), ledBoardS, audio, battleFrame · battleSim (배틀무기: 흰 FR-4 + 빨간 무늬, 크기는 추정).
+- 공통 키트 (`src/kit/`): pcb, components, sBoard(22×32 S보드), ecvBoard(48×28 센서보드), motorCase(60×40×20), frame(10mm 구멍 격자 · L자), fasteners · boltSim · capNut · fastenSim, caterpillar, innerSponge, wheelGuide (휠가이드 원판 · 6구멍 · 허브 + 프레임 붙여 돌리기), wheelRim (휠 림 · 살 · D컷 허브 + 타이어 미리보기 · 속도 기능), ledBoardS, audio, battleFrame · battleSim (배틀무기: 흰 FR-4 + 빨간 무늬, 크기는 추정).
 
 ## 테스트 방법
 
@@ -36,15 +36,13 @@
 
 | 페이지 | 상태 |
 |---|---|
-| 1 ~ 16 | 완료 (자세한 내용은 CHECKLIST.md 아래 표) |
-| 17 | 남음 |
+| 1 ~ 17 | 완료 (쇼핑몰 목록 끝, 18페이지 없음) (자세한 내용은 CHECKLIST.md 아래 표) |
 
 ## 다음 페이지에서 할 일 (이미 목록을 확인해 둔 것)
 
 | 페이지 | 구현할 부품 (상품 번호) |
 |---|---|
-| 17 | 서보 휠가이드 Ø30(167, Ø30×8), 노랑 휠가이드 Ø40(164), **검정 휠가이드 Ø30 나일론(87) → 3페이지에서 Ø130 세트로 잘못 완료 처리한 것 바로잡기** |
 
 ## 아직 쇼핑몰 목록에서 못 찾은 체크리스트 부품
 
-블루투스 컨트롤러, 배터리케이스 커버, 고무줄, 탁구공, 주사위 → 17페이지까지 끝나면 사용자에게 알린다.
+블루투스 컨트롤러, 배터리케이스 커버, 고무줄, 탁구공, 주사위 → 17페이지(마지막)까지 확인 완료, 쇼핑몰 카테고리 194에 없음. 사용자에게 알림.
