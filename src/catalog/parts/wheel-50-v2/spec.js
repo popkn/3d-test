@@ -5,9 +5,11 @@ export default {
   category: 'wheel',
   productNo: 84,
   url: 'https://roboroboshop.com/product/detail.html?product_no=84&cate_no=194',
-  size: { x: 45, y: 45, z: 14, estimated: true, note: 'Ø50은 타이어를 끼운 바퀴 지름. 휠 폭 14 mm · ABS 흰색 · 7 g (상품 페이지). 휠 지름 Ø45는 타이어 Ø50[V2] 안쪽 Ø41에 맞춰 추정' },
+  size: { x: 48, y: 48, z: 14, estimated: false, note: '표기 Ø50 (상품명). 실제 휠은 Ø48: 옆면 Ø45 + 가운데 돌기 Ø48이 타이어 안쪽 홈에 들어가, 타이어를 끼우면 Ø45만 보인다 (사용자 확인). 폭 14 mm · ABS 흰색 · 7 g' },
   specs: [
-    ['크기', '휠 Ø45 × 14 mm (타이어 포함 Ø50)'],
+    ['표기', 'Ø50'],
+    ['실제 크기', 'Ø48 × 14 mm (옆면 Ø45, 가운데 돌기 Ø48)'],
+    ['타이어 끼운 모습', '바깥 Ø50, 휠은 Ø45만 보임'],
     ['무게', '7 g'],
     ['재질', 'ABS (흰색)'],
     ['축 구멍', 'D컷 Ø3 (DC 모터 축)'],

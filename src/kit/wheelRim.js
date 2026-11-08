@@ -3,12 +3,15 @@ import { mesh } from './materials.js';
 
 // 플라스틱 휠 (바퀴 축 = Z): 타이어가 앉는 림 + 양쪽 턱 + 살(spoke) 원판 + 모터 축 허브
 // seatR: 타이어 안쪽이 닿는 반지름, flangeR: 턱 반지름, width: 폭
-export function makeRim({ seatR, flangeR, width, hubR = 4.5, hubLen = null, spokes = 6, color = 0xf2f1ec, double = false }) {
+// ridgeR · ridgeW를 주면 턱 대신 가운데 돌기 (타이어 안쪽 홈에 숨는 부분, 휠 Ø50[V2] 방식)
+export function makeRim({ seatR, flangeR, width, hubR = 4.5, hubLen = null, spokes = 6, color = 0xf2f1ec, double = false, ridgeR = null, ridgeW = 0 }) {
   const g = new THREE.Group();
   const mat = new THREE.MeshStandardMaterial({ color, roughness: 0.55 });
-  const w = width / 2, t = 1.2;
-  const prof = [[seatR - t, -w], [flangeR, -w], [flangeR, -w + 1.2], [seatR, -w + 2], [seatR, w - 2], [flangeR, w - 1.2], [flangeR, w], [seatR - t, w]]
-    .map(([r, y]) => new THREE.Vector2(r, y));
+  const w = width / 2, t = 1.2, rw = ridgeW / 2;
+  const pts = ridgeR
+    ? [[seatR - t, -w], [seatR, -w], [seatR, -rw - 0.6], [ridgeR, -rw], [ridgeR, rw], [seatR, rw + 0.6], [seatR, w], [seatR - t, w]]
+    : [[seatR - t, -w], [flangeR, -w], [flangeR, -w + 1.2], [seatR, -w + 2], [seatR, w - 2], [flangeR, w - 1.2], [flangeR, w], [seatR - t, w]];
+  const prof = pts.map(([r, y]) => new THREE.Vector2(r, y));
   const rim = new THREE.LatheGeometry(prof, 72);
   rim.rotateX(Math.PI / 2);
   g.add(mesh(rim, mat));
@@ -37,6 +40,14 @@ export function makeRim({ seatR, flangeR, width, hubR = 4.5, hubLen = null, spok
   return g;
 }
 
+// 타이어 Ø50[V2] 단면 (r, y): 바깥 Ø50, 옆 입구 Ø45, 안쪽 홈 Ø48 × 5 (휠 돌기가 들어감), 폭 8.5
+export const TIRE50_PROFILE = [[22.5, -4.25], [23, -4.25], [24.6, -3.4], [25, -2], [25, 2], [24.6, 3.4], [23, 4.25], [22.5, 4.25], [22.5, 2.6], [24.1, 2.5], [24.1, -2.5], [22.5, -2.6]];
+export function makeTire50() {
+  const g = new THREE.LatheGeometry(TIRE50_PROFILE.map(([r, y]) => new THREE.Vector2(r, y)), 72);
+  g.rotateX(Math.PI / 2);
+  return mesh(g, new THREE.MeshStandardMaterial({ color: 0x1c1c1e, roughness: 0.85 }));
+}
+
 // 휠 기능 공통: 타이어 끼우기 미리보기 + 모터 속도에 따른 이동 속도 (둘레 = π × 바퀴 지름)
 export function createWheelFunction(model, ui, { dia, tireLabel }) {
   const st = { tire: false, rpm: 0, a: 0 };
@@ -52,7 +63,7 @@ export function createWheelFunction(model, ui, { dia, tireLabel }) {
       st.a += (st.rpm / 60) * Math.PI * 2 * dt;
       model.handles.spin.rotation.z = -st.a;
       const d = st.tire ? dia : model.handles.rimDia;
-      ui.readout('dia', `Ø${d} mm${st.tire ? ' (타이어 포함)' : ' (휠만)'}`);
+      ui.readout('dia', st.tire ? `Ø${dia} mm (타이어 포함${model.handles.visibleDia ? ` · 휠은 Ø${model.handles.visibleDia}만 보임` : ''})` : `Ø${d} mm (휠만)`);
       ui.readout('round', `${(Math.PI * d / 10).toFixed(1)} cm`);
       ui.readout('speed', `${(Math.PI * d / 1000 * st.rpm / 60).toFixed(2)} m/s`);
     },
