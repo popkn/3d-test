@@ -3,9 +3,11 @@ import { M, mesh } from './materials.js';
 import { makeBolt, hexNutGeometry } from './fasteners.js';
 
 // 볼트 부품 공통: 볼트 + 체결 시연(프레임 판을 지나 아래 너트에 조이기)
-export function buildBolt({ length, dia = 3, headDia = 5.5, washer = false, name, sub }) {
+export function buildBolt({ length, dia = 3, headDia = 5.5, washer = false, point = false, name, sub }) {
   const root = new THREE.Group();
-  const bolt = makeBolt({ length, dia, headDia });
+  const bolt = makeBolt({ length: point ? length - 1.4 : length, dia, headDia });
+  // 태핑 볼트: 끝이 뾰족하다 (사진 기준)
+  if (point) { const tip = mesh(new THREE.ConeGeometry(dia / 2 - 0.15, 1.4, 20), M.metal); tip.rotation.x = Math.PI; tip.position.y = -length + 0.7; bolt.add(tip); }
   if (washer) {
     const w = mesh(new THREE.CylinderGeometry(headDia / 2 + 1.2, headDia / 2 + 1.2, 0.6, 32), M.metal);
     w.position.y = 0.3;

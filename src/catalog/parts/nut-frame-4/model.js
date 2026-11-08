@@ -2,15 +2,18 @@ import * as THREE from 'three';
 import { M, mesh } from '../../../kit/materials.js';
 import { hexNutGeometry, makeBolt } from '../../../kit/fasteners.js';
 
-// 검은 플라스틱 막대 (40 × 8 × 3.5). 윗면에 너트가 들어가는 육각 홈, 가운데 M3 구멍.
+// 검은 플라스틱 막대 (약 38 × 9 × 3.5, 육각 혹 4개). 윗면에 너트가 들어가는 육각 홈, 가운데 M3 구멍.
 export function build() {
   const L = 40, W = 8, T = 3.5;
   const root = new THREE.Group();
+  // 외곽: 사진처럼 너트 홈마다 육각 혹 (꼭짓점이 위아래), 사이는 좁은 다리
+  const xs = [-15, -5, 5, 15], R = 4.6, F = R * Math.cos(Math.PI / 6), B = R / 2;
   const s = new THREE.Shape();
-  s.moveTo(-L / 2 + 1, -W / 2); s.lineTo(L / 2 - 1, -W / 2); s.quadraticCurveTo(L / 2, -W / 2, L / 2, -W / 2 + 1);
-  s.lineTo(L / 2, W / 2 - 1); s.quadraticCurveTo(L / 2, W / 2, L / 2 - 1, W / 2); s.lineTo(-L / 2 + 1, W / 2);
-  s.quadraticCurveTo(-L / 2, W / 2, -L / 2, W / 2 - 1); s.lineTo(-L / 2, -W / 2 + 1); s.quadraticCurveTo(-L / 2, -W / 2, -L / 2 + 1, -W / 2);
-  const xs = [-15, -5, 5, 15];
+  s.moveTo(xs[0] - F, -B);
+  for (const x of xs) { s.lineTo(x - F, B); s.lineTo(x, R); s.lineTo(x + F, B); }
+  s.lineTo(xs[3] + F, -B);
+  for (const x of [...xs].reverse()) { s.lineTo(x + F, -B); s.lineTo(x, -R); s.lineTo(x - F, -B); }
+  s.closePath();
   for (const x of xs) { const h = new THREE.Path(); h.absarc(x, 0, 1.6, 0, Math.PI * 2, true); s.holes.push(h); }
   const g = new THREE.ExtrudeGeometry(s, { depth: T, bevelEnabled: false });
   g.rotateX(-Math.PI / 2);

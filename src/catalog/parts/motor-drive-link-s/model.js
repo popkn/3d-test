@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { makePcb } from '../../../kit/pcb.js';
 import { elecCap, femaleHeader, pinHeader, led, smd } from '../../../kit/components.js';
 import { FONT } from '../../../kit/textures.js';
+import { M } from '../../../kit/materials.js';
 import { build as buildA3, ROW_GAP } from '../motor-drive-a3/model.js';
 import spec from './spec.js';
 
@@ -12,7 +13,7 @@ export function build() {
   const root = new THREE.Group();
   root.add(makePcb({
     width: W, depth: D, color: 'black',
-    frame: { pitch: 5.5, inset: 3, r: 1.7, numbers: true, letters: true },
+    frame: { pitch: 5.5, inset: 3, r: 1.7, numbers: true, letters: true, scallop: 1.3 },
     silk: (g, w, d, X, Y) => {
       g.font = `700 1.5px ${FONT}`;
       g.fillText('EX-Motor3/4', X(-5), Y(5.5));
@@ -28,8 +29,8 @@ export function build() {
   // A3 소켓: 6핀 암 헤더 두 줄 (A3의 핀 간격에 맞춤)
   const sockets = [-ROW_GAP / 2, ROW_GAP / 2].map((z) => place(femaleHeader({ cols: 6, height: 7 }), 3, z - 6));
   sockets.forEach((s) => { s.rotation.y = 0; });
-  const capL = place(elecCap({ dia: 6.3, height: 7.5 }), -12, -10);
-  const capR = place(elecCap({ dia: 6.3, height: 7.5 }), -12, -1);
+  const capL = place(elecCap({ dia: 6.3, height: 7.5, color: M.matteBlack }), -12, -10);
+  const capR = place(elecCap({ dia: 6.3, height: 7.5, color: M.matteBlack }), -12, -1);
   const ex = place(pinHeader({ cols: 2, rows: 3, above: 6, below: 1.5 }), 0, 11);
   const m3 = place(pinHeader({ cols: 2, rows: 2, above: 6, below: 1.5 }), -11, 13);
   const m4 = place(pinHeader({ cols: 2, rows: 2, above: 6, below: 1.5 }), 11, 13);

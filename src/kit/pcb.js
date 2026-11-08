@@ -36,6 +36,24 @@ export function makePcb({
 
   // 외곽선 (shape의 y = -z)
   const shape = new THREE.Shape();
+  if (!outline && frame && frame.scallop) {
+    // 물결 가장자리: 구멍마다 볼록, 구멍 사이는 오목 (로보로보 CPU 보드)
+    const { pitch, inset = 3 } = frame;
+    const nx = Math.round((width - inset * 2) / pitch), nz = Math.round((depth - inset * 2) / pitch);
+    const hx = (nx * pitch) / 2, hz = (nz * pitch) / 2, dep = frame.scallop;
+    const wave = (u) => inset - dep * (1 - Math.cos(2 * Math.PI * u)) / 2; // 구멍 중심에서 가장자리까지
+    const N = 12;
+    outline = [];
+    const arc = (cx, cz, a0) => { for (let k = 1; k < 6; k++) { const a = a0 + (k / 6) * (Math.PI / 2); outline.push([cx + Math.cos(a) * inset, cz + Math.sin(a) * inset]); } };
+    for (let k = 0; k <= nx * N; k++) outline.push([-hx + (k / N) * pitch, -hz - wave(k / N)]);
+    arc(hx, -hz, -Math.PI / 2);
+    for (let k = 0; k <= nz * N; k++) outline.push([hx + wave(k / N), -hz + (k / N) * pitch]);
+    arc(hx, hz, 0);
+    for (let k = 0; k <= nx * N; k++) outline.push([hx - (k / N) * pitch, hz + wave(k / N)]);
+    arc(-hx, hz, Math.PI / 2);
+    for (let k = 0; k <= nz * N; k++) outline.push([-hx - wave(k / N), hz - (k / N) * pitch]);
+    arc(-hx, -hz, Math.PI);
+  }
   if (outline) {
     outline.forEach(([x, z], i) => (i ? shape.lineTo(x, -z) : shape.moveTo(x, -z)));
     shape.closePath();
@@ -113,4 +131,29 @@ export function makePcb({
   group.add(board);
   group.userData = { thickness, frameHoles, holes: allHoles };
   return group;
+}
+
+// 물결 외곽선: 가장자리 가까이 있는 구멍마다 볼록, 구멍 사이는 dep만큼 오목 (구멍이 없는 변은 곧게)
+export function scallopOutline(width, depth, holes, { dep = 1.2, half = 2.65, near = 4.5, N = 160 } = {}) {
+  const w = width / 2, d = depth / 2, pts = [];
+  const edges = [
+    { a: [-w, -d], b: [w, -d], n: [0, 1], pos: (h) => h.x, dist: (h) => h.z + d },
+    { a: [w, -d], b: [w, d], n: [-1, 0], pos: (h) => h.z, dist: (h) => w - h.x },
+    { a: [w, d], b: [-w, d], n: [0, -1], pos: (h) => h.x, dist: (h) => d - h.z },
+    { a: [-w, d], b: [-w, -d], n: [1, 0], pos: (h) => h.z, dist: (h) => h.x + w },
+  ];
+  for (const e of edges) {
+    const on = holes.filter((h) => e.dist(h) < near).map(e.pos);
+    for (let k = 0; k < N; k++) {
+      const t = k / N, x = e.a[0] + (e.b[0] - e.a[0]) * t, z = e.a[1] + (e.b[1] - e.a[1]) * t;
+      let off = 0;
+      if (on.length) {
+        const p = e.n[0] === 0 ? x : z;
+        const m = Math.min(...on.map((q) => Math.abs(q - p)));
+        off = dep * Math.min(1, m / half) ** 2;
+      }
+      pts.push([x + e.n[0] * off, z + e.n[1] * off]);
+    }
+  }
+  return pts;
 }

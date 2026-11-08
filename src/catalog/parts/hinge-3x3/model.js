@@ -27,12 +27,13 @@ export function build() {
   const right = mesh(leaf(11.5 - R, 18, T), M.metal);
   right.position.set(R - 0.2, -axisY, 0);
   pivot.add(right);
-  // 축 마디 (번갈아 붙은 3마디)
-  for (let i = 0; i < 3; i++) {
-    const k = mesh(new THREE.CylinderGeometry(R, R, 5.6, 24), M.metal);
+  // 축 마디 (사진처럼 5마디, 번갈아 양쪽 날개에 붙음)
+  for (let i = 0; i < 5; i++) {
+    const k = mesh(new THREE.CylinderGeometry(R, R, 3.4, 24), M.metal);
     k.rotation.x = Math.PI / 2;
-    if (i === 1) { k.position.set(0, 0, 0); pivot.add(k); } // 가운데 마디는 움직이는 날개 쪽
-    else { k.position.set(0, axisY, -6 + i * 6); root.add(k); }
+    const z = -7.2 + i * 3.6;
+    if (i % 2) { k.position.set(0, 0, z); pivot.add(k); } // 움직이는 날개 쪽
+    else { k.position.set(0, axisY, z); root.add(k); }
   }
   const pin = mesh(new THREE.CylinderGeometry(0.8, 0.8, 18.4, 12), M.metalDark);
   pin.rotation.x = Math.PI / 2;

@@ -60,9 +60,17 @@ export function build() {
   const hub = mesh(new THREE.CylinderGeometry(9, 9, 22, 24), red);
   hub.rotation.z = Math.PI / 2;
   rim.add(hub);
-  const face = mesh(new THREE.CylinderGeometry(44, 44, 2, 48), red);
-  face.rotation.z = Math.PI / 2;
-  face.position.x = -6;
+  // 앞판: 살 5개 사이에 창을 뚫는다 (사진처럼 안쪽이 보임)
+  const fs = new THREE.Shape(); fs.absarc(0, 0, 44, 0, Math.PI * 2, false);
+  for (let i = 0; i < 5; i++) {
+    const a0 = (i / 5) * Math.PI * 2 + Math.PI / 2 + 0.2, a1 = ((i + 1) / 5) * Math.PI * 2 + Math.PI / 2 - 0.2;
+    const w = new THREE.Path(); w.absarc(0, 0, 39, a0 + 0.06, a1 - 0.06, false); w.absarc(0, 0, 13, a1 - 0.25, a0 + 0.25, true); w.closePath();
+    fs.holes.push(w);
+  }
+  const fg = new THREE.ExtrudeGeometry(fs, { depth: 2.5, bevelEnabled: true, bevelThickness: 0.6, bevelSize: 0.6, bevelSegments: 2, curveSegments: 32 });
+  fg.rotateY(-Math.PI / 2);
+  const face = mesh(fg, red);
+  face.position.x = -5;
   rim.add(face);
   spin.add(rim);
   parts.rim = rim;

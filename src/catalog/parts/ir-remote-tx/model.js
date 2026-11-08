@@ -30,7 +30,7 @@ export function build() {
     },
   }));
   const place = (o, x, z, rot = 0) => { o.position.set(x, T, z); o.rotation.y = rot; root.add(o); return o; };
-  const keys = KEYS.map(([x, z]) => place(tactSwitch({ size: 6, cap: M.blackPlastic }), x, z));
+  const keys = KEYS.map(([x, z]) => place(tactSwitch({ size: 12, cap: M.blackPlastic }), x, z));
   const dip = place(dipSwitch({ n: 4, color: M.blackPlastic }), 0, -14);
   const irLed = led({ dia: 5, color: 0xb070ff });
   irLed.rotation.x = -Math.PI / 2; // 앞(-Z)을 향해 눕힌 LED

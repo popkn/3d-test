@@ -11,10 +11,10 @@ export function build() {
   const root = new THREE.Group();
   root.add(makePcb({
     width: W, depth: D, color: 'black',
-    frame: { pitch: 5.5, inset: 3, r: 1.6 },
+    frame: { pitch: 5.5, inset: 3, r: 1.6, scallop: 1.3 },
     silk: (g, w, d, X, Y) => {
       g.font = `700 1.4px ${FONT}`;
-      g.fillText('LEFT', X(3), Y(18)); g.fillText('RIGHT', X(13), Y(18)); g.fillText('INPUT', X(-26), Y(18));
+      g.fillText('LEFT', X(1), Y(20)); g.fillText('RIGHT', X(15.5), Y(20)); g.fillText('INPUT', X(-26), Y(18));
       g.font = `600 1.2px ${FONT}`;
       g.fillText('WWW.ROBOROBO.CO.KR', X(-24), Y(-17.5)); g.fillText('Melody_Board', X(14), Y(-17.5));
       g.fillText('PC1D-N017', X(-12), Y(18));
@@ -37,9 +37,9 @@ export function build() {
   }
   place(speaker, -16, -2);
   const mcu = place(qfp({ size: 7, pins: 32, lines: ['ATMEGA', 'MELODY'] }), 4, -4);
-  place(crystal({ length: 10, width: 4, height: 3.5 }), -4, 10);
-  const left = place(tactSwitch({ size: 6, cap: M.blackPlastic }), 6, 12);
-  const right = place(tactSwitch({ size: 6, cap: M.blackPlastic }), 16, 12);
+  place(crystal({ length: 10, width: 4, height: 3.5 }), -8, 14);
+  const left = place(tactSwitch({ size: 12, cap: M.blackPlastic }), 4, 12);
+  const right = place(tactSwitch({ size: 12, cap: M.blackPlastic }), 19, 12);
   const input = place(pinHeader({ cols: 3, above: 5, below: 2 }), -24, 13);
   const leds = [-2, 2, 6, 10, 14, 18, 22].map((x) => place(led({ smd: true, color: 0xff2a1a }), x, -14));
   for (const [x, z] of [[14, -6], [14, -2], [-4, 2], [22, 4]]) place(smd('res'), x, z);

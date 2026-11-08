@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { makePcb } from './pcb.js';
+import { makePcb, scallopOutline } from './pcb.js';
 import { pinHeader } from './components.js';
 import { FONT } from './textures.js';
 
@@ -18,7 +18,7 @@ export function makeEcvBoard({ name = 'ECV', holeEdge = 'back', header = { x: 14
   }
   const group = new THREE.Group();
   group.add(makePcb({
-    width: W, depth: D, holes, color: 'black', corner: 2,
+    width: W, depth: D, holes, color: 'black', corner: 2, outline: scallopOutline(W, D, holes),
     silk: (g, w, d, X, Y) => {
       g.font = `700 1.4px ${FONT}`;
       g.textAlign = 'center';

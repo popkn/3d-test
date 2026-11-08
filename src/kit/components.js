@@ -336,6 +336,8 @@ export function bigSlideSwitch({ length = 6, width = 6, height = 6 } = {}) {
 export function tactSwitch({ size = 6, cap = M.whitePlastic } = {}) {
   const g = new THREE.Group();
   g.add(box(size, 3.4, size, M.metal));
+  // 큰 스위치(12mm)는 사진처럼 검은 몸통 위에 은색 덮개 + 다리 4개
+  if (size >= 10) { g.add(box(size - 0.6, 3.6, size - 0.6, M.blackPlastic, 0, 0, 0)); g.add(box(size, 0.3, size, M.metal, 0, 3.6, 0)); for (const [x, z] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) g.add(box(0.8, 1.2, 1.4, M.metal, x * (size / 2 + 0.2), 0, z * (size / 2 - 2))); }
   const btn = mesh(new THREE.CylinderGeometry(size * 0.3, size * 0.3, 1.6, 20), cap);
   btn.position.y = 3.4 + 0.8;
   g.add(btn);

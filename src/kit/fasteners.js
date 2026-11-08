@@ -17,14 +17,15 @@ export function hexNutGeometry({ af = 5.5, thickness = 2.4, hole = 1.5 } = {}) {
   return g;
 }
 
-// 볼트: 둥근 머리(+ 십자 홈) + 나사산. 머리 아래가 y = 0, 나사는 아래(-Y)로
-export function makeBolt({ length = 10, dia = 3, headDia = 5.5, headH = 2, mat = M.metal } = {}) {
+// 볼트: 낮고 넓은 트러스 머리(+ 십자 홈, 사진 기준) + 나사산. 머리 아래가 y = 0, 나사는 아래(-Y)로
+export function makeBolt({ length = 10, dia = 3, headDia = dia * 2.1, headH = dia * 0.5, mat = M.metal } = {}) {
   const g = new THREE.Group();
   const head = mesh(new THREE.SphereGeometry(headDia / 2, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2), mat);
   head.scale.y = headH / (headDia / 2);
   g.add(head);
   for (const r of [0, Math.PI / 2]) {
-    const slot = mesh(new THREE.BoxGeometry(headDia * 0.6, 0.6, 0.6), M.metalDark, { cast: false });
+    // 십자 홈: 머리 꼭대기에 살짝 파인 모양 (튀어나오지 않게 낮고 짧게)
+    const slot = mesh(new THREE.BoxGeometry(headDia * 0.36, 0.3, 0.5), M.hole, { cast: false });
     slot.position.y = headH - 0.1;
     slot.rotation.y = r;
     g.add(slot);

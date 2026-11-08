@@ -26,18 +26,24 @@ export function build() {
   // 검은 케이스 + 창
   const housing = new THREE.Group();
   const shape = new THREE.Shape();
-  shape.moveTo(-15, -14); shape.lineTo(15, -14); shape.lineTo(15, 14); shape.lineTo(-15, 14); shape.closePath();
-  const win = new THREE.Path(); win.absarc(0, -2, 5.5, 0, Math.PI * 2, true); shape.holes.push(win);
-  const geo = new THREE.ExtrudeGeometry(shape, { depth: 6, bevelEnabled: true, bevelThickness: 0.6, bevelSize: 0.6, bevelSegments: 2 });
-  geo.rotateX(-Math.PI / 2);
+  // 사진처럼 옆 구멍 줄 사이를 거의 다 덮는 큰 케이스 (36 × 36, 모서리 둥글게)
+  const hw = 18, z0 = -18, z1 = 18.5, rc = 3;
+  shape.moveTo(-hw + rc, z0); shape.lineTo(hw - rc, z0); shape.quadraticCurveTo(hw, z0, hw, z0 + rc);
+  shape.lineTo(hw, z1 - rc); shape.quadraticCurveTo(hw, z1, hw - rc, z1); shape.lineTo(-hw + rc, z1);
+  shape.quadraticCurveTo(-hw, z1, -hw, z1 - rc); shape.lineTo(-hw, z0 + rc); shape.quadraticCurveTo(-hw, z0, -hw + rc, z0);
+  const win = new THREE.Path(); win.moveTo(-4, -6); win.lineTo(-4, 2); win.lineTo(4, 2); win.lineTo(4, -6); win.closePath(); shape.holes.push(win);
+  // 창 둘레 방향 표시 (작은 삼각 홈)
+  for (const [x, z] of [[0, -9.5], [0, 5.5], [-7.5, -2], [7.5, -2]]) { const t = new THREE.Path(); t.absarc(x, z, 0.8, 0, Math.PI * 2, true); shape.holes.push(t); }
+  const geo = new THREE.ExtrudeGeometry(shape, { depth: 6.4, bevelEnabled: true, bevelThickness: 0.6, bevelSize: 0.6, bevelSegments: 2 });
+  geo.rotateX(Math.PI / 2); geo.translate(0, 6.4, 0);
   housing.add(mesh(geo, M.matteBlack));
-  housing.position.set(0, T, 2);
+  housing.position.set(0, T, 0);
   root.add(housing);
   // 케이스 위 로고
   const logo = mesh(new THREE.PlaneGeometry(20, 4), new THREE.MeshBasicMaterial({ transparent: true,
     map: (() => { const c = document.createElement('canvas'); c.width = 400; c.height = 80; const g = c.getContext('2d'); g.fillStyle = '#3a3b3f'; g.font = 'italic 900 56px sans-serif'; g.fillText('ROBOROBO', 10, 62); const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t; })() }), { cast: false });
   logo.rotation.x = -Math.PI / 2;
-  logo.position.set(0, T + 6.65, 12);
+  logo.position.set(0, T + 7.05, 11);
   root.add(logo);
   // 창 안: 센서 칩 + 흰 LED
   root.add(box(4, 1, 4, M.chip, -1, T, 0));

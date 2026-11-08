@@ -15,7 +15,7 @@ export function build() {
   const root = new THREE.Group();
   root.add(makePcb({
     width: W, depth: D, color: 'black',
-    frame: { pitch: 5.5, inset: 3, r: 1.7, numbers: true, letters: true },
+    frame: { pitch: 5.5, inset: 3, r: 1.7, numbers: true, letters: true, scallop: 1.3 },
     silk: (g, w, d, X, Y) => {
       g.font = `700 1.3px ${FONT}`;
       IN_X.forEach((x, i) => g.fillText(`IN${i + 1}`, X(x) - 1.6, Y(21.6)));
@@ -40,8 +40,17 @@ export function build() {
   const pushOn = place(tactSwitch({ size: 6 }), 31, -6);
   const powerLed = place(led({ smd: true, color: 0xff2a1a }), 25, -2.5);
   const statusLed = place(led({ smd: true, color: 0x2aff5a }), 20, -2.5);
+  // 검은 박스 헤더 (핀을 둘러싼 플라스틱 벽, 사진처럼 포트마다)
+  const shroud = (w, d, h = 6.4) => {
+    const g = new THREE.Group(), t = 0.7;
+    for (const [bw, bd, x, z] of [[w, t, 0, -d / 2 + t / 2], [w, t, 0, d / 2 - t / 2], [t, d, -w / 2 + t / 2, 0], [t, d, w / 2 - t / 2, 0]]) g.add(box(bw, h, bd, M.blackPlastic, x, 0, z));
+    g.add(box(w, 0.8, d, M.blackPlastic));
+    return g;
+  };
   const isp = place(pinHeader({ cols: 3, rows: 2, above: 6, below: 1.5 }), -12, -17);
+  place(shroud(9.4, 7), -12, -17);
   place(pinHeader({ cols: 4, above: 6, below: 1.5 }), -24, -17);
+  place(shroud(11.6, 4.4), -24, -17);
   const exMotor = place(femaleHeader({ cols: 2, rows: 2 }), -31, 8);
   const ir = new THREE.Group();
   ir.add(box(4.5, 4.5, 3, M.blackPlastic));
@@ -54,20 +63,21 @@ export function build() {
   // 입력/출력 포트 (3핀, 핀 줄이 Z 방향)
   const inPorts = IN_X.map((x) => place(pinHeader({ cols: 1, rows: 3, above: 6, below: 1.5 }), x, 17));
   const outPorts = OUT_X.map((x) => place(pinHeader({ cols: 1, rows: 3, above: 6, below: 1.5 }), x, 7.6));
+  [...IN_X.map((x) => [x, 17]), ...OUT_X.map((x) => [x, 7.6])].forEach(([x, z]) => place(shroud(4.4, 9.4), x, z));
   // 포트 상태 표시 (입력: 노랑, 출력: 빨강)
   const mark = (x, z) => { const m = new THREE.Mesh(new THREE.SphereGeometry(0.9, 12, 8), new THREE.MeshBasicMaterial({ color: 0x555555 })); m.position.set(x, T + 11, z); root.add(m); return m; };
   const inMarks = IN_X.map((x) => mark(x, 17));
   const outMarks = OUT_X.map((x) => mark(x, 7.6));
 
-  // 투명 아크릴 덮개 (사진처럼 가운데를 덮는다)
+  // 투명 아크릴 덮개 (사진처럼 ISP · USB · CPU · OUT 줄까지 넓게 덮는다)
   const cover = new THREE.Group();
-  const cw = 46, cd = 30, ch = 12.5;
+  const cw = 60, cd = 34, ch = 11;
   for (const [w, h, d, x, y, z] of [[cw, 0.8, cd, 0, ch, 0], [cw, ch, 0.8, 0, 0, -cd / 2], [cw, ch, 0.8, 0, 0, cd / 2], [0.8, ch, cd, -cw / 2, 0, 0], [0.8, ch, cd, cw / 2, 0, 0]]) {
     const p = mesh(new THREE.BoxGeometry(w, h, d), M.acrylic, { cast: false, receive: false });
     p.position.set(x, y + h / 2, z);
     cover.add(p);
   }
-  cover.position.set(4, T, -8);
+  cover.position.set(-4, T, -4);
   root.add(cover);
 
   return {
