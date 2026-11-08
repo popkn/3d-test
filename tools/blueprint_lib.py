@@ -210,6 +210,7 @@ def make_sheet(no):
     allp = sheet_parts(grp)
     cnt = Counter(key(p) for p in allp)
     parts = [p for p in allp if p['c'][0] > 0] if no in MIRROR else allp
+    if globals().get('SHEET_FILTER', {}).get(no): parts = [p for p in parts if SHEET_FILTER[no](p)]   # 같은 부품이 여러 칸에 있을 때 한 칸만 그림
     items = OrderedDict()
     for p in parts:
         k = key(p)
@@ -239,7 +240,7 @@ def make_sheet(no):
     yb = y_top + vh_1 + 72
     H = max(yb + vh_t + 50, yb + 30 + 16 * len(rows) + 30 + est_notes + 40)
     sv = Svg(W, H)
-    title_block(sv, no, title, ('오른쪽만 그림 (왼쪽은 거울 대칭) · ' if no in MIRROR else '') + f'단위 mm · 부품 {len(allp)}개 · 빨간 번호 = 부품표 · 회색 윤곽 = 주변 부품')
+    title_block(sv, no, title, ('오른쪽만 그림 (왼쪽은 거울 대칭) · ' if no in MIRROR else '') + (globals().get('SHEET_NOTE', {}).get(no, '')) + f'단위 mm · 부품 {len(allp)}개 · 빨간 번호 = 부품표 · 회색 윤곽 = 주변 부품')
     ctx = [p for p in P if p not in parts]
     def near(view, b):
         ha, hs_, va, vs = VIEWS[view][:4]

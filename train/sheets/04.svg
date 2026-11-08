@@ -1,0 +1,993 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 1157" width="1180" height="1157" font-family="JetBrains Mono, 'Noto Sans KR', sans-serif"><defs><pattern id="g" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="#e3e8ef" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="#f6f8fb"/><rect x="14" y="14" width="1152" height="1129" fill="none" stroke="#1d2230" stroke-width="1.2"/>
+<rect x="14" y="14" width="1152" height="46" fill="#1d2230"/>
+<text x="28.0" y="44.0" font-size="13" fill="#9fb3d1" font-weight="700" text-anchor="start">협동 기차 하나로 열차 · 도면 04</text>
+<text x="303.3" y="44.0" font-size="17" fill="#ffffff" font-weight="700" text-anchor="start">마지막칸 화물 · 꼬리칸 (짐칸 · 꼬리등)</text>
+<text x="1152.0" y="76.0" font-size="10.5" fill="#5a6070" font-weight="400" text-anchor="end">단위 mm · 부품 32개 · 빨간 번호 = 부품표 · 회색 윤곽 = 주변 부품</text>
+<rect x="72" y="100" width="239" height="451" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>
+<text x="72.0" y="92.0" font-size="12" fill="#1d2230" font-weight="700" text-anchor="start">정면도 (앞에서)</text>
+<svg x="72" y="100" width="239" height="451" viewBox="72 100 239 451" overflow="hidden">
+<rect x="87.2" y="441.1" width="18.1" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="277.6" y="441.1" width="18.1" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="21.5" y="409.3" width="31.7" height="108.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 구동 바퀴 (휠 Ø50[V2]) (wheel-50-v2)</title></rect>
+<rect x="27.7" y="407.1" width="19.3" height="113.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 바퀴 타이어 (Ø50) (tire-50)</title></rect>
+<rect x="329.8" y="409.3" width="31.7" height="108.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 구동 바퀴 (휠 Ø50[V2]) (wheel-50-v2)</title></rect>
+<rect x="336.0" y="407.1" width="19.3" height="113.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 바퀴 타이어 (Ø50) (tire-50)</title></rect>
+<rect x="57.8" y="441.1" width="74.8" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 (DC 130rpm) (dc-motor-130-rs)</title></rect>
+<rect x="250.4" y="441.1" width="74.8" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 (DC 130rpm) (dc-motor-130-rs)</title></rect>
+<rect x="104.9" y="416.6" width="14.5" height="68.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></rect>
+<rect x="263.6" y="416.6" width="14.5" height="68.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></rect>
+<rect x="87.2" y="441.1" width="18.1" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="277.6" y="441.1" width="18.1" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="127.6" y="392.1" width="14.5" height="22.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></rect>
+<rect x="240.9" y="392.1" width="14.5" height="22.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></rect>
+<rect x="122.4" y="360.4" width="138.3" height="31.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>마지막칸 CPU 보드 (칸마다 하나) (cpu-board-8m)</title></rect>
+<rect x="57.8" y="486.4" width="267.5" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>마지막칸 바닥판 (빅 메인 PCB) (frame-big-main)</title></rect>
+<rect x="103.1" y="414.8" width="176.8" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>마지막칸 위층 판 (메인 PCB) (frame-main-pcb)</title></rect>
+<rect x="127.6" y="392.1" width="14.5" height="22.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></rect>
+<rect x="240.9" y="392.1" width="14.5" height="22.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></rect>
+<rect x="107.6" y="443.8" width="167.8" height="40.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>마지막칸 배터리 (AA 4개, 6V) (battery-case-4aa)</title></rect>
+<rect x="137.1" y="394.4" width="108.8" height="20.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>마지막칸 블루투스 모듈 (조종자 1명) (bt-module)</title></rect>
+<rect x="104.9" y="416.6" width="14.5" height="68.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></rect>
+<rect x="263.6" y="416.6" width="14.5" height="68.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></rect>
+<rect x="10.2" y="460.3" width="170.0" height="6.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축 (75mm) (shaft-75)</title></rect>
+<rect x="103.1" y="463.7" width="63.5" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축가이드 (axle-guide)</title></rect>
+<rect x="57.8" y="463.7" width="63.5" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축가이드 (axle-guide)</title></rect>
+<rect x="21.5" y="409.3" width="31.7" height="108.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 (휠 Ø50[V2], 헛돎) (wheel-50-v2)</title></rect>
+<rect x="27.7" y="407.1" width="19.3" height="113.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 타이어 (Ø50) (tire-50)</title></rect>
+<rect x="202.8" y="460.3" width="170.0" height="6.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축 (75mm) (shaft-75)</title></rect>
+<rect x="216.4" y="463.7" width="63.5" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축가이드 (axle-guide)</title></rect>
+<rect x="261.8" y="463.7" width="63.5" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축가이드 (axle-guide)</title></rect>
+<rect x="329.8" y="409.3" width="31.7" height="108.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 (휠 Ø50[V2], 헛돎) (wheel-50-v2)</title></rect>
+<rect x="336.0" y="407.1" width="19.3" height="113.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 타이어 (Ø50) (tire-50)</title></rect>
+<rect x="184.1" y="467.8" width="14.7" height="17.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>연결 핀 뒤 칸 (후크 S35) (s-hook-35)</title></rect>
+<rect x="182.4" y="478.7" width="18.1" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>연결봉 (소8 PCB) (frame-s8-pcb)</title></rect>
+<rect x="103.1" y="374.0" width="176.8" height="40.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 끝 아래 벽 (중 PCB) (frame-mid-pcb)</title></rect>
+<rect x="103.1" y="287.8" width="176.8" height="86.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 끝 창 (ㅁ자 PCB) (frame-m-pcb)</title></rect>
+<rect x="100.8" y="335.4" width="18.1" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 모서리 L자 2×2 (l-frame-2x2)</title></rect>
+<rect x="264.0" y="335.4" width="18.1" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 모서리 L자 2×2 (l-frame-2x2)</title></rect>
+<rect x="87.2" y="441.1" width="18.1" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="277.6" y="441.1" width="18.1" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="21.5" y="409.3" width="31.7" height="108.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 구동 바퀴 (휠 Ø50[V2]) (wheel-50-v2)</title></rect>
+<rect x="27.7" y="407.1" width="19.3" height="113.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 바퀴 타이어 (Ø50) (tire-50)</title></rect>
+<rect x="329.8" y="409.3" width="31.7" height="108.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 구동 바퀴 (휠 Ø50[V2]) (wheel-50-v2)</title></rect>
+<rect x="336.0" y="407.1" width="19.3" height="113.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 바퀴 타이어 (Ø50) (tire-50)</title></rect>
+<rect x="184.1" y="467.8" width="14.7" height="17.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>연결 핀 앞 칸 (후크 S35) (s-hook-35)</title></rect>
+<rect x="57.8" y="441.1" width="74.8" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 (DC 130rpm) (dc-motor-130-rs)</title></rect>
+<rect x="250.4" y="441.1" width="74.8" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 (DC 130rpm) (dc-motor-130-rs)</title></rect>
+<rect x="211.9" y="333.2" width="49.9" height="27.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 경고음 (부저 보드) (buzzer-board-s)</title></rect>
+<rect x="104.9" y="416.6" width="14.5" height="68.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></rect>
+<rect x="263.6" y="416.6" width="14.5" height="68.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></rect>
+<rect x="149.6" y="420.7" width="20.4" height="63.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꺾임 센서 (왼쪽, 접촉 센서) (sensor-touch)</title></rect>
+<rect x="213.0" y="420.7" width="20.4" height="63.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꺾임 센서 (오른쪽, 접촉 센서) (sensor-touch)</title></rect>
+<rect x="87.2" y="441.1" width="18.1" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="277.6" y="441.1" width="18.1" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="127.6" y="392.1" width="14.5" height="22.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></rect>
+<rect x="240.9" y="392.1" width="14.5" height="22.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></rect>
+<rect x="166.6" y="287.8" width="49.9" height="27.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>실내등 (LED 주황) (led-board-orange-s)</title></rect>
+<rect x="155.2" y="463.7" width="18.1" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꺾임 센서 L자 2×2 (l-frame-2x2)</title></rect>
+<rect x="209.6" y="463.7" width="18.1" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꺾임 센서 L자 2×2 (l-frame-2x2)</title></rect>
+<rect x="97.2" y="287.8" width="3.6" height="86.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 창 (ㅁ자 PCB) (frame-m-pcb)</title></rect>
+<rect x="102.2" y="279.9" width="3.6" height="102.0" rx="1.2" fill="none" fill-opacity="0.55" stroke="#b9c2cf" stroke-width="0.5"><title>창 유리 (투명 PC 프레임) (pc-frame-45x60)</title></rect>
+<rect x="282.2" y="287.8" width="3.6" height="86.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 창 (ㅁ자 PCB) (frame-m-pcb)</title></rect>
+<rect x="277.2" y="279.9" width="3.6" height="102.0" rx="1.2" fill="none" fill-opacity="0.55" stroke="#b9c2cf" stroke-width="0.5"><title>창 유리 (투명 PC 프레임) (pc-frame-45x60)</title></rect>
+<rect x="122.4" y="360.4" width="138.3" height="31.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>중간칸 CPU 보드 (칸마다 하나) (cpu-board-8m)</title></rect>
+<rect x="57.8" y="486.4" width="267.5" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>중간칸 바닥판 (빅 메인 PCB) (frame-big-main)</title></rect>
+<rect x="103.1" y="414.8" width="176.8" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>중간칸 위층 판 (메인 PCB) (frame-main-pcb)</title></rect>
+<rect x="97.2" y="374.0" width="3.6" height="40.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 아래 벽 (중16 PCB) (frame-m16-pcb)</title></rect>
+<rect x="282.2" y="374.0" width="3.6" height="40.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 아래 벽 (중16 PCB) (frame-m16-pcb)</title></rect>
+<rect x="57.8" y="283.7" width="267.5" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 지붕 (빅 메인 PCB) (frame-big-main)</title></rect>
+<rect x="164.3" y="238.4" width="54.4" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>지붕 방향 램프 (RGB LED) (rgb-led-bright)</title></rect>
+<rect x="127.6" y="392.1" width="14.5" height="22.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></rect>
+<rect x="240.9" y="392.1" width="14.5" height="22.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></rect>
+<rect x="107.6" y="443.8" width="167.8" height="40.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>중간칸 배터리 (AA 4개, 6V) (battery-case-4aa)</title></rect>
+<rect x="97.2" y="287.8" width="3.6" height="86.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 창 (ㅁ자 PCB) (frame-m-pcb)</title></rect>
+<rect x="102.2" y="279.9" width="3.6" height="102.0" rx="1.2" fill="none" fill-opacity="0.55" stroke="#b9c2cf" stroke-width="0.5"><title>창 유리 (투명 PC 프레임) (pc-frame-45x60)</title></rect>
+<rect x="282.2" y="287.8" width="3.6" height="86.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 창 (ㅁ자 PCB) (frame-m-pcb)</title></rect>
+<rect x="277.2" y="279.9" width="3.6" height="102.0" rx="1.2" fill="none" fill-opacity="0.55" stroke="#b9c2cf" stroke-width="0.5"><title>창 유리 (투명 PC 프레임) (pc-frame-45x60)</title></rect>
+<rect x="166.6" y="287.8" width="49.9" height="27.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>실내등 (LED 주황) (led-board-orange-s)</title></rect>
+<rect x="137.1" y="394.4" width="108.8" height="20.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>중간칸 블루투스 모듈 (조종자 1명) (bt-module)</title></rect>
+<rect x="104.9" y="416.6" width="14.5" height="68.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></rect>
+<rect x="263.6" y="416.6" width="14.5" height="68.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></rect>
+<rect x="10.2" y="460.3" width="170.0" height="6.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축 (75mm) (shaft-75)</title></rect>
+<rect x="103.1" y="463.7" width="63.5" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축가이드 (axle-guide)</title></rect>
+<rect x="57.8" y="463.7" width="63.5" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축가이드 (axle-guide)</title></rect>
+<rect x="21.5" y="409.3" width="31.7" height="108.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 (휠 Ø50[V2], 헛돎) (wheel-50-v2)</title></rect>
+<rect x="27.7" y="407.1" width="19.3" height="113.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 타이어 (Ø50) (tire-50)</title></rect>
+<rect x="202.8" y="460.3" width="170.0" height="6.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축 (75mm) (shaft-75)</title></rect>
+<rect x="216.4" y="463.7" width="63.5" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축가이드 (axle-guide)</title></rect>
+<rect x="261.8" y="463.7" width="63.5" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축가이드 (axle-guide)</title></rect>
+<rect x="329.8" y="409.3" width="31.7" height="108.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 (휠 Ø50[V2], 헛돎) (wheel-50-v2)</title></rect>
+<rect x="336.0" y="407.1" width="19.3" height="113.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 타이어 (Ø50) (tire-50)</title></rect>
+<rect x="100.8" y="335.4" width="18.1" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 모서리 L자 2×2 (l-frame-2x2)</title></rect>
+<rect x="264.0" y="335.4" width="18.1" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 모서리 L자 2×2 (l-frame-2x2)</title></rect>
+<rect x="184.1" y="467.8" width="14.7" height="17.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>연결 핀 뒤 칸 (후크 S35) (s-hook-35)</title></rect>
+<rect x="103.1" y="374.0" width="176.8" height="40.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 끝 아래 벽 (중 PCB) (frame-mid-pcb)</title></rect>
+<rect x="103.1" y="287.8" width="176.8" height="86.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 끝 창 (ㅁ자 PCB) (frame-m-pcb)</title></rect>
+<rect x="182.4" y="478.7" width="18.1" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>연결봉 (소8 PCB) (frame-s8-pcb)</title></rect>
+<rect x="87.2" y="441.1" width="18.1" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="277.6" y="441.1" width="18.1" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="21.5" y="409.3" width="31.7" height="108.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 구동 바퀴 (휠 Ø50[V2]) (wheel-50-v2)</title></rect>
+<rect x="27.7" y="407.1" width="19.3" height="113.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 바퀴 타이어 (Ø50) (tire-50)</title></rect>
+<rect x="329.8" y="409.3" width="31.7" height="108.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 구동 바퀴 (휠 Ø50[V2]) (wheel-50-v2)</title></rect>
+<rect x="336.0" y="407.1" width="19.3" height="113.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 바퀴 타이어 (Ø50) (tire-50)</title></rect>
+<rect x="184.1" y="467.8" width="14.7" height="17.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>연결 핀 앞 칸 (후크 S35) (s-hook-35)</title></rect>
+<rect x="166.6" y="299.1" width="49.9" height="27.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>기적 (부저 보드) (buzzer-board-s)</title></rect>
+<rect x="57.8" y="441.1" width="74.8" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 (DC 130rpm) (dc-motor-130-rs)</title></rect>
+<rect x="250.4" y="441.1" width="74.8" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 (DC 130rpm) (dc-motor-130-rs)</title></rect>
+<rect x="104.9" y="416.6" width="14.5" height="68.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></rect>
+<rect x="263.6" y="416.6" width="14.5" height="68.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></rect>
+<rect x="149.6" y="420.7" width="20.4" height="63.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꺾임 센서 (왼쪽, 접촉 센서) (sensor-touch)</title></rect>
+<rect x="213.0" y="420.7" width="20.4" height="63.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꺾임 센서 (오른쪽, 접촉 센서) (sensor-touch)</title></rect>
+<rect x="87.2" y="441.1" width="18.1" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="277.6" y="441.1" width="18.1" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="127.6" y="392.1" width="14.5" height="22.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></rect>
+<rect x="240.9" y="392.1" width="14.5" height="22.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></rect>
+<rect x="155.2" y="463.7" width="18.1" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꺾임 센서 L자 2×2 (l-frame-2x2)</title></rect>
+<rect x="209.6" y="463.7" width="18.1" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꺾임 센서 L자 2×2 (l-frame-2x2)</title></rect>
+<rect x="99.5" y="281.0" width="3.6" height="131.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>운전실 옆벽 (하프 PCB) (frame-half-pcb)</title></rect>
+<rect x="279.9" y="281.0" width="3.6" height="131.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>운전실 옆벽 (하프 PCB) (frame-half-pcb)</title></rect>
+<rect x="80.4" y="276.9" width="222.2" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>운전실 지붕 (메인 PCB) (frame-main-pcb)</title></rect>
+<rect x="122.4" y="360.4" width="138.3" height="31.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞칸 CPU 보드 (칸마다 하나) (cpu-board-8m)</title></rect>
+<rect x="57.8" y="486.4" width="267.5" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞칸 바닥판 (빅 메인 PCB) (frame-big-main)</title></rect>
+<rect x="103.1" y="414.8" width="176.8" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞칸 위층 판 (메인 PCB) (frame-main-pcb)</title></rect>
+<rect x="127.6" y="392.1" width="14.5" height="22.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></rect>
+<rect x="240.9" y="392.1" width="14.5" height="22.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></rect>
+<rect x="107.6" y="443.8" width="167.8" height="40.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞칸 배터리 (AA 4개, 6V) (battery-case-4aa)</title></rect>
+<rect x="103.1" y="283.3" width="176.8" height="86.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>운전실 앞창 (ㅁ자 PCB) (frame-m-pcb)</title></rect>
+<rect x="184.3" y="304.6" width="14.5" height="22.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>증기 돔 (서포트 10) (support-spacer)</title></rect>
+<rect x="184.3" y="291.0" width="14.5" height="13.6" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>증기 돔 끝 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="137.1" y="394.4" width="108.8" height="20.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞칸 블루투스 모듈 (조종자 1명) (bt-module)</title></rect>
+<rect x="139.8" y="371.7" width="3.6" height="40.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>보일러 옆판 (중6 PCB) (frame-m6-pcb)</title></rect>
+<rect x="139.8" y="330.9" width="3.6" height="40.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>보일러 옆판 (중6 PCB) (frame-m6-pcb)</title></rect>
+<rect x="141.6" y="394.4" width="18.1" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>보일러 L자 2×2 (l-frame-2x2)</title></rect>
+<rect x="239.6" y="371.7" width="3.6" height="40.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>보일러 옆판 (중6 PCB) (frame-m6-pcb)</title></rect>
+<rect x="239.6" y="330.9" width="3.6" height="40.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>보일러 옆판 (중6 PCB) (frame-m6-pcb)</title></rect>
+<rect x="223.2" y="394.4" width="18.1" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>보일러 L자 2×2 (l-frame-2x2)</title></rect>
+<rect x="171.1" y="327.3" width="40.8" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>보일러 윗판 (중6 PCB) (frame-m6-pcb)</title></rect>
+<rect x="104.9" y="416.6" width="14.5" height="68.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></rect>
+<rect x="263.6" y="416.6" width="14.5" height="68.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></rect>
+<rect x="10.2" y="460.3" width="170.0" height="6.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축 (75mm) (shaft-75)</title></rect>
+<rect x="103.1" y="463.7" width="63.5" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축가이드 (axle-guide)</title></rect>
+<rect x="57.8" y="463.7" width="63.5" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축가이드 (axle-guide)</title></rect>
+<rect x="21.5" y="409.3" width="31.7" height="108.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 (휠 Ø50[V2], 헛돎) (wheel-50-v2)</title></rect>
+<rect x="27.7" y="407.1" width="19.3" height="113.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 타이어 (Ø50) (tire-50)</title></rect>
+<rect x="202.8" y="460.3" width="170.0" height="6.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축 (75mm) (shaft-75)</title></rect>
+<rect x="216.4" y="463.7" width="63.5" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축가이드 (axle-guide)</title></rect>
+<rect x="261.8" y="463.7" width="63.5" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축가이드 (axle-guide)</title></rect>
+<rect x="329.8" y="409.3" width="31.7" height="108.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 (휠 Ø50[V2], 헛돎) (wheel-50-v2)</title></rect>
+<rect x="336.0" y="407.1" width="19.3" height="113.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 타이어 (Ø50) (tire-50)</title></rect>
+<rect x="184.3" y="259.3" width="14.5" height="68.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>굴뚝 아래 (서포트 30) (support-spacer)</title></rect>
+<rect x="184.3" y="225.2" width="14.5" height="34.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>굴뚝 위 (서포트 15) (support-spacer)</title></rect>
+<rect x="184.3" y="211.6" width="14.5" height="13.6" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>굴뚝 끝 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="164.3" y="283.3" width="54.4" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>전조등 (RGB LED, 조종 방향 색) (rgb-led-bright)</title></rect>
+<rect x="137.1" y="420.7" width="108.8" height="63.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 장애물 센서 (적외선) (sensor-ir-tr)</title></rect>
+<circle cx="191.5" cy="369.4" r="45.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>보일러 앞면 (노란 휠가이드 Ø40) (wheel-guide-40-yellow)</title></circle>
+<rect x="96.3" y="505.0" width="190.4" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배장기 (배틀무기 V) (battle-v)</title></rect>
+<rect x="137.1" y="492.1" width="108.8" height="20.4" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 범퍼 (접촉 센서) (sensor-touch)</title></rect>
+<rect x="109.9" y="416.1" width="49.9" height="72.5" rx="1.2" fill="#c8202b" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>꼬리등 (LED 빨강) (led-board-red-s)</title></rect>
+<rect x="223.2" y="416.1" width="49.9" height="72.5" rx="1.2" fill="#c8202b" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>꼬리등 (LED 빨강) (led-board-red-s)</title></rect>
+<rect x="103.1" y="183.5" width="176.8" height="18.1" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 난간 (소8 PCB) (frame-s8-pcb)</title></rect>
+<circle cx="112.2" cy="192.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="134.8" cy="192.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="157.5" cy="192.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="180.2" cy="192.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="202.8" cy="192.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="225.5" cy="192.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="248.2" cy="192.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="270.8" cy="192.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<rect x="100.8" y="185.8" width="18.1" height="131.5" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 난간 기둥 (L자 2×6) (l-frame-2x6)</title></rect>
+<rect x="264.0" y="185.8" width="18.1" height="131.5" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 난간 기둥 (L자 2×6) (l-frame-2x6)</title></rect>
+<rect x="103.1" y="313.7" width="176.8" height="40.8" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 끝벽 (중 PCB) (frame-mid-pcb)</title></rect>
+<circle cx="112.2" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="112.2" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="112.2" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="134.8" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="134.8" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="134.8" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="157.5" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="157.5" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="157.5" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="180.2" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="180.2" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="180.2" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.5" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.5" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.5" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="202.8" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="202.8" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="202.8" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="225.5" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="225.5" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="225.5" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="248.2" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="248.2" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="248.2" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="270.8" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="270.8" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="270.8" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<rect x="103.1" y="272.9" width="176.8" height="40.8" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 끝벽 (중 PCB) (frame-mid-pcb)</title></rect>
+<circle cx="112.2" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="112.2" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="112.2" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="134.8" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="134.8" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="134.8" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="157.5" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="157.5" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="157.5" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="180.2" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="180.2" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="180.2" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.5" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.5" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.5" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="202.8" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="202.8" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="202.8" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="225.5" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="225.5" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="225.5" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="248.2" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="248.2" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="248.2" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="270.8" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="270.8" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="270.8" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<rect x="121.2" y="333.2" width="49.9" height="27.2" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>꼬리칸 경고음 (부저 보드) (buzzer-board-s)</title></rect>
+<circle cx="168.8" cy="337.5" r="17.0" fill="#2fae67" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 초록 (color-ball)</title></circle>
+<circle cx="218.7" cy="337.5" r="17.0" fill="#f2c21b" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 노랑 (color-ball)</title></circle>
+<rect x="104.9" y="358.1" width="14.5" height="56.7" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 기둥 (서포트 25) (support-spacer)</title></rect>
+<rect x="263.6" y="358.1" width="14.5" height="56.7" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 기둥 (서포트 25) (support-spacer)</title></rect>
+<circle cx="191.5" cy="337.5" r="17.0" fill="#f2c21b" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 노랑 (color-ball)</title></circle>
+<circle cx="146.2" cy="337.5" r="17.0" fill="#2fae67" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 초록 (color-ball)</title></circle>
+<circle cx="236.8" cy="337.5" r="17.0" fill="#c8202b" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 빨강 (color-ball)</title></circle>
+<circle cx="173.4" cy="337.5" r="17.0" fill="#2fae67" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 초록 (color-ball)</title></circle>
+<circle cx="250.4" cy="337.5" r="17.0" fill="#c8202b" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 빨강 (color-ball)</title></circle>
+<circle cx="134.8" cy="337.5" r="17.0" fill="#c8202b" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 빨강 (color-ball)</title></circle>
+<circle cx="211.9" cy="337.5" r="17.0" fill="#f2c21b" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 노랑 (color-ball)</title></circle>
+<rect x="100.8" y="354.5" width="181.4" height="3.6" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 바닥 (메인 플라스틱) (frame-main-plastic)</title></rect>
+<rect x="97.2" y="313.7" width="3.6" height="40.8" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 옆벽 (중16 PCB) (frame-m16-pcb)</title></rect>
+<rect x="97.2" y="272.9" width="3.6" height="40.8" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 옆벽 (중16 PCB) (frame-m16-pcb)</title></rect>
+<rect x="282.2" y="313.7" width="3.6" height="40.8" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 옆벽 (중16 PCB) (frame-m16-pcb)</title></rect>
+<rect x="282.2" y="272.9" width="3.6" height="40.8" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 옆벽 (중16 PCB) (frame-m16-pcb)</title></rect>
+<circle cx="191.5" cy="297.8" r="56.7" fill="#f2c21b" stroke="#1d2230" stroke-width="0.5"><title>짐: 압축공 (sponge-ball)</title></circle>
+<rect x="104.9" y="358.1" width="14.5" height="56.7" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 기둥 (서포트 25) (support-spacer)</title></rect>
+<rect x="263.6" y="358.1" width="14.5" height="56.7" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 기둥 (서포트 25) (support-spacer)</title></rect>
+<rect x="184.3" y="182.2" width="14.5" height="90.7" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>방향 램프 기둥 (서포트 40) (support-spacer)</title></rect>
+<rect x="164.3" y="138.2" width="54.4" height="45.3" rx="1.2" fill="#f4f3ee" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>방향 램프 (RGB LED) (rgb-led-bright)</title></rect>
+<rect x="103.1" y="313.7" width="176.8" height="40.8" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 끝벽 (중 PCB) (frame-mid-pcb)</title></rect>
+<circle cx="112.2" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="112.2" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="112.2" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="134.8" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="134.8" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="134.8" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="157.5" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="157.5" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="157.5" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="180.2" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="180.2" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="180.2" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.5" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.5" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.5" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="202.8" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="202.8" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="202.8" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="225.5" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="225.5" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="225.5" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="248.2" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="248.2" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="248.2" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="270.8" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="270.8" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="270.8" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<rect x="103.1" y="272.9" width="176.8" height="40.8" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 끝벽 (중 PCB) (frame-mid-pcb)</title></rect>
+<circle cx="112.2" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="112.2" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="112.2" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="134.8" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="134.8" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="134.8" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="157.5" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="157.5" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="157.5" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="180.2" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="180.2" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="180.2" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.5" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.5" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.5" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="202.8" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="202.8" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="202.8" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="225.5" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="225.5" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="225.5" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="248.2" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="248.2" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="248.2" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="270.8" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="270.8" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="270.8" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+</svg>
+<polyline points="134.8,337.5 66.0,283.3 63.0,283.3" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="134.8" cy="337.5" r="1.7" fill="#e8432a"/>
+<circle cx="54.0" cy="283.3" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="54.0" y="286.9" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">6</text>
+<polyline points="173.4,337.5 66.0,311.3 63.0,311.3" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="173.4" cy="337.5" r="1.7" fill="#e8432a"/>
+<circle cx="54.0" cy="311.3" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="54.0" y="314.9" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">7</text>
+<polyline points="112.2,386.4 66.0,339.3 63.0,339.3" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="112.2" cy="386.4" r="1.7" fill="#e8432a"/>
+<circle cx="54.0" cy="339.3" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="54.0" y="342.9" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">1</text>
+<polyline points="134.8,452.4 66.0,367.3 63.0,367.3" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="134.8" cy="452.4" r="1.7" fill="#e8432a"/>
+<circle cx="54.0" cy="367.3" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="54.0" y="370.9" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">11</text>
+<polyline points="191.5,160.9 317.0,255.3 320.0,255.3" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="191.5" cy="160.9" r="1.7" fill="#e8432a"/>
+<circle cx="329.0" cy="255.3" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="329.0" y="258.9" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">10</text>
+<polyline points="191.5,192.6 317.0,283.3 320.0,283.3" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="191.5" cy="192.6" r="1.7" fill="#e8432a"/>
+<circle cx="329.0" cy="283.3" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="329.0" y="286.9" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">15</text>
+<polyline points="191.5,227.5 317.0,311.3 320.0,311.3" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="191.5" cy="227.5" r="1.7" fill="#e8432a"/>
+<circle cx="329.0" cy="311.3" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="329.0" y="314.9" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">9</text>
+<polyline points="191.5,297.8 317.0,339.3 320.0,339.3" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="191.5" cy="297.8" r="1.7" fill="#e8432a"/>
+<circle cx="329.0" cy="339.3" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="329.0" y="342.9" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">5</text>
+<polyline points="191.5,334.1 317.0,367.3 320.0,367.3" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="191.5" cy="334.1" r="1.7" fill="#e8432a"/>
+<circle cx="329.0" cy="367.3" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="329.0" y="370.9" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">4</text>
+<polyline points="211.9,337.5 317.0,395.3 320.0,395.3" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="211.9" cy="337.5" r="1.7" fill="#e8432a"/>
+<circle cx="329.0" cy="395.3" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="329.0" y="398.9" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">8</text>
+<line x1="97.2" y1="542.7" x2="285.8" y2="542.7" stroke="#3a7bd5" stroke-width="0.8"/>
+<line x1="97.2" y1="538.7" x2="97.2" y2="546.7" stroke="#3a7bd5"/>
+<line x1="285.8" y1="538.7" x2="285.8" y2="546.7" stroke="#3a7bd5"/>
+<text x="191.5" y="538.7" font-size="10" fill="#3a7bd5" font-weight="700" text-anchor="middle">83</text>
+<line x1="80.0" y1="138.2" x2="80.0" y2="512.5" stroke="#3a7bd5" stroke-width="0.8"/>
+<line x1="76.0" y1="138.2" x2="84.0" y2="138.2" stroke="#3a7bd5"/>
+<line x1="76.0" y1="512.5" x2="84.0" y2="512.5" stroke="#3a7bd5"/>
+<text x="92.0" y="325.3" font-size="10" fill="#3a7bd5" font-weight="700" transform="rotate(-90 92.0 325.3)" text-anchor="middle">165</text>
+<rect x="401" y="100" width="484" height="451" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>
+<text x="401.0" y="92.0" font-size="12" fill="#1d2230" font-weight="700" text-anchor="start">측면도 (오른쪽에서 · 왼쪽 = 앞)</text>
+<svg x="401" y="100" width="484" height="451" viewBox="401 100 484 451" overflow="hidden">
+<circle cx="325.6" cy="463.7" r="54.4" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 구동 바퀴 (휠 Ø50[V2]) (wheel-50-v2)</title></circle>
+<circle cx="325.6" cy="463.7" r="56.7" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 바퀴 타이어 (Ø50) (tire-50)</title></circle>
+<circle cx="779.0" cy="463.7" r="54.4" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 구동 바퀴 (휠 Ø50[V2]) (wheel-50-v2)</title></circle>
+<circle cx="779.0" cy="463.7" r="56.7" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 바퀴 타이어 (Ø50) (tire-50)</title></circle>
+<circle cx="484.3" cy="463.7" r="54.4" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 (휠 Ø50[V2], 헛돎) (wheel-50-v2)</title></circle>
+<circle cx="484.3" cy="463.7" r="56.7" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 타이어 (Ø50) (tire-50)</title></circle>
+<rect x="463.9" y="463.7" width="40.8" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축가이드 (axle-guide)</title></rect>
+<rect x="257.6" y="441.1" width="90.7" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 (DC 130rpm) (dc-motor-130-rs)</title></rect>
+<rect x="711.0" y="441.1" width="90.7" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 (DC 130rpm) (dc-motor-130-rs)</title></rect>
+<circle cx="484.3" cy="463.7" r="3.4" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축 (75mm) (shaft-75)</title></circle>
+<rect x="266.7" y="441.1" width="18.1" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="321.1" y="441.1" width="18.1" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="720.1" y="441.1" width="18.1" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="774.5" y="441.1" width="18.1" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="325.6" y="335.4" width="18.1" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 모서리 L자 2×2 (l-frame-2x2)</title></rect>
+<rect x="277.6" y="416.6" width="14.5" height="68.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></rect>
+<rect x="495.2" y="416.6" width="14.5" height="68.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></rect>
+<rect x="731.0" y="416.6" width="14.5" height="68.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></rect>
+<rect x="463.9" y="463.7" width="40.8" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축가이드 (axle-guide)</title></rect>
+<rect x="599.5" y="392.1" width="14.5" height="22.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></rect>
+<rect x="703.8" y="392.1" width="14.5" height="22.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></rect>
+<rect x="230.4" y="420.7" width="108.8" height="63.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꺾임 센서 (왼쪽, 접촉 센서) (sensor-touch)</title></rect>
+<rect x="441.3" y="486.4" width="358.2" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>마지막칸 바닥판 (빅 메인 PCB) (frame-big-main)</title></rect>
+<rect x="527.4" y="443.8" width="140.5" height="40.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>마지막칸 배터리 (AA 4개, 6V) (battery-case-4aa)</title></rect>
+<rect x="486.6" y="414.8" width="267.5" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>마지막칸 위층 판 (메인 PCB) (frame-main-pcb)</title></rect>
+<rect x="564.8" y="360.4" width="188.2" height="31.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>마지막칸 CPU 보드 (칸마다 하나) (cpu-board-8m)</title></rect>
+<rect x="488.9" y="394.4" width="63.5" height="20.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>마지막칸 블루투스 모듈 (조종자 1명) (bt-module)</title></rect>
+<rect x="342.4" y="374.0" width="3.6" height="40.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 끝 아래 벽 (중 PCB) (frame-mid-pcb)</title></rect>
+<rect x="342.4" y="287.8" width="3.6" height="86.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 끝 창 (ㅁ자 PCB) (frame-m-pcb)</title></rect>
+<rect x="293.9" y="478.7" width="176.8" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>연결봉 (소8 PCB) (frame-s8-pcb)</title></rect>
+<rect x="306.9" y="467.8" width="14.7" height="17.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>연결 핀 앞 칸 (후크 S35) (s-hook-35)</title></rect>
+<rect x="443.0" y="467.8" width="14.7" height="17.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>연결 핀 뒤 칸 (후크 S35) (s-hook-35)</title></rect>
+<rect x="230.4" y="420.7" width="108.8" height="63.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꺾임 센서 (오른쪽, 접촉 센서) (sensor-touch)</title></rect>
+<rect x="266.7" y="333.2" width="72.5" height="27.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 경고음 (부저 보드) (buzzer-board-s)</title></rect>
+<rect x="463.9" y="463.7" width="40.8" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축가이드 (axle-guide)</title></rect>
+<rect x="599.5" y="392.1" width="14.5" height="22.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></rect>
+<rect x="703.8" y="392.1" width="14.5" height="22.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></rect>
+<rect x="277.6" y="416.6" width="14.5" height="68.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></rect>
+<rect x="495.2" y="416.6" width="14.5" height="68.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></rect>
+<rect x="731.0" y="416.6" width="14.5" height="68.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></rect>
+<rect x="325.6" y="335.4" width="18.1" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 모서리 L자 2×2 (l-frame-2x2)</title></rect>
+<rect x="266.7" y="441.1" width="18.1" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="321.1" y="441.1" width="18.1" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="720.1" y="441.1" width="18.1" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="774.5" y="441.1" width="18.1" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="257.6" y="441.1" width="90.7" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 (DC 130rpm) (dc-motor-130-rs)</title></rect>
+<rect x="711.0" y="441.1" width="90.7" height="45.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 (DC 130rpm) (dc-motor-130-rs)</title></rect>
+<circle cx="484.3" cy="463.7" r="3.4" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축 (75mm) (shaft-75)</title></circle>
+<rect x="463.9" y="463.7" width="40.8" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축가이드 (axle-guide)</title></rect>
+<circle cx="325.6" cy="463.7" r="54.4" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 구동 바퀴 (휠 Ø50[V2]) (wheel-50-v2)</title></circle>
+<circle cx="325.6" cy="463.7" r="56.7" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 바퀴 타이어 (Ø50) (tire-50)</title></circle>
+<circle cx="779.0" cy="463.7" r="54.4" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 구동 바퀴 (휠 Ø50[V2]) (wheel-50-v2)</title></circle>
+<circle cx="779.0" cy="463.7" r="56.7" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 바퀴 타이어 (Ø50) (tire-50)</title></circle>
+<circle cx="484.3" cy="463.7" r="54.4" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 (휠 Ø50[V2], 헛돎) (wheel-50-v2)</title></circle>
+<circle cx="484.3" cy="463.7" r="56.7" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 타이어 (Ø50) (tire-50)</title></circle>
+<rect x="441.3" y="313.7" width="358.2" height="40.8" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 옆벽 (중16 PCB) (frame-m16-pcb)</title></rect>
+<circle cx="450.3" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="450.3" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="450.3" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="473.0" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="473.0" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="473.0" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="495.7" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="495.7" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="495.7" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="518.3" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="518.3" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="518.3" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="541.0" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="541.0" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="541.0" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="563.7" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="563.7" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="563.7" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="586.3" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="586.3" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="586.3" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="609.0" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="609.0" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="609.0" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="620.3" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="620.3" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="620.3" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="631.7" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="631.7" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="631.7" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="654.3" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="654.3" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="654.3" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="677.0" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="677.0" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="677.0" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="699.7" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="699.7" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="699.7" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="722.4" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="722.4" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="722.4" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="745.0" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="745.0" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="745.0" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="767.7" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="767.7" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="767.7" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="790.4" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="790.4" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="790.4" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<rect x="441.3" y="272.9" width="358.2" height="40.8" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 옆벽 (중16 PCB) (frame-m16-pcb)</title></rect>
+<circle cx="450.3" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="450.3" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="450.3" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="473.0" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="473.0" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="473.0" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="495.7" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="495.7" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="495.7" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="518.3" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="518.3" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="518.3" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="541.0" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="541.0" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="541.0" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="563.7" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="563.7" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="563.7" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="586.3" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="586.3" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="586.3" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="609.0" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="609.0" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="609.0" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="620.3" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="620.3" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="620.3" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="631.7" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="631.7" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="631.7" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="654.3" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="654.3" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="654.3" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="677.0" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="677.0" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="677.0" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="699.7" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="699.7" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="699.7" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="722.4" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="722.4" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="722.4" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="745.0" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="745.0" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="745.0" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="767.7" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="767.7" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="767.7" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="790.4" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="790.4" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="790.4" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<rect x="790.4" y="185.8" width="22.7" height="131.5" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 난간 기둥 (L자 2×6) (l-frame-2x6)</title></rect>
+<rect x="499.7" y="358.1" width="14.5" height="56.7" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 기둥 (서포트 25) (support-spacer)</title></rect>
+<rect x="726.4" y="358.1" width="14.5" height="56.7" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 기둥 (서포트 25) (support-spacer)</title></rect>
+<circle cx="665.7" cy="337.5" r="17.0" fill="#c8202b" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 빨강 (color-ball)</title></circle>
+<rect x="804.0" y="416.1" width="13.6" height="72.5" rx="1.2" fill="#c8202b" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>꼬리등 (LED 빨강) (led-board-red-s)</title></rect>
+<circle cx="711.0" cy="337.5" r="17.0" fill="#2fae67" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 초록 (color-ball)</title></circle>
+<rect x="720.1" y="333.2" width="72.5" height="27.2" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>꼬리칸 경고음 (부저 보드) (buzzer-board-s)</title></rect>
+<circle cx="751.8" cy="337.5" r="17.0" fill="#2fae67" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 초록 (color-ball)</title></circle>
+<circle cx="670.2" cy="337.5" r="17.0" fill="#2fae67" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 초록 (color-ball)</title></circle>
+<rect x="484.3" y="354.5" width="272.0" height="3.6" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 바닥 (메인 플라스틱) (frame-main-plastic)</title></rect>
+<rect x="441.3" y="313.7" width="3.6" height="40.8" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 끝벽 (중 PCB) (frame-mid-pcb)</title></rect>
+<rect x="441.3" y="272.9" width="3.6" height="40.8" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 끝벽 (중 PCB) (frame-mid-pcb)</title></rect>
+<rect x="795.8" y="313.7" width="3.6" height="40.8" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 끝벽 (중 PCB) (frame-mid-pcb)</title></rect>
+<rect x="795.8" y="272.9" width="3.6" height="40.8" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 끝벽 (중 PCB) (frame-mid-pcb)</title></rect>
+<circle cx="575.0" cy="297.8" r="56.7" fill="#f2c21b" stroke="#1d2230" stroke-width="0.5"><title>짐: 압축공 (sponge-ball)</title></circle>
+<circle cx="715.6" cy="337.5" r="17.0" fill="#f2c21b" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 노랑 (color-ball)</title></circle>
+<rect x="454.4" y="182.2" width="14.5" height="90.7" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>방향 램프 기둥 (서포트 40) (support-spacer)</title></rect>
+<rect x="441.3" y="138.2" width="40.8" height="45.3" rx="1.2" fill="#f4f3ee" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>방향 램프 (RGB LED) (rgb-led-bright)</title></rect>
+<rect x="781.3" y="492.1" width="63.5" height="20.4" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 범퍼 (접촉 센서) (sensor-touch)</title></rect>
+<rect x="804.4" y="183.5" width="3.6" height="18.1" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 난간 (소8 PCB) (frame-s8-pcb)</title></rect>
+<circle cx="665.7" cy="337.5" r="17.0" fill="#f2c21b" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 노랑 (color-ball)</title></circle>
+<circle cx="751.8" cy="337.5" r="17.0" fill="#f2c21b" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 노랑 (color-ball)</title></circle>
+<circle cx="711.0" cy="337.5" r="17.0" fill="#c8202b" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 빨강 (color-ball)</title></circle>
+<rect x="804.0" y="416.1" width="13.6" height="72.5" rx="1.2" fill="#c8202b" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>꼬리등 (LED 빨강) (led-board-red-s)</title></rect>
+<circle cx="670.2" cy="337.5" r="17.0" fill="#c8202b" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 빨강 (color-ball)</title></circle>
+<rect x="499.7" y="358.1" width="14.5" height="56.7" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 기둥 (서포트 25) (support-spacer)</title></rect>
+<rect x="726.4" y="358.1" width="14.5" height="56.7" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 기둥 (서포트 25) (support-spacer)</title></rect>
+<rect x="790.4" y="185.8" width="22.7" height="131.5" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 난간 기둥 (L자 2×6) (l-frame-2x6)</title></rect>
+<rect x="441.3" y="313.7" width="358.2" height="40.8" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 옆벽 (중16 PCB) (frame-m16-pcb)</title></rect>
+<circle cx="450.3" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="450.3" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="450.3" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="473.0" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="473.0" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="473.0" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="495.7" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="495.7" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="495.7" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="518.3" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="518.3" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="518.3" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="541.0" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="541.0" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="541.0" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="563.7" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="563.7" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="563.7" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="586.3" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="586.3" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="586.3" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="609.0" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="609.0" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="609.0" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="620.3" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="620.3" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="620.3" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="631.7" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="631.7" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="631.7" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="654.3" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="654.3" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="654.3" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="677.0" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="677.0" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="677.0" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="699.7" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="699.7" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="699.7" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="722.4" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="722.4" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="722.4" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="745.0" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="745.0" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="745.0" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="767.7" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="767.7" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="767.7" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="790.4" cy="345.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="790.4" cy="334.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="790.4" cy="322.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<rect x="441.3" y="272.9" width="358.2" height="40.8" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 옆벽 (중16 PCB) (frame-m16-pcb)</title></rect>
+<circle cx="450.3" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="450.3" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="450.3" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="473.0" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="473.0" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="473.0" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="495.7" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="495.7" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="495.7" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="518.3" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="518.3" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="518.3" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="541.0" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="541.0" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="541.0" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="563.7" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="563.7" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="563.7" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="586.3" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="586.3" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="586.3" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="609.0" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="609.0" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="609.0" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="620.3" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="620.3" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="620.3" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="631.7" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="631.7" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="631.7" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="654.3" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="654.3" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="654.3" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="677.0" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="677.0" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="677.0" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="699.7" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="699.7" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="699.7" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="722.4" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="722.4" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="722.4" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="745.0" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="745.0" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="745.0" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="767.7" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="767.7" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="767.7" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="790.4" cy="304.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="790.4" cy="293.3" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="790.4" cy="281.9" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+</svg>
+<polyline points="620.3,334.1 395.0,325.3 392.0,325.3" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="620.3" cy="334.1" r="1.7" fill="#e8432a"/>
+<circle cx="383.0" cy="325.3" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="383.0" y="328.9" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">3</text>
+<polyline points="801.7,251.5 891.0,325.3 894.0,325.3" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="801.7" cy="251.5" r="1.7" fill="#e8432a"/>
+<circle cx="903.0" cy="325.3" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="903.0" y="328.9" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">14</text>
+<line x1="441.3" y1="542.7" x2="844.8" y2="542.7" stroke="#3a7bd5" stroke-width="0.8"/>
+<line x1="441.3" y1="538.7" x2="441.3" y2="546.7" stroke="#3a7bd5"/>
+<line x1="844.8" y1="538.7" x2="844.8" y2="546.7" stroke="#3a7bd5"/>
+<text x="643.0" y="538.7" font-size="10" fill="#3a7bd5" font-weight="700" text-anchor="middle">178</text>
+<line x1="409.0" y1="138.2" x2="409.0" y2="512.5" stroke="#3a7bd5" stroke-width="0.8"/>
+<line x1="405.0" y1="138.2" x2="413.0" y2="138.2" stroke="#3a7bd5"/>
+<line x1="405.0" y1="512.5" x2="413.0" y2="512.5" stroke="#3a7bd5"/>
+<text x="421.0" y="325.3" font-size="10" fill="#3a7bd5" font-weight="700" transform="rotate(-90 421.0 325.3)" text-anchor="middle">165</text>
+<rect x="72" y="623" width="239" height="484" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>
+<text x="72.0" y="614.7" font-size="12" fill="#1d2230" font-weight="700" text-anchor="start">윗면도 (위에서 · 위 = 앞)</text>
+<svg x="72" y="623" width="239" height="484" viewBox="72 623 239 484" overflow="hidden">
+<rect x="57.8" y="662.9" width="267.5" height="358.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>마지막칸 바닥판 (빅 메인 PCB) (frame-big-main)</title></rect>
+<rect x="182.4" y="515.6" width="18.1" height="176.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>연결봉 (소8 PCB) (frame-s8-pcb)</title></rect>
+<circle cx="191.5" cy="536.0" r="7.4" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>연결 핀 앞 칸 (후크 S35) (s-hook-35)</title></circle>
+<circle cx="191.5" cy="672.0" r="7.4" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>연결 핀 뒤 칸 (후크 S35) (s-hook-35)</title></circle>
+<rect x="103.1" y="685.6" width="63.5" height="40.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축가이드 (axle-guide)</title></rect>
+<rect x="57.8" y="685.6" width="63.5" height="40.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축가이드 (axle-guide)</title></rect>
+<rect x="216.4" y="685.6" width="63.5" height="40.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축가이드 (axle-guide)</title></rect>
+<rect x="261.8" y="685.6" width="63.5" height="40.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축가이드 (axle-guide)</title></rect>
+<rect x="107.6" y="749.1" width="167.8" height="140.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>마지막칸 배터리 (AA 4개, 6V) (battery-case-4aa)</title></rect>
+<rect x="87.2" y="488.4" width="18.1" height="18.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="87.2" y="542.8" width="18.1" height="18.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="57.8" y="479.3" width="74.8" height="90.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 (DC 130rpm) (dc-motor-130-rs)</title></rect>
+<rect x="21.5" y="492.9" width="31.7" height="108.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 구동 바퀴 (휠 Ø50[V2]) (wheel-50-v2)</title></rect>
+<rect x="27.7" y="490.6" width="19.3" height="113.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 바퀴 타이어 (Ø50) (tire-50)</title></rect>
+<rect x="277.6" y="488.4" width="18.1" height="18.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="277.6" y="542.8" width="18.1" height="18.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="250.4" y="479.3" width="74.8" height="90.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 (DC 130rpm) (dc-motor-130-rs)</title></rect>
+<rect x="329.8" y="492.9" width="31.7" height="108.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 구동 바퀴 (휠 Ø50[V2]) (wheel-50-v2)</title></rect>
+<rect x="336.0" y="490.6" width="19.3" height="113.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 바퀴 타이어 (Ø50) (tire-50)</title></rect>
+<rect x="87.2" y="941.7" width="18.1" height="18.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="87.2" y="996.1" width="18.1" height="18.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="57.8" y="932.7" width="74.8" height="90.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 (DC 130rpm) (dc-motor-130-rs)</title></rect>
+<rect x="21.5" y="946.3" width="31.7" height="108.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 구동 바퀴 (휠 Ø50[V2]) (wheel-50-v2)</title></rect>
+<rect x="27.7" y="944.0" width="19.3" height="113.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 바퀴 타이어 (Ø50) (tire-50)</title></rect>
+<rect x="10.2" y="702.6" width="170.0" height="6.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축 (75mm) (shaft-75)</title></rect>
+<rect x="21.5" y="651.6" width="31.7" height="108.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 (휠 Ø50[V2], 헛돎) (wheel-50-v2)</title></rect>
+<rect x="27.7" y="649.3" width="19.3" height="113.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 타이어 (Ø50) (tire-50)</title></rect>
+<rect x="277.6" y="941.7" width="18.1" height="18.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="277.6" y="996.1" width="18.1" height="18.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="250.4" y="932.7" width="74.8" height="90.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 (DC 130rpm) (dc-motor-130-rs)</title></rect>
+<rect x="329.8" y="946.3" width="31.7" height="108.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 구동 바퀴 (휠 Ø50[V2]) (wheel-50-v2)</title></rect>
+<rect x="336.0" y="944.0" width="19.3" height="113.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 바퀴 타이어 (Ø50) (tire-50)</title></rect>
+<rect x="202.8" y="702.6" width="170.0" height="6.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 축 (75mm) (shaft-75)</title></rect>
+<rect x="329.8" y="651.6" width="31.7" height="108.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 (휠 Ø50[V2], 헛돎) (wheel-50-v2)</title></rect>
+<rect x="336.0" y="649.3" width="19.3" height="113.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 바퀴 타이어 (Ø50) (tire-50)</title></rect>
+<rect x="149.6" y="452.1" width="20.4" height="108.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꺾임 센서 (왼쪽, 접촉 센서) (sensor-touch)</title></rect>
+<rect x="213.0" y="452.1" width="20.4" height="108.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꺾임 센서 (오른쪽, 접촉 센서) (sensor-touch)</title></rect>
+<circle cx="112.2" cy="506.5" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></circle>
+<circle cx="270.8" cy="506.5" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></circle>
+<circle cx="112.2" cy="724.1" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></circle>
+<circle cx="112.2" cy="959.9" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></circle>
+<circle cx="270.8" cy="724.1" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></circle>
+<circle cx="270.8" cy="959.9" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></circle>
+<rect x="103.1" y="708.2" width="176.8" height="267.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>마지막칸 위층 판 (메인 PCB) (frame-main-pcb)</title></rect>
+<rect x="137.1" y="710.5" width="108.8" height="63.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>마지막칸 블루투스 모듈 (조종자 1명) (bt-module)</title></rect>
+<circle cx="134.8" cy="828.4" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></circle>
+<circle cx="134.8" cy="932.7" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></circle>
+<circle cx="248.2" cy="828.4" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></circle>
+<circle cx="248.2" cy="932.7" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></circle>
+<rect x="103.1" y="564.1" width="176.8" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 끝 아래 벽 (중 PCB) (frame-mid-pcb)</title></rect>
+<rect x="122.4" y="786.5" width="138.3" height="188.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>마지막칸 CPU 보드 (칸마다 하나) (cpu-board-8m)</title></rect>
+<rect x="100.8" y="547.3" width="18.1" height="18.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 모서리 L자 2×2 (l-frame-2x2)</title></rect>
+<rect x="264.0" y="547.3" width="18.1" height="18.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 모서리 L자 2×2 (l-frame-2x2)</title></rect>
+<rect x="211.9" y="488.4" width="49.9" height="72.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 경고음 (부저 보드) (buzzer-board-s)</title></rect>
+<rect x="103.1" y="564.1" width="176.8" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>객차 끝 창 (ㅁ자 PCB) (frame-m-pcb)</title></rect>
+<rect x="137.1" y="1002.9" width="108.8" height="63.5" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 범퍼 (접촉 센서) (sensor-touch)</title></rect>
+<rect x="109.9" y="1025.6" width="49.9" height="13.6" rx="1.2" fill="#c8202b" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>꼬리등 (LED 빨강) (led-board-red-s)</title></rect>
+<rect x="223.2" y="1025.6" width="49.9" height="13.6" rx="1.2" fill="#c8202b" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>꼬리등 (LED 빨강) (led-board-red-s)</title></rect>
+<circle cx="112.2" cy="728.6" r="7.3" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 기둥 (서포트 25) (support-spacer)</title></circle>
+<circle cx="112.2" cy="955.3" r="7.3" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 기둥 (서포트 25) (support-spacer)</title></circle>
+<circle cx="270.8" cy="728.6" r="7.3" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 기둥 (서포트 25) (support-spacer)</title></circle>
+<circle cx="270.8" cy="955.3" r="7.3" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 기둥 (서포트 25) (support-spacer)</title></circle>
+<rect x="100.8" y="706.0" width="181.4" height="272.0" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 바닥 (메인 플라스틱) (frame-main-plastic)</title></rect>
+<circle cx="109.9" cy="715.0" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="109.9" cy="737.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="109.9" cy="760.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="109.9" cy="783.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="109.9" cy="805.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="109.9" cy="828.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="109.9" cy="839.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="109.9" cy="851.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="109.9" cy="873.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="109.9" cy="896.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="109.9" cy="919.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="109.9" cy="941.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="109.9" cy="964.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="132.6" cy="715.0" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="132.6" cy="737.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="132.6" cy="760.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="132.6" cy="783.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="132.6" cy="805.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="132.6" cy="828.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="132.6" cy="839.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="132.6" cy="851.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="132.6" cy="873.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="132.6" cy="896.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="132.6" cy="919.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="132.6" cy="941.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="132.6" cy="964.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="155.2" cy="715.0" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="155.2" cy="737.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="155.2" cy="760.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="155.2" cy="783.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="155.2" cy="805.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="155.2" cy="828.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="155.2" cy="839.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="155.2" cy="851.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="155.2" cy="873.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="155.2" cy="896.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="155.2" cy="919.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="155.2" cy="941.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="155.2" cy="964.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="177.9" cy="715.0" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="177.9" cy="737.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="177.9" cy="760.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="177.9" cy="783.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="177.9" cy="805.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="177.9" cy="828.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="177.9" cy="839.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="177.9" cy="851.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="177.9" cy="873.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="177.9" cy="896.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="177.9" cy="919.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="177.9" cy="941.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="177.9" cy="964.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="189.2" cy="715.0" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="189.2" cy="737.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="189.2" cy="760.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="189.2" cy="783.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="189.2" cy="805.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="189.2" cy="828.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="189.2" cy="839.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="189.2" cy="851.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="189.2" cy="873.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="189.2" cy="896.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="189.2" cy="919.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="189.2" cy="941.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="189.2" cy="964.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="200.6" cy="715.0" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="200.6" cy="737.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="200.6" cy="760.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="200.6" cy="783.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="200.6" cy="805.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="200.6" cy="828.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="200.6" cy="839.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="200.6" cy="851.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="200.6" cy="873.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="200.6" cy="896.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="200.6" cy="919.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="200.6" cy="941.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="200.6" cy="964.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="223.2" cy="715.0" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="223.2" cy="737.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="223.2" cy="760.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="223.2" cy="783.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="223.2" cy="805.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="223.2" cy="828.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="223.2" cy="839.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="223.2" cy="851.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="223.2" cy="873.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="223.2" cy="896.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="223.2" cy="919.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="223.2" cy="941.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="223.2" cy="964.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="245.9" cy="715.0" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="245.9" cy="737.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="245.9" cy="760.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="245.9" cy="783.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="245.9" cy="805.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="245.9" cy="828.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="245.9" cy="839.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="245.9" cy="851.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="245.9" cy="873.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="245.9" cy="896.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="245.9" cy="919.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="245.9" cy="941.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="245.9" cy="964.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.6" cy="715.0" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.6" cy="737.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.6" cy="760.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.6" cy="783.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.6" cy="805.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.6" cy="828.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.6" cy="839.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.6" cy="851.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.6" cy="873.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.6" cy="896.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.6" cy="919.1" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.6" cy="941.7" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.6" cy="964.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<rect x="121.2" y="941.7" width="49.9" height="72.5" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>꼬리칸 경고음 (부저 보드) (buzzer-board-s)</title></rect>
+<circle cx="134.8" cy="887.3" r="17.0" fill="#c8202b" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 빨강 (color-ball)</title></circle>
+<circle cx="173.4" cy="891.9" r="17.0" fill="#2fae67" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 초록 (color-ball)</title></circle>
+<circle cx="211.9" cy="887.3" r="17.0" fill="#f2c21b" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 노랑 (color-ball)</title></circle>
+<circle cx="250.4" cy="891.9" r="17.0" fill="#c8202b" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 빨강 (color-ball)</title></circle>
+<circle cx="146.2" cy="932.7" r="17.0" fill="#2fae67" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 초록 (color-ball)</title></circle>
+<circle cx="191.5" cy="937.2" r="17.0" fill="#f2c21b" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 노랑 (color-ball)</title></circle>
+<circle cx="236.8" cy="932.7" r="17.0" fill="#c8202b" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 빨강 (color-ball)</title></circle>
+<circle cx="168.8" cy="973.5" r="17.0" fill="#2fae67" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 초록 (color-ball)</title></circle>
+<circle cx="218.7" cy="973.5" r="17.0" fill="#f2c21b" stroke="#1d2230" stroke-width="0.5"><title>짐: 컬러볼 노랑 (color-ball)</title></circle>
+<rect x="97.2" y="662.9" width="3.6" height="358.2" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 옆벽 (중16 PCB) (frame-m16-pcb)</title></rect>
+<rect x="282.2" y="662.9" width="3.6" height="358.2" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 옆벽 (중16 PCB) (frame-m16-pcb)</title></rect>
+<rect x="103.1" y="662.9" width="176.8" height="3.6" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 끝벽 (중 PCB) (frame-mid-pcb)</title></rect>
+<rect x="103.1" y="1017.5" width="176.8" height="3.6" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 끝벽 (중 PCB) (frame-mid-pcb)</title></rect>
+<circle cx="191.5" cy="796.7" r="56.7" fill="#f2c21b" stroke="#1d2230" stroke-width="0.5"><title>짐: 압축공 (sponge-ball)</title></circle>
+<rect x="97.2" y="662.9" width="3.6" height="358.2" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 옆벽 (중16 PCB) (frame-m16-pcb)</title></rect>
+<rect x="282.2" y="662.9" width="3.6" height="358.2" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 옆벽 (중16 PCB) (frame-m16-pcb)</title></rect>
+<rect x="103.1" y="662.9" width="176.8" height="3.6" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 끝벽 (중 PCB) (frame-mid-pcb)</title></rect>
+<rect x="103.1" y="1017.5" width="176.8" height="3.6" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>짐칸 끝벽 (중 PCB) (frame-mid-pcb)</title></rect>
+<rect x="100.8" y="1012.0" width="18.1" height="22.7" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 난간 기둥 (L자 2×6) (l-frame-2x6)</title></rect>
+<rect x="264.0" y="1012.0" width="18.1" height="22.7" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 난간 기둥 (L자 2×6) (l-frame-2x6)</title></rect>
+<circle cx="191.5" cy="683.3" r="7.3" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>방향 램프 기둥 (서포트 40) (support-spacer)</title></circle>
+<rect x="103.1" y="1026.1" width="176.8" height="3.6" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 난간 (소8 PCB) (frame-s8-pcb)</title></rect>
+<rect x="164.3" y="662.9" width="54.4" height="40.8" rx="1.2" fill="#f4f3ee" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>방향 램프 (RGB LED) (rgb-led-bright)</title></rect>
+</svg>
+<polyline points="146.2,978.0 66.0,864.7 63.0,864.7" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="146.2" cy="978.0" r="1.7" fill="#e8432a"/>
+<circle cx="54.0" cy="864.7" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="54.0" y="868.3" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">13</text>
+<polyline points="191.5,842.0 317.0,850.7 320.0,850.7" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="191.5" cy="842.0" r="1.7" fill="#e8432a"/>
+<circle cx="329.0" cy="850.7" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="329.0" y="854.3" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">2</text>
+<polyline points="191.5,1034.7 317.0,878.7 320.0,878.7" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="191.5" cy="1034.7" r="1.7" fill="#e8432a"/>
+<circle cx="329.0" cy="878.7" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="329.0" y="882.3" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">12</text>
+<line x1="97.2" y1="1098.7" x2="285.8" y2="1098.7" stroke="#3a7bd5" stroke-width="0.8"/>
+<line x1="97.2" y1="1094.7" x2="97.2" y2="1102.7" stroke="#3a7bd5"/>
+<line x1="285.8" y1="1094.7" x2="285.8" y2="1102.7" stroke="#3a7bd5"/>
+<text x="191.5" y="1094.7" font-size="10" fill="#3a7bd5" font-weight="700" text-anchor="middle">83</text>
+<line x1="80.0" y1="662.9" x2="80.0" y2="1066.4" stroke="#3a7bd5" stroke-width="0.8"/>
+<line x1="76.0" y1="662.9" x2="84.0" y2="662.9" stroke="#3a7bd5"/>
+<line x1="76.0" y1="1066.4" x2="84.0" y2="1066.4" stroke="#3a7bd5"/>
+<text x="92.0" y="864.7" font-size="10" fill="#3a7bd5" font-weight="700" transform="rotate(-90 92.0 864.7)" text-anchor="middle">178</text>
+<text x="381.0" y="622.7" font-size="12" fill="#1d2230" font-weight="700" text-anchor="start">부품표</text>
+<rect x="381.0112359550561" y="630.6629213483145" width="768.9887640449439" height="18" fill="#1d2230"/>
+<text x="387.0" y="643.2" font-size="9.5" fill="#fff" font-weight="700" text-anchor="start">번호</text>
+<text x="421.0" y="643.2" font-size="9.5" fill="#fff" font-weight="700" text-anchor="start">부품 이름</text>
+<text x="842.4" y="643.2" font-size="9.5" fill="#fff" font-weight="700" text-anchor="start">id</text>
+<text x="1142.0" y="643.2" font-size="9.5" fill="#fff" font-weight="700" text-anchor="end">수량</text>
+<circle cx="395.0112359550561" cy="656.6629213483145" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="395.0" y="659.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">1</text>
+<text x="411.0" y="660.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">짐칸 기둥</text>
+<text x="842.4" y="660.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">support-spacer</text>
+<text x="1142.0" y="660.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">4</text>
+<rect x="381.0112359550561" y="664.6629213483145" width="768.9887640449439" height="16" fill="#eef2f7"/>
+<circle cx="395.0112359550561" cy="672.6629213483145" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="395.0" y="675.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">2</text>
+<text x="411.0" y="676.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">짐칸 바닥</text>
+<text x="842.4" y="676.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">frame-main-plastic</text>
+<text x="1142.0" y="676.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">1</text>
+<circle cx="395.0112359550561" cy="688.6629213483145" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="395.0" y="691.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">3</text>
+<text x="411.0" y="692.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">짐칸 옆벽</text>
+<text x="842.4" y="692.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">frame-m16-pcb</text>
+<text x="1142.0" y="692.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">4</text>
+<rect x="381.0112359550561" y="696.6629213483145" width="768.9887640449439" height="16" fill="#eef2f7"/>
+<circle cx="395.0112359550561" cy="704.6629213483145" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="395.0" y="707.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">4</text>
+<text x="411.0" y="708.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">짐칸 끝벽</text>
+<text x="842.4" y="708.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">frame-mid-pcb</text>
+<text x="1142.0" y="708.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">4</text>
+<circle cx="395.0112359550561" cy="720.6629213483145" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="395.0" y="723.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">5</text>
+<text x="411.0" y="724.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">짐: 압축공</text>
+<text x="842.4" y="724.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">sponge-ball</text>
+<text x="1142.0" y="724.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">1</text>
+<rect x="381.0112359550561" y="728.6629213483145" width="768.9887640449439" height="16" fill="#eef2f7"/>
+<circle cx="395.0112359550561" cy="736.6629213483145" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="395.0" y="739.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">6</text>
+<text x="411.0" y="740.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">짐: 컬러볼 빨강</text>
+<text x="842.4" y="740.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">color-ball</text>
+<text x="1142.0" y="740.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">3</text>
+<circle cx="395.0112359550561" cy="752.6629213483145" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="395.0" y="755.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">7</text>
+<text x="411.0" y="756.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">짐: 컬러볼 초록</text>
+<text x="842.4" y="756.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">color-ball</text>
+<text x="1142.0" y="756.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">3</text>
+<rect x="381.0112359550561" y="760.6629213483145" width="768.9887640449439" height="16" fill="#eef2f7"/>
+<circle cx="395.0112359550561" cy="768.6629213483145" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="395.0" y="771.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">8</text>
+<text x="411.0" y="772.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">짐: 컬러볼 노랑</text>
+<text x="842.4" y="772.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">color-ball</text>
+<text x="1142.0" y="772.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">3</text>
+<circle cx="395.0112359550561" cy="784.6629213483145" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="395.0" y="787.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">9</text>
+<text x="411.0" y="788.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">방향 램프 기둥</text>
+<text x="842.4" y="788.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">support-spacer</text>
+<text x="1142.0" y="788.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">1</text>
+<rect x="381.0112359550561" y="792.6629213483145" width="768.9887640449439" height="16" fill="#eef2f7"/>
+<circle cx="395.0112359550561" cy="800.6629213483145" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="395.0" y="803.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">10</text>
+<text x="411.0" y="804.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">방향 램프</text>
+<text x="842.4" y="804.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">rgb-led-bright</text>
+<text x="1142.0" y="804.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">1</text>
+<circle cx="395.0112359550561" cy="816.6629213483145" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="395.0" y="819.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">11</text>
+<text x="411.0" y="820.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">꼬리등</text>
+<text x="842.4" y="820.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">led-board-red-s</text>
+<text x="1142.0" y="820.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">2</text>
+<rect x="381.0112359550561" y="824.6629213483145" width="768.9887640449439" height="16" fill="#eef2f7"/>
+<circle cx="395.0112359550561" cy="832.6629213483145" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="395.0" y="835.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">12</text>
+<text x="411.0" y="836.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">뒤 범퍼</text>
+<text x="842.4" y="836.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">sensor-touch</text>
+<text x="1142.0" y="836.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">1</text>
+<circle cx="395.0112359550561" cy="848.6629213483145" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="395.0" y="851.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">13</text>
+<text x="411.0" y="852.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">꼬리칸 경고음</text>
+<text x="842.4" y="852.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">buzzer-board-s</text>
+<text x="1142.0" y="852.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">1</text>
+<rect x="381.0112359550561" y="856.6629213483145" width="768.9887640449439" height="16" fill="#eef2f7"/>
+<circle cx="395.0112359550561" cy="864.6629213483145" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="395.0" y="867.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">14</text>
+<text x="411.0" y="868.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">뒤 난간 기둥</text>
+<text x="842.4" y="868.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">l-frame-2x6</text>
+<text x="1142.0" y="868.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">2</text>
+<circle cx="395.0112359550561" cy="880.6629213483145" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="395.0" y="883.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">15</text>
+<text x="411.0" y="884.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">뒤 난간</text>
+<text x="842.4" y="884.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">frame-s8-pcb</text>
+<text x="1142.0" y="884.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">1</text>
+<text x="381.0" y="914.7" font-size="12" fill="#1d2230" font-weight="700" text-anchor="start">조립 순서</text>
+<text x="381.0" y="931.7" font-size="9.5" fill="#3a4050" font-weight="400" text-anchor="start">• 짐칸: 서포트 25 네 개 위에 메인 플라스틱 바닥. 중16 PCB · 중 PCB를 2단으로 둘러 짐칸. 짐: 압축공 1 · 컬러볼 9.</text>
+<text x="381.0" y="948.7" font-size="9.5" fill="#3a4050" font-weight="400" text-anchor="start">• 꼬리: 짐칸 앞 위에 서포트 40 + RGB 방향 램프. 바닥판 뒤 끝에 꼬리등 LED 빨강 2개 · 뒤 범퍼 접촉 센서. 뒤에 L자 2×6 난간 + 소8 PCB 가로대.</text>
+<text x="381.0" y="965.7" font-size="9.5" fill="#3a4050" font-weight="400" text-anchor="start">• 이 도면의 볼트 · 너트: 볼트 3×6 × 46, M3 너트 × 50</text></svg>
