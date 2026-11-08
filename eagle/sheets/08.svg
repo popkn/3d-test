@@ -37,7 +37,7 @@
 <text x="540.0" y="506.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">IN4</text>
 <rect x="110" y="476" width="260" height="52" rx="6" fill="#fff" stroke="#1d2230"/>
 <text x="122.0" y="496.0" font-size="11.5" fill="#1d2230" font-weight="700" text-anchor="start">먹이 접시 컬러 센서</text>
-<text x="122.0" y="514.0" font-size="9.5" fill="#5a6070" font-weight="400" text-anchor="start">컬러볼 색 (빨강 · 초록 · 노랑)</text>
+<text x="122.0" y="514.0" font-size="9.5" fill="#5a6070" font-weight="400" text-anchor="start">접시에 올린 물건의 색 (빨강 · 초록 · 노랑)</text>
 <rect x="410" y="492" width="16" height="20" fill="#1d2230"/>
 <text x="418.0" y="530.0" font-size="9" fill="#e8432a" font-weight="700" text-anchor="middle">헤더핀 3pin 연장 (400 mm)</text>
 <path d="M 736 266 C 808.0 266, 808.0 266, 880 266" fill="none" stroke="#f2c21b" stroke-width="1.6"/>

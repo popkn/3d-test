@@ -16,16 +16,13 @@
 <rect x="363.4" y="350.9" width="22.7" height="4.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꽁지깃 (소8 PCB) (frame-s8-pcb)</title></rect>
 <rect x="150.2" y="325.3" width="136.4" height="25.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꼬리 접촉 센서 (쓰다듬기) (sensor-touch)</title></rect>
 <rect x="50.8" y="355.5" width="335.3" height="4.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꼬리 받침 (5×13 PCB) (frame-5x13-pcb)</title></rect>
-<circle cx="110.5" cy="551.8" r="21.3" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>먹이 (컬러볼 노랑) (color-ball)</title></circle>
 <rect x="24.6" y="577.7" width="18.2" height="28.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>받침 발 (서포트 10) (support-spacer)</title></rect>
 <rect x="24.6" y="556.1" width="18.2" height="17.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>받침 발 캡너트 (cap-nut-m3)</title></rect>
 <rect x="394.0" y="577.7" width="18.2" height="28.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>받침 발 (서포트 10) (support-spacer)</title></rect>
 <rect x="394.0" y="556.1" width="18.2" height="17.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>받침 발 캡너트 (cap-nut-m3)</title></rect>
-<circle cx="62.1" cy="551.8" r="21.3" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>먹이 (컬러볼 초록) (color-ball)</title></circle>
 <rect x="323.0" y="558.9" width="18.2" height="14.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>먹이 접시 받침 (서포트 5) (support-spacer)</title></rect>
 <rect x="379.8" y="558.9" width="18.2" height="14.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>먹이 접시 받침 (서포트 5) (support-spacer)</title></rect>
 <rect x="289.5" y="530.5" width="142.1" height="28.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>먹이 접시 (컬러 센서, 창이 위) (sensor-color)</title></rect>
-<circle cx="360.5" cy="509.2" r="21.3" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>먹이 (컬러볼 빨강) (color-ball)</title></circle>
 <rect x="144.6" y="354.3" width="28.4" height="28.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>깃털 바지 L자 2×2 (l-frame-2x2)</title></rect>
 <rect x="140.6" y="355.5" width="4.5" height="193.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼깃털 바지 (소7 PCB) (frame-s7-pcb)</title></rect>
 <rect x="263.9" y="354.3" width="28.4" height="28.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>깃털 바지 L자 2×2 (l-frame-2x2)</title></rect>
@@ -208,10 +205,8 @@
 <rect x="849.8" y="577.7" width="18.2" height="28.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>받침 발 (서포트 10) (support-spacer)</title></rect>
 <rect x="849.8" y="556.1" width="18.2" height="17.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>받침 발 캡너트 (cap-nut-m3)</title></rect>
 <rect x="549.1" y="175.9" width="22.7" height="85.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날개 휠가이드 (서보) (wheel-guide-30-servo)</title></rect>
-<circle cx="844.6" cy="551.8" r="21.3" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>먹이 (컬러볼 초록) (color-ball)</title></circle>
 <rect x="904.3" y="350.9" width="221.6" height="4.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꽁지깃 (소8 PCB) (frame-s8-pcb)</title></rect>
 <rect x="571.8" y="190.1" width="113.7" height="56.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼날개 서보 (servo-digital)</title></rect>
-<circle cx="864.5" cy="551.8" r="21.3" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>먹이 (컬러볼 노랑) (color-ball)</title></circle>
 <rect x="583.2" y="190.1" width="22.7" height="56.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날개 서보 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
 <rect x="651.4" y="190.1" width="22.7" height="56.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날개 서보 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
 <rect x="648.6" y="544.7" width="51.1" height="28.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>횃대 축가이드 (axle-guide)</title></rect>
@@ -265,7 +260,6 @@
 <rect x="651.4" y="190.1" width="22.7" height="56.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날개 서보 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
 <rect x="818.5" y="558.9" width="18.2" height="14.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>먹이 접시 받침 (서포트 5) (support-spacer)</title></rect>
 <rect x="756.5" y="530.5" width="142.1" height="28.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>먹이 접시 (컬러 센서, 창이 위) (sensor-color)</title></rect>
-<circle cx="827.6" cy="509.2" r="21.3" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>먹이 (컬러볼 빨강) (color-ball)</title></circle>
 <rect x="571.8" y="190.1" width="113.7" height="56.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른날개 서보 (servo-digital)</title></rect>
 <rect x="904.3" y="350.9" width="221.6" height="4.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꽁지깃 (소8 PCB) (frame-s8-pcb)</title></rect>
 <rect x="818.5" y="558.9" width="18.2" height="14.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>먹이 접시 받침 (서포트 5) (support-spacer)</title></rect>
@@ -437,14 +431,11 @@
 <rect x="164.4" y="866.4" width="22.7" height="28.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼뒷발톱 (L자 2×1) (l-frame-2x1)</title></rect>
 <rect x="249.7" y="866.4" width="22.7" height="28.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른뒷발톱 (L자 2×1) (l-frame-2x1)</title></rect>
 <rect x="111.9" y="757.0" width="213.1" height="8.5" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>횃대 (축 75mm) (shaft-75)</title></rect>
-<circle cx="62.1" cy="931.7" r="21.3" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>먹이 (컬러볼 초록) (color-ball)</title></circle>
-<circle cx="110.5" cy="951.6" r="21.3" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>먹이 (컬러볼 노랑) (color-ball)</title></circle>
 <rect x="289.5" y="843.6" width="142.1" height="142.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>먹이 접시 (컬러 센서, 창이 위) (sensor-color)</title></rect>
 <rect x="150.2" y="764.1" width="51.1" height="108.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼발바닥 (옵션 PCB) (frame-option-pcb)</title></rect>
 <rect x="235.5" y="764.1" width="51.1" height="108.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른발바닥 (옵션 PCB) (frame-option-pcb)</title></rect>
 <rect x="144.6" y="749.9" width="62.5" height="90.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼앞발톱 (그랩) (grab)</title></rect>
 <rect x="229.8" y="749.9" width="62.5" height="90.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른앞발톱 (그랩) (grab)</title></rect>
-<circle cx="360.5" cy="914.7" r="21.3" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>먹이 (컬러볼 빨강) (color-ball)</title></circle>
 <circle cx="175.8" cy="860.7" r="9.1" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼정강이 (서포트 35) (support-spacer)</title></circle>
 <circle cx="261.1" cy="860.7" r="9.1" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른정강이 (서포트 35) (support-spacer)</title></circle>
 <rect x="140.6" y="820.9" width="4.5" height="22.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼깃털 바지 (소7 PCB) (frame-s7-pcb)</title></rect>

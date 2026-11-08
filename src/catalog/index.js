@@ -33,7 +33,6 @@ import boltM26x10 from './parts/bolt-m26x10/spec.js';
 import boltM3x6 from './parts/bolt-m3x6/spec.js';
 import boltM3x10 from './parts/bolt-m3x10/spec.js';
 import supportSpacer from './parts/support-spacer/spec.js';
-import spongeBall from './parts/sponge-ball/spec.js';
 import inner80Buggy from './parts/inner-80-buggy/spec.js';
 import inner130Giant from './parts/inner-130-giant/spec.js';
 import shaft75 from './parts/shaft-75/spec.js';
@@ -42,7 +41,6 @@ import caterpillarLink from './parts/caterpillar-link/spec.js';
 import caterpillarSprocket from './parts/caterpillar-sprocket/spec.js';
 import caterpillarWheelGuide from './parts/caterpillar-wheel-guide/spec.js';
 import caterpillarRubber from './parts/caterpillar-rubber/spec.js';
-import colorBall from './parts/color-ball/spec.js';
 import cable3pin from './parts/cable-3pin/spec.js';
 import tire50 from './parts/tire-50/spec.js';
 import wheelGuide30Nylon from './parts/wheel-guide-30-nylon/spec.js';
@@ -103,7 +101,7 @@ export const catalog = [
   frameS3Pcb, frameS4Pcb, frameS5Pcb, frameS7Pcb, frameS8Pcb, frameS3Plastic, frameS4Plastic, frameS5Plastic, frameMPcb,
   frameS8Plastic, frameOptionPcb, frameOptionPlastic, frameM6Pcb, frameMidPcb, frameMidPlastic, frame5x13Pcb, frameS12Pcb, frameM16Pcb, lFrame2x1, lFrame2x2, lFrame2x6, lFrame1202x2,
   battleG, battleI, battleJ, battleS, battleT, battleU, battleV,
-  hinge3x3, grab, nutM3, capNutM3, sNutBlue, nutFrame4, motorGuide, boltM26x10, boltM3x6, boltM3x10, supportSpacer, spongeBall, colorBall, cable3pin, headerPin3p, sHook35,
+  hinge3x3, grab, nutM3, capNutM3, sNutBlue, nutFrame4, motorGuide, boltM26x10, boltM3x6, boltM3x10, supportSpacer, cable3pin, headerPin3p, sHook35,
 ];
 
 export const categories = [['board', '보드'], ['sensor', '센서'], ['motor', '모터'], ['wheel', '바퀴'], ['power', '전원'], ['frame', '프레임'], ['battle', '배틀무기'], ['hardware', '조립 부품']];

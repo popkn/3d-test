@@ -55,12 +55,6 @@ export async function loadModules(list, loadPart, onProgress) {
 export function makeHolder(a, mods) {
   const model = mods[a.id].build();
   hideDemo(model.object3d);
-  // 컬러볼 모델은 세 가지 색을 함께 보여 주므로 이름의 색 하나만 남기고 가운데로
-  if (a.id === 'color-ball' && model.handles?.balls) {
-    const k = a.n.includes('빨강') ? 0 : a.n.includes('초록') ? 1 : 2;
-    model.handles.balls.forEach((b, i) => { b.visible = i === k; if (i === k) b.position.x = 0; });
-    model.handles.balls.filter((b, i) => i !== k).forEach((b) => b.removeFromParent());
-  }
   const holder = new THREE.Group();
   holder.userData = { name: a.n, id: a.id, sheet: a.s };
   if (a.id === 'support-spacer' && a.length && model.handles?.setLength) {

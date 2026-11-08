@@ -2,7 +2,7 @@
 <rect x="14" y="14" width="1505" height="46" fill="#1d2230"/>
 <text x="28.0" y="44.0" font-size="13" fill="#9fb3d1" font-weight="700" text-anchor="start">독수리 로봇 · 도면 00</text>
 <text x="222.2" y="44.0" font-size="17" fill="#ffffff" font-weight="700" text-anchor="start">전체 조립도</text>
-<text x="1505.4" y="44.0" font-size="10.5" fill="#c8d3e6" font-weight="400" text-anchor="end">폭 532 × 높이 228 × 길이 327 mm · 부품 802개 · 색 점선 = 파트 도면 번호</text>
+<text x="1505.4" y="44.0" font-size="10.5" fill="#c8d3e6" font-weight="400" text-anchor="end">폭 532 × 높이 228 × 길이 327 mm · 부품 799개 · 색 점선 = 파트 도면 번호</text>
 <rect x="44" y="100" width="846" height="383" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>
 <text x="44.0" y="92.0" font-size="12" fill="#1d2230" font-weight="700" text-anchor="start">정면도 (앞에서)</text>
 <svg x="44" y="100" width="846" height="383" viewBox="44 100 846 383" overflow="hidden">
@@ -20,7 +20,6 @@
 <rect x="514.6" y="275.0" width="9.6" height="52.5" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>층 기둥 (서포트 35) (support-spacer)</title></rect>
 <rect x="409.6" y="257.6" width="9.6" height="15.0" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></rect>
 <rect x="514.6" y="257.6" width="9.6" height="15.0" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></rect>
-<circle cx="409.9" cy="433.6" r="11.2" fill="#f2c21b" stroke="#1d2230" stroke-width="0.5"><title>먹이 (컬러볼 노랑) (color-ball)</title></circle>
 <rect x="364.6" y="447.2" width="9.6" height="15.0" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>받침 발 (서포트 10) (support-spacer)</title></rect>
 <rect x="364.6" y="435.8" width="9.6" height="9.0" rx="0" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>받침 발 캡너트 (cap-nut-m3)</title></rect>
 <rect x="559.6" y="447.2" width="9.6" height="15.0" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>받침 발 (서포트 10) (support-spacer)</title></rect>
@@ -28,11 +27,9 @@
 <rect x="432.1" y="320.0" width="9.6" height="7.5" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>블루투스 받침 (서포트 5) (support-spacer)</title></rect>
 <rect x="492.1" y="320.0" width="9.6" height="7.5" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>블루투스 받침 (서포트 5) (support-spacer)</title></rect>
 <rect x="430.9" y="305.8" width="72.0" height="13.5" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>블루투스 모듈 (스마트폰 조종) (bt-module)</title></rect>
-<circle cx="384.4" cy="433.6" r="11.2" fill="#2fae67" stroke="#1d2230" stroke-width="0.5"><title>먹이 (컬러볼 초록) (color-ball)</title></circle>
 <rect x="522.1" y="437.3" width="9.6" height="7.5" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>먹이 접시 받침 (서포트 5) (support-spacer)</title></rect>
 <rect x="552.1" y="437.3" width="9.6" height="7.5" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>먹이 접시 받침 (서포트 5) (support-spacer)</title></rect>
 <rect x="504.4" y="422.3" width="75.0" height="15.0" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>먹이 접시 (컬러 센서, 창이 위) (sensor-color)</title></rect>
-<circle cx="541.9" cy="411.1" r="11.2" fill="#c8202b" stroke="#1d2230" stroke-width="0.5"><title>먹이 (컬러볼 빨강) (color-ball)</title></circle>
 <rect x="404.7" y="236.6" width="124.5" height="21.0" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>CPU 보드 8M (cpu-board-8m)</title></rect>
 <rect x="427.9" y="329.3" width="15.0" height="15.0" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>깃털 바지 L자 2×2 (l-frame-2x2)</title></rect>
 <rect x="425.8" y="329.9" width="2.4" height="102.0" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>왼깃털 바지 (소7 PCB) (frame-s7-pcb)</title></rect>
@@ -425,7 +422,6 @@
 <rect x="1259.1" y="447.2" width="9.6" height="15.0" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>받침 발 (서포트 10) (support-spacer)</title></rect>
 <rect x="1259.1" y="435.8" width="9.6" height="9.0" rx="0" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>받침 발 캡너트 (cap-nut-m3)</title></rect>
 <rect x="1100.4" y="235.1" width="12.0" height="45.0" rx="1.2" fill="#f4f3ee" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>날개 휠가이드 (서보) (wheel-guide-30-servo)</title></rect>
-<circle cx="1256.4" cy="433.6" r="11.2" fill="#2fae67" stroke="#1d2230" stroke-width="0.5"><title>먹이 (컬러볼 초록) (color-ball)</title></circle>
 <rect x="1287.9" y="327.5" width="117.0" height="2.4" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>꽁지깃 (소8 PCB) (frame-s8-pcb)</title></rect>
 <rect x="1112.4" y="242.6" width="60.0" height="30.0" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>왼날개 서보 (servo-digital)</title></rect>
 <circle cx="1112.4" cy="257.6" r="3.9" fill="#ffffff" stroke="#1d2230" stroke-width="0.6"/>
@@ -453,7 +449,6 @@
 <circle cx="1233.9" cy="296.3" r="2.4" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
 <circle cx="1241.4" cy="296.3" r="2.4" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
 <circle cx="1248.9" cy="296.3" r="2.4" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
-<circle cx="1266.9" cy="433.6" r="11.2" fill="#f2c21b" stroke="#1d2230" stroke-width="0.5"><title>먹이 (컬러볼 노랑) (color-ball)</title></circle>
 <rect x="1152.9" y="275.3" width="12.0" height="15.0" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>옆구리 깃 L자 2×2 (l-frame-2x2)</title></rect>
 <rect x="1212.9" y="275.3" width="12.0" height="15.0" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>옆구리 깃 L자 2×2 (l-frame-2x2)</title></rect>
 <rect x="1118.4" y="242.6" width="12.0" height="30.0" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>날개 서보 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
@@ -609,7 +604,6 @@
 <circle cx="1241.4" cy="296.3" r="2.4" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
 <circle cx="1248.9" cy="296.3" r="2.4" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
 <rect x="1209.9" y="422.3" width="75.0" height="15.0" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>먹이 접시 (컬러 센서, 창이 위) (sensor-color)</title></rect>
-<circle cx="1247.4" cy="411.1" r="11.2" fill="#c8202b" stroke="#1d2230" stroke-width="0.5"><title>먹이 (컬러볼 빨강) (color-ball)</title></circle>
 <rect x="1112.4" y="242.6" width="60.0" height="30.0" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>오른날개 서보 (servo-digital)</title></rect>
 <circle cx="1112.4" cy="257.6" r="3.9" fill="#ffffff" stroke="#1d2230" stroke-width="0.6"/>
 <rect x="1287.9" y="327.5" width="117.0" height="2.4" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>꽁지깃 (소8 PCB) (frame-s8-pcb)</title></rect>
@@ -947,8 +941,6 @@
 <rect x="438.4" y="821.8" width="12.0" height="15.0" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>왼뒷발톱 (L자 2×1) (l-frame-2x1)</title></rect>
 <rect x="483.4" y="821.8" width="12.0" height="15.0" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>오른뒷발톱 (L자 2×1) (l-frame-2x1)</title></rect>
 <rect x="410.7" y="764.1" width="112.5" height="4.5" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>횃대 (축 75mm) (shaft-75)</title></rect>
-<circle cx="384.4" cy="856.3" r="11.2" fill="#2fae67" stroke="#1d2230" stroke-width="0.5"><title>먹이 (컬러볼 초록) (color-ball)</title></circle>
-<circle cx="409.9" cy="866.8" r="11.2" fill="#f2c21b" stroke="#1d2230" stroke-width="0.5"><title>먹이 (컬러볼 노랑) (color-ball)</title></circle>
 <rect x="504.4" y="809.8" width="75.0" height="75.0" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>먹이 접시 (컬러 센서, 창이 위) (sensor-color)</title></rect>
 <rect x="430.9" y="767.8" width="27.0" height="57.0" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>왼발바닥 (옵션 PCB) (frame-option-pcb)</title></rect>
 <circle cx="436.9" cy="773.8" r="2.4" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
@@ -970,7 +962,6 @@
 <circle cx="496.9" cy="818.8" r="2.4" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
 <rect x="427.9" y="760.3" width="33.0" height="48.0" rx="1.2" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>왼앞발톱 (그랩) (grab)</title></rect>
 <rect x="472.9" y="760.3" width="33.0" height="48.0" rx="1.2" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>오른앞발톱 (그랩) (grab)</title></rect>
-<circle cx="541.9" cy="847.3" r="11.2" fill="#c8202b" stroke="#1d2230" stroke-width="0.5"><title>먹이 (컬러볼 빨강) (color-ball)</title></circle>
 <circle cx="444.4" cy="818.8" r="4.8" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>왼정강이 (서포트 35) (support-spacer)</title></circle>
 <circle cx="489.4" cy="818.8" r="4.8" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>오른정강이 (서포트 35) (support-spacer)</title></circle>
 <rect x="425.8" y="797.8" width="2.4" height="12.0" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>왼깃털 바지 (소7 PCB) (frame-s7-pcb)</title></rect>
@@ -1886,10 +1877,10 @@
 <line x1="48.0" y1="574.3" x2="56.0" y2="574.3" stroke="#3a7bd5"/>
 <line x1="48.0" y1="1064.8" x2="56.0" y2="1064.8" stroke="#3a7bd5"/>
 <text x="64.0" y="819.6" font-size="10" fill="#3a7bd5" font-weight="700" transform="rotate(-90 64.0 819.6)" text-anchor="middle">327</text>
-<rect x="348.4" y="399.8" width="237.0" height="62.4" fill="none" stroke="#2f6fe0" stroke-width="1.1" stroke-dasharray="5 3"/>
-<text x="351.4" y="410.8" font-size="10" fill="#2f6fe0" font-weight="700" text-anchor="start">01</text>
-<rect x="1107.9" y="399.8" width="177.0" height="62.4" fill="none" stroke="#2f6fe0" stroke-width="1.1" stroke-dasharray="5 3"/>
-<text x="1110.9" y="410.8" font-size="10" fill="#2f6fe0" font-weight="700" text-anchor="start">01</text>
+<rect x="348.4" y="422.3" width="237.0" height="39.9" fill="none" stroke="#2f6fe0" stroke-width="1.1" stroke-dasharray="5 3"/>
+<text x="351.4" y="433.3" font-size="10" fill="#2f6fe0" font-weight="700" text-anchor="start">01</text>
+<rect x="1107.9" y="422.3" width="177.0" height="39.9" fill="none" stroke="#2f6fe0" stroke-width="1.1" stroke-dasharray="5 3"/>
+<text x="1110.9" y="433.3" font-size="10" fill="#2f6fe0" font-weight="700" text-anchor="start">01</text>
 <rect x="348.4" y="707.8" width="237.0" height="177.0" fill="none" stroke="#2f6fe0" stroke-width="1.1" stroke-dasharray="5 3"/>
 <text x="351.4" y="718.8" font-size="10" fill="#2f6fe0" font-weight="700" text-anchor="start">01</text>
 <rect x="425.8" y="329.3" width="82.2" height="115.5" fill="none" stroke="#2fae67" stroke-width="1.1" stroke-dasharray="5 3"/>
@@ -1928,7 +1919,7 @@
 <text x="963.9" y="576.7" font-size="10.5" fill="#1d2230" font-weight="400" text-anchor="start">전체 조립도</text>
 <rect x="929.88" y="585.7040000000001" width="26" height="15" fill="#2f6fe0"/>
 <text x="942.9" y="596.7" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">01</text>
-<text x="963.9" y="596.7" font-size="10.5" fill="#1d2230" font-weight="400" text-anchor="start">받침대 · 횃대 · 먹이 접시  · 부품 18개</text>
+<text x="963.9" y="596.7" font-size="10.5" fill="#1d2230" font-weight="400" text-anchor="start">받침대 · 횃대 · 먹이 접시  · 부품 15개</text>
 <rect x="929.88" y="605.7040000000001" width="26" height="15" fill="#2fae67"/>
 <text x="942.9" y="616.7" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">02</text>
 <text x="963.9" y="616.7" font-size="10.5" fill="#1d2230" font-weight="400" text-anchor="start">다리 · 발 (깃털 바지 · 발톱)  · 부품 20개</text>

@@ -13,7 +13,7 @@ BLACK, WHITE, RED, ORANGE, GRAY, METAL, YELLOW, CLEAR, BLUE = '#2b2c30', '#f4f3e
 NAMES = {
     'frame-big-main': '프레임 Big Main PCB', 'grab': '그랩[플라스틱]', 'support-spacer': '서포트', 'cap-nut-m3': '캡너트 3Ø 회색',
     'frame-main-pcb': '프레임 Main PCB 8×12', 'battery-case-4aa': 'AA 배터리케이스 1×4', 'sensor-sound': '소리 감지 센서',
-    'sensor-ir-tr': '적외선 센서 보드[TR]', 'sensor-touch': '접촉 센서 보드', 'sensor-color': '컬러 센서 보드', 'color-ball': '컬러볼 Ø15',
+    'sensor-ir-tr': '적외선 센서 보드[TR]', 'sensor-touch': '접촉 센서 보드', 'sensor-color': '컬러 센서 보드',
     'axle-guide': '축가이드', 'shaft-75': '축 75mm[Ø3]', 'l-frame-2x1': '프레임 2x1 [L자]', 'l-frame-2x2': '프레임 2x2 [L자]',
     'l-frame-120-2x2': '프레임 2x2 120도 [L자 · 탭]', 'cpu-board-8m': 'CPU Board 8M[12V/S]', 'bt-module': '무선 통신보드 (블루투스 모듈)',
     'servo-digital': 'Servo Motor[Digital]', 'wheel-guide-30-servo': '휠가이드[Ø30/Servo]', 'wheel-guide-40-yellow': '휠가이드[Ø40-YELLOW]',
@@ -43,10 +43,7 @@ for sx in (-1, 1):
 add(S1, 'shaft-75', '횃대 (축 75mm)', (0, 7, -20), (75, 3, 3), METAL, 'cyl', '좌우 방향 나뭇가지, 발톱이 감쌈', axis=0)
 for x in (40, 60):
     add(S1, 'support-spacer', '먹이 접시 받침 (서포트 5)', (x, 2.5, 34), (6.4, 5, 6.4), METAL, 'cyl', '', axis=1, length=5)
-add(S1, 'sensor-color', '먹이 접시 (컬러 센서, 창이 위)', (50, 10, 34), (50, 10, 50), BLACK, note='오른쪽 뒤, 창 위에 컬러볼')
-add(S1, 'color-ball', '먹이 (컬러볼 빨강)', (50, 22.5, 34), (15, 15, 15), RED, 'ball')
-add(S1, 'color-ball', '먹이 (컬러볼 초록)', (-55, 7.5, 40), (15, 15, 15), '#2fae67', 'ball')
-add(S1, 'color-ball', '먹이 (컬러볼 노랑)', (-38, 7.5, 47), (15, 15, 15), YELLOW, 'ball')
+add(S1, 'sensor-color', '먹이 접시 (컬러 센서, 창이 위)', (50, 10, 34), (50, 10, 50), BLACK, note='오른쪽 뒤, 창 위에 색 있는 물건을 올림')
 
 # ── 02 다리 · 발
 S2 = '02'
@@ -191,7 +188,7 @@ WIRING = [
     ('IN1', '꼬리 접촉 센서', 'sensor-touch', '쓰다듬으면 동작 시작 / 멈춤'),
     ('IN2', '가슴 적외선 센서', 'sensor-ir-tr', '앞에 손 · 물체가 오면 감지'),
     ('IN3', '목 앞 소리 센서', 'sensor-sound', '손뼉 소리 감지'),
-    ('IN4', '먹이 접시 컬러 센서', 'sensor-color', '컬러볼 색 (빨강 · 초록 · 노랑)'),
+    ('IN4', '먹이 접시 컬러 센서', 'sensor-color', '접시에 올린 물건의 색 (빨강 · 초록 · 노랑)'),
     ('OUT1', '왼날개 서보', 'servo-digital', '−20° 접음 ~ +45° 펼침'),
     ('OUT2', '오른날개 서보', 'servo-digital', '왼날개와 거울 대칭'),
     ('OUT3', '목 서보', 'servo-digital', '45° ~ 135° (90° = 정면)'),
@@ -358,7 +355,7 @@ def make_md(all_items):
     a('- **머리:** 흰 배틀무기 S 두 장으로 흰 머리를 만들고, 노란 휠가이드(납막) · 배틀무기 T(갈고리 부리) · LED 주황 눈을 달았습니다. 목 서보가 머리를 좌우로 돌립니다.')
     a('- **몸통:** 2층 구조입니다. 가운데에 배터리, 위에 CPU 보드가 있습니다. 옆구리 깃 · 가슴 깃 · 깃털 바지로 깃털을 표현했습니다.')
     a('- **꼬리:** 꽁지깃 7개를 부채꼴로 달고, 끝에 흰 무늬판(배틀무기 V)을 얹었습니다.')
-    a('- **센서:** 꼬리 쓰다듬기(접촉) · 앞 감지(적외선) · 손뼉(소리) · 먹이 색(컬러 센서 접시)에 반응합니다. 블루투스로 스마트폰 조종도 됩니다.')
+    a('- **센서:** 꼬리 쓰다듬기(접촉) · 앞 감지(적외선) · 손뼉(소리) · 먹이 접시에 올린 물건의 색(컬러 센서)에 반응합니다. 블루투스로 스마트폰 조종도 됩니다.')
     a('')
     a('| 항목 | 값 |')
     a('|---|---|')

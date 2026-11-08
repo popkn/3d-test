@@ -8,9 +8,9 @@
 <svg x="72" y="100" width="347" height="390" viewBox="72 100 347 390" overflow="hidden">
 <rect x="151.9" y="70.1" width="187.3" height="19.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 난간 (소8 PCB) (frame-s8-pcb)</title></rect>
 <rect x="149.5" y="67.7" width="19.2" height="139.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 난간 기둥 (L자 2×6) (l-frame-2x6)</title></rect>
-<circle cx="159.1" cy="49.5" r="18.0" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>꼬리 표지 장식 (컬러볼 빨강) (color-ball)</title></circle>
+<rect x="151.4" y="53.3" width="15.4" height="14.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>난간 기둥 머리 (캡너트) (cap-nut-m3)</title></rect>
 <rect x="322.4" y="67.7" width="19.2" height="139.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 난간 기둥 (L자 2×6) (l-frame-2x6)</title></rect>
-<circle cx="332.0" cy="49.5" r="18.0" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>꼬리 표지 장식 (컬러볼 빨강) (color-ball)</title></circle>
+<rect x="324.3" y="53.3" width="15.4" height="14.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>난간 기둥 머리 (캡너트) (cap-nut-m3)</title></rect>
 <rect x="151.9" y="405.4" width="52.8" height="24.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 사다리 (캐터필러 마디) (caterpillar-link)</title></rect>
 <rect x="151.9" y="381.4" width="52.8" height="24.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 사다리 (캐터필러 마디) (caterpillar-link)</title></rect>
 <rect x="151.9" y="357.4" width="52.8" height="24.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 사다리 (캐터필러 마디) (caterpillar-link)</title></rect>
@@ -36,25 +36,16 @@
 <rect x="308.0" y="386.2" width="79.3" height="48.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 (DC 130rpm) (dc-motor-130-rs)</title></rect>
 <rect x="137.5" y="183.0" width="9.6" height="139.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>짐칸 갈빗대 (L자 2×6) (l-frame-2x6)</title></rect>
 <rect x="344.0" y="183.0" width="9.6" height="139.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>짐칸 갈빗대 (L자 2×6) (l-frame-2x6)</title></rect>
-<circle cx="221.5" cy="276.4" r="18.0" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>짐: 컬러볼 초록 (color-ball)</title></circle>
-<circle cx="274.4" cy="276.4" r="18.0" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>짐: 컬러볼 노랑 (color-ball)</title></circle>
 <rect x="153.8" y="360.3" width="15.4" height="72.1" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></rect>
 <rect x="321.9" y="360.3" width="15.4" height="72.1" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>위층 기둥 (서포트 30) (support-spacer)</title></rect>
 <rect x="153.8" y="298.3" width="15.4" height="60.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>짐칸 받침 기둥 (서포트 25) (support-spacer)</title></rect>
 <rect x="321.9" y="298.3" width="15.4" height="60.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>짐칸 받침 기둥 (서포트 25) (support-spacer)</title></rect>
 <rect x="135.1" y="386.2" width="19.2" height="48.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
 <rect x="336.8" y="386.2" width="19.2" height="48.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
-<circle cx="245.5" cy="276.4" r="18.0" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>짐: 컬러볼 노랑 (color-ball)</title></circle>
 <rect x="177.8" y="334.3" width="15.4" height="24.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></rect>
 <rect x="297.9" y="334.3" width="15.4" height="24.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></rect>
-<circle cx="197.5" cy="276.4" r="18.0" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>짐: 컬러볼 초록 (color-ball)</title></circle>
-<circle cx="293.6" cy="276.4" r="18.0" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>짐: 컬러볼 빨강 (color-ball)</title></circle>
-<circle cx="226.3" cy="276.4" r="18.0" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>짐: 컬러볼 초록 (color-ball)</title></circle>
-<circle cx="308.0" cy="276.4" r="18.0" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>짐: 컬러볼 빨강 (color-ball)</title></circle>
 <rect x="137.5" y="183.0" width="9.6" height="139.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>짐칸 갈빗대 (L자 2×6) (l-frame-2x6)</title></rect>
 <rect x="344.0" y="183.0" width="9.6" height="139.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>짐칸 갈빗대 (L자 2×6) (l-frame-2x6)</title></rect>
-<circle cx="185.5" cy="276.4" r="18.0" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>짐: 컬러볼 빨강 (color-ball)</title></circle>
-<circle cx="267.2" cy="276.4" r="18.0" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>짐: 컬러볼 노랑 (color-ball)</title></circle>
 <rect x="172.3" y="300.7" width="146.5" height="33.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>마지막칸 CPU 보드 (칸마다 하나) (cpu-board-8m)</title></rect>
 <rect x="103.8" y="434.2" width="283.4" height="3.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>마지막칸 바닥판 (빅 메인 PCB) (frame-big-main)</title></rect>
 <rect x="151.9" y="358.3" width="187.3" height="3.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>마지막칸 위층 판 (메인 PCB) (frame-main-pcb)</title></rect>
@@ -68,7 +59,6 @@
 <rect x="156.7" y="389.1" width="177.7" height="43.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>마지막칸 배터리 (AA 4개, 6V) (battery-case-4aa)</title></rect>
 <rect x="137.5" y="183.0" width="9.6" height="139.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>짐칸 갈빗대 (L자 2×6) (l-frame-2x6)</title></rect>
 <rect x="344.0" y="183.0" width="9.6" height="139.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>짐칸 갈빗대 (L자 2×6) (l-frame-2x6)</title></rect>
-<circle cx="245.5" cy="234.4" r="60.0" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>짐: 압축공 (sponge-ball)</title></circle>
 <rect x="187.9" y="336.7" width="115.3" height="21.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>마지막칸 블루투스 모듈 (조종자 1명) (bt-module)</title></rect>
 <rect x="153.8" y="298.3" width="15.4" height="60.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>짐칸 받침 기둥 (서포트 25) (support-spacer)</title></rect>
 <rect x="321.9" y="298.3" width="15.4" height="60.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>짐칸 받침 기둥 (서포트 25) (support-spacer)</title></rect>
@@ -174,13 +164,13 @@
 <rect x="151.9" y="223.8" width="187.3" height="91.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>운전실 앞창 (ㅁ자 PCB) (frame-m-pcb)</title></rect>
 <rect x="151.9" y="315.1" width="187.3" height="43.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>운전실 앞 아래 벽 (중 PCB) (frame-mid-pcb)</title></rect>
 <rect x="237.9" y="236.8" width="15.4" height="12.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>모래 돔 기둥 (서포트 5) (support-spacer)</title></rect>
-<circle cx="245.5" cy="218.8" r="18.0" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>모래 돔 (컬러볼 노랑) (color-ball)</title></circle>
+<rect x="237.9" y="222.4" width="15.4" height="14.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>모래 돔 머리 (캡너트) (cap-nut-m3)</title></rect>
 <rect x="165.8" y="334.3" width="15.4" height="24.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>보일러 받침 기둥 (서포트 10) (support-spacer)</title></rect>
 <rect x="309.9" y="334.3" width="15.4" height="24.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>보일러 받침 기둥 (서포트 10) (support-spacer)</title></rect>
 <rect x="151.9" y="330.5" width="187.3" height="3.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>보일러 받침 (중 PCB) (frame-mid-pcb)</title></rect>
 <rect x="187.9" y="336.7" width="115.3" height="21.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞칸 블루투스 모듈 (조종자 1명) (bt-module)</title></rect>
 <rect x="237.9" y="232.0" width="15.4" height="16.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>증기 돔 기둥 (서포트 7) (support-spacer)</title></rect>
-<circle cx="245.5" cy="214.0" r="18.0" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>증기 돔 (컬러볼 노랑) (color-ball)</title></circle>
+<rect x="237.9" y="217.6" width="15.4" height="14.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>증기 돔 머리 (캡너트) (cap-nut-m3)</title></rect>
 <rect x="265.5" y="251.7" width="24.9" height="39.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>육각 보일러 판 (중6 PCB) (frame-m6-pcb)</title></rect>
 <rect x="257.6" y="243.1" width="19.2" height="19.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>보일러 모서리 (120도 L자 · 탭) (l-frame-120-2x2)</title></rect>
 <rect x="223.9" y="250.7" width="43.2" height="3.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>육각 보일러 판 (중6 PCB) (frame-m6-pcb)</title></rect>
@@ -213,8 +203,6 @@
 <rect x="237.9" y="200.8" width="15.4" height="48.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>굴뚝 (서포트 20) (support-spacer)</title></rect>
 <rect x="209.5" y="181.6" width="72.1" height="19.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>굴뚝 깔때기 (검정 휠가이드 Ø30) (wheel-guide-30-nylon)</title></rect>
 <rect x="237.9" y="167.2" width="15.4" height="14.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>굴뚝 마개 (캡너트) (cap-nut-m3)</title></rect>
-<circle cx="120.7" cy="340.3" r="18.0" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>앞 표지등 장식 (컬러볼 빨강) (color-ball)</title></circle>
-<circle cx="370.4" cy="340.3" r="18.0" fill="none" stroke="#b9c2cf" stroke-width="0.5"><title>앞 표지등 장식 (컬러볼 빨강) (color-ball)</title></circle>
 <rect x="235.9" y="234.9" width="19.2" height="24.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>전조등 받침 (L자 2×1) (l-frame-2x1)</title></rect>
 <circle cx="245.5" cy="225.3" r="36.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>전조등 (흰 휠가이드 Ø30) (wheel-guide-30-servo)</title></circle>
 <polygon points="137.5,439.0 353.6,439.0 353.6,395.8 137.5,395.8" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.8"><title>앞 완충보 (배틀무기 G, 별 무늬) (battle-g)</title></polygon>
