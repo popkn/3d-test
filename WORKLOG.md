@@ -22,6 +22,8 @@
   - 시연용 물체(볼트, 공, 판 등)는 `userData.noBounds = true` (치수에서 뺌), 카메라에 담으려면 `frameWith`에 넣는다.
 - `function.js`의 `create(model, ui)` → `ui.controls([...])`, `ui.readouts([...])`, `{ onControl, update, dispose }`.
 - three.js 주의: `mesh.position`은 읽기 전용 → `Object.assign`으로 바꾸지 말고 `placed(mesh, x, y, z)` 또는 `position.set()`.
+- 규격 찾기: `scratchpad/shop/fetch.py 번호...` → `batch.json`의 desc 이미지 내려받기 → 회색 제품 사진 띠 바로 아래 "크기" 줄을 잘라 확인 (OCR 없음).
+- 프레임 생성: 줄·판 = `makeFrame({cols, rows, material, margin, marginZ, skip, cutouts})` + `cornerBolts` + `createFrameFunction` (예: `frame-s3-pcb`). L자 = `makeLFrame({a, b, w, angle})` (예: `l-frame-2x2`). PCB 여백 4, 플라스틱 여백 5.
 - 공통 키트 (`src/kit/`): pcb, components, sBoard(22×32 S보드), ecvBoard(48×28 센서보드), motorCase(60×40×20), frame(10mm 구멍 격자 · L자), fasteners · boltSim · capNut · fastenSim, caterpillar, innerSponge, ledBoardS, audio, battleFrame · battleSim (배틀무기: 흰 FR-4 + 빨간 무늬, 크기는 추정).
 
 ## 테스트 방법
@@ -33,14 +35,13 @@
 
 | 페이지 | 상태 |
 |---|---|
-| 1 ~ 13 | 완료 (자세한 내용은 CHECKLIST.md 아래 표) |
-| 14 ~ 17 | 남음 |
+| 1 ~ 14 | 완료 (자세한 내용은 CHECKLIST.md 아래 표) |
+| 15 ~ 17 | 남음 |
 
 ## 다음 페이지에서 할 일 (이미 목록을 확인해 둔 것)
 
 | 페이지 | 구현할 부품 (상품 번호) |
 |---|---|
-| 14 | 소8 플라스틱(135, 80×8) · 옵션 PCB(143) · 옵션 플라스틱(136, 40×20), 중6 PCB(141), 중 PCB(125), 중 플라스틱(138), L자 1×2(111) · 2×2(112) · 2×6(113), 120도 2×2 L자(119), 5×13 PCB(147) |
 | 15 | 없음 (Robitz 프레임만) |
 | 16 | 소12 PCB(146), 중16 PCB(145), 3핀 헤더핀(184), S후크 35mm(102, 노랑), 버기 휠 Ø80(91, 80×80×33), **휠 Ø50[V2](84, Ø50×14 ABS 흰색) → "바퀴" 완료** |
 | 17 | 서보 휠가이드 Ø30(167, Ø30×8), 노랑 휠가이드 Ø40(164), **검정 휠가이드 Ø30 나일론(87) → 3페이지에서 Ø130 세트로 잘못 완료 처리한 것 바로잡기** |

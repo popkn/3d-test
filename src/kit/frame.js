@@ -25,7 +25,7 @@ export function makeFrame({ cols, rows, material = 'pcb', thickness = 1.6, skip 
     const s = new THREE.Shape();
     if (outline) { outline.forEach(([x, z], i) => (i ? s.lineTo(x, -z) : s.moveTo(x, -z))); s.closePath(); }
     else { const w = W / 2, d = D / 2, k = 2; s.moveTo(-w + k, -d); s.lineTo(w - k, -d); s.quadraticCurveTo(w, -d, w, -d + k); s.lineTo(w, d - k); s.quadraticCurveTo(w, d, w - k, d); s.lineTo(-w + k, d); s.quadraticCurveTo(-w, d, -w, d - k); s.lineTo(-w, -d + k); s.quadraticCurveTo(-w, -d, -w + k, -d); }
-    for (const h of holes) { const p = new THREE.Path(); p.absarc(h.x, -h.z, h.r, 0, Math.PI * 2, true); s.holes.push(p); }
+    for (const h of [...holes, ...cutouts.filter((c) => c.r)]) { const p = new THREE.Path(); p.absarc(h.x, -h.z, h.r, 0, Math.PI * 2, true); s.holes.push(p); }
     const g = new THREE.ExtrudeGeometry(s, { depth: thickness, bevelEnabled: false, curveSegments: 10 });
     g.rotateX(-Math.PI / 2);
     obj = mesh(g, new THREE.MeshStandardMaterial({ color: color ?? 0x1e1f22, roughness: 0.6 }));
