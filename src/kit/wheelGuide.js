@@ -25,6 +25,8 @@ export function makeWheelGuide({ dia, thick = 8, plate = 2.4, color, hub = 'dcut
   hs.holes.push(hole);
   const hg = new THREE.ExtrudeGeometry(hs, { depth: thick, bevelEnabled: false, curveSegments: 24 });
   hg.rotateX(-Math.PI / 2);
+  // 노란 Ø40은 사진처럼 윗면이 평평하다 → 허브를 아랫면으로
+  if (hub === 'round') hg.translate(0, -thick + plate, 0);
   g.add(mesh(hg, mat));
   // 너트 육각 테두리 (너트가 돌지 않게 잡아 준다)
   if (hex) {
@@ -50,9 +52,10 @@ export function buildGuideModel({ dia, thick, color, hub, hex, name, sub, hubLab
   spin.add(guide);
   const att = new THREE.Group();
   const frame = makeFrame({ cols: 3, rows: 1, material: 'pcb' });
-  frame.position.y = -1.9;
+  const top = hub === 'round'; // 허브가 아래면 프레임은 평평한 윗면에
+  frame.position.y = top ? 2.4 + 0.3 : -1.9;
   att.add(frame);
-  for (const z of [-10, 10]) { const b = makeBolt({ length: 6 }); b.rotation.x = Math.PI; b.position.set(0, -1.9, z); att.add(b); }
+  for (const z of [-10, 10]) { const b = makeBolt({ length: 6 }); if (top) b.position.set(0, 2.7 + 1.6, z); else { b.rotation.x = Math.PI; b.position.set(0, -1.9, z); } att.add(b); }
   frame.rotation.y = Math.PI / 2;
   att.visible = false; att.userData.noBounds = true;
   spin.add(att);
@@ -60,7 +63,7 @@ export function buildGuideModel({ dia, thick, color, hub, hex, name, sub, hubLab
     object3d: root,
     labels: [
       { name, sub, object: guide, anchor: [dia / 2 - 1, 2.4, 0], off: [70, -50] },
-      { name: 'HUB', sub: hubLabel, object: guide, anchor: [0, thick, 0], off: [-120, -60] },
+      { name: 'HUB', sub: hubLabel, object: guide, anchor: [0, hub === 'round' ? 2.4 - thick : thick, 0], off: [-120, -60] },
     ],
     frameWith: [att],
     handles: { spin, att },

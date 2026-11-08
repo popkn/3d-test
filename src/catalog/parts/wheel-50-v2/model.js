@@ -8,7 +8,7 @@ export function build() {
   spin.position.y = 25;
   root.add(spin);
   // 옆면 Ø45 + 가운데 돌기 Ø48 (타이어 안쪽 홈에 들어가 숨는다)
-  const rim = makeRim({ seatR: 22.5, width: 14, ridgeR: 24, ridgeW: 4.8, hubR: 4.5, spokes: 6, color: 0xf2f1ec });
+  const rim = makeRim({ seatR: 22.5, width: 14, ridgeR: 24, ridgeW: 4.8, hubR: 4.5, spokes: 8, color: 0xf2f1ec, ySpoke: true });
   spin.add(rim);
   // 타이어 Ø50[V2] 미리보기 (치수에서 뺀다)
   const tire = makeTire50();

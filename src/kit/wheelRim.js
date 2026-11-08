@@ -4,7 +4,8 @@ import { mesh } from './materials.js';
 // 플라스틱 휠 (바퀴 축 = Z): 타이어가 앉는 림 + 양쪽 턱 + 살(spoke) 원판 + 모터 축 허브
 // seatR: 타이어 안쪽이 닿는 반지름, flangeR: 턱 반지름, width: 폭
 // ridgeR · ridgeW를 주면 턱 대신 가운데 돌기 (타이어 안쪽 홈에 숨는 부분, 휠 Ø50[V2] 방식)
-export function makeRim({ seatR, flangeR, width, hubR = 4.5, hubLen = null, spokes = 6, color = 0xf2f1ec, double = false, ridgeR = null, ridgeW = 0 }) {
+// ySpoke: 사진처럼 Y자 살 (살 하나가 바깥쪽에서 두 갈래), ribs: 림 바깥 홈 줄 수
+export function makeRim({ seatR, flangeR, width, hubR = 4.5, hubLen = null, spokes = 6, color = 0xf2f1ec, double = false, ridgeR = null, ridgeW = 0, ySpoke = false, ribs = 0 }) {
   const g = new THREE.Group();
   const mat = new THREE.MeshStandardMaterial({ color, roughness: 0.55 });
   const w = width / 2, t = 1.2, rw = ridgeW / 2;
@@ -15,13 +16,26 @@ export function makeRim({ seatR, flangeR, width, hubR = 4.5, hubLen = null, spok
   const rim = new THREE.LatheGeometry(prof, 72);
   rim.rotateX(Math.PI / 2);
   g.add(mesh(rim, mat));
+  // 림 바깥 홈 (버기 휠처럼 여러 줄 볼록 띠)
+  for (let k = 0; k < ribs; k++) {
+    const z = -w + 3 + (k + 0.5) * ((width - 6) / ribs);
+    const rib = mesh(new THREE.TorusGeometry(seatR, 0.9, 8, 72), mat);
+    rib.position.z = z;
+    g.add(rib);
+  }
   // 살 원판: 원 안에 살 사이 창을 뚫는다
   const disc = (z) => {
     const s = new THREE.Shape(); s.absarc(0, 0, seatR - t + 0.2, 0, Math.PI * 2, false);
     const r0 = hubR + 2.5, r1 = seatR - t - 2.2, gap = 0.16 + 2.2 / r1;
-    for (let i = 0; i < spokes; i++) {
-      const a0 = (i / spokes) * Math.PI * 2 + gap, a1 = ((i + 1) / spokes) * Math.PI * 2 - gap;
-      const p = new THREE.Path(); p.absarc(0, 0, r1, a0, a1, false); p.absarc(0, 0, r0, a1 - 0.05, a0 + 0.05, true); p.closePath();
+    const n = ySpoke ? spokes * 2 : spokes;
+    for (let i = 0; i < n; i++) {
+      const a0 = (i / n) * Math.PI * 2 + gap * (ySpoke ? 0.6 : 1), a1 = ((i + 1) / n) * Math.PI * 2 - gap * (ySpoke ? 0.6 : 1);
+      // Y자: 홀수 창은 바깥쪽 갈래 사이의 작은 삼각 창
+      const rin = ySpoke && i % 2 ? r0 + (r1 - r0) * 0.55 : r0;
+      const p = new THREE.Path();
+      if (ySpoke && i % 2) { p.absarc(0, 0, r1, a0, a1, false); p.lineTo(Math.cos((a0 + a1) / 2) * rin, Math.sin((a0 + a1) / 2) * rin); }
+      else { p.absarc(0, 0, r1, a0, a1, false); p.absarc(0, 0, rin, a1 - 0.05, a0 + 0.05, true); }
+      p.closePath();
       s.holes.push(p);
     }
     const geo = new THREE.ExtrudeGeometry(s, { depth: 1.8, bevelEnabled: false, curveSegments: 24 });

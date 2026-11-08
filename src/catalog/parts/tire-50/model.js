@@ -11,7 +11,7 @@ export function build() {
   const tire = makeTire50();
   spin.add(tire);
   // 흰 휠 Ø50[V2] 미리보기 (크기 측정에서 뺀다)
-  const rim = makeRim({ seatR: 22.5, width: 14, ridgeR: 24, ridgeW: 4.8, hubR: 4.5, spokes: 6, color: 0xf2f1ec });
+  const rim = makeRim({ seatR: 22.5, width: 14, ridgeR: 24, ridgeW: 4.8, hubR: 4.5, spokes: 8, color: 0xf2f1ec, ySpoke: true });
   rim.userData.noBounds = true;
   rim.visible = false;
   spin.add(rim);

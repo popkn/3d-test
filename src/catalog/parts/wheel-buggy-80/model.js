@@ -7,7 +7,7 @@ export function build() {
   const spin = new THREE.Group();
   spin.position.y = 40;
   root.add(spin);
-  const rim = makeRim({ seatR: 28, flangeR: 30, width: 33, hubR: 5, hubLen: 20, spokes: 10, color: 0xf08a24, double: true });
+  const rim = makeRim({ seatR: 28, flangeR: 30, width: 33, hubR: 5, hubLen: 20, spokes: 5, color: 0xf08a24, double: true, ySpoke: true, ribs: 4 });
   spin.add(rim);
   // 인너 스폰지 + 버기 타이어 미리보기 (치수에서 뺀다)
   const tire = new THREE.Group();
@@ -20,7 +20,7 @@ export function build() {
     object3d: root,
     labels: [
       { name: 'BUGGY WHEEL Ø80', sub: '주황 · 22 g · 폭 33', object: rim, anchor: [0, 30, 0], off: [60, -60] },
-      { name: 'DOUBLE SPOKE', sub: '살 10개 × 2겹', object: rim, anchor: [0, -18, 15], off: [-120, 40] },
+      { name: 'DOUBLE SPOKE', sub: 'Y자 살 5개 × 2겹', object: rim, anchor: [0, -18, 15], off: [-120, 40] },
     ],
     frameWith: [tire],
     handles: { spin, tire, rimDia: 60 },
