@@ -76,7 +76,7 @@ import frameOptionPlastic from './parts/frame-option-plastic/spec.js';
 import frameM6Pcb from './parts/frame-m6-pcb/spec.js';
 import frameMidPcb from './parts/frame-mid-pcb/spec.js';
 import frameMidPlastic from './parts/frame-mid-plastic/spec.js';
-import frame4x12Pcb from './parts/frame-4x12-pcb/spec.js';
+import frame5x13Pcb from './parts/frame-5x13-pcb/spec.js';
 import lFrame2x1 from './parts/l-frame-2x1/spec.js';
 import lFrame2x2 from './parts/l-frame-2x2/spec.js';
 import lFrame2x6 from './parts/l-frame-2x6/spec.js';
@@ -92,7 +92,7 @@ export const catalog = [
   batteryCase4aa,
   frameBigMain, frameMainPcb, frameMainPlastic, frameHalfPcb, lFrame6x6, motorFrame3x3, pcFrame45x60,
   frameS3Pcb, frameS4Pcb, frameS5Pcb, frameS7Pcb, frameS8Pcb, frameS3Plastic, frameS4Plastic, frameS5Plastic, frameMPcb,
-  frameS8Plastic, frameOptionPcb, frameOptionPlastic, frameM6Pcb, frameMidPcb, frameMidPlastic, frame4x12Pcb, lFrame2x1, lFrame2x2, lFrame2x6, lFrame1202x2,
+  frameS8Plastic, frameOptionPcb, frameOptionPlastic, frameM6Pcb, frameMidPcb, frameMidPlastic, frame5x13Pcb, lFrame2x1, lFrame2x2, lFrame2x6, lFrame1202x2,
   battleG, battleI, battleJ, battleS, battleT, battleU, battleV,
   hinge3x3, grab, nutM3, capNutM3, sNutBlue, nutFrame4, motorGuide, boltM26x10, boltM3x6, boltM3x10, supportSpacer, spongeBall, colorBall, cable3pin,
 ];

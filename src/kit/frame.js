@@ -10,13 +10,16 @@ export const frameSize = (n) => (n - 1) * PITCH + 8;
 
 // 판 프레임: cols × rows 구멍 격자. material: 'pcb'(검은 FR-4, 금색 테) / 'plastic'(검은 플라스틱)
 //   skip(c, r): true면 그 자리 구멍을 뺀다 (ㅁ자 · 하프 등 모양용), outline: 직접 외곽선
-export function makeFrame({ cols, rows, material = 'pcb', thickness = 1.6, skip = null, outline = null, color = null, margin = 4, marginZ = null, cutouts = [] }) {
+export function makeFrame({ cols, rows, material = 'pcb', thickness = 1.6, skip = null, outline = null, color = null, margin = 4, marginZ = null, cutouts = [], xs = null, zs = null }) {
+  // xs, zs: 구멍 위치를 직접 줄 때 (첫 구멍 기준 mm, 간격이 일정하지 않은 판)
   const mz = marginZ ?? margin;
-  const W = (cols - 1) * PITCH + margin * 2, D = (rows - 1) * PITCH + mz * 2;
+  xs = xs ?? Array.from({ length: cols }, (_, i) => i * PITCH); zs = zs ?? Array.from({ length: rows }, (_, i) => i * PITCH);
+  cols = xs.length; rows = zs.length;
+  const W = xs[cols - 1] + margin * 2, D = zs[rows - 1] + mz * 2;
   const holes = [];
   for (let c = 0; c < cols; c++) for (let r = 0; r < rows; r++) {
     if (skip && skip(c, r)) continue;
-    holes.push({ x: -W / 2 + margin + c * PITCH, z: -D / 2 + mz + r * PITCH, r: 1.6, ring: material === 'pcb' });
+    holes.push({ x: -W / 2 + margin + xs[c], z: -D / 2 + mz + zs[r], r: 1.6, ring: material === 'pcb' });
   }
   let obj;
   if (material === 'pcb') {
