@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 840" width="1260" height="840" font-family="JetBrains Mono, 'Noto Sans KR', sans-serif"><defs><pattern id="g" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="#e3e8ef" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="#f6f8fb"/><rect x="14" y="14" width="1232" height="812" fill="none" stroke="#1d2230" stroke-width="1.2"/>
 <rect x="14" y="14" width="1232" height="46" fill="#1d2230"/>
 <text x="28.0" y="44.0" font-size="13" fill="#9fb3d1" font-weight="700" text-anchor="start">독수리 로봇 · 도면 07</text>
-<text x="220.0" y="44.0" font-size="17" fill="#ffffff" font-weight="700" text-anchor="start">동작도 (날갯짓 · 머리 · 무게)</text>
+<text x="222.2" y="44.0" font-size="17" fill="#ffffff" font-weight="700" text-anchor="start">동작도 (날갯짓 · 머리 · 무게)</text>
 <text x="1232.0" y="44.0" font-size="10.5" fill="#c8d3e6" font-weight="400" text-anchor="end">서보 각도 · 날개 끝 궤적 · 토크 확인</text>
 <text x="60.0" y="104.0" font-size="12" fill="#1d2230" font-weight="700" text-anchor="start">① 날갯짓 (정면, 오른날개 · 왼날개는 거울 대칭)</text>
 <rect x="60" y="110" width="560" height="420" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>
