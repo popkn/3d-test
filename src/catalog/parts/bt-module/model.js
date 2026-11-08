@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { makePcb } from '../../../kit/pcb.js';
+import { makePcb, scallopOutline } from '../../../kit/pcb.js';
 import { pinHeader, jst, led, smd, box } from '../../../kit/components.js';
 import { M } from '../../../kit/materials.js';
 import { FONT } from '../../../kit/textures.js';
@@ -14,7 +14,7 @@ export function build() {
   for (let j = 1; j < 5; j++) holes.push({ x: -W / 2 + 3.2, z: -D / 2 + 3 + j * 5.3, r: 1.55, ring: true });
   const root = new THREE.Group();
   root.add(makePcb({
-    width: W, depth: D, color: 'black', holes, corner: 2,
+    width: W, depth: D, color: 'black', holes, corner: 2, outline: scallopOutline(W, D, holes),
     silk: (g, w, d, X, Y) => {
       g.font = `700 1.6px ${FONT}`;
       g.fillText('ANTENNA', X(4), Y(-5.5));

@@ -12,15 +12,20 @@ export function build() {
   const g = new THREE.LatheGeometry(prof, 64);
   g.rotateX(Math.PI / 2);
   spin.add(mesh(g, rubber));
-  const lug = new THREE.BoxGeometry(5, 2.5, 9);
-  const lugs = new THREE.InstancedMesh(lug, rubber, 56);
+  // 사진처럼 촘촘한 블록 무늬: 3줄 × 40개, 가운데 줄은 반 칸 어긋나게
+  const lug = new THREE.BoxGeometry(4.2, 2.2, 7.5);
+  const N = 40, rowsZ = [-10, 0, 10];
+  const lugs = new THREE.InstancedMesh(lug, rubber, N * rowsZ.length);
   const m = new THREE.Matrix4(), q = new THREE.Quaternion();
-  for (let i = 0; i < 56; i++) {
-    const a = (i / 28) * Math.PI;
-    q.setFromAxisAngle(new THREE.Vector3(0, 0, 1), a);
-    m.compose(new THREE.Vector3(Math.cos(a + Math.PI / 2) * 38.6 * -1, Math.sin(a + Math.PI / 2) * 38.6, i % 2 ? 6 : -6), q, new THREE.Vector3(1, 1, 1));
-    lugs.setMatrixAt(i, m);
-  }
+  let n = 0;
+  rowsZ.forEach((z, r) => {
+    for (let i = 0; i < N; i++) {
+      const a = ((i + (r === 1 ? 0.5 : 0)) / N) * Math.PI * 2;
+      q.setFromAxisAngle(new THREE.Vector3(0, 0, 1), a);
+      m.compose(new THREE.Vector3(-Math.sin(a) * 38.5, Math.cos(a) * 38.5, z), q, new THREE.Vector3(1, 1, r === 1 ? 0.8 : 1));
+      lugs.setMatrixAt(n++, m);
+    }
+  });
   lugs.castShadow = true;
   spin.add(lugs);
   return {

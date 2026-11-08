@@ -22,10 +22,32 @@ export function makeLink(withRubber = false) {
 }
 
 // 고무 패드 (파란 실리콘): 마디 바깥면에 끼운다
+// 러버 패드: 모서리가 둥근 파란 실리콘 + 윗면 ROBOROBO 돋을새김 (사진 기준)
+let rubberTex = null;
 export function makeRubber(y = 0) {
-  const pad = mesh(new THREE.BoxGeometry(LINK.pitch * 0.75, 2.5, LINK.width - 4), new THREE.MeshStandardMaterial({ color: 0x2f7fe8, roughness: 0.8 }));
-  pad.position.y = y + 1.25;
-  return pad;
+  const w = LINK.pitch * 0.75, d = LINK.width - 4, h = 2.5, r = 1.6, bev = 0.5;
+  const s = new THREE.Shape();
+  const x0 = -w / 2 + bev, x1 = w / 2 - bev, z0 = -d / 2 + bev, z1 = d / 2 - bev;
+  s.moveTo(x0 + r, z0); s.lineTo(x1 - r, z0); s.quadraticCurveTo(x1, z0, x1, z0 + r); s.lineTo(x1, z1 - r);
+  s.quadraticCurveTo(x1, z1, x1 - r, z1); s.lineTo(x0 + r, z1); s.quadraticCurveTo(x0, z1, x0, z1 - r); s.lineTo(x0, z0 + r); s.quadraticCurveTo(x0, z0, x0 + r, z0);
+  const geo = new THREE.ExtrudeGeometry(s, { depth: h - bev * 2, bevelEnabled: true, bevelThickness: bev, bevelSize: bev, bevelSegments: 3, curveSegments: 8 });
+  geo.rotateX(Math.PI / 2); geo.translate(0, h - bev, 0);
+  const mat = new THREE.MeshStandardMaterial({ color: 0x2f7fe8, roughness: 0.8 });
+  const g = new THREE.Group();
+  g.add(mesh(geo, mat));
+  if (!rubberTex) {
+    const c = document.createElement('canvas'); c.width = 512; c.height = 128;
+    const x = c.getContext('2d'); x.font = 'italic 900 78px sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle';
+    x.fillStyle = 'rgba(16,70,160,0.55)'; x.fillText('ROBOROBO', 258, 68);
+    x.fillStyle = 'rgba(150,200,255,0.45)'; x.fillText('ROBOROBO', 254, 62);
+    rubberTex = new THREE.CanvasTexture(c); rubberTex.colorSpace = THREE.SRGBColorSpace;
+  }
+  const logo = mesh(new THREE.PlaneGeometry(Math.max(w, d) * 0.82, Math.max(w, d) * 0.82 / 4), new THREE.MeshStandardMaterial({ map: rubberTex, transparent: true, roughness: 0.8 }), { cast: false });
+  logo.rotation.set(-Math.PI / 2, 0, d > w ? -Math.PI / 2 : 0);
+  logo.position.y = h + 0.01;
+  g.add(logo);
+  g.position.y = y;
+  return g;
 }
 
 // 톱니 휠 (흰색, Ø60 × 10)

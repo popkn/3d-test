@@ -5,9 +5,9 @@ const COLORS = { red: ['빨강', 0xe8432a], yellow: ['노랑', 0xf2c21b], blue: 
 
 export function create(model, ui) {
   const { ball, mat } = model.handles;
-  const st = { squeeze: 0, color: 'red', drop: 0, vy: 0, y: 0 };
+  const st = { squeeze: 0, color: 'yellow', drop: 0, vy: 0, y: 0 };
   ui.controls([
-    { type: 'select', id: 'color', label: '색', options: Object.entries(COLORS).map(([k, v]) => [k, v[0]]), value: 'red' },
+    { type: 'select', id: 'color', label: '색', options: Object.entries(COLORS).map(([k, v]) => [k, v[0]]), value: 'yellow' },
     { type: 'slider', id: 'squeeze', label: '누르기', min: 0, max: 60, step: 1, value: 0, unit: '%' },
     { type: 'button', id: 'drop', label: '떨어뜨리기 (10cm)' },
   ]);

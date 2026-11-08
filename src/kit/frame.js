@@ -40,15 +40,16 @@ export function makeFrame({ cols, rows, material = 'pcb', thickness = 1.6, skip 
 }
 
 // L자 프레임 (SUS 1mm): 한쪽 다리 a구멍 × 폭 w구멍, 다른 쪽 다리 b구멍 × 폭 w구멍. angle = 두 다리 사이 각도
-export function makeLFrame({ a, b, w, angle = 90, thickness = 1 }) {
+// wPitch: 폭 방향 구멍 간격 (6x6 L자는 5mm)
+export function makeLFrame({ a, b, w, angle = 90, thickness = 1, wPitch = PITCH }) {
   const group = new THREE.Group();
-  const W = frameSize(w);
+  const W = (w - 1) * wPitch + 8;
   const leg = (n) => {
     const L = frameSize(n);
     const s = new THREE.Shape();
     s.moveTo(0, -W / 2); s.lineTo(L - 1.5, -W / 2); s.quadraticCurveTo(L, -W / 2, L, -W / 2 + 1.5);
     s.lineTo(L, W / 2 - 1.5); s.quadraticCurveTo(L, W / 2, L - 1.5, W / 2); s.lineTo(0, W / 2);
-    for (let i = 0; i < n; i++) for (let j = 0; j < w; j++) { const p = new THREE.Path(); p.absarc(4 + i * PITCH, -W / 2 + 4 + j * PITCH, 1.6, 0, Math.PI * 2, true); s.holes.push(p); }
+    for (let i = 0; i < n; i++) for (let j = 0; j < w; j++) { const p = new THREE.Path(); p.absarc(4 + i * PITCH, -W / 2 + 4 + j * wPitch, 1.6, 0, Math.PI * 2, true); s.holes.push(p); }
     const g = new THREE.ExtrudeGeometry(s, { depth: thickness, bevelEnabled: false });
     g.rotateX(Math.PI / 2);
     g.translate(0, thickness, 0);
