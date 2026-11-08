@@ -8235,7 +8235,7 @@ var init_function91 = __esm({
 });
 
 // src/main.js
-import * as THREE102 from "three";
+import * as THREE103 from "three";
 
 // src/catalog/parts/buzzer-board-s/spec.js
 var spec_default = {
@@ -10291,14 +10291,50 @@ function hideDemo(obj) {
     if (o !== obj && o.userData?.noBounds) o.visible = false;
   });
 }
-async function buildEagle(loadPart2, onProgress) {
-  const ids = [...new Set(assembly_default.map((a) => a.id))];
+async function loadModules(list, loadPart2, onProgress) {
+  const ids = [...new Set(list.map((a) => a.id))];
   const mods = {};
   let done = 0;
   await Promise.all(ids.map(async (id) => {
     mods[id] = await loadPart2(id);
     onProgress?.(++done / ids.length);
   }));
+  return mods;
+}
+function makeHolder(a, mods) {
+  const model = mods[a.id].build();
+  hideDemo(model.object3d);
+  if (a.id === "color-ball" && model.handles?.balls) {
+    const k = a.n.includes("\uBE68\uAC15") ? 0 : a.n.includes("\uCD08\uB85D") ? 1 : 2;
+    model.handles.balls.forEach((b, i) => {
+      b.visible = i === k;
+      if (i === k) b.position.x = 0;
+    });
+    model.handles.balls.filter((b, i) => i !== k).forEach((b) => b.removeFromParent());
+  }
+  const holder = new THREE101.Group();
+  holder.userData = { name: a.n, id: a.id, sheet: a.s };
+  if (a.id === "support-spacer" && a.length && model.handles?.setLength) {
+    model.handles.setLength(a.length);
+    holder.add(model.object3d);
+    holder.position.set(a.c[0], a.c[1] - a.z[1] / 2, a.c[2]);
+  } else {
+    const inner = new THREE101.Group();
+    inner.add(model.object3d);
+    holder.add(inner);
+    inner.updateMatrixWorld(true);
+    const box2 = partBounds(inner);
+    const size = box2.getSize(new THREE101.Vector3()), c = box2.getCenter(new THREE101.Vector3());
+    model.object3d.position.sub(c);
+    if (a.euler) holder.rotation.set(...a.euler.map((d) => THREE101.MathUtils.degToRad(d)), "XYZ");
+    else holder.quaternion.setFromRotationMatrix(chooseRotation([size.x, size.y, size.z], a.z, a));
+    if (a.flip) holder.quaternion.premultiply(new THREE101.Quaternion().setFromAxisAngle(axisVec("xyz".indexOf(a.flip)), Math.PI));
+    holder.position.set(...a.c);
+  }
+  return holder;
+}
+async function buildEagle(loadPart2, onProgress) {
+  const mods = await loadModules(assembly_default, loadPart2, onProgress);
   const root = new THREE101.Group();
   const groups = {};
   const wing = { l: new THREE101.Group(), r: new THREE101.Group() };
@@ -10308,35 +10344,7 @@ async function buildEagle(loadPart2, onProgress) {
   head.position.set(0, 0, -49);
   const pickables = [];
   for (const a of assembly_default) {
-    const model = mods[a.id].build();
-    hideDemo(model.object3d);
-    if (a.id === "color-ball" && model.handles?.balls) {
-      const k = a.n.includes("\uBE68\uAC15") ? 0 : a.n.includes("\uCD08\uB85D") ? 1 : 2;
-      model.handles.balls.forEach((b, i) => {
-        b.visible = i === k;
-        if (i === k) b.position.x = 0;
-      });
-      model.handles.balls.filter((b, i) => i !== k).forEach((b) => b.removeFromParent());
-    }
-    const holder = new THREE101.Group();
-    holder.userData = { name: a.n, id: a.id, sheet: a.s };
-    if (a.id === "support-spacer" && a.length && model.handles?.setLength) {
-      model.handles.setLength(a.length);
-      holder.add(model.object3d);
-      holder.position.set(a.c[0], a.c[1] - a.z[1] / 2, a.c[2]);
-    } else {
-      const inner = new THREE101.Group();
-      inner.add(model.object3d);
-      holder.add(inner);
-      inner.updateMatrixWorld(true);
-      const box2 = partBounds(inner);
-      const size = box2.getSize(new THREE101.Vector3()), c = box2.getCenter(new THREE101.Vector3());
-      model.object3d.position.sub(c);
-      if (a.euler) holder.rotation.set(...a.euler.map((d) => THREE101.MathUtils.degToRad(d)), "XYZ");
-      else holder.quaternion.setFromRotationMatrix(chooseRotation([size.x, size.y, size.z], a.z, a));
-      if (a.flip) holder.quaternion.premultiply(new THREE101.Quaternion().setFromAxisAngle(axisVec("xyz".indexOf(a.flip)), Math.PI));
-      holder.position.set(...a.c);
-    }
+    const holder = makeHolder(a, mods);
     let parent;
     if (a.s === "05" && Math.abs(a.c[0]) > 46 && a.id !== "servo-digital" && a.id !== "motor-frame-3x3") {
       parent = a.c[0] > 0 ? wing.r : wing.l;
@@ -10368,6 +10376,123 @@ var EXPLODE = {
 };
 var WING_SPREAD = 160;
 
+// src/battlebot/assemble.js
+import * as THREE102 from "three";
+
+// src/battlebot/assembly.js
+var SHEETS2 = { "01": "\uC100\uC2DC (\uCC28\uCCB4 \uBC14\uB2E5 \xB7 \uBC30\uD130\uB9AC \xB7 \uBC14\uB2E5 \uC13C\uC11C)", "02": "\uBB34\uD55C\uADA4\uB3C4 \uAD6C\uB3D9\uBD80 (\uBAA8\uD130 \xB7 \uD1B1\uB2C8 \uD720 \xB7 \uB9C8\uB514 40\uAC1C)", "03": "\uC2A4\uD53C\uB108 \uBB34\uAE30 (DC 400rpm \xB7 \uC2ED\uC790 \uB0A0)", "04": "\uB4E4\uC5B4\uC62C\uB9BC \uC6E8\uC9C0 (\uC11C\uBCF4 \xB7 4\uC808 \uB9C1\uD06C)", "05": "\uC0C1\uD310 \xB7 \uC804\uC790\uBD80 \xB7 \uB4A4 \uBCBD", "06": "\uC7A5\uAC11 \xB7 \uD2B8\uB799 \uAC00\uB4DC \xB7 \uB208" };
+var BOM_TOTAL2 = 524;
+var TRACK = { "zf": -50, "zr": 50, "yc": 33, "r": 31.5, "x": 92, "n": 40, "wedge": 17.15 };
+var assembly_default2 = [{ "s": "01", "id": "frame-big-main", "n": "\uCC28\uCCB4 \uBC14\uB2E5\uD310 (\uBE45 \uBA54\uC778 PCB)", "c": [0, 22.2, 0], "z": [158, 1.6, 118] }, { "s": "01", "id": "battery-case-4aa", "n": "\uBC30\uD130\uB9AC\uCF00\uC774\uC2A4 (AA 4\uAC1C, 6V)", "c": [0, 32, -8], "z": [74, 18, 62] }, { "s": "01", "id": "support-spacer", "n": "\uBC14\uB2E5 \uC13C\uC11C \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 5)", "c": [-20, 18.9, -35], "z": [6.4, 5, 6.4], "length": 5 }, { "s": "01", "id": "support-spacer", "n": "\uBC14\uB2E5 \uC13C\uC11C \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 5)", "c": [20, 18.9, -35], "z": [6.4, 5, 6.4], "length": 5 }, { "s": "01", "id": "sensor-color", "n": "\uBC14\uB2E5 \uACBD\uACC4\uC120 \uC13C\uC11C (\uCEEC\uB7EC \uC13C\uC11C, \uCC3D\uC774 \uC544\uB798)", "c": [0, 11.4, -35], "z": [50, 10, 50], "up": [0, -1, 0] }, { "s": "01", "id": "sensor-ir-tr", "n": "\uC55E \uC801\uC678\uC120 \uC13C\uC11C (\uC0C1\uB300 \uAC10\uC9C0)", "c": [0, 40, -66], "z": [48, 28, 9], "up": [0, 0, -1] }, { "s": "01", "id": "l-frame-2x2", "n": "\uC55E \uC13C\uC11C L\uC790 2\xD72", "c": [-14, 28, -61], "z": [8, 10, 10] }, { "s": "01", "id": "l-frame-2x2", "n": "\uC55E \uC13C\uC11C L\uC790 2\xD72", "c": [14, 28, -61], "z": [8, 10, 10] }, { "s": "02", "id": "motor-frame-3x3", "n": "\uAD6C\uB3D9 \uBAA8\uD130 \uBC1B\uCE68 (\uBAA8\uD130\uD504\uB808\uC784 3\xD73)", "c": [-62, 33, 25], "z": [8, 20, 8] }, { "s": "02", "id": "motor-frame-3x3", "n": "\uAD6C\uB3D9 \uBAA8\uD130 \uBC1B\uCE68 (\uBAA8\uD130\uD504\uB808\uC784 3\xD73)", "c": [-62, 33, 45], "z": [8, 20, 8] }, { "s": "02", "id": "dc-motor-130-rs", "n": "\uC67C \uAD6C\uB3D9 \uBAA8\uD130 (DC 130rpm)", "c": [-62.5, 33, 40], "z": [33, 20, 40], "up": [-1, 0, 0], "xdir": [0, 0, -1] }, { "s": "02", "id": "motor-guide", "n": "\uAD6C\uB3D9 \uCD95 \uBC1B\uCE68 (\uBAA8\uD130\uAC00\uC774\uB4DC)", "c": [-80, 33, 50], "z": [7.5, 11, 20] }, { "s": "02", "id": "caterpillar-sprocket", "n": "\uC67C \uB4A4 \uAD6C\uB3D9 \uD720 (\uCE90\uD130\uD544\uB7EC \uD1B1\uB2C8 \uD720)", "c": [-92, 33, 50], "z": [10, 60, 60] }, { "s": "02", "id": "shaft-75", "n": "\uC67C \uC55E \uC544\uC774\uB4E4\uB7EC \uCD95 (75mm)", "c": [-67.5, 33, -50], "z": [75, 3, 3] }, { "s": "02", "id": "axle-guide", "n": "\uC544\uC774\uB4E4\uB7EC \uCD95\uAC00\uC774\uB4DC", "c": [-45, 28, -50], "z": [28, 10, 18] }, { "s": "02", "id": "axle-guide", "n": "\uC544\uC774\uB4E4\uB7EC \uCD95\uAC00\uC774\uB4DC", "c": [-65, 28, -50], "z": [28, 10, 18] }, { "s": "02", "id": "caterpillar-sprocket", "n": "\uC67C \uC55E \uC544\uC774\uB4E4\uB7EC (\uCE90\uD130\uD544\uB7EC \uD1B1\uB2C8 \uD720)", "c": [-92, 33, -50], "z": [10, 60, 60] }, { "s": "02", "id": "caterpillar-wheel-guide", "n": "\uC544\uC774\uB4E4\uB7EC \uD720\uAC00\uC774\uB4DC [\uC721\uAC01]", "c": [-79, 33, -50], "z": [26, 30, 30] }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 1.5, -50], "z": [22, 3, 10], "euler": [0, 0, 0], "tp": 0 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, -1.25, -50], "z": [18, 2.5, 7.5], "euler": [0, 0, 0], "tp": 0 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 1.5, -40.05], "z": [22, 3, 10], "euler": [0, 0, 0], "tp": 9.95 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, -1.25, -40.05], "z": [18, 2.5, 7.5], "euler": [0, 0, 0], "tp": 9.95 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 1.5, -30.1], "z": [22, 3, 10], "euler": [0, 0, 0], "tp": 19.9 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, -1.25, -30.1], "z": [18, 2.5, 7.5], "euler": [0, 0, 0], "tp": 19.9 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 1.5, -20.16], "z": [22, 3, 10], "euler": [0, 0, 0], "tp": 29.84 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, -1.25, -20.16], "z": [18, 2.5, 7.5], "euler": [0, 0, 0], "tp": 29.84 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 1.5, -10.21], "z": [22, 3, 10], "euler": [0, 0, 0], "tp": 39.79 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, -1.25, -10.21], "z": [18, 2.5, 7.5], "euler": [0, 0, 0], "tp": 39.79 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 1.5, -0.26], "z": [22, 3, 10], "euler": [0, 0, 0], "tp": 49.74 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, -1.25, -0.26], "z": [18, 2.5, 7.5], "euler": [0, 0, 0], "tp": 49.74 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 1.5, 9.69], "z": [22, 3, 10], "euler": [0, 0, 0], "tp": 59.69 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, -1.25, 9.69], "z": [18, 2.5, 7.5], "euler": [0, 0, 0], "tp": 59.69 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 1.5, 19.64], "z": [22, 3, 10], "euler": [0, 0, 0], "tp": 69.64 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, -1.25, 19.64], "z": [18, 2.5, 7.5], "euler": [0, 0, 0], "tp": 69.64 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 1.5, 29.58], "z": [22, 3, 10], "euler": [0, 0, 0], "tp": 79.58 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, -1.25, 29.58], "z": [18, 2.5, 7.5], "euler": [0, 0, 0], "tp": 79.58 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 1.5, 39.53], "z": [22, 3, 10], "euler": [0, 0, 0], "tp": 89.53 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, -1.25, 39.53], "z": [18, 2.5, 7.5], "euler": [0, 0, 0], "tp": 89.53 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 1.5, 49.48], "z": [22, 3, 10], "euler": [0, 0, 0], "tp": 99.48 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, -1.25, 49.48], "z": [18, 2.5, 7.5], "euler": [0, 0, 0], "tp": 99.48 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 2.9, 59.29], "z": [22, 5.82, 10.44], "euler": [-17.14888640988238, 0, 0], "tp": 109.43 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 0.27, 60.1], "z": [18, 4.6, 7.9], "euler": [-17.14888640988238, 0, 0], "tp": 109.43 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 7.27, 68.18], "z": [22, 8.22, 9.9], "euler": [-35.24345458656212, 0, 0], "tp": 119.38 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 5.03, 69.76], "z": [18, 6.37, 7.57], "euler": [-35.24345458656212, 0, 0], "tp": 119.38 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 14.19, 75.27], "z": [22, 9.81, 8.38], "euler": [-53.33802276324183, 0, 0], "tp": 129.32 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 12.55, 77.47], "z": [18, 7.51, 6.48], "euler": [-53.33802276324183, 0, 0], "tp": 129.32 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 22.97, 79.86], "z": [22, 10.43, 6.03], "euler": [-71.43259093992157, 0, 0], "tp": 139.27 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 22.09, 82.47], "z": [18, 7.91, 4.76], "euler": [-71.43259093992157, 0, 0], "tp": 139.27 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 32.74, 81.5], "z": [22, 10.02, 3.08], "euler": [-89.52715911660131, 0, 0], "tp": 149.22 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 32.72, 84.25], "z": [18, 7.52, 2.56], "euler": [-89.52715911660131, 0, 0], "tp": 149.22 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 42.54, 80.02], "z": [22, 10.44, 5.89], "euler": [-107.62172729328105, 0, 0], "tp": 159.17 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 43.37, 82.64], "z": [18, 7.9, 4.65], "euler": [-107.62172729328105, 0, 0], "tp": 159.17 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 51.39, 75.58], "z": [22, 9.87, 8.27], "euler": [-125.7162954699608, 0, 0], "tp": 169.12 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 52.99, 77.81], "z": [18, 7.55, 6.41], "euler": [-125.7162954699608, 0, 0], "tp": 169.12 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 58.42, 68.6], "z": [22, 8.33, 9.84], "euler": [-143.8108636466405, 0, 0], "tp": 179.06 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 60.64, 70.22], "z": [18, 6.45, 7.53], "euler": [-143.8108636466405, 0, 0], "tp": 179.06 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 62.94, 59.78], "z": [22, 5.96, 10.44], "euler": [-161.90543182332027, 0, 0], "tp": 189.01 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 65.56, 60.64], "z": [18, 4.71, 7.91], "euler": [-161.90543182332027, 0, 0], "tp": 189.01 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 64.5, 50], "z": [22, 3, 10], "euler": [-180, 0, 0], "tp": 198.96 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 67.25, 50], "z": [18, 2.5, 7.5], "euler": [-180, 0, 0], "tp": 198.96 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 64.5, 40.05], "z": [22, 3, 10], "euler": [-180, 0, 0], "tp": 208.91 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 67.25, 40.05], "z": [18, 2.5, 7.5], "euler": [-180, 0, 0], "tp": 208.91 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 64.5, 30.1], "z": [22, 3, 10], "euler": [-180, 0, 0], "tp": 218.86 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 67.25, 30.1], "z": [18, 2.5, 7.5], "euler": [-180, 0, 0], "tp": 218.86 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 64.5, 20.16], "z": [22, 3, 10], "euler": [-180, 0, 0], "tp": 228.8 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 67.25, 20.16], "z": [18, 2.5, 7.5], "euler": [-180, 0, 0], "tp": 228.8 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 64.5, 10.21], "z": [22, 3, 10], "euler": [-180, 0, 0], "tp": 238.75 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 67.25, 10.21], "z": [18, 2.5, 7.5], "euler": [-180, 0, 0], "tp": 238.75 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 64.5, 0.26], "z": [22, 3, 10], "euler": [-180, 0, 0], "tp": 248.7 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 67.25, 0.26], "z": [18, 2.5, 7.5], "euler": [-180, 0, 0], "tp": 248.7 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 64.5, -9.69], "z": [22, 3, 10], "euler": [-180, 0, 0], "tp": 258.65 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 67.25, -9.69], "z": [18, 2.5, 7.5], "euler": [-180, 0, 0], "tp": 258.65 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 64.5, -19.64], "z": [22, 3, 10], "euler": [-180, 0, 0], "tp": 268.6 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 67.25, -19.64], "z": [18, 2.5, 7.5], "euler": [-180, 0, 0], "tp": 268.6 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 64.5, -29.58], "z": [22, 3, 10], "euler": [-180, 0, 0], "tp": 278.54 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 67.25, -29.58], "z": [18, 2.5, 7.5], "euler": [-180, 0, 0], "tp": 278.54 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 64.5, -39.53], "z": [22, 3, 10], "euler": [-180, 0, 0], "tp": 288.49 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 67.25, -39.53], "z": [18, 2.5, 7.5], "euler": [-180, 0, 0], "tp": 288.49 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 64.5, -49.48], "z": [22, 3, 10], "euler": [-180, 0, 0], "tp": 298.44 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 67.25, -49.48], "z": [18, 2.5, 7.5], "euler": [-180, 0, 0], "tp": 298.44 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 63.1, -59.29], "z": [22, 5.82, 10.44], "euler": [-197.1488864098824, 0, 0], "tp": 308.39 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 65.73, -60.1], "z": [18, 4.6, 7.9], "euler": [-197.1488864098824, 0, 0], "tp": 308.39 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 58.73, -68.18], "z": [22, 8.22, 9.9], "euler": [-215.2434545865621, 0, 0], "tp": 318.34 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 60.97, -69.76], "z": [18, 6.37, 7.57], "euler": [-215.2434545865621, 0, 0], "tp": 318.34 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 51.81, -75.27], "z": [22, 9.81, 8.38], "euler": [-233.33802276324178, 0, 0], "tp": 328.28 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 53.45, -77.47], "z": [18, 7.51, 6.48], "euler": [-233.33802276324178, 0, 0], "tp": 328.28 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 43.03, -79.86], "z": [22, 10.43, 6.03], "euler": [-251.43259093992157, 0, 0], "tp": 338.23 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 43.91, -82.47], "z": [18, 7.91, 4.76], "euler": [-251.43259093992157, 0, 0], "tp": 338.23 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 33.26, -81.5], "z": [22, 10.02, 3.08], "euler": [-269.5271591166013, 0, 0], "tp": 348.18 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 33.28, -84.25], "z": [18, 7.52, 2.56], "euler": [-269.5271591166013, 0, 0], "tp": 348.18 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 23.46, -80.02], "z": [22, 10.44, 5.89], "euler": [-287.6217272932811, 0, 0], "tp": 358.13 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 22.63, -82.64], "z": [18, 7.9, 4.65], "euler": [-287.6217272932811, 0, 0], "tp": 358.13 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 14.61, -75.58], "z": [22, 9.87, 8.27], "euler": [-305.71629546996076, 0, 0], "tp": 368.08 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 13.01, -77.81], "z": [18, 7.55, 6.41], "euler": [-305.71629546996076, 0, 0], "tp": 368.08 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 7.58, -68.6], "z": [22, 8.33, 9.84], "euler": [-323.81086364664054, 0, 0], "tp": 378.02 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 5.36, -70.22], "z": [18, 6.45, 7.53], "euler": [-323.81086364664054, 0, 0], "tp": 378.02 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [-92, 3.06, -59.78], "z": [22, 5.96, 10.44], "euler": [-341.9054318233202, 0, 0], "tp": 387.97 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [-92, 0.44, -60.64], "z": [18, 4.71, 7.91], "euler": [-341.9054318233202, 0, 0], "tp": 387.97 }, { "s": "02", "id": "motor-frame-3x3", "n": "\uAD6C\uB3D9 \uBAA8\uD130 \uBC1B\uCE68 (\uBAA8\uD130\uD504\uB808\uC784 3\xD73)", "c": [62, 33, 25], "z": [8, 20, 8] }, { "s": "02", "id": "motor-frame-3x3", "n": "\uAD6C\uB3D9 \uBAA8\uD130 \uBC1B\uCE68 (\uBAA8\uD130\uD504\uB808\uC784 3\xD73)", "c": [62, 33, 45], "z": [8, 20, 8] }, { "s": "02", "id": "dc-motor-130-rs", "n": "\uC624\uB978 \uAD6C\uB3D9 \uBAA8\uD130 (DC 130rpm)", "c": [62.5, 33, 40], "z": [33, 20, 40], "up": [1, 0, 0], "xdir": [0, 0, -1] }, { "s": "02", "id": "motor-guide", "n": "\uAD6C\uB3D9 \uCD95 \uBC1B\uCE68 (\uBAA8\uD130\uAC00\uC774\uB4DC)", "c": [80, 33, 50], "z": [7.5, 11, 20] }, { "s": "02", "id": "caterpillar-sprocket", "n": "\uC624\uB978 \uB4A4 \uAD6C\uB3D9 \uD720 (\uCE90\uD130\uD544\uB7EC \uD1B1\uB2C8 \uD720)", "c": [92, 33, 50], "z": [10, 60, 60] }, { "s": "02", "id": "shaft-75", "n": "\uC624\uB978 \uC55E \uC544\uC774\uB4E4\uB7EC \uCD95 (75mm)", "c": [67.5, 33, -50], "z": [75, 3, 3] }, { "s": "02", "id": "axle-guide", "n": "\uC544\uC774\uB4E4\uB7EC \uCD95\uAC00\uC774\uB4DC", "c": [45, 28, -50], "z": [28, 10, 18] }, { "s": "02", "id": "axle-guide", "n": "\uC544\uC774\uB4E4\uB7EC \uCD95\uAC00\uC774\uB4DC", "c": [65, 28, -50], "z": [28, 10, 18] }, { "s": "02", "id": "caterpillar-sprocket", "n": "\uC624\uB978 \uC55E \uC544\uC774\uB4E4\uB7EC (\uCE90\uD130\uD544\uB7EC \uD1B1\uB2C8 \uD720)", "c": [92, 33, -50], "z": [10, 60, 60] }, { "s": "02", "id": "caterpillar-wheel-guide", "n": "\uC544\uC774\uB4E4\uB7EC \uD720\uAC00\uC774\uB4DC [\uC721\uAC01]", "c": [79, 33, -50], "z": [26, 30, 30] }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 1.5, -50], "z": [22, 3, 10], "euler": [0, 0, 0], "tp": 0 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, -1.25, -50], "z": [18, 2.5, 7.5], "euler": [0, 0, 0], "tp": 0 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 1.5, -40.05], "z": [22, 3, 10], "euler": [0, 0, 0], "tp": 9.95 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, -1.25, -40.05], "z": [18, 2.5, 7.5], "euler": [0, 0, 0], "tp": 9.95 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 1.5, -30.1], "z": [22, 3, 10], "euler": [0, 0, 0], "tp": 19.9 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, -1.25, -30.1], "z": [18, 2.5, 7.5], "euler": [0, 0, 0], "tp": 19.9 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 1.5, -20.16], "z": [22, 3, 10], "euler": [0, 0, 0], "tp": 29.84 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, -1.25, -20.16], "z": [18, 2.5, 7.5], "euler": [0, 0, 0], "tp": 29.84 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 1.5, -10.21], "z": [22, 3, 10], "euler": [0, 0, 0], "tp": 39.79 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, -1.25, -10.21], "z": [18, 2.5, 7.5], "euler": [0, 0, 0], "tp": 39.79 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 1.5, -0.26], "z": [22, 3, 10], "euler": [0, 0, 0], "tp": 49.74 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, -1.25, -0.26], "z": [18, 2.5, 7.5], "euler": [0, 0, 0], "tp": 49.74 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 1.5, 9.69], "z": [22, 3, 10], "euler": [0, 0, 0], "tp": 59.69 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, -1.25, 9.69], "z": [18, 2.5, 7.5], "euler": [0, 0, 0], "tp": 59.69 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 1.5, 19.64], "z": [22, 3, 10], "euler": [0, 0, 0], "tp": 69.64 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, -1.25, 19.64], "z": [18, 2.5, 7.5], "euler": [0, 0, 0], "tp": 69.64 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 1.5, 29.58], "z": [22, 3, 10], "euler": [0, 0, 0], "tp": 79.58 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, -1.25, 29.58], "z": [18, 2.5, 7.5], "euler": [0, 0, 0], "tp": 79.58 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 1.5, 39.53], "z": [22, 3, 10], "euler": [0, 0, 0], "tp": 89.53 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, -1.25, 39.53], "z": [18, 2.5, 7.5], "euler": [0, 0, 0], "tp": 89.53 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 1.5, 49.48], "z": [22, 3, 10], "euler": [0, 0, 0], "tp": 99.48 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, -1.25, 49.48], "z": [18, 2.5, 7.5], "euler": [0, 0, 0], "tp": 99.48 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 2.9, 59.29], "z": [22, 5.82, 10.44], "euler": [-17.14888640988238, 0, 0], "tp": 109.43 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 0.27, 60.1], "z": [18, 4.6, 7.9], "euler": [-17.14888640988238, 0, 0], "tp": 109.43 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 7.27, 68.18], "z": [22, 8.22, 9.9], "euler": [-35.24345458656212, 0, 0], "tp": 119.38 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 5.03, 69.76], "z": [18, 6.37, 7.57], "euler": [-35.24345458656212, 0, 0], "tp": 119.38 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 14.19, 75.27], "z": [22, 9.81, 8.38], "euler": [-53.33802276324183, 0, 0], "tp": 129.32 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 12.55, 77.47], "z": [18, 7.51, 6.48], "euler": [-53.33802276324183, 0, 0], "tp": 129.32 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 22.97, 79.86], "z": [22, 10.43, 6.03], "euler": [-71.43259093992157, 0, 0], "tp": 139.27 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 22.09, 82.47], "z": [18, 7.91, 4.76], "euler": [-71.43259093992157, 0, 0], "tp": 139.27 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 32.74, 81.5], "z": [22, 10.02, 3.08], "euler": [-89.52715911660131, 0, 0], "tp": 149.22 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 32.72, 84.25], "z": [18, 7.52, 2.56], "euler": [-89.52715911660131, 0, 0], "tp": 149.22 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 42.54, 80.02], "z": [22, 10.44, 5.89], "euler": [-107.62172729328105, 0, 0], "tp": 159.17 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 43.37, 82.64], "z": [18, 7.9, 4.65], "euler": [-107.62172729328105, 0, 0], "tp": 159.17 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 51.39, 75.58], "z": [22, 9.87, 8.27], "euler": [-125.7162954699608, 0, 0], "tp": 169.12 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 52.99, 77.81], "z": [18, 7.55, 6.41], "euler": [-125.7162954699608, 0, 0], "tp": 169.12 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 58.42, 68.6], "z": [22, 8.33, 9.84], "euler": [-143.8108636466405, 0, 0], "tp": 179.06 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 60.64, 70.22], "z": [18, 6.45, 7.53], "euler": [-143.8108636466405, 0, 0], "tp": 179.06 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 62.94, 59.78], "z": [22, 5.96, 10.44], "euler": [-161.90543182332027, 0, 0], "tp": 189.01 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 65.56, 60.64], "z": [18, 4.71, 7.91], "euler": [-161.90543182332027, 0, 0], "tp": 189.01 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 64.5, 50], "z": [22, 3, 10], "euler": [-180, 0, 0], "tp": 198.96 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 67.25, 50], "z": [18, 2.5, 7.5], "euler": [-180, 0, 0], "tp": 198.96 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 64.5, 40.05], "z": [22, 3, 10], "euler": [-180, 0, 0], "tp": 208.91 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 67.25, 40.05], "z": [18, 2.5, 7.5], "euler": [-180, 0, 0], "tp": 208.91 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 64.5, 30.1], "z": [22, 3, 10], "euler": [-180, 0, 0], "tp": 218.86 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 67.25, 30.1], "z": [18, 2.5, 7.5], "euler": [-180, 0, 0], "tp": 218.86 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 64.5, 20.16], "z": [22, 3, 10], "euler": [-180, 0, 0], "tp": 228.8 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 67.25, 20.16], "z": [18, 2.5, 7.5], "euler": [-180, 0, 0], "tp": 228.8 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 64.5, 10.21], "z": [22, 3, 10], "euler": [-180, 0, 0], "tp": 238.75 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 67.25, 10.21], "z": [18, 2.5, 7.5], "euler": [-180, 0, 0], "tp": 238.75 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 64.5, 0.26], "z": [22, 3, 10], "euler": [-180, 0, 0], "tp": 248.7 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 67.25, 0.26], "z": [18, 2.5, 7.5], "euler": [-180, 0, 0], "tp": 248.7 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 64.5, -9.69], "z": [22, 3, 10], "euler": [-180, 0, 0], "tp": 258.65 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 67.25, -9.69], "z": [18, 2.5, 7.5], "euler": [-180, 0, 0], "tp": 258.65 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 64.5, -19.64], "z": [22, 3, 10], "euler": [-180, 0, 0], "tp": 268.6 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 67.25, -19.64], "z": [18, 2.5, 7.5], "euler": [-180, 0, 0], "tp": 268.6 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 64.5, -29.58], "z": [22, 3, 10], "euler": [-180, 0, 0], "tp": 278.54 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 67.25, -29.58], "z": [18, 2.5, 7.5], "euler": [-180, 0, 0], "tp": 278.54 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 64.5, -39.53], "z": [22, 3, 10], "euler": [-180, 0, 0], "tp": 288.49 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 67.25, -39.53], "z": [18, 2.5, 7.5], "euler": [-180, 0, 0], "tp": 288.49 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 64.5, -49.48], "z": [22, 3, 10], "euler": [-180, 0, 0], "tp": 298.44 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 67.25, -49.48], "z": [18, 2.5, 7.5], "euler": [-180, 0, 0], "tp": 298.44 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 63.1, -59.29], "z": [22, 5.82, 10.44], "euler": [-197.1488864098824, 0, 0], "tp": 308.39 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 65.73, -60.1], "z": [18, 4.6, 7.9], "euler": [-197.1488864098824, 0, 0], "tp": 308.39 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 58.73, -68.18], "z": [22, 8.22, 9.9], "euler": [-215.2434545865621, 0, 0], "tp": 318.34 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 60.97, -69.76], "z": [18, 6.37, 7.57], "euler": [-215.2434545865621, 0, 0], "tp": 318.34 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 51.81, -75.27], "z": [22, 9.81, 8.38], "euler": [-233.33802276324178, 0, 0], "tp": 328.28 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 53.45, -77.47], "z": [18, 7.51, 6.48], "euler": [-233.33802276324178, 0, 0], "tp": 328.28 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 43.03, -79.86], "z": [22, 10.43, 6.03], "euler": [-251.43259093992157, 0, 0], "tp": 338.23 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 43.91, -82.47], "z": [18, 7.91, 4.76], "euler": [-251.43259093992157, 0, 0], "tp": 338.23 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 33.26, -81.5], "z": [22, 10.02, 3.08], "euler": [-269.5271591166013, 0, 0], "tp": 348.18 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 33.28, -84.25], "z": [18, 7.52, 2.56], "euler": [-269.5271591166013, 0, 0], "tp": 348.18 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 23.46, -80.02], "z": [22, 10.44, 5.89], "euler": [-287.6217272932811, 0, 0], "tp": 358.13 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 22.63, -82.64], "z": [18, 7.9, 4.65], "euler": [-287.6217272932811, 0, 0], "tp": 358.13 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 14.61, -75.58], "z": [22, 9.87, 8.27], "euler": [-305.71629546996076, 0, 0], "tp": 368.08 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 13.01, -77.81], "z": [18, 7.55, 6.41], "euler": [-305.71629546996076, 0, 0], "tp": 368.08 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 7.58, -68.6], "z": [22, 8.33, 9.84], "euler": [-323.81086364664054, 0, 0], "tp": 378.02 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 5.36, -70.22], "z": [18, 6.45, 7.53], "euler": [-323.81086364664054, 0, 0], "tp": 378.02 }, { "s": "02", "id": "caterpillar-link", "n": "\uADA4\uB3C4 \uB9C8\uB514", "c": [92, 3.06, -59.78], "z": [22, 5.96, 10.44], "euler": [-341.9054318233202, 0, 0], "tp": 387.97 }, { "s": "02", "id": "caterpillar-rubber", "n": "\uADA4\uB3C4 \uB7EC\uBC84", "c": [92, 0.44, -60.64], "z": [18, 4.71, 7.91], "euler": [-341.9054318233202, 0, 0], "tp": 387.97 }, { "s": "03", "id": "dc-motor-400-rs", "n": "\uC2A4\uD53C\uB108 \uBAA8\uD130 (DC 400rpm)", "c": [10, 43, -50], "z": [60, 40, 20], "up": [0, 1, 0], "xdir": [1, 0, 0] }, { "s": "03", "id": "motor-frame-3x3", "n": "\uC2A4\uD53C\uB108 \uBAA8\uD130 \uBC1B\uCE68 (\uBAA8\uD130\uD504\uB808\uC784 3\xD73)", "c": [-25, 33, -50], "z": [8, 20, 8] }, { "s": "03", "id": "motor-frame-3x3", "n": "\uC2A4\uD53C\uB108 \uBAA8\uD130 \uBC1B\uCE68 (\uBAA8\uD130\uD504\uB808\uC784 3\xD73)", "c": [45, 33, -50], "z": [8, 20, 8] }, { "s": "03", "id": "wheel-guide-40-yellow", "n": "\uC2A4\uD53C\uB108 \uD5C8\uBE0C (\uB178\uB780 \uD720\uAC00\uC774\uB4DC \xD840)", "c": [0, 67, -50], "z": [40, 8, 40], "up": [0, 1, 0] }, { "s": "03", "id": "battle-u", "n": "\uC2A4\uD53C\uB108 \uB0A0 1 (\uBC30\uD2C0\uBB34\uAE30 U, \uD1B1\uB0A0)", "c": [0, 71.8, -50], "z": [84, 1.6, 40] }, { "s": "03", "id": "battle-v", "n": "\uC2A4\uD53C\uB108 \uB0A0 2 (\uBC30\uD2C0\uBB34\uAE30 V)", "c": [0, 73.4, -50], "z": [46, 1.6, 84], "zdir": [1, 0, 0] }, { "s": "03", "id": "cap-nut-m3", "n": "\uB0A0 \uACE0\uC815 \uCEA1\uB108\uD2B8", "c": [-12, 77.2, -50], "z": [6.4, 6, 6.4] }, { "s": "03", "id": "cap-nut-m3", "n": "\uB0A0 \uACE0\uC815 \uCEA1\uB108\uD2B8", "c": [12, 77.2, -50], "z": [6.4, 6, 6.4] }, { "s": "03", "id": "cap-nut-m3", "n": "\uB0A0 \uACE0\uC815 \uCEA1\uB108\uD2B8", "c": [0, 77.2, -62], "z": [6.4, 6, 6.4] }, { "s": "03", "id": "cap-nut-m3", "n": "\uB0A0 \uACE0\uC815 \uCEA1\uB108\uD2B8", "c": [0, 77.2, -38], "z": [6.4, 6, 6.4] }, { "s": "04", "id": "frame-main-pcb", "n": "\uC6E8\uC9C0\uD310 (\uBA54\uC778 PCB, 17\xB0 \uACBD\uC0AC)", "c": [0, 11.5, -97.27], "z": [118, 24.6, 74.53], "euler": [-17.149849792673532, 90, 0] }, { "s": "04", "id": "l-frame-2x1", "n": "\uC6E8\uC9C0 \uACBD\uCCA9 L\uC790 2\xD71", "c": [-50, 25, -61], "z": [8, 10, 8] }, { "s": "04", "id": "s-hook-35", "n": "\uC6E8\uC9C0 \uD68C\uC804 \uD540 (\uD6C4\uD06C S35)", "c": [-54, 27, -62], "z": [6.5, 7.6, 6.5] }, { "s": "04", "id": "l-frame-2x1", "n": "\uC6E8\uC9C0 \uACBD\uCCA9 L\uC790 2\xD71", "c": [50, 25, -61], "z": [8, 10, 8] }, { "s": "04", "id": "s-hook-35", "n": "\uC6E8\uC9C0 \uD68C\uC804 \uD540 (\uD6C4\uD06C S35)", "c": [54, 27, -62], "z": [6.5, 7.6, 6.5] }, { "s": "04", "id": "servo-digital", "n": "\uC6E8\uC9C0 \uC11C\uBCF4", "c": [42.5, 64.6, 1], "z": [33, 20, 40], "up": [1, 0, 0], "xdir": [0, 0, 1] }, { "s": "04", "id": "wheel-guide-30-servo", "n": "\uC6E8\uC9C0 \uD06C\uB7AD\uD06C (\uD720\uAC00\uC774\uB4DC \uC11C\uBCF4)", "c": [63, 64.6, -9], "z": [8, 30, 30] }, { "s": "04", "id": "frame-s8-pcb", "n": "\uC6E8\uC9C0 \uB9C1\uD06C (\uC18C8 PCB, \uD540 \uAC04\uACA9 70)", "c": [66, 33.3, -52], "z": [1.6, 49.77, 89.55], "euler": [153.64853881025647, 0, 90] }, { "s": "04", "id": "s-hook-35", "n": "\uB9C1\uD06C \uC704 \uD540 (\uD6C4\uD06C S35)", "c": [64, 54.6, -9], "z": [6.5, 6.5, 7.6] }, { "s": "04", "id": "s-hook-35", "n": "\uB9C1\uD06C \uC544\uB798 \uD540 (\uD6C4\uD06C S35)", "c": [64, 12, -95], "z": [6.5, 6.5, 7.6] }, { "s": "04", "id": "l-frame-2x2", "n": "\uC6E8\uC9C0 \uB9C1\uD06C \uD0ED L\uC790 2\xD72", "c": [58, 13, -95], "z": [10, 10, 8] }, { "s": "04", "id": "battle-g", "n": "\uC6E8\uC9C0 \uC55E \uB0A0 (\uBC30\uD2C0\uBB34\uAE30 G)", "c": [0, 2, -133], "z": [90, 1.6, 18] }, { "s": "05", "id": "support-spacer", "n": "\uC0C1\uD310 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 30)", "c": [-55, 38, -15], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "05", "id": "support-spacer", "n": "\uC0C1\uD310 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 30)", "c": [-55, 38, 55], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "05", "id": "support-spacer", "n": "\uC0C1\uD310 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 30)", "c": [55, 38, -15], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "05", "id": "support-spacer", "n": "\uC0C1\uD310 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 30)", "c": [55, 38, 55], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "05", "id": "frame-main-pcb", "n": "\uC0C1\uD310 (\uBA54\uC778 PCB)", "c": [0, 53.8, 20], "z": [118, 1.6, 78] }, { "s": "05", "id": "support-spacer", "n": "CPU \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 10)", "c": [-55, 59.6, 2], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "05", "id": "support-spacer", "n": "CPU \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 10)", "c": [-55, 59.6, 56], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "05", "id": "support-spacer", "n": "CPU \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 10)", "c": [20, 59.6, 2], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "05", "id": "support-spacer", "n": "CPU \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 10)", "c": [20, 59.6, 56], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "05", "id": "cpu-board-8m", "n": "CPU \uBCF4\uB4DC 8M", "c": [-17.5, 71.6, 29], "z": [83, 14, 61] }, { "s": "05", "id": "bt-module", "n": "\uBE14\uB8E8\uD22C\uC2A4 \uBAA8\uB4C8 (\uC870\uC885 \xB7 \uD398\uC77C\uC138\uC774\uD504)", "c": [44, 59.1, 39], "z": [28, 9, 48] }, { "s": "05", "id": "support-spacer", "n": "\uB36E\uAC1C \uAE30\uB465 (\uC11C\uD3EC\uD2B8 25)", "c": [-40, 92, -2], "z": [6.4, 25, 6.4], "length": 25 }, { "s": "05", "id": "support-spacer", "n": "\uB36E\uAC1C \uAE30\uB465 (\uC11C\uD3EC\uD2B8 25)", "c": [5, 92, -2], "z": [6.4, 25, 6.4], "length": 25 }, { "s": "05", "id": "pc-frame-45x60", "n": "\uD22C\uBA85 \uC717\uB36E\uAC1C (PC \uD504\uB808\uC784)", "c": [-38, 105.4, 28], "z": [45, 1.6, 60] }, { "s": "05", "id": "pc-frame-45x60", "n": "\uD22C\uBA85 \uC717\uB36E\uAC1C (PC \uD504\uB808\uC784)", "c": [7, 105.4, 28], "z": [45, 1.6, 60] }, { "s": "05", "id": "frame-m16-pcb", "n": "\uB4A4 \uBCBD (\uC91116 PCB)", "c": [0, 40, 62.4], "z": [158, 18, 1.6] }, { "s": "05", "id": "l-frame-2x2", "n": "\uB4A4 \uBCBD L\uC790 2\xD72", "c": [-60, 28, 58], "z": [8, 10, 10] }, { "s": "05", "id": "l-frame-2x2", "n": "\uB4A4 \uBCBD L\uC790 2\xD72", "c": [60, 28, 58], "z": [8, 10, 10] }, { "s": "05", "id": "motor-drive-link-s", "n": "\uBAA8\uD130\uB4DC\uB77C\uC774\uBE0C \uC5F0\uACB0 \uBCF4\uB4DC (EX-Motor3/4)", "c": [0, 79, 63], "z": [50, 10, 50], "up": [0, 0, 1] }, { "s": "05", "id": "motor-drive-a3", "n": "\uBAA8\uD130\uB4DC\uB77C\uC774\uBE0C [A3] (\uC5F0\uACB0 \uBCF4\uB4DC\uC5D0 \uAF42\uC74C)", "c": [0, 79, 69], "z": [23, 20, 9], "up": [0, 0, 1] }, { "s": "05", "id": "buzzer-board-s", "n": "\uBD80\uC800 \uBCF4\uB4DC (\uD0C0\uACA9\uC74C)", "c": [-48, 66, 64], "z": [22, 32, 12], "up": [0, 0, 1] }, { "s": "05", "id": "rgb-led-bright", "n": "\uC0C1\uD0DC \uB7A8\uD504 (RGB LED \uACE0\uD718\uB3C4)", "c": [48, 60, 66], "z": [24, 20, 18] }, { "s": "05", "id": "sensor-touch", "n": "\uC67C\uCABD \uB4A4 \uBC94\uD37C (\uC811\uCD09 \uC13C\uC11C)", "c": [-55, 31, 68], "z": [48, 28, 9], "up": [0, 0, 1] }, { "s": "05", "id": "sensor-touch", "n": "\uC624\uB978\uCABD \uB4A4 \uBC94\uD37C (\uC811\uCD09 \uC13C\uC11C)", "c": [55, 31, 68], "z": [48, 28, 9], "up": [0, 0, 1] }, { "s": "06", "id": "l-frame-2x6", "n": "\uD2B8\uB799 \uAC00\uB4DC \uAE30\uB465 (L\uC790 2\xD76)", "c": [-78, 52, -45], "z": [10, 58, 8] }, { "s": "06", "id": "l-frame-2x6", "n": "\uD2B8\uB799 \uAC00\uB4DC \uAE30\uB465 (L\uC790 2\xD76)", "c": [-78, 52, 45], "z": [10, 58, 8] }, { "s": "06", "id": "frame-m16-pcb", "n": "\uC67C \uD2B8\uB799 \uAC00\uB4DC (\uC91116 PCB)", "c": [-92, 82, 0], "z": [18, 1.6, 158] }, { "s": "06", "id": "battle-j", "n": "\uC67C \uBD88\uAF43 \uC7A5\uAC11 (\uBC30\uD2C0\uBB34\uAE30 J)", "c": [-104, 66, 0], "z": [1.6, 28, 80] }, { "s": "06", "id": "battle-t", "n": "\uC67C \uC606 \uAC08\uACE0\uB9AC \uB0A0 (\uBC30\uD2C0\uBB34\uAE30 T)", "c": [-95, 84, -96], "z": [1.6, 46, 72] }, { "s": "06", "id": "l-frame-2x2", "n": "\uB208 L\uC790 2\xD72", "c": [-92, 76, -77], "z": [8, 10, 10] }, { "s": "06", "id": "led-board-red-s", "n": "\uC67C\uB208 (LED \uBE68\uAC15)", "c": [-92, 64, -80], "z": [22, 32, 6], "up": [0, 0, -1] }, { "s": "06", "id": "cap-nut-m3", "n": "\uAC00\uB4DC \uB05D \uCEA1\uB108\uD2B8", "c": [-92, 85.8, -70], "z": [6.4, 6, 6.4] }, { "s": "06", "id": "cap-nut-m3", "n": "\uAC00\uB4DC \uB05D \uCEA1\uB108\uD2B8", "c": [-92, 85.8, 70], "z": [6.4, 6, 6.4] }, { "s": "06", "id": "l-frame-2x6", "n": "\uD2B8\uB799 \uAC00\uB4DC \uAE30\uB465 (L\uC790 2\xD76)", "c": [78, 52, -45], "z": [10, 58, 8] }, { "s": "06", "id": "l-frame-2x6", "n": "\uD2B8\uB799 \uAC00\uB4DC \uAE30\uB465 (L\uC790 2\xD76)", "c": [78, 52, 45], "z": [10, 58, 8] }, { "s": "06", "id": "frame-m16-pcb", "n": "\uC624\uB978 \uD2B8\uB799 \uAC00\uB4DC (\uC91116 PCB)", "c": [92, 82, 0], "z": [18, 1.6, 158] }, { "s": "06", "id": "battle-i", "n": "\uC624\uB978 \uBD88\uAF43 \uC7A5\uAC11 (\uBC30\uD2C0\uBB34\uAE30 I)", "c": [104, 66, 0], "z": [1.6, 28, 80] }, { "s": "06", "id": "battle-t", "n": "\uC624\uB978 \uC606 \uAC08\uACE0\uB9AC \uB0A0 (\uBC30\uD2C0\uBB34\uAE30 T)", "c": [95, 84, -96], "z": [1.6, 46, 72] }, { "s": "06", "id": "l-frame-2x2", "n": "\uB208 L\uC790 2\xD72", "c": [92, 76, -77], "z": [8, 10, 10] }, { "s": "06", "id": "led-board-red-s", "n": "\uC624\uB978\uB208 (LED \uBE68\uAC15)", "c": [92, 64, -80], "z": [22, 32, 6], "up": [0, 0, -1] }, { "s": "06", "id": "cap-nut-m3", "n": "\uAC00\uB4DC \uB05D \uCEA1\uB108\uD2B8", "c": [92, 85.8, -70], "z": [6.4, 6, 6.4] }, { "s": "06", "id": "cap-nut-m3", "n": "\uAC00\uB4DC \uB05D \uCEA1\uB108\uD2B8", "c": [92, 85.8, 70], "z": [6.4, 6, 6.4] }];
+
+// src/battlebot/assemble.js
+var DEG = Math.PI / 180;
+var PATH_LEN = 2 * (TRACK.zr - TRACK.zf) + 2 * Math.PI * TRACK.r;
+function trackPoint(d) {
+  const { zf, zr, yc, r } = TRACK;
+  const s = zr - zf;
+  d = (d % PATH_LEN + PATH_LEN) % PATH_LEN;
+  if (d < s) return [zf + d, yc - r, 0];
+  if (d < s + Math.PI * r) {
+    const a2 = (d - s) / r;
+    return [zr + r * Math.sin(a2), yc - r * Math.cos(a2), a2 / DEG];
+  }
+  if (d < 2 * s + Math.PI * r) return [zr - (d - s - Math.PI * r), yc + r, 180];
+  const a = (d - 2 * s - Math.PI * r) / r;
+  return [zf - r * Math.sin(a), yc + r * Math.cos(a), 180 + a / DEG];
+}
+var CRANK = new THREE102.Vector2(-9, 64.6);
+var PIVOT = new THREE102.Vector2(-60, 23);
+var CRANK_R = 10;
+async function buildBattlebot(loadPart2, onProgress) {
+  const mods = await loadModules(assembly_default2, loadPart2, onProgress);
+  const root = new THREE102.Group();
+  const groups = {};
+  const spinner = new THREE102.Group();
+  spinner.position.set(0, 0, -50);
+  const wedge = new THREE102.Group();
+  wedge.position.set(0, PIVOT.y, PIVOT.x);
+  const crank = new THREE102.Group();
+  crank.position.set(0, CRANK.y, CRANK.x);
+  const links = [], sprockets = [];
+  let link = null, linkTab = null, linkPinTop = null, linkPinBot = null;
+  for (const a of assembly_default2) {
+    const h = makeHolder(a, mods);
+    let parent = groups[a.s] ??= new THREE102.Group();
+    if (a.tp !== void 0) {
+      links.push({ h, d0: a.tp, side: Math.sign(a.c[0]), rubber: a.id === "caterpillar-rubber" });
+    } else if (a.id === "caterpillar-sprocket" || a.id === "caterpillar-wheel-guide") {
+      sprockets.push({ h, side: Math.sign(a.c[0]), q0: h.quaternion.clone() });
+    } else if (a.s === "03" && a.id !== "dc-motor-400-rs" && a.id !== "motor-frame-3x3") {
+      parent = spinner;
+      h.position.sub(spinner.position);
+    } else if (a.s === "04") {
+      if (a.id === "frame-main-pcb" || a.id === "battle-g" || a.n.includes("\uB9C1\uD06C \uD0ED")) {
+        parent = wedge;
+        h.position.sub(wedge.position);
+        if (a.n.includes("\uB9C1\uD06C \uD0ED")) linkTab = h;
+      } else if (a.id === "wheel-guide-30-servo") {
+        parent = crank;
+        h.position.sub(crank.position);
+      } else if (a.id === "frame-s8-pcb") link = h;
+      else if (a.n.includes("\uB9C1\uD06C \uC704 \uD540")) linkPinTop = h;
+      else if (a.n.includes("\uB9C1\uD06C \uC544\uB798 \uD540")) linkPinBot = h;
+    }
+    parent.add(h);
+  }
+  groups["03"].add(spinner);
+  groups["04"].add(wedge, crank);
+  for (const g of Object.values(groups)) root.add(g);
+  root.position.y = 4;
+  const linkLen = Math.hypot(54.6 - 12, -9 - -95);
+  const tab0 = new THREE102.Vector2(-95, 12).sub(PIVOT);
+  const pin0 = new THREE102.Vector2(-9, 54.6);
+  let pinAngle = Math.atan2(pin0.y - CRANK.y, pin0.x - CRANK.x);
+  function setWedge(deg) {
+    const t = deg * DEG;
+    wedge.rotation.x = t;
+    const c = Math.cos(t), s = Math.sin(t);
+    const tab = new THREE102.Vector2(tab0.x * c + tab0.y * s, -tab0.x * s + tab0.y * c).add(PIVOT);
+    let best = pinAngle, err = Infinity;
+    for (let k = -180; k <= 180; k += 0.5) {
+      const ang = pinAngle + k * DEG;
+      const p = new THREE102.Vector2(CRANK.x + CRANK_R * Math.cos(ang), CRANK.y + CRANK_R * Math.sin(ang));
+      const e = Math.abs(p.distanceTo(tab) - linkLen) + Math.abs(k) * 2e-3;
+      if (e < err) {
+        err = e;
+        best = ang;
+      }
+    }
+    const a0 = Math.atan2(pin0.y - CRANK.y, pin0.x - CRANK.x);
+    crank.rotation.x = -(best - a0);
+    pinAngle = best;
+    const pin = new THREE102.Vector2(CRANK.x + CRANK_R * Math.cos(best), CRANK.y + CRANK_R * Math.sin(best));
+    if (link) {
+      link.position.set(link.position.x, (pin.y + tab.y) / 2, (pin.x + tab.x) / 2);
+      link.rotation.set(Math.atan2(-(tab.y - pin.y), tab.x - pin.x), 0, Math.PI / 2);
+    }
+    if (linkPinTop) linkPinTop.position.set(linkPinTop.position.x, pin.y, pin.x);
+    if (linkPinBot) linkPinBot.position.set(linkPinBot.position.x, tab.y, tab.x);
+    return Math.abs(err) < 2;
+  }
+  function setTracks(dl, dr) {
+    for (const L of links) {
+      const off = L.side > 0 ? dr : dl;
+      const [z, y, a] = trackPoint(L.d0 + off);
+      const th = a * DEG;
+      const k = L.rubber ? 2.75 : 0;
+      L.h.position.set(TRACK.x * L.side, y - k * Math.cos(th), z + k * Math.sin(th));
+      L.h.rotation.set(-th, 0, 0);
+    }
+    const qx = new THREE102.Quaternion();
+    for (const S of sprockets) S.h.quaternion.copy(qx.setFromAxisAngle(new THREE102.Vector3(1, 0, 0), -(S.side > 0 ? dr : dl) / TRACK.r)).multiply(S.q0);
+  }
+  setWedge(0);
+  setTracks(0, 0);
+  return { root, groups, spinner, setWedge, setTracks, count: assembly_default2.length };
+}
+var EXPLODE2 = { "01": [0, -40, 0], "02": [0, 0, 0], "03": [0, 60, -40], "04": [0, -10, -70], "05": [0, 80, 20], "06": [0, 50, 0] };
+
 // src/main.js
 var stage = document.getElementById("stage");
 var view = createScene(stage);
@@ -10376,7 +10501,7 @@ view.scene.add(overlay.dimGroup);
 var panel = createPanel(document.getElementById("panel"));
 var opts = { labels: true, dims: true, spin: false };
 var nav = document.getElementById("parts");
-nav.innerHTML = `<a href="#eagle" data-id="eagle" class="all"><b>\u{1F985} \uB3C5\uC218\uB9AC \uC870\uB9BD (\uC124\uACC4\uB3C4\uBA74)</b><small>\uBD80\uD488\uC73C\uB85C \uC870\uB9BD\uD55C \uB3C5\uC218\uB9AC \xB7 \uB0A0\uAC2F\uC9D3 \xB7 \uBD84\uD574 \uBCF4\uAE30</small></a><a href="#all" data-id="all" class="all"><b>\u25A6 \uC804\uCCB4 \uD3BC\uCCD0\uBCF4\uAE30</b><small>${catalog.length}\uAC1C \uBD80\uD488 \xB7 \uC2E4\uC81C \uD06C\uAE30\uB85C \uD55C \uD654\uBA74\uC5D0</small></a>` + categories.map(([cat, title]) => `
+nav.innerHTML = `<a href="#eagle" data-id="eagle" class="all"><b>\u{1F985} \uB3C5\uC218\uB9AC \uC870\uB9BD (\uC124\uACC4\uB3C4\uBA74)</b><small>\uBD80\uD488\uC73C\uB85C \uC870\uB9BD\uD55C \uB3C5\uC218\uB9AC \xB7 \uB0A0\uAC2F\uC9D3 \xB7 \uBD84\uD574 \uBCF4\uAE30</small></a><a href="#battlebot" data-id="battlebot" class="all"><b>\u2694 \uBC30\uD2C0\uB85C\uBD07 \uC36C\uB354 \uC6E8\uC9C0</b><small>\uBB34\uD55C\uADA4\uB3C4 \xB7 \uC2A4\uD53C\uB108 \xB7 \uB4E4\uC5B4\uC62C\uB9BC \uC6E8\uC9C0</small></a><a href="#all" data-id="all" class="all"><b>\u25A6 \uC804\uCCB4 \uD3BC\uCCD0\uBCF4\uAE30</b><small>${catalog.length}\uAC1C \uBD80\uD488 \xB7 \uC2E4\uC81C \uD06C\uAE30\uB85C \uD55C \uD654\uBA74\uC5D0</small></a>` + categories.map(([cat, title]) => `
   <h3>${title}</h3>
   ${catalog.filter((p) => p.category === cat).map((p) => `
     <a href="#${p.id}" data-id="${p.id}"><b>${p.name}</b><small>${p.size.x} \xD7 ${p.size.z} \xD7 ${p.size.y} mm${p.size.estimated ? " \xB7 \uCD94\uC815" : ""}</small></a>`).join("")}
@@ -10396,7 +10521,7 @@ var picks = [];
 async function showAll(token) {
   const parts = await Promise.all(catalog.map((p) => loadPart(p.id)));
   if (token !== loadToken) return null;
-  const root = new THREE102.Group();
+  const root = new THREE103.Group();
   const labels = [];
   let z = 0;
   picks.length = 0;
@@ -10406,12 +10531,12 @@ async function showAll(token) {
     let x = 0, rowDepth = 0, first = true;
     for (const [spec, part] of list) {
       const model = part.build();
-      const g = new THREE102.Group();
+      const g = new THREE103.Group();
       g.add(model.object3d);
       root.add(g);
       g.updateMatrixWorld(true);
       const box2 = partBounds(g);
-      const size = box2.getSize(new THREE102.Vector3()), c = box2.getCenter(new THREE102.Vector3());
+      const size = box2.getSize(new THREE103.Vector3()), c = box2.getCenter(new THREE103.Vector3());
       if (x > 0 && x + size.x > ROW_W) {
         z += rowDepth + GAP * 2;
         x = 0;
@@ -10461,10 +10586,10 @@ function eagleFunction(e) {
       st.t += dt;
       const flap = st.auto ? 12.5 + 32.5 * Math.sin(st.t * Math.PI * 2 / 1.2) : st.flap;
       const head = st.scan ? 90 + 45 * Math.sin(st.t * 0.8) : st.head;
-      const a = THREE102.MathUtils.degToRad(flap);
+      const a = THREE103.MathUtils.degToRad(flap);
       e.wing.r.rotation.z = a;
       e.wing.l.rotation.z = -a;
-      e.head.rotation.y = THREE102.MathUtils.degToRad(head - 90);
+      e.head.rotation.y = THREE103.MathUtils.degToRad(head - 90);
       for (const [no, g] of Object.entries(e.groups)) {
         const d = EXPLODE[no] || [0, 0, 0];
         g.position.set(d[0] * st.explode, d[1] * st.explode, d[2] * st.explode);
@@ -10478,7 +10603,101 @@ function eagleFunction(e) {
     }
   };
 }
+var bot = null;
+function botFunction(e) {
+  const st = { drive: "stop", spin: false, rpm: 0, wedge: 0, explode: 0, dl: 0, dr: 0, yaw: 0, hidden: {} };
+  panel.ui.controls([
+    { type: "select", id: "drive", label: "\uC870\uC885", options: [["stop", "\uC815\uC9C0"], ["fwd", "\uC804\uC9C4 (\uADA4\uB3C4)"], ["back", "\uD6C4\uC9C4"], ["left", "\uC81C\uC790\uB9AC \uC67C\uCABD \uD68C\uC804"], ["right", "\uC81C\uC790\uB9AC \uC624\uB978\uCABD \uD68C\uC804"]], value: "stop" },
+    { type: "toggle", id: "spin", label: "\uC2A4\uD53C\uB108 (DC 400rpm)", value: false },
+    { type: "slider", id: "wedge", label: "\uC6E8\uC9C0 \uB4E4\uAE30 (\uC11C\uBCF4)", min: 0, max: 60, step: 1, value: 0, unit: "\xB0" },
+    { type: "button", id: "attack", label: "\uACF5\uACA9 \uB370\uBAA8 (\uC6E8\uC9C0 \uB4E4\uAE30 + \uC2A4\uD53C\uB108)" },
+    { type: "slider", id: "explode", label: "\uBD84\uD574 \uBCF4\uAE30", min: 0, max: 1, step: 0.01, value: 0 },
+    ...Object.entries(SHEETS2).map(([no, t]) => ({ type: "toggle", id: "g" + no, label: `${no} ${t}`, value: true, compact: true }))
+  ]);
+  panel.ui.readouts([["parts", "\uB193\uC778 \uBD80\uD488"], ["track", "\uADA4\uB3C4"], ["spin", "\uC2A4\uD53C\uB108"], ["wedge", "\uC6E8\uC9C0"]]);
+  let demo = 0;
+  return {
+    onControl(id, v) {
+      if (id.startsWith("g")) st.hidden[id.slice(1)] = !v;
+      else if (id === "attack") {
+        demo = 3;
+        st.spin = true;
+      } else st[id] = id === "drive" ? v : id === "spin" ? v : Number(v);
+    },
+    update(dt) {
+      const v = 130 / 60 * Math.PI * 62;
+      const [l, r] = { stop: [0, 0], fwd: [1, 1], back: [-1, -1], left: [-1, 1], right: [1, -1] }[st.drive];
+      st.dl += l * v * dt;
+      st.dr += r * v * dt;
+      e.setTracks(-st.dl, -st.dr);
+      if (st.drive === "left" || st.drive === "right") {
+        st.yaw += (st.drive === "left" ? 1 : -1) * dt * 0.8;
+        e.root.rotation.y = st.yaw;
+      }
+      const target = st.spin ? 400 : 0;
+      st.rpm += Math.sign(target - st.rpm) * Math.min(Math.abs(target - st.rpm), dt * 300);
+      e.spinner.rotation.y -= st.rpm / 60 * Math.PI * 2 * dt;
+      let w = st.wedge;
+      if (demo > 0) {
+        demo -= dt;
+        w = demo > 2 ? (3 - demo) * 60 : demo > 1 ? 60 : demo * 60;
+        if (demo <= 0) st.spin = false;
+      }
+      e.setWedge(w);
+      for (const [no, g] of Object.entries(e.groups)) {
+        const d = EXPLODE2[no] || [0, 0, 0];
+        g.position.set(d[0] * st.explode, d[1] * st.explode, d[2] * st.explode);
+        g.visible = !st.hidden[no];
+      }
+      panel.ui.readout("parts", `${e.count}\uAC1C (\uBCFC\uD2B8 \xB7 \uB108\uD2B8 \uD3EC\uD568 ${BOM_TOTAL2}\uAC1C)`);
+      panel.ui.readout("track", st.drive === "stop" ? "\uC815\uC9C0" : `${(v / 1e3).toFixed(2)} m/s \xB7 ${{ fwd: "\uC804\uC9C4", back: "\uD6C4\uC9C4", left: "\uC67C\uCABD \uD68C\uC804", right: "\uC624\uB978\uCABD \uD68C\uC804" }[st.drive]}`);
+      panel.ui.readout("spin", `${st.rpm.toFixed(0)} rpm \xB7 \uB0A0 \uB05D ${(st.rpm / 60 * Math.PI * 0.084).toFixed(2)} m/s`);
+      panel.ui.readout("wedge", `${w.toFixed(0)}\xB0${demo > 0 ? " (\uACF5\uACA9 \uB370\uBAA8)" : ""}`);
+    }
+  };
+}
 async function select(id) {
+  if (id === "battlebot") {
+    if (current?.id === "battlebot") return;
+    const token2 = ++loadToken;
+    const loading = document.getElementById("loading");
+    loading.style.display = "block";
+    nav.querySelectorAll("a").forEach((a) => a.classList.toggle("on", a.dataset.id === "battlebot"));
+    const e = bot ?? await buildBattlebot(loadPart, (k) => {
+      loading.textContent = `\uBD80\uD488 \uBD88\uB7EC\uC624\uB294 \uC911\u2026 ${Math.round(k * 100)}%`;
+    });
+    loading.textContent = "\uBD88\uB7EC\uC624\uB294 \uC911\u2026";
+    if (token2 !== loadToken) return;
+    bot = e;
+    if (current) {
+      current.fn?.dispose?.();
+      view.scene.remove(current.root);
+    }
+    overlay.clear();
+    picks.length = 0;
+    view.controls.zoomToCursor = true;
+    view.scene.add(e.root);
+    e.root.updateMatrixWorld(true);
+    const box3 = partBounds(e.root);
+    view.frame(box3, { dir: [-0.9, 0.7, -1], fit: 1.25, minDist: 20 });
+    const size = box3.getSize(new THREE103.Vector3());
+    panel.showSpec({
+      name: "\uBC30\uD2C0\uB85C\uBD07 \uC36C\uB354 \uC6E8\uC9C0 (\uC124\uACC4\uB3C4\uBA74 \uC870\uB9BD)",
+      url: "https://github.com/popkn/3d-test/blob/\uB85C\uBCF4\uB85C\uBCF4-3d-test/battlebot/BLUEPRINT.md",
+      size: { x: Math.round(size.x), z: Math.round(size.z), y: Math.round(size.y), estimated: false, note: "battlebot/BLUEPRINT.md \uB3C4\uBA74 \uC88C\uD45C\uB300\uB85C \uC774 \uC800\uC7A5\uC18C\uC758 \uBD80\uD488 \uBAA8\uB378\uC744 \uB193\uC544 \uC870\uB9BD\uD588\uC2B5\uB2C8\uB2E4. \uBCFC\uD2B8 \xB7 \uB108\uD2B8 \xB7 \uCF00\uC774\uBE14\uC740 \uC0DD\uB7B5." },
+      function: "\uBB34\uD55C\uADA4\uB3C4\uB85C \uB2EC\uB9AC\uACE0, \uC11C\uBCF4 \uC6E8\uC9C0\uB85C \uC0C1\uB300\uB97C \uB4E4\uC5B4 \uC62C\uB824 \uC218\uD3C9 \uC2A4\uD53C\uB108(\uBC30\uD2C0\uBB34\uAE30 U + V \uC2ED\uC790 \uB0A0)\uB85C \uCE5C\uB2E4. \uADA4\uB3C4 \uB9C8\uB514\uB294 \uACBD\uB85C\uB97C \uB530\uB77C \uC2E4\uC81C\uB85C \uB3C8\uB2E4.",
+      specs: Object.entries(SHEETS2).map(([no, t]) => [`\uB3C4\uBA74 ${no}`, t]),
+      ports: []
+    });
+    let fn2 = null;
+    panel.reset((cid, v) => fn2?.onControl?.(cid, v));
+    fn2 = botFunction(e);
+    current = { id: "battlebot", root: e.root, fn: { ...fn2, dispose() {
+      e.root.rotation.y = 0;
+    } } };
+    loading.style.display = "none";
+    return;
+  }
   if (id === "eagle") {
     if (current?.id === "eagle") return;
     const token2 = ++loadToken;
@@ -10498,7 +10717,7 @@ async function select(id) {
     e.root.updateMatrixWorld(true);
     const box3 = partBounds(e.root);
     view.frame(box3, { dir: [-0.9, 0.55, -1], fit: 1.15, minDist: 20 });
-    const size = box3.getSize(new THREE102.Vector3());
+    const size = box3.getSize(new THREE103.Vector3());
     panel.showSpec({
       name: "\uB3C5\uC218\uB9AC \uB85C\uBD07 (\uC124\uACC4\uB3C4\uBA74 \uC870\uB9BD)",
       url: "https://github.com/popkn/3d-test/blob/\uB85C\uBCF4\uB85C\uBCF4-3d-test/eagle/BLUEPRINT.md",
@@ -10535,7 +10754,7 @@ async function select(id) {
     const d0 = view.camera.position.distanceTo(view.controls.target);
     for (const l of res.labels) if (l.small) l.maxDist = d0 * 0.4;
     overlay.setLabels(res.labels);
-    const size = box3.getSize(new THREE102.Vector3());
+    const size = box3.getSize(new THREE103.Vector3());
     panel.showSpec({
       name: "\uC804\uCCB4 \uBD80\uD488 \uD3BC\uCCD0\uBCF4\uAE30",
       url: "#all",
@@ -10565,11 +10784,11 @@ async function select(id) {
   }
   overlay.clear();
   const model = part.build();
-  const root = new THREE102.Group();
+  const root = new THREE103.Group();
   root.add(model.object3d);
   view.scene.add(root);
   const box2 = partBounds(root);
-  const c = box2.getCenter(new THREE102.Vector3());
+  const c = box2.getCenter(new THREE103.Vector3());
   model.object3d.position.set(-c.x, -box2.min.y, -c.z);
   const fitted = partBounds(root);
   view.frame(partBounds(root, { include: model.frameWith || [] }));
@@ -10588,15 +10807,16 @@ tipEl.className = "tag hover-tip";
 tipEl.style.cssText = "position:absolute;pointer-events:none;opacity:0;z-index:5";
 stage.appendChild(tipEl);
 view.renderer.domElement.addEventListener("pointermove", (e) => {
-  if (current?.id !== "eagle" || !eagle) {
+  const asm = current?.id === "eagle" ? eagle : current?.id === "battlebot" ? bot : null;
+  if (!asm) {
     tipEl.style.opacity = 0;
     return;
   }
   const r = view.renderer.domElement.getBoundingClientRect();
-  const v = new THREE102.Vector2((e.clientX - r.left) / r.width * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
-  const rc = new THREE102.Raycaster();
+  const v = new THREE103.Vector2((e.clientX - r.left) / r.width * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+  const rc = new THREE103.Raycaster();
   rc.setFromCamera(v, view.camera);
-  const hit = rc.intersectObject(eagle.root, true).find((h) => h.object.visible);
+  const hit = rc.intersectObject(asm.root, true).find((h) => h.object.visible);
   let o = hit?.object;
   while (o && !o.userData?.id) o = o.parent;
   if (!o) {
@@ -10607,8 +10827,8 @@ view.renderer.domElement.addEventListener("pointermove", (e) => {
   tipEl.style.opacity = 1;
   tipEl.style.transform = `translate(${e.clientX - r.left + 14}px, ${e.clientY - r.top + 10}px)`;
 });
-var ray = new THREE102.Raycaster();
-var ptr = new THREE102.Vector2();
+var ray = new THREE103.Raycaster();
+var ptr = new THREE103.Vector2();
 var down = null;
 view.renderer.domElement.addEventListener("pointerdown", (e) => {
   down = [e.clientX, e.clientY];
@@ -10631,7 +10851,7 @@ view.renderer.domElement.addEventListener("pointerup", (e) => {
   if (pick) location.hash = pick.id;
 });
 select(location.hash.slice(1) || catalog[0].id);
-var timer = new THREE102.Timer();
+var timer = new THREE103.Timer();
 view.renderer.setAnimationLoop((ts) => {
   timer.update(ts);
   const dt = Math.min(timer.getDelta(), 0.1);

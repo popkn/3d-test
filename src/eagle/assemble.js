@@ -42,11 +42,51 @@ function hideDemo(obj) {
   obj.traverse((o) => { if (o !== obj && o.userData?.noBounds) o.visible = false; });
 }
 
-export async function buildEagle(loadPart, onProgress) {
-  const ids = [...new Set(ASSEMBLY.map((a) => a.id))];
+// 조립 데이터에 나오는 부품 모듈을 모두 불러온다
+export async function loadModules(list, loadPart, onProgress) {
+  const ids = [...new Set(list.map((a) => a.id))];
   const mods = {};
   let done = 0;
   await Promise.all(ids.map(async (id) => { mods[id] = await loadPart(id); onProgress?.(++done / ids.length); }));
+  return mods;
+}
+
+// 배치 하나 → 부품 모델을 도면 위치 · 크기 · 방향에 맞춰 넣은 그룹 (월드 좌표)
+export function makeHolder(a, mods) {
+  const model = mods[a.id].build();
+  hideDemo(model.object3d);
+  // 컬러볼 모델은 세 가지 색을 함께 보여 주므로 이름의 색 하나만 남기고 가운데로
+  if (a.id === 'color-ball' && model.handles?.balls) {
+    const k = a.n.includes('빨강') ? 0 : a.n.includes('초록') ? 1 : 2;
+    model.handles.balls.forEach((b, i) => { b.visible = i === k; if (i === k) b.position.x = 0; });
+    model.handles.balls.filter((b, i) => i !== k).forEach((b) => b.removeFromParent());
+  }
+  const holder = new THREE.Group();
+  holder.userData = { name: a.n, id: a.id, sheet: a.s };
+  if (a.id === 'support-spacer' && a.length && model.handles?.setLength) {
+    // 서포트: 길이를 도면 값으로, 몸통 아래가 도면 상자 아래에
+    model.handles.setLength(a.length);
+    holder.add(model.object3d);
+    holder.position.set(a.c[0], a.c[1] - a.z[1] / 2, a.c[2]);
+  } else {
+    const inner = new THREE.Group();
+    inner.add(model.object3d);
+    holder.add(inner);
+    inner.updateMatrixWorld(true);
+    const box = partBounds(inner);
+    const size = box.getSize(new THREE.Vector3()), c = box.getCenter(new THREE.Vector3());
+    model.object3d.position.sub(c);
+    if (a.euler) holder.rotation.set(...a.euler.map((d) => THREE.MathUtils.degToRad(d)), 'XYZ');
+    else holder.quaternion.setFromRotationMatrix(chooseRotation([size.x, size.y, size.z], a.z, a));
+    // flip: 자동으로 고른 방향을 월드 축으로 180° 더 돌린다 (예: 부리 갈고리를 아래로)
+    if (a.flip) holder.quaternion.premultiply(new THREE.Quaternion().setFromAxisAngle(axisVec('xyz'.indexOf(a.flip)), Math.PI));
+    holder.position.set(...a.c);
+  }
+  return holder;
+}
+
+export async function buildEagle(loadPart, onProgress) {
+  const mods = await loadModules(ASSEMBLY, loadPart, onProgress);
 
   const root = new THREE.Group();
   const groups = {};      // 도면 번호별 그룹 (분해 보기 · 숨기기)
@@ -57,35 +97,7 @@ export async function buildEagle(loadPart, onProgress) {
   const pickables = [];
 
   for (const a of ASSEMBLY) {
-    const model = mods[a.id].build();
-    hideDemo(model.object3d);
-    // 컬러볼 모델은 세 가지 색을 함께 보여 주므로 이름의 색 하나만 남기고 가운데로
-    if (a.id === 'color-ball' && model.handles?.balls) {
-      const k = a.n.includes('빨강') ? 0 : a.n.includes('초록') ? 1 : 2;
-      model.handles.balls.forEach((b, i) => { b.visible = i === k; if (i === k) b.position.x = 0; });
-      model.handles.balls.filter((b, i) => i !== k).forEach((b) => b.removeFromParent());
-    }
-    const holder = new THREE.Group();
-    holder.userData = { name: a.n, id: a.id, sheet: a.s };
-    if (a.id === 'support-spacer' && a.length && model.handles?.setLength) {
-      // 서포트: 길이를 도면 값으로, 몸통 아래가 도면 상자 아래에
-      model.handles.setLength(a.length);
-      holder.add(model.object3d);
-      holder.position.set(a.c[0], a.c[1] - a.z[1] / 2, a.c[2]);
-    } else {
-      const inner = new THREE.Group();
-      inner.add(model.object3d);
-      holder.add(inner);
-      inner.updateMatrixWorld(true);
-      const box = partBounds(inner);
-      const size = box.getSize(new THREE.Vector3()), c = box.getCenter(new THREE.Vector3());
-      model.object3d.position.sub(c);
-      if (a.euler) holder.rotation.set(...a.euler.map((d) => THREE.MathUtils.degToRad(d)), 'XYZ');
-      else holder.quaternion.setFromRotationMatrix(chooseRotation([size.x, size.y, size.z], a.z, a));
-      // flip: 자동으로 고른 방향을 월드 축으로 180° 더 돌린다 (예: 부리 갈고리를 아래로)
-      if (a.flip) holder.quaternion.premultiply(new THREE.Quaternion().setFromAxisAngle(axisVec('xyz'.indexOf(a.flip)), Math.PI));
-      holder.position.set(...a.c);
-    }
+    const holder = makeHolder(a, mods);
     // 어느 그룹에 넣을지
     let parent;
     if (a.s === '05' && Math.abs(a.c[0]) > 46 && a.id !== 'servo-digital' && a.id !== 'motor-frame-3x3') {

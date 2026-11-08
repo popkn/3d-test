@@ -60,15 +60,15 @@ def track_links():
     for i in range(n):
         d = i * step
         if d < ZR - ZF:                                    # 아래 직선 (앞 → 뒤)
-            out.append((ZF + d, YC - R_PATH, 0))
+            out.append((ZF + d, YC - R_PATH, 0, d))
         elif d < ZR - ZF + math.pi * R_PATH:               # 뒤 반원 (아래 → 위)
             a = (d - (ZR - ZF)) / R_PATH
-            out.append((ZR + R_PATH * math.sin(a), YC - R_PATH * math.cos(a), a / DEG))
+            out.append((ZR + R_PATH * math.sin(a), YC - R_PATH * math.cos(a), a / DEG, d))
         elif d < 2 * (ZR - ZF) + math.pi * R_PATH:         # 위 직선 (뒤 → 앞)
-            out.append((ZR - (d - (ZR - ZF) - math.pi * R_PATH), YC + R_PATH, 180))
+            out.append((ZR - (d - (ZR - ZF) - math.pi * R_PATH), YC + R_PATH, 180, d))
         else:                                              # 앞 반원 (위 → 아래)
             a = (d - 2 * (ZR - ZF) - math.pi * R_PATH) / R_PATH
-            out.append((ZF - R_PATH * math.sin(a), YC + R_PATH * math.cos(a), 180 + a / DEG))
+            out.append((ZF - R_PATH * math.sin(a), YC + R_PATH * math.cos(a), 180 + a / DEG, d))
     return out
 LINKS = track_links()
 for sx in (-1, 1):
@@ -83,12 +83,12 @@ for sx in (-1, 1):
         add(S2, 'axle-guide', '아이들러 축가이드', (x * sx, 28, ZF), (28, 10, 18), BLUE, note='바닥판 위, 축 높이 33')
     add(S2, 'caterpillar-sprocket', f'{side} 앞 아이들러 (캐터필러 톱니 휠)', (92 * sx, YC, ZF), (10, 60, 60), WHITE, 'disc', '축에 헛돔', axis=0)
     add(S2, 'caterpillar-wheel-guide', '아이들러 휠가이드 [육각]', (79 * sx, YC, ZF), (26, 30, 30), BLACK, 'disc', '축 고정 · 톱니 휠과 볼트 6개', axis=0)
-    for z, y, a in LINKS:
+    for z, y, a, d in LINKS:
         th = a * DEG
         sy, sz = abs(3 * math.cos(th)) + abs(10 * math.sin(th)), abs(10 * math.cos(th)) + abs(3 * math.sin(th))
-        add(S2, 'caterpillar-link', '궤도 마디', (92 * sx, y, z), (22, sy, sz), BLACK, note='10 mm 간격, 고리를 끼워 이음', euler=(-a, 0, 0))
+        add(S2, 'caterpillar-link', '궤도 마디', (92 * sx, y, z), (22, sy, sz), BLACK, note='10 mm 간격, 고리를 끼워 이음', euler=(-a, 0, 0), tp=round(d, 2))
         ry, rz = y - 2.75 * math.cos(th), z + 2.75 * math.sin(th)   # 바깥쪽 (휠에서 먼 쪽)
-        add(S2, 'caterpillar-rubber', '궤도 러버', (92 * sx, ry, rz), (18, abs(2.5 * math.cos(th)) + abs(7.5 * math.sin(th)), abs(7.5 * math.cos(th)) + abs(2.5 * math.sin(th))), BLUE, note='마디 바깥면', euler=(-a, 0, 0))
+        add(S2, 'caterpillar-rubber', '궤도 러버', (92 * sx, ry, rz), (18, abs(2.5 * math.cos(th)) + abs(7.5 * math.sin(th)), abs(7.5 * math.cos(th)) + abs(2.5 * math.sin(th))), BLUE, note='마디 바깥면', euler=(-a, 0, 0), tp=round(d, 2))
 
 # ── 03 스피너 무기
 S3 = '03'
@@ -478,7 +478,7 @@ open(os.path.join(OUT, 'blueprint.html'), 'w').write('\n'.join(html))
 asm = []
 for p in P:
     d = {'s': p['sheet'], 'id': p['id'], 'n': p['name'], 'c': [round(v, 2) for v in p['c']], 'z': [round(v, 2) for v in p['s']]}
-    for k in ('up', 'xdir', 'zdir', 'euler', 'length', 'flip'):
+    for k in ('up', 'xdir', 'zdir', 'euler', 'length', 'flip', 'tp'):
         if k in p: d[k] = list(p[k]) if isinstance(p[k], tuple) else p[k]
     asm.append(d)
 os.makedirs(os.path.join(ROOT, 'src', 'battlebot'), exist_ok=True)
@@ -486,5 +486,6 @@ with open(os.path.join(ROOT, 'src', 'battlebot', 'assembly.js'), 'w') as f:
     f.write('// 배틀로봇 조립 데이터 — tools/battlebot_blueprint.py가 만든다 (직접 고치지 말 것)\n')
     f.write('export const SHEETS = ' + json.dumps({k: v[0] for k, v in SHEET_INFO.items() if v[1]}, ensure_ascii=False) + ';\n')
     f.write('export const BOM_TOTAL = ' + str(sum(bom.values())) + ';\n')
+    f.write('export const TRACK = ' + json.dumps({'zf': ZF, 'zr': ZR, 'yc': YC, 'r': R_PATH, 'x': 92, 'n': 40, 'wedge': round(WEDGE_A / DEG, 2)}) + ';\n')
     f.write('export default ' + json.dumps(asm, ensure_ascii=False) + ';\n')
 print(f'battlebot/ · {W_:.0f} × {H_:.0f} × {L_:.0f} mm · 부품 {sum(bom.values())}개 ({len(bom)}종) · {TOTAL_G:.0f} g · 궤도 {SPEED:.2f} m/s · 스피너 끝 {TIP:.2f} m/s')

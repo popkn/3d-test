@@ -110,3 +110,9 @@ src/
 - 설계도면: `eagle/BLUEPRINT.md`, `eagle/blueprint.html` (도면 9장)
 - 3D 조립: 뷰어 목록 맨 위 **🦅 독수리 조립** (`#eagle`). 도면 좌표(`src/eagle/assembly.js`, 생성기가 만듦)대로 실제 부품 모델을 놓는다. 날갯짓 · 머리 돌리기 · 분해 보기 · 파트별 숨기기.
 - 도면을 고치면: `python3 tools/eagle_blueprint.py` → `node tools/build-all.mjs`
+
+## 배틀로봇 썬더 웨지 (설계도면 → 3D 조립)
+
+- 설계도면: `battlebot/BLUEPRINT.md`, `battlebot/blueprint.html` (도면 9장, 조사 내용 포함)
+- 3D 조립: 뷰어 목록 **⚔ 배틀로봇 썬더 웨지** (`#battlebot`). 궤도 마디가 경로를 따라 돌고, 스피너 회전, 서보 크랭크 + 링크로 웨지가 들린다. 분해 보기 · 공격 데모.
+- 도면을 고치면: `python3 tools/battlebot_blueprint.py` → `node tools/build-all.mjs`

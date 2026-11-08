@@ -5,6 +5,8 @@ import { createOverlay } from './viewer/overlay.js';
 import { createPanel } from './viewer/panel.js';
 import { buildEagle, EXPLODE, WING_SPREAD } from './eagle/assemble.js';
 import { SHEETS, BOM_TOTAL } from './eagle/assembly.js';
+import { buildBattlebot, EXPLODE as BB_EXPLODE } from './battlebot/assemble.js';
+import { SHEETS as BB_SHEETS, BOM_TOTAL as BB_TOTAL } from './battlebot/assembly.js';
 
 // 로보로보 부품 뷰어: 왼쪽 목록에서 부품을 고르면 3D 모양과 기능(조작 패널)을 불러온다.
 const stage = document.getElementById('stage');
@@ -16,7 +18,7 @@ const opts = { labels: true, dims: true, spin: false };
 
 // 목록
 const nav = document.getElementById('parts');
-nav.innerHTML = `<a href="#eagle" data-id="eagle" class="all"><b>🦅 독수리 조립 (설계도면)</b><small>부품으로 조립한 독수리 · 날갯짓 · 분해 보기</small></a><a href="#all" data-id="all" class="all"><b>▦ 전체 펼쳐보기</b><small>${catalog.length}개 부품 · 실제 크기로 한 화면에</small></a>` + categories.map(([cat, title]) => `
+nav.innerHTML = `<a href="#eagle" data-id="eagle" class="all"><b>🦅 독수리 조립 (설계도면)</b><small>부품으로 조립한 독수리 · 날갯짓 · 분해 보기</small></a><a href="#battlebot" data-id="battlebot" class="all"><b>⚔ 배틀로봇 썬더 웨지</b><small>무한궤도 · 스피너 · 들어올림 웨지</small></a><a href="#all" data-id="all" class="all"><b>▦ 전체 펼쳐보기</b><small>${catalog.length}개 부품 · 실제 크기로 한 화면에</small></a>` + categories.map(([cat, title]) => `
   <h3>${title}</h3>
   ${catalog.filter((p) => p.category === cat).map((p) => `
     <a href="#${p.id}" data-id="${p.id}"><b>${p.name}</b><small>${p.size.x} × ${p.size.z} × ${p.size.y} mm${p.size.estimated ? ' · 추정' : ''}</small></a>`).join('')}
@@ -111,7 +113,85 @@ function eagleFunction(e) {
   };
 }
 
+// 배틀로봇: battlebot/BLUEPRINT.md 도면대로 조립
+let bot = null;
+function botFunction(e) {
+  const st = { drive: 'stop', spin: false, rpm: 0, wedge: 0, explode: 0, dl: 0, dr: 0, yaw: 0, hidden: {} };
+  panel.ui.controls([
+    { type: 'select', id: 'drive', label: '조종', options: [['stop', '정지'], ['fwd', '전진 (궤도)'], ['back', '후진'], ['left', '제자리 왼쪽 회전'], ['right', '제자리 오른쪽 회전']], value: 'stop' },
+    { type: 'toggle', id: 'spin', label: '스피너 (DC 400rpm)', value: false },
+    { type: 'slider', id: 'wedge', label: '웨지 들기 (서보)', min: 0, max: 60, step: 1, value: 0, unit: '°' },
+    { type: 'button', id: 'attack', label: '공격 데모 (웨지 들기 + 스피너)' },
+    { type: 'slider', id: 'explode', label: '분해 보기', min: 0, max: 1, step: 0.01, value: 0 },
+    ...Object.entries(BB_SHEETS).map(([no, t]) => ({ type: 'toggle', id: 'g' + no, label: `${no} ${t}`, value: true, compact: true })),
+  ]);
+  panel.ui.readouts([['parts', '놓인 부품'], ['track', '궤도'], ['spin', '스피너'], ['wedge', '웨지']]);
+  let demo = 0;
+  return {
+    onControl(id, v) {
+      if (id.startsWith('g')) st.hidden[id.slice(1)] = !v;
+      else if (id === 'attack') { demo = 3; st.spin = true; }
+      else st[id] = id === 'drive' ? v : id === 'spin' ? v : Number(v);
+    },
+    update(dt) {
+      const v = 130 / 60 * Math.PI * 62;   // mm/s
+      const [l, r] = { stop: [0, 0], fwd: [1, 1], back: [-1, -1], left: [-1, 1], right: [1, -1] }[st.drive];
+      st.dl += l * v * dt; st.dr += r * v * dt;
+      e.setTracks(-st.dl, -st.dr);
+      if (st.drive === 'left' || st.drive === 'right') { st.yaw += (st.drive === 'left' ? 1 : -1) * dt * 0.8; e.root.rotation.y = st.yaw; }
+      const target = st.spin ? 400 : 0;
+      st.rpm += Math.sign(target - st.rpm) * Math.min(Math.abs(target - st.rpm), dt * 300);
+      e.spinner.rotation.y -= st.rpm / 60 * Math.PI * 2 * dt;
+      let w = st.wedge;
+      if (demo > 0) { demo -= dt; w = demo > 2 ? (3 - demo) * 60 : demo > 1 ? 60 : demo * 60; if (demo <= 0) st.spin = false; }
+      e.setWedge(w);
+      for (const [no, g] of Object.entries(e.groups)) {
+        const d = BB_EXPLODE[no] || [0, 0, 0];
+        g.position.set(d[0] * st.explode, d[1] * st.explode, d[2] * st.explode);
+        g.visible = !st.hidden[no];
+      }
+      panel.ui.readout('parts', `${e.count}개 (볼트 · 너트 포함 ${BB_TOTAL}개)`);
+      panel.ui.readout('track', st.drive === 'stop' ? '정지' : `${(v / 1000).toFixed(2)} m/s · ${{ fwd: '전진', back: '후진', left: '왼쪽 회전', right: '오른쪽 회전' }[st.drive]}`);
+      panel.ui.readout('spin', `${st.rpm.toFixed(0)} rpm · 날 끝 ${(st.rpm / 60 * Math.PI * 0.084).toFixed(2)} m/s`);
+      panel.ui.readout('wedge', `${w.toFixed(0)}°${demo > 0 ? ' (공격 데모)' : ''}`);
+    },
+  };
+}
+
 async function select(id) {
+  if (id === 'battlebot') {
+    if (current?.id === 'battlebot') return;
+    const token = ++loadToken;
+    const loading = document.getElementById('loading');
+    loading.style.display = 'block';
+    nav.querySelectorAll('a').forEach((a) => a.classList.toggle('on', a.dataset.id === 'battlebot'));
+    const e = bot ?? await buildBattlebot(loadPart, (k) => { loading.textContent = `부품 불러오는 중… ${Math.round(k * 100)}%`; });
+    loading.textContent = '불러오는 중…';
+    if (token !== loadToken) return;
+    bot = e;
+    if (current) { current.fn?.dispose?.(); view.scene.remove(current.root); }
+    overlay.clear();
+    picks.length = 0;
+    view.controls.zoomToCursor = true;
+    view.scene.add(e.root);
+    e.root.updateMatrixWorld(true);
+    const box = partBounds(e.root);
+    view.frame(box, { dir: [-0.9, 0.7, -1], fit: 1.25, minDist: 20 });
+    const size = box.getSize(new THREE.Vector3());
+    panel.showSpec({
+      name: '배틀로봇 썬더 웨지 (설계도면 조립)', url: 'https://github.com/popkn/3d-test/blob/로보로보-3d-test/battlebot/BLUEPRINT.md',
+      size: { x: Math.round(size.x), z: Math.round(size.z), y: Math.round(size.y), estimated: false, note: 'battlebot/BLUEPRINT.md 도면 좌표대로 이 저장소의 부품 모델을 놓아 조립했습니다. 볼트 · 너트 · 케이블은 생략.' },
+      function: '무한궤도로 달리고, 서보 웨지로 상대를 들어 올려 수평 스피너(배틀무기 U + V 십자 날)로 친다. 궤도 마디는 경로를 따라 실제로 돈다.',
+      specs: Object.entries(BB_SHEETS).map(([no, t]) => [`도면 ${no}`, t]),
+      ports: [],
+    });
+    let fn = null;
+    panel.reset((cid, v) => fn?.onControl?.(cid, v));
+    fn = botFunction(e);
+    current = { id: 'battlebot', root: e.root, fn: { ...fn, dispose() { e.root.rotation.y = 0; } } };
+    loading.style.display = 'none';
+    return;
+  }
   if (id === 'eagle') {
     if (current?.id === 'eagle') return;
     const token = ++loadToken;
@@ -222,11 +302,12 @@ tipEl.className = 'tag hover-tip';
 tipEl.style.cssText = 'position:absolute;pointer-events:none;opacity:0;z-index:5';
 stage.appendChild(tipEl);
 view.renderer.domElement.addEventListener('pointermove', (e) => {
-  if (current?.id !== 'eagle' || !eagle) { tipEl.style.opacity = 0; return; }
+  const asm = current?.id === 'eagle' ? eagle : current?.id === 'battlebot' ? bot : null;
+  if (!asm) { tipEl.style.opacity = 0; return; }
   const r = view.renderer.domElement.getBoundingClientRect();
   const v = new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
   const rc = new THREE.Raycaster(); rc.setFromCamera(v, view.camera);
-  const hit = rc.intersectObject(eagle.root, true).find((h) => h.object.visible);
+  const hit = rc.intersectObject(asm.root, true).find((h) => h.object.visible);
   let o = hit?.object; while (o && !o.userData?.id) o = o.parent;
   if (!o) { tipEl.style.opacity = 0; return; }
   tipEl.innerHTML = `${o.userData.name}<small>${o.userData.id} · 도면 ${o.userData.sheet}</small>`;
