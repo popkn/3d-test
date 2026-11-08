@@ -7,6 +7,8 @@ import { buildEagle, EXPLODE, WING_SPREAD } from './eagle/assemble.js';
 import { SHEETS, BOM_TOTAL } from './eagle/assembly.js';
 import { buildBattlebot, EXPLODE as BB_EXPLODE } from './battlebot/assemble.js';
 import { SHEETS as BB_SHEETS, BOM_TOTAL as BB_TOTAL } from './battlebot/assembly.js';
+import { buildTrain, SPEED as TRAIN_SPEED } from './train/assemble.js';
+import { SHEETS as TR_SHEETS, BOM_TOTAL as TR_TOTAL } from './train/assembly.js';
 
 // 로보로보 부품 뷰어: 왼쪽 목록에서 부품을 고르면 3D 모양과 기능(조작 패널)을 불러온다.
 const stage = document.getElementById('stage');
@@ -18,7 +20,7 @@ const opts = { labels: true, dims: true, spin: false };
 
 // 목록
 const nav = document.getElementById('parts');
-nav.innerHTML = `<a href="#eagle" data-id="eagle" class="all"><b>🦅 독수리 조립 (설계도면)</b><small>부품으로 조립한 독수리 · 날갯짓 · 분해 보기</small></a><a href="#battlebot" data-id="battlebot" class="all"><b>⚔ 배틀로봇 썬더 웨지</b><small>무한궤도 · 스피너 · 들어올림 웨지</small></a><a href="#all" data-id="all" class="all"><b>▦ 전체 펼쳐보기</b><small>${catalog.length}개 부품 · 실제 크기로 한 화면에</small></a>` + categories.map(([cat, title]) => `
+nav.innerHTML = `<a href="#eagle" data-id="eagle" class="all"><b>🦅 독수리 조립 (설계도면)</b><small>부품으로 조립한 독수리 · 날갯짓 · 분해 보기</small></a><a href="#battlebot" data-id="battlebot" class="all"><b>⚔ 배틀로봇 썬더 웨지</b><small>무한궤도 · 스피너 · 들어올림 웨지</small></a><a href="#train" data-id="train" class="all"><b>🚂 협동 기차 하나로 열차</b><small>3칸 · 칸마다 CPU · 3명이 따로 조종</small></a><a href="#all" data-id="all" class="all"><b>▦ 전체 펼쳐보기</b><small>${catalog.length}개 부품 · 실제 크기로 한 화면에</small></a>` + categories.map(([cat, title]) => `
   <h3>${title}</h3>
   ${catalog.filter((p) => p.category === cat).map((p) => `
     <a href="#${p.id}" data-id="${p.id}"><b>${p.name}</b><small>${p.size.x} × ${p.size.z} × ${p.size.y} mm${p.size.estimated ? ' · 추정' : ''}</small></a>`).join('')}
@@ -158,7 +160,86 @@ function botFunction(e) {
   };
 }
 
+// 협동 기차: 칸마다 따로 조종 → 같은 방향이면 잘 달리고, 엇갈리면 연결봉으로 끌고 밀며 이상하게 움직인다
+let train = null;
+function trainFunction(e) {
+  const NAMES3 = ['앞칸 (조종자 A)', '중간칸 (조종자 B)', '마지막칸 (조종자 C)'];
+  const OPTS = [['stop', '정지'], ['fwd', '전진'], ['back', '후진'], ['left', '왼쪽'], ['right', '오른쪽']];
+  const st = { cmd: ['stop', 'stop', 'stop'], speed: 1, body: true, follow: true };
+  panel.ui.controls([
+    ...NAMES3.map((n, i) => ({ type: 'select', id: 'c' + i, label: n, options: OPTS, value: 'stop' })),
+    { type: 'button', id: 'same', label: '셋 다 전진 (같은 방향)' },
+    { type: 'button', id: 'mixed', label: '엇갈림 예: 앞 왼쪽 · 가운데 후진 · 뒤 오른쪽' },
+    { type: 'slider', id: 'speed', label: '속도', min: 0.2, max: 1, step: 0.05, value: 1 },
+    { type: 'toggle', id: 'body', label: '차체 보이기 (끄면 차대 · CPU가 보임)', value: true },
+    { type: 'toggle', id: 'follow', label: '카메라가 열차를 따라감', value: true },
+    { type: 'button', id: 'reset', label: '처음 자리로' },
+  ]);
+  panel.ui.readouts([['team', '세 사람'], ['bend', '연결봉 꺾임'], ['speed', '속도'], ['parts', '놓인 부품']]);
+  const setSel = (i, v) => { const el = document.querySelectorAll('.p-controls select')[i]; if (el) el.value = v; };
+  const center = new THREE.Vector3();
+  return {
+    onControl(id, v) {
+      if (id[0] === 'c' && id.length === 2) st.cmd[+id[1]] = v;
+      else if (id === 'same') { st.cmd = ['fwd', 'fwd', 'fwd']; st.cmd.forEach((c, i) => setSel(i, c)); }
+      else if (id === 'mixed') { st.cmd = ['left', 'back', 'right']; st.cmd.forEach((c, i) => setSel(i, c)); }
+      else if (id === 'reset') { e.reset(); st.cmd = ['stop', 'stop', 'stop']; st.cmd.forEach((c, i) => setSel(i, c)); }
+      else if (id === 'speed') st.speed = Number(v);
+      else st[id] = v;
+    },
+    update(dt) {
+      const bend = e.step(Math.min(dt, 0.05), st.cmd, st.speed);
+      e.cars.forEach((c) => c.body.forEach((h) => { h.visible = st.body; }));
+      if (st.follow) {
+        center.set((e.cars[0].x + e.cars[2].x) / 2, 60, (e.cars[0].z + e.cars[2].z) / 2);
+        const d = center.clone().sub(view.controls.target);
+        view.controls.target.add(d); view.camera.position.add(d);
+      }
+      const moving = st.cmd.filter((c) => c !== 'stop');
+      const same = st.cmd.every((c) => c === st.cmd[0]);
+      panel.ui.readout('team', same ? (st.cmd[0] === 'stop' ? '모두 정지' : '같은 방향 ✔ 잘 달림') : '엇갈림 ✘ 덜컹 · 비틀 · 접힘');
+      panel.ui.readout('bend', `앞-중간 ${bend[0].toFixed(0)}° · 중간-뒤 ${bend[1].toFixed(0)}°`);
+      panel.ui.readout('speed', moving.length ? `칸마다 최대 ${(TRAIN_SPEED * st.speed / 1000).toFixed(2)} m/s` : '정지');
+      panel.ui.readout('parts', `${e.count}개 (볼트 · 너트 포함 ${TR_TOTAL}개)`);
+    },
+  };
+}
+
 async function select(id) {
+  if (id === 'train') {
+    if (current?.id === 'train') return;
+    const token = ++loadToken;
+    const loading = document.getElementById('loading');
+    loading.style.display = 'block';
+    nav.querySelectorAll('a').forEach((a) => a.classList.toggle('on', a.dataset.id === 'train'));
+    const e = train ?? await buildTrain(loadPart, (k) => { loading.textContent = `부품 불러오는 중… ${Math.round(k * 100)}%`; });
+    loading.textContent = '불러오는 중…';
+    if (token !== loadToken) return;
+    train = e;
+    if (current) { current.fn?.dispose?.(); view.scene.remove(current.root); }
+    overlay.clear();
+    picks.length = 0;
+    view.controls.zoomToCursor = true;
+    e.reset();
+    view.scene.add(e.root);
+    e.root.updateMatrixWorld(true);
+    const box = partBounds(e.root);
+    view.frame(box, { dir: [-1, 0.55, -0.7], fit: 1.0, minDist: 20 });
+    const size = box.getSize(new THREE.Vector3());
+    panel.showSpec({
+      name: '협동 기차 하나로 열차 (설계도면 조립)', url: 'https://github.com/popkn/3d-test/blob/로보로보-3d-test/train/BLUEPRINT.md',
+      size: { x: Math.round(size.x), z: Math.round(size.z), y: Math.round(size.y), estimated: false, note: 'train/BLUEPRINT.md 도면 좌표대로 부품 모델을 놓아 조립. 볼트 · 너트 · 케이블은 생략.' },
+      function: '칸마다 CPU · 블루투스 · 모터가 따로 있어 세 사람이 한 칸씩 조종한다. 같은 방향이면 잘 달리고, 엇갈리면 연결봉으로 서로 끌고 밀며 이상하게 움직인다 (멈추지 않음). 아래에서 칸마다 방향을 골라 보세요.',
+      specs: Object.entries(TR_SHEETS).map(([no, t]) => [`도면 ${no}`, t]),
+      ports: [],
+    });
+    let fn = null;
+    panel.reset((cid, v) => fn?.onControl?.(cid, v));
+    fn = trainFunction(e);
+    current = { id: 'train', root: e.root, fn: { ...fn, dispose() {} } };
+    loading.style.display = 'none';
+    return;
+  }
   if (id === 'battlebot') {
     if (current?.id === 'battlebot') return;
     const token = ++loadToken;
@@ -302,7 +383,7 @@ tipEl.className = 'tag hover-tip';
 tipEl.style.cssText = 'position:absolute;pointer-events:none;opacity:0;z-index:5';
 stage.appendChild(tipEl);
 view.renderer.domElement.addEventListener('pointermove', (e) => {
-  const asm = current?.id === 'eagle' ? eagle : current?.id === 'battlebot' ? bot : null;
+  const asm = current?.id === 'eagle' ? eagle : current?.id === 'battlebot' ? bot : current?.id === 'train' ? train : null;
   if (!asm) { tipEl.style.opacity = 0; return; }
   const r = view.renderer.domElement.getBoundingClientRect();
   const v = new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);

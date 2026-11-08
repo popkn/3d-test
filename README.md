@@ -116,3 +116,9 @@ src/
 - 설계도면: `battlebot/BLUEPRINT.md`, `battlebot/blueprint.html` (도면 9장, 조사 내용 포함)
 - 3D 조립: 뷰어 목록 **⚔ 배틀로봇 썬더 웨지** (`#battlebot`). 궤도 마디가 경로를 따라 돌고, 스피너 회전, 서보 크랭크 + 링크로 웨지가 들린다. 분해 보기 · 공격 데모.
 - 도면을 고치면: `python3 tools/battlebot_blueprint.py` → `node tools/build-all.mjs`
+
+## 협동 기차 하나로 열차 (설계도면 → 3D)
+
+- 설계도면: `train/BLUEPRINT.md`, `train/blueprint.html`
+- 3D: 뷰어 목록 **🚂 협동 기차 하나로 열차** (`#train`). 칸마다 방향(전진 · 후진 · 왼쪽 · 오른쪽 · 정지)을 따로 고르면, 같은 방향이면 함께 달리고 엇갈리면 연결봉으로 끌고 밀며 덜컹 · 비틀 · 접힘. 차체 숨기기 · 카메라 따라가기.
+- 도면을 고치면: `python3 tools/train_blueprint.py` → `node tools/build-all.mjs`

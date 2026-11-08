@@ -7903,7 +7903,7 @@ function create79(model, ui) {
     { type: "toggle", id: "sweep", label: "\uC655\uBCF5 \uB3D9\uC791 (0\xB0 \u2194 180\xB0)", value: false }
   ]);
   ui.readouts([["angle", "\uD604\uC7AC \uAC01\uB3C4"], ["state", "\uC0C1\uD0DC"], ["spec", "\uC131\uB2A5"]]);
-  const SPEED = 360;
+  const SPEED2 = 360;
   return {
     onControl(id, v) {
       st[id] = v;
@@ -7913,7 +7913,7 @@ function create79(model, ui) {
       if (st.sweep) st.target = Math.sin(st.t * 1.2) > 0 ? 180 : 0;
       if (st.power) {
         const d = st.target - st.angle;
-        st.angle += Math.sign(d) * Math.min(Math.abs(d), SPEED * dt);
+        st.angle += Math.sign(d) * Math.min(Math.abs(d), SPEED2 * dt);
       }
       const rad = THREE_DEG * (st.angle - 90);
       model.handles.arm.rotation.y = -rad;
@@ -8235,7 +8235,7 @@ var init_function91 = __esm({
 });
 
 // src/main.js
-import * as THREE103 from "three";
+import * as THREE104 from "three";
 
 // src/catalog/parts/buzzer-board-s/spec.js
 var spec_default = {
@@ -10326,7 +10326,7 @@ function makeHolder(a, mods) {
     const box2 = partBounds(inner);
     const size = box2.getSize(new THREE101.Vector3()), c = box2.getCenter(new THREE101.Vector3());
     model.object3d.position.sub(c);
-    if (a.euler) holder.rotation.set(...a.euler.map((d) => THREE101.MathUtils.degToRad(d)), "XYZ");
+    if (a.euler) holder.rotation.set(...a.euler.map((d) => THREE101.MathUtils.degToRad(d)), a.eorder || "XYZ");
     else holder.quaternion.setFromRotationMatrix(chooseRotation([size.x, size.y, size.z], a.z, a));
     if (a.flip) holder.quaternion.premultiply(new THREE101.Quaternion().setFromAxisAngle(axisVec("xyz".indexOf(a.flip)), Math.PI));
     holder.position.set(...a.c);
@@ -10493,6 +10493,122 @@ async function buildBattlebot(loadPart2, onProgress) {
 }
 var EXPLODE2 = { "01": [0, -40, 0], "02": [0, 0, 0], "03": [0, 60, -40], "04": [0, -10, -70], "05": [0, 80, 20], "06": [0, 50, 0] };
 
+// src/train/assemble.js
+import * as THREE103 from "three";
+
+// src/train/assembly.js
+var SHEETS3 = { "01": "\uACF5\uD1B5 \uCC28\uB300 (\uBC14\uD034 \xB7 \uBAA8\uD130 \xB7 \uC804\uC6D0 \xB7 CPU \xB7 \uBE14\uB8E8\uD22C\uC2A4)", "02": "\uC55E\uCE78 \uAE30\uAD00\uCC28 (\uC721\uAC01 \uBCF4\uC77C\uB7EC \xB7 \uAD74\uB69D \xB7 \uBC15\uACF5 \uC6B4\uC804\uC2E4)", "03": "\uC911\uAC04\uCE78 \uAC1D\uCC28 (3\uB2E8 \uBCBD \xB7 \uCC44\uAD11\uCC3D \uC9C0\uBD95 \xB7 \uBCC4\uBB34\uB2AC \uB760)", "04": "\uB9C8\uC9C0\uB9C9\uCE78 \uD654\uBB3C \xB7 \uAF2C\uB9AC\uCE78 (\uC9D0\uCE78 \xB7 \uBE0C\uB808\uC774\uD06C \uD720 \xB7 \uC0AC\uB2E4\uB9AC)", "05": "\uC5F0\uACB0\uAE30 (\uC5F0\uACB0\uBD09 \xB7 \uD68C\uC804 \uD540)" };
+var BOM_TOTAL3 = 968;
+var assembly_default3 = [{ "s": "01", "id": "frame-big-main", "n": "\uC55E\uCE78 \uBC14\uB2E5\uD310 (\uBE45 \uBA54\uC778 PCB)", "c": [0, 14.2, -200], "z": [118, 1.6, 158] }, { "s": "01", "id": "motor-frame-3x3", "n": "\uAD6C\uB3D9 \uBAA8\uD130 \uBC1B\uCE68 (\uBAA8\uD130\uD504\uB808\uC784 3\xD73)", "c": [-42, 25, -152], "z": [8, 20, 8] }, { "s": "01", "id": "motor-frame-3x3", "n": "\uAD6C\uB3D9 \uBAA8\uD130 \uBC1B\uCE68 (\uBAA8\uD130\uD504\uB808\uC784 3\xD73)", "c": [-42, 25, -128], "z": [8, 20, 8] }, { "s": "01", "id": "dc-motor-130-rs", "n": "\uAD6C\uB3D9 \uBAA8\uD130 (DC 130rpm)", "c": [-42.5, 25, -140], "z": [33, 20, 40], "up": [-1, 0, 0], "xdir": [0, 0, -1] }, { "s": "01", "id": "wheel-50-v2", "n": "\uB4A4 \uAD6C\uB3D9 \uBC14\uD034 (\uD720 \xD850[V2])", "c": [-68, 25, -130], "z": [14, 48, 48] }, { "s": "01", "id": "tire-50", "n": "\uB4A4 \uBC14\uD034 \uD0C0\uC774\uC5B4 (\xD850)", "c": [-68, 25, -130], "z": [8.5, 50, 50] }, { "s": "01", "id": "shaft-75", "n": "\uC55E \uBC14\uD034 \uCD95 (75mm)", "c": [-42.5, 25, -260], "z": [75, 3, 3] }, { "s": "01", "id": "axle-guide", "n": "\uC55E \uBC14\uD034 \uCD95\uAC00\uC774\uB4DC", "c": [-25, 20, -260], "z": [28, 10, 18] }, { "s": "01", "id": "axle-guide", "n": "\uC55E \uBC14\uD034 \uCD95\uAC00\uC774\uB4DC", "c": [-45, 20, -260], "z": [28, 10, 18] }, { "s": "01", "id": "wheel-50-v2", "n": "\uC55E \uBC14\uD034 (\uD720 \xD850[V2], \uD5DB\uB3CE)", "c": [-68, 25, -260], "z": [14, 48, 48] }, { "s": "01", "id": "tire-50", "n": "\uC55E \uBC14\uD034 \uD0C0\uC774\uC5B4 (\xD850)", "c": [-68, 25, -260], "z": [8.5, 50, 50] }, { "s": "01", "id": "motor-frame-3x3", "n": "\uAD6C\uB3D9 \uBAA8\uD130 \uBC1B\uCE68 (\uBAA8\uD130\uD504\uB808\uC784 3\xD73)", "c": [42, 25, -152], "z": [8, 20, 8] }, { "s": "01", "id": "motor-frame-3x3", "n": "\uAD6C\uB3D9 \uBAA8\uD130 \uBC1B\uCE68 (\uBAA8\uD130\uD504\uB808\uC784 3\xD73)", "c": [42, 25, -128], "z": [8, 20, 8] }, { "s": "01", "id": "dc-motor-130-rs", "n": "\uAD6C\uB3D9 \uBAA8\uD130 (DC 130rpm)", "c": [42.5, 25, -140], "z": [33, 20, 40], "up": [1, 0, 0], "xdir": [0, 0, -1] }, { "s": "01", "id": "wheel-50-v2", "n": "\uB4A4 \uAD6C\uB3D9 \uBC14\uD034 (\uD720 \xD850[V2])", "c": [68, 25, -130], "z": [14, 48, 48] }, { "s": "01", "id": "tire-50", "n": "\uB4A4 \uBC14\uD034 \uD0C0\uC774\uC5B4 (\xD850)", "c": [68, 25, -130], "z": [8.5, 50, 50] }, { "s": "01", "id": "shaft-75", "n": "\uC55E \uBC14\uD034 \uCD95 (75mm)", "c": [42.5, 25, -260], "z": [75, 3, 3] }, { "s": "01", "id": "axle-guide", "n": "\uC55E \uBC14\uD034 \uCD95\uAC00\uC774\uB4DC", "c": [25, 20, -260], "z": [28, 10, 18] }, { "s": "01", "id": "axle-guide", "n": "\uC55E \uBC14\uD034 \uCD95\uAC00\uC774\uB4DC", "c": [45, 20, -260], "z": [28, 10, 18] }, { "s": "01", "id": "wheel-50-v2", "n": "\uC55E \uBC14\uD034 (\uD720 \xD850[V2], \uD5DB\uB3CE)", "c": [68, 25, -260], "z": [14, 48, 48] }, { "s": "01", "id": "tire-50", "n": "\uC55E \uBC14\uD034 \uD0C0\uC774\uC5B4 (\xD850)", "c": [68, 25, -260], "z": [8.5, 50, 50] }, { "s": "01", "id": "battery-case-4aa", "n": "\uC55E\uCE78 \uBC30\uD130\uB9AC (AA 4\uAC1C, 6V)", "c": [0, 24.8, -210], "z": [74, 18, 62] }, { "s": "01", "id": "support-spacer", "n": "\uC704\uCE35 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 30)", "c": [-35, 30.8, -252], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "01", "id": "support-spacer", "n": "\uC704\uCE35 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 30)", "c": [-35, 30.8, -148], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "01", "id": "support-spacer", "n": "\uC704\uCE35 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 30)", "c": [35, 30.8, -252], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "01", "id": "support-spacer", "n": "\uC704\uCE35 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 30)", "c": [35, 30.8, -148], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "01", "id": "frame-main-pcb", "n": "\uC55E\uCE78 \uC704\uCE35 \uD310 (\uBA54\uC778 PCB)", "c": [0, 45.8, -200], "z": [78, 1.6, 118] }, { "s": "01", "id": "support-spacer", "n": "CPU \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 10)", "c": [-25, 51.6, -206], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "01", "id": "support-spacer", "n": "CPU \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 10)", "c": [-25, 51.6, -160], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "01", "id": "support-spacer", "n": "CPU \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 10)", "c": [25, 51.6, -206], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "01", "id": "support-spacer", "n": "CPU \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 10)", "c": [25, 51.6, -160], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "01", "id": "cpu-board-8m", "n": "\uC55E\uCE78 CPU \uBCF4\uB4DC (\uCE78\uB9C8\uB2E4 \uD558\uB098)", "c": [0, 63.6, -183], "z": [61, 14, 83] }, { "s": "01", "id": "bt-module", "n": "\uC55E\uCE78 \uBE14\uB8E8\uD22C\uC2A4 \uBAA8\uB4C8 (\uC870\uC885\uC790 1\uBA85)", "c": [0, 51.1, -244], "z": [48, 9, 28] }, { "s": "01", "id": "frame-big-main", "n": "\uC911\uAC04\uCE78 \uBC14\uB2E5\uD310 (\uBE45 \uBA54\uC778 PCB)", "c": [0, 14.2, 0], "z": [118, 1.6, 158] }, { "s": "01", "id": "motor-frame-3x3", "n": "\uAD6C\uB3D9 \uBAA8\uD130 \uBC1B\uCE68 (\uBAA8\uD130\uD504\uB808\uC784 3\xD73)", "c": [-42, 25, 48], "z": [8, 20, 8] }, { "s": "01", "id": "motor-frame-3x3", "n": "\uAD6C\uB3D9 \uBAA8\uD130 \uBC1B\uCE68 (\uBAA8\uD130\uD504\uB808\uC784 3\xD73)", "c": [-42, 25, 72], "z": [8, 20, 8] }, { "s": "01", "id": "dc-motor-130-rs", "n": "\uAD6C\uB3D9 \uBAA8\uD130 (DC 130rpm)", "c": [-42.5, 25, 60], "z": [33, 20, 40], "up": [-1, 0, 0], "xdir": [0, 0, -1] }, { "s": "01", "id": "wheel-50-v2", "n": "\uB4A4 \uAD6C\uB3D9 \uBC14\uD034 (\uD720 \xD850[V2])", "c": [-68, 25, 70], "z": [14, 48, 48] }, { "s": "01", "id": "tire-50", "n": "\uB4A4 \uBC14\uD034 \uD0C0\uC774\uC5B4 (\xD850)", "c": [-68, 25, 70], "z": [8.5, 50, 50] }, { "s": "01", "id": "shaft-75", "n": "\uC55E \uBC14\uD034 \uCD95 (75mm)", "c": [-42.5, 25, -60], "z": [75, 3, 3] }, { "s": "01", "id": "axle-guide", "n": "\uC55E \uBC14\uD034 \uCD95\uAC00\uC774\uB4DC", "c": [-25, 20, -60], "z": [28, 10, 18] }, { "s": "01", "id": "axle-guide", "n": "\uC55E \uBC14\uD034 \uCD95\uAC00\uC774\uB4DC", "c": [-45, 20, -60], "z": [28, 10, 18] }, { "s": "01", "id": "wheel-50-v2", "n": "\uC55E \uBC14\uD034 (\uD720 \xD850[V2], \uD5DB\uB3CE)", "c": [-68, 25, -60], "z": [14, 48, 48] }, { "s": "01", "id": "tire-50", "n": "\uC55E \uBC14\uD034 \uD0C0\uC774\uC5B4 (\xD850)", "c": [-68, 25, -60], "z": [8.5, 50, 50] }, { "s": "01", "id": "motor-frame-3x3", "n": "\uAD6C\uB3D9 \uBAA8\uD130 \uBC1B\uCE68 (\uBAA8\uD130\uD504\uB808\uC784 3\xD73)", "c": [42, 25, 48], "z": [8, 20, 8] }, { "s": "01", "id": "motor-frame-3x3", "n": "\uAD6C\uB3D9 \uBAA8\uD130 \uBC1B\uCE68 (\uBAA8\uD130\uD504\uB808\uC784 3\xD73)", "c": [42, 25, 72], "z": [8, 20, 8] }, { "s": "01", "id": "dc-motor-130-rs", "n": "\uAD6C\uB3D9 \uBAA8\uD130 (DC 130rpm)", "c": [42.5, 25, 60], "z": [33, 20, 40], "up": [1, 0, 0], "xdir": [0, 0, -1] }, { "s": "01", "id": "wheel-50-v2", "n": "\uB4A4 \uAD6C\uB3D9 \uBC14\uD034 (\uD720 \xD850[V2])", "c": [68, 25, 70], "z": [14, 48, 48] }, { "s": "01", "id": "tire-50", "n": "\uB4A4 \uBC14\uD034 \uD0C0\uC774\uC5B4 (\xD850)", "c": [68, 25, 70], "z": [8.5, 50, 50] }, { "s": "01", "id": "shaft-75", "n": "\uC55E \uBC14\uD034 \uCD95 (75mm)", "c": [42.5, 25, -60], "z": [75, 3, 3] }, { "s": "01", "id": "axle-guide", "n": "\uC55E \uBC14\uD034 \uCD95\uAC00\uC774\uB4DC", "c": [25, 20, -60], "z": [28, 10, 18] }, { "s": "01", "id": "axle-guide", "n": "\uC55E \uBC14\uD034 \uCD95\uAC00\uC774\uB4DC", "c": [45, 20, -60], "z": [28, 10, 18] }, { "s": "01", "id": "wheel-50-v2", "n": "\uC55E \uBC14\uD034 (\uD720 \xD850[V2], \uD5DB\uB3CE)", "c": [68, 25, -60], "z": [14, 48, 48] }, { "s": "01", "id": "tire-50", "n": "\uC55E \uBC14\uD034 \uD0C0\uC774\uC5B4 (\xD850)", "c": [68, 25, -60], "z": [8.5, 50, 50] }, { "s": "01", "id": "battery-case-4aa", "n": "\uC911\uAC04\uCE78 \uBC30\uD130\uB9AC (AA 4\uAC1C, 6V)", "c": [0, 24.8, -10], "z": [74, 18, 62] }, { "s": "01", "id": "support-spacer", "n": "\uC704\uCE35 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 30)", "c": [-35, 30.8, -52], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "01", "id": "support-spacer", "n": "\uC704\uCE35 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 30)", "c": [-35, 30.8, 52], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "01", "id": "support-spacer", "n": "\uC704\uCE35 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 30)", "c": [35, 30.8, -52], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "01", "id": "support-spacer", "n": "\uC704\uCE35 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 30)", "c": [35, 30.8, 52], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "01", "id": "frame-main-pcb", "n": "\uC911\uAC04\uCE78 \uC704\uCE35 \uD310 (\uBA54\uC778 PCB)", "c": [0, 45.8, 0], "z": [78, 1.6, 118] }, { "s": "01", "id": "support-spacer", "n": "CPU \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 10)", "c": [-25, 51.6, -6], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "01", "id": "support-spacer", "n": "CPU \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 10)", "c": [-25, 51.6, 40], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "01", "id": "support-spacer", "n": "CPU \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 10)", "c": [25, 51.6, -6], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "01", "id": "support-spacer", "n": "CPU \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 10)", "c": [25, 51.6, 40], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "01", "id": "cpu-board-8m", "n": "\uC911\uAC04\uCE78 CPU \uBCF4\uB4DC (\uCE78\uB9C8\uB2E4 \uD558\uB098)", "c": [0, 63.6, 17], "z": [61, 14, 83] }, { "s": "01", "id": "bt-module", "n": "\uC911\uAC04\uCE78 \uBE14\uB8E8\uD22C\uC2A4 \uBAA8\uB4C8 (\uC870\uC885\uC790 1\uBA85)", "c": [0, 51.1, -44], "z": [48, 9, 28] }, { "s": "01", "id": "frame-big-main", "n": "\uB9C8\uC9C0\uB9C9\uCE78 \uBC14\uB2E5\uD310 (\uBE45 \uBA54\uC778 PCB)", "c": [0, 14.2, 200], "z": [118, 1.6, 158] }, { "s": "01", "id": "motor-frame-3x3", "n": "\uAD6C\uB3D9 \uBAA8\uD130 \uBC1B\uCE68 (\uBAA8\uD130\uD504\uB808\uC784 3\xD73)", "c": [-42, 25, 248], "z": [8, 20, 8] }, { "s": "01", "id": "motor-frame-3x3", "n": "\uAD6C\uB3D9 \uBAA8\uD130 \uBC1B\uCE68 (\uBAA8\uD130\uD504\uB808\uC784 3\xD73)", "c": [-42, 25, 272], "z": [8, 20, 8] }, { "s": "01", "id": "dc-motor-130-rs", "n": "\uAD6C\uB3D9 \uBAA8\uD130 (DC 130rpm)", "c": [-42.5, 25, 260], "z": [33, 20, 40], "up": [-1, 0, 0], "xdir": [0, 0, -1] }, { "s": "01", "id": "wheel-50-v2", "n": "\uB4A4 \uAD6C\uB3D9 \uBC14\uD034 (\uD720 \xD850[V2])", "c": [-68, 25, 270], "z": [14, 48, 48] }, { "s": "01", "id": "tire-50", "n": "\uB4A4 \uBC14\uD034 \uD0C0\uC774\uC5B4 (\xD850)", "c": [-68, 25, 270], "z": [8.5, 50, 50] }, { "s": "01", "id": "shaft-75", "n": "\uC55E \uBC14\uD034 \uCD95 (75mm)", "c": [-42.5, 25, 140], "z": [75, 3, 3] }, { "s": "01", "id": "axle-guide", "n": "\uC55E \uBC14\uD034 \uCD95\uAC00\uC774\uB4DC", "c": [-25, 20, 140], "z": [28, 10, 18] }, { "s": "01", "id": "axle-guide", "n": "\uC55E \uBC14\uD034 \uCD95\uAC00\uC774\uB4DC", "c": [-45, 20, 140], "z": [28, 10, 18] }, { "s": "01", "id": "wheel-50-v2", "n": "\uC55E \uBC14\uD034 (\uD720 \xD850[V2], \uD5DB\uB3CE)", "c": [-68, 25, 140], "z": [14, 48, 48] }, { "s": "01", "id": "tire-50", "n": "\uC55E \uBC14\uD034 \uD0C0\uC774\uC5B4 (\xD850)", "c": [-68, 25, 140], "z": [8.5, 50, 50] }, { "s": "01", "id": "motor-frame-3x3", "n": "\uAD6C\uB3D9 \uBAA8\uD130 \uBC1B\uCE68 (\uBAA8\uD130\uD504\uB808\uC784 3\xD73)", "c": [42, 25, 248], "z": [8, 20, 8] }, { "s": "01", "id": "motor-frame-3x3", "n": "\uAD6C\uB3D9 \uBAA8\uD130 \uBC1B\uCE68 (\uBAA8\uD130\uD504\uB808\uC784 3\xD73)", "c": [42, 25, 272], "z": [8, 20, 8] }, { "s": "01", "id": "dc-motor-130-rs", "n": "\uAD6C\uB3D9 \uBAA8\uD130 (DC 130rpm)", "c": [42.5, 25, 260], "z": [33, 20, 40], "up": [1, 0, 0], "xdir": [0, 0, -1] }, { "s": "01", "id": "wheel-50-v2", "n": "\uB4A4 \uAD6C\uB3D9 \uBC14\uD034 (\uD720 \xD850[V2])", "c": [68, 25, 270], "z": [14, 48, 48] }, { "s": "01", "id": "tire-50", "n": "\uB4A4 \uBC14\uD034 \uD0C0\uC774\uC5B4 (\xD850)", "c": [68, 25, 270], "z": [8.5, 50, 50] }, { "s": "01", "id": "shaft-75", "n": "\uC55E \uBC14\uD034 \uCD95 (75mm)", "c": [42.5, 25, 140], "z": [75, 3, 3] }, { "s": "01", "id": "axle-guide", "n": "\uC55E \uBC14\uD034 \uCD95\uAC00\uC774\uB4DC", "c": [25, 20, 140], "z": [28, 10, 18] }, { "s": "01", "id": "axle-guide", "n": "\uC55E \uBC14\uD034 \uCD95\uAC00\uC774\uB4DC", "c": [45, 20, 140], "z": [28, 10, 18] }, { "s": "01", "id": "wheel-50-v2", "n": "\uC55E \uBC14\uD034 (\uD720 \xD850[V2], \uD5DB\uB3CE)", "c": [68, 25, 140], "z": [14, 48, 48] }, { "s": "01", "id": "tire-50", "n": "\uC55E \uBC14\uD034 \uD0C0\uC774\uC5B4 (\xD850)", "c": [68, 25, 140], "z": [8.5, 50, 50] }, { "s": "01", "id": "battery-case-4aa", "n": "\uB9C8\uC9C0\uB9C9\uCE78 \uBC30\uD130\uB9AC (AA 4\uAC1C, 6V)", "c": [0, 24.8, 190], "z": [74, 18, 62] }, { "s": "01", "id": "support-spacer", "n": "\uC704\uCE35 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 30)", "c": [-35, 30.8, 148], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "01", "id": "support-spacer", "n": "\uC704\uCE35 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 30)", "c": [-35, 30.8, 252], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "01", "id": "support-spacer", "n": "\uC704\uCE35 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 30)", "c": [35, 30.8, 148], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "01", "id": "support-spacer", "n": "\uC704\uCE35 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 30)", "c": [35, 30.8, 252], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "01", "id": "frame-main-pcb", "n": "\uB9C8\uC9C0\uB9C9\uCE78 \uC704\uCE35 \uD310 (\uBA54\uC778 PCB)", "c": [0, 45.8, 200], "z": [78, 1.6, 118] }, { "s": "01", "id": "support-spacer", "n": "CPU \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 10)", "c": [-25, 51.6, 194], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "01", "id": "support-spacer", "n": "CPU \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 10)", "c": [-25, 51.6, 240], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "01", "id": "support-spacer", "n": "CPU \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 10)", "c": [25, 51.6, 194], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "01", "id": "support-spacer", "n": "CPU \uBC1B\uCE68 (\uC11C\uD3EC\uD2B8 10)", "c": [25, 51.6, 240], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "01", "id": "cpu-board-8m", "n": "\uB9C8\uC9C0\uB9C9\uCE78 CPU \uBCF4\uB4DC (\uCE78\uB9C8\uB2E4 \uD558\uB098)", "c": [0, 63.6, 217], "z": [61, 14, 83] }, { "s": "01", "id": "bt-module", "n": "\uB9C8\uC9C0\uB9C9\uCE78 \uBE14\uB8E8\uD22C\uC2A4 \uBAA8\uB4C8 (\uC870\uC885\uC790 1\uBA85)", "c": [0, 51.1, 156], "z": [48, 9, 28] }, { "s": "02", "id": "support-spacer", "n": "\uBC1C\uD310 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 30)", "c": [-50, 30, -260], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "02", "id": "support-spacer", "n": "\uBC1C\uD310 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 30)", "c": [-50, 30, -200], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "02", "id": "support-spacer", "n": "\uBC1C\uD310 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 30)", "c": [-50, 30, -140], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "02", "id": "frame-m16-pcb", "n": "\uBC1C\uD310 (\uC91116 PCB)", "c": [-50, 45.8, -200], "z": [18, 1.6, 158] }, { "s": "02", "id": "battle-j", "n": "\uC67C \uBD88\uAF43 \uC2A4\uCEE4\uD2B8 (\uBC30\uD2C0\uBB34\uAE30 J)", "c": [-60.5, 30, -205], "z": [1.6, 28, 80] }, { "s": "02", "id": "support-spacer", "n": "\uBC1C\uD310 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 30)", "c": [50, 30, -260], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "02", "id": "support-spacer", "n": "\uBC1C\uD310 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 30)", "c": [50, 30, -200], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "02", "id": "support-spacer", "n": "\uBC1C\uD310 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 30)", "c": [50, 30, -140], "z": [6.4, 30, 6.4], "length": 30 }, { "s": "02", "id": "frame-m16-pcb", "n": "\uBC1C\uD310 (\uC91116 PCB)", "c": [50, 45.8, -200], "z": [18, 1.6, 158] }, { "s": "02", "id": "battle-i", "n": "\uC624\uB978 \uBD88\uAF43 \uC2A4\uCEE4\uD2B8 (\uBC30\uD2C0\uBB34\uAE30 I)", "c": [60.5, 30, -205], "z": [1.6, 28, 80] }, { "s": "02", "id": "support-spacer", "n": "\uBCF4\uC77C\uB7EC \uBC1B\uCE68 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 10)", "c": [-30, 51.6, -260], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "02", "id": "support-spacer", "n": "\uBCF4\uC77C\uB7EC \uBC1B\uCE68 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 10)", "c": [30, 51.6, -260], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "02", "id": "frame-mid-pcb", "n": "\uBCF4\uC77C\uB7EC \uBC1B\uCE68 (\uC911 PCB)", "c": [0, 57.4, -260], "z": [78, 1.6, 18] }, { "s": "02", "id": "support-spacer", "n": "\uBCF4\uC77C\uB7EC \uBC1B\uCE68 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 10)", "c": [-30, 51.6, -236], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "02", "id": "support-spacer", "n": "\uBCF4\uC77C\uB7EC \uBC1B\uCE68 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 10)", "c": [30, 51.6, -236], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "02", "id": "frame-mid-pcb", "n": "\uBCF4\uC77C\uB7EC \uBC1B\uCE68 (\uC911 PCB)", "c": [0, 57.4, -236], "z": [78, 1.6, 18] }, { "s": "02", "id": "frame-m6-pcb", "n": "\uC721\uAC01 \uBCF4\uC77C\uB7EC \uD310 (\uC9116 PCB)", "c": [13.51, 82.8, -248], "z": [10.39, 16.39, 58], "euler": [0, 90, -60], "eorder": "ZYX" }, { "s": "02", "id": "l-frame-120-2x2", "n": "\uBCF4\uC77C\uB7EC \uBAA8\uC11C\uB9AC (120\uB3C4 L\uC790 \xB7 \uD0ED)", "c": [9, 90.59, -248], "z": [8, 8, 10] }, { "s": "02", "id": "frame-m6-pcb", "n": "\uC721\uAC01 \uBCF4\uC77C\uB7EC \uD310 (\uC9116 PCB)", "c": [0, 90.6, -248], "z": [18, 1.6, 58], "euler": [0, 90, 0], "eorder": "ZYX" }, { "s": "02", "id": "l-frame-120-2x2", "n": "\uBCF4\uC77C\uB7EC \uBAA8\uC11C\uB9AC (120\uB3C4 L\uC790 \xB7 \uD0ED)", "c": [-9, 90.59, -248], "z": [8, 8, 10] }, { "s": "02", "id": "frame-m6-pcb", "n": "\uC721\uAC01 \uBCF4\uC77C\uB7EC \uD310 (\uC9116 PCB)", "c": [-13.51, 82.8, -248], "z": [10.39, 16.39, 58], "euler": [0, 90, 60], "eorder": "ZYX" }, { "s": "02", "id": "l-frame-120-2x2", "n": "\uBCF4\uC77C\uB7EC \uBAA8\uC11C\uB9AC (120\uB3C4 L\uC790 \xB7 \uD0ED)", "c": [-18, 75, -248], "z": [8, 8, 10] }, { "s": "02", "id": "frame-m6-pcb", "n": "\uC721\uAC01 \uBCF4\uC77C\uB7EC \uD310 (\uC9116 PCB)", "c": [-13.51, 67.2, -248], "z": [10.39, 16.39, 58], "euler": [0, 90, 120], "eorder": "ZYX" }, { "s": "02", "id": "l-frame-120-2x2", "n": "\uBCF4\uC77C\uB7EC \uBAA8\uC11C\uB9AC (120\uB3C4 L\uC790 \xB7 \uD0ED)", "c": [-9, 59.41, -248], "z": [8, 8, 10] }, { "s": "02", "id": "frame-m6-pcb", "n": "\uC721\uAC01 \uBCF4\uC77C\uB7EC \uD310 (\uC9116 PCB)", "c": [-0, 59.4, -248], "z": [18, 1.6, 58], "euler": [0, 90, 180], "eorder": "ZYX" }, { "s": "02", "id": "l-frame-120-2x2", "n": "\uBCF4\uC77C\uB7EC \uBAA8\uC11C\uB9AC (120\uB3C4 L\uC790 \xB7 \uD0ED)", "c": [9, 59.41, -248], "z": [8, 8, 10] }, { "s": "02", "id": "frame-m6-pcb", "n": "\uC721\uAC01 \uBCF4\uC77C\uB7EC \uD310 (\uC9116 PCB)", "c": [13.51, 67.2, -248], "z": [10.39, 16.39, 58], "euler": [0, 90, 240], "eorder": "ZYX" }, { "s": "02", "id": "l-frame-120-2x2", "n": "\uBCF4\uC77C\uB7EC \uBAA8\uC11C\uB9AC (120\uB3C4 L\uC790 \xB7 \uD0ED)", "c": [18, 75, -248], "z": [8, 8, 10] }, { "s": "02", "id": "wheel-guide-40-yellow", "n": "\uBCF4\uC77C\uB7EC \uC55E\uBB38 (\uB178\uB780 \uD720\uAC00\uC774\uB4DC \xD840)", "c": [0, 75, -281], "z": [40, 40, 8], "up": [0, 0, -1] }, { "s": "02", "id": "wheel-guide-30-servo", "n": "\uC804\uC870\uB4F1 (\uD770 \uD720\uAC00\uC774\uB4DC \xD830)", "c": [0, 102, -280], "z": [30, 30, 8], "up": [0, 0, -1] }, { "s": "02", "id": "l-frame-2x1", "n": "\uC804\uC870\uB4F1 \uBC1B\uCE68 (L\uC790 2\xD71)", "c": [0, 93, -276], "z": [8, 10, 8] }, { "s": "02", "id": "support-spacer", "n": "\uAD74\uB69D (\uC11C\uD3EC\uD2B8 20)", "c": [0, 102.2, -266], "z": [6.4, 20, 6.4], "length": 20 }, { "s": "02", "id": "wheel-guide-30-nylon", "n": "\uAD74\uB69D \uAE54\uB54C\uAE30 (\uAC80\uC815 \uD720\uAC00\uC774\uB4DC \xD830)", "c": [0, 116.2, -266], "z": [30, 8, 30] }, { "s": "02", "id": "cap-nut-m3", "n": "\uAD74\uB69D \uB9C8\uAC1C (\uCEA1\uB108\uD2B8)", "c": [0, 123.2, -266], "z": [6.4, 6, 6.4] }, { "s": "02", "id": "support-spacer", "n": "\uC99D\uAE30 \uB3D4 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 7)", "c": [0, 95.7, -246], "z": [6.4, 7, 6.4], "length": 7 }, { "s": "02", "id": "color-ball", "n": "\uC99D\uAE30 \uB3D4 (\uCEEC\uB7EC\uBCFC \uB178\uB791)", "c": [0, 106.7, -246], "z": [15, 15, 15] }, { "s": "02", "id": "support-spacer", "n": "\uBAA8\uB798 \uB3D4 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 5)", "c": [0, 94.7, -230], "z": [6.4, 5, 6.4], "length": 5 }, { "s": "02", "id": "color-ball", "n": "\uBAA8\uB798 \uB3D4 (\uCEEC\uB7EC\uBCFC \uB178\uB791)", "c": [0, 104.7, -230], "z": [15, 15, 15] }, { "s": "02", "id": "battle-g", "n": "\uC55E \uC644\uCDA9\uBCF4 (\uBC30\uD2C0\uBB34\uAE30 G, \uBCC4 \uBB34\uB2AC)", "c": [0, 22, -280.5], "z": [90, 18, 1.6] }, { "s": "02", "id": "support-spacer", "n": "\uC644\uCDA9\uAE30 (\uC11C\uD3EC\uD2B8 10, \uC55E\uC73C\uB85C)", "c": [-36, 22, -286.5], "z": [6.4, 6.4, 10], "length": 10 }, { "s": "02", "id": "cap-nut-m3", "n": "\uC644\uCDA9\uAE30 \uBA38\uB9AC (\uCEA1\uB108\uD2B8)", "c": [-36, 22, -294.5], "z": [6.4, 6.4, 6] }, { "s": "02", "id": "color-ball", "n": "\uC55E \uD45C\uC9C0\uB4F1 \uC7A5\uC2DD (\uCEEC\uB7EC\uBCFC \uBE68\uAC15)", "c": [-52, 54.1, -272], "z": [15, 15, 15] }, { "s": "02", "id": "support-spacer", "n": "\uC644\uCDA9\uAE30 (\uC11C\uD3EC\uD2B8 10, \uC55E\uC73C\uB85C)", "c": [36, 22, -286.5], "z": [6.4, 6.4, 10], "length": 10 }, { "s": "02", "id": "cap-nut-m3", "n": "\uC644\uCDA9\uAE30 \uBA38\uB9AC (\uCEA1\uB108\uD2B8)", "c": [36, 22, -294.5], "z": [6.4, 6.4, 6] }, { "s": "02", "id": "color-ball", "n": "\uC55E \uD45C\uC9C0\uB4F1 \uC7A5\uC2DD (\uCEEC\uB7EC\uBCFC \uBE68\uAC15)", "c": [52, 54.1, -272], "z": [15, 15, 15] }, { "s": "02", "id": "battle-u", "n": "\uBC30\uC7A5\uAE30 (\uBC30\uD2C0\uBB34\uAE30 U, \uD1B1\uB0A0)", "c": [0, 6, -300], "z": [84, 1.6, 40] }, { "s": "02", "id": "frame-mid-pcb", "n": "\uC6B4\uC804\uC2E4 \uC544\uB798 \uBCBD (\uC911 PCB)", "c": [-40.8, 55.6, -170], "z": [1.6, 18, 78] }, { "s": "02", "id": "frame-m-pcb", "n": "\uC6B4\uC804\uC2E4 \uC606\uCC3D (\u3141\uC790 PCB)", "c": [-40.8, 83.6, -170], "z": [1.6, 38, 78] }, { "s": "02", "id": "pc-frame-45x60", "n": "\uC6B4\uC804\uC2E4 \uCC3D \uC720\uB9AC (\uD22C\uBA85 PC)", "c": [-38.6, 83.6, -170], "z": [1.6, 45, 60] }, { "s": "02", "id": "l-frame-2x6", "n": "\uC6B4\uC804\uC2E4 \uC190\uC7A1\uC774 (L\uC790 2\xD76)", "c": [-42, 76.6, -128], "z": [8, 58, 10] }, { "s": "02", "id": "frame-mid-pcb", "n": "\uC6B4\uC804\uC2E4 \uC544\uB798 \uBCBD (\uC911 PCB)", "c": [40.8, 55.6, -170], "z": [1.6, 18, 78] }, { "s": "02", "id": "frame-m-pcb", "n": "\uC6B4\uC804\uC2E4 \uC606\uCC3D (\u3141\uC790 PCB)", "c": [40.8, 83.6, -170], "z": [1.6, 38, 78] }, { "s": "02", "id": "pc-frame-45x60", "n": "\uC6B4\uC804\uC2E4 \uCC3D \uC720\uB9AC (\uD22C\uBA85 PC)", "c": [38.6, 83.6, -170], "z": [1.6, 45, 60] }, { "s": "02", "id": "l-frame-2x6", "n": "\uC6B4\uC804\uC2E4 \uC190\uC7A1\uC774 (L\uC790 2\xD76)", "c": [42, 76.6, -128], "z": [8, 58, 10] }, { "s": "02", "id": "frame-m-pcb", "n": "\uC6B4\uC804\uC2E4 \uC55E\uCC3D (\u3141\uC790 PCB)", "c": [0, 83.6, -210], "z": [78, 38, 1.6] }, { "s": "02", "id": "frame-mid-pcb", "n": "\uC6B4\uC804\uC2E4 \uC55E \uC544\uB798 \uBCBD (\uC911 PCB)", "c": [0, 55.6, -210], "z": [78, 18, 1.6] }, { "s": "02", "id": "frame-half-pcb", "n": "\uC6B4\uC804\uC2E4 \uBC15\uACF5 \uC9C0\uBD95 (\uD558\uD504 PCB)", "c": [-25.1, 118.1, -170], "z": [51, 30.39, 78], "euler": [0, 0, 30] }, { "s": "02", "id": "frame-half-pcb", "n": "\uC6B4\uC804\uC2E4 \uBC15\uACF5 \uC9C0\uBD95 (\uD558\uD504 PCB)", "c": [25.1, 118.1, -170], "z": [51, 30.39, 78], "euler": [0, 0, -30] }, { "s": "02", "id": "l-frame-120-2x2", "n": "\uC9C0\uBD95 \uC6A9\uB9C8\uB8E8 (120\uB3C4 L\uC790 \xB7 \uD0ED)", "c": [0, 128.6, -190], "z": [12, 8, 8] }, { "s": "02", "id": "l-frame-120-2x2", "n": "\uC9C0\uBD95 \uC6A9\uB9C8\uB8E8 (120\uB3C4 L\uC790 \xB7 \uD0ED)", "c": [0, 128.6, -150], "z": [12, 8, 8] }, { "s": "03", "id": "frame-m16-pcb", "n": "\uAC1D\uCC28 \uC544\uB798 \uBCBD (\uC91116 PCB)", "c": [-40.8, 55.6, 0], "z": [1.6, 18, 158] }, { "s": "03", "id": "frame-m-pcb", "n": "\uAC1D\uCC28 \uCC3D (\u3141\uC790 PCB)", "c": [-40.8, 83.6, -39], "z": [1.6, 38, 78] }, { "s": "03", "id": "pc-frame-45x60", "n": "\uCC3D \uC720\uB9AC (\uD22C\uBA85 PC \uD504\uB808\uC784)", "c": [-38.6, 83.6, -39], "z": [1.6, 45, 60] }, { "s": "03", "id": "battle-g", "n": "\uBCC4\uBB34\uB2AC \uB760 (\uBC30\uD2C0\uBB34\uAE30 G)", "c": [-42.4, 55.6, -39], "z": [1.6, 18, 90] }, { "s": "03", "id": "frame-m-pcb", "n": "\uAC1D\uCC28 \uCC3D (\u3141\uC790 PCB)", "c": [-40.8, 83.6, 39], "z": [1.6, 38, 78] }, { "s": "03", "id": "pc-frame-45x60", "n": "\uCC3D \uC720\uB9AC (\uD22C\uBA85 PC \uD504\uB808\uC784)", "c": [-38.6, 83.6, 39], "z": [1.6, 45, 60] }, { "s": "03", "id": "battle-g", "n": "\uBCC4\uBB34\uB2AC \uB760 (\uBC30\uD2C0\uBB34\uAE30 G)", "c": [-42.4, 55.6, 39], "z": [1.6, 18, 90] }, { "s": "03", "id": "frame-m16-pcb", "n": "\uAC1D\uCC28 \uC704 \uBCBD (\uC91116 PCB)", "c": [-40.8, 111.6, 0], "z": [1.6, 18, 158] }, { "s": "03", "id": "l-frame-2x1", "n": "\uCD9C\uC785\uBB38 \uBC1C\uD310 (L\uC790 2\xD71)", "c": [-46, 10, -75], "z": [10, 8, 8] }, { "s": "03", "id": "l-frame-2x1", "n": "\uCD9C\uC785\uBB38 \uBC1C\uD310 (L\uC790 2\xD71)", "c": [-46, 10, 75], "z": [10, 8, 8] }, { "s": "03", "id": "frame-m16-pcb", "n": "\uAC1D\uCC28 \uC544\uB798 \uBCBD (\uC91116 PCB)", "c": [40.8, 55.6, 0], "z": [1.6, 18, 158] }, { "s": "03", "id": "frame-m-pcb", "n": "\uAC1D\uCC28 \uCC3D (\u3141\uC790 PCB)", "c": [40.8, 83.6, -39], "z": [1.6, 38, 78] }, { "s": "03", "id": "pc-frame-45x60", "n": "\uCC3D \uC720\uB9AC (\uD22C\uBA85 PC \uD504\uB808\uC784)", "c": [38.6, 83.6, -39], "z": [1.6, 45, 60] }, { "s": "03", "id": "battle-g", "n": "\uBCC4\uBB34\uB2AC \uB760 (\uBC30\uD2C0\uBB34\uAE30 G)", "c": [42.4, 55.6, -39], "z": [1.6, 18, 90] }, { "s": "03", "id": "frame-m-pcb", "n": "\uAC1D\uCC28 \uCC3D (\u3141\uC790 PCB)", "c": [40.8, 83.6, 39], "z": [1.6, 38, 78] }, { "s": "03", "id": "pc-frame-45x60", "n": "\uCC3D \uC720\uB9AC (\uD22C\uBA85 PC \uD504\uB808\uC784)", "c": [38.6, 83.6, 39], "z": [1.6, 45, 60] }, { "s": "03", "id": "battle-g", "n": "\uBCC4\uBB34\uB2AC \uB760 (\uBC30\uD2C0\uBB34\uAE30 G)", "c": [42.4, 55.6, 39], "z": [1.6, 18, 90] }, { "s": "03", "id": "frame-m16-pcb", "n": "\uAC1D\uCC28 \uC704 \uBCBD (\uC91116 PCB)", "c": [40.8, 111.6, 0], "z": [1.6, 18, 158] }, { "s": "03", "id": "l-frame-2x1", "n": "\uCD9C\uC785\uBB38 \uBC1C\uD310 (L\uC790 2\xD71)", "c": [46, 10, -75], "z": [10, 8, 8] }, { "s": "03", "id": "l-frame-2x1", "n": "\uCD9C\uC785\uBB38 \uBC1C\uD310 (L\uC790 2\xD71)", "c": [46, 10, 75], "z": [10, 8, 8] }, { "s": "03", "id": "frame-mid-pcb", "n": "\uAC1D\uCC28 \uB05D \uC544\uB798 \uBCBD (\uC911 PCB)", "c": [0, 55.6, -78.2], "z": [78, 18, 1.6] }, { "s": "03", "id": "frame-m-pcb", "n": "\uAC1D\uCC28 \uB05D \uBB38\uCC3D (\u3141\uC790 PCB)", "c": [0, 83.6, -78.2], "z": [78, 38, 1.6] }, { "s": "03", "id": "frame-mid-pcb", "n": "\uAC1D\uCC28 \uB05D \uC704 \uBCBD (\uC911 PCB)", "c": [0, 111.6, -78.2], "z": [78, 18, 1.6] }, { "s": "03", "id": "l-frame-2x2", "n": "\uAC1D\uCC28 \uBAA8\uC11C\uB9AC L\uC790 2\xD72", "c": [-36, 61.6, -74], "z": [8, 10, 8] }, { "s": "03", "id": "l-frame-2x2", "n": "\uAC1D\uCC28 \uBAA8\uC11C\uB9AC L\uC790 2\xD72", "c": [-36, 101.6, -74], "z": [8, 10, 8] }, { "s": "03", "id": "l-frame-2x2", "n": "\uAC1D\uCC28 \uBAA8\uC11C\uB9AC L\uC790 2\xD72", "c": [36, 61.6, -74], "z": [8, 10, 8] }, { "s": "03", "id": "l-frame-2x2", "n": "\uAC1D\uCC28 \uBAA8\uC11C\uB9AC L\uC790 2\xD72", "c": [36, 101.6, -74], "z": [8, 10, 8] }, { "s": "03", "id": "frame-mid-pcb", "n": "\uAC1D\uCC28 \uB05D \uC544\uB798 \uBCBD (\uC911 PCB)", "c": [0, 55.6, 78.2], "z": [78, 18, 1.6] }, { "s": "03", "id": "frame-m-pcb", "n": "\uAC1D\uCC28 \uB05D \uBB38\uCC3D (\u3141\uC790 PCB)", "c": [0, 83.6, 78.2], "z": [78, 38, 1.6] }, { "s": "03", "id": "frame-mid-pcb", "n": "\uAC1D\uCC28 \uB05D \uC704 \uBCBD (\uC911 PCB)", "c": [0, 111.6, 78.2], "z": [78, 18, 1.6] }, { "s": "03", "id": "l-frame-2x2", "n": "\uAC1D\uCC28 \uBAA8\uC11C\uB9AC L\uC790 2\xD72", "c": [-36, 61.6, 74], "z": [8, 10, 8] }, { "s": "03", "id": "l-frame-2x2", "n": "\uAC1D\uCC28 \uBAA8\uC11C\uB9AC L\uC790 2\xD72", "c": [-36, 101.6, 74], "z": [8, 10, 8] }, { "s": "03", "id": "l-frame-2x2", "n": "\uAC1D\uCC28 \uBAA8\uC11C\uB9AC L\uC790 2\xD72", "c": [36, 61.6, 74], "z": [8, 10, 8] }, { "s": "03", "id": "l-frame-2x2", "n": "\uAC1D\uCC28 \uBAA8\uC11C\uB9AC L\uC790 2\xD72", "c": [36, 101.6, 74], "z": [8, 10, 8] }, { "s": "03", "id": "frame-big-main", "n": "\uAC1D\uCC28 \uC9C0\uBD95 (\uBE45 \uBA54\uC778 PCB)", "c": [0, 121.4, 0], "z": [118, 1.6, 158] }, { "s": "03", "id": "support-spacer", "n": "\uCC44\uAD11\uCC3D \uAE30\uB465 (\uC11C\uD3EC\uD2B8 10)", "c": [-15, 127.2, -50], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "03", "id": "support-spacer", "n": "\uCC44\uAD11\uCC3D \uAE30\uB465 (\uC11C\uD3EC\uD2B8 10)", "c": [-15, 127.2, 50], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "03", "id": "support-spacer", "n": "\uCC44\uAD11\uCC3D \uAE30\uB465 (\uC11C\uD3EC\uD2B8 10)", "c": [15, 127.2, -50], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "03", "id": "support-spacer", "n": "\uCC44\uAD11\uCC3D \uAE30\uB465 (\uC11C\uD3EC\uD2B8 10)", "c": [15, 127.2, 50], "z": [6.4, 10, 6.4], "length": 10 }, { "s": "03", "id": "frame-5x13-pcb", "n": "\uCC44\uAD11\uCC3D \uC9C0\uBD95 (5\xD713 PCB)", "c": [0, 133, 0], "z": [38, 1.6, 118] }, { "s": "03", "id": "pc-frame-45x60", "n": "\uCC44\uAD11\uCC3D \uC720\uB9AC (\uD22C\uBA85 PC)", "c": [-19.8, 127.2, 0], "z": [1.6, 10, 60] }, { "s": "03", "id": "pc-frame-45x60", "n": "\uCC44\uAD11\uCC3D \uC720\uB9AC (\uD22C\uBA85 PC)", "c": [19.8, 127.2, 0], "z": [1.6, 10, 60] }, { "s": "03", "id": "cap-nut-m3", "n": "\uC9C0\uBD95 \uD658\uAE30\uAD6C (\uCEA1\uB108\uD2B8)", "c": [0, 136.8, -50], "z": [6.4, 6, 6.4] }, { "s": "03", "id": "cap-nut-m3", "n": "\uC9C0\uBD95 \uD658\uAE30\uAD6C (\uCEA1\uB108\uD2B8)", "c": [0, 136.8, -30], "z": [6.4, 6, 6.4] }, { "s": "03", "id": "cap-nut-m3", "n": "\uC9C0\uBD95 \uD658\uAE30\uAD6C (\uCEA1\uB108\uD2B8)", "c": [0, 136.8, -10], "z": [6.4, 6, 6.4] }, { "s": "03", "id": "cap-nut-m3", "n": "\uC9C0\uBD95 \uD658\uAE30\uAD6C (\uCEA1\uB108\uD2B8)", "c": [0, 136.8, 10], "z": [6.4, 6, 6.4] }, { "s": "03", "id": "cap-nut-m3", "n": "\uC9C0\uBD95 \uD658\uAE30\uAD6C (\uCEA1\uB108\uD2B8)", "c": [0, 136.8, 30], "z": [6.4, 6, 6.4] }, { "s": "03", "id": "cap-nut-m3", "n": "\uC9C0\uBD95 \uD658\uAE30\uAD6C (\uCEA1\uB108\uD2B8)", "c": [0, 136.8, 50], "z": [6.4, 6, 6.4] }, { "s": "04", "id": "support-spacer", "n": "\uC9D0\uCE78 \uBC1B\uCE68 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 25)", "c": [-35, 59.1, 150], "z": [6.4, 25, 6.4], "length": 25 }, { "s": "04", "id": "support-spacer", "n": "\uC9D0\uCE78 \uBC1B\uCE68 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 25)", "c": [-35, 59.1, 250], "z": [6.4, 25, 6.4], "length": 25 }, { "s": "04", "id": "support-spacer", "n": "\uC9D0\uCE78 \uBC1B\uCE68 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 25)", "c": [35, 59.1, 150], "z": [6.4, 25, 6.4], "length": 25 }, { "s": "04", "id": "support-spacer", "n": "\uC9D0\uCE78 \uBC1B\uCE68 \uAE30\uB465 (\uC11C\uD3EC\uD2B8 25)", "c": [35, 59.1, 250], "z": [6.4, 25, 6.4], "length": 25 }, { "s": "04", "id": "frame-main-plastic", "n": "\uC9D0\uCE78 \uBC14\uB2E5 (\uBA54\uC778 \uD50C\uB77C\uC2A4\uD2F1)", "c": [0, 72.4, 200], "z": [80, 1.6, 120] }, { "s": "04", "id": "frame-m16-pcb", "n": "\uC9D0\uCE78 \uC606\uBCBD (\uC91116 PCB)", "c": [-40.8, 82.2, 200], "z": [1.6, 18, 158] }, { "s": "04", "id": "frame-m16-pcb", "n": "\uC9D0\uCE78 \uC606\uBCBD (\uC91116 PCB)", "c": [-40.8, 100.2, 200], "z": [1.6, 18, 158] }, { "s": "04", "id": "l-frame-2x6", "n": "\uC9D0\uCE78 \uAC08\uBE57\uB300 (L\uC790 2\xD76)", "c": [-43, 90.6, 140], "z": [4, 58, 8] }, { "s": "04", "id": "l-frame-2x6", "n": "\uC9D0\uCE78 \uAC08\uBE57\uB300 (L\uC790 2\xD76)", "c": [-43, 90.6, 180], "z": [4, 58, 8] }, { "s": "04", "id": "l-frame-2x6", "n": "\uC9D0\uCE78 \uAC08\uBE57\uB300 (L\uC790 2\xD76)", "c": [-43, 90.6, 220], "z": [4, 58, 8] }, { "s": "04", "id": "l-frame-2x6", "n": "\uC9D0\uCE78 \uAC08\uBE57\uB300 (L\uC790 2\xD76)", "c": [-43, 90.6, 260], "z": [4, 58, 8] }, { "s": "04", "id": "frame-m16-pcb", "n": "\uC9D0\uCE78 \uC606\uBCBD (\uC91116 PCB)", "c": [40.8, 82.2, 200], "z": [1.6, 18, 158] }, { "s": "04", "id": "frame-m16-pcb", "n": "\uC9D0\uCE78 \uC606\uBCBD (\uC91116 PCB)", "c": [40.8, 100.2, 200], "z": [1.6, 18, 158] }, { "s": "04", "id": "l-frame-2x6", "n": "\uC9D0\uCE78 \uAC08\uBE57\uB300 (L\uC790 2\xD76)", "c": [43, 90.6, 140], "z": [4, 58, 8] }, { "s": "04", "id": "l-frame-2x6", "n": "\uC9D0\uCE78 \uAC08\uBE57\uB300 (L\uC790 2\xD76)", "c": [43, 90.6, 180], "z": [4, 58, 8] }, { "s": "04", "id": "l-frame-2x6", "n": "\uC9D0\uCE78 \uAC08\uBE57\uB300 (L\uC790 2\xD76)", "c": [43, 90.6, 220], "z": [4, 58, 8] }, { "s": "04", "id": "l-frame-2x6", "n": "\uC9D0\uCE78 \uAC08\uBE57\uB300 (L\uC790 2\xD76)", "c": [43, 90.6, 260], "z": [4, 58, 8] }, { "s": "04", "id": "frame-mid-pcb", "n": "\uC9D0\uCE78 \uB05D\uBCBD (\uC911 PCB)", "c": [0, 82.2, 121.8], "z": [78, 18, 1.6] }, { "s": "04", "id": "frame-mid-pcb", "n": "\uC9D0\uCE78 \uB05D\uBCBD (\uC911 PCB)", "c": [0, 100.2, 121.8], "z": [78, 18, 1.6] }, { "s": "04", "id": "support-spacer", "n": "\uC9D0\uCE78 \uBAA8\uC11C\uB9AC \uAE30\uB465 (\uC11C\uD3EC\uD2B8 40)", "c": [-39, 92.6, 124], "z": [6.4, 40, 6.4], "length": 40 }, { "s": "04", "id": "cap-nut-m3", "n": "\uBAA8\uC11C\uB9AC \uAE30\uB465 \uBA38\uB9AC (\uCEA1\uB108\uD2B8)", "c": [-39, 115.6, 124], "z": [6.4, 6, 6.4] }, { "s": "04", "id": "support-spacer", "n": "\uC9D0\uCE78 \uBAA8\uC11C\uB9AC \uAE30\uB465 (\uC11C\uD3EC\uD2B8 40)", "c": [39, 92.6, 124], "z": [6.4, 40, 6.4], "length": 40 }, { "s": "04", "id": "cap-nut-m3", "n": "\uBAA8\uC11C\uB9AC \uAE30\uB465 \uBA38\uB9AC (\uCEA1\uB108\uD2B8)", "c": [39, 115.6, 124], "z": [6.4, 6, 6.4] }, { "s": "04", "id": "frame-mid-pcb", "n": "\uC9D0\uCE78 \uB05D\uBCBD (\uC911 PCB)", "c": [0, 82.2, 278.2], "z": [78, 18, 1.6] }, { "s": "04", "id": "frame-mid-pcb", "n": "\uC9D0\uCE78 \uB05D\uBCBD (\uC911 PCB)", "c": [0, 100.2, 278.2], "z": [78, 18, 1.6] }, { "s": "04", "id": "support-spacer", "n": "\uC9D0\uCE78 \uBAA8\uC11C\uB9AC \uAE30\uB465 (\uC11C\uD3EC\uD2B8 40)", "c": [-39, 92.6, 276], "z": [6.4, 40, 6.4], "length": 40 }, { "s": "04", "id": "cap-nut-m3", "n": "\uBAA8\uC11C\uB9AC \uAE30\uB465 \uBA38\uB9AC (\uCEA1\uB108\uD2B8)", "c": [-39, 115.6, 276], "z": [6.4, 6, 6.4] }, { "s": "04", "id": "support-spacer", "n": "\uC9D0\uCE78 \uBAA8\uC11C\uB9AC \uAE30\uB465 (\uC11C\uD3EC\uD2B8 40)", "c": [39, 92.6, 276], "z": [6.4, 40, 6.4], "length": 40 }, { "s": "04", "id": "cap-nut-m3", "n": "\uBAA8\uC11C\uB9AC \uAE30\uB465 \uBA38\uB9AC (\uCEA1\uB108\uD2B8)", "c": [39, 115.6, 276], "z": [6.4, 6, 6.4] }, { "s": "04", "id": "sponge-ball", "n": "\uC9D0: \uC555\uCD95\uACF5", "c": [0, 98.2, 180], "z": [50, 50, 50] }, { "s": "04", "id": "color-ball", "n": "\uC9D0: \uCEEC\uB7EC\uBCFC \uBE68\uAC15", "c": [-25, 80.7, 220], "z": [15, 15, 15] }, { "s": "04", "id": "color-ball", "n": "\uC9D0: \uCEEC\uB7EC\uBCFC \uCD08\uB85D", "c": [-8, 80.7, 222], "z": [15, 15, 15] }, { "s": "04", "id": "color-ball", "n": "\uC9D0: \uCEEC\uB7EC\uBCFC \uB178\uB791", "c": [9, 80.7, 220], "z": [15, 15, 15] }, { "s": "04", "id": "color-ball", "n": "\uC9D0: \uCEEC\uB7EC\uBCFC \uBE68\uAC15", "c": [26, 80.7, 222], "z": [15, 15, 15] }, { "s": "04", "id": "color-ball", "n": "\uC9D0: \uCEEC\uB7EC\uBCFC \uCD08\uB85D", "c": [-20, 80.7, 240], "z": [15, 15, 15] }, { "s": "04", "id": "color-ball", "n": "\uC9D0: \uCEEC\uB7EC\uBCFC \uB178\uB791", "c": [0, 80.7, 242], "z": [15, 15, 15] }, { "s": "04", "id": "color-ball", "n": "\uC9D0: \uCEEC\uB7EC\uBCFC \uBE68\uAC15", "c": [20, 80.7, 240], "z": [15, 15, 15] }, { "s": "04", "id": "color-ball", "n": "\uC9D0: \uCEEC\uB7EC\uBCFC \uCD08\uB85D", "c": [-10, 80.7, 258], "z": [15, 15, 15] }, { "s": "04", "id": "color-ball", "n": "\uC9D0: \uCEEC\uB7EC\uBCFC \uB178\uB791", "c": [12, 80.7, 258], "z": [15, 15, 15] }, { "s": "04", "id": "battle-s", "n": "\uB4A4 \uBB38\uC7A5 (\uBC30\uD2C0\uBB34\uAE30 S, \uBC29\uD328)", "c": [0, 90.6, 280.2], "z": [50, 56, 1.6] }, { "s": "04", "id": "support-spacer", "n": "\uBE0C\uB808\uC774\uD06C \uD720 \uCD95 (\uC11C\uD3EC\uD2B8 15)", "c": [25, 116.6, 280], "z": [6.4, 15, 6.4], "length": 15 }, { "s": "04", "id": "wheel-guide-40-yellow", "n": "\uD578\uB4DC \uBE0C\uB808\uC774\uD06C \uD720 (\uB178\uB780 \uD720\uAC00\uC774\uB4DC \xD840)", "c": [25, 127.6, 280], "z": [40, 8, 40] }, { "s": "04", "id": "caterpillar-link", "n": "\uB4A4 \uC0AC\uB2E4\uB9AC (\uCE90\uD130\uD544\uB7EC \uB9C8\uB514)", "c": [-28, 22, 281.5], "z": [22, 10, 3], "euler": [90, 0, 0] }, { "s": "04", "id": "caterpillar-link", "n": "\uB4A4 \uC0AC\uB2E4\uB9AC (\uCE90\uD130\uD544\uB7EC \uB9C8\uB514)", "c": [-28, 32, 281.5], "z": [22, 10, 3], "euler": [90, 0, 0] }, { "s": "04", "id": "caterpillar-link", "n": "\uB4A4 \uC0AC\uB2E4\uB9AC (\uCE90\uD130\uD544\uB7EC \uB9C8\uB514)", "c": [-28, 42, 281.5], "z": [22, 10, 3], "euler": [90, 0, 0] }, { "s": "04", "id": "caterpillar-link", "n": "\uB4A4 \uC0AC\uB2E4\uB9AC (\uCE90\uD130\uD544\uB7EC \uB9C8\uB514)", "c": [-28, 52, 281.5], "z": [22, 10, 3], "euler": [90, 0, 0] }, { "s": "04", "id": "caterpillar-link", "n": "\uB4A4 \uC0AC\uB2E4\uB9AC (\uCE90\uD130\uD544\uB7EC \uB9C8\uB514)", "c": [-28, 62, 281.5], "z": [22, 10, 3], "euler": [90, 0, 0] }, { "s": "04", "id": "caterpillar-link", "n": "\uB4A4 \uC0AC\uB2E4\uB9AC (\uCE90\uD130\uD544\uB7EC \uB9C8\uB514)", "c": [-28, 72, 281.5], "z": [22, 10, 3], "euler": [90, 0, 0] }, { "s": "04", "id": "l-frame-2x6", "n": "\uB4A4 \uB09C\uAC04 \uAE30\uB465 (L\uC790 2\xD76)", "c": [-36, 138.6, 282], "z": [8, 58, 10] }, { "s": "04", "id": "color-ball", "n": "\uAF2C\uB9AC \uD45C\uC9C0 \uC7A5\uC2DD (\uCEEC\uB7EC\uBCFC \uBE68\uAC15)", "c": [-36, 175.2, 282], "z": [15, 15, 15] }, { "s": "04", "id": "l-frame-2x6", "n": "\uB4A4 \uB09C\uAC04 \uAE30\uB465 (L\uC790 2\xD76)", "c": [36, 138.6, 282], "z": [8, 58, 10] }, { "s": "04", "id": "color-ball", "n": "\uAF2C\uB9AC \uD45C\uC9C0 \uC7A5\uC2DD (\uCEEC\uB7EC\uBCFC \uBE68\uAC15)", "c": [36, 175.2, 282], "z": [15, 15, 15] }, { "s": "04", "id": "frame-s8-pcb", "n": "\uB4A4 \uB09C\uAC04 (\uC18C8 PCB)", "c": [0, 162.6, 284], "z": [78, 8, 1.6] }, { "s": "05", "id": "frame-s8-pcb", "n": "\uC5F0\uACB0\uBD09 (\uC18C8 PCB)", "c": [0, 17.6, -105], "z": [8, 1.6, 78] }, { "s": "05", "id": "s-hook-35", "n": "\uC5F0\uACB0 \uD540 \uC55E \uCE78 (\uD6C4\uD06C S35)", "c": [0, 19.4, -135], "z": [6.5, 7.6, 6.5] }, { "s": "05", "id": "s-hook-35", "n": "\uC5F0\uACB0 \uD540 \uB4A4 \uCE78 (\uD6C4\uD06C S35)", "c": [0, 19.4, -75], "z": [6.5, 7.6, 6.5] }, { "s": "05", "id": "frame-s8-pcb", "n": "\uC5F0\uACB0\uBD09 (\uC18C8 PCB)", "c": [0, 17.6, 95], "z": [8, 1.6, 78] }, { "s": "05", "id": "s-hook-35", "n": "\uC5F0\uACB0 \uD540 \uC55E \uCE78 (\uD6C4\uD06C S35)", "c": [0, 19.4, 65], "z": [6.5, 7.6, 6.5] }, { "s": "05", "id": "s-hook-35", "n": "\uC5F0\uACB0 \uD540 \uB4A4 \uCE78 (\uD6C4\uD06C S35)", "c": [0, 19.4, 125], "z": [6.5, 7.6, 6.5] }];
+
+// src/train/assemble.js
+var CAR_Z = [-200, 0, 200];
+var REAR_PIN = 65;
+var FRONT_PIN = -75;
+var BAR = 60;
+var HALF_TRACK = 68;
+var WHEEL_R = 25;
+var SPEED = 130 / 60 * Math.PI * 50;
+async function buildTrain(loadPart2, onProgress) {
+  const mods = await loadModules(assembly_default3, loadPart2, onProgress);
+  const root = new THREE103.Group();
+  const cars = CAR_Z.map((cz) => {
+    const g = new THREE103.Group();
+    g.position.set(0, 0, cz);
+    root.add(g);
+    return { g, body: [], wheels: [], x: 0, z: cz, yaw: 0, dl: 0, dr: 0 };
+  });
+  const bars = [], pins = [];
+  for (const a of assembly_default3) {
+    const h = makeHolder(a, mods);
+    if (a.s === "05") {
+      root.add(h);
+      if (a.id === "frame-s8-pcb") bars.push({ h, q0: h.quaternion.clone() });
+      else pins.push({ h, front: a.n.includes("\uC55E \uCE78") });
+      continue;
+    }
+    const k = CAR_Z.reduce((best, cz, j) => Math.abs(a.c[2] - cz) < Math.abs(a.c[2] - CAR_Z[best]) ? j : best, 0);
+    const car = cars[k];
+    h.position.z -= CAR_Z[k];
+    car.g.add(h);
+    if (a.s !== "01") car.body.push(h);
+    if (a.id === "wheel-50-v2" || a.id === "tire-50") car.wheels.push({ h, side: Math.sign(a.c[0]), q0: h.quaternion.clone() });
+  }
+  root.position.y = 0;
+  const pinWorld = (car, local) => new THREE103.Vector2(car.x + Math.sin(car.yaw) * local, car.z + Math.cos(car.yaw) * local);
+  function solve() {
+    for (let it = 0; it < 6; it++) {
+      for (let i = 0; i < 2; i++) {
+        const A = cars[i], B = cars[i + 1];
+        const pa = pinWorld(A, REAR_PIN), pb = pinWorld(B, FRONT_PIN);
+        const d = pb.clone().sub(pa);
+        const len = d.length() || 1e-6;
+        const corr = d.multiplyScalar((len - BAR) / len / 2);
+        for (const [car, local, s] of [[A, REAR_PIN, 1], [B, FRONT_PIN, -1]]) {
+          const dx = corr.x * s, dz = corr.y * s;
+          car.x += dx * 0.6;
+          car.z += dz * 0.6;
+          const rx = Math.sin(car.yaw) * local, rz = Math.cos(car.yaw) * local;
+          car.yaw += (rz * dx - rx * dz) * 0.4 / (local * local);
+        }
+      }
+    }
+  }
+  const CMD = { stop: [0, 0], fwd: [1, 1], back: [-1, -1], left: [0.25, 1], right: [1, 0.25] };
+  function step(dt, cmds, speedScale = 1) {
+    cars.forEach((car, i) => {
+      const [l, r] = CMD[cmds[i]] || [0, 0];
+      const vl = l * SPEED * speedScale, vr = r * SPEED * speedScale;
+      const v = (vl + vr) / 2, w = (vr - vl) / (2 * HALF_TRACK);
+      car.yaw += w * dt;
+      car.x -= Math.sin(car.yaw) * v * dt;
+      car.z -= Math.cos(car.yaw) * v * dt;
+      car.dl += vl * dt;
+      car.dr += vr * dt;
+    });
+    solve();
+    const qx = new THREE103.Quaternion(), ax = new THREE103.Vector3(1, 0, 0);
+    cars.forEach((car) => {
+      car.g.position.set(car.x, 0, car.z);
+      car.g.rotation.y = car.yaw;
+      for (const W of car.wheels) W.h.quaternion.copy(qx.setFromAxisAngle(ax, -(W.side > 0 ? car.dr : car.dl) / WHEEL_R)).multiply(W.q0);
+    });
+    for (let i = 0; i < 2; i++) {
+      const pa = pinWorld(cars[i], REAR_PIN), pb = pinWorld(cars[i + 1], FRONT_PIN);
+      const dir = pb.clone().sub(pa).normalize();
+      const yaw = Math.atan2(-dir.x, -dir.y);
+      const bar = bars[i];
+      bar.h.position.set((pa.x + pb.x) / 2 - dir.x * 0, bar.h.position.y, (pa.y + pb.y) / 2);
+      bar.h.quaternion.copy(new THREE103.Quaternion().setFromAxisAngle(new THREE103.Vector3(0, 1, 0), yaw)).multiply(bar.q0);
+      const pf = pins.filter((p) => p.front)[i], pr = pins.filter((p) => !p.front)[i];
+      if (pf) pf.h.position.set(pa.x, pf.h.position.y, pa.y);
+      if (pr) pr.h.position.set(pb.x, pr.h.position.y, pb.y);
+    }
+    return [0, 1].map((i) => {
+      const pa = pinWorld(cars[i], REAR_PIN), pb = pinWorld(cars[i + 1], FRONT_PIN);
+      const barYaw = Math.atan2(pb.x - pa.x, pb.y - pa.y);
+      const rel = (y) => {
+        let a = (barYaw - y) * 180 / Math.PI;
+        while (a > 180) a -= 360;
+        while (a < -180) a += 360;
+        return a;
+      };
+      return Math.max(Math.abs(rel(cars[i].yaw)), Math.abs(rel(cars[i + 1].yaw)));
+    });
+  }
+  function reset() {
+    cars.forEach((c, i) => {
+      c.x = 0;
+      c.z = CAR_Z[i];
+      c.yaw = 0;
+      c.dl = c.dr = 0;
+    });
+    step(0, ["stop", "stop", "stop"]);
+  }
+  reset();
+  return { root, cars, step, reset, count: assembly_default3.length };
+}
+
 // src/main.js
 var stage = document.getElementById("stage");
 var view = createScene(stage);
@@ -10501,7 +10617,7 @@ view.scene.add(overlay.dimGroup);
 var panel = createPanel(document.getElementById("panel"));
 var opts = { labels: true, dims: true, spin: false };
 var nav = document.getElementById("parts");
-nav.innerHTML = `<a href="#eagle" data-id="eagle" class="all"><b>\u{1F985} \uB3C5\uC218\uB9AC \uC870\uB9BD (\uC124\uACC4\uB3C4\uBA74)</b><small>\uBD80\uD488\uC73C\uB85C \uC870\uB9BD\uD55C \uB3C5\uC218\uB9AC \xB7 \uB0A0\uAC2F\uC9D3 \xB7 \uBD84\uD574 \uBCF4\uAE30</small></a><a href="#battlebot" data-id="battlebot" class="all"><b>\u2694 \uBC30\uD2C0\uB85C\uBD07 \uC36C\uB354 \uC6E8\uC9C0</b><small>\uBB34\uD55C\uADA4\uB3C4 \xB7 \uC2A4\uD53C\uB108 \xB7 \uB4E4\uC5B4\uC62C\uB9BC \uC6E8\uC9C0</small></a><a href="#all" data-id="all" class="all"><b>\u25A6 \uC804\uCCB4 \uD3BC\uCCD0\uBCF4\uAE30</b><small>${catalog.length}\uAC1C \uBD80\uD488 \xB7 \uC2E4\uC81C \uD06C\uAE30\uB85C \uD55C \uD654\uBA74\uC5D0</small></a>` + categories.map(([cat, title]) => `
+nav.innerHTML = `<a href="#eagle" data-id="eagle" class="all"><b>\u{1F985} \uB3C5\uC218\uB9AC \uC870\uB9BD (\uC124\uACC4\uB3C4\uBA74)</b><small>\uBD80\uD488\uC73C\uB85C \uC870\uB9BD\uD55C \uB3C5\uC218\uB9AC \xB7 \uB0A0\uAC2F\uC9D3 \xB7 \uBD84\uD574 \uBCF4\uAE30</small></a><a href="#battlebot" data-id="battlebot" class="all"><b>\u2694 \uBC30\uD2C0\uB85C\uBD07 \uC36C\uB354 \uC6E8\uC9C0</b><small>\uBB34\uD55C\uADA4\uB3C4 \xB7 \uC2A4\uD53C\uB108 \xB7 \uB4E4\uC5B4\uC62C\uB9BC \uC6E8\uC9C0</small></a><a href="#train" data-id="train" class="all"><b>\u{1F682} \uD611\uB3D9 \uAE30\uCC28 \uD558\uB098\uB85C \uC5F4\uCC28</b><small>3\uCE78 \xB7 \uCE78\uB9C8\uB2E4 CPU \xB7 3\uBA85\uC774 \uB530\uB85C \uC870\uC885</small></a><a href="#all" data-id="all" class="all"><b>\u25A6 \uC804\uCCB4 \uD3BC\uCCD0\uBCF4\uAE30</b><small>${catalog.length}\uAC1C \uBD80\uD488 \xB7 \uC2E4\uC81C \uD06C\uAE30\uB85C \uD55C \uD654\uBA74\uC5D0</small></a>` + categories.map(([cat, title]) => `
   <h3>${title}</h3>
   ${catalog.filter((p) => p.category === cat).map((p) => `
     <a href="#${p.id}" data-id="${p.id}"><b>${p.name}</b><small>${p.size.x} \xD7 ${p.size.z} \xD7 ${p.size.y} mm${p.size.estimated ? " \xB7 \uCD94\uC815" : ""}</small></a>`).join("")}
@@ -10521,7 +10637,7 @@ var picks = [];
 async function showAll(token) {
   const parts = await Promise.all(catalog.map((p) => loadPart(p.id)));
   if (token !== loadToken) return null;
-  const root = new THREE103.Group();
+  const root = new THREE104.Group();
   const labels = [];
   let z = 0;
   picks.length = 0;
@@ -10531,12 +10647,12 @@ async function showAll(token) {
     let x = 0, rowDepth = 0, first = true;
     for (const [spec, part] of list) {
       const model = part.build();
-      const g = new THREE103.Group();
+      const g = new THREE104.Group();
       g.add(model.object3d);
       root.add(g);
       g.updateMatrixWorld(true);
       const box2 = partBounds(g);
-      const size = box2.getSize(new THREE103.Vector3()), c = box2.getCenter(new THREE103.Vector3());
+      const size = box2.getSize(new THREE104.Vector3()), c = box2.getCenter(new THREE104.Vector3());
       if (x > 0 && x + size.x > ROW_W) {
         z += rowDepth + GAP * 2;
         x = 0;
@@ -10586,10 +10702,10 @@ function eagleFunction(e) {
       st.t += dt;
       const flap = st.auto ? 12.5 + 32.5 * Math.sin(st.t * Math.PI * 2 / 1.2) : st.flap;
       const head = st.scan ? 90 + 45 * Math.sin(st.t * 0.8) : st.head;
-      const a = THREE103.MathUtils.degToRad(flap);
+      const a = THREE104.MathUtils.degToRad(flap);
       e.wing.r.rotation.z = a;
       e.wing.l.rotation.z = -a;
-      e.head.rotation.y = THREE103.MathUtils.degToRad(head - 90);
+      e.head.rotation.y = THREE104.MathUtils.degToRad(head - 90);
       for (const [no, g] of Object.entries(e.groups)) {
         const d = EXPLODE[no] || [0, 0, 0];
         g.position.set(d[0] * st.explode, d[1] * st.explode, d[2] * st.explode);
@@ -10656,7 +10772,104 @@ function botFunction(e) {
     }
   };
 }
+var train = null;
+function trainFunction(e) {
+  const NAMES3 = ["\uC55E\uCE78 (\uC870\uC885\uC790 A)", "\uC911\uAC04\uCE78 (\uC870\uC885\uC790 B)", "\uB9C8\uC9C0\uB9C9\uCE78 (\uC870\uC885\uC790 C)"];
+  const OPTS = [["stop", "\uC815\uC9C0"], ["fwd", "\uC804\uC9C4"], ["back", "\uD6C4\uC9C4"], ["left", "\uC67C\uCABD"], ["right", "\uC624\uB978\uCABD"]];
+  const st = { cmd: ["stop", "stop", "stop"], speed: 1, body: true, follow: true };
+  panel.ui.controls([
+    ...NAMES3.map((n, i) => ({ type: "select", id: "c" + i, label: n, options: OPTS, value: "stop" })),
+    { type: "button", id: "same", label: "\uC14B \uB2E4 \uC804\uC9C4 (\uAC19\uC740 \uBC29\uD5A5)" },
+    { type: "button", id: "mixed", label: "\uC5C7\uAC08\uB9BC \uC608: \uC55E \uC67C\uCABD \xB7 \uAC00\uC6B4\uB370 \uD6C4\uC9C4 \xB7 \uB4A4 \uC624\uB978\uCABD" },
+    { type: "slider", id: "speed", label: "\uC18D\uB3C4", min: 0.2, max: 1, step: 0.05, value: 1 },
+    { type: "toggle", id: "body", label: "\uCC28\uCCB4 \uBCF4\uC774\uAE30 (\uB044\uBA74 \uCC28\uB300 \xB7 CPU\uAC00 \uBCF4\uC784)", value: true },
+    { type: "toggle", id: "follow", label: "\uCE74\uBA54\uB77C\uAC00 \uC5F4\uCC28\uB97C \uB530\uB77C\uAC10", value: true },
+    { type: "button", id: "reset", label: "\uCC98\uC74C \uC790\uB9AC\uB85C" }
+  ]);
+  panel.ui.readouts([["team", "\uC138 \uC0AC\uB78C"], ["bend", "\uC5F0\uACB0\uBD09 \uAEBE\uC784"], ["speed", "\uC18D\uB3C4"], ["parts", "\uB193\uC778 \uBD80\uD488"]]);
+  const setSel = (i, v) => {
+    const el = document.querySelectorAll(".p-controls select")[i];
+    if (el) el.value = v;
+  };
+  const center = new THREE104.Vector3();
+  return {
+    onControl(id, v) {
+      if (id[0] === "c" && id.length === 2) st.cmd[+id[1]] = v;
+      else if (id === "same") {
+        st.cmd = ["fwd", "fwd", "fwd"];
+        st.cmd.forEach((c, i) => setSel(i, c));
+      } else if (id === "mixed") {
+        st.cmd = ["left", "back", "right"];
+        st.cmd.forEach((c, i) => setSel(i, c));
+      } else if (id === "reset") {
+        e.reset();
+        st.cmd = ["stop", "stop", "stop"];
+        st.cmd.forEach((c, i) => setSel(i, c));
+      } else if (id === "speed") st.speed = Number(v);
+      else st[id] = v;
+    },
+    update(dt) {
+      const bend = e.step(Math.min(dt, 0.05), st.cmd, st.speed);
+      e.cars.forEach((c) => c.body.forEach((h) => {
+        h.visible = st.body;
+      }));
+      if (st.follow) {
+        center.set((e.cars[0].x + e.cars[2].x) / 2, 60, (e.cars[0].z + e.cars[2].z) / 2);
+        const d = center.clone().sub(view.controls.target);
+        view.controls.target.add(d);
+        view.camera.position.add(d);
+      }
+      const moving = st.cmd.filter((c) => c !== "stop");
+      const same2 = st.cmd.every((c) => c === st.cmd[0]);
+      panel.ui.readout("team", same2 ? st.cmd[0] === "stop" ? "\uBAA8\uB450 \uC815\uC9C0" : "\uAC19\uC740 \uBC29\uD5A5 \u2714 \uC798 \uB2EC\uB9BC" : "\uC5C7\uAC08\uB9BC \u2718 \uB35C\uCEF9 \xB7 \uBE44\uD2C0 \xB7 \uC811\uD798");
+      panel.ui.readout("bend", `\uC55E-\uC911\uAC04 ${bend[0].toFixed(0)}\xB0 \xB7 \uC911\uAC04-\uB4A4 ${bend[1].toFixed(0)}\xB0`);
+      panel.ui.readout("speed", moving.length ? `\uCE78\uB9C8\uB2E4 \uCD5C\uB300 ${(SPEED * st.speed / 1e3).toFixed(2)} m/s` : "\uC815\uC9C0");
+      panel.ui.readout("parts", `${e.count}\uAC1C (\uBCFC\uD2B8 \xB7 \uB108\uD2B8 \uD3EC\uD568 ${BOM_TOTAL3}\uAC1C)`);
+    }
+  };
+}
 async function select(id) {
+  if (id === "train") {
+    if (current?.id === "train") return;
+    const token2 = ++loadToken;
+    const loading = document.getElementById("loading");
+    loading.style.display = "block";
+    nav.querySelectorAll("a").forEach((a) => a.classList.toggle("on", a.dataset.id === "train"));
+    const e = train ?? await buildTrain(loadPart, (k) => {
+      loading.textContent = `\uBD80\uD488 \uBD88\uB7EC\uC624\uB294 \uC911\u2026 ${Math.round(k * 100)}%`;
+    });
+    loading.textContent = "\uBD88\uB7EC\uC624\uB294 \uC911\u2026";
+    if (token2 !== loadToken) return;
+    train = e;
+    if (current) {
+      current.fn?.dispose?.();
+      view.scene.remove(current.root);
+    }
+    overlay.clear();
+    picks.length = 0;
+    view.controls.zoomToCursor = true;
+    e.reset();
+    view.scene.add(e.root);
+    e.root.updateMatrixWorld(true);
+    const box3 = partBounds(e.root);
+    view.frame(box3, { dir: [-1, 0.55, -0.7], fit: 1, minDist: 20 });
+    const size = box3.getSize(new THREE104.Vector3());
+    panel.showSpec({
+      name: "\uD611\uB3D9 \uAE30\uCC28 \uD558\uB098\uB85C \uC5F4\uCC28 (\uC124\uACC4\uB3C4\uBA74 \uC870\uB9BD)",
+      url: "https://github.com/popkn/3d-test/blob/\uB85C\uBCF4\uB85C\uBCF4-3d-test/train/BLUEPRINT.md",
+      size: { x: Math.round(size.x), z: Math.round(size.z), y: Math.round(size.y), estimated: false, note: "train/BLUEPRINT.md \uB3C4\uBA74 \uC88C\uD45C\uB300\uB85C \uBD80\uD488 \uBAA8\uB378\uC744 \uB193\uC544 \uC870\uB9BD. \uBCFC\uD2B8 \xB7 \uB108\uD2B8 \xB7 \uCF00\uC774\uBE14\uC740 \uC0DD\uB7B5." },
+      function: "\uCE78\uB9C8\uB2E4 CPU \xB7 \uBE14\uB8E8\uD22C\uC2A4 \xB7 \uBAA8\uD130\uAC00 \uB530\uB85C \uC788\uC5B4 \uC138 \uC0AC\uB78C\uC774 \uD55C \uCE78\uC529 \uC870\uC885\uD55C\uB2E4. \uAC19\uC740 \uBC29\uD5A5\uC774\uBA74 \uC798 \uB2EC\uB9AC\uACE0, \uC5C7\uAC08\uB9AC\uBA74 \uC5F0\uACB0\uBD09\uC73C\uB85C \uC11C\uB85C \uB04C\uACE0 \uBC00\uBA70 \uC774\uC0C1\uD558\uAC8C \uC6C0\uC9C1\uC778\uB2E4 (\uBA48\uCD94\uC9C0 \uC54A\uC74C). \uC544\uB798\uC5D0\uC11C \uCE78\uB9C8\uB2E4 \uBC29\uD5A5\uC744 \uACE8\uB77C \uBCF4\uC138\uC694.",
+      specs: Object.entries(SHEETS3).map(([no, t]) => [`\uB3C4\uBA74 ${no}`, t]),
+      ports: []
+    });
+    let fn2 = null;
+    panel.reset((cid, v) => fn2?.onControl?.(cid, v));
+    fn2 = trainFunction(e);
+    current = { id: "train", root: e.root, fn: { ...fn2, dispose() {
+    } } };
+    loading.style.display = "none";
+    return;
+  }
   if (id === "battlebot") {
     if (current?.id === "battlebot") return;
     const token2 = ++loadToken;
@@ -10680,7 +10893,7 @@ async function select(id) {
     e.root.updateMatrixWorld(true);
     const box3 = partBounds(e.root);
     view.frame(box3, { dir: [-0.9, 0.7, -1], fit: 1.25, minDist: 20 });
-    const size = box3.getSize(new THREE103.Vector3());
+    const size = box3.getSize(new THREE104.Vector3());
     panel.showSpec({
       name: "\uBC30\uD2C0\uB85C\uBD07 \uC36C\uB354 \uC6E8\uC9C0 (\uC124\uACC4\uB3C4\uBA74 \uC870\uB9BD)",
       url: "https://github.com/popkn/3d-test/blob/\uB85C\uBCF4\uB85C\uBCF4-3d-test/battlebot/BLUEPRINT.md",
@@ -10717,7 +10930,7 @@ async function select(id) {
     e.root.updateMatrixWorld(true);
     const box3 = partBounds(e.root);
     view.frame(box3, { dir: [-0.9, 0.55, -1], fit: 1.15, minDist: 20 });
-    const size = box3.getSize(new THREE103.Vector3());
+    const size = box3.getSize(new THREE104.Vector3());
     panel.showSpec({
       name: "\uB3C5\uC218\uB9AC \uB85C\uBD07 (\uC124\uACC4\uB3C4\uBA74 \uC870\uB9BD)",
       url: "https://github.com/popkn/3d-test/blob/\uB85C\uBCF4\uB85C\uBCF4-3d-test/eagle/BLUEPRINT.md",
@@ -10754,7 +10967,7 @@ async function select(id) {
     const d0 = view.camera.position.distanceTo(view.controls.target);
     for (const l of res.labels) if (l.small) l.maxDist = d0 * 0.4;
     overlay.setLabels(res.labels);
-    const size = box3.getSize(new THREE103.Vector3());
+    const size = box3.getSize(new THREE104.Vector3());
     panel.showSpec({
       name: "\uC804\uCCB4 \uBD80\uD488 \uD3BC\uCCD0\uBCF4\uAE30",
       url: "#all",
@@ -10784,11 +10997,11 @@ async function select(id) {
   }
   overlay.clear();
   const model = part.build();
-  const root = new THREE103.Group();
+  const root = new THREE104.Group();
   root.add(model.object3d);
   view.scene.add(root);
   const box2 = partBounds(root);
-  const c = box2.getCenter(new THREE103.Vector3());
+  const c = box2.getCenter(new THREE104.Vector3());
   model.object3d.position.set(-c.x, -box2.min.y, -c.z);
   const fitted = partBounds(root);
   view.frame(partBounds(root, { include: model.frameWith || [] }));
@@ -10807,14 +11020,14 @@ tipEl.className = "tag hover-tip";
 tipEl.style.cssText = "position:absolute;pointer-events:none;opacity:0;z-index:5";
 stage.appendChild(tipEl);
 view.renderer.domElement.addEventListener("pointermove", (e) => {
-  const asm = current?.id === "eagle" ? eagle : current?.id === "battlebot" ? bot : null;
+  const asm = current?.id === "eagle" ? eagle : current?.id === "battlebot" ? bot : current?.id === "train" ? train : null;
   if (!asm) {
     tipEl.style.opacity = 0;
     return;
   }
   const r = view.renderer.domElement.getBoundingClientRect();
-  const v = new THREE103.Vector2((e.clientX - r.left) / r.width * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
-  const rc = new THREE103.Raycaster();
+  const v = new THREE104.Vector2((e.clientX - r.left) / r.width * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+  const rc = new THREE104.Raycaster();
   rc.setFromCamera(v, view.camera);
   const hit = rc.intersectObject(asm.root, true).find((h) => h.object.visible);
   let o = hit?.object;
@@ -10827,8 +11040,8 @@ view.renderer.domElement.addEventListener("pointermove", (e) => {
   tipEl.style.opacity = 1;
   tipEl.style.transform = `translate(${e.clientX - r.left + 14}px, ${e.clientY - r.top + 10}px)`;
 });
-var ray = new THREE103.Raycaster();
-var ptr = new THREE103.Vector2();
+var ray = new THREE104.Raycaster();
+var ptr = new THREE104.Vector2();
 var down = null;
 view.renderer.domElement.addEventListener("pointerdown", (e) => {
   down = [e.clientX, e.clientY];
@@ -10851,7 +11064,7 @@ view.renderer.domElement.addEventListener("pointerup", (e) => {
   if (pick) location.hash = pick.id;
 });
 select(location.hash.slice(1) || catalog[0].id);
-var timer = new THREE103.Timer();
+var timer = new THREE104.Timer();
 view.renderer.setAnimationLoop((ts) => {
   timer.update(ts);
   const dt = Math.min(timer.getDelta(), 0.1);
