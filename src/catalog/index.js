@@ -77,6 +77,12 @@ import frameM6Pcb from './parts/frame-m6-pcb/spec.js';
 import frameMidPcb from './parts/frame-mid-pcb/spec.js';
 import frameMidPlastic from './parts/frame-mid-plastic/spec.js';
 import frame5x13Pcb from './parts/frame-5x13-pcb/spec.js';
+import frameS12Pcb from './parts/frame-s12-pcb/spec.js';
+import frameM16Pcb from './parts/frame-m16-pcb/spec.js';
+import headerPin3p from './parts/header-pin-3p/spec.js';
+import sHook35 from './parts/s-hook-35/spec.js';
+import wheelBuggy80 from './parts/wheel-buggy-80/spec.js';
+import wheel50V2 from './parts/wheel-50-v2/spec.js';
 import lFrame2x1 from './parts/l-frame-2x1/spec.js';
 import lFrame2x2 from './parts/l-frame-2x2/spec.js';
 import lFrame2x6 from './parts/l-frame-2x6/spec.js';
@@ -87,14 +93,14 @@ export const catalog = [
   cpuBoard8m, motorDriveA3, motorDriveLinkS, buzzerBoardS, ledBoardRedS, ledBoardGreenS, ledBoardOrangeS, rgbLedBright, irRemoteTx, irRemoteRx, melodyBoard, btWirelessBoard2, btModule,
   sensorTouch, sensorIrTr, sensorSound, sensorColor,
   dcMotor130Rs, dcMotor130Dual, dcMotor400Rs, servoDigital,
-  wheelSet130, wheelAxle, inner80Buggy, inner130Giant, shaft75, axleGuide, tire50, tire80Buggy,
+  wheelSet130, wheelAxle, inner80Buggy, inner130Giant, shaft75, axleGuide, tire50, tire80Buggy, wheel50V2, wheelBuggy80,
   caterpillarLink, caterpillarSprocket, caterpillarWheelGuide, caterpillarRubber,
   batteryCase4aa,
   frameBigMain, frameMainPcb, frameMainPlastic, frameHalfPcb, lFrame6x6, motorFrame3x3, pcFrame45x60,
   frameS3Pcb, frameS4Pcb, frameS5Pcb, frameS7Pcb, frameS8Pcb, frameS3Plastic, frameS4Plastic, frameS5Plastic, frameMPcb,
-  frameS8Plastic, frameOptionPcb, frameOptionPlastic, frameM6Pcb, frameMidPcb, frameMidPlastic, frame5x13Pcb, lFrame2x1, lFrame2x2, lFrame2x6, lFrame1202x2,
+  frameS8Plastic, frameOptionPcb, frameOptionPlastic, frameM6Pcb, frameMidPcb, frameMidPlastic, frame5x13Pcb, frameS12Pcb, frameM16Pcb, lFrame2x1, lFrame2x2, lFrame2x6, lFrame1202x2,
   battleG, battleI, battleJ, battleS, battleT, battleU, battleV,
-  hinge3x3, grab, nutM3, capNutM3, sNutBlue, nutFrame4, motorGuide, boltM26x10, boltM3x6, boltM3x10, supportSpacer, spongeBall, colorBall, cable3pin,
+  hinge3x3, grab, nutM3, capNutM3, sNutBlue, nutFrame4, motorGuide, boltM26x10, boltM3x6, boltM3x10, supportSpacer, spongeBall, colorBall, cable3pin, headerPin3p, sHook35,
 ];
 
 export const categories = [['board', '보드'], ['sensor', '센서'], ['motor', '모터'], ['wheel', '바퀴'], ['power', '전원'], ['frame', '프레임'], ['battle', '배틀무기'], ['hardware', '조립 부품']];
