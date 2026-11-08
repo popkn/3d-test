@@ -25,7 +25,7 @@ export function createOverlay(container) {
   function setLabels(list) {
     for (const def of list) {
       const el = document.createElement('div');
-      el.className = 'tag';
+      el.className = def.small ? 'tag small' : 'tag';
       el.innerHTML = `${def.name}<small>${def.sub}</small>`;
       layer.appendChild(el);
       const line = document.createElementNS(SVG, 'polyline');
@@ -70,8 +70,10 @@ export function createOverlay(container) {
       l.line.style.opacity = showLabels ? 1 : 0;
       if (!showLabels) continue;
       const world = l.anchor.clone().applyMatrix4(l.object.matrixWorld);
+      // 멀리서는 숨기는 이름표 (펼쳐보기의 부품 이름: 확대하면 보인다)
+      if (l.maxDist && world.distanceTo(camera.position) > l.maxDist) { l.el.style.opacity = 0; l.line.style.opacity = 0; continue; }
       const [ax, ay, z] = project(world, camera, w, h);
-      if (z > 1) { l.el.style.opacity = 0; l.line.style.opacity = 0; continue; }
+      if (z > 1 || ((l.maxDist || l.hideOff) && (ax < 0 || ay < 0 || ax > w || ay > h))) { l.el.style.opacity = 0; l.line.style.opacity = 0; continue; }
       const left = l.off[0] < 0;
       const lw = l.el.offsetWidth;
       let lx = ax + l.off[0] * s;

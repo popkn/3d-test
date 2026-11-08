@@ -29,6 +29,8 @@ body {
 .list a.on { border-left-color: var(--accent); background: #fff; }
 .list a b { display: block; font-weight: 600; }
 .list a small { color: var(--soft); font-size: 9px; }
+.list a.all { margin: 4px 0 6px; background: rgba(232, 67, 42, 0.07); }
+.list a.all b { color: var(--accent); }
 
 /* 3D 화면 */
 .stage { position: relative; min-width: 0; overflow: hidden; }
@@ -51,6 +53,9 @@ body {
 .tag::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--accent); margin-right: 5px; }
 .tag small { display: block; padding-left: 11px; color: var(--soft); font-weight: 400; font-size: 9px; }
 .tag.left { text-align: right; }
+.tag.small { font-size: 8px; font-weight: 600; }
+.tag.small::before { width: 4px; height: 4px; }
+.tag.small small { display: none; }
 .dim { position: absolute; left: 0; top: 0; font-size: 10px; font-weight: 700; color: var(--accent); white-space: nowrap;
   text-shadow: 0 0 3px var(--bg), 0 0 3px var(--bg); transition: opacity 0.3s; }
 
@@ -733,9 +738,9 @@ function axialResistor({ length = 6.3, dia = 2.3, bands = ["#8b4513", "#111", "#
     lead.rotation.z = Math.PI / 2;
     lead.position.set(s * (length / 2 + 0.9), dia / 2 + 0.3, 0);
     g.add(lead);
-    const down = mesh(new THREE4.CylinderGeometry(0.25, 0.25, dia / 2 + 0.4, 8), M.solder, { cast: false });
-    down.position.set(s * (length / 2 + 1.9), (dia / 2 + 0.3) / 2, 0);
-    g.add(down);
+    const down2 = mesh(new THREE4.CylinderGeometry(0.25, 0.25, dia / 2 + 0.4, 8), M.solder, { cast: false });
+    down2.position.set(s * (length / 2 + 1.9), (dia / 2 + 0.3) / 2, 0);
+    g.add(down2);
   }
   return g;
 }
@@ -10025,18 +10030,18 @@ function createScene(container) {
   ground.rotation.x = -Math.PI / 2;
   ground.receiveShadow = true;
   scene.add(ground);
-  function frame(box2) {
+  function frame(box2, opts2 = {}) {
     const size = box2.getSize(new THREE99.Vector3());
     const center = box2.getCenter(new THREE99.Vector3());
     const r = size.length() / 2;
-    const dist = r / Math.sin(THREE99.MathUtils.degToRad(camera.fov / 2)) * 1.5;
-    const dir = new THREE99.Vector3(-0.75, 0.8, 1).normalize();
+    const dist = r / Math.sin(THREE99.MathUtils.degToRad(camera.fov / 2)) * (opts2.fit ?? 1.5);
+    const dir = (opts2.dir ? new THREE99.Vector3(...opts2.dir) : new THREE99.Vector3(-0.75, 0.8, 1)).normalize();
     camera.position.copy(center).addScaledVector(dir, dist);
-    camera.near = dist / 100;
+    camera.near = Math.min(dist / 100, (opts2.minDist ?? Infinity) / 4);
     camera.far = dist * 20;
     camera.updateProjectionMatrix();
     controls.target.copy(center);
-    controls.minDistance = r * 0.8;
+    controls.minDistance = opts2.minDist ?? r * 0.8;
     controls.maxDistance = dist * 4;
     const s = r * 2;
     key.position.set(center.x - s * 0.6, s * 1.6, center.z + s * 0.8);
@@ -10098,7 +10103,7 @@ function createOverlay(container) {
   function setLabels(list) {
     for (const def of list) {
       const el = document.createElement("div");
-      el.className = "tag";
+      el.className = def.small ? "tag small" : "tag";
       el.innerHTML = `${def.name}<small>${def.sub}</small>`;
       layer.appendChild(el);
       const line = document.createElementNS(SVG, "polyline");
@@ -10139,8 +10144,13 @@ function createOverlay(container) {
       l.line.style.opacity = showLabels ? 1 : 0;
       if (!showLabels) continue;
       const world = l.anchor.clone().applyMatrix4(l.object.matrixWorld);
+      if (l.maxDist && world.distanceTo(camera.position) > l.maxDist) {
+        l.el.style.opacity = 0;
+        l.line.style.opacity = 0;
+        continue;
+      }
       const [ax, ay, z] = project(world, camera, w, h);
-      if (z > 1) {
+      if (z > 1 || (l.maxDist || l.hideOff) && (ax < 0 || ay < 0 || ax > w || ay > h)) {
         l.el.style.opacity = 0;
         l.line.style.opacity = 0;
         continue;
@@ -10247,7 +10257,7 @@ view.scene.add(overlay.dimGroup);
 var panel = createPanel(document.getElementById("panel"));
 var opts = { labels: true, dims: true, spin: false };
 var nav = document.getElementById("parts");
-nav.innerHTML = categories.map(([cat, title]) => `
+nav.innerHTML = `<a href="#all" data-id="all" class="all"><b>\u25A6 \uC804\uCCB4 \uD3BC\uCCD0\uBCF4\uAE30</b><small>${catalog.length}\uAC1C \uBD80\uD488 \xB7 \uC2E4\uC81C \uD06C\uAE30\uB85C \uD55C \uD654\uBA74\uC5D0</small></a>` + categories.map(([cat, title]) => `
   <h3>${title}</h3>
   ${catalog.filter((p) => p.category === cat).map((p) => `
     <a href="#${p.id}" data-id="${p.id}"><b>${p.name}</b><small>${p.size.x} \xD7 ${p.size.z} \xD7 ${p.size.y} mm${p.size.estimated ? " \xB7 \uCD94\uC815" : ""}</small></a>`).join("")}
@@ -10261,7 +10271,85 @@ document.querySelectorAll(".toggles button").forEach((b) => {
 });
 var current = null;
 var loadToken = 0;
+var ROW_W = 1300;
+var GAP = 14;
+var picks = [];
+async function showAll(token) {
+  const parts = await Promise.all(catalog.map((p) => loadPart(p.id)));
+  if (token !== loadToken) return null;
+  const root = new THREE101.Group();
+  const labels = [];
+  let z = 0;
+  picks.length = 0;
+  for (const [cat, title] of categories) {
+    const list = catalog.map((p, i) => [p, parts[i]]).filter(([p]) => p.category === cat);
+    if (!list.length) continue;
+    let x = 0, rowDepth = 0, first = true;
+    for (const [spec, part] of list) {
+      const model = part.build();
+      const g = new THREE101.Group();
+      g.add(model.object3d);
+      root.add(g);
+      g.updateMatrixWorld(true);
+      const box2 = partBounds(g);
+      const size = box2.getSize(new THREE101.Vector3()), c = box2.getCenter(new THREE101.Vector3());
+      if (x > 0 && x + size.x > ROW_W) {
+        z += rowDepth + GAP * 2;
+        x = 0;
+        rowDepth = 0;
+      }
+      model.object3d.position.set(-c.x + x + size.x / 2, -box2.min.y, -c.z + z + size.z / 2);
+      if (first) {
+        labels.push({ name: title, sub: `${list.length}\uAC1C`, object: root, anchor: [x, 0, z - 6], off: [-20, -40], hideOff: true });
+        first = false;
+      }
+      labels.push({ name: spec.name, sub: `${spec.size.x} \xD7 ${spec.size.z} \xD7 ${spec.size.y} mm`, object: root, anchor: [x + size.x / 2, size.y, z + size.z / 2], off: [10, -26], small: true });
+      picks.push({ root: g, id: spec.id });
+      x += size.x + GAP;
+      rowDepth = Math.max(rowDepth, size.z);
+    }
+    z += rowDepth + GAP * 4;
+  }
+  return { root, labels };
+}
 async function select(id) {
+  if (id === "all") {
+    if (current?.id === "all") return;
+    const token2 = ++loadToken;
+    document.getElementById("loading").style.display = "block";
+    nav.querySelectorAll("a").forEach((a) => a.classList.toggle("on", a.dataset.id === "all"));
+    const res = await showAll(token2);
+    if (!res) return;
+    if (current) {
+      current.fn?.dispose?.();
+      view.scene.remove(current.root);
+    }
+    overlay.clear();
+    view.scene.add(res.root);
+    res.root.updateMatrixWorld(true);
+    const box3 = partBounds(res.root);
+    view.frame(box3, { dir: [0, 1.6, 1], fit: 0.95, minDist: 30 });
+    view.controls.zoomToCursor = true;
+    const d0 = view.camera.position.distanceTo(view.controls.target);
+    for (const l of res.labels) if (l.small) l.maxDist = d0 * 0.4;
+    overlay.setLabels(res.labels);
+    const size = box3.getSize(new THREE101.Vector3());
+    panel.showSpec({
+      name: "\uC804\uCCB4 \uBD80\uD488 \uD3BC\uCCD0\uBCF4\uAE30",
+      url: "#all",
+      size: { x: Math.round(size.x), z: Math.round(size.z), y: Math.round(size.y), estimated: false, note: "\uBAA8\uB4E0 \uBD80\uD488\uC744 \uC2E4\uC81C \uD06C\uAE30(1 = 1 mm) \uADF8\uB300\uB85C \uBD84\uB958\uBCC4 \uC904\uB85C \uB298\uC5B4\uB193\uC558\uC2B5\uB2C8\uB2E4. \uBD80\uD488\uC744 \uB204\uB974\uBA74 \uADF8 \uBD80\uD488\uC758 \uC790\uC138\uD55C \uD654\uBA74\uACFC \uAE30\uB2A5\uC73C\uB85C \uAC11\uB2C8\uB2E4." },
+      function: "\uB4DC\uB798\uADF8\uB85C \uB3CC\uB9AC\uACE0 \uD720\uB85C \uD655\uB300\uD574\uC11C \uBD80\uD488 \uD06C\uAE30\uB97C \uC11C\uB85C \uBE44\uAD50\uD574 \uBCF4\uC138\uC694. \uAC00\uAE4C\uC774 \uD655\uB300\uD558\uBA74 \uBD80\uD488 \uC774\uB984\uC774 \uB098\uD0C0\uB0A9\uB2C8\uB2E4. LABELS\uB85C \uC774\uB984\uD45C\uB97C \uB044\uACE0 \uCF2D\uB2C8\uB2E4.",
+      specs: categories.map(([cat, title]) => [title, `${catalog.filter((p) => p.category === cat).length}\uAC1C`]).filter(([, n]) => n !== "0\uAC1C").concat([["\uD569\uACC4", `${catalog.length}\uAC1C`]]),
+      ports: []
+    });
+    panel.reset(() => {
+    });
+    current = { id: "all", root: res.root, fn: null };
+    document.getElementById("loading").style.display = "none";
+    return;
+  }
+  picks.length = 0;
+  view.controls.zoomToCursor = false;
   const spec = catalog.find((p) => p.id === id) ?? catalog[0];
   if (current?.id === spec.id) return;
   const token = ++loadToken;
@@ -10293,6 +10381,29 @@ async function select(id) {
   document.getElementById("loading").style.display = "none";
 }
 window.addEventListener("hashchange", () => select(location.hash.slice(1)));
+var ray = new THREE101.Raycaster();
+var ptr = new THREE101.Vector2();
+var down = null;
+view.renderer.domElement.addEventListener("pointerdown", (e) => {
+  down = [e.clientX, e.clientY];
+});
+view.renderer.domElement.addEventListener("pointerup", (e) => {
+  if (!picks.length || !down || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 5) return;
+  const r = view.renderer.domElement.getBoundingClientRect();
+  ptr.set((e.clientX - r.left) / r.width * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+  ray.setFromCamera(ptr, view.camera);
+  const hit = ray.intersectObjects(picks.map((p) => p.root), true).find((h) => h.object.visible);
+  if (!hit) return;
+  const pick = picks.find((p) => {
+    let o = hit.object;
+    while (o) {
+      if (o === p.root) return true;
+      o = o.parent;
+    }
+    return false;
+  });
+  if (pick) location.hash = pick.id;
+});
 select(location.hash.slice(1) || catalog[0].id);
 var timer = new THREE101.Timer();
 view.renderer.setAnimationLoop((ts) => {
@@ -10306,6 +10417,7 @@ view.renderer.setAnimationLoop((ts) => {
 });
 window.__view = view;
 window.__select = select;
+window.__picks = picks;
 
 </script>
 </body>

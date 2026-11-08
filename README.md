@@ -101,5 +101,5 @@ src/
 
 ## 전체 부품 HTML 파일 하나로 보기
 
-`standalone/roborobo-parts.html` — 브라우저로 열면 전체 부품(목록 · 3D · 기능)을 볼 수 있다. three.js만 인터넷(CDN)에서 받는다.
+`standalone/roborobo-parts.html` — 브라우저로 열면 전체 부품(목록 · 3D · 기능)을 볼 수 있다. 목록 맨 위 **전체 펼쳐보기**(`#all`)는 모든 부품을 실제 크기로 한 화면에 늘어놓고, 부품을 누르면 그 부품 화면으로 간다. three.js만 인터넷(CDN)에서 받는다.
 부품을 고친 뒤 다시 만들기: `node tools/build-all.mjs`

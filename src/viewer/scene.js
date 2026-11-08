@@ -39,18 +39,19 @@ export function createScene(container) {
   scene.add(ground);
 
   // 부품 크기에 맞춰 카메라와 그림자 범위를 맞춘다
-  function frame(box) {
+  // opts.dir: 카메라 방향, opts.fit: 거리 배율 (펼쳐보기는 위에서 가깝게)
+  function frame(box, opts = {}) {
     const size = box.getSize(new THREE.Vector3());
     const center = box.getCenter(new THREE.Vector3());
     const r = size.length() / 2;
-    const dist = (r / Math.sin(THREE.MathUtils.degToRad(camera.fov / 2))) * 1.5;
-    const dir = new THREE.Vector3(-0.75, 0.8, 1).normalize();
+    const dist = (r / Math.sin(THREE.MathUtils.degToRad(camera.fov / 2))) * (opts.fit ?? 1.5);
+    const dir = (opts.dir ? new THREE.Vector3(...opts.dir) : new THREE.Vector3(-0.75, 0.8, 1)).normalize();
     camera.position.copy(center).addScaledVector(dir, dist);
-    camera.near = dist / 100;
+    camera.near = Math.min(dist / 100, (opts.minDist ?? Infinity) / 4);
     camera.far = dist * 20;
     camera.updateProjectionMatrix();
     controls.target.copy(center);
-    controls.minDistance = r * 0.8;
+    controls.minDistance = opts.minDist ?? r * 0.8;
     controls.maxDistance = dist * 4;
     const s = r * 2;
     key.position.set(center.x - s * 0.6, s * 1.6, center.z + s * 0.8);
