@@ -98,3 +98,8 @@ src/
 
 - `model.js`의 `build()`는 `{ object3d, labels, handles }`를 돌려준다.
 - `function.js`의 `create(model, ui)`는 `ui.controls([...])`로 조작 버튼을, `ui.readouts([...])`로 결과 칸을 만들고 `{ onControl, update, dispose }`를 돌려준다.
+
+## 전체 부품 HTML 파일 하나로 보기
+
+`standalone/roborobo-parts.html` — 브라우저로 열면 전체 부품(목록 · 3D · 기능)을 볼 수 있다. three.js만 인터넷(CDN)에서 받는다.
+부품을 고친 뒤 다시 만들기: `node tools/build-all.mjs`
