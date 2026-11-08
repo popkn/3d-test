@@ -94,3 +94,4 @@
 
 - 컬러볼 · 압축공은 로봇 제작 부품이 아니라서 삭제 (사용자 요청). 독수리 · 기차 설계에서도 뺐다. 체크리스트에는 `[-]` 제외로 표시.
 - 조립 지침서에 들어갈 내용 분석: `ASSEMBLY_GUIDE_CONTENTS.md` (위치 고정 → 연결점 · 조인트 규칙 · 조립 트리 · 검사).
+- 조립 규칙 지침서: `ASSEMBLY_GUIDE.md` (원칙 · 표준 좌표 · 연결점 · 체결 규칙 · 볼트 선택 · 조립 트리 형식 · 위치 계산 · 관절 · 전기 · 검사 · 금지 + 부품별 연결점 부록). 데이터: `src/catalog/connectors.json` (89개 부품, 연결점 1382개). 다시 만들기: `node tools/extract_connectors.cjs tools/connectors_auto.json` → `python3 tools/assembly_guide.py`.
