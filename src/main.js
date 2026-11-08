@@ -8,7 +8,6 @@ import { SHEETS, BOM_TOTAL } from './eagle/assembly.js';
 import { buildBattlebot, EXPLODE as BB_EXPLODE } from './battlebot/assemble.js';
 import { SHEETS as BB_SHEETS, BOM_TOTAL as BB_TOTAL } from './battlebot/assembly.js';
 import { buildTrain, SPEED as TRAIN_SPEED } from './train/assemble.js';
-import { SHEETS as TR_SHEETS, BOM_TOTAL as TR_TOTAL } from './train/assembly.js';
 
 // 로보로보 부품 뷰어: 왼쪽 목록에서 부품을 고르면 3D 모양과 기능(조작 패널)을 불러온다.
 const stage = document.getElementById('stage');
@@ -165,17 +164,18 @@ let train = null;
 function trainFunction(e) {
   const NAMES3 = ['앞칸 (조종자 A)', '중간칸 (조종자 B)', '마지막칸 (조종자 C)'];
   const OPTS = [['stop', '정지'], ['fwd', '전진'], ['back', '후진'], ['left', '왼쪽'], ['right', '오른쪽']];
-  const st = { cmd: ['stop', 'stop', 'stop'], speed: 1, body: true, follow: true };
+  const st = { cmd: ['stop', 'stop', 'stop'], speed: 1, body: true, follow: true, bolts: false };
   panel.ui.controls([
     ...NAMES3.map((n, i) => ({ type: 'select', id: 'c' + i, label: n, options: OPTS, value: 'stop' })),
     { type: 'button', id: 'same', label: '셋 다 전진 (같은 방향)' },
     { type: 'button', id: 'mixed', label: '엇갈림 예: 앞 왼쪽 · 가운데 후진 · 뒤 오른쪽' },
     { type: 'slider', id: 'speed', label: '속도', min: 0.2, max: 1, step: 0.05, value: 1 },
     { type: 'toggle', id: 'body', label: '차체 보이기 (끄면 차대 · CPU가 보임)', value: true },
+    { type: 'toggle', id: 'bolts', label: '볼트 · 너트 보기 (조립 계산이 고른 것)', value: false },
     { type: 'toggle', id: 'follow', label: '카메라가 열차를 따라감', value: true },
     { type: 'button', id: 'reset', label: '처음 자리로' },
   ]);
-  panel.ui.readouts([['team', '세 사람'], ['bend', '연결봉 꺾임'], ['speed', '속도'], ['parts', '놓인 부품']]);
+  panel.ui.readouts([['team', '세 사람'], ['bend', '연결봉 꺾임'], ['speed', '속도'], ['parts', '놓인 부품'], ['check', '조립 규칙 검사']]);
   const setSel = (i, v) => { const el = document.querySelectorAll('.p-controls select')[i]; if (el) el.value = v; };
   const center = new THREE.Vector3();
   return {
@@ -185,7 +185,7 @@ function trainFunction(e) {
       else if (id === 'mixed') { st.cmd = ['left', 'back', 'right']; st.cmd.forEach((c, i) => setSel(i, c)); }
       else if (id === 'reset') { e.reset(); st.cmd = ['stop', 'stop', 'stop']; st.cmd.forEach((c, i) => setSel(i, c)); }
       else if (id === 'speed') st.speed = Number(v);
-      else st[id] = v;
+      else { st[id] = v; if (id === 'bolts') e.showBolts(v); }
     },
     update(dt) {
       const bend = e.step(Math.min(dt, 0.05), st.cmd, st.speed);
@@ -200,7 +200,8 @@ function trainFunction(e) {
       panel.ui.readout('team', same ? (st.cmd[0] === 'stop' ? '모두 정지' : '같은 방향 ✔ 잘 달림') : '엇갈림 ✘ 덜컹 · 비틀 · 접힘');
       panel.ui.readout('bend', `앞-중간 ${bend[0].toFixed(0)}° · 중간-뒤 ${bend[1].toFixed(0)}°`);
       panel.ui.readout('speed', moving.length ? `칸마다 최대 ${(TRAIN_SPEED * st.speed / 1000).toFixed(2)} m/s` : '정지');
-      panel.ui.readout('parts', `${e.count}개 (볼트 · 너트 포함 ${TR_TOTAL}개)`);
+      panel.ui.readout('parts', `${e.count}개 + 볼트 · 너트 ${e.nFast}개`);
+      panel.ui.readout('check', e.errors.length ? `오류 ${e.errors.length}건` : `오류 0 · 경고 ${e.warnings.length} · 관절 ${e.joints}`);
     },
   };
 }
@@ -227,10 +228,13 @@ async function select(id) {
     view.frame(box, { dir: [-1, 0.55, -0.7], fit: 1.0, minDist: 20 });
     const size = box.getSize(new THREE.Vector3());
     panel.showSpec({
-      name: '협동 기차 하나로 열차 (설계도면 조립)', url: 'https://github.com/popkn/3d-test/blob/로보로보-3d-test/train/BLUEPRINT.md',
-      size: { x: Math.round(size.x), z: Math.round(size.z), y: Math.round(size.y), estimated: false, note: 'train/BLUEPRINT.md 도면 좌표대로 부품 모델을 놓아 조립. 볼트 · 너트 · 케이블은 생략.' },
+      name: '협동 기차 하나로 열차 (조립 규칙으로 조립)', url: 'https://github.com/popkn/3d-test/blob/로보로보-3d-test/ASSEMBLY_GUIDE.md',
+      size: { x: Math.round(size.x), z: Math.round(size.z), y: Math.round(size.y), estimated: false, note: 'ASSEMBLY_GUIDE.md 규칙으로 조립: 좌표로 놓은 것은 칸마다 바닥판 하나, 나머지는 모두 "구멍 ↔ 구멍" 짝으로 위치를 계산 (src/train/tree.js). 볼트 · 너트도 겹친 두께로 자동 선택.' },
       function: '칸마다 CPU · 블루투스 · 모터가 따로 있어 세 사람이 한 칸씩 조종한다. 같은 방향이면 잘 달리고, 엇갈리면 연결봉으로 서로 끌고 밀며 이상하게 움직인다 (멈추지 않음). 아래에서 칸마다 방향을 골라 보세요.',
-      specs: Object.entries(TR_SHEETS).map(([no, t]) => [`도면 ${no}`, t]),
+      specs: [...Object.entries(e.subs).map(([no, t]) => [`조립 ${no}`, t]),
+        ['규칙 검사', e.errors.length ? e.errors.slice(0, 5).join(' / ') : `오류 0건 · 구멍 짝 어긋남 0.2 mm 이내 · 볼트 2개 이상`],
+        ...e.warnings.filter((w, i, a) => a.findIndex((x) => x.replace(/^.*?: /, '') === w.replace(/^.*?: /, '')) === i).map((w) => ['경고', w]),
+        ['볼트 · 너트', Object.entries(e.bom).filter(([k]) => /^(bolt|nut)/.test(k)).map(([k, n]) => `${k} ${n}`).join(' · ')]],
       ports: [],
     });
     let fn = null;
@@ -391,7 +395,7 @@ view.renderer.domElement.addEventListener('pointermove', (e) => {
   const hit = rc.intersectObject(asm.root, true).find((h) => h.object.visible);
   let o = hit?.object; while (o && !o.userData?.id) o = o.parent;
   if (!o) { tipEl.style.opacity = 0; return; }
-  tipEl.innerHTML = `${o.userData.name}<small>${o.userData.id} · 도면 ${o.userData.sheet}</small>`;
+  tipEl.innerHTML = `${o.userData.name}<small>${o.userData.id} · ${current?.id === "train" ? "조립" : "도면"} ${o.userData.sheet}</small>`;
   tipEl.style.opacity = 1;
   tipEl.style.transform = `translate(${e.clientX - r.left + 14}px, ${e.clientY - r.top + 10}px)`;
 });

@@ -30,7 +30,7 @@ def lframe(a, b, w, angle=90, wp=10, tap=False, off=(0, 0, 0)):
 
 def motor(top=35):
     """DC 모터 · 서보 공통 케이스 (몸통 40 × 20 × 33, 귀 포함 60). 표준 좌표 = 몸통 가운데 · 바닥"""
-    ears = [C('M3', (sx * 25.5, 26.4, sz * 5), (0, 1, 0), f'{"오른" if sx > 0 else "왼"} 귀 {"앞" if sz < 0 else "뒤"}') for sx in (-1, 1) for sz in (-1, 1)]
+    ears = [C('M3', (sx * 25, 26.4, sz * 5), (0, 1, 0), f'{"오른" if sx > 0 else "왼"} 귀 {"앞" if sz < 0 else "뒤"} (근사: 귀 구멍 간격 50 · 모델 51)') for sx in (-1, 1) for sz in (-1, 1)]
     return ears
 
 MANUAL = {
@@ -67,7 +67,7 @@ MANUAL = {
     'grab': [C('M3', (x, 2, 10), (0, 1, 0), '몸통 고정 구멍 (근사)') for x in (-5, 5)],
     'nut-frame-4': [C('HEXNUT', (x, 3.5, 0), (0, 1, 0), '육각 너트 홈 + M3') for x in (-15, -5, 5, 15)],
     'motor-guide': [C('M3', (5, 3, 0), (0, 1, 0), '고정 구멍'), C('BORE7', (-4.5, 7.5, 0), (0, 1, 0), '고리 Ø7 (바퀴축 · 모터 축 받침)')],
-    'battery-case-4aa': [C('M3', (sx * 37, 1, sz * 20), (0, 1, 0), '귀 구멍 (근사 — 실측 필요)') for sx in (-1, 1) for sz in (-1, 1)] + [C('E2P', (0, 9, 50), (0, 0, 1), '2핀 커넥터 (빨강 + / 검정 −)')],
+    'battery-case-4aa': [C('M3', (sx * 35, 1, sz * 20), (0, 1, 0), '귀 구멍 (근사 — 격자 70 × 40으로 가정, 실측 필요)') for sx in (-1, 1) for sz in (-1, 1)] + [C('E2P', (0, 9, 50), (0, 0, 1), '2핀 커넥터 (빨강 + / 검정 −)')],
     'cable-3pin': [C('E3P_F', (-97, 4, 0), (-1, 0, 0), '3핀 암 커넥터'), C('E3P_F', (97, 4, 0), (1, 0, 0), '3핀 암 커넥터 (길이 200)')],
     'header-pin-3p': [C('E3P_M', (-8, 4, 0), (-1, 0, 0), '수핀'), C('E3P_M', (8, 4, 0), (1, 0, 0), '수핀 (케이블 두 개를 이음)')],
     'rgb-led-bright': [C('CLIP', (0, 0, 0), (0, -1, 0), '아래 클립 (고정 구멍 없음)'), C('E3P_M', (0, 2, 9), (0, 0, 1), '3핀 헤더')],
@@ -135,6 +135,10 @@ for pid, a in AUTO.items():
                  'originOffset': [R1(a['off'][k] + off[k]) for k in range(3)] if pid in MOTORS else a['off'],
                  'connectors': connectors(pid)})
 json.dump(data, open(os.path.join(ROOT, 'src', 'catalog', 'connectors.json'), 'w'), ensure_ascii=False)
+THICK = {'motor': 2.4, 'l-frame': 1.0, 'motor-frame': 1.0, 'wheel-guide': 2.4, 'nut-frame': 3.5, 'battery': 2.0, 'axle-guide': 5.0, 'hinge': 1.0}
+with open(os.path.join(ROOT, 'src', 'catalog', 'connectors.js'), 'w') as f:
+    f.write('// 부품별 연결점 (ASSEMBLY_GUIDE.md 부록 B) — tools/assembly_guide.py가 만든다\n')
+    f.write('export default ' + json.dumps({d['id']: {'off': d['originOffset'], 'size': d['size'], 'thick': next((v for k, v in THICK.items() if d['id'].startswith(k) or (k == 'motor' and d['id'] in MOTORS)), 1.6), 'c': d['connectors']} for d in data}, ensure_ascii=False) + ';\n')
 total_c = sum(len(d['connectors']) for d in data)
 
 # ───────── 문서 ─────────
