@@ -9,7 +9,7 @@ export function makeBattleFrame({ outline, holes, pattern, width, depth, paint =
     width, depth, color: 'white', outline, corner: 2, pxPerMm: 12,
     holes: holes.map(([x, z]) => ({ x, z, r: 1.6, ring: true })),
     silk: (g, w, d, X, Y) => {
-      g.fillStyle = '#d4202a';
+      g.fillStyle = '#b8101c'; // 사진의 진한 빨강 (조명에서 분홍으로 바래지 않게 조금 어둡게)
       // 외곽선 안쪽만 칠하도록 잘라낸다
       g.save();
       g.beginPath();
@@ -21,16 +21,22 @@ export function makeBattleFrame({ outline, holes, pattern, width, depth, paint =
         const xs = holes.map(([x]) => x).filter((x, i, a) => a.indexOf(x) === i).sort((a, b) => a - b);
         for (let i = 0; i < xs.length - 1; i += 2) star(g, X((xs[i] + xs[i + 1]) / 2), Y(0), 7, 3);
       } else {
-        // 불꽃 무늬: 굽은 갈고리 모양을 일정 간격으로
-        for (let x = -w / 2 - 10; x < w / 2 + 10; x += 13) {
+        // 불꽃 무늬 (사진: 촘촘한 소용돌이 불꽃). 아래에서 큰 불꽃, 위에서 작은 불꽃을 엇갈려 그린다
+        const flame = (x, base, tip, s) => {
+          const h = tip - base;
           g.beginPath();
-          g.moveTo(X(x), Y(d / 2));
-          g.bezierCurveTo(X(x + 2), Y(2), X(x + 12), Y(4), X(x + 9), Y(-d / 2 + 4));
-          g.bezierCurveTo(X(x + 6), Y(-2), X(x + 4), Y(4), X(x + 5), Y(d / 2));
-          g.fill();
-          g.beginPath();
-          g.arc(X(x + 9), Y(-d / 2 + 5), 2, 0, Math.PI * 2);
-          g.fill();
+          g.moveTo(X(x - 4.5 * s), Y(base));
+          g.bezierCurveTo(X(x - 5 * s), Y(base + h * 0.45), X(x + 4 * s), Y(base + h * 0.55), X(x + 2.5 * s), Y(base + h * 0.85));
+          g.bezierCurveTo(X(x + 1.5 * s), Y(base + h * 1.05), X(x - 2.5 * s), Y(base + h * 1.0), X(x - 2 * s), Y(base + h * 0.8));
+          g.bezierCurveTo(X(x - 0.5 * s), Y(base + h * 0.9), X(x + 1 * s), Y(base + h * 0.75), X(x - 0.5 * s), Y(base + h * 0.6));
+          g.bezierCurveTo(X(x - 2.5 * s), Y(base + h * 0.4), X(x + 3.5 * s), Y(base + h * 0.25), X(x + 4.5 * s), Y(base));
+          g.closePath(); g.fill();
+          // 소용돌이 눈 (흰 점)
+          g.save(); g.fillStyle = '#f4f3ee'; g.beginPath(); g.arc(X(x + 0.2 * s), Y(base + h * 0.82), 0.9 * Math.abs(s), 0, Math.PI * 2); g.fill(); g.restore();
+        };
+        for (let x = -w / 2 - 6; x < w / 2 + 8; x += 11) {
+          flame(x, d / 2, -d / 2 + 3, 1);
+          flame(x + 5.5, -d / 2, d / 2 - 9, -0.7);
         }
       }
       g.restore();
@@ -66,4 +72,21 @@ export function gridHoles(cols, rows) {
   const out = [];
   for (let c = 0; c < cols; c++) for (let r = 0; r < rows; r++) out.push([(c - (cols - 1) / 2) * PITCH, (r - (rows - 1) / 2) * PITCH]);
   return out;
+}
+
+// 외곽선 안쪽(가장자리에서 margin 이상)에 있는 구멍만 남긴다
+export function holesInside(holes, outline, margin = 3.5) {
+  const inside = (x, z) => {
+    let c = false;
+    for (let i = 0, j = outline.length - 1; i < outline.length; j = i++) {
+      const [xi, zi] = outline[i], [xj, zj] = outline[j];
+      if ((zi > z) !== (zj > z) && x < ((xj - xi) * (z - zi)) / (zj - zi) + xi) c = !c;
+    }
+    return c;
+  };
+  const segDist = (x, z, [x1, z1], [x2, z2]) => {
+    const dx = x2 - x1, dz = z2 - z1, t = Math.max(0, Math.min(1, ((x - x1) * dx + (z - z1) * dz) / (dx * dx + dz * dz)));
+    return Math.hypot(x - x1 - t * dx, z - z1 - t * dz);
+  };
+  return holes.filter(([x, z]) => inside(x, z) && outline.every((p, i) => segDist(x, z, p, outline[(i + 1) % outline.length]) >= margin));
 }

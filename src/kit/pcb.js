@@ -90,10 +90,10 @@ export function makePcb({
     g.fillStyle = dark ? '#18191b' : '#f4f3ee';
     g.fillRect(0, 0, w, d);
     // 구멍 둘레 금속 테
-    g.fillStyle = dark ? '#b9a26a' : '#c7c9cc';
+    g.fillStyle = dark ? '#c9c7c0' : '#c7c9cc'; // 사진 기준: 은색(HASL) 테
     for (const h of allHoles) {
       if (!h.ring) continue;
-      g.beginPath(); g.arc(X(h.x), Y(h.z), h.r + 0.7, 0, Math.PI * 2); g.fill();
+      g.beginPath(); g.arc(X(h.x), Y(h.z), h.r + 0.55, 0, Math.PI * 2); g.fill();
     }
     // 프레임 번호/알파벳
     if (frame && (frame.numbers || frame.letters)) {

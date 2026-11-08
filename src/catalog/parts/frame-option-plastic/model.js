@@ -3,7 +3,7 @@ import { makeFrame, cornerBolts } from '../../../kit/frame.js';
 
 export function build() {
   const root = new THREE.Group();
-  const frame = makeFrame({ cols: 4, rows: 2, material: 'plastic', margin: 5, marginZ: 5 });
+  const frame = makeFrame({ cols: 4, rows: 2, cutouts: [{ x: 0, z: 0, r: 1 }], material: 'plastic', margin: 5, marginZ: 5 });
   root.add(frame);
   const bolts = cornerBolts(frame, 1.6 + 6);
   bolts.forEach((b) => root.add(b));
