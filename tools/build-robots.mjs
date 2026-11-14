@@ -20,6 +20,7 @@ const ROBOTS = {
     const { A } = (await imp('src/train/tree.js')).buildTrainTree();
     return [...A.parts.map((p) => p.pid), ...A.fastens.flatMap((f) => [f.item, f.nut]).filter(Boolean)];
   },
+  bigbot: async () => (await imp('src/bigbot/assembly.js')).default.map((a) => a.id),
 };
 
 rmSync(gen, { recursive: true, force: true });
