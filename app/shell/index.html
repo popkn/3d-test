@@ -62,13 +62,17 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .ftab .fcnt { font-size: 11px; font-weight: 700; color: var(--soft); background: rgba(0, 0, 0, .06); border-radius: 6px; padding: 1px 6px; flex: none; }
 .ftab[aria-selected="true"] .fcnt { background: rgba(232, 67, 42, .1); color: var(--accent-t); }
 .ftab.more { flex: none; color: var(--ink); }
-.cards { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 12px; }
-.card { flex: 0 0 calc((100% - 24px) / 3); min-height: 0; display: flex; gap: 14px; padding: 10px; border-radius: 24px; background: #fff;
+.cards { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 12px;
+  /* 로봇이 3대보다 많으면 스크롤 (한 화면에 3장, 넘치면 위아래로) */
+  overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; scroll-snap-type: y proximity; scrollbar-width: none;
+  margin: -6px -6px 0; padding: 6px 6px 8px; }
+.cards::-webkit-scrollbar { display: none; }
+.card { flex: 0 0 calc((100% - 24px) / 3); min-height: 190px; scroll-snap-align: start; display: flex; gap: 14px; padding: 10px; border-radius: 24px; background: #fff;
   border: 1px solid rgba(0, 0, 0, .06); box-shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 10px 24px -12px rgba(0, 0, 0, .12);
   animation: rise .44s cubic-bezier(.2, .8, .2, 1) both; transition: transform .2s var(--ease), box-shadow .2s; }
 .card.leaving { animation: leave .26s ease both; }
 @keyframes leave { to { transform: scale(.96); opacity: 0 } }
-.thumb { -webkit-touch-callout: none; touch-action: none; position: relative; width: 46%; flex: none; border: 0; padding: 0; border-radius: 18px; overflow: hidden; cursor: pointer;
+.thumb { -webkit-touch-callout: none; touch-action: pan-y; position: relative; width: 46%; flex: none; border: 0; padding: 0; border-radius: 18px; overflow: hidden; cursor: pointer;
   background: radial-gradient(75% 70% at 50% 42%, #fbfaf8 0%, #ecebe7 70%, #e4e2dd 100%); transition: transform .18s var(--ease); }
 .thumb.tdrag { cursor: grabbing; }
 .thumb::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .04); pointer-events: none; }
@@ -356,8 +360,9 @@ button { font: inherit; color: inherit; cursor: pointer; }
   #home { padding: calc(var(--sat) + 12px) calc(var(--sar) + 18px) calc(var(--sab) + 14px) calc(var(--sal) + 18px); gap: 12px; }
   .h-head { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "title bar acts"; gap: 14px; }
   .h-title h1 { font-size: 18px; margin-top: 2px; }
-  .cards { flex-direction: row; }
-  .card { flex: 0 0 calc((100% - 24px) / 3); flex-direction: column; gap: 8px; padding: 8px; }
+  .cards { flex-direction: row; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; }
+  .thumb { touch-action: pan-x; }
+  .card { flex: 0 0 calc((100% - 24px) / 3); min-width: 230px; min-height: 0; flex-direction: column; gap: 8px; padding: 8px; }
   .thumb { width: auto; height: 46%; }
   .info { padding: 0 4px; }
   .rname { -webkit-line-clamp: 1; }
