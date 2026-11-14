@@ -130,3 +130,9 @@
 ## 브랜치 나눔: parts (부품) · main (완성 제품)
 - `parts`: 부품 87개 · 조립 규칙 · 도면 · 데스크톱 뷰어 (이 브랜치). 로봇을 만들 때만 쓴다.
 - 완성 로봇 파일: `robots/<id>.js` (meta + makeAdapter(ctx) — 앱 재생기용 어댑터, 기능 조작 포함) → `node tools/build-robots.mjs <출력>`이 로봇마다 쓰인 부품만 묶은 JS 파일 + `index.json`(버전 = 내용 해시)을 만든다. 이걸 main의 `app/robots/`에 올리면 앱이 자동 업데이트.
+
+## 큰 배틀로봇 "썬더 타이탄 6륜" 설계
+- `tools/bigbot_blueprint.py` → `bigbot/BLUEPRINT.md` · `bigbot/blueprint.html` · `bigbot/sheets/00~09.svg` · `src/bigbot/assembly.js`.
+- 기존 썬더 웨지를 키우고 6륜으로: 빅 메인 PCB 2장 + 중16 이음판, 버기 바퀴 세트 6 (앞 · 뒤 구동 130 × 4 = CPU 조작 M1~M4, 가운데 2 지지 바퀴), 모든 바퀴 축 높이 40.
+- 무기: 앞 수평 스피너 (400) + 뒤 수직 드럼 (400, 배틀무기 S) = 계속 회전 자리 1 · 2 (규칙 2.4), 서보 웨지 23° → 45°.
+- 기본 규칙 검사 전부 통과 (CPU 1 · 모터 6 = 조작 4 + 계속 2 · 확장 보드 불필요 · 입출력 규칙 7장 목록만).

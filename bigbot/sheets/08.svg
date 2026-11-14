@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 920" width="1260" height="920" font-family="JetBrains Mono, 'Noto Sans KR', sans-serif"><defs><pattern id="g" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="#e3e8ef" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="#f6f8fb"/><rect x="14" y="14" width="1232" height="892" fill="none" stroke="#1d2230" stroke-width="1.2"/>
+<rect x="14" y="14" width="1232" height="46" fill="#1d2230"/>
+<text x="28.0" y="44.0" font-size="13" fill="#9fb3d1" font-weight="700" text-anchor="start">배틀로봇 썬더 타이탄 (6륜) · 도면 08</text>
+<text x="343.7" y="44.0" font-size="17" fill="#ffffff" font-weight="700" text-anchor="start">규칙 검사 · 모터 배정 · 동작</text>
+<text x="1232.0" y="44.0" font-size="10.5" fill="#c8d3e6" font-weight="400" text-anchor="end">ASSEMBLY_RULES.md 기본 규칙 (CPU · 모터 · 전기 연결)</text>
+<text x="50.0" y="100.0" font-size="13" fill="#1d2230" font-weight="700" text-anchor="start">① 기본 규칙 검사</text>
+<rect x="50" y="114" width="560" height="26" fill="#eef2f7"/>
+<text x="60.0" y="131.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 1.1 CPU 1대당 1개</text>
+<text x="270.0" y="131.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">CPU 보드 1개</text>
+<text x="60.0" y="157.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 2.1 CPU 모터 최대 6</text>
+<text x="270.0" y="157.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">DC 모터 6개 (130 × 4 + 400 × 2)</text>
+<rect x="50" y="166" width="560" height="26" fill="#eef2f7"/>
+<text x="60.0" y="183.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 2.1 조작 가능 4</text>
+<text x="270.0" y="183.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">구동 모터 4개 → M1 ~ M4</text>
+<text x="60.0" y="209.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 2.1 조작 불가 2 (계속 회전)</text>
+<text x="270.0" y="209.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">무기 모터 2개 → 계속 회전 자리 1 · 2</text>
+<rect x="50" y="218" width="560" height="26" fill="#eef2f7"/>
+<text x="60.0" y="235.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 2.2 확장 보드 (+4)</text>
+<text x="270.0" y="235.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">필요 없음 (조작 모터 4개) · 키트에 1개 남음</text>
+<text x="60.0" y="261.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 2.3 수량 130 × 4</text>
+<text x="270.0" y="261.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">130 모터 4개 사용</text>
+<rect x="50" y="270" width="560" height="26" fill="#eef2f7"/>
+<text x="60.0" y="287.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 2.3 수량 400 × 2</text>
+<text x="270.0" y="287.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">400 모터 2개 사용</text>
+<text x="60.0" y="313.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 2.4 배틀 무기 = 400 모터</text>
+<text x="270.0" y="313.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">앞 스피너 · 뒤 드럼 모두 400 모터</text>
+<rect x="50" y="322" width="560" height="26" fill="#eef2f7"/>
+<text x="60.0" y="339.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 7 입력 IN</text>
+<text x="270.0" y="339.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">접촉 센서 2 · 적외선 센서 1 (포트 하나에 하나)</text>
+<text x="60.0" y="365.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 7 출력 OUT</text>
+<text x="270.0" y="365.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">서보 1 · LED 빨강 2 · 부저 1 · LED 초록 1</text>
+<rect x="50" y="374" width="560" height="26" fill="#eef2f7"/>
+<text x="60.0" y="391.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 3 세트 부품</text>
+<text x="270.0" y="391.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">바퀴 = 버기 바퀴 세트 6 (휠 · 인너 · 타이어 따로 조립 안 함)</text>
+<text x="60.0" y="417.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 4 구멍 Ø3.2 · 5 mm 격자</text>
+<text x="270.0" y="417.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">모든 판 · 보드 체결은 격자 구멍</text>
+<text x="650.0" y="100.0" font-size="13" fill="#1d2230" font-weight="700" text-anchor="start">② 모터 배정 (위에서, 위 = 앞)</text>
+<rect x="650" y="112" width="560" height="320" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>
+<rect x="801.62" y="142.44" width="96.75999999999999" height="259.12" fill="none" stroke="#1d2230"/>
+<rect x="770.87" y="149.0" width="27.06" height="65.6" rx="4" fill="#2fae67" opacity=".85"/>
+<text x="784.4" y="185.8" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">M1</text>
+<rect x="770.87" y="239.2" width="27.06" height="65.6" rx="4" fill="#9a9ca0" opacity=".85"/>
+<text x="784.4" y="276.0" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">지지</text>
+<rect x="770.87" y="329.4" width="27.06" height="65.6" rx="4" fill="#2fae67" opacity=".85"/>
+<text x="784.4" y="366.2" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">M2</text>
+<rect x="902.07" y="149.0" width="27.06" height="65.6" rx="4" fill="#2fae67" opacity=".85"/>
+<text x="915.6" y="185.8" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">M3</text>
+<rect x="902.07" y="239.2" width="27.06" height="65.6" rx="4" fill="#9a9ca0" opacity=".85"/>
+<text x="915.6" y="276.0" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">지지</text>
+<rect x="902.07" y="329.4" width="27.06" height="65.6" rx="4" fill="#2fae67" opacity=".85"/>
+<text x="915.6" y="366.2" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">M4</text>
+<circle cx="850" cy="161.3" r="34.44" fill="none" stroke="#c8202b" stroke-width="2"/>
+<text x="850.0" y="165.3" font-size="9.5" fill="#c8202b" font-weight="700" text-anchor="middle">계속1</text>
+<rect x="861.48" y="360.56" width="4.92" height="45.919999999999995" fill="#c8202b"/>
+<text x="880.0" y="387.5" font-size="9.5" fill="#c8202b" font-weight="700" text-anchor="start">계속2</text>
+<rect x="1010" y="140" width="14" height="14" fill="#2fae67"/>
+<text x="1030.0" y="152.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">초록 = 조작 (M1 ~ M4)</text>
+<rect x="1010" y="164" width="14" height="14" fill="#c8202b"/>
+<text x="1030.0" y="176.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">빨강 = 계속 회전 (무기, 400)</text>
+<rect x="1010" y="188" width="14" height="14" fill="#9a9ca0"/>
+<text x="1030.0" y="200.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">회색 = 지지 바퀴 (모터 없음)</text>
+<text x="1010.0" y="240.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">전진</text>
+<text x="1010.0" y="254.0" font-size="9.5" fill="#5a6070" font-weight="400" text-anchor="start">M1 M2 + / M3 M4 +</text>
+<text x="1010.0" y="274.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">후진</text>
+<text x="1010.0" y="288.0" font-size="9.5" fill="#5a6070" font-weight="400" text-anchor="start">모두 −</text>
+<text x="1010.0" y="308.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">왼쪽 제자리</text>
+<text x="1010.0" y="322.0" font-size="9.5" fill="#5a6070" font-weight="400" text-anchor="start">M1 M2 − / M3 M4 +</text>
+<text x="1010.0" y="342.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">오른쪽 제자리</text>
+<text x="1010.0" y="356.0" font-size="9.5" fill="#5a6070" font-weight="400" text-anchor="start">M1 M2 + / M3 M4 −</text>
+<text x="50.0" y="470.0" font-size="13" fill="#1d2230" font-weight="700" text-anchor="start">③ 옆에서 본 무기 높이 (왼쪽 = 앞)</text>
+<rect x="50" y="482" width="560" height="250" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>
+<line x1="50" y1="700" x2="610" y2="700" stroke="#8a919c" stroke-width="1.5"/>
+<rect x="173.04" y="666.4" width="353.92" height="2.24" fill="#2b2c30"/>
+<circle cx="226.79999999999998" cy="655.2" r="44.800000000000004" fill="none" stroke="#5a6070"/>
+<circle cx="350.0" cy="655.2" r="44.800000000000004" fill="none" stroke="#5a6070"/>
+<circle cx="473.20000000000005" cy="655.2" r="44.800000000000004" fill="none" stroke="#5a6070"/>
+<rect x="151.76" y="610.4" width="94.08000000000001" height="3.3600000000000003" fill="#c8202b"/>
+<text x="151.8" y="604.4" font-size="9.5" fill="#c8202b" font-weight="700" text-anchor="start">스피너 날 높이 79</text>
+<circle cx="502.32000000000005" cy="655.2" r="41.440000000000005" fill="none" stroke="#c8202b" stroke-dasharray="4 2"/>
+<text x="472.3" y="605.9" font-size="9.5" fill="#c8202b" font-weight="700" text-anchor="start">드럼 (세로로 돎)</text>
+<line x1="173.04" y1="666.4" x2="92.4" y2="700.0" stroke="#1d2230" stroke-width="3" stroke-opacity=".8"/>
+<line x1="173.04" y1="666.4" x2="111.3" y2="604.6" stroke="#e8432a" stroke-width="3" stroke-opacity=".8"/>
+<text x="60.0" y="725.0" font-size="9.5" fill="#3a7bd5" font-weight="700" text-anchor="start">웨지 23° (지면) → 45° : 들어 올린 상대가 스피너 날 높이로 · 45°를 넘으면 날에 닿으니 서보 각도 제한</text>
+<text x="650.0" y="470.0" font-size="13" fill="#1d2230" font-weight="700" text-anchor="start">④ 동작 · 안전</text>
+<rect x="650" y="484" width="560" height="44" fill="#eef2f7"/>
+<text x="660.0" y="501.0" font-size="10.5" fill="#e8432a" font-weight="700" text-anchor="start">조종 (블루투스)</text>
+<text x="800.0" y="499.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">전진 · 후진 · 제자리 회전 (왼쪽 M1·M2 / 오른쪽 M3·M4 묶음</text>
+<text x="800.0" y="512.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">속도 차이) · 웨지 올림/내림</text>
+<text x="660.0" y="545.0" font-size="10.5" fill="#e8432a" font-weight="700" text-anchor="start">무기 (계속 회전)</text>
+<text x="800.0" y="543.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">스피너 · 드럼은 조작 불가 자리라 전원을 켜면 바로 돈다 → 켜기 전 주변</text>
+<text x="800.0" y="556.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">확인, 끌 때는 전원 스위치</text>
+<rect x="650" y="572" width="560" height="44" fill="#eef2f7"/>
+<text x="660.0" y="589.0" font-size="10.5" fill="#e8432a" font-weight="700" text-anchor="start">전원 켤 때</text>
+<text x="800.0" y="587.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">부저 3번 경고 · 초록 LED가 켜지면 조종 가능</text>
+<text x="660.0" y="633.0" font-size="10.5" fill="#e8432a" font-weight="700" text-anchor="start">공격 (IN1)</text>
+<text x="800.0" y="631.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">앞에 상대가 오면 눈 LED 켜짐 → 웨지를 내린 채 밀고 들어가 웨지로 들어</text>
+<text x="800.0" y="644.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">스피너 높이로</text>
+<rect x="650" y="660" width="560" height="44" fill="#eef2f7"/>
+<text x="660.0" y="677.0" font-size="10.5" fill="#e8432a" font-weight="700" text-anchor="start">뒤 방어 (IN2 · IN3)</text>
+<text x="800.0" y="675.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">뒤에서 맞으면 부저 짧게 · 맞은 쪽 반대로 피함. 뒤에 붙은 상대는 수직</text>
+<text x="800.0" y="688.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">드럼이 침</text>
+<text x="660.0" y="721.0" font-size="10.5" fill="#e8432a" font-weight="700" text-anchor="start">6륜 장점</text>
+<text x="800.0" y="719.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">가운데 바퀴가 차체 아래 받쳐서 웨지에 올라타기 어렵고, 턱 · 경사에서 덜</text>
+<text x="800.0" y="732.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">걸림</text></svg>

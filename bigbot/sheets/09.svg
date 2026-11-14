@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 960" width="1260" height="960" font-family="JetBrains Mono, 'Noto Sans KR', sans-serif"><defs><pattern id="g" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="#e3e8ef" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="#f6f8fb"/><rect x="14" y="14" width="1232" height="932" fill="none" stroke="#1d2230" stroke-width="1.2"/>
+<rect x="14" y="14" width="1232" height="46" fill="#1d2230"/>
+<text x="28.0" y="44.0" font-size="13" fill="#9fb3d1" font-weight="700" text-anchor="start">배틀로봇 썬더 타이탄 (6륜) · 도면 09</text>
+<text x="343.7" y="44.0" font-size="17" fill="#ffffff" font-weight="700" text-anchor="start">배선도</text>
+<text x="1232.0" y="44.0" font-size="10.5" fill="#c8d3e6" font-weight="400" text-anchor="end">3핀 케이블 S(노랑) · +(빨강) · −(검정) · 모터 2핀 (빨강 · 검정) · 포트 하나에 부품 하나</text>
+<rect x="520" y="190" width="220" height="400" rx="8" fill="#2b2c30"/>
+<text x="630.0" y="220.0" font-size="15" fill="#fff" font-weight="700" text-anchor="middle">CPU Board 8M</text>
+<text x="630.0" y="238.0" font-size="10" fill="#c8d3e6" font-weight="400" text-anchor="middle">1대에 1개 · 전압 6V</text>
+<path d="M 370 276 C 447.0 276, 447.0 276, 524 276" fill="none" stroke="#f2c21b" stroke-width="1.6"/>
+<path d="M 370 280 C 447.0 280, 447.0 280, 524 280" fill="none" stroke="#c8231d" stroke-width="1.6"/>
+<path d="M 370 284 C 447.0 284, 447.0 284, 524 284" fill="none" stroke="#1a1a1a" stroke-width="1.6"/>
+<rect x="524" y="271" width="44" height="18" rx="3" fill="#f2c21b"/>
+<text x="546.0" y="284.0" font-size="9" fill="#1d2230" font-weight="700" text-anchor="middle">IN1</text>
+<rect x="100" y="256" width="270" height="48" rx="6" fill="#fff" stroke="#1d2230"/>
+<text x="112.0" y="275.0" font-size="11" fill="#1d2230" font-weight="700" text-anchor="start">앞 적외선 센서</text>
+<text x="112.0" y="292.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">앞에 상대 → 눈 LED · 공격 알림</text>
+<path d="M 370 356 C 447.0 356, 447.0 356, 524 356" fill="none" stroke="#f2c21b" stroke-width="1.6"/>
+<path d="M 370 360 C 447.0 360, 447.0 360, 524 360" fill="none" stroke="#c8231d" stroke-width="1.6"/>
+<path d="M 370 364 C 447.0 364, 447.0 364, 524 364" fill="none" stroke="#1a1a1a" stroke-width="1.6"/>
+<rect x="524" y="351" width="44" height="18" rx="3" fill="#f2c21b"/>
+<text x="546.0" y="364.0" font-size="9" fill="#1d2230" font-weight="700" text-anchor="middle">IN2</text>
+<rect x="100" y="336" width="270" height="48" rx="6" fill="#fff" stroke="#1d2230"/>
+<text x="112.0" y="355.0" font-size="11" fill="#1d2230" font-weight="700" text-anchor="start">왼쪽 뒤 범퍼</text>
+<text x="112.0" y="372.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">뒤에서 맞으면 감지 → 피하기</text>
+<path d="M 370 436 C 447.0 436, 447.0 436, 524 436" fill="none" stroke="#f2c21b" stroke-width="1.6"/>
+<path d="M 370 440 C 447.0 440, 447.0 440, 524 440" fill="none" stroke="#c8231d" stroke-width="1.6"/>
+<path d="M 370 444 C 447.0 444, 447.0 444, 524 444" fill="none" stroke="#1a1a1a" stroke-width="1.6"/>
+<rect x="524" y="431" width="44" height="18" rx="3" fill="#f2c21b"/>
+<text x="546.0" y="444.0" font-size="9" fill="#1d2230" font-weight="700" text-anchor="middle">IN3</text>
+<rect x="100" y="416" width="270" height="48" rx="6" fill="#fff" stroke="#1d2230"/>
+<text x="112.0" y="435.0" font-size="11" fill="#1d2230" font-weight="700" text-anchor="start">오른쪽 뒤 범퍼</text>
+<text x="112.0" y="452.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">뒤에서 맞으면 감지 → 피하기</text>
+<path d="M 736 256 C 808.0 256, 808.0 256, 880 256" fill="none" stroke="#f2c21b" stroke-width="1.6"/>
+<path d="M 736 260 C 808.0 260, 808.0 260, 880 260" fill="none" stroke="#c8231d" stroke-width="1.6"/>
+<path d="M 736 264 C 808.0 264, 808.0 264, 880 264" fill="none" stroke="#1a1a1a" stroke-width="1.6"/>
+<rect x="692" y="251" width="44" height="18" rx="3" fill="#f2c21b"/>
+<text x="714.0" y="264.0" font-size="9" fill="#1d2230" font-weight="700" text-anchor="middle">OUT1</text>
+<rect x="880" y="236" width="280" height="48" rx="6" fill="#fff" stroke="#1d2230"/>
+<text x="892.0" y="255.0" font-size="11" fill="#1d2230" font-weight="700" text-anchor="start">웨지 서보</text>
+<text x="892.0" y="272.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">0° 내림 (23°, 지면) ~ 45° 들어올림</text>
+<path d="M 736 322 C 808.0 322, 808.0 322, 880 322" fill="none" stroke="#f2c21b" stroke-width="1.6"/>
+<path d="M 736 326 C 808.0 326, 808.0 326, 880 326" fill="none" stroke="#c8231d" stroke-width="1.6"/>
+<path d="M 736 330 C 808.0 330, 808.0 330, 880 330" fill="none" stroke="#1a1a1a" stroke-width="1.6"/>
+<rect x="692" y="317" width="44" height="18" rx="3" fill="#f2c21b"/>
+<text x="714.0" y="330.0" font-size="9" fill="#1d2230" font-weight="700" text-anchor="middle">OUT2</text>
+<rect x="880" y="302" width="280" height="48" rx="6" fill="#fff" stroke="#1d2230"/>
+<text x="892.0" y="321.0" font-size="11" fill="#1d2230" font-weight="700" text-anchor="start">왼눈 LED 빨강</text>
+<text x="892.0" y="338.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">공격 모드에서 켜짐</text>
+<path d="M 736 388 C 808.0 388, 808.0 388, 880 388" fill="none" stroke="#f2c21b" stroke-width="1.6"/>
+<path d="M 736 392 C 808.0 392, 808.0 392, 880 392" fill="none" stroke="#c8231d" stroke-width="1.6"/>
+<path d="M 736 396 C 808.0 396, 808.0 396, 880 396" fill="none" stroke="#1a1a1a" stroke-width="1.6"/>
+<rect x="692" y="383" width="44" height="18" rx="3" fill="#f2c21b"/>
+<text x="714.0" y="396.0" font-size="9" fill="#1d2230" font-weight="700" text-anchor="middle">OUT3</text>
+<rect x="880" y="368" width="280" height="48" rx="6" fill="#fff" stroke="#1d2230"/>
+<text x="892.0" y="387.0" font-size="11" fill="#1d2230" font-weight="700" text-anchor="start">오른눈 LED 빨강</text>
+<text x="892.0" y="404.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">공격 모드에서 켜짐</text>
+<path d="M 736 454 C 808.0 454, 808.0 454, 880 454" fill="none" stroke="#f2c21b" stroke-width="1.6"/>
+<path d="M 736 458 C 808.0 458, 808.0 458, 880 458" fill="none" stroke="#c8231d" stroke-width="1.6"/>
+<path d="M 736 462 C 808.0 462, 808.0 462, 880 462" fill="none" stroke="#1a1a1a" stroke-width="1.6"/>
+<rect x="692" y="449" width="44" height="18" rx="3" fill="#f2c21b"/>
+<text x="714.0" y="462.0" font-size="9" fill="#1d2230" font-weight="700" text-anchor="middle">OUT4</text>
+<rect x="880" y="434" width="280" height="48" rx="6" fill="#fff" stroke="#1d2230"/>
+<text x="892.0" y="453.0" font-size="11" fill="#1d2230" font-weight="700" text-anchor="start">부저</text>
+<text x="892.0" y="470.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">전원 켤 때 무기 경고음 · 맞을 때</text>
+<path d="M 736 520 C 808.0 520, 808.0 520, 880 520" fill="none" stroke="#f2c21b" stroke-width="1.6"/>
+<path d="M 736 524 C 808.0 524, 808.0 524, 880 524" fill="none" stroke="#c8231d" stroke-width="1.6"/>
+<path d="M 736 528 C 808.0 528, 808.0 528, 880 528" fill="none" stroke="#1a1a1a" stroke-width="1.6"/>
+<rect x="692" y="515" width="44" height="18" rx="3" fill="#f2c21b"/>
+<text x="714.0" y="528.0" font-size="9" fill="#1d2230" font-weight="700" text-anchor="middle">OUT5</text>
+<rect x="880" y="500" width="280" height="48" rx="6" fill="#fff" stroke="#1d2230"/>
+<text x="892.0" y="519.0" font-size="11" fill="#1d2230" font-weight="700" text-anchor="start">상태 LED 초록</text>
+<text x="892.0" y="536.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">켜짐 = 블루투스 연결 · 조종 가능</text>
+<rect x="60" y="646" width="185" height="48" rx="6" fill="#fff" stroke="#1f8a50"/>
+<text x="72.0" y="665.0" font-size="11" fill="#1f8a50" font-weight="700" text-anchor="start">왼쪽 앞 구동 모터</text>
+<text x="72.0" y="682.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">M1 · 조작</text>
+<path d="M 152 646 C 152 610, 550 630, 550 590" fill="none" stroke="#c8231d" stroke-width="2"/>
+<text x="550.0" y="582.0" font-size="9" fill="#f2c21b" font-weight="700" text-anchor="middle">M1</text>
+<rect x="260" y="646" width="185" height="48" rx="6" fill="#fff" stroke="#1f8a50"/>
+<text x="272.0" y="665.0" font-size="11" fill="#1f8a50" font-weight="700" text-anchor="start">왼쪽 뒤 구동 모터</text>
+<text x="272.0" y="682.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">M2 · 조작</text>
+<path d="M 352 646 C 352 610, 580 630, 580 590" fill="none" stroke="#c8231d" stroke-width="2"/>
+<text x="580.0" y="582.0" font-size="9" fill="#f2c21b" font-weight="700" text-anchor="middle">M2</text>
+<rect x="460" y="646" width="185" height="48" rx="6" fill="#fff" stroke="#1f8a50"/>
+<text x="472.0" y="665.0" font-size="11" fill="#1f8a50" font-weight="700" text-anchor="start">오른쪽 앞 구동 모터</text>
+<text x="472.0" y="682.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">M3 · 조작</text>
+<path d="M 552 646 C 552 610, 610 630, 610 590" fill="none" stroke="#c8231d" stroke-width="2"/>
+<text x="610.0" y="582.0" font-size="9" fill="#f2c21b" font-weight="700" text-anchor="middle">M3</text>
+<rect x="660" y="646" width="185" height="48" rx="6" fill="#fff" stroke="#1f8a50"/>
+<text x="672.0" y="665.0" font-size="11" fill="#1f8a50" font-weight="700" text-anchor="start">오른쪽 뒤 구동 모터</text>
+<text x="672.0" y="682.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">M4 · 조작</text>
+<path d="M 752 646 C 752 610, 640 630, 640 590" fill="none" stroke="#c8231d" stroke-width="2"/>
+<text x="640.0" y="582.0" font-size="9" fill="#f2c21b" font-weight="700" text-anchor="middle">M4</text>
+<rect x="860" y="646" width="185" height="48" rx="6" fill="#fff" stroke="#c8202b"/>
+<text x="872.0" y="665.0" font-size="11" fill="#c8202b" font-weight="700" text-anchor="start">앞 스피너 모터</text>
+<text x="872.0" y="682.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">계속 회전 1 · 조작 불가</text>
+<path d="M 952 646 C 952 610, 690 630, 690 590" fill="none" stroke="#c8202b" stroke-width="2"/>
+<text x="690.0" y="582.0" font-size="9" fill="#ff9a8a" font-weight="700" text-anchor="middle">계속1</text>
+<rect x="1060" y="646" width="185" height="48" rx="6" fill="#fff" stroke="#c8202b"/>
+<text x="1072.0" y="665.0" font-size="11" fill="#c8202b" font-weight="700" text-anchor="start">뒤 드럼 모터</text>
+<text x="1072.0" y="682.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">계속 회전 2 · 조작 불가</text>
+<path d="M 1152 646 C 1152 610, 720 630, 720 590" fill="none" stroke="#c8202b" stroke-width="2"/>
+<text x="720.0" y="582.0" font-size="9" fill="#ff9a8a" font-weight="700" text-anchor="middle">계속2</text>
+<rect x="540" y="76" width="180" height="48" rx="6" fill="#fff" stroke="#1d2230"/>
+<text x="552.0" y="95.0" font-size="11" fill="#1d2230" font-weight="700" text-anchor="start">블루투스 모듈 (UART)</text>
+<text x="552.0" y="112.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">스마트폰 조종</text>
+<line x1="630" y1="124" x2="630" y2="190" stroke="#3a7bd5" stroke-width="2" stroke-dasharray="5 3"/>
+<rect x="780" y="76" width="230" height="48" rx="6" fill="#fff" stroke="#1d2230"/>
+<text x="792.0" y="95.0" font-size="11" fill="#1d2230" font-weight="700" text-anchor="start">배터리케이스 AA × 4 (6V)</text>
+<text x="792.0" y="112.0" font-size="9" fill="#5a6070" font-weight="400" text-anchor="start">CPU 배터리 커넥터</text>
+<path d="M 820 124 C 820 170, 720 170, 720 190" fill="none" stroke="#c8231d" stroke-width="2"/>
+<text x="60.0" y="910.0" font-size="10" fill="#3a4050" font-weight="400" text-anchor="start">DC 모터 6개 = CPU 최대 (조작 4 + 계속 회전 2) · 확장 보드 없이 연결. 무기 2개는 전원을 켜면 바로 도니 켜기 전에 주변을 비운다.</text>
+<text x="60.0" y="928.0" font-size="10" fill="#3a4050" font-weight="400" text-anchor="start">모터 6개가 한꺼번에 돌면 AA 4개로는 금방 약해진다 → 새 건전지 · 충전지를 쓰고, 케이블은 바퀴 · 무기에 닿지 않게 상판 아래로.</text></svg>
