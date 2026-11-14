@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-14T11:48:15.315Z",
+  "updated": "2026-11-14T12:44:38.228Z",
   "robots": [
     {
       "id": "eagle",
@@ -27,6 +27,15 @@
       "version": "fadcef11f9",
       "size": 158972,
       "parts": 31
+    },
+    {
+      "id": "bigbot",
+      "name": "배틀로봇 썬더 타이탄 6륜",
+      "mods": 7,
+      "file": "bigbot.js",
+      "version": "9d0c8f1364",
+      "size": 82391,
+      "parts": 34
     }
   ]
 }
