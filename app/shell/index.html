@@ -228,6 +228,24 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .now.flash { animation: rise .32s cubic-bezier(.2, .8, .2, 1); }
 
 /* ───── 아래 컨트롤러 (매트 유리) ───── */
+/* 접기 버튼 (오른쪽 위) · 접으면 한 줄 (재생 + 단계) */
+.foldbtn { position: absolute; top: 8px; right: 10px; z-index: 2; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border: 0; border-radius: 50%; background: rgba(0, 0, 0, .05); color: var(--soft); }
+.foldbtn svg { transition: transform .35s var(--ease); }
+.player.folded .foldbtn { top: 50%; transform: translateY(-50%); }
+.player.folded .foldbtn:active { transform: translateY(-50%) scale(.93); }
+.player.folded .foldbtn svg { transform: rotate(180deg); }
+.readout, .fhd { padding-right: 38px; }
+.pmini { display: none; align-items: center; gap: 12px; min-height: 40px; padding: 0 44px 0 0; }
+.player.folded { padding-top: 8px; padding-bottom: 8px; }
+.player.folded .pmini { display: flex; animation: rise .32s cubic-bezier(.2, .8, .2, 1) both; }
+.player.folded .pages, .player.folded .modesw { display: none; }
+.mplay { width: 40px; height: 40px; flex: none; display: flex; align-items: center; justify-content: center; border: 0; border-radius: 50%; background: var(--accent); color: #fff; box-shadow: 0 4px 10px -4px rgba(232, 67, 42, .6); }
+.mplay .i-pause, .playing .mplay .i-play { display: none; }
+.playing .mplay .i-pause { display: block; }
+.mtxt { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.mtxt b { font-size: 13px; font-variant-numeric: tabular-nums; }
+.mtxt b em { font-style: normal; color: var(--soft); font-weight: 600; }
+.mtxt span { font-size: 11px; color: var(--soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .player { left: calc(var(--sal) + 10px); right: calc(var(--sar) + 10px); bottom: calc(var(--sab) + 12px); padding: 14px 16px 10px; border-radius: 30px; display: flex; flex-direction: column; gap: 8px; }
 .pages { position: relative; transition: height .52s cubic-bezier(.3, .9, .25, 1); }
 .page { display: grid; gap: 10px; transition: opacity .3s ease, transform .5s cubic-bezier(.3, .9, .25, 1), filter .3s ease; }
@@ -334,6 +352,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 /* ───────── 가로 (960 × 412) ───────── */
 @media (orientation: landscape) {
+  .player:not(.folded) { padding-right: 54px; }
   #home { padding: calc(var(--sat) + 12px) calc(var(--sar) + 18px) calc(var(--sab) + 14px) calc(var(--sal) + 18px); gap: 12px; }
   .h-head { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "title bar acts"; gap: 14px; }
   .h-title h1 { font-size: 18px; margin-top: 2px; }
@@ -542,6 +561,14 @@ button { font: inherit; color: inherit; cursor: pointer; }
     <div class="now matte" id="now" aria-live="polite"><i></i><span id="nowText"></span></div>
 
     <div class="hud player matte" id="player" data-mode="asm">
+      <button type="button" class="foldbtn pr" id="fold" aria-expanded="true" aria-controls="pages" aria-label="컨트롤러 접기"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></button>
+      <div class="pmini" id="pmini" aria-live="polite">
+        <button type="button" class="mplay" id="miniPlay" aria-label="재생">
+          <svg class="i-play" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 4.8c0-.8.9-1.3 1.6-.9l10 6.2c.7.4.7 1.4 0 1.8l-10 6.2c-.7.4-1.6-.1-1.6-.9z" fill="currentColor"/></svg>
+          <svg class="i-pause" width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="5" width="3.6" height="14" rx="1.2" fill="currentColor"/><rect x="13.9" y="5" width="3.6" height="14" rx="1.2" fill="currentColor"/></svg>
+        </button>
+        <div class="mtxt"><b id="miniStep"></b><span id="miniName"></span></div>
+      </div>
       <div class="pages" id="pages">
         <div class="page asm on" id="pageAsm">
           <div class="readout r1">

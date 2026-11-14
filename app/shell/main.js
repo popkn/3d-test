@@ -1504,6 +1504,34 @@ window.__mode = () => mode;
 
 
 
+// ───────── 컨트롤러 접기 (오른쪽 위 버튼) · 접으면 재생 버튼 + 단계 한 줄 ─────────
+(function () {
+  const player = $("#player"), btn = $("#fold");
+  const set = (v, save = true) => {
+    player.classList.toggle("folded", v);
+    btn.setAttribute("aria-expanded", String(!v));
+    btn.setAttribute("aria-label", v ? "컨트롤러 펼치기" : "컨트롤러 접기");
+    if (save) try { localStorage.setItem("roborobo-player-folded", v ? "1" : "0"); } catch (e) {}
+    if (!v) { const on = $("#pages .page:not(.off)"); if (on) $("#pages").style.height = `${on.offsetHeight}px`; }
+  };
+  btn.addEventListener("click", () => { buzz(); set(!player.classList.contains("folded")); });
+  $("#miniPlay").addEventListener("click", () => $("#play").click());
+  let folded = false;
+  try { folded = localStorage.getItem("roborobo-player-folded") === "1"; } catch (e) {}
+  set(folded, false);
+  // 접힌 줄: 지금 단계 · 이름 (기능 조작 화면에서는 제목)
+  const sync = () => {
+    const fn = player.dataset.mode === "fn";
+    $("#miniStep").innerHTML = fn ? "기능 조작" : $("#stepText").innerHTML;
+    $("#miniName").textContent = fn ? ($("#fnTitle").textContent || "") : $("#stepName").textContent;
+    $("#miniPlay").hidden = fn;
+  };
+  const mo = new MutationObserver(sync);
+  for (const el of [$("#stepText"), $("#stepName"), $("#fnTitle")]) mo.observe(el, { childList: true, characterData: true, subtree: true });
+  new MutationObserver(sync).observe(player, { attributes: true, attributeFilter: ["data-mode"] });
+  sync();
+})();
+
 // ───────── 자동 업데이트: 앱을 열고 조금 뒤 GitHub에서 바뀐 로봇을 받는다 ─────────
 window.addEventListener('robots-updated', () => {
   htoast('새 로봇 · 업데이트를 받았어요');
