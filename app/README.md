@@ -3,7 +3,7 @@
 `src/index.source.html`(모바일 디자인)을 Capacitor로 감싼 하이브리드 앱입니다. 인터넷 없이 동작합니다 (three.js · 글꼴을 앱 안에 넣음).
 
 ## APK 받기
-- `app/`을 바꿔 `로보로보-3d-test` 브랜치에 푸시하면 GitHub Actions가 APK를 만들어 **Releases → android-latest**에 올립니다.
+- `app/`을 바꿔 `main` 브랜치에 푸시하면 GitHub Actions가 APK를 만들어 **Releases → android-latest**에 올립니다.
 - 휴대폰에서 `roborobo-assembly.apk`를 내려받아 설치 ("출처를 알 수 없는 앱" 허용).
 
 ## 직접 빌드 (Android SDK 필요)

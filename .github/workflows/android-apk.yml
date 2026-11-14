@@ -2,7 +2,7 @@
 name: Android APK
 on:
   push:
-    branches: ['로보로보-3d-test']
+    branches: ['main']
     paths: ['app/**', '.github/workflows/android-apk.yml']
   workflow_dispatch:
 permissions:
