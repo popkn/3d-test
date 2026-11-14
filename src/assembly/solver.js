@@ -121,7 +121,7 @@ export class Assembly {
     this._stamp(part, opt);
     // 다가오는 방향: 첫 짝의 축 (끼움은 축을 따라 길게, 판 맞댐은 면에서 떨어져)
     part.approach = opt.approach ? new THREE.Vector3(...opt.approach) : p0.pc.a.clone().multiplyScalar(part.kind === 'insert' ? 60 : 35);
-    part.cfg = opt.cfg;
+    part.cfg = opt.cfg; part.role = opt.role;
     // 3) 검사: 모든 짝의 중심 거리 · 축 방향
     for (const pr of pairs) {
       const w = pr.cc.p.clone().applyMatrix4(part.m);

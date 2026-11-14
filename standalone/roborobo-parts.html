@@ -10741,6 +10741,7 @@ var Assembly = class _Assembly {
     this._stamp(part, opt);
     part.approach = opt.approach ? new THREE103.Vector3(...opt.approach) : p0.pc.a.clone().multiplyScalar(part.kind === "insert" ? 60 : 35);
     part.cfg = opt.cfg;
+    part.role = opt.role;
     for (const pr of pairs) {
       const w = pr.cc.p.clone().applyMatrix4(part.m);
       const aw = pr.cc.a.clone().transformDirection(part.m);
@@ -10890,6 +10891,7 @@ function chassis(A, k, label, elec) {
       parent: lb,
       name: `${side} \uAD6C\uB3D9 \uBAA8\uD130 (DC 130)`,
       sub: S,
+      role: "control",
       mate: [["\uC67C \uADC0 \uC55E", "\uC138\uC6B4 \uB2E4\uB9AC 2-3"], ["\uC67C \uADC0 \uB4A4", "\uC138\uC6B4 \uB2E4\uB9AC 2-1"]]
     });
     A.attach(P(`wheelR${s}`), "wheel-80-buggy-set", {
@@ -11262,6 +11264,31 @@ async function buildTrain(loadPart2, onProgress) {
 
 // src/train/build.js
 import * as THREE106 from "three";
+
+// src/assembly/rules.js
+var LIMITS = { cpu: 1, motorPerCpu: 6, controlPerCpu: 4, alwaysPerCpu: 2, perDriveBoard: 4, stock: { "dc-motor-130-rs": 4, "dc-motor-400-rs": 2, "motor-drive-set": 1 } };
+var DC = /* @__PURE__ */ new Set(["dc-motor-130-rs", "dc-motor-130-dual", "dc-motor-400-rs"]);
+function checkRobot(parts, name = "\uB85C\uBD07") {
+  const errors = [], warnings = [];
+  const n = (pid) => parts.filter((p) => p.pid === pid).length;
+  const cpu = n("cpu-board-8m"), drive = n("motor-drive-set");
+  const motors = parts.filter((p) => DC.has(p.pid));
+  if (cpu !== 1) errors.push(`${name}: CPU \uBCF4\uB4DC ${cpu}\uAC1C \u2014 \uB85C\uBD07 1\uB300\uB2F9 1\uAC1C (\uADDC\uCE59 1.1)`);
+  for (const [pid, max] of Object.entries(LIMITS.stock)) if (n(pid) > max) errors.push(`${name}: ${pid} ${n(pid)}\uAC1C \u2014 \uD0A4\uD2B8 \uC218\uB7C9 ${max}\uAC1C \uCD08\uACFC (\uADDC\uCE59 2.3)`);
+  const weapon = motors.filter((m) => m.role === "weapon");
+  for (const m of weapon) if (m.pid !== "dc-motor-400-rs") errors.push(`${name}: ${m.name || m.pid} \u2014 \uBC30\uD2C0 \uBB34\uAE30\uB294 400 rpm \uBAA8\uD130\uC5D0 \uC7A5\uCC29 (\uADDC\uCE59 2.4.1)`);
+  const always = motors.filter((m) => m.role === "always" || m.role === "weapon").length;
+  const control = motors.length - always;
+  const alwaysOnCpu = Math.min(always, LIMITS.alwaysPerCpu);
+  const controlNeed = control + (always - alwaysOnCpu);
+  const controlCap = LIMITS.controlPerCpu + drive * LIMITS.perDriveBoard;
+  if (controlNeed > controlCap) errors.push(`${name}: \uC870\uC791 \uBAA8\uD130 ${controlNeed}\uAC1C \u2014 \uC5F0\uACB0 \uAC00\uB2A5 ${controlCap}\uAC1C (CPU 4${drive ? ` + \uD655\uC7A5 \uBCF4\uB4DC ${drive * 4}` : ""}) (\uADDC\uCE59 2.1 \xB7 2.2)`);
+  if (drive && controlNeed <= LIMITS.controlPerCpu) warnings.push(`${name}: \uD655\uC7A5 \uBCF4\uB4DC\uAC00 \uC5C6\uC5B4\uB3C4 \uBAA8\uD130\uB97C \uBAA8\uB450 \uC5F0\uACB0\uD560 \uC218 \uC788\uC74C`);
+  const summary = `CPU ${cpu} \xB7 DC \uBAA8\uD130 ${motors.length} (\uC870\uC791 ${control} \xB7 \uACC4\uC18D \uD68C\uC804 ${always})${drive ? ` \xB7 \uD655\uC7A5 \uBCF4\uB4DC ${drive}` : ""}`;
+  return { errors, warnings, summary };
+}
+
+// src/train/build.js
 var ease = (x) => x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x);
 var ITEM = { "bolt-m3x6": "\uBCFC\uD2B8 M3\xD76", "bolt-m3x10": "\uBCFC\uD2B8 M3\xD710", "bolt-m26x10": "\uBCFC\uD2B8 M2.6\xD710", "nut-m3": "\uB108\uD2B8" };
 async function buildTrainSteps(loadPart2, onProgress) {
@@ -11393,6 +11420,7 @@ async function buildTrainSteps(loadPart2, onProgress) {
     setBolts(v) {
       boltsOn = v;
     },
+    rules: tree.cars.map((c) => checkRobot(c.parts, c.label)),
     count: A.parts.length,
     nFast: A.fastens.reduce((n, f) => n + 1 + (f.nut ? 1 : 0), 0),
     groups: A.groups.length,
@@ -11740,7 +11768,11 @@ async function select(id) {
       url: "https://github.com/popkn/3d-test/blob/\uB85C\uBCF4\uB85C\uBCF4-3d-test/src/train/tree.js",
       size: { x: Math.round(box3.max.x - box3.min.x), z: Math.round(box3.max.z - box3.min.z), y: Math.round(box3.max.y - box3.min.y), estimated: false, note: "\uB2E8\uACC4 \uD558\uB098 = \uBD80\uD488 \uD558\uB098 + \uADF8 \uB2E8\uACC4\uC758 \uBCFC\uD2B8 \xB7 \uB108\uD2B8. \uBAA8\uB4C8\uC740 \uC606(\uB610\uB294 \uC704) \uC791\uC5C5\uB300\uC5D0\uC11C \uB530\uB85C \uC870\uB9BD\uD55C \uB4A4 \uD1B5\uC9F8\uB85C \uB07C\uC6B4\uB2E4. \uBC14\uD034 \xB7 \uBC14\uD034 \uCD95 \xB7 \uBC84\uAE30 \uBC14\uD034\uB294 \uC138\uD2B8 \uBD80\uD488 \uD558\uB098." },
       function: "\uC7AC\uC0DD\uD558\uBA74 \uBC14\uB2E5\uD310\uBD80\uD130 \uD55C \uB2E8\uACC4\uC529 \uC870\uB9BD\uB41C\uB2E4. \uC774\uC0C1\uD55C \uACF3\uC774 \uBCF4\uC774\uBA74 \uC77C\uC2DC\uC815\uC9C0\uD558\uACE0 \uC774\uC804/\uB2E4\uC74C \uB2E8\uACC4\uB85C \uD655\uC778\uD558\uC138\uC694. \uBD80\uD488\uC5D0 \uB9C8\uC6B0\uC2A4\uB97C \uC62C\uB9AC\uBA74 \uC774\uB984\uC774 \uB098\uC628\uB2E4.",
-      specs: [["\uB2E8\uACC4", `${e.N}\uB2E8\uACC4 (\uBD80\uD488 ${e.count} \xB7 \uBAA8\uB4C8 ${e.groups})`], ["\uADDC\uCE59 \uAC80\uC0AC", e.errors.length ? `\uC624\uB958 ${e.errors.length}\uAC74` : "\uC624\uB958 0\uAC74"]],
+      specs: [
+        ["\uB2E8\uACC4", `${e.N}\uB2E8\uACC4 (\uBD80\uD488 ${e.count} \xB7 \uBAA8\uB4C8 ${e.groups})`],
+        ["\uAD6C\uBA4D \uB9DE\uCDA4 \uAC80\uC0AC", e.errors.length ? `\uC624\uB958 ${e.errors.length}\uAC74` : "\uC624\uB958 0\uAC74"],
+        ...e.rules.map((r, k) => [`\uAE30\uBCF8 \uADDC\uCE59 ${k + 1}\uCE78`, r.errors.length ? r.errors.join(" / ") : `\u2714 ${r.summary}`])
+      ],
       ports: []
     });
     let fn2 = null;

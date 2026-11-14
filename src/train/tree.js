@@ -62,7 +62,7 @@ function chassis(A, k, label, elec) {
     const side = s > 0 ? '오른' : '왼';
     A.begin(`${side} 구동 모듈 (L자 6×6 + 모터 + 버기 바퀴)`);
     const lb = standL(A, P(`motorL${s}`), 'l-frame-6x6', plate, 'x', 59 * s, 60, s, TOP, `${side} 모터 받침 (L자 6×6)`, S);
-    const m = A.attach(P(`motor${s}`), 'dc-motor-130-rs', { parent: lb, name: `${side} 구동 모터 (DC 130)`, sub: S,
+    const m = A.attach(P(`motor${s}`), 'dc-motor-130-rs', { parent: lb, name: `${side} 구동 모터 (DC 130)`, sub: S, role: 'control',
       mate: [['왼 귀 앞', '세운 다리 2-3'], ['왼 귀 뒤', '세운 다리 2-1']] });
     A.attach(P(`wheelR${s}`), 'wheel-80-buggy-set', { parent: m, kind: 'insert', offset: 12, name: `${side} 뒤 구동 바퀴 (Ø80 버기 세트)`, sub: S,
       mate: [['DCUT_HUB', '출력 축']], joint: { type: 'motor', side: s, r: 40 } });

@@ -281,7 +281,8 @@ async function select(id) {
       name: '협동 기차 — 단계별 조립', url: 'https://github.com/popkn/3d-test/blob/로보로보-3d-test/src/train/tree.js',
       size: { x: Math.round(box.max.x - box.min.x), z: Math.round(box.max.z - box.min.z), y: Math.round(box.max.y - box.min.y), estimated: false, note: '단계 하나 = 부품 하나 + 그 단계의 볼트 · 너트. 모듈은 옆(또는 위) 작업대에서 따로 조립한 뒤 통째로 끼운다. 바퀴 · 바퀴 축 · 버기 바퀴는 세트 부품 하나.' },
       function: '재생하면 바닥판부터 한 단계씩 조립된다. 이상한 곳이 보이면 일시정지하고 이전/다음 단계로 확인하세요. 부품에 마우스를 올리면 이름이 나온다.',
-      specs: [['단계', `${e.N}단계 (부품 ${e.count} · 모듈 ${e.groups})`], ['규칙 검사', e.errors.length ? `오류 ${e.errors.length}건` : '오류 0건']],
+      specs: [['단계', `${e.N}단계 (부품 ${e.count} · 모듈 ${e.groups})`], ['구멍 맞춤 검사', e.errors.length ? `오류 ${e.errors.length}건` : '오류 0건'],
+        ...e.rules.map((r, k) => [`기본 규칙 ${k + 1}칸`, r.errors.length ? r.errors.join(' / ') : `✔ ${r.summary}`])],
       ports: [],
     });
     let fn = null;

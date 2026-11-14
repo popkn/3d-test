@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { makeRenderer } from '../assembly/render.js';
 import { buildTrainTree, REAR_PIN } from './tree.js';
 import { CAR_Z } from './assemble.js';
+import { checkRobot } from '../assembly/rules.js';
 
 // 협동 기차 — 단계별 조립 모션.
 // 단계 하나 = 부품 하나가 제자리로 들어오고, 그 단계의 볼트 · 너트가 조여진다.
@@ -126,6 +127,7 @@ export async function buildTrainSteps(loadPart, onProgress) {
   return {
     root, N, pose, describe, moduleOf, focusOf,
     setBolts(v) { boltsOn = v; },
+    rules: tree.cars.map((c) => checkRobot(c.parts, c.label)),
     count: A.parts.length, nFast: A.fastens.reduce((n, f) => n + 1 + (f.nut ? 1 : 0), 0), groups: A.groups.length, errors: A.errors,
   };
 }
