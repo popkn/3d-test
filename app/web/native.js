@@ -41,8 +41,15 @@
     if (b) b.open({ url: a.href, presentationStyle: 'popover' }); else window.location.href = a.href;
   }, true);
 
-  // 하드웨어 뒤로 가기
+  // 홈 제목 옆에 앱 버전 (덮어쓰기 설치가 됐는지 확인용)
   const app = P('App');
+  if (app && app.getInfo) app.getInfo().then((info) => {
+    const put = () => { const el = document.querySelector('.eyebrow'); if (el && !el.querySelector('.ver')) { const v = document.createElement('span'); v.className = 'ver'; v.textContent = ` · v${info.version}`; v.style.cssText = 'opacity:.55;font-weight:600'; el.appendChild(v); } };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', put); else put();
+    setTimeout(put, 1500);
+  }).catch(() => {});
+
+  // 하드웨어 뒤로 가기
   if (app) app.addListener('backButton', () => {
     const $ = (s) => document.querySelector(s);
     const modal = $('#modal');

@@ -7,8 +7,10 @@ android {
         applicationId "com.popkn.roboroboassembly"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        // 빌드 번호 (GitHub Actions 실행 번호) → 새 APK가 늘 더 높은 버전 = 덮어쓰기 설치 가능
+        def run = (System.getenv('GITHUB_RUN_NUMBER') ?: '0').toInteger()
+        versionCode 100 + run
+        versionName "1.0.${run}"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
@@ -16,7 +18,19 @@ android {
             ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    // 서명 키 고정: 빌드마다 새 디버그 키가 만들어지면 서명이 달라 덮어쓰기 설치가 안 된다
+    signingConfigs {
+        debug {
+            storeFile file('roborobo-debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+    }
     buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

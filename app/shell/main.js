@@ -174,7 +174,8 @@ $("#cards").addEventListener("pointerdown", (ev) => {
   if (!p || tdrag) return;
   p.vel = 0;
   tdrag = { t, p, id: ev.pointerId, x: ev.clientX, y: ev.clientY, lx: ev.clientX, ly: ev.clientY, moved: false, hist: [], lastMove: performance.now() };
-  t.setPointerCapture(ev.pointerId);
+  // 손가락(터치)은 옆으로 끌 때만 붙잡는다 → 위아래로 밀면 목록이 스크롤 (마우스는 바로 붙잡음)
+  if (ev.pointerType !== "touch") t.setPointerCapture(ev.pointerId);
 });
 $("#cards").addEventListener("contextmenu", (ev) => {
   if (ev.target.closest(".thumb")) ev.preventDefault();
@@ -183,6 +184,10 @@ $("#cards").addEventListener("pointermove", (ev) => {
   if (!tdrag || ev.pointerId !== tdrag.id) return;
   const d = tdrag, now = performance.now();
   if (!d.moved && Math.hypot(ev.clientX - d.x, ev.clientY - d.y) > 6) {
+    if (ev.pointerType === "touch") {
+      if (Math.abs(ev.clientY - d.y) > Math.abs(ev.clientX - d.x)) { tdrag = null; return; }   // 위아래 = 스크롤에 맡김
+      try { d.t.setPointerCapture(ev.pointerId); } catch (e) {}
+    }
     d.moved = true;
     d.p.drag = true;
     d.p.spin = 0;
