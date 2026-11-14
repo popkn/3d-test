@@ -1,0 +1,32 @@
+{
+  "updated": "2026-11-14T11:48:15.315Z",
+  "robots": [
+    {
+      "id": "eagle",
+      "name": "독수리 로봇",
+      "mods": 6,
+      "file": "eagle.js",
+      "version": "3b07d5a93d",
+      "size": 87187,
+      "parts": 34
+    },
+    {
+      "id": "bot",
+      "name": "배틀로봇 썬더 웨지",
+      "mods": 6,
+      "file": "bot.js",
+      "version": "fa70705a18",
+      "size": 115513,
+      "parts": 41
+    },
+    {
+      "id": "train",
+      "name": "협동 기차 하나로 열차",
+      "mods": 4,
+      "file": "train.js",
+      "version": "fadcef11f9",
+      "size": 158972,
+      "parts": 31
+    }
+  ]
+}

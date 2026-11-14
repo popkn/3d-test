@@ -19,6 +19,7 @@
   "devDependencies": {
     "@capacitor/cli": "^7.4.0",
     "@fontsource/jetbrains-mono": "^5.2.5",
+    "esbuild": "^0.25.0",
     "three": "0.186.1"
   }
 }
