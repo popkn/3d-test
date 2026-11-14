@@ -126,3 +126,7 @@
 - `app/`: 사용자가 준 모바일 디자인(`app/src/index.source.html`)을 Capacitor 7로 감싼 앱. `scripts/prepare.mjs`가 three.js · 글꼴을 앱 안에 넣어 인터넷 없이 동작하게 하고, `web/native.js`를 붙인다 (뒤로 가기, 바깥 링크 → 앱 안 브라우저, HTML 내려받기 → 파일 저장 + 공유).
 - 권한: 마이크 (소리 센서), 진동. 아이콘 · 시작 화면: `scripts/icons.py`.
 - APK: `.github/workflows/android-apk.yml` (푸시하면 빌드 → Releases `android-latest`). 이 컨테이너에서는 Android SDK 라이선스 자동 동의가 막혀 직접 빌드하지 않음.
+
+## 브랜치 나눔: parts (부품) · main (완성 제품)
+- `parts`: 부품 87개 · 조립 규칙 · 도면 · 데스크톱 뷰어 (이 브랜치). 로봇을 만들 때만 쓴다.
+- 완성 로봇 파일: `robots/<id>.js` (meta + makeAdapter(ctx) — 앱 재생기용 어댑터, 기능 조작 포함) → `node tools/build-robots.mjs <출력>`이 로봇마다 쓰인 부품만 묶은 JS 파일 + `index.json`(버전 = 내용 해시)을 만든다. 이걸 main의 `app/robots/`에 올리면 앱이 자동 업데이트.
