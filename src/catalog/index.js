@@ -93,6 +93,9 @@ import wheel80BuggySet from './parts/wheel-80-buggy-set/spec.js';
 import axleWheel50Set from './parts/axle-wheel-50-set/spec.js';
 import caterpillarTrack from './parts/caterpillar-track/spec.js';
 import motorDriveSet from './parts/motor-drive-set/spec.js';
+import battleUSet from './parts/battle-u-set/spec.js';
+import battleVSet from './parts/battle-v-set/spec.js';
+import battleTSet from './parts/battle-t-set/spec.js';
 
 // 7호 키트 부품목록(CHECKLIST.md)에 있는 부품만 넣는다.
 // 세트 부품: 늘 함께 쓰는 부품은 처음부터 한 부품으로 만든다 (spec.set = 구성). 세트 안에만 쓰이는 부품
@@ -107,7 +110,7 @@ export const catalog = [
   frameBigMain, frameMainPcb, frameMainPlastic, frameHalfPcb, lFrame6x6, motorFrame3x3, pcFrame45x60,
   frameS3Pcb, frameS4Pcb, frameS5Pcb, frameS7Pcb, frameS8Pcb, frameS3Plastic, frameS4Plastic, frameS5Plastic, frameMPcb,
   frameS8Plastic, frameOptionPcb, frameOptionPlastic, frameM6Pcb, frameMidPcb, frameMidPlastic, frame5x13Pcb, frameS12Pcb, frameM16Pcb, lFrame2x1, lFrame2x2, lFrame2x6, lFrame1202x2,
-  battleG, battleI, battleJ, battleS, battleT, battleU, battleV,
+  battleG, battleI, battleJ, battleS, battleT, battleTSet, battleU, battleUSet, battleV, battleVSet,
   hinge3x3, grab, nutM3, capNutM3, sNutBlue, nutFrame4, motorGuide, boltM26x10, boltM3x6, boltM3x10, supportSpacer, cable3pin, headerPin3p, sHook35,
 ];
 

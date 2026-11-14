@@ -1,17 +1,14 @@
 import * as THREE from 'three';
-import { makeBattleFrame, gridHoles, holesInside } from '../../../kit/battleFrame.js';
+import { battlePiece, shapeI } from '../../../kit/battleShapes.js';
 
+// BATTLE I: 사용자 사진의 실제 부품 모양 · 크기 (구멍 간격 10 mm로 환산)
 export function build() {
   const root = new THREE.Group();
-  const frame = new THREE.Group();
-  root.add(frame);
-  // 사진 기준: 한쪽 끝 윗부분이 비스듬히 잘린 판, 구멍 3줄
-  const outline = [[-40, 14], [-40, 2], [-24, -14], [38, -14], [40, -12], [40, 12], [38, 14]];
-  const holes = holesInside(gridHoles(8, 3), outline);
-  frame.add(makeBattleFrame({ outline, holes, pattern: 'flame', width: 80, depth: 28 }));
+  const f = battlePiece(shapeI(false));
+  root.add(f.mesh);
   return {
     object3d: root,
-    labels: [{ name: 'BATTLE I', sub: 'FR-4 · 빨간 무늬', object: frame, anchor: [0, 1.6, 0], off: [60, -60] }],
-    handles: { frame, info: { holes: `${holes.length}개 (3줄)` } },
+    labels: [{ name: 'BATTLE I', sub: '불꽃 판', object: f.mesh, anchor: [0, 1.6, 0], off: [60, -60] }],
+    handles: { frame: f.mesh, info: { holes: '3줄 (9 · 8 · 7개, 간격 10)' } },
   };
 }

@@ -3,11 +3,11 @@ import { loadModules, makeHolder } from '../eagle/assemble.js';
 import ASSEMBLY from './assembly.js';
 
 // 큰 배틀로봇 "썬더 타이탄 6륜" 조립 (도면: bigbot/BLUEPRINT.md · tools/bigbot_blueprint.py)
-// 움직이는 곳: 버기 바퀴 6 (X축), 앞 스피너 (Y축, z −135), 뒤 드럼 (X축, (y 40, z 136)), 웨지 (회전 핀 (y 30, z −158)), 웨지 서보 크랭크 + 링크
+// 움직이는 곳: 버기 바퀴 6 (X축), 앞 스피너 (Y축, z −135), 뒤 드럼 (X축, (y 59, z 145)), 웨지 (회전 핀 (y 30, z −158)), 웨지 서보 크랭크 + 링크
 
 const DEG = Math.PI / 180;
 const SPIN_Z = -135;
-const DRUM = new THREE.Vector2(136, 40);       // (z, y)
+const DRUM = new THREE.Vector2(145, 59);       // (z, y)
 const PIVOT = new THREE.Vector2(-158, 30);     // (z, y) 웨지 회전 핀
 const CRANK = new THREE.Vector2(-85, 40);      // (z, y) 웨지 서보 축
 const CRANK_R = 10;

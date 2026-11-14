@@ -36,9 +36,9 @@
 <text x="50.0" y="480.0" font-size="12" fill="#1d2230" font-weight="700" text-anchor="start">③ 설계 수치 (추정 포함)</text>
 <rect x="50" y="494" width="560" height="24" fill="#eef2f7"/>
 <text x="60.0" y="510.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">전체 크기</text>
-<text x="160.0" y="510.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">210 × 110 × 230 mm (폭 × 높이 × 길이)</text>
+<text x="160.0" y="510.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">210 × 109 × 231 mm (폭 × 높이 × 길이)</text>
 <text x="60.0" y="534.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">무게 (추정)</text>
-<text x="160.0" y="534.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">약 1067 g, 배터리 · 모터가 낮고 가운데</text>
+<text x="160.0" y="534.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">약 1093 g, 배터리 · 모터가 낮고 가운데</text>
 <rect x="50" y="542" width="560" height="24" fill="#eef2f7"/>
 <text x="60.0" y="558.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">지면 높이</text>
 <text x="160.0" y="558.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">바닥판 21.4 mm · 바닥 센서 6 mm</text>
@@ -46,7 +46,7 @@
 <text x="160.0" y="582.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">마디 40개 × 2, 러버 40개 × 2, 속도 0.42 m/s</text>
 <rect x="50" y="590" width="560" height="24" fill="#eef2f7"/>
 <text x="60.0" y="606.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">스피너</text>
-<text x="160.0" y="606.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">DC 400 rpm, 십자 날 Ø84, 날 끝 1.76 m/s, 회전 에너지 약 17 mJ</text>
+<text x="160.0" y="606.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">DC 400 rpm, 별 날 Ø97 (U 세트), 날 끝 2.03 m/s, 회전 에너지 약 17 mJ</text>
 <text x="60.0" y="630.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">웨지</text>
 <text x="160.0" y="630.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">메인 PCB 118 × 78, 17° ~ 60°, 서보 4 kg·cm · 크랭크 반지름 10 mm</text>
 <rect x="50" y="638" width="560" height="24" fill="#eef2f7"/>

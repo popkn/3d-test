@@ -15,7 +15,7 @@ NAMES = {
     'servo-digital': 'Servo Motor[Digital]', 'motor-frame-3x3': '모터프레임 [3x3]', 'motor-guide': '모터가이드', 'caterpillar-sprocket': '캐터필러 휠 (톱니)',
     'caterpillar-wheel-guide': '캐터필러 휠가이드 [육각]', 'caterpillar-link': '캐터필러 (마디)', 'caterpillar-rubber': '캐터필러 러버', 'shaft-75': '축 75mm[Ø3]',
     'axle-guide': '축가이드', 'wheel-guide-40-yellow': '휠가이드[Ø40-YELLOW]', 'wheel-guide-30-servo': '휠가이드[Ø30/Servo]', 'wheel-guide-30-nylon': '휠가이드[Ø30/나일론/검정]',
-    'battle-u': '배틀무기 U', 'battle-v': '배틀무기 V', 'battle-i': '배틀무기 I', 'battle-j': '배틀무기 J', 'battle-t': '배틀무기 T', 'battle-g': '배틀무기 G',
+    'battle-u': '배틀무기 U', 'battle-v': '배틀무기 V', 'battle-u-set': '배틀무기 U 세트 (별 조각 3장)', 'battle-t-set': '배틀무기 T 세트', 'battle-i': '배틀무기 I', 'battle-j': '배틀무기 J', 'battle-t': '배틀무기 T', 'battle-g': '배틀무기 G',
     's-hook-35': '후크 S35 [노랑]', 'l-frame-2x1': '프레임 2x1 [L자]', 'l-frame-2x2': '프레임 2x2 [L자]', 'l-frame-2x6': '프레임 2x6 [L자]',
     'support-spacer': '서포트', 'battery-case-4aa': 'AA 배터리케이스 1×4', 'cpu-board-8m': 'CPU Board 8M[12V/S]', 'motor-drive-link-s': 'MotorDrive 연결 Board[외장형/S]',
     'motor-drive-a3': 'Motor Drive Board[A3]', 'bt-module': '무선 통신보드 (블루투스 모듈)', 'pc-frame-45x60': 'PC프레임 [45×60]', 'sensor-ir-tr': '적외선 센서 보드[TR]',
@@ -29,6 +29,7 @@ MIRROR_SHEETS = {'02'}
 LIB = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'blueprint_lib.py')
 P = []
 exec(open(LIB, encoding='utf-8').read())
+exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'battle_shapes.py'), encoding='utf-8').read(), globals())   # 배틀무기 실제 모양 (STAR · S · T · I · J · G)
 
 BIG_U = [0, 10, 20, 30, 35, 40, 50, 60, 70, 75, 80, 90, 100, 110, 115, 120, 130, 140, 150]
 BIG_V = [0, 10, 20, 25, 30, 40, 50, 55, 60, 70, 80, 85, 90, 100, 110]
@@ -96,11 +97,14 @@ add(S3, 'dc-motor-400-rs', '스피너 모터 (DC 400rpm)', (10, 43, -50), (60, 4
 for x in (-25, 45):
     add(S3, 'motor-frame-3x3', '스피너 모터 받침 (모터프레임 3×3)', (x, 33, -50), (8, 20, 8), METAL, note='모터 귀를 바닥판에')
 add(S3, 'wheel-guide-40-yellow', '스피너 허브 (노란 휠가이드 Ø40)', (0, 67, -50), (40, 8, 40), YELLOW, 'disc', '모터 축, 윗면 평평', axis=1, up=(0, 1, 0))
-UOUT = [(-42, -6), (-30, -20), (-15, -8), (0, -20), (15, -8), (30, -20), (42, -6), (42, 6), (30, 20), (15, 8), (0, 20), (-15, 8), (-30, 20), (-42, 6)]
-add(S3, 'battle-u', '스피너 날 1 (배틀무기 U, 톱날)', (0, 71.8, -50), (84, 1.6, 40), WHITE, 'poly', '휠가이드 위, 좌우 방향', plane=(0, 2), outline=UOUT)
-add(S3, 'battle-v', '스피너 날 2 (배틀무기 V)', (0, 73.4, -50), (46, 1.6, 84), WHITE, 'poly', '날 1 위에 90° 엇갈림 (십자 날)', plane=(0, 2), outline=[(z, x) for x, z in [(-42, -10), (-20, -23), (0, -12), (20, -23), (42, -10), (30, 23), (0, 14), (-30, 23)]], zdir=(1, 0, 0))
-for x, z in ((-12, -50), (12, -50), (0, -62), (0, -38)):
-    add(S3, 'cap-nut-m3', '날 고정 캡너트', (x, 77.2, z), (6.4, 6, 6.4), GRAY, 'cyl', '볼트 끝 가림', axis=1)
+# 스피너 날: 배틀무기 U 세트 (별 조각 3장 = 지름 97 별). 서보 · CPU 위로 지나가게 허브 위 서포트 5로 띄움
+for k in range(3):
+    a = math.radians(k * 120 + 30)
+    add(S3, 'support-spacer', '날 받침 (서포트 5)', (10 * math.sin(a), 73.5, -50 + 10 * math.cos(a)), (6.4, 5, 6.4), METAL, 'cyl', '허브 구멍 → 별 날', axis=1, length=5)
+add(S3, 'battle-u-set', '스피너 날 (배틀무기 U 세트, 별 지름 97)', (0, 76.8, -50), (97, 1.6, 97), WHITE, 'poly', '별 조각 3장을 120°씩 모음, 가운데 구멍 6개', plane=(0, 2), outline=STAR)
+for k in range(6):
+    a = math.radians(k * 60 + 30)
+    add(S3, 'cap-nut-m3', '날 고정 캡너트', (10 * math.sin(a), 80.6, -50 + 10 * math.cos(a)), (6.4, 6, 6.4), GRAY, 'cyl', '볼트 끝 가림', axis=1)
 
 # ── 04 들어올림 웨지 (서보 + 4절 링크)
 S4 = '04'
@@ -126,8 +130,8 @@ add(S4, 'frame-s8-pcb', '웨지 링크 (소8 PCB, 핀 간격 70)', (66, (link_to
 add(S4, 's-hook-35', '링크 위 핀 (후크 S35)', (64, link_top[0], link_top[1]), (6.5, 6.5, 7.6), YELLOW, 'cyl', '크랭크 쪽', axis=0)
 add(S4, 's-hook-35', '링크 아래 핀 (후크 S35)', (64, link_bot[0], link_bot[1]), (6.5, 6.5, 7.6), YELLOW, 'cyl', '웨지 탭 쪽', axis=0)
 add(S4, 'l-frame-2x2', '웨지 링크 탭 L자 2×2', (58, 13, -95), (10, 10, 8), METAL, note='웨지판 위에 세움')
-add(S4, 'battle-g', '웨지 앞 날 (배틀무기 G)', (0, 2, -133), (90, 1.6, 18), WHITE, 'poly', '웨지 앞 끝 위, 낮은 날', plane=(0, 2),
-    outline=[(-45, -9), (45, -9), (45, 9), (-45, 9)])
+add(S4, 'battle-g', '웨지 앞 날 (배틀무기 G)', (0, 2, -133), (98, 1.6, 20), WHITE, 'poly', '웨지 앞 끝 위, 낮은 날', plane=(0, 2),
+    outline=G)
 
 # ── 05 상판 · 전자부
 S5 = '05'
@@ -162,10 +166,10 @@ for sx in (-1, 1):
     for z in (-45, 45):
         add(S6, 'l-frame-2x6', '트랙 가드 기둥 (L자 2×6)', (78 * sx, 52, z), (10, 58, 8), METAL, note='바닥판 옆 끝에 세움, 위 다리가 바깥')
     plate(S6, 'frame-m16-pcb', f'{side} 트랙 가드 (중16 PCB)', (92 * sx, 82, 0), (18, 1.6, 158), BLACK, M16_U, ROW3, 2, 0, '궤도 위 덮개')
-    add(S6, 'battle-i' if sx > 0 else 'battle-j', f'{side} 불꽃 장갑 (배틀무기 {"I" if sx > 0 else "J"})', (104 * sx, 66, 0), (1.6, 28, 80), WHITE, 'poly', '가드 바깥에 세움, 궤도 위쪽을 가림',
-        plane=(2, 1), outline=[(-40, 14), (-40, 2), (-24, -14), (38, -14), (40, -12), (40, 12), (38, 14)] if sx > 0 else [(40, 14), (40, 2), (24, -14), (-38, -14), (-40, -12), (-40, 12), (-38, 14)])
-    add(S6, 'battle-t', f'{side} 옆 갈고리 날 (배틀무기 T)', (95 * sx, 84, -96), (1.6, 46, 72), WHITE, 'poly', '가드 앞 끝, 앞으로 휘어진 날', plane=(2, 1),
-        outline=[(-z, y) for z, y in [(36, -12), (20, 10), (-4, 22), (-24, 18), (-36, 2), (-30, -8), (-18, -2), (-6, -6), (8, -14), (24, -23)]])
+    add(S6, 'battle-i' if sx > 0 else 'battle-j', f'{side} 불꽃 장갑 (배틀무기 {"I" if sx > 0 else "J"})', (104 * sx, 66, 0), (1.6, 30, 90), WHITE, 'poly', '가드 바깥에 세움, 궤도 위쪽을 가림',
+        plane=(2, 1), outline=(I if sx > 0 else J))
+    add(S6, 'battle-t', f'{side} 옆 갈고리 날 (배틀무기 T)', (95 * sx, 84, -100), (1.6, 41, 59), WHITE, 'poly', '가드 앞 끝, 앞으로 휘어진 날 (T 반쪽 1장)', plane=(2, 1),
+        outline=[(-v, u) for u, v in T])
     add(S6, 'l-frame-2x2', '눈 L자 2×2', (92 * sx, 76, -77), (8, 10, 10), METAL)
     add(S6, 'led-board-red-s', f'{side}눈 (LED 빨강)', (92 * sx, 64, -80), (22, 32, 6), RED, note='가드 앞 끝 아래, 앞을 봄', up=(0, 0, -1))
     for z in (-70, 70):
@@ -175,7 +179,7 @@ SHEET_INFO = OrderedDict([
     ('00', ('전체 조립도', None)),
     ('01', ('섀시 (차체 바닥 · 배터리 · 바닥 센서)', S1)),
     ('02', ('무한궤도 구동부 (모터 · 톱니 휠 · 마디 40개)', S2)),
-    ('03', ('스피너 무기 (DC 400rpm · 십자 날)', S3)),
+    ('03', ('스피너 무기 (DC 400rpm · 별 날 U 세트)', S3)),
     ('04', ('들어올림 웨지 (서보 · 4절 링크)', S4)),
     ('05', ('상판 · 전자부 · 뒤 벽', S5)),
     ('06', ('장갑 · 트랙 가드 · 눈', S6)),
@@ -192,7 +196,7 @@ STEPS = [
     ('02', '아이들러 (×2)', '축가이드 2개 (x ±45 · ±65, z −50)에 75 mm 축을 끼우고, 바깥 끝에 캐터필러 휠가이드[육각] + 톱니 휠 (볼트 6개).', {'bolt-m3x10': 8, 'nut-m3': 8, 'bolt-m3x6': 12}),
     ('02', '궤도 (×2, 한쪽 40마디)', '캐터필러 마디 40개를 고리로 이어 고리 모양으로 만들고, 마디마다 러버를 끼운 뒤 두 톱니 휠에 건다. 궤도 길이 398 mm.', {}),
     ('03', '스피너 모터', 'DC 400rpm 모터를 세워 모터프레임 3×3 두 개로 바닥판 앞 가운데 (z −50)에. 축이 위 · 가운데 (x 0).', {'bolt-m3x10': 4, 'bolt-m3x6': 4, 'nut-m3': 8}),
-    ('03', '십자 날', '노란 휠가이드 Ø40을 모터 축에 (2.6 × 10). 배틀무기 U와 V를 90° 엇갈려 겹치고 M3 × 10 4개 + 캡너트로 휠가이드에.', {'bolt-m26x10': 1, 'bolt-m3x10': 4}),
+    ('03', '별 날', '노란 휠가이드 Ø40을 모터 축에 (2.6 × 10). 서포트 5 세 개를 세우고 배틀무기 U 세트 (별 조각 3장, 지름 97)를 얹어 M3 × 10 6개 + 캡너트 (서보 · CPU 위로 지나감).', {'bolt-m26x10': 1, 'bolt-m3x10': 6}),
     ('04', '웨지판 회전 핀', '차체 앞 끝과 웨지판 뒤 끝에 L자 2×1을 달고 (볼트 1개씩), 두 L자 구멍을 후크 S35로 눌러 끼워 돌게 한다 (좌우 2곳).', {'bolt-m3x6': 4, 'nut-m3': 4}),
     ('04', '웨지 서보 · 링크', '웨지 서보를 상판 앞 오른쪽에 눕혀 (축 +X). 휠가이드(서보)를 끼우고, 반지름 10 구멍과 웨지판 위 L자 2×2를 소8 PCB 링크로 잇는다 (양 끝 후크 S35).', {'bolt-m3x10': 4, 'nut-m3': 6, 'bolt-m26x10': 1, 'bolt-m3x6': 2}),
     ('04', '웨지 앞 날', '배틀무기 G를 웨지판 앞 끝 위에 볼트 2개로 (지면에 닿는 낮은 날).', {'bolt-m3x6': 2, 'nut-m3': 2}),
@@ -238,9 +242,9 @@ def ext(parts, axis):
 EXT = [ext(P, a) for a in range(3)]
 W_, H_, L_ = (EXT[a][1] - EXT[a][0] for a in range(3))
 SPEED = 130 / 60 * math.pi * 62 / 1000              # 궤도 속도 m/s (톱니 휠 피치원 Ø62)
-TIP = 400 / 60 * math.pi * 84 / 1000                # 스피너 날 끝 속도 m/s
+TIP = 400 / 60 * math.pi * 97 / 1000                # 스피너 날 끝 속도 m/s
 MASS = {'frame-big-main': 56, 'frame-main-pcb': 28, 'frame-m16-pcb': 9, 'battery-case-4aa': 120, 'dc-motor-130-rs': 40, 'dc-motor-400-rs': 40, 'servo-digital': 45,
-        'cpu-board-8m': 35, 'caterpillar-link': 1.5, 'caterpillar-rubber': 0.6, 'caterpillar-sprocket': 12, 'battle-u': 9, 'battle-v': 9, 'battle-i': 6, 'battle-j': 6, 'battle-t': 7}
+        'cpu-board-8m': 35, 'caterpillar-link': 1.5, 'caterpillar-rubber': 0.6, 'caterpillar-sprocket': 12, 'battle-u-set': 27, 'battle-i': 6, 'battle-j': 6, 'battle-t': 7}
 TOTAL_G = sum(MASS.get(p['id'], 3) for p in P) + bom['bolt-m3x6'] * 0.6 + bom['bolt-m3x10'] * 0.8 + bom['nut-m3'] * 0.4
 OVERALL_NOTES = [f'무게 약 {TOTAL_G / 1000:.2f} kg (추정) · 지면 높이 21 mm', f'궤도 속도 약 {SPEED:.2f} m/s · 제자리 회전', f'스피너 400 rpm · 날 끝 {TIP:.2f} m/s',
                  '웨지 17° → 60° 들어올림 · 블루투스 조종 · 페일세이프']
@@ -293,7 +297,7 @@ def make_motion():
     w = 400 / 60 * 2 * math.pi
     rows = [('전체 크기', f'{W_:.0f} × {H_:.0f} × {L_:.0f} mm (폭 × 높이 × 길이)'), ('무게 (추정)', f'약 {TOTAL_G:.0f} g, 배터리 · 모터가 낮고 가운데'),
             ('지면 높이', '바닥판 21.4 mm · 바닥 센서 6 mm'), ('궤도', f'마디 40개 × 2, 러버 40개 × 2, 속도 {SPEED:.2f} m/s'),
-            ('스피너', f'DC 400 rpm, 십자 날 Ø84, 날 끝 {TIP:.2f} m/s, 회전 에너지 약 {0.5 * I * w * w * 1000:.0f} mJ'),
+            ('스피너', f'DC 400 rpm, 별 날 Ø97 (U 세트), 날 끝 {TIP:.2f} m/s, 회전 에너지 약 {0.5 * I * w * w * 1000:.0f} mJ'),
             ('웨지', f'메인 PCB 118 × 78, {WEDGE_A / DEG:.0f}° ~ 60°, 서보 4 kg·cm · 크랭크 반지름 10 mm'),
             ('무게 중심', '배터리 (y 32) · 모터 (y 33)가 가장 낮음 → 뒤집히기 어려움 (조사: 스피너 로봇은 낮게)')]
     y = oy3 + 14
@@ -393,7 +397,7 @@ def make_md(all_items):
     a(f'| 전체 크기 | 폭 {W_:.0f} × 높이 {H_:.0f} × 길이 {L_:.0f} mm |')
     a(f'| 무게 (추정) | 약 {TOTAL_G:.0f} g |')
     a(f'| 구동 | 무한궤도 2줄 (마디 40 + 러버 40씩), DC 130rpm × 2, 속도 약 {SPEED:.2f} m/s |')
-    a(f'| 무기 | 수평 스피너 (DC 400rpm, 배틀무기 U + V 십자 날, 날 끝 {TIP:.2f} m/s) + 서보 들어올림 웨지 ({WEDGE_A / DEG:.0f}° ~ 60°) |')
+    a(f'| 무기 | 수평 스피너 (DC 400rpm, 배틀무기 U 세트 별 날 Ø97, 날 끝 {TIP:.2f} m/s) + 서보 들어올림 웨지 ({WEDGE_A / DEG:.0f}° ~ 60°) |')
     a('| 조종 | 블루투스 (스마트폰), 페일세이프 |')
     a('| 센서 | 앞 적외선 (상대) · 바닥 컬러 (경계선) · 뒤 범퍼 접촉 2 |')
     a(f'| 부품 수 | {sum(bom.values())}개 (볼트 · 너트 · 케이블 포함), {len(bom)}종 |')

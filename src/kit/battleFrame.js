@@ -4,10 +4,10 @@ import { PITCH } from './frame.js';
 
 // 배틀 프레임 (흰 FR-4 1.6T + 빨간 인쇄 무늬, 10mm 간격 구멍). 외곽선과 구멍은 사진으로 추정.
 //   outline: [[x, z], ...] mm, holes: [[x, z], ...], pattern: 'stars' | 'flame'
-export function makeBattleFrame({ outline, holes, pattern, width, depth, paint = null }) {
+export function makeBattleFrame({ outline, holes, pattern, width, depth, paint = null, rings = true }) {
   const pcb = makePcb({
     width, depth, color: 'white', outline, corner: 2, pxPerMm: 12,
-    holes: holes.map(([x, z]) => ({ x, z, r: 1.6, ring: true })),
+    holes: holes.map(([x, z, r = 1.6]) => ({ x, z, r, ring: rings })),
     silk: (g, w, d, X, Y) => {
       g.fillStyle = '#b8101c'; // 사진의 진한 빨강 (조명에서 분홍으로 바래지 않게 조금 어둡게)
       // 외곽선 안쪽만 칠하도록 잘라낸다
@@ -48,9 +48,9 @@ export function makeBattleFrame({ outline, holes, pattern, width, depth, paint =
       g.stroke();
       // 구멍 둘레는 흰색 테두리로 다시 (무늬 위)
       g.fillStyle = '#f4f3ee';
-      for (const [x, z] of holes) { g.beginPath(); g.arc(X(x), Y(z), 3, 0, Math.PI * 2); g.fill(); }
+      if (!paint?.keepHoleRings) for (const [x, z, r = 1.6] of holes) { g.beginPath(); g.arc(X(x), Y(z), r + 1.4, 0, Math.PI * 2); g.fill(); }
       g.fillStyle = '#c7c9cc';
-      for (const [x, z] of holes) { g.beginPath(); g.arc(X(x), Y(z), 2.3, 0, Math.PI * 2); g.fill(); }
+      for (const [x, z, r = 1.6] of holes) { g.beginPath(); g.arc(X(x), Y(z), r + 0.7, 0, Math.PI * 2); g.fill(); }
     },
   });
   return pcb;

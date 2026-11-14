@@ -122,9 +122,9 @@
 <rect x="43.7" y="85.0" width="68.5" height="9.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 마디 (caterpillar-link)</title></rect>
 <rect x="617.0" y="85.0" width="68.5" height="9.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 마디 (caterpillar-link)</title></rect>
 <rect x="49.9" y="32.6" width="56.1" height="5.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 트랙 가드 (중16 PCB) (frame-m16-pcb)</title></rect>
-<rect x="38.1" y="41.4" width="5.0" height="87.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 불꽃 장갑 (배틀무기 J) (battle-j)</title></rect>
+<rect x="38.1" y="38.3" width="5.0" height="93.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 불꽃 장갑 (배틀무기 J) (battle-j)</title></rect>
 <rect x="623.2" y="32.6" width="56.1" height="5.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 트랙 가드 (중16 PCB) (frame-m16-pcb)</title></rect>
-<rect x="686.2" y="41.4" width="5.0" height="87.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 불꽃 장갑 (배틀무기 I) (battle-i)</title></rect>
+<rect x="686.2" y="38.3" width="5.0" height="93.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 불꽃 장갑 (배틀무기 I) (battle-i)</title></rect>
 <rect x="43.7" y="281.3" width="68.5" height="9.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 마디 (caterpillar-link)</title></rect>
 <rect x="49.9" y="290.6" width="56.1" height="7.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 러버 (caterpillar-rubber)</title></rect>
 <rect x="617.0" y="281.3" width="68.5" height="9.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 마디 (caterpillar-link)</title></rect>
@@ -159,7 +159,6 @@
 <rect x="49.9" y="290.6" width="56.1" height="7.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 러버 (caterpillar-rubber)</title></rect>
 <rect x="617.0" y="281.3" width="68.5" height="9.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 마디 (caterpillar-link)</title></rect>
 <rect x="623.2" y="290.6" width="56.1" height="7.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 러버 (caterpillar-rubber)</title></rect>
-<rect x="354.6" y="40.7" width="19.9" height="18.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></rect>
 <rect x="43.7" y="85.0" width="68.5" height="9.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 마디 (caterpillar-link)</title></rect>
 <rect x="49.9" y="77.2" width="56.1" height="7.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 러버 (caterpillar-rubber)</title></rect>
 <rect x="617.0" y="85.0" width="68.5" height="9.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 마디 (caterpillar-link)</title></rect>
@@ -168,6 +167,9 @@
 <rect x="49.9" y="290.6" width="56.1" height="7.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 러버 (caterpillar-rubber)</title></rect>
 <rect x="617.0" y="281.3" width="68.5" height="9.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 마디 (caterpillar-link)</title></rect>
 <rect x="623.2" y="290.6" width="56.1" height="7.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 러버 (caterpillar-rubber)</title></rect>
+<rect x="370.2" y="53.8" width="19.9" height="15.6" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 받침 (서포트 5) (support-spacer)</title></rect>
+<rect x="370.2" y="30.2" width="19.9" height="18.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></rect>
+<rect x="339.1" y="30.2" width="19.9" height="18.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></rect>
 <rect x="106.0" y="38.3" width="31.2" height="180.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>트랙 가드 기둥 (L자 2×6) (l-frame-2x6)</title></rect>
 <rect x="592.1" y="38.3" width="31.2" height="180.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>트랙 가드 기둥 (L자 2×6) (l-frame-2x6)</title></rect>
 <rect x="43.7" y="85.0" width="68.5" height="9.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 마디 (caterpillar-link)</title></rect>
@@ -192,11 +194,14 @@
 <rect x="274.3" y="156.7" width="24.9" height="62.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>스피너 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
 <rect x="492.4" y="156.7" width="24.9" height="62.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>스피너 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
 <rect x="302.3" y="69.4" width="124.6" height="24.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>스피너 허브 (노란 휠가이드 Ø40) (wheel-guide-40-yellow)</title></rect>
-<rect x="233.8" y="64.4" width="261.7" height="5.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>스피너 날 1 (배틀무기 U, 톱날) (battle-u)</title></rect>
-<rect x="293.0" y="59.4" width="143.3" height="5.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>스피너 날 2 (배틀무기 V) (battle-v)</title></rect>
-<rect x="317.3" y="40.7" width="19.9" height="18.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></rect>
-<rect x="392.0" y="40.7" width="19.9" height="18.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></rect>
+<rect x="323.5" y="53.8" width="19.9" height="15.6" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 받침 (서포트 5) (support-spacer)</title></rect>
+<rect x="213.5" y="48.8" width="302.2" height="5.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>스피너 날 (배틀무기 U 세트, 별 지름 97) (battle-u-set)</title></rect>
+<rect x="385.8" y="30.2" width="19.9" height="18.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></rect>
+<rect x="323.5" y="30.2" width="19.9" height="18.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></rect>
 <rect x="567.8" y="109.3" width="5.0" height="155.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>웨지 링크 (소8 PCB, 핀 간격 70) (frame-s8-pcb)</title></rect>
+<rect x="339.1" y="30.2" width="19.9" height="18.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></rect>
+<rect x="370.2" y="53.8" width="19.9" height="15.6" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 받침 (서포트 5) (support-spacer)</title></rect>
+<rect x="370.2" y="30.2" width="19.9" height="18.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></rect>
 <rect x="43.7" y="85.0" width="68.5" height="18.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 마디 (caterpillar-link)</title></rect>
 <rect x="617.0" y="85.0" width="68.5" height="18.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 마디 (caterpillar-link)</title></rect>
 <rect x="43.7" y="271.8" width="68.5" height="18.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 마디 (caterpillar-link)</title></rect>
@@ -207,7 +212,6 @@
 <rect x="623.2" y="281.9" width="56.1" height="14.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 러버 (caterpillar-rubber)</title></rect>
 <rect x="196.4" y="197.2" width="24.9" height="31.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>웨지 경첩 L자 2×1 (l-frame-2x1)</title></rect>
 <rect x="507.9" y="197.2" width="24.9" height="31.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>웨지 경첩 L자 2×1 (l-frame-2x1)</title></rect>
-<rect x="354.6" y="40.7" width="19.9" height="18.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></rect>
 <rect x="186.2" y="194.7" width="20.3" height="23.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>웨지 회전 핀 (후크 S35) (s-hook-35)</title></rect>
 <rect x="522.7" y="194.7" width="20.3" height="23.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>웨지 회전 핀 (후크 S35) (s-hook-35)</title></rect>
 <rect x="43.7" y="94.8" width="68.5" height="25.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 마디 (caterpillar-link)</title></rect>
@@ -246,10 +250,10 @@
 <rect x="623.2" y="175.2" width="56.1" height="23.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 러버 (caterpillar-rubber)</title></rect>
 <rect x="553.9" y="243.1" width="20.3" height="20.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>링크 아래 핀 (후크 S35) (s-hook-35)</title></rect>
 <rect x="529.8" y="234.6" width="31.2" height="31.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>웨지 링크 탭 L자 2×2 (l-frame-2x2)</title></rect>
-<rect x="66.1" y="-42.8" width="5.0" height="143.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 옆 갈고리 날 (배틀무기 T) (battle-t)</title></rect>
-<rect x="658.1" y="-42.8" width="5.0" height="143.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 옆 갈고리 날 (배틀무기 T) (battle-t)</title></rect>
 <rect x="180.8" y="216.5" width="367.7" height="76.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>웨지판 (메인 PCB, 17° 경사) (frame-main-pcb)</title></rect>
-<rect x="224.4" y="281.9" width="280.4" height="5.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>웨지 앞 날 (배틀무기 G) (battle-g)</title></rect>
+<rect x="66.1" y="-35.0" width="5.0" height="127.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 옆 갈고리 날 (배틀무기 T) (battle-t)</title></rect>
+<rect x="658.1" y="-35.0" width="5.0" height="127.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 옆 갈고리 날 (배틀무기 T) (battle-t)</title></rect>
+<rect x="211.9" y="281.9" width="305.4" height="5.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>웨지 앞 날 (배틀무기 G) (battle-g)</title></rect>
 <rect x="118.5" y="219.0" width="492.3" height="5.0" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>차체 바닥판 (빅 메인 PCB) (frame-big-main)</title></rect>
 <rect x="249.3" y="162.9" width="230.6" height="56.1" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배터리케이스 (AA 4개, 6V) (battery-case-4aa)</title></rect>
 <rect x="292.3" y="224.0" width="19.9" height="15.6" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>바닥 센서 받침 (서포트 5) (support-spacer)</title></rect>
@@ -274,8 +278,8 @@
 <rect x="747" y="100" width="484" height="193" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>
 <text x="747.2" y="92.0" font-size="12" fill="#1d2230" font-weight="700" text-anchor="start">측면도 (오른쪽에서 · 왼쪽 = 앞)</text>
 <svg x="747" y="100" width="484" height="193" viewBox="747 100 484 193" overflow="hidden">
-<polygon points="1131.8,41.4 1131.8,78.8 1081.9,128.6 888.7,128.6 882.5,122.4 882.5,47.6 888.7,41.4" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.8"><title>왼 불꽃 장갑 (배틀무기 J) (battle-j)</title></polygon>
-<polygon points="595.9,66.3 645.7,-2.3 720.5,-39.6 782.8,-27.2 820.2,22.7 801.5,53.8 764.1,35.1 726.7,47.6 683.1,72.5 633.2,100.6" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.8"><title>왼 옆 갈고리 날 (배틀무기 T) (battle-t)</title></polygon>
+<polygon points="866.9,38.3 1147.4,38.3 1147.4,106.8 1063.2,131.7 866.9,131.7" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.8"><title>왼 불꽃 장갑 (배틀무기 J) (battle-j)</title></polygon>
+<polygon points="603.6,93.4 620.3,42.4 644.2,7.4 671.3,-14.1 691.2,-17.2 696.0,-4.5 703.9,-12.5 715.1,-29.2 727.8,-35.6 754.9,-31.6 787.5,-24.4 787.5,63.9 727.0,64.3 679.2,67.1 635.5,78.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.8"><title>왼 옆 갈고리 날 (배틀무기 T) (battle-t)</title></polygon>
 <circle cx="1162.9" cy="187.8" r="93.5" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 뒤 구동 휠 (캐터필러 톱니 휠) (caterpillar-sprocket)</title></circle>
 <circle cx="851.4" cy="187.8" r="93.5" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 앞 아이들러 (캐터필러 톱니 휠) (caterpillar-sprocket)</title></circle>
 <rect x="835.8" y="281.3" width="31.2" height="9.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 마디 (caterpillar-link)</title></rect>
@@ -386,22 +390,26 @@
 <rect x="1000.9" y="-40.3" width="187.0" height="5.0" rx="1.2" fill="none" fill-opacity="0.55" stroke="#b9c2cf" stroke-width="0.5"><title>투명 윗덮개 (PC 프레임) (pc-frame-45x60)</title></rect>
 <rect x="838.9" y="156.7" width="24.9" height="62.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>스피너 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
 <rect x="1002.5" y="45.7" width="190.1" height="43.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 보드 8M (cpu-board-8m)</title></rect>
-<rect x="841.4" y="40.7" width="19.9" height="18.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></rect>
+<rect x="841.4" y="53.8" width="19.9" height="15.6" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 받침 (서포트 5) (support-spacer)</title></rect>
+<rect x="841.4" y="30.2" width="19.9" height="18.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></rect>
+<rect x="868.4" y="30.2" width="19.9" height="18.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></rect>
+<rect x="814.4" y="30.2" width="19.9" height="18.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></rect>
 <rect x="789.0" y="69.4" width="124.6" height="24.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>스피너 허브 (노란 휠가이드 Ø40) (wheel-guide-40-yellow)</title></rect>
-<rect x="789.0" y="64.4" width="124.6" height="5.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>스피너 날 1 (배틀무기 U, 톱날) (battle-u)</title></rect>
-<rect x="720.5" y="59.4" width="261.7" height="5.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>스피너 날 2 (배틀무기 V) (battle-v)</title></rect>
-<rect x="804.0" y="40.7" width="19.9" height="18.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></rect>
-<rect x="878.8" y="40.7" width="19.9" height="18.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></rect>
+<rect x="700.2" y="48.8" width="302.2" height="5.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>스피너 날 (배틀무기 U 세트, 별 지름 97) (battle-u-set)</title></rect>
 <polygon points="587.2,288.3 819.5,216.6 820.9,221.4 588.7,293.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.8"><title>웨지판 (메인 PCB, 17° 경사) (frame-main-pcb)</title></polygon>
-<rect x="564.7" y="281.9" width="56.1" height="5.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>웨지 앞 날 (배틀무기 G) (battle-g)</title></rect>
+<rect x="561.6" y="281.9" width="62.3" height="5.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>웨지 앞 날 (배틀무기 G) (battle-g)</title></rect>
 <rect x="947.9" y="120.5" width="243.0" height="5.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>상판 (메인 PCB) (frame-main-pcb)</title></rect>
 <rect x="1199.1" y="138.0" width="5.0" height="56.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 벽 (중16 PCB) (frame-m16-pcb)</title></rect>
 <rect x="1125.6" y="28.9" width="155.8" height="31.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>모터드라이브 연결 보드 (EX-Motor3/4) (motor-drive-link-s)</title></rect>
 <rect x="1208.1" y="13.3" width="28.0" height="62.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>모터드라이브 [A3] (연결 보드에 꽂음) (motor-drive-a3)</title></rect>
+<rect x="868.4" y="53.8" width="19.9" height="15.6" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 받침 (서포트 5) (support-spacer)</title></rect>
+<rect x="814.4" y="53.8" width="19.9" height="15.6" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 받침 (서포트 5) (support-spacer)</title></rect>
+<rect x="868.4" y="30.2" width="19.9" height="18.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></rect>
+<rect x="814.4" y="30.2" width="19.9" height="18.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></rect>
 <rect x="990.9" y="-35.0" width="19.9" height="77.9" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>덮개 기둥 (서포트 25) (support-spacer)</title></rect>
 <rect x="1000.9" y="-40.3" width="187.0" height="5.0" rx="1.2" fill="none" fill-opacity="0.55" stroke="#b9c2cf" stroke-width="0.5"><title>투명 윗덮개 (PC 프레임) (pc-frame-45x60)</title></rect>
 <rect x="820.2" y="94.3" width="62.3" height="124.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>스피너 모터 (DC 400rpm) (dc-motor-400-rs)</title></rect>
-<rect x="841.4" y="40.7" width="19.9" height="18.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></rect>
+<rect x="841.4" y="30.2" width="19.9" height="18.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></rect>
 <rect x="1003.4" y="89.4" width="19.9" height="31.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></rect>
 <rect x="1171.7" y="89.4" width="19.9" height="31.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 10) (support-spacer)</title></rect>
 <rect x="947.9" y="58.2" width="124.6" height="62.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>웨지 서보 (servo-digital)</title></rect>
@@ -516,8 +524,8 @@
 <rect x="748.5" y="41.4" width="18.7" height="99.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른눈 (LED 빨강) (led-board-red-s)</title></rect>
 <rect x="779.1" y="13.9" width="19.9" height="18.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>가드 끝 캡너트 (cap-nut-m3)</title></rect>
 <rect x="1215.3" y="13.9" width="19.9" height="18.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>가드 끝 캡너트 (cap-nut-m3)</title></rect>
-<polygon points="595.9,66.3 645.7,-2.3 720.5,-39.6 782.8,-27.2 820.2,22.7 801.5,53.8 764.1,35.1 726.7,47.6 683.1,72.5 633.2,100.6" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.8"><title>오른 옆 갈고리 날 (배틀무기 T) (battle-t)</title></polygon>
-<polygon points="882.5,41.4 882.5,78.8 932.4,128.6 1125.6,128.6 1131.8,122.4 1131.8,47.6 1125.6,41.4" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.8"><title>오른 불꽃 장갑 (배틀무기 I) (battle-i)</title></polygon>
+<polygon points="603.6,93.4 620.3,42.4 644.2,7.4 671.3,-14.1 691.2,-17.2 696.0,-4.5 703.9,-12.5 715.1,-29.2 727.8,-35.6 754.9,-31.6 787.5,-24.4 787.5,63.9 727.0,64.3 679.2,67.1 635.5,78.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.8"><title>오른 옆 갈고리 날 (배틀무기 T) (battle-t)</title></polygon>
+<polygon points="866.9,131.7 1147.4,131.7 1147.4,63.2 1063.2,38.3 866.9,38.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.8"><title>오른 불꽃 장갑 (배틀무기 I) (battle-i)</title></polygon>
 <rect x="888.1" y="224.0" width="19.9" height="15.6" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>바닥 센서 받침 (서포트 5) (support-spacer)</title></rect>
 <rect x="801.5" y="187.8" width="31.2" height="31.2" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 센서 L자 2×2 (l-frame-2x2)</title></rect>
 <rect x="823.3" y="219.0" width="367.7" height="5.0" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>차체 바닥판 (빅 메인 PCB) (frame-big-main)</title></rect>
@@ -590,7 +598,7 @@
 <rect x="617.0" y="701.6" width="68.5" height="31.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 마디 (caterpillar-link)</title></rect>
 <rect x="617.0" y="732.6" width="68.5" height="31.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 마디 (caterpillar-link)</title></rect>
 <rect x="617.0" y="763.6" width="68.5" height="31.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 마디 (caterpillar-link)</title></rect>
-<polygon points="224.4,182.5 504.8,182.5 504.8,238.6 224.4,238.6" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.8"><title>웨지 앞 날 (배틀무기 G) (battle-g)</title></polygon>
+<polygon points="211.9,179.4 517.3,179.4 517.3,241.7 211.9,241.7" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.8"><title>웨지 앞 날 (배틀무기 G) (battle-g)</title></polygon>
 <rect x="43.7" y="793.5" width="68.5" height="32.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 마디 (caterpillar-link)</title></rect>
 <rect x="617.0" y="793.5" width="68.5" height="32.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 마디 (caterpillar-link)</title></rect>
 <rect x="43.7" y="422.5" width="68.5" height="32.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 마디 (caterpillar-link)</title></rect>
@@ -738,8 +746,8 @@
 <rect x="49.9" y="425.4" width="56.1" height="24.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 러버 (caterpillar-rubber)</title></rect>
 <rect x="623.2" y="425.4" width="56.1" height="24.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 러버 (caterpillar-rubber)</title></rect>
 <rect x="180.8" y="805.7" width="68.5" height="37.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>부저 보드 (타격음) (buzzer-board-s)</title></rect>
-<rect x="38.1" y="500.4" width="5.0" height="249.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 불꽃 장갑 (배틀무기 J) (battle-j)</title></rect>
-<rect x="686.2" y="500.4" width="5.0" height="249.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 불꽃 장갑 (배틀무기 I) (battle-i)</title></rect>
+<rect x="38.1" y="484.8" width="5.0" height="280.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 불꽃 장갑 (배틀무기 J) (battle-j)</title></rect>
+<rect x="686.2" y="484.8" width="5.0" height="280.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 불꽃 장갑 (배틀무기 I) (battle-i)</title></rect>
 <circle cx="364.6" cy="469.2" r="62.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>스피너 허브 (노란 휠가이드 Ø40) (wheel-guide-40-yellow)</title></circle>
 <rect x="49.9" y="769.1" width="56.1" height="23.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 러버 (caterpillar-rubber)</title></rect>
 <rect x="49.9" y="738.1" width="56.1" height="23.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 러버 (caterpillar-rubber)</title></rect>
@@ -764,20 +772,24 @@
 <rect x="623.2" y="490.1" width="56.1" height="23.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 러버 (caterpillar-rubber)</title></rect>
 <rect x="623.2" y="459.1" width="56.1" height="23.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>궤도 러버 (caterpillar-rubber)</title></rect>
 <rect x="180.8" y="620.3" width="258.6" height="190.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 보드 8M (cpu-board-8m)</title></rect>
-<polygon points="233.8,450.5 271.1,406.9 317.9,444.3 364.6,406.9 411.4,444.3 458.1,406.9 495.5,450.5 495.5,487.9 458.1,531.5 411.4,494.1 364.6,531.5 317.9,494.1 271.1,531.5 233.8,487.9" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.8"><title>스피너 날 1 (배틀무기 U, 톱날) (battle-u)</title></polygon>
-<polygon points="333.5,338.3 293.0,406.9 327.2,469.2 293.0,531.5 333.5,600.1 436.3,562.7 408.2,469.2 436.3,375.7" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.8"><title>스피너 날 2 (배틀무기 V) (battle-v)</title></polygon>
+<circle cx="380.2" cy="496.2" r="10.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 받침 (서포트 5) (support-spacer)</title></circle>
+<circle cx="380.2" cy="442.2" r="10.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 받침 (서포트 5) (support-spacer)</title></circle>
+<circle cx="333.5" cy="469.2" r="10.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 받침 (서포트 5) (support-spacer)</title></circle>
 <rect x="65.5" y="369.5" width="24.9" height="31.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>눈 L자 2×2 (l-frame-2x2)</title></rect>
 <rect x="638.8" y="369.5" width="24.9" height="31.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>눈 L자 2×2 (l-frame-2x2)</title></rect>
-<circle cx="327.2" cy="469.2" r="10.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></circle>
-<circle cx="402.0" cy="469.2" r="10.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></circle>
-<circle cx="364.6" cy="431.8" r="10.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></circle>
-<circle cx="364.6" cy="506.6" r="10.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></circle>
+<polygon points="403.7,615.2 421.5,567.7 471.5,576.0 463.1,526.1 510.6,508.3 478.3,469.2 510.6,430.1 463.1,412.3 471.5,362.4 421.5,370.7 403.7,323.2 364.6,355.5 325.5,323.2 307.8,370.7 257.8,362.4 266.1,412.3 218.6,430.1 250.9,469.2 218.6,508.3 266.1,526.1 257.8,576.0 307.8,567.7 325.5,615.2 364.6,582.9" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.8"><title>스피너 날 (배틀무기 U 세트, 별 지름 97) (battle-u-set)</title></polygon>
 <rect x="286.7" y="743.4" width="155.8" height="155.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>모터드라이브 연결 보드 (EX-Motor3/4) (motor-drive-link-s)</title></rect>
 <rect x="328.8" y="826.0" width="71.7" height="28.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>모터드라이브 [A3] (연결 보드에 꽂음) (motor-drive-a3)</title></rect>
+<circle cx="380.2" cy="496.2" r="10.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></circle>
+<circle cx="395.8" cy="469.2" r="10.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></circle>
+<circle cx="380.2" cy="442.2" r="10.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></circle>
+<circle cx="349.0" cy="442.2" r="10.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></circle>
+<circle cx="333.5" cy="469.2" r="10.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></circle>
+<circle cx="349.0" cy="496.2" r="10.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>날 고정 캡너트 (cap-nut-m3)</title></circle>
 <rect x="49.9" y="378.8" width="56.1" height="492.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 트랙 가드 (중16 PCB) (frame-m16-pcb)</title></rect>
 <rect x="623.2" y="378.8" width="56.1" height="492.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 트랙 가드 (중16 PCB) (frame-m16-pcb)</title></rect>
-<rect x="66.1" y="213.7" width="5.0" height="224.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 옆 갈고리 날 (배틀무기 T) (battle-t)</title></rect>
-<rect x="658.1" y="213.7" width="5.0" height="224.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 옆 갈고리 날 (배틀무기 T) (battle-t)</title></rect>
+<rect x="66.1" y="221.5" width="5.0" height="183.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 옆 갈고리 날 (배틀무기 T) (battle-t)</title></rect>
+<rect x="658.1" y="221.5" width="5.0" height="183.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 옆 갈고리 날 (배틀무기 T) (battle-t)</title></rect>
 <circle cx="78.0" cy="406.9" r="10.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>가드 끝 캡너트 (cap-nut-m3)</title></circle>
 <circle cx="78.0" cy="843.1" r="10.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>가드 끝 캡너트 (cap-nut-m3)</title></circle>
 <circle cx="651.3" cy="406.9" r="10.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>가드 끝 캡너트 (cap-nut-m3)</title></circle>
