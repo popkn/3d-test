@@ -1,13 +1,13 @@
 {
-  "updated": "2026-11-14T12:44:38.228Z",
+  "updated": "2026-11-14T13:33:42.381Z",
   "robots": [
     {
       "id": "eagle",
       "name": "독수리 로봇",
       "mods": 6,
       "file": "eagle.js",
-      "version": "3b07d5a93d",
-      "size": 87187,
+      "version": "7aaf591b4f",
+      "size": 89304,
       "parts": 34
     },
     {
@@ -15,17 +15,17 @@
       "name": "배틀로봇 썬더 웨지",
       "mods": 6,
       "file": "bot.js",
-      "version": "fa70705a18",
-      "size": 115513,
-      "parts": 41
+      "version": "3d39eb9a1a",
+      "size": 118320,
+      "parts": 40
     },
     {
       "id": "train",
       "name": "협동 기차 하나로 열차",
       "mods": 4,
       "file": "train.js",
-      "version": "fadcef11f9",
-      "size": 158972,
+      "version": "1bdfc84819",
+      "size": 162063,
       "parts": 31
     },
     {
@@ -33,9 +33,9 @@
       "name": "배틀로봇 썬더 타이탄 6륜",
       "mods": 7,
       "file": "bigbot.js",
-      "version": "9d0c8f1364",
-      "size": 82391,
-      "parts": 34
+      "version": "2c9e379b3b",
+      "size": 85112,
+      "parts": 33
     }
   ]
 }
