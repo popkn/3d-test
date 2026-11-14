@@ -8,7 +8,8 @@ import { SHEETS, BOM_TOTAL } from './eagle/assembly.js';
 import { buildBattlebot, EXPLODE as BB_EXPLODE } from './battlebot/assemble.js';
 import { SHEETS as BB_SHEETS, BOM_TOTAL as BB_TOTAL } from './battlebot/assembly.js';
 import { buildTrain, SPEED as TRAIN_SPEED } from './train/assemble.js';
-import { buildTrainSteps } from './train/build.js';
+import { buildTrainSteps, buildTrainStaged } from './train/build.js';
+import { createStaged } from './assembly/staged.js';
 
 // 로보로보 부품 뷰어: 왼쪽 목록에서 부품을 고르면 3D 모양과 기능(조작 패널)을 불러온다.
 const stage = document.getElementById('stage');
@@ -20,7 +21,7 @@ const opts = { labels: true, dims: true, spin: false };
 
 // 목록
 const nav = document.getElementById('parts');
-nav.innerHTML = `<a href="#eagle" data-id="eagle" class="all"><b>🦅 독수리 조립 (설계도면)</b><small>부품으로 조립한 독수리 · 날갯짓 · 분해 보기</small></a><a href="#battlebot" data-id="battlebot" class="all"><b>⚔ 배틀로봇 썬더 웨지</b><small>무한궤도 · 스피너 · 들어올림 웨지</small></a><a href="#train" data-id="train" class="all"><b>🚂 협동 기차 하나로 열차</b><small>3칸 · 칸마다 CPU · 3명이 따로 조종</small></a><a href="#train-build" data-id="train-build" class="all"><b>🔧 기차 단계별 조립</b><small>부품 하나씩 · 모듈은 따로 조립 후 끼우기</small></a><a href="#all" data-id="all" class="all"><b>▦ 전체 펼쳐보기</b><small>${catalog.length}개 부품 · 실제 크기로 한 화면에</small></a>` + categories.map(([cat, title]) => `
+nav.innerHTML = `<a href="#eagle" data-id="eagle" class="all"><b>🦅 독수리 조립 (설계도면)</b><small>부품으로 조립한 독수리 · 날갯짓 · 분해 보기</small></a><a href="#battlebot" data-id="battlebot" class="all"><b>⚔ 배틀로봇 썬더 웨지</b><small>무한궤도 · 스피너 · 들어올림 웨지</small></a><a href="#train" data-id="train" class="all"><b>🚂 협동 기차 하나로 열차</b><small>3칸 · 칸마다 CPU · 3명이 따로 조종</small></a><a href="#stage-eagle" data-id="stage-eagle" class="all"><b>🔧 독수리 파트별 조립</b><small>받침대 · 다리 · 몸통 · 얼굴 · 날개 · 꼬리 → 연결 · 분해</small></a><a href="#stage-battlebot" data-id="stage-battlebot" class="all"><b>🔧 배틀로봇 파트별 조립</b><small>섀시 · 구동부 · 무기 · 웨지 · 상판 · 장갑 → 연결 · 분해</small></a><a href="#stage-train" data-id="stage-train" class="all"><b>🔧 기차 파트별 조립</b><small>칸마다 차대 · 차체 → 연결봉 · 분해</small></a><a href="#train-build" data-id="train-build" class="all"><b>🔧 기차 단계별 조립 (모듈 작업대)</b><small>부품 하나씩 · 모듈은 따로 조립 후 끼우기</small></a><a href="#all" data-id="all" class="all"><b>▦ 전체 펼쳐보기</b><small>${catalog.length}개 부품 · 실제 크기로 한 화면에</small></a>` + categories.map(([cat, title]) => `
   <h3>${title}</h3>
   ${catalog.filter((p) => p.category === cat).map((p) => `
     <a href="#${p.id}" data-id="${p.id}"><b>${p.name}</b><small>${p.size.x} × ${p.size.z} × ${p.size.y} mm${p.size.estimated ? ' · 추정' : ''}</small></a>`).join('')}
@@ -256,7 +257,102 @@ function stepFunction(e) {
   };
 }
 
+// 파트별 단계 조립: 파트 고르기 → 한 단계씩 조립 · 분해 정도 → 마지막에 파트 연결
+const STAGED = {
+  'stage-eagle': { title: '독수리 — 파트별 조립', async make() { const e = await buildEagle(loadPart, progress); return { root: e.root, stages: Object.entries({ '01': '받침대', '02': '다리', '03': '몸통', '04': '얼굴 (목 · 머리)', '05': '날개', '06': '꼬리' }).map(([id, name]) => ({ id, name: `${name} — ${SHEETS[id]}` })) }; } },
+  'stage-battlebot': { title: '배틀로봇 — 파트별 조립', async make() { const e = await buildBattlebot(loadPart, progress); return { root: e.root, stages: Object.entries(BB_SHEETS).map(([id, name]) => ({ id, name })) }; } },
+  'stage-train': { title: '협동 기차 — 파트별 조립', async make() { return buildTrainStaged(loadPart, progress); } },
+};
+const stagedCache = {};
+function progress(k) { const l = document.getElementById('loading'); l.textContent = `부품 불러오는 중… ${Math.round(k * 100)}%`; }
+function stagedFunction(e) {
+  const st = { k: 0, T: 0, play: true, speed: 1.5, explode: 0, follow: true, goal: null };
+  const N = () => e.steps(st.k);
+  const frame = () => { e.pose(st.k, N(), 0); const box = e.boxOf(st.k); view.frame(box, { dir: [-1, 0.75, -0.9], fit: st.k === 'final' ? 0.9 : 1.15, minDist: 20 }); e.pose(st.k, st.T, st.explode); };
+  const build = () => {
+    panel.ui.controls([
+      { type: 'select', id: 'stage', label: '조립 파트', options: [...e.stages.map((s, i) => [String(i), `${i + 1}. ${s.name}`]), ['final', `${e.stages.length + 1}. 최종 연결 (파트 잇기)`]], value: String(st.k) },
+      { type: 'toggle', id: 'play', label: '재생', value: st.play },
+      { type: 'button', id: 'prev', label: '◀ 이전 단계' },
+      { type: 'button', id: 'next', label: '다음 단계 ▶' },
+      { type: 'slider', id: 'step', label: '단계로 이동', min: 0, max: N(), step: 1, value: Math.floor(st.T) },
+      { type: 'slider', id: 'explode', label: '분해 (자세히 보기)', min: 0, max: 1, step: 0.05, value: st.explode },
+      { type: 'slider', id: 'speed', label: '속도 (단계 / 초)', min: 0.25, max: 6, step: 0.25, value: st.speed },
+      { type: 'toggle', id: 'follow', label: '카메라가 지금 부품을 따라감', value: st.follow },
+      { type: 'button', id: 'nextStage', label: '다음 파트로 ▶▶' },
+    ]);
+    panel.ui.readouts([['stage', '파트'], ['step', '단계'], ['now', '지금'], ['total', '전체']]);
+  };
+  const ctl = (t) => [...document.querySelectorAll('.p-controls label')].find((l) => l.textContent.startsWith(t))?.querySelector('input');
+  const pause = () => { st.play = false; const b = ctl('재생'); if (b) b.checked = false; };
+  const setStage = (k) => { st.k = k; st.T = 0; st.goal = null; st.play = true; build(); frame(); };
+  build(); frame();
+  const tgt = new THREE.Vector3();
+  let shown = '';
+  return {
+    onControl(id, v) {
+      if (id === 'stage') setStage(v === 'final' ? 'final' : Number(v));
+      else if (id === 'nextStage') setStage(st.k === 'final' ? 0 : st.k + 1 >= e.stages.length ? 'final' : st.k + 1);
+      else if (id === 'play') { st.play = v; if (v && st.T >= N()) st.T = 0; }
+      else if (id === 'prev') { pause(); st.goal = Math.max(0, Math.ceil(st.T) - 1); }
+      else if (id === 'next') { pause(); st.goal = Math.min(N(), Math.floor(st.T) + 1); }
+      else if (id === 'step') { pause(); st.T = Number(v); st.goal = null; }
+      else st[id] = v;
+    },
+    update(dt) {
+      dt = Math.min(dt, 0.05);
+      if (st.goal !== null) { const d = st.goal - st.T; st.T += Math.sign(d) * Math.min(Math.abs(d), dt * 2.5); if (Math.abs(d) < 1e-3) { st.T = st.goal; st.goal = null; } }
+      else if (st.play) { st.T = Math.min(N(), st.T + dt * st.speed); if (st.T >= N()) pause(); }
+      e.pose(st.k, st.T, st.explode);
+      const s = Math.min(N() - 1, Math.floor(st.T));
+      const sl = ctl('단계로 이동'); if (sl && document.activeElement !== sl) { sl.value = String(Math.floor(st.T)); sl.nextElementSibling.textContent = String(Math.floor(st.T)); }
+      const done = st.T >= N();
+      const label = st.k === 'final' ? '최종 연결' : e.stages[st.k].name;
+      const now = done ? (st.k === 'final' ? '완성!' : '이 파트 완성 — "다음 파트로"') : e.stepName(st.k, s);
+      if (shown !== label + now) { panel.ui.readout('stage', label); panel.ui.readout('now', now); shown = label + now; }
+      panel.ui.readout('step', `${done ? N() : s + 1} / ${N()}`);
+      panel.ui.readout('total', `파트 ${e.stages.length}개 · 부품 ${e.count}개`);
+      if (st.follow && !done) {
+        tgt.copy(e.focus(st.k, s));
+        const d = tgt.sub(view.controls.target).multiplyScalar(Math.min(1, dt * 2.5));
+        view.controls.target.add(d); view.camera.position.add(d);
+      }
+    },
+  };
+}
+
 async function select(id) {
+  if (STAGED[id]) {
+    if (current?.id === id) return;
+    const token = ++loadToken;
+    const loading = document.getElementById('loading');
+    loading.style.display = 'block';
+    nav.querySelectorAll('a').forEach((a) => a.classList.toggle('on', a.dataset.id === id));
+    const e = stagedCache[id] ?? await (async () => { const m = await STAGED[id].make(); return { ...createStaged(m.root, m), root: m.root }; })();
+    loading.textContent = '불러오는 중…';
+    if (token !== loadToken) return;
+    stagedCache[id] = e;
+    if (current) { current.fn?.dispose?.(); view.scene.remove(current.root); }
+    overlay.clear();
+    picks.length = 0;
+    view.controls.zoomToCursor = true;
+    view.scene.add(e.root);
+    e.restore();
+    const box = e.boxOf('final');
+    panel.showSpec({
+      name: STAGED[id].title, url: 'https://github.com/popkn/3d-test/blob/로보로보-3d-test/ASSEMBLY_RULES.md',
+      size: { x: Math.round(box.max.x - box.min.x), z: Math.round(box.max.z - box.min.z), y: Math.round(box.max.y - box.min.y), estimated: false, note: '파트마다 따로 조립한 뒤 마지막에 연결한다. 같은 부품이 이어지면 한 단계로 묶음.' },
+      function: '조립 파트를 고르면 그 파트만 한 단계씩 조립된다. "분해"를 올리면 부품이 벌어져 자세히 볼 수 있다. 마지막 "최종 연결"에서 완성된 파트들이 하나씩 제자리로 붙는다. 부품에 마우스를 올리면 이름이 나온다.',
+      specs: e.stages.map((s, i) => [`파트 ${i + 1}`, `${s.name} (${e.steps(i)}단계)`]),
+      ports: [],
+    });
+    let fn = null;
+    panel.reset((cid, v) => fn?.onControl?.(cid, v));
+    fn = stagedFunction(e);
+    current = { id, root: e.root, fn: { ...fn, dispose() { e.restore(); } } };
+    loading.style.display = 'none';
+    return;
+  }
   if (id === 'train-build') {
     if (current?.id === 'train-build') return;
     const token = ++loadToken;
@@ -472,7 +568,7 @@ tipEl.className = 'tag hover-tip';
 tipEl.style.cssText = 'position:absolute;pointer-events:none;opacity:0;z-index:5';
 stage.appendChild(tipEl);
 view.renderer.domElement.addEventListener('pointermove', (e) => {
-  const asm = current?.id === 'eagle' ? eagle : current?.id === 'battlebot' ? bot : current?.id === 'train' ? train : current?.id === 'train-build' ? trainSteps : null;
+  const asm = current?.id === 'eagle' ? eagle : current?.id === 'battlebot' ? bot : current?.id === 'train' ? train : current?.id === 'train-build' ? trainSteps : STAGED[current?.id] ? stagedCache[current.id] : null;
   if (!asm) { tipEl.style.opacity = 0; return; }
   const r = view.renderer.domElement.getBoundingClientRect();
   const v = new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);

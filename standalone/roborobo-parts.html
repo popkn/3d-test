@@ -8340,7 +8340,7 @@ var init_function94 = __esm({
 });
 
 // src/main.js
-import * as THREE107 from "three";
+import * as THREE108 from "three";
 
 // src/catalog/parts/buzzer-board-s/spec.js
 var spec_default = {
@@ -11427,6 +11427,138 @@ async function buildTrainSteps(loadPart2, onProgress) {
     errors: A.errors
   };
 }
+async function buildTrainStaged(loadPart2, onProgress) {
+  const tree = buildTrainTree();
+  const { A } = tree;
+  const { holderOf } = await makeRenderer(A, loadPart2, onProgress);
+  const root = new THREE106.Group();
+  const stages = [];
+  const BODY = { "02a": "\uBCF4\uC77C\uB7EC", "02b": "\uC6B4\uC804\uC2E4", "03": "\uCC28\uCCB4", "04": "\uCC28\uCCB4" };
+  tree.cars.forEach((c, k) => {
+    const g = new THREE106.Group();
+    g.position.z = CAR_Z[k];
+    root.add(g);
+    const short = c.label.replace(/^\S+\s/, "");
+    const ids = [];
+    for (const p of c.parts) {
+      const h = holderOf(p);
+      const sub = p.sub === "02c" ? "01" : p.sub;
+      h.userData.stage = `${k}:${sub}`;
+      if (!ids.includes(sub)) ids.push(sub);
+      g.add(h);
+    }
+    for (const sub of ids) stages.push({ id: `${k}:${sub}`, name: sub === "01" ? `${short} \uCC28\uB300` : `${short} ${BODY[sub] || "\uCC28\uCCB4"}` });
+  });
+  tree.couplers.forEach((c, i) => {
+    const g = new THREE106.Group();
+    const pf = new THREE106.Vector3().setFromMatrixPosition(c.pins[1].m);
+    g.position.set(-pf.x, 0, CAR_Z[i] + REAR_PIN - pf.z);
+    root.add(g);
+    for (const p of c.parts) {
+      const h = holderOf(p);
+      h.userData.stage = "cp";
+      g.add(h);
+    }
+  });
+  stages.push({ id: "cp", name: "\uC5F0\uACB0\uBD09 (\uCE78 \uC787\uAE30)" });
+  return { root, stages, stageOf: (h) => h.userData.stage };
+}
+
+// src/assembly/staged.js
+import * as THREE107 from "three";
+var ease2 = (x) => x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x);
+function createStaged(root, { stages, stageOf = (h) => h.userData.sheet }) {
+  root.updateMatrixWorld(true);
+  const holders = [];
+  (function walk(o) {
+    if (o !== root && o.userData?.id) {
+      holders.push(o);
+      return;
+    }
+    for (const c of o.children) walk(c);
+  })(root);
+  const S = stages.map((s) => ({ ...s, items: [], steps: [] }));
+  const idx = Object.fromEntries(S.map((s, i) => [s.id, i]));
+  const items = [];
+  for (const h of holders) {
+    const k = idx[stageOf(h)];
+    if (k === void 0) continue;
+    const c = partBounds(h).getCenter(new THREE107.Vector3());
+    const it = { h, k, c, auto: h.matrixAutoUpdate, p0: h.position.clone(), m0: h.matrix.clone(), off: new THREE107.Vector3(), inv: new THREE107.Quaternion() };
+    h.parent.getWorldQuaternion(it.inv).invert();
+    const st = S[k];
+    const same2 = st.steps.slice(-2).reverse().find((x) => x.name === h.userData.name && x.id === h.userData.id);
+    if (same2) same2.items.push(it);
+    else st.steps.push({ name: h.userData.name, id: h.userData.id, items: [it] });
+    it.step = st.steps.indexOf(same2 ?? st.steps[st.steps.length - 1]);
+    st.items.push(it);
+    items.push(it);
+  }
+  const all = new THREE107.Vector3();
+  for (const it of items) all.add(it.c);
+  all.multiplyScalar(1 / Math.max(1, items.length));
+  for (const st of S) {
+    st.c = st.items.reduce((s, it) => s.add(it.c), new THREE107.Vector3()).multiplyScalar(1 / Math.max(1, st.items.length));
+    const d = st.c.clone().sub(all);
+    d.y = 0;
+    st.wait = d.length() > 20 ? d.normalize().multiplyScalar(170).add(new THREE107.Vector3(0, 60, 0)) : new THREE107.Vector3(0, 150 + 40 * (S.indexOf(st) % 2), 0);
+    for (const it of st.items) {
+      const v = it.c.clone().sub(st.c);
+      it.spread = v.clone();
+      it.come = v.clone().setY(Math.abs(v.y) + 20).normalize().multiplyScalar(45);
+    }
+  }
+  const W = new THREE107.Vector3(), M2 = new THREE107.Matrix4();
+  const apply = (it, worldOff) => {
+    W.copy(worldOff).applyQuaternion(it.inv);
+    if (it.auto) it.h.position.copy(it.p0).add(W);
+    else it.h.matrix.copy(M2.makeTranslation(W.x, W.y, W.z).multiply(it.m0));
+  };
+  function pose(mode, T, explode = 0) {
+    const off = new THREE107.Vector3();
+    for (const it of items) {
+      if (mode === "final") {
+        const st = S[it.k];
+        const j = ease2(T - it.k);
+        it.h.visible = true;
+        off.copy(st.wait).multiplyScalar(1 - j);
+        off.addScaledVector(st.c.clone().sub(all).setY(0), explode * 0.8);
+        off.addScaledVector(it.spread, explode * 0.5);
+        apply(it, off);
+      } else if (it.k === mode) {
+        const t = T - it.step;
+        it.h.visible = t >= 0;
+        off.copy(it.come).multiplyScalar(1 - ease2(t / 0.6)).addScaledVector(it.spread, explode * 1.4);
+        apply(it, off);
+      } else it.h.visible = false;
+    }
+  }
+  function restore() {
+    for (const it of items) {
+      it.h.visible = true;
+      apply(it, new THREE107.Vector3());
+    }
+  }
+  const boxOf = (k) => {
+    const b = new THREE107.Box3();
+    for (const it of k === "final" ? items : S[k].items) b.union(partBounds(it.h));
+    return b;
+  };
+  return {
+    stages: S,
+    pose,
+    restore,
+    boxOf,
+    steps: (k) => k === "final" ? S.length : S[k].steps.length,
+    stepName: (k, s) => k === "final" ? S[s] ? `${S[s].name} \uC5F0\uACB0` : "" : S[k].steps[s] ? `${S[k].steps[s].name}${S[k].steps[s].items.length > 1 ? ` \xD7 ${S[k].steps[s].items.length}` : ""}` : "",
+    focus: (k, s) => {
+      if (k === "final") return (S[Math.min(s, S.length - 1)]?.c || all).clone();
+      const st = S[k].steps[Math.min(s, S[k].steps.length - 1)];
+      return st ? st.items[0].c.clone() : S[k].c.clone();
+    },
+    count: items.length
+  };
+}
 
 // src/main.js
 var stage = document.getElementById("stage");
@@ -11436,7 +11568,7 @@ view.scene.add(overlay2.dimGroup);
 var panel = createPanel(document.getElementById("panel"));
 var opts = { labels: true, dims: true, spin: false };
 var nav = document.getElementById("parts");
-nav.innerHTML = `<a href="#eagle" data-id="eagle" class="all"><b>\u{1F985} \uB3C5\uC218\uB9AC \uC870\uB9BD (\uC124\uACC4\uB3C4\uBA74)</b><small>\uBD80\uD488\uC73C\uB85C \uC870\uB9BD\uD55C \uB3C5\uC218\uB9AC \xB7 \uB0A0\uAC2F\uC9D3 \xB7 \uBD84\uD574 \uBCF4\uAE30</small></a><a href="#battlebot" data-id="battlebot" class="all"><b>\u2694 \uBC30\uD2C0\uB85C\uBD07 \uC36C\uB354 \uC6E8\uC9C0</b><small>\uBB34\uD55C\uADA4\uB3C4 \xB7 \uC2A4\uD53C\uB108 \xB7 \uB4E4\uC5B4\uC62C\uB9BC \uC6E8\uC9C0</small></a><a href="#train" data-id="train" class="all"><b>\u{1F682} \uD611\uB3D9 \uAE30\uCC28 \uD558\uB098\uB85C \uC5F4\uCC28</b><small>3\uCE78 \xB7 \uCE78\uB9C8\uB2E4 CPU \xB7 3\uBA85\uC774 \uB530\uB85C \uC870\uC885</small></a><a href="#train-build" data-id="train-build" class="all"><b>\u{1F527} \uAE30\uCC28 \uB2E8\uACC4\uBCC4 \uC870\uB9BD</b><small>\uBD80\uD488 \uD558\uB098\uC529 \xB7 \uBAA8\uB4C8\uC740 \uB530\uB85C \uC870\uB9BD \uD6C4 \uB07C\uC6B0\uAE30</small></a><a href="#all" data-id="all" class="all"><b>\u25A6 \uC804\uCCB4 \uD3BC\uCCD0\uBCF4\uAE30</b><small>${catalog.length}\uAC1C \uBD80\uD488 \xB7 \uC2E4\uC81C \uD06C\uAE30\uB85C \uD55C \uD654\uBA74\uC5D0</small></a>` + categories.map(([cat, title]) => `
+nav.innerHTML = `<a href="#eagle" data-id="eagle" class="all"><b>\u{1F985} \uB3C5\uC218\uB9AC \uC870\uB9BD (\uC124\uACC4\uB3C4\uBA74)</b><small>\uBD80\uD488\uC73C\uB85C \uC870\uB9BD\uD55C \uB3C5\uC218\uB9AC \xB7 \uB0A0\uAC2F\uC9D3 \xB7 \uBD84\uD574 \uBCF4\uAE30</small></a><a href="#battlebot" data-id="battlebot" class="all"><b>\u2694 \uBC30\uD2C0\uB85C\uBD07 \uC36C\uB354 \uC6E8\uC9C0</b><small>\uBB34\uD55C\uADA4\uB3C4 \xB7 \uC2A4\uD53C\uB108 \xB7 \uB4E4\uC5B4\uC62C\uB9BC \uC6E8\uC9C0</small></a><a href="#train" data-id="train" class="all"><b>\u{1F682} \uD611\uB3D9 \uAE30\uCC28 \uD558\uB098\uB85C \uC5F4\uCC28</b><small>3\uCE78 \xB7 \uCE78\uB9C8\uB2E4 CPU \xB7 3\uBA85\uC774 \uB530\uB85C \uC870\uC885</small></a><a href="#stage-eagle" data-id="stage-eagle" class="all"><b>\u{1F527} \uB3C5\uC218\uB9AC \uD30C\uD2B8\uBCC4 \uC870\uB9BD</b><small>\uBC1B\uCE68\uB300 \xB7 \uB2E4\uB9AC \xB7 \uBAB8\uD1B5 \xB7 \uC5BC\uAD74 \xB7 \uB0A0\uAC1C \xB7 \uAF2C\uB9AC \u2192 \uC5F0\uACB0 \xB7 \uBD84\uD574</small></a><a href="#stage-battlebot" data-id="stage-battlebot" class="all"><b>\u{1F527} \uBC30\uD2C0\uB85C\uBD07 \uD30C\uD2B8\uBCC4 \uC870\uB9BD</b><small>\uC100\uC2DC \xB7 \uAD6C\uB3D9\uBD80 \xB7 \uBB34\uAE30 \xB7 \uC6E8\uC9C0 \xB7 \uC0C1\uD310 \xB7 \uC7A5\uAC11 \u2192 \uC5F0\uACB0 \xB7 \uBD84\uD574</small></a><a href="#stage-train" data-id="stage-train" class="all"><b>\u{1F527} \uAE30\uCC28 \uD30C\uD2B8\uBCC4 \uC870\uB9BD</b><small>\uCE78\uB9C8\uB2E4 \uCC28\uB300 \xB7 \uCC28\uCCB4 \u2192 \uC5F0\uACB0\uBD09 \xB7 \uBD84\uD574</small></a><a href="#train-build" data-id="train-build" class="all"><b>\u{1F527} \uAE30\uCC28 \uB2E8\uACC4\uBCC4 \uC870\uB9BD (\uBAA8\uB4C8 \uC791\uC5C5\uB300)</b><small>\uBD80\uD488 \uD558\uB098\uC529 \xB7 \uBAA8\uB4C8\uC740 \uB530\uB85C \uC870\uB9BD \uD6C4 \uB07C\uC6B0\uAE30</small></a><a href="#all" data-id="all" class="all"><b>\u25A6 \uC804\uCCB4 \uD3BC\uCCD0\uBCF4\uAE30</b><small>${catalog.length}\uAC1C \uBD80\uD488 \xB7 \uC2E4\uC81C \uD06C\uAE30\uB85C \uD55C \uD654\uBA74\uC5D0</small></a>` + categories.map(([cat, title]) => `
   <h3>${title}</h3>
   ${catalog.filter((p) => p.category === cat).map((p) => `
     <a href="#${p.id}" data-id="${p.id}"><b>${p.name}</b><small>${p.size.x} \xD7 ${p.size.z} \xD7 ${p.size.y} mm${p.size.estimated ? " \xB7 \uCD94\uC815" : ""}</small></a>`).join("")}
@@ -11456,7 +11588,7 @@ var picks = [];
 async function showAll(token) {
   const parts = await Promise.all(catalog.map((p) => loadPart(p.id)));
   if (token !== loadToken) return null;
-  const root = new THREE107.Group();
+  const root = new THREE108.Group();
   const labels = [];
   let z = 0;
   picks.length = 0;
@@ -11466,12 +11598,12 @@ async function showAll(token) {
     let x = 0, rowDepth = 0, first = true;
     for (const [spec, part] of list) {
       const model = part.build();
-      const g = new THREE107.Group();
+      const g = new THREE108.Group();
       g.add(model.object3d);
       root.add(g);
       g.updateMatrixWorld(true);
       const box2 = partBounds(g);
-      const size = box2.getSize(new THREE107.Vector3()), c = box2.getCenter(new THREE107.Vector3());
+      const size = box2.getSize(new THREE108.Vector3()), c = box2.getCenter(new THREE108.Vector3());
       if (x > 0 && x + size.x > ROW_W) {
         z += rowDepth + GAP * 2;
         x = 0;
@@ -11521,10 +11653,10 @@ function eagleFunction(e) {
       st.t += dt;
       const flap = st.auto ? 12.5 + 32.5 * Math.sin(st.t * Math.PI * 2 / 1.2) : st.flap;
       const head = st.scan ? 90 + 45 * Math.sin(st.t * 0.8) : st.head;
-      const a = THREE107.MathUtils.degToRad(flap);
+      const a = THREE108.MathUtils.degToRad(flap);
       e.wing.r.rotation.z = a;
       e.wing.l.rotation.z = -a;
-      e.head.rotation.y = THREE107.MathUtils.degToRad(head - 90);
+      e.head.rotation.y = THREE108.MathUtils.degToRad(head - 90);
       for (const [no, g] of Object.entries(e.groups)) {
         const d = EXPLODE[no] || [0, 0, 0];
         g.position.set(d[0] * st.explode, d[1] * st.explode, d[2] * st.explode);
@@ -11611,7 +11743,7 @@ function trainFunction(e) {
     const el = document.querySelectorAll(".p-controls select")[i];
     if (el) el.value = v;
   };
-  const center = new THREE107.Vector3();
+  const center = new THREE108.Vector3();
   return {
     onControl(id, v) {
       if (id[0] === "c" && id.length === 2) st.cmd[+id[1]] = v;
@@ -11673,7 +11805,7 @@ function stepFunction(e) {
     const b = playBox();
     if (b) b.checked = false;
   };
-  const tgt = new THREE107.Vector3();
+  const tgt = new THREE108.Vector3();
   let lastShown = -1;
   return {
     onControl(id, v) {
@@ -11737,7 +11869,164 @@ function stepFunction(e) {
     }
   };
 }
+var STAGED = {
+  "stage-eagle": { title: "\uB3C5\uC218\uB9AC \u2014 \uD30C\uD2B8\uBCC4 \uC870\uB9BD", async make() {
+    const e = await buildEagle(loadPart, progress);
+    return { root: e.root, stages: Object.entries({ "01": "\uBC1B\uCE68\uB300", "02": "\uB2E4\uB9AC", "03": "\uBAB8\uD1B5", "04": "\uC5BC\uAD74 (\uBAA9 \xB7 \uBA38\uB9AC)", "05": "\uB0A0\uAC1C", "06": "\uAF2C\uB9AC" }).map(([id, name]) => ({ id, name: `${name} \u2014 ${SHEETS[id]}` })) };
+  } },
+  "stage-battlebot": { title: "\uBC30\uD2C0\uB85C\uBD07 \u2014 \uD30C\uD2B8\uBCC4 \uC870\uB9BD", async make() {
+    const e = await buildBattlebot(loadPart, progress);
+    return { root: e.root, stages: Object.entries(SHEETS2).map(([id, name]) => ({ id, name })) };
+  } },
+  "stage-train": { title: "\uD611\uB3D9 \uAE30\uCC28 \u2014 \uD30C\uD2B8\uBCC4 \uC870\uB9BD", async make() {
+    return buildTrainStaged(loadPart, progress);
+  } }
+};
+var stagedCache = {};
+function progress(k) {
+  const l = document.getElementById("loading");
+  l.textContent = `\uBD80\uD488 \uBD88\uB7EC\uC624\uB294 \uC911\u2026 ${Math.round(k * 100)}%`;
+}
+function stagedFunction(e) {
+  const st = { k: 0, T: 0, play: true, speed: 1.5, explode: 0, follow: true, goal: null };
+  const N2 = () => e.steps(st.k);
+  const frame = () => {
+    e.pose(st.k, N2(), 0);
+    const box2 = e.boxOf(st.k);
+    view.frame(box2, { dir: [-1, 0.75, -0.9], fit: st.k === "final" ? 0.9 : 1.15, minDist: 20 });
+    e.pose(st.k, st.T, st.explode);
+  };
+  const build95 = () => {
+    panel.ui.controls([
+      { type: "select", id: "stage", label: "\uC870\uB9BD \uD30C\uD2B8", options: [...e.stages.map((s, i) => [String(i), `${i + 1}. ${s.name}`]), ["final", `${e.stages.length + 1}. \uCD5C\uC885 \uC5F0\uACB0 (\uD30C\uD2B8 \uC787\uAE30)`]], value: String(st.k) },
+      { type: "toggle", id: "play", label: "\uC7AC\uC0DD", value: st.play },
+      { type: "button", id: "prev", label: "\u25C0 \uC774\uC804 \uB2E8\uACC4" },
+      { type: "button", id: "next", label: "\uB2E4\uC74C \uB2E8\uACC4 \u25B6" },
+      { type: "slider", id: "step", label: "\uB2E8\uACC4\uB85C \uC774\uB3D9", min: 0, max: N2(), step: 1, value: Math.floor(st.T) },
+      { type: "slider", id: "explode", label: "\uBD84\uD574 (\uC790\uC138\uD788 \uBCF4\uAE30)", min: 0, max: 1, step: 0.05, value: st.explode },
+      { type: "slider", id: "speed", label: "\uC18D\uB3C4 (\uB2E8\uACC4 / \uCD08)", min: 0.25, max: 6, step: 0.25, value: st.speed },
+      { type: "toggle", id: "follow", label: "\uCE74\uBA54\uB77C\uAC00 \uC9C0\uAE08 \uBD80\uD488\uC744 \uB530\uB77C\uAC10", value: st.follow },
+      { type: "button", id: "nextStage", label: "\uB2E4\uC74C \uD30C\uD2B8\uB85C \u25B6\u25B6" }
+    ]);
+    panel.ui.readouts([["stage", "\uD30C\uD2B8"], ["step", "\uB2E8\uACC4"], ["now", "\uC9C0\uAE08"], ["total", "\uC804\uCCB4"]]);
+  };
+  const ctl = (t) => [...document.querySelectorAll(".p-controls label")].find((l) => l.textContent.startsWith(t))?.querySelector("input");
+  const pause = () => {
+    st.play = false;
+    const b = ctl("\uC7AC\uC0DD");
+    if (b) b.checked = false;
+  };
+  const setStage = (k) => {
+    st.k = k;
+    st.T = 0;
+    st.goal = null;
+    st.play = true;
+    build95();
+    frame();
+  };
+  build95();
+  frame();
+  const tgt = new THREE108.Vector3();
+  let shown = "";
+  return {
+    onControl(id, v) {
+      if (id === "stage") setStage(v === "final" ? "final" : Number(v));
+      else if (id === "nextStage") setStage(st.k === "final" ? 0 : st.k + 1 >= e.stages.length ? "final" : st.k + 1);
+      else if (id === "play") {
+        st.play = v;
+        if (v && st.T >= N2()) st.T = 0;
+      } else if (id === "prev") {
+        pause();
+        st.goal = Math.max(0, Math.ceil(st.T) - 1);
+      } else if (id === "next") {
+        pause();
+        st.goal = Math.min(N2(), Math.floor(st.T) + 1);
+      } else if (id === "step") {
+        pause();
+        st.T = Number(v);
+        st.goal = null;
+      } else st[id] = v;
+    },
+    update(dt) {
+      dt = Math.min(dt, 0.05);
+      if (st.goal !== null) {
+        const d = st.goal - st.T;
+        st.T += Math.sign(d) * Math.min(Math.abs(d), dt * 2.5);
+        if (Math.abs(d) < 1e-3) {
+          st.T = st.goal;
+          st.goal = null;
+        }
+      } else if (st.play) {
+        st.T = Math.min(N2(), st.T + dt * st.speed);
+        if (st.T >= N2()) pause();
+      }
+      e.pose(st.k, st.T, st.explode);
+      const s = Math.min(N2() - 1, Math.floor(st.T));
+      const sl = ctl("\uB2E8\uACC4\uB85C \uC774\uB3D9");
+      if (sl && document.activeElement !== sl) {
+        sl.value = String(Math.floor(st.T));
+        sl.nextElementSibling.textContent = String(Math.floor(st.T));
+      }
+      const done = st.T >= N2();
+      const label = st.k === "final" ? "\uCD5C\uC885 \uC5F0\uACB0" : e.stages[st.k].name;
+      const now = done ? st.k === "final" ? "\uC644\uC131!" : '\uC774 \uD30C\uD2B8 \uC644\uC131 \u2014 "\uB2E4\uC74C \uD30C\uD2B8\uB85C"' : e.stepName(st.k, s);
+      if (shown !== label + now) {
+        panel.ui.readout("stage", label);
+        panel.ui.readout("now", now);
+        shown = label + now;
+      }
+      panel.ui.readout("step", `${done ? N2() : s + 1} / ${N2()}`);
+      panel.ui.readout("total", `\uD30C\uD2B8 ${e.stages.length}\uAC1C \xB7 \uBD80\uD488 ${e.count}\uAC1C`);
+      if (st.follow && !done) {
+        tgt.copy(e.focus(st.k, s));
+        const d = tgt.sub(view.controls.target).multiplyScalar(Math.min(1, dt * 2.5));
+        view.controls.target.add(d);
+        view.camera.position.add(d);
+      }
+    }
+  };
+}
 async function select(id) {
+  if (STAGED[id]) {
+    if (current?.id === id) return;
+    const token2 = ++loadToken;
+    const loading = document.getElementById("loading");
+    loading.style.display = "block";
+    nav.querySelectorAll("a").forEach((a) => a.classList.toggle("on", a.dataset.id === id));
+    const e = stagedCache[id] ?? await (async () => {
+      const m = await STAGED[id].make();
+      return { ...createStaged(m.root, m), root: m.root };
+    })();
+    loading.textContent = "\uBD88\uB7EC\uC624\uB294 \uC911\u2026";
+    if (token2 !== loadToken) return;
+    stagedCache[id] = e;
+    if (current) {
+      current.fn?.dispose?.();
+      view.scene.remove(current.root);
+    }
+    overlay2.clear();
+    picks.length = 0;
+    view.controls.zoomToCursor = true;
+    view.scene.add(e.root);
+    e.restore();
+    const box3 = e.boxOf("final");
+    panel.showSpec({
+      name: STAGED[id].title,
+      url: "https://github.com/popkn/3d-test/blob/\uB85C\uBCF4\uB85C\uBCF4-3d-test/ASSEMBLY_RULES.md",
+      size: { x: Math.round(box3.max.x - box3.min.x), z: Math.round(box3.max.z - box3.min.z), y: Math.round(box3.max.y - box3.min.y), estimated: false, note: "\uD30C\uD2B8\uB9C8\uB2E4 \uB530\uB85C \uC870\uB9BD\uD55C \uB4A4 \uB9C8\uC9C0\uB9C9\uC5D0 \uC5F0\uACB0\uD55C\uB2E4. \uAC19\uC740 \uBD80\uD488\uC774 \uC774\uC5B4\uC9C0\uBA74 \uD55C \uB2E8\uACC4\uB85C \uBB36\uC74C." },
+      function: '\uC870\uB9BD \uD30C\uD2B8\uB97C \uACE0\uB974\uBA74 \uADF8 \uD30C\uD2B8\uB9CC \uD55C \uB2E8\uACC4\uC529 \uC870\uB9BD\uB41C\uB2E4. "\uBD84\uD574"\uB97C \uC62C\uB9AC\uBA74 \uBD80\uD488\uC774 \uBC8C\uC5B4\uC838 \uC790\uC138\uD788 \uBCFC \uC218 \uC788\uB2E4. \uB9C8\uC9C0\uB9C9 "\uCD5C\uC885 \uC5F0\uACB0"\uC5D0\uC11C \uC644\uC131\uB41C \uD30C\uD2B8\uB4E4\uC774 \uD558\uB098\uC529 \uC81C\uC790\uB9AC\uB85C \uBD99\uB294\uB2E4. \uBD80\uD488\uC5D0 \uB9C8\uC6B0\uC2A4\uB97C \uC62C\uB9AC\uBA74 \uC774\uB984\uC774 \uB098\uC628\uB2E4.',
+      specs: e.stages.map((s, i) => [`\uD30C\uD2B8 ${i + 1}`, `${s.name} (${e.steps(i)}\uB2E8\uACC4)`]),
+      ports: []
+    });
+    let fn2 = null;
+    panel.reset((cid, v) => fn2?.onControl?.(cid, v));
+    fn2 = stagedFunction(e);
+    current = { id, root: e.root, fn: { ...fn2, dispose() {
+      e.restore();
+    } } };
+    loading.style.display = "none";
+    return;
+  }
   if (id === "train-build") {
     if (current?.id === "train-build") return;
     const token2 = ++loadToken;
@@ -11807,7 +12096,7 @@ async function select(id) {
     e.root.updateMatrixWorld(true);
     const box3 = partBounds(e.root);
     view.frame(box3, { dir: [-1, 0.55, -0.7], fit: 1, minDist: 20 });
-    const size = box3.getSize(new THREE107.Vector3());
+    const size = box3.getSize(new THREE108.Vector3());
     panel.showSpec({
       name: "\uD611\uB3D9 \uAE30\uCC28 \uD558\uB098\uB85C \uC5F4\uCC28 (\uC870\uB9BD \uADDC\uCE59\uC73C\uB85C \uC870\uB9BD)",
       url: "https://github.com/popkn/3d-test/blob/\uB85C\uBCF4\uB85C\uBCF4-3d-test/ASSEMBLY_GUIDE.md",
@@ -11852,7 +12141,7 @@ async function select(id) {
     e.root.updateMatrixWorld(true);
     const box3 = partBounds(e.root);
     view.frame(box3, { dir: [-0.9, 0.7, -1], fit: 1.25, minDist: 20 });
-    const size = box3.getSize(new THREE107.Vector3());
+    const size = box3.getSize(new THREE108.Vector3());
     panel.showSpec({
       name: "\uBC30\uD2C0\uB85C\uBD07 \uC36C\uB354 \uC6E8\uC9C0 (\uC124\uACC4\uB3C4\uBA74 \uC870\uB9BD)",
       url: "https://github.com/popkn/3d-test/blob/\uB85C\uBCF4\uB85C\uBCF4-3d-test/battlebot/BLUEPRINT.md",
@@ -11889,7 +12178,7 @@ async function select(id) {
     e.root.updateMatrixWorld(true);
     const box3 = partBounds(e.root);
     view.frame(box3, { dir: [-0.9, 0.55, -1], fit: 1.15, minDist: 20 });
-    const size = box3.getSize(new THREE107.Vector3());
+    const size = box3.getSize(new THREE108.Vector3());
     panel.showSpec({
       name: "\uB3C5\uC218\uB9AC \uB85C\uBD07 (\uC124\uACC4\uB3C4\uBA74 \uC870\uB9BD)",
       url: "https://github.com/popkn/3d-test/blob/\uB85C\uBCF4\uB85C\uBCF4-3d-test/eagle/BLUEPRINT.md",
@@ -11926,7 +12215,7 @@ async function select(id) {
     const d0 = view.camera.position.distanceTo(view.controls.target);
     for (const l of res.labels) if (l.small) l.maxDist = d0 * 0.4;
     overlay2.setLabels(res.labels);
-    const size = box3.getSize(new THREE107.Vector3());
+    const size = box3.getSize(new THREE108.Vector3());
     panel.showSpec({
       name: "\uC804\uCCB4 \uBD80\uD488 \uD3BC\uCCD0\uBCF4\uAE30",
       url: "#all",
@@ -11956,11 +12245,11 @@ async function select(id) {
   }
   overlay2.clear();
   const model = part.build();
-  const root = new THREE107.Group();
+  const root = new THREE108.Group();
   root.add(model.object3d);
   view.scene.add(root);
   const box2 = partBounds(root);
-  const c = box2.getCenter(new THREE107.Vector3());
+  const c = box2.getCenter(new THREE108.Vector3());
   model.object3d.position.set(-c.x, -box2.min.y, -c.z);
   const fitted = partBounds(root);
   view.frame(partBounds(root, { include: model.frameWith || [] }));
@@ -11979,14 +12268,14 @@ tipEl.className = "tag hover-tip";
 tipEl.style.cssText = "position:absolute;pointer-events:none;opacity:0;z-index:5";
 stage.appendChild(tipEl);
 view.renderer.domElement.addEventListener("pointermove", (e) => {
-  const asm = current?.id === "eagle" ? eagle : current?.id === "battlebot" ? bot : current?.id === "train" ? train : current?.id === "train-build" ? trainSteps : null;
+  const asm = current?.id === "eagle" ? eagle : current?.id === "battlebot" ? bot : current?.id === "train" ? train : current?.id === "train-build" ? trainSteps : STAGED[current?.id] ? stagedCache[current.id] : null;
   if (!asm) {
     tipEl.style.opacity = 0;
     return;
   }
   const r = view.renderer.domElement.getBoundingClientRect();
-  const v = new THREE107.Vector2((e.clientX - r.left) / r.width * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
-  const rc = new THREE107.Raycaster();
+  const v = new THREE108.Vector2((e.clientX - r.left) / r.width * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+  const rc = new THREE108.Raycaster();
   rc.setFromCamera(v, view.camera);
   const hit = rc.intersectObject(asm.root, true).find((h) => h.object.visible);
   let o = hit?.object;
@@ -11999,8 +12288,8 @@ view.renderer.domElement.addEventListener("pointermove", (e) => {
   tipEl.style.opacity = 1;
   tipEl.style.transform = `translate(${e.clientX - r.left + 14}px, ${e.clientY - r.top + 10}px)`;
 });
-var ray = new THREE107.Raycaster();
-var ptr = new THREE107.Vector2();
+var ray = new THREE108.Raycaster();
+var ptr = new THREE108.Vector2();
 var down = null;
 view.renderer.domElement.addEventListener("pointerdown", (e) => {
   down = [e.clientX, e.clientY];
@@ -12023,7 +12312,7 @@ view.renderer.domElement.addEventListener("pointerup", (e) => {
   if (pick) location.hash = pick.id;
 });
 select(location.hash.slice(1) || catalog[0].id);
-var timer = new THREE107.Timer();
+var timer = new THREE108.Timer();
 view.renderer.setAnimationLoop((ts) => {
   timer.update(ts);
   const dt = Math.min(timer.getDelta(), 0.1);

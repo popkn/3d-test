@@ -131,3 +131,35 @@ export async function buildTrainSteps(loadPart, onProgress) {
     count: A.parts.length, nFast: A.fastens.reduce((n, f) => n + 1 + (f.nut ? 1 : 0), 0), groups: A.groups.length, errors: A.errors,
   };
 }
+
+// 파트별 단계 조립용 (src/assembly/staged.js): 칸마다 차대 · 차체 파트, 마지막에 연결봉
+export async function buildTrainStaged(loadPart, onProgress) {
+  const tree = buildTrainTree();
+  const { A } = tree;
+  const { holderOf } = await makeRenderer(A, loadPart, onProgress);
+  const root = new THREE.Group();
+  const stages = [];
+  const BODY = { '02a': '보일러', '02b': '운전실', '03': '차체', '04': '차체' };
+  tree.cars.forEach((c, k) => {
+    const g = new THREE.Group(); g.position.z = CAR_Z[k]; root.add(g);
+    const short = c.label.replace(/^\S+\s/, '');
+    const ids = [];
+    for (const p of c.parts) {
+      const h = holderOf(p);
+      const sub = p.sub === '02c' ? '01' : p.sub;
+      h.userData.stage = `${k}:${sub}`;
+      if (!ids.includes(sub)) ids.push(sub);
+      g.add(h);
+    }
+    for (const sub of ids) stages.push({ id: `${k}:${sub}`, name: sub === '01' ? `${short} 차대` : `${short} ${BODY[sub] || '차체'}` });
+  });
+  tree.couplers.forEach((c, i) => {
+    const g = new THREE.Group();
+    const pf = new THREE.Vector3().setFromMatrixPosition(c.pins[1].m);
+    g.position.set(-pf.x, 0, CAR_Z[i] + REAR_PIN - pf.z);
+    root.add(g);
+    for (const p of c.parts) { const h = holderOf(p); h.userData.stage = 'cp'; g.add(h); }
+  });
+  stages.push({ id: 'cp', name: '연결봉 (칸 잇기)' });
+  return { root, stages, stageOf: (h) => h.userData.stage };
+}
