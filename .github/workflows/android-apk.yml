@@ -1,0 +1,44 @@
+# 안드로이드 앱(APK) 빌드: app/ 를 바꿔 푸시하면 APK를 만들어 Releases "android-latest"에 올린다.
+name: Android APK
+on:
+  push:
+    branches: ['로보로보-3d-test']
+    paths: ['app/**', '.github/workflows/android-apk.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: 21 }
+      - uses: android-actions/setup-android@v3
+      - name: 웹 화면 준비 + Capacitor 동기화
+        working-directory: app
+        run: |
+          npm ci --no-audit --no-fund
+          node scripts/prepare.mjs
+          npx cap sync android
+      - name: APK 빌드 (디버그 서명 — 바로 설치 가능)
+        working-directory: app/android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+          cp app/build/outputs/apk/debug/app-debug.apk ../../roborobo-assembly.apk
+      - uses: actions/upload-artifact@v4
+        with: { name: roborobo-assembly-apk, path: roborobo-assembly.apk }
+      - name: Releases에 올리기
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: android-latest
+          name: 로보로보 조립 앱 (안드로이드)
+          prerelease: true
+          files: roborobo-assembly.apk
+          body: |
+            휴대폰에서 roborobo-assembly.apk 를 내려받아 설치하세요.
+            (처음 설치할 때 "출처를 알 수 없는 앱 설치"를 허용해야 합니다.)
+            커밋: ${{ github.sha }}

@@ -1,0 +1,6 @@
+{
+  "appId": "com.popkn.roboroboassembly",
+  "appName": "로보로보 조립",
+  "webDir": "www",
+  "android": { "backgroundColor": "#f8f7f4" }
+}

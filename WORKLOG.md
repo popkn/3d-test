@@ -121,3 +121,8 @@
 - 규칙 7장: 입력 IN = 접촉 · 적외선 · 소리 센서, 출력 OUT = 서보 · LED (주황 · 빨강 · 초록) · 부저, 포트 하나에 부품 하나. 9장에 파트 나눠 조립 · 분해 확인 추가.
 - `src/assembly/staged.js` `createStaged(root, { stages, stageOf })`: 어느 로봇이든 파트별로 한 단계씩 조립 → 분해 슬라이더 → 최종 연결 (파트가 대기 자리에서 하나씩 제자리로). 같은 부품이 이어지거나 번갈아 나오면(마디 · 러버) 한 단계로 묶음.
 - 화면: `#stage-eagle` (받침대 · 다리 · 몸통 · 얼굴 · 날개 · 꼬리), `#stage-battlebot` (도면 6파트), `#stage-train` (칸마다 차대 · 차체 + 연결봉, `buildTrainStaged`).
+
+## 안드로이드 앱 (하이브리드 · Capacitor)
+- `app/`: 사용자가 준 모바일 디자인(`app/src/index.source.html`)을 Capacitor 7로 감싼 앱. `scripts/prepare.mjs`가 three.js · 글꼴을 앱 안에 넣어 인터넷 없이 동작하게 하고, `web/native.js`를 붙인다 (뒤로 가기, 바깥 링크 → 앱 안 브라우저, HTML 내려받기 → 파일 저장 + 공유).
+- 권한: 마이크 (소리 센서), 진동. 아이콘 · 시작 화면: `scripts/icons.py`.
+- APK: `.github/workflows/android-apk.yml` (푸시하면 빌드 → Releases `android-latest`). 이 컨테이너에서는 Android SDK 라이선스 자동 동의가 막혀 직접 빌드하지 않음.

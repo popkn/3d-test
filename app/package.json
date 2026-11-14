@@ -1,0 +1,24 @@
+{
+  "name": "roborobo-assembly-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "로보로보 완성 로봇 조립 — 안드로이드 하이브리드 앱 (Capacitor)",
+  "scripts": {
+    "prepare-web": "node scripts/prepare.mjs",
+    "sync": "npm run prepare-web && npx cap sync android",
+    "apk": "npm run sync && cd android && ./gradlew assembleDebug"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.0",
+    "@capacitor/app": "^7.0.1",
+    "@capacitor/browser": "^7.0.1",
+    "@capacitor/core": "^7.4.0",
+    "@capacitor/filesystem": "^7.1.1",
+    "@capacitor/share": "^7.0.1"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.4.0",
+    "@fontsource/jetbrains-mono": "^5.2.5",
+    "three": "0.186.1"
+  }
+}
