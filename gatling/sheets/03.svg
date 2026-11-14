@@ -1,0 +1,498 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 900" width="1180" height="900" font-family="JetBrains Mono, 'Noto Sans KR', sans-serif"><defs><pattern id="g" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="#e3e8ef" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="#f6f8fb"/><rect x="14" y="14" width="1152" height="872" fill="none" stroke="#1d2230" stroke-width="1.2"/>
+<rect x="14" y="14" width="1152" height="46" fill="#1d2230"/>
+<text x="28.0" y="44.0" font-size="13" fill="#9fb3d1" font-weight="700" text-anchor="start">썬더 개틀링 4연장 · 도면 03</text>
+<text x="270.8" y="44.0" font-size="17" fill="#ffffff" font-weight="700" text-anchor="start">배럴 구동부 (모터 1 · 십자 로터 2 · 배럴 4 · 앞 축 받침)</text>
+<text x="1152.0" y="76.0" font-size="10.5" fill="#5a6070" font-weight="400" text-anchor="end">단위 mm · 부품 36개 · 빨간 번호 = 부품표 · 회색 윤곽 = 주변 부품</text>
+<rect x="72" y="100" width="190" height="188" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>
+<text x="72.0" y="92.0" font-size="12" fill="#1d2230" font-weight="700" text-anchor="start">정면도 (앞에서)</text>
+<svg x="72" y="100" width="190" height="188" viewBox="72 100 190 188" overflow="hidden">
+<rect x="60.0" y="308.1" width="109.4" height="63.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>발사 버튼 (접촉 센서, IN1) (sensor-touch)</title></rect>
+<rect x="105.6" y="349.1" width="18.2" height="22.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>발사 버튼 L자 2×2 (l-frame-2x2)</title></rect>
+<rect x="61.8" y="280.7" width="14.6" height="91.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 받침 기둥 (서포트 40) (support-spacer)</title></rect>
+<rect x="221.4" y="280.7" width="14.6" height="91.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 받침 기둥 (서포트 40) (support-spacer)</title></rect>
+<rect x="60.0" y="277.1" width="177.8" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 받침대 (중 PCB) (frame-mid-pcb)</title></rect>
+<rect x="128.4" y="269.3" width="41.0" height="7.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>고각 경첩 (경첩 3×3) (hinge-3x3)</title></rect>
+<rect x="39.0" y="174.5" width="14.6" height="91.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></rect>
+<rect x="39.0" y="128.9" width="14.6" height="45.6" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></rect>
+<rect x="244.2" y="174.5" width="14.6" height="91.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></rect>
+<rect x="244.2" y="128.9" width="14.6" height="45.6" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></rect>
+<rect x="107.4" y="128.9" width="14.6" height="11.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>쐐기 내림 (서포트 5) (support-spacer)</title></rect>
+<rect x="84.6" y="314.9" width="14.6" height="57.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></rect>
+<rect x="198.6" y="314.9" width="14.6" height="57.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></rect>
+<rect x="-71.1" y="257.9" width="75.2" height="182.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 뒤 구동 바퀴 (Ø80 버기 세트) (wheel-80-buggy-set)</title></rect>
+<rect x="293.7" y="257.9" width="75.2" height="182.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 뒤 구동 바퀴 (Ø80 버기 세트) (wheel-80-buggy-set)</title></rect>
+<rect x="37.2" y="326.3" width="18.2" height="45.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="242.4" y="326.3" width="18.2" height="45.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="8.7" y="326.3" width="75.2" height="45.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 구동 모터 (DC 130rpm, M1) (dc-motor-130-rs)</title></rect>
+<rect x="213.9" y="326.3" width="75.2" height="45.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 구동 모터 (DC 130rpm, M2) (dc-motor-130-rs)</title></rect>
+<rect x="14.4" y="125.2" width="269.0" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 판 (5×13 PCB) (frame-5x13-pcb)</title></rect>
+<rect x="83.7" y="140.3" width="153.2" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>격발 쐐기 (소8 PCB, 36.9°) (frame-s8-pcb)</title></rect>
+<rect x="79.4" y="283.0" width="139.1" height="31.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 보드 8M (1대에 1개) (cpu-board-8m)</title></rect>
+<rect x="37.2" y="326.3" width="18.2" height="45.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="242.4" y="326.3" width="18.2" height="45.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="39.0" y="174.5" width="14.6" height="91.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></rect>
+<rect x="39.0" y="128.9" width="14.6" height="45.6" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></rect>
+<rect x="244.2" y="174.5" width="14.6" height="91.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></rect>
+<rect x="244.2" y="128.9" width="14.6" height="45.6" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></rect>
+<rect x="198.6" y="128.9" width="14.6" height="11.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>쐐기 내림 (서포트 5) (support-spacer)</title></rect>
+<rect x="84.6" y="314.9" width="14.6" height="57.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></rect>
+<rect x="198.6" y="314.9" width="14.6" height="57.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></rect>
+<rect x="14.4" y="371.9" width="269.0" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>차체 바닥판 (빅 메인 PCB) (frame-big-main)</title></rect>
+<rect x="14.4" y="265.7" width="269.0" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>포탑 판 (빅 메인 PCB) (frame-big-main)</title></rect>
+<rect x="219.6" y="238.3" width="50.2" height="27.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>부저 (OUT2, 발사 경고음) (buzzer-board-s)</title></rect>
+<rect x="64.6" y="330.9" width="168.7" height="41.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배터리케이스 (AA 4개, 6V) (battery-case-4aa)</title></rect>
+<rect x="16.2" y="314.9" width="14.6" height="57.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 받침 아래 (서포트 25) (support-spacer)</title></rect>
+<rect x="16.2" y="269.3" width="14.6" height="45.6" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 받침 위 (서포트 20) (support-spacer)</title></rect>
+<rect x="267.0" y="314.9" width="14.6" height="57.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 받침 아래 (서포트 25) (support-spacer)</title></rect>
+<rect x="267.0" y="269.3" width="14.6" height="45.6" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 받침 위 (서포트 20) (support-spacer)</title></rect>
+<rect x="25.8" y="233.1" width="63.8" height="20.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>블루투스 모듈 (조종 · 발사) (bt-module)</title></rect>
+<rect x="219.6" y="238.3" width="50.2" height="27.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>발사 LED 빨강 (OUT1) (led-board-red-s)</title></rect>
+<rect x="27.6" y="254.3" width="14.6" height="11.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>블루투스 받침 (서포트 5) (support-spacer)</title></rect>
+<rect x="73.2" y="254.3" width="14.6" height="11.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>블루투스 받침 (서포트 5) (support-spacer)</title></rect>
+<rect x="48.6" y="349.1" width="63.8" height="22.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<rect x="3.0" y="349.1" width="63.8" height="22.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<rect x="-73.3" y="345.7" width="171.0" height="6.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 앞 축 (75 mm) (shaft-75)</title></rect>
+<rect x="-71.1" y="257.9" width="75.2" height="182.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 앞 바퀴 (Ø80 버기 세트, 헛돎) (wheel-80-buggy-set)</title></rect>
+<rect x="185.4" y="349.1" width="63.8" height="22.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<rect x="231.0" y="349.1" width="63.8" height="22.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<rect x="200.2" y="345.7" width="171.0" height="6.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 앞 축 (75 mm) (shaft-75)</title></rect>
+<rect x="293.7" y="257.9" width="75.2" height="182.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 앞 바퀴 (Ø80 버기 세트, 헛돎) (wheel-80-buggy-set)</title></rect>
+<rect x="103.3" y="176.8" width="136.8" height="45.6" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 모터 (DC 130rpm, M3) (dc-motor-130-rs)</title></rect>
+<circle cx="148.9" cy="199.6" r="5.9" fill="#ffffff" stroke="#1d2230" stroke-width="0.6"/>
+<rect x="105.6" y="133.5" width="18.2" height="132.2" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 모터 기둥 (L자 2×6) (l-frame-2x6)</title></rect>
+<rect x="219.6" y="133.5" width="18.2" height="132.2" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 모터 기둥 (L자 2×6) (l-frame-2x6)</title></rect>
+<circle cx="194.5" cy="199.6" r="7.2" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></circle>
+<circle cx="103.3" cy="199.6" r="7.2" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></circle>
+<circle cx="148.9" cy="154.0" r="7.2" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></circle>
+<circle cx="148.9" cy="245.2" r="7.2" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></circle>
+<circle cx="194.5" cy="199.6" r="7.3" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></circle>
+<circle cx="103.3" cy="199.6" r="7.3" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></circle>
+<circle cx="148.9" cy="154.0" r="7.3" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></circle>
+<circle cx="148.9" cy="245.2" r="7.3" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></circle>
+<circle cx="148.9" cy="199.6" r="34.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>로터 허브 (휠가이드 Ø30 나일론) (wheel-guide-30-nylon)</title></circle>
+<circle cx="171.7" cy="199.6" r="3.6" fill="#6b7280"/>
+<circle cx="160.3" cy="219.3" r="3.6" fill="#6b7280"/>
+<circle cx="137.5" cy="219.3" r="3.6" fill="#6b7280"/>
+<circle cx="126.1" cy="199.6" r="3.6" fill="#6b7280"/>
+<circle cx="137.5" cy="179.8" r="3.6" fill="#6b7280"/>
+<circle cx="160.3" cy="179.8" r="3.6" fill="#6b7280"/>
+<circle cx="148.9" cy="199.6" r="10.3" fill="none" stroke="#1d2230" stroke-width="0.6"/>
+<rect x="94.2" y="190.4" width="109.4" height="18.2" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 십자 로터 가로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<circle cx="103.3" cy="199.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="126.1" cy="199.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="148.9" cy="199.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="171.7" cy="199.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="194.5" cy="199.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<rect x="139.8" y="144.9" width="18.2" height="109.4" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 십자 로터 세로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<circle cx="148.9" cy="245.2" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="148.9" cy="222.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="148.9" cy="199.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="148.9" cy="176.8" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="148.9" cy="154.0" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="194.5" cy="199.6" r="7.3" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></circle>
+<circle cx="103.3" cy="199.6" r="7.3" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></circle>
+<circle cx="148.9" cy="154.0" r="7.3" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></circle>
+<circle cx="148.9" cy="245.2" r="7.3" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></circle>
+<circle cx="194.5" cy="199.6" r="7.3" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></circle>
+<circle cx="103.3" cy="199.6" r="7.3" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></circle>
+<circle cx="148.9" cy="154.0" r="7.3" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></circle>
+<circle cx="148.9" cy="245.2" r="7.3" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></circle>
+<rect x="94.2" y="190.4" width="109.4" height="18.2" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 십자 로터 가로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<circle cx="103.3" cy="199.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="126.1" cy="199.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="148.9" cy="199.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="171.7" cy="199.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="194.5" cy="199.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<rect x="139.8" y="144.9" width="18.2" height="109.4" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 십자 로터 세로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<circle cx="148.9" cy="245.2" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="148.9" cy="222.4" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="148.9" cy="199.6" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="148.9" cy="176.8" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="148.9" cy="154.0" r="3.6" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="148.9" cy="199.6" r="3.4" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 받침 축 (75 mm) (shaft-75)</title></circle>
+<circle cx="194.5" cy="199.6" r="7.3" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></circle>
+<circle cx="103.3" cy="199.6" r="7.3" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></circle>
+<circle cx="148.9" cy="154.0" r="7.3" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></circle>
+<circle cx="148.9" cy="245.2" r="7.3" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></circle>
+<circle cx="194.5" cy="199.6" r="7.3" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></circle>
+<circle cx="103.3" cy="199.6" r="7.3" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></circle>
+<circle cx="148.9" cy="154.0" r="7.3" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></circle>
+<circle cx="148.9" cy="245.2" r="7.3" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></circle>
+<rect x="141.6" y="254.3" width="14.6" height="11.4" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 받침 돋움 (서포트 5) (support-spacer)</title></rect>
+<rect x="141.6" y="254.3" width="14.6" height="11.4" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 받침 돋움 (서포트 5) (support-spacer)</title></rect>
+<rect x="139.8" y="122.1" width="18.2" height="132.2" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 축 받침 (L자 2×6) (l-frame-2x6)</title></rect>
+</svg>
+<polyline points="148.9,199.6 66.0,137.9 63.0,137.9" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="148.9" cy="199.6" r="1.7" fill="#e8432a"/>
+<circle cx="54.0" cy="137.9" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="54.0" y="141.5" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">3</text>
+<polyline points="148.9,199.6 66.0,165.9 63.0,165.9" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="148.9" cy="199.6" r="1.7" fill="#e8432a"/>
+<circle cx="54.0" cy="165.9" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="54.0" y="169.5" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">4</text>
+<polyline points="148.9,199.6 66.0,193.9 63.0,193.9" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="148.9" cy="199.6" r="1.7" fill="#e8432a"/>
+<circle cx="54.0" cy="193.9" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="54.0" y="197.5" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">5</text>
+<polyline points="148.9,199.6 66.0,221.9 63.0,221.9" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="148.9" cy="199.6" r="1.7" fill="#e8432a"/>
+<circle cx="54.0" cy="221.9" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="54.0" y="225.5" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">6</text>
+<polyline points="148.9,199.6 66.0,249.9 63.0,249.9" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="148.9" cy="199.6" r="1.7" fill="#e8432a"/>
+<circle cx="54.0" cy="249.9" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="54.0" y="253.5" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">7</text>
+<polyline points="194.5,199.6 268.3,179.9 271.3,179.9" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="194.5" cy="199.6" r="1.7" fill="#e8432a"/>
+<circle cx="280.3" cy="179.9" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="280.3" y="183.5" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">9</text>
+<polyline points="194.5,199.6 268.3,207.9 271.3,207.9" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="194.5" cy="199.6" r="1.7" fill="#e8432a"/>
+<circle cx="280.3" cy="207.9" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="280.3" y="211.5" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">13</text>
+<line x1="94.2" y1="279.7" x2="240.1" y2="279.7" stroke="#3a7bd5" stroke-width="0.8"/>
+<line x1="94.2" y1="275.7" x2="94.2" y2="283.7" stroke="#3a7bd5"/>
+<line x1="240.1" y1="275.7" x2="240.1" y2="283.7" stroke="#3a7bd5"/>
+<text x="167.2" y="275.7" font-size="10" fill="#3a7bd5" font-weight="700" text-anchor="middle">64</text>
+<line x1="80.0" y1="122.1" x2="80.0" y2="265.7" stroke="#3a7bd5" stroke-width="0.8"/>
+<line x1="76.0" y1="122.1" x2="84.0" y2="122.1" stroke="#3a7bd5"/>
+<line x1="76.0" y1="265.7" x2="84.0" y2="265.7" stroke="#3a7bd5"/>
+<text x="92.0" y="193.9" font-size="10" fill="#3a7bd5" font-weight="700" transform="rotate(-90 92.0 193.9)" text-anchor="middle">63</text>
+<rect x="352" y="100" width="484" height="188" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>
+<text x="352.3" y="92.0" font-size="12" fill="#1d2230" font-weight="700" text-anchor="start">측면도 (오른쪽에서 · 왼쪽 = 앞)</text>
+<svg x="352" y="100" width="484" height="188" viewBox="352 100 484 188" overflow="hidden">
+<circle cx="723.1" cy="349.1" r="91.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 뒤 구동 바퀴 (Ø80 버기 세트) (wheel-80-buggy-set)</title></circle>
+<circle cx="472.4" cy="349.1" r="91.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 앞 바퀴 (Ø80 버기 세트, 헛돎) (wheel-80-buggy-set)</title></circle>
+<circle cx="472.4" cy="349.1" r="3.4" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 앞 축 (75 mm) (shaft-75)</title></circle>
+<rect x="522.1" y="314.9" width="14.6" height="57.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 받침 아래 (서포트 25) (support-spacer)</title></rect>
+<rect x="522.1" y="269.3" width="14.6" height="45.6" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 받침 위 (서포트 20) (support-spacer)</title></rect>
+<rect x="451.8" y="349.1" width="41.0" height="22.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<rect x="485.6" y="254.3" width="14.6" height="11.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>블루투스 받침 (서포트 5) (support-spacer)</title></rect>
+<rect x="657.0" y="326.3" width="18.2" height="45.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="702.6" y="326.3" width="18.2" height="45.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="654.7" y="326.3" width="91.2" height="45.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 구동 모터 (DC 130rpm, M1) (dc-motor-130-rs)</title></rect>
+<rect x="658.8" y="174.5" width="14.6" height="91.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></rect>
+<rect x="658.8" y="128.9" width="14.6" height="45.6" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></rect>
+<rect x="727.2" y="174.5" width="14.6" height="91.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></rect>
+<rect x="727.2" y="128.9" width="14.6" height="45.6" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></rect>
+<rect x="463.2" y="233.1" width="109.4" height="20.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>블루투스 모듈 (조종 · 발사) (bt-module)</title></rect>
+<rect x="750.0" y="280.7" width="14.6" height="91.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 받침 기둥 (서포트 40) (support-spacer)</title></rect>
+<rect x="451.8" y="349.1" width="41.0" height="22.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<rect x="485.6" y="254.3" width="14.6" height="11.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>블루투스 받침 (서포트 5) (support-spacer)</title></rect>
+<rect x="636.0" y="314.9" width="14.6" height="57.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></rect>
+<rect x="727.2" y="314.9" width="14.6" height="57.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></rect>
+<rect x="727.2" y="128.9" width="14.6" height="11.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>쐐기 내림 (서포트 5) (support-spacer)</title></rect>
+<rect x="768.7" y="349.1" width="22.8" height="22.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>발사 버튼 L자 2×2 (l-frame-2x2)</title></rect>
+<rect x="783.5" y="308.1" width="20.5" height="63.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>발사 버튼 (접촉 센서, IN1) (sensor-touch)</title></rect>
+<rect x="429.0" y="371.9" width="360.2" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>차체 바닥판 (빅 메인 PCB) (frame-big-main)</title></rect>
+<rect x="506.6" y="330.9" width="141.3" height="41.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배터리케이스 (AA 4개, 6V) (battery-case-4aa)</title></rect>
+<rect x="736.8" y="277.1" width="41.0" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 받침대 (중 PCB) (frame-mid-pcb)</title></rect>
+<rect x="731.1" y="269.3" width="52.4" height="7.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>고각 경첩 (경첩 3×3) (hinge-3x3)</title></rect>
+<rect x="429.0" y="265.7" width="360.2" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>포탑 판 (빅 메인 PCB) (frame-big-main)</title></rect>
+<rect x="657.0" y="125.2" width="86.6" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 판 (5×13 PCB) (frame-5x13-pcb)</title></rect>
+<rect x="594.3" y="283.0" width="189.2" height="31.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 보드 8M (1대에 1개) (cpu-board-8m)</title></rect>
+<rect x="639.7" y="140.3" width="121.3" height="3.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>격발 쐐기 (소8 PCB, 36.9°) (frame-s8-pcb)</title></rect>
+<rect x="658.8" y="128.9" width="14.6" height="11.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>쐐기 내림 (서포트 5) (support-spacer)</title></rect>
+<rect x="636.0" y="314.9" width="14.6" height="57.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></rect>
+<rect x="727.2" y="314.9" width="14.6" height="57.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></rect>
+<rect x="451.8" y="349.1" width="41.0" height="22.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<rect x="750.0" y="280.7" width="14.6" height="91.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 받침 기둥 (서포트 40) (support-spacer)</title></rect>
+<rect x="470.1" y="238.3" width="73.0" height="27.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>발사 LED 빨강 (OUT1) (led-board-red-s)</title></rect>
+<rect x="561.3" y="238.3" width="73.0" height="27.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>부저 (OUT2, 발사 경고음) (buzzer-board-s)</title></rect>
+<rect x="657.0" y="326.3" width="18.2" height="45.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="702.6" y="326.3" width="18.2" height="45.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="654.7" y="326.3" width="91.2" height="45.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 구동 모터 (DC 130rpm, M2) (dc-motor-130-rs)</title></rect>
+<rect x="658.8" y="174.5" width="14.6" height="91.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></rect>
+<rect x="658.8" y="128.9" width="14.6" height="45.6" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></rect>
+<rect x="727.2" y="174.5" width="14.6" height="91.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></rect>
+<rect x="727.2" y="128.9" width="14.6" height="45.6" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></rect>
+<rect x="451.8" y="349.1" width="41.0" height="22.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<rect x="522.1" y="314.9" width="14.6" height="57.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 받침 아래 (서포트 25) (support-spacer)</title></rect>
+<rect x="522.1" y="269.3" width="14.6" height="45.6" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 받침 위 (서포트 20) (support-spacer)</title></rect>
+<circle cx="472.4" cy="349.1" r="3.4" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 앞 축 (75 mm) (shaft-75)</title></circle>
+<circle cx="723.1" cy="349.1" r="91.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 뒤 구동 바퀴 (Ø80 버기 세트) (wheel-80-buggy-set)</title></circle>
+<circle cx="472.4" cy="349.1" r="91.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 앞 바퀴 (Ø80 버기 세트, 헛돎) (wheel-80-buggy-set)</title></circle>
+<rect x="688.9" y="192.3" width="22.8" height="14.6" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="711.7" y="192.4" width="3.6" height="14.4" rx="0" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></rect>
+<rect x="590.5" y="192.3" width="91.2" height="14.6" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></rect>
+<rect x="499.3" y="192.3" width="91.2" height="14.6" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></rect>
+<rect x="457.8" y="192.3" width="34.2" height="14.6" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></rect>
+<rect x="444.1" y="192.3" width="13.7" height="14.6" rx="0" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="714.0" y="133.5" width="22.8" height="132.2" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 모터 기둥 (L자 2×6) (l-frame-2x6)</title></rect>
+<rect x="688.9" y="165.4" width="18.2" height="68.4" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>로터 허브 (휠가이드 Ø30 나일론) (wheel-guide-30-nylon)</title></rect>
+<rect x="685.3" y="190.4" width="3.6" height="18.2" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 십자 로터 가로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<rect x="681.6" y="144.9" width="3.6" height="109.4" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 십자 로터 세로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<rect x="495.6" y="190.4" width="3.6" height="18.2" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 십자 로터 가로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<rect x="492.0" y="144.9" width="3.6" height="109.4" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 십자 로터 세로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<rect x="688.9" y="146.7" width="22.8" height="14.6" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="711.7" y="146.8" width="3.6" height="14.4" rx="0" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></rect>
+<rect x="590.5" y="146.7" width="91.2" height="14.6" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></rect>
+<rect x="499.3" y="146.7" width="91.2" height="14.6" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></rect>
+<rect x="457.8" y="146.7" width="34.2" height="14.6" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></rect>
+<rect x="444.1" y="146.7" width="13.7" height="14.6" rx="0" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="688.9" y="237.9" width="22.8" height="14.6" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="711.7" y="238.0" width="3.6" height="14.4" rx="0" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></rect>
+<rect x="590.5" y="237.9" width="91.2" height="14.6" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></rect>
+<rect x="499.3" y="237.9" width="91.2" height="14.6" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></rect>
+<rect x="457.8" y="237.9" width="34.2" height="14.6" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></rect>
+<rect x="444.1" y="237.9" width="13.7" height="14.6" rx="0" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="408.1" y="254.3" width="14.6" height="11.4" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 받침 돋움 (서포트 5) (support-spacer)</title></rect>
+<rect x="430.9" y="254.3" width="14.6" height="11.4" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 받침 돋움 (서포트 5) (support-spacer)</title></rect>
+<rect x="401.7" y="122.1" width="22.8" height="132.2" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 축 받침 (L자 2×6) (l-frame-2x6)</title></rect>
+<rect x="392.6" y="196.1" width="171.0" height="6.8" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 받침 축 (75 mm) (shaft-75)</title></rect>
+<rect x="704.9" y="176.8" width="91.2" height="45.6" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 모터 (DC 130rpm, M3) (dc-motor-130-rs)</title></rect>
+<circle cx="709.5" cy="199.6" r="5.9" fill="#ffffff" stroke="#1d2230" stroke-width="0.6"/>
+<rect x="688.9" y="192.3" width="22.8" height="14.6" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="711.7" y="192.4" width="3.6" height="14.4" rx="0" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></rect>
+<rect x="590.5" y="192.3" width="91.2" height="14.6" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></rect>
+<rect x="499.3" y="192.3" width="91.2" height="14.6" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></rect>
+<rect x="457.8" y="192.3" width="34.2" height="14.6" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></rect>
+<rect x="444.1" y="192.3" width="13.7" height="14.6" rx="0" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="714.0" y="133.5" width="22.8" height="132.2" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 모터 기둥 (L자 2×6) (l-frame-2x6)</title></rect>
+</svg>
+<polyline points="413.1,188.2 346.3,151.9 343.3,151.9" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="413.1" cy="188.2" r="1.7" fill="#e8432a"/>
+<circle cx="334.3" cy="151.9" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="334.3" y="155.5" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">15</text>
+<polyline points="544.9,199.6 346.3,179.9 343.3,179.9" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="544.9" cy="199.6" r="1.7" fill="#e8432a"/>
+<circle cx="334.3" cy="179.9" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="334.3" y="183.5" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">11</text>
+<polyline points="474.9,199.6 346.3,207.9 343.3,207.9" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="474.9" cy="199.6" r="1.7" fill="#e8432a"/>
+<circle cx="334.3" cy="207.9" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="334.3" y="211.5" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">12</text>
+<polyline points="478.1,199.6 346.3,235.9 343.3,235.9" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="478.1" cy="199.6" r="1.7" fill="#e8432a"/>
+<circle cx="334.3" cy="235.9" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="334.3" y="239.5" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">16</text>
+<polyline points="725.4,199.6 842.3,165.9 845.3,165.9" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="725.4" cy="199.6" r="1.7" fill="#e8432a"/>
+<circle cx="854.3" cy="165.9" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="854.3" y="169.5" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">1</text>
+<polyline points="700.3,199.6 842.3,193.9 845.3,193.9" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="700.3" cy="199.6" r="1.7" fill="#e8432a"/>
+<circle cx="854.3" cy="193.9" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="854.3" y="197.5" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">8</text>
+<polyline points="636.0,199.6 842.3,221.9 845.3,221.9" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="636.0" cy="199.6" r="1.7" fill="#e8432a"/>
+<circle cx="854.3" cy="221.9" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="854.3" y="225.5" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">10</text>
+<line x1="392.6" y1="279.7" x2="796.1" y2="279.7" stroke="#3a7bd5" stroke-width="0.8"/>
+<line x1="392.6" y1="275.7" x2="392.6" y2="283.7" stroke="#3a7bd5"/>
+<line x1="796.1" y1="275.7" x2="796.1" y2="283.7" stroke="#3a7bd5"/>
+<text x="594.3" y="275.7" font-size="10" fill="#3a7bd5" font-weight="700" text-anchor="middle">177</text>
+<line x1="360.3" y1="122.1" x2="360.3" y2="265.7" stroke="#3a7bd5" stroke-width="0.8"/>
+<line x1="356.3" y1="122.1" x2="364.3" y2="122.1" stroke="#3a7bd5"/>
+<line x1="356.3" y1="265.7" x2="364.3" y2="265.7" stroke="#3a7bd5"/>
+<text x="372.3" y="193.9" font-size="10" fill="#3a7bd5" font-weight="700" transform="rotate(-90 372.3 193.9)" text-anchor="middle">63</text>
+<rect x="72" y="360" width="190" height="484" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>
+<text x="72.0" y="351.7" font-size="12" fill="#1d2230" font-weight="700" text-anchor="start">윗면도 (위에서 · 위 = 앞)</text>
+<svg x="72" y="360" width="190" height="484" viewBox="72 360 190 484" overflow="hidden">
+<rect x="14.4" y="436.4" width="269.0" height="360.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>차체 바닥판 (빅 메인 PCB) (frame-big-main)</title></rect>
+<rect x="48.6" y="459.2" width="63.8" height="41.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<rect x="3.0" y="459.2" width="63.8" height="41.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<rect x="185.4" y="459.2" width="63.8" height="41.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<rect x="231.0" y="459.2" width="63.8" height="41.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<rect x="105.6" y="776.1" width="18.2" height="22.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>발사 버튼 L자 2×2 (l-frame-2x2)</title></rect>
+<rect x="64.6" y="514.0" width="168.7" height="141.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배터리케이스 (AA 4개, 6V) (battery-case-4aa)</title></rect>
+<rect x="37.2" y="664.4" width="18.2" height="18.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="37.2" y="710.0" width="18.2" height="18.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="8.7" y="662.1" width="75.2" height="91.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 구동 모터 (DC 130rpm, M1) (dc-motor-130-rs)</title></rect>
+<rect x="-71.1" y="639.3" width="75.2" height="182.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 뒤 구동 바퀴 (Ø80 버기 세트) (wheel-80-buggy-set)</title></rect>
+<rect x="-73.3" y="476.3" width="171.0" height="6.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 앞 축 (75 mm) (shaft-75)</title></rect>
+<rect x="-71.1" y="388.6" width="75.2" height="182.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 앞 바퀴 (Ø80 버기 세트, 헛돎) (wheel-80-buggy-set)</title></rect>
+<rect x="242.4" y="664.4" width="18.2" height="18.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="242.4" y="710.0" width="18.2" height="18.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="213.9" y="662.1" width="75.2" height="91.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 구동 모터 (DC 130rpm, M2) (dc-motor-130-rs)</title></rect>
+<rect x="293.7" y="639.3" width="75.2" height="182.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 뒤 구동 바퀴 (Ø80 버기 세트) (wheel-80-buggy-set)</title></rect>
+<rect x="200.2" y="476.3" width="171.0" height="6.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 앞 축 (75 mm) (shaft-75)</title></rect>
+<rect x="293.7" y="388.6" width="75.2" height="182.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 앞 바퀴 (Ø80 버기 세트, 헛돎) (wheel-80-buggy-set)</title></rect>
+<circle cx="23.5" cy="536.8" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 받침 아래 (서포트 25) (support-spacer)</title></circle>
+<circle cx="274.3" cy="536.8" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 받침 아래 (서포트 25) (support-spacer)</title></circle>
+<circle cx="91.9" cy="650.7" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></circle>
+<circle cx="91.9" cy="741.9" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></circle>
+<circle cx="205.9" cy="650.7" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></circle>
+<circle cx="205.9" cy="741.9" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></circle>
+<rect x="60.0" y="790.9" width="109.4" height="20.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>발사 버튼 (접촉 센서, IN1) (sensor-touch)</title></rect>
+<circle cx="69.1" cy="764.7" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 받침 기둥 (서포트 40) (support-spacer)</title></circle>
+<circle cx="228.7" cy="764.7" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 받침 기둥 (서포트 40) (support-spacer)</title></circle>
+<rect x="79.4" y="601.7" width="139.1" height="189.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 보드 8M (1대에 1개) (cpu-board-8m)</title></rect>
+<circle cx="23.5" cy="536.8" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 받침 위 (서포트 20) (support-spacer)</title></circle>
+<circle cx="274.3" cy="536.8" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 받침 위 (서포트 20) (support-spacer)</title></circle>
+<rect x="60.0" y="744.2" width="177.8" height="41.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 받침대 (중 PCB) (frame-mid-pcb)</title></rect>
+<rect x="128.4" y="738.5" width="41.0" height="52.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>고각 경첩 (경첩 3×3) (hinge-3x3)</title></rect>
+<rect x="14.4" y="436.4" width="269.0" height="360.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>포탑 판 (빅 메인 PCB) (frame-big-main)</title></rect>
+<circle cx="34.9" cy="500.3" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>블루투스 받침 (서포트 5) (support-spacer)</title></circle>
+<circle cx="80.5" cy="500.3" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>블루투스 받침 (서포트 5) (support-spacer)</title></circle>
+<rect x="219.6" y="477.5" width="50.2" height="73.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>발사 LED 빨강 (OUT1) (led-board-red-s)</title></rect>
+<rect x="219.6" y="568.7" width="50.2" height="73.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>부저 (OUT2, 발사 경고음) (buzzer-board-s)</title></rect>
+<rect x="25.8" y="470.6" width="63.8" height="109.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>블루투스 모듈 (조종 · 발사) (bt-module)</title></rect>
+<circle cx="46.3" cy="673.5" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></circle>
+<circle cx="46.3" cy="741.9" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></circle>
+<circle cx="251.5" cy="673.5" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></circle>
+<circle cx="251.5" cy="741.9" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></circle>
+<circle cx="46.3" cy="673.5" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></circle>
+<circle cx="46.3" cy="741.9" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></circle>
+<circle cx="251.5" cy="673.5" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></circle>
+<circle cx="251.5" cy="741.9" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></circle>
+<polygon points="83.7,753.8 226.0,647.1 236.9,661.7 94.7,768.4" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.8"><title>격발 쐐기 (소8 PCB, 36.9°) (frame-s8-pcb)</title></polygon>
+<circle cx="114.7" cy="741.9" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>쐐기 내림 (서포트 5) (support-spacer)</title></circle>
+<circle cx="205.9" cy="673.5" r="7.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>쐐기 내림 (서포트 5) (support-spacer)</title></circle>
+<rect x="14.4" y="664.4" width="269.0" height="86.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 판 (5×13 PCB) (frame-5x13-pcb)</title></rect>
+<circle cx="148.9" cy="422.8" r="7.3" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 받침 돋움 (서포트 5) (support-spacer)</title></circle>
+<circle cx="148.9" cy="445.6" r="7.3" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 받침 돋움 (서포트 5) (support-spacer)</title></circle>
+<rect x="141.6" y="696.3" width="14.6" height="22.8" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="141.7" y="719.1" width="14.4" height="3.6" rx="0" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></rect>
+<rect x="141.6" y="597.9" width="14.6" height="91.2" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></rect>
+<rect x="141.6" y="506.7" width="14.6" height="91.2" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></rect>
+<rect x="141.6" y="465.2" width="14.6" height="34.2" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></rect>
+<rect x="141.6" y="451.5" width="14.6" height="13.7" rx="0" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="105.6" y="721.4" width="18.2" height="22.8" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 모터 기둥 (L자 2×6) (l-frame-2x6)</title></rect>
+<rect x="219.6" y="721.4" width="18.2" height="22.8" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 모터 기둥 (L자 2×6) (l-frame-2x6)</title></rect>
+<rect x="103.3" y="712.3" width="136.8" height="91.2" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 모터 (DC 130rpm, M3) (dc-motor-130-rs)</title></rect>
+<circle cx="148.9" cy="716.9" r="5.9" fill="#ffffff" stroke="#1d2230" stroke-width="0.6"/>
+<rect x="114.7" y="696.3" width="68.4" height="18.2" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>로터 허브 (휠가이드 Ø30 나일론) (wheel-guide-30-nylon)</title></rect>
+<rect x="94.2" y="692.7" width="109.4" height="3.6" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 십자 로터 가로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<rect x="139.8" y="689.0" width="18.2" height="3.6" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 십자 로터 세로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<rect x="94.2" y="503.0" width="109.4" height="3.6" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 십자 로터 가로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<rect x="139.8" y="499.4" width="18.2" height="3.6" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 십자 로터 세로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<rect x="187.2" y="696.3" width="14.6" height="22.8" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="187.3" y="719.1" width="14.4" height="3.6" rx="0" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></rect>
+<rect x="187.2" y="597.9" width="14.6" height="91.2" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></rect>
+<rect x="187.2" y="506.7" width="14.6" height="91.2" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></rect>
+<rect x="187.2" y="465.2" width="14.6" height="34.2" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></rect>
+<rect x="187.2" y="451.5" width="14.6" height="13.7" rx="0" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="96.0" y="696.3" width="14.6" height="22.8" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="96.2" y="719.1" width="14.4" height="3.6" rx="0" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></rect>
+<rect x="96.0" y="597.9" width="14.6" height="91.2" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></rect>
+<rect x="96.0" y="506.7" width="14.6" height="91.2" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></rect>
+<rect x="96.0" y="465.2" width="14.6" height="34.2" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></rect>
+<rect x="96.0" y="451.5" width="14.6" height="13.7" rx="0" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="145.5" y="400.0" width="6.8" height="171.0" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 받침 축 (75 mm) (shaft-75)</title></rect>
+<rect x="139.8" y="409.1" width="18.2" height="22.8" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 축 받침 (L자 2×6) (l-frame-2x6)</title></rect>
+<rect x="141.6" y="696.3" width="14.6" height="22.8" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="141.7" y="719.1" width="14.4" height="3.6" rx="0" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></rect>
+<rect x="141.6" y="597.9" width="14.6" height="91.2" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></rect>
+<rect x="141.6" y="506.7" width="14.6" height="91.2" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></rect>
+<rect x="141.6" y="465.2" width="14.6" height="34.2" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></rect>
+<rect x="141.6" y="451.5" width="14.6" height="13.7" rx="0" fill="#9a9ca0" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></rect>
+</svg>
+<polyline points="148.9,422.8 66.0,601.7 63.0,601.7" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="148.9" cy="422.8" r="1.7" fill="#e8432a"/>
+<circle cx="54.0" cy="601.7" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="54.0" y="605.3" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">14</text>
+<polyline points="171.7,757.9 268.3,601.7 271.3,601.7" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="171.7" cy="757.9" r="1.7" fill="#e8432a"/>
+<circle cx="280.3" cy="601.7" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="280.3" y="605.3" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">2</text>
+<line x1="94.2" y1="835.7" x2="240.1" y2="835.7" stroke="#3a7bd5" stroke-width="0.8"/>
+<line x1="94.2" y1="831.7" x2="94.2" y2="839.7" stroke="#3a7bd5"/>
+<line x1="240.1" y1="831.7" x2="240.1" y2="839.7" stroke="#3a7bd5"/>
+<text x="167.2" y="831.7" font-size="10" fill="#3a7bd5" font-weight="700" text-anchor="middle">64</text>
+<line x1="80.0" y1="400.0" x2="80.0" y2="803.5" stroke="#3a7bd5" stroke-width="0.8"/>
+<line x1="76.0" y1="400.0" x2="84.0" y2="400.0" stroke="#3a7bd5"/>
+<line x1="76.0" y1="803.5" x2="84.0" y2="803.5" stroke="#3a7bd5"/>
+<text x="92.0" y="601.7" font-size="10" fill="#3a7bd5" font-weight="700" transform="rotate(-90 92.0 601.7)" text-anchor="middle">177</text>
+<text x="332.3" y="359.7" font-size="12" fill="#1d2230" font-weight="700" text-anchor="start">부품표</text>
+<rect x="332.3276836158192" y="367.728813559322" width="817.6723163841808" height="18" fill="#1d2230"/>
+<text x="338.3" y="380.2" font-size="9.5" fill="#fff" font-weight="700" text-anchor="start">번호</text>
+<text x="372.3" y="380.2" font-size="9.5" fill="#fff" font-weight="700" text-anchor="start">부품 이름</text>
+<text x="822.9" y="380.2" font-size="9.5" fill="#fff" font-weight="700" text-anchor="start">id</text>
+<text x="1142.0" y="380.2" font-size="9.5" fill="#fff" font-weight="700" text-anchor="end">수량</text>
+<circle cx="346.3276836158192" cy="393.728813559322" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="346.3" y="396.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">1</text>
+<text x="362.3" y="397.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">배럴 모터 기둥</text>
+<text x="822.9" y="397.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">l-frame-2x6</text>
+<text x="1142.0" y="397.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">2</text>
+<rect x="332.3276836158192" y="401.728813559322" width="817.6723163841808" height="16" fill="#eef2f7"/>
+<circle cx="346.3276836158192" cy="409.728813559322" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="346.3" y="412.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">2</text>
+<text x="362.3" y="413.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">배럴 모터</text>
+<text x="822.9" y="413.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">dc-motor-130-rs</text>
+<text x="1142.0" y="413.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">1</text>
+<circle cx="346.3276836158192" cy="425.728813559322" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="346.3" y="428.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">3</text>
+<text x="362.3" y="429.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">로터 허브</text>
+<text x="822.9" y="429.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">wheel-guide-30-nylon</text>
+<text x="1142.0" y="429.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">1</text>
+<rect x="332.3276836158192" y="433.728813559322" width="817.6723163841808" height="16" fill="#eef2f7"/>
+<circle cx="346.3276836158192" cy="441.728813559322" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="346.3" y="444.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">4</text>
+<text x="362.3" y="445.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">뒤 십자 로터 가로</text>
+<text x="822.9" y="445.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">frame-s5-pcb</text>
+<text x="1142.0" y="445.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">1</text>
+<circle cx="346.3276836158192" cy="457.728813559322" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="346.3" y="460.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">5</text>
+<text x="362.3" y="461.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">뒤 십자 로터 세로</text>
+<text x="822.9" y="461.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">frame-s5-pcb</text>
+<text x="1142.0" y="461.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">1</text>
+<rect x="332.3276836158192" y="465.728813559322" width="817.6723163841808" height="16" fill="#eef2f7"/>
+<circle cx="346.3276836158192" cy="473.728813559322" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="346.3" y="476.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">6</text>
+<text x="362.3" y="477.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">앞 십자 로터 가로</text>
+<text x="822.9" y="477.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">frame-s5-pcb</text>
+<text x="1142.0" y="477.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">1</text>
+<circle cx="346.3276836158192" cy="489.728813559322" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="346.3" y="492.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">7</text>
+<text x="362.3" y="493.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">앞 십자 로터 세로</text>
+<text x="822.9" y="493.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">frame-s5-pcb</text>
+<text x="1142.0" y="493.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">1</text>
+<rect x="332.3276836158192" y="497.728813559322" width="817.6723163841808" height="16" fill="#eef2f7"/>
+<circle cx="346.3276836158192" cy="505.728813559322" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="346.3" y="508.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">8</text>
+<text x="362.3" y="509.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">걸쇠 기둥</text>
+<text x="822.9" y="509.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">support-spacer</text>
+<text x="1142.0" y="509.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">4</text>
+<circle cx="346.3276836158192" cy="521.728813559322" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="346.3" y="524.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">9</text>
+<text x="362.3" y="525.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">걸쇠 턱</text>
+<text x="822.9" y="525.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">bolt-m3x6</text>
+<text x="1142.0" y="525.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">4</text>
+<rect x="332.3276836158192" y="529.728813559322" width="817.6723163841808" height="16" fill="#eef2f7"/>
+<circle cx="346.3276836158192" cy="537.728813559322" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="346.3" y="540.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">10</text>
+<text x="362.3" y="541.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">배럴 뒤</text>
+<text x="822.9" y="541.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">support-spacer</text>
+<text x="1142.0" y="541.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">4</text>
+<circle cx="346.3276836158192" cy="553.728813559322" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="346.3" y="556.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">11</text>
+<text x="362.3" y="557.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">배럴 가운데</text>
+<text x="822.9" y="557.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">support-spacer</text>
+<text x="1142.0" y="557.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">4</text>
+<rect x="332.3276836158192" y="561.728813559322" width="817.6723163841808" height="16" fill="#eef2f7"/>
+<circle cx="346.3276836158192" cy="569.728813559322" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="346.3" y="572.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">12</text>
+<text x="362.3" y="573.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">배럴 앞</text>
+<text x="822.9" y="573.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">support-spacer</text>
+<text x="1142.0" y="573.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">4</text>
+<circle cx="346.3276836158192" cy="585.728813559322" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="346.3" y="588.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">13</text>
+<text x="362.3" y="589.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">총구</text>
+<text x="822.9" y="589.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">cap-nut-m3</text>
+<text x="1142.0" y="589.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">4</text>
+<rect x="332.3276836158192" y="593.728813559322" width="817.6723163841808" height="16" fill="#eef2f7"/>
+<circle cx="346.3276836158192" cy="601.728813559322" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="346.3" y="604.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">14</text>
+<text x="362.3" y="605.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">앞 받침 돋움</text>
+<text x="822.9" y="605.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">support-spacer</text>
+<text x="1142.0" y="605.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">2</text>
+<circle cx="346.3276836158192" cy="617.728813559322" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="346.3" y="620.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">15</text>
+<text x="362.3" y="621.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">앞 축 받침</text>
+<text x="822.9" y="621.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">l-frame-2x6</text>
+<text x="1142.0" y="621.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">1</text>
+<rect x="332.3276836158192" y="625.728813559322" width="817.6723163841808" height="16" fill="#eef2f7"/>
+<circle cx="346.3276836158192" cy="633.728813559322" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="346.3" y="636.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">16</text>
+<text x="362.3" y="637.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">앞 받침 축</text>
+<text x="822.9" y="637.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">shaft-75</text>
+<text x="1142.0" y="637.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">1</text>
+<text x="332.3" y="667.7" font-size="12" fill="#1d2230" font-weight="700" text-anchor="start">조립 순서</text>
+<text x="332.3" y="684.7" font-size="9.5" fill="#3a4050" font-weight="400" text-anchor="start">• 배럴 모터: L자 2×6 두 개 (x −15 · 35, z 51)를 포탑 판에 세우고, 세운 다리 구멍 24 · 34에 모터 귀를 M3 × 10. 축이 앞을 본다.</text>
+<text x="332.3" y="701.7" font-size="9.5" fill="#3a4050" font-weight="400" text-anchor="start">• 뒤 십자 로터: 나일론 휠가이드를 모터 축에 (2.6 × 10). 소5 PCB 2개를 십자로 겹쳐 구멍 ±10 네 곳을 휠가이드 십자 구멍에.</text>
+<text x="332.3" y="718.7" font-size="9.5" fill="#3a4050" font-weight="400" text-anchor="start">• 배럴 (×4): 뒤 로터 구멍 ±20에: 뒤에서 서포트 10 (걸쇠 기둥, 끝에 볼트 3×6) — 앞으로 서포트 40 + 40 — 앞 십자 로터 — 서포트 15 — 캡너트. 서포트끼리 돌려 끼우면</text>
+<text x="344.3" y="731.7" font-size="9.5" fill="#3a4050" font-weight="400" text-anchor="start">로터가 사이에 물린다.</text>
+<text x="332.3" y="748.7" font-size="9.5" fill="#3a4050" font-weight="400" text-anchor="start">• 앞 축 받침: 포탑 판 앞 끝 (z −85 · −75)에 서포트 5 두 개, 그 위에 L자 2×6. 75 mm 축을 구멍 24에서 앞 로터 가운데 구멍까지 꿴다. 축이 빠지지 않게 끝을 고무줄로</text>
+<text x="344.3" y="761.7" font-size="9.5" fill="#3a4050" font-weight="400" text-anchor="start">감는다 (고정 링 부품 없음).</text>
+<text x="332.3" y="778.7" font-size="9.5" fill="#3a4050" font-weight="400" text-anchor="start">• 이 도면의 볼트 · 너트: 볼트 M3×10 × 8, 볼트 3×6 × 6, M3 너트 × 14, 볼트 2.6×10 와셔붙이 × 1</text></svg>

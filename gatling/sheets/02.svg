@@ -1,0 +1,683 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 866" width="1180" height="866" font-family="JetBrains Mono, 'Noto Sans KR', sans-serif"><defs><pattern id="g" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="#e3e8ef" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="#f6f8fb"/><rect x="14" y="14" width="1152" height="838" fill="none" stroke="#1d2230" stroke-width="1.2"/>
+<rect x="14" y="14" width="1152" height="46" fill="#1d2230"/>
+<text x="28.0" y="44.0" font-size="13" fill="#9fb3d1" font-weight="700" text-anchor="start">썬더 개틀링 4연장 · 도면 02</text>
+<text x="270.8" y="44.0" font-size="17" fill="#ffffff" font-weight="700" text-anchor="start">포탑 받침 (뒤 받침대 · 경첩 · 포탑 판 · 고각 받침)</text>
+<text x="1152.0" y="76.0" font-size="10.5" fill="#5a6070" font-weight="400" text-anchor="end">단위 mm · 부품 9개 · 빨간 번호 = 부품표 · 회색 윤곽 = 주변 부품</text>
+<rect x="72" y="100" width="368" height="160" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>
+<text x="72.0" y="92.0" font-size="12" fill="#1d2230" font-weight="700" text-anchor="start">정면도 (앞에서)</text>
+<svg x="72" y="100" width="368" height="160" viewBox="72 100 368 160" overflow="hidden">
+<rect x="156.2" y="167.8" width="122.6" height="71.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>발사 버튼 (접촉 센서, IN1) (sensor-touch)</title></rect>
+<rect x="207.2" y="213.8" width="20.4" height="25.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>발사 버튼 L자 2×2 (l-frame-2x2)</title></rect>
+<rect x="204.7" y="20.7" width="153.2" height="51.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 모터 (DC 130rpm, M3) (dc-motor-130-rs)</title></rect>
+<rect x="132.7" y="18.2" width="16.3" height="102.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></rect>
+<rect x="132.7" y="-32.9" width="16.3" height="51.1" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></rect>
+<rect x="362.5" y="18.2" width="16.3" height="102.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></rect>
+<rect x="362.5" y="-32.9" width="16.3" height="51.1" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></rect>
+<rect x="209.3" y="-32.9" width="16.3" height="12.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>쐐기 내림 (서포트 5) (support-spacer)</title></rect>
+<rect x="183.8" y="175.5" width="16.3" height="63.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></rect>
+<rect x="311.4" y="175.5" width="16.3" height="63.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></rect>
+<rect x="207.2" y="-27.8" width="20.4" height="148.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 모터 기둥 (L자 2×6) (l-frame-2x6)</title></rect>
+<rect x="334.9" y="-27.8" width="20.4" height="148.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 모터 기둥 (L자 2×6) (l-frame-2x6)</title></rect>
+<rect x="9.3" y="111.6" width="84.3" height="204.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 뒤 구동 바퀴 (Ø80 버기 세트) (wheel-80-buggy-set)</title></rect>
+<rect x="417.9" y="111.6" width="84.3" height="204.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 뒤 구동 바퀴 (Ø80 버기 세트) (wheel-80-buggy-set)</title></rect>
+<circle cx="306.8" cy="46.3" r="8.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></circle>
+<circle cx="204.7" cy="46.3" r="8.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></circle>
+<circle cx="255.8" cy="-4.8" r="8.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></circle>
+<circle cx="255.8" cy="97.3" r="8.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></circle>
+<rect x="130.6" y="188.3" width="20.4" height="51.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="360.5" y="188.3" width="20.4" height="51.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="98.7" y="188.3" width="84.3" height="51.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 구동 모터 (DC 130rpm, M1) (dc-motor-130-rs)</title></rect>
+<rect x="328.6" y="188.3" width="84.3" height="51.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 구동 모터 (DC 130rpm, M2) (dc-motor-130-rs)</title></rect>
+<circle cx="306.8" cy="46.3" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></circle>
+<circle cx="204.7" cy="46.3" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></circle>
+<circle cx="255.8" cy="-4.8" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></circle>
+<circle cx="255.8" cy="97.3" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></circle>
+<rect x="105.1" y="-37.0" width="301.4" height="4.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 판 (5×13 PCB) (frame-5x13-pcb)</title></rect>
+<rect x="182.7" y="-20.1" width="171.6" height="4.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>격발 쐐기 (소8 PCB, 36.9°) (frame-s8-pcb)</title></rect>
+<circle cx="255.8" cy="46.3" r="38.3" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>로터 허브 (휠가이드 Ø30 나일론) (wheel-guide-30-nylon)</title></circle>
+<rect x="177.9" y="139.7" width="155.8" height="35.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 보드 8M (1대에 1개) (cpu-board-8m)</title></rect>
+<rect x="194.5" y="36.1" width="122.6" height="20.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 십자 로터 가로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<rect x="245.6" y="-15.0" width="20.4" height="122.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 십자 로터 세로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<rect x="130.6" y="188.3" width="20.4" height="51.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="360.5" y="188.3" width="20.4" height="51.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="132.7" y="18.2" width="16.3" height="102.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></rect>
+<rect x="132.7" y="-32.9" width="16.3" height="51.1" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></rect>
+<rect x="362.5" y="18.2" width="16.3" height="102.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></rect>
+<rect x="362.5" y="-32.9" width="16.3" height="51.1" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></rect>
+<rect x="311.4" y="-32.9" width="16.3" height="12.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>쐐기 내림 (서포트 5) (support-spacer)</title></rect>
+<rect x="183.8" y="175.5" width="16.3" height="63.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></rect>
+<rect x="311.4" y="175.5" width="16.3" height="63.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></rect>
+<circle cx="306.8" cy="46.3" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></circle>
+<circle cx="204.7" cy="46.3" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></circle>
+<circle cx="255.8" cy="-4.8" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></circle>
+<circle cx="255.8" cy="97.3" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></circle>
+<rect x="105.1" y="239.3" width="301.4" height="4.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>차체 바닥판 (빅 메인 PCB) (frame-big-main)</title></rect>
+<rect x="334.9" y="89.7" width="56.2" height="30.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>부저 (OUT2, 발사 경고음) (buzzer-board-s)</title></rect>
+<rect x="161.3" y="193.4" width="189.0" height="46.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배터리케이스 (AA 4개, 6V) (battery-case-4aa)</title></rect>
+<circle cx="306.8" cy="46.3" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></circle>
+<circle cx="204.7" cy="46.3" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></circle>
+<circle cx="255.8" cy="-4.8" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></circle>
+<circle cx="255.8" cy="97.3" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></circle>
+<rect x="117.9" y="83.8" width="71.5" height="23.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>블루투스 모듈 (조종 · 발사) (bt-module)</title></rect>
+<rect x="334.9" y="89.7" width="56.2" height="30.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>발사 LED 빨강 (OUT1) (led-board-red-s)</title></rect>
+<rect x="194.5" y="36.1" width="122.6" height="20.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 십자 로터 가로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<rect x="245.6" y="-15.0" width="20.4" height="122.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 십자 로터 세로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<rect x="119.9" y="107.6" width="16.3" height="12.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>블루투스 받침 (서포트 5) (support-spacer)</title></rect>
+<rect x="171.0" y="107.6" width="16.3" height="12.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>블루투스 받침 (서포트 5) (support-spacer)</title></rect>
+<circle cx="255.8" cy="46.3" r="3.8" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 받침 축 (75 mm) (shaft-75)</title></circle>
+<circle cx="306.8" cy="46.3" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></circle>
+<circle cx="204.7" cy="46.3" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></circle>
+<circle cx="255.8" cy="-4.8" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></circle>
+<circle cx="255.8" cy="97.3" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></circle>
+<rect x="143.4" y="213.8" width="71.5" height="25.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<rect x="92.3" y="213.8" width="71.5" height="25.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<rect x="6.8" y="210.0" width="191.5" height="7.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 앞 축 (75 mm) (shaft-75)</title></rect>
+<rect x="9.3" y="111.6" width="84.3" height="204.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 앞 바퀴 (Ø80 버기 세트, 헛돎) (wheel-80-buggy-set)</title></rect>
+<rect x="296.6" y="213.8" width="71.5" height="25.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<rect x="347.7" y="213.8" width="71.5" height="25.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<rect x="313.2" y="210.0" width="191.5" height="7.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 앞 축 (75 mm) (shaft-75)</title></rect>
+<rect x="417.9" y="111.6" width="84.3" height="204.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 앞 바퀴 (Ø80 버기 세트, 헛돎) (wheel-80-buggy-set)</title></rect>
+<circle cx="306.8" cy="46.3" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></circle>
+<circle cx="204.7" cy="46.3" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></circle>
+<circle cx="255.8" cy="-4.8" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></circle>
+<circle cx="255.8" cy="97.3" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></circle>
+<rect x="247.6" y="107.6" width="16.3" height="12.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 받침 돋움 (서포트 5) (support-spacer)</title></rect>
+<rect x="247.6" y="107.6" width="16.3" height="12.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 받침 돋움 (서포트 5) (support-spacer)</title></rect>
+<rect x="245.6" y="-40.6" width="20.4" height="148.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축 받침 (L자 2×6) (l-frame-2x6)</title></rect>
+<rect x="158.2" y="137.2" width="16.3" height="102.2" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 받침 기둥 (서포트 40) (support-spacer)</title></rect>
+<rect x="337.0" y="137.2" width="16.3" height="102.2" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 받침 기둥 (서포트 40) (support-spacer)</title></rect>
+<rect x="156.2" y="133.1" width="199.2" height="4.1" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 받침대 (중 PCB) (frame-mid-pcb)</title></rect>
+<rect x="232.8" y="124.4" width="46.0" height="8.7" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>고각 경첩 (경첩 3×3) (hinge-3x3)</title></rect>
+<rect x="105.1" y="120.3" width="301.4" height="4.1" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>포탑 판 (빅 메인 PCB) (frame-big-main)</title></rect>
+<rect x="107.1" y="175.5" width="16.3" height="63.8" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 받침 아래 (서포트 25) (support-spacer)</title></rect>
+<rect x="107.1" y="124.4" width="16.3" height="51.1" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 받침 위 (서포트 20) (support-spacer)</title></rect>
+<rect x="388.1" y="175.5" width="16.3" height="63.8" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 받침 아래 (서포트 25) (support-spacer)</title></rect>
+<rect x="388.1" y="124.4" width="16.3" height="51.1" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 받침 위 (서포트 20) (support-spacer)</title></rect>
+</svg>
+<polyline points="115.3,150.0 66.0,151.8 63.0,151.8" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="115.3" cy="150.0" r="1.7" fill="#e8432a"/>
+<circle cx="54.0" cy="151.8" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="54.0" y="155.4" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">6</text>
+<polyline points="166.4,188.3 66.0,179.8 63.0,179.8" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="166.4" cy="188.3" r="1.7" fill="#e8432a"/>
+<circle cx="54.0" cy="179.8" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="54.0" y="183.4" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">1</text>
+<polyline points="115.3,207.4 66.0,207.8 63.0,207.8" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="115.3" cy="207.4" r="1.7" fill="#e8432a"/>
+<circle cx="54.0" cy="207.8" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="54.0" y="211.4" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">5</text>
+<line x1="105.1" y1="251.7" x2="406.4" y2="251.7" stroke="#3a7bd5" stroke-width="0.8"/>
+<line x1="105.1" y1="247.7" x2="105.1" y2="255.7" stroke="#3a7bd5"/>
+<line x1="406.4" y1="247.7" x2="406.4" y2="255.7" stroke="#3a7bd5"/>
+<text x="255.8" y="247.7" font-size="10" fill="#3a7bd5" font-weight="700" text-anchor="middle">118</text>
+<line x1="80.0" y1="120.3" x2="80.0" y2="239.3" stroke="#3a7bd5" stroke-width="0.8"/>
+<line x1="76.0" y1="120.3" x2="84.0" y2="120.3" stroke="#3a7bd5"/>
+<line x1="76.0" y1="239.3" x2="84.0" y2="239.3" stroke="#3a7bd5"/>
+<text x="92.0" y="179.8" font-size="10" fill="#3a7bd5" font-weight="700" transform="rotate(-90 92.0 179.8)" text-anchor="middle">47</text>
+<rect x="530" y="100" width="484" height="160" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>
+<text x="529.5" y="92.0" font-size="12" fill="#1d2230" font-weight="700" text-anchor="start">측면도 (오른쪽에서 · 왼쪽 = 앞)</text>
+<svg x="530" y="100" width="484" height="160" viewBox="530 100 484 160" overflow="hidden">
+<circle cx="899.2" cy="213.8" r="102.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 뒤 구동 바퀴 (Ø80 버기 세트) (wheel-80-buggy-set)</title></circle>
+<circle cx="618.3" cy="213.8" r="102.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 앞 바퀴 (Ø80 버기 세트, 헛돎) (wheel-80-buggy-set)</title></circle>
+<circle cx="618.3" cy="213.8" r="3.8" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 앞 축 (75 mm) (shaft-75)</title></circle>
+<rect x="595.3" y="213.8" width="46.0" height="25.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<rect x="633.1" y="107.6" width="16.3" height="12.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>블루투스 받침 (서포트 5) (support-spacer)</title></rect>
+<rect x="825.2" y="188.3" width="20.4" height="51.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="876.3" y="188.3" width="20.4" height="51.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="822.6" y="188.3" width="102.2" height="51.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 구동 모터 (DC 130rpm, M1) (dc-motor-130-rs)</title></rect>
+<rect x="827.2" y="18.2" width="16.3" height="102.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></rect>
+<rect x="827.2" y="-32.9" width="16.3" height="51.1" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></rect>
+<rect x="903.8" y="18.2" width="16.3" height="102.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></rect>
+<rect x="903.8" y="-32.9" width="16.3" height="51.1" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></rect>
+<rect x="608.1" y="83.8" width="122.6" height="23.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>블루투스 모듈 (조종 · 발사) (bt-module)</title></rect>
+<rect x="595.3" y="213.8" width="46.0" height="25.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<rect x="633.1" y="107.6" width="16.3" height="12.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>블루투스 받침 (서포트 5) (support-spacer)</title></rect>
+<rect x="801.7" y="175.5" width="16.3" height="63.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></rect>
+<rect x="903.8" y="175.5" width="16.3" height="63.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></rect>
+<rect x="860.9" y="38.1" width="25.5" height="16.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="886.5" y="38.2" width="4.1" height="16.1" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></rect>
+<rect x="750.6" y="38.1" width="102.2" height="16.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></rect>
+<rect x="648.4" y="38.1" width="102.2" height="16.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></rect>
+<rect x="602.0" y="38.1" width="38.3" height="16.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></rect>
+<rect x="586.6" y="38.1" width="15.3" height="16.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="889.0" y="-27.8" width="25.5" height="148.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 모터 기둥 (L자 2×6) (l-frame-2x6)</title></rect>
+<rect x="903.8" y="-32.9" width="16.3" height="12.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>쐐기 내림 (서포트 5) (support-spacer)</title></rect>
+<rect x="950.3" y="213.8" width="25.5" height="25.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>발사 버튼 L자 2×2 (l-frame-2x2)</title></rect>
+<rect x="966.9" y="167.8" width="23.0" height="71.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>발사 버튼 (접촉 센서, IN1) (sensor-touch)</title></rect>
+<rect x="569.8" y="239.3" width="403.5" height="4.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>차체 바닥판 (빅 메인 PCB) (frame-big-main)</title></rect>
+<rect x="656.6" y="193.4" width="158.3" height="46.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배터리케이스 (AA 4개, 6V) (battery-case-4aa)</title></rect>
+<rect x="860.9" y="8.0" width="20.4" height="76.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>로터 허브 (휠가이드 Ø30 나일론) (wheel-guide-30-nylon)</title></rect>
+<rect x="856.8" y="36.1" width="4.1" height="20.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 십자 로터 가로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<rect x="852.8" y="-15.0" width="4.1" height="122.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 십자 로터 세로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<rect x="644.4" y="36.1" width="4.1" height="20.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 십자 로터 가로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<rect x="640.3" y="-15.0" width="4.1" height="122.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 십자 로터 세로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<rect x="860.9" y="-13.0" width="25.5" height="16.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="886.5" y="-12.9" width="4.1" height="16.1" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></rect>
+<rect x="750.6" y="-13.0" width="102.2" height="16.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></rect>
+<rect x="648.4" y="-13.0" width="102.2" height="16.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></rect>
+<rect x="602.0" y="-13.0" width="38.3" height="16.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></rect>
+<rect x="586.6" y="-13.0" width="15.3" height="16.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="860.9" y="89.2" width="25.5" height="16.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="886.5" y="89.3" width="4.1" height="16.1" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></rect>
+<rect x="750.6" y="89.2" width="102.2" height="16.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></rect>
+<rect x="648.4" y="89.2" width="102.2" height="16.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></rect>
+<rect x="602.0" y="89.2" width="38.3" height="16.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></rect>
+<rect x="586.6" y="89.2" width="15.3" height="16.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="546.3" y="107.6" width="16.3" height="12.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 받침 돋움 (서포트 5) (support-spacer)</title></rect>
+<rect x="571.8" y="107.6" width="16.3" height="12.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 받침 돋움 (서포트 5) (support-spacer)</title></rect>
+<rect x="539.1" y="-40.6" width="25.5" height="148.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축 받침 (L자 2×6) (l-frame-2x6)</title></rect>
+<rect x="528.9" y="42.4" width="191.5" height="7.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 받침 축 (75 mm) (shaft-75)</title></rect>
+<rect x="825.2" y="-37.0" width="97.0" height="4.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 판 (5×13 PCB) (frame-5x13-pcb)</title></rect>
+<rect x="754.9" y="139.7" width="212.0" height="35.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 보드 8M (1대에 1개) (cpu-board-8m)</title></rect>
+<rect x="805.8" y="-20.1" width="135.9" height="4.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>격발 쐐기 (소8 PCB, 36.9°) (frame-s8-pcb)</title></rect>
+<rect x="878.8" y="20.7" width="102.2" height="51.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 모터 (DC 130rpm, M3) (dc-motor-130-rs)</title></rect>
+<rect x="860.9" y="38.1" width="25.5" height="16.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="886.5" y="38.2" width="4.1" height="16.1" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></rect>
+<rect x="750.6" y="38.1" width="102.2" height="16.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></rect>
+<rect x="648.4" y="38.1" width="102.2" height="16.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></rect>
+<rect x="602.0" y="38.1" width="38.3" height="16.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></rect>
+<rect x="586.6" y="38.1" width="15.3" height="16.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="827.2" y="-32.9" width="16.3" height="12.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>쐐기 내림 (서포트 5) (support-spacer)</title></rect>
+<rect x="801.7" y="175.5" width="16.3" height="63.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></rect>
+<rect x="903.8" y="175.5" width="16.3" height="63.8" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></rect>
+<rect x="595.3" y="213.8" width="46.0" height="25.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<rect x="889.0" y="-27.8" width="25.5" height="148.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 모터 기둥 (L자 2×6) (l-frame-2x6)</title></rect>
+<rect x="615.8" y="89.7" width="81.7" height="30.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>발사 LED 빨강 (OUT1) (led-board-red-s)</title></rect>
+<rect x="717.9" y="89.7" width="81.7" height="30.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>부저 (OUT2, 발사 경고음) (buzzer-board-s)</title></rect>
+<rect x="825.2" y="188.3" width="20.4" height="51.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="876.3" y="188.3" width="20.4" height="51.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="822.6" y="188.3" width="102.2" height="51.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 구동 모터 (DC 130rpm, M2) (dc-motor-130-rs)</title></rect>
+<rect x="827.2" y="18.2" width="16.3" height="102.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></rect>
+<rect x="827.2" y="-32.9" width="16.3" height="51.1" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></rect>
+<rect x="903.8" y="18.2" width="16.3" height="102.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></rect>
+<rect x="903.8" y="-32.9" width="16.3" height="51.1" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></rect>
+<rect x="595.3" y="213.8" width="46.0" height="25.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<circle cx="618.3" cy="213.8" r="3.8" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 앞 축 (75 mm) (shaft-75)</title></circle>
+<circle cx="899.2" cy="213.8" r="102.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 뒤 구동 바퀴 (Ø80 버기 세트) (wheel-80-buggy-set)</title></circle>
+<circle cx="618.3" cy="213.8" r="102.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 앞 바퀴 (Ø80 버기 세트, 헛돎) (wheel-80-buggy-set)</title></circle>
+<rect x="674.0" y="175.5" width="16.3" height="63.8" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 받침 아래 (서포트 25) (support-spacer)</title></rect>
+<rect x="674.0" y="124.4" width="16.3" height="51.1" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 받침 위 (서포트 20) (support-spacer)</title></rect>
+<rect x="929.4" y="137.2" width="16.3" height="102.2" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 받침 기둥 (서포트 40) (support-spacer)</title></rect>
+<rect x="914.6" y="133.1" width="46.0" height="4.1" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 받침대 (중 PCB) (frame-mid-pcb)</title></rect>
+<rect x="908.2" y="124.4" width="58.7" height="8.7" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>고각 경첩 (경첩 3×3) (hinge-3x3)</title></rect>
+<rect x="569.8" y="120.3" width="403.5" height="4.1" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>포탑 판 (빅 메인 PCB) (frame-big-main)</title></rect>
+<rect x="929.4" y="137.2" width="16.3" height="102.2" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 받침 기둥 (서포트 40) (support-spacer)</title></rect>
+<rect x="674.0" y="175.5" width="16.3" height="63.8" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 받침 아래 (서포트 25) (support-spacer)</title></rect>
+<rect x="674.0" y="124.4" width="16.3" height="51.1" rx="0" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 받침 위 (서포트 20) (support-spacer)</title></rect>
+</svg>
+<line x1="569.8" y1="251.7" x2="973.3" y2="251.7" stroke="#3a7bd5" stroke-width="0.8"/>
+<line x1="569.8" y1="247.7" x2="569.8" y2="255.7" stroke="#3a7bd5"/>
+<line x1="973.3" y1="247.7" x2="973.3" y2="255.7" stroke="#3a7bd5"/>
+<text x="771.5" y="247.7" font-size="10" fill="#3a7bd5" font-weight="700" text-anchor="middle">158</text>
+<line x1="537.5" y1="120.3" x2="537.5" y2="239.3" stroke="#3a7bd5" stroke-width="0.8"/>
+<line x1="533.5" y1="120.3" x2="541.5" y2="120.3" stroke="#3a7bd5"/>
+<line x1="533.5" y1="239.3" x2="541.5" y2="239.3" stroke="#3a7bd5"/>
+<text x="549.5" y="179.8" font-size="10" fill="#3a7bd5" font-weight="700" transform="rotate(-90 549.5 179.8)" text-anchor="middle">47</text>
+<rect x="72" y="332" width="368" height="484" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>
+<text x="72.0" y="323.7" font-size="12" fill="#1d2230" font-weight="700" text-anchor="start">윗면도 (위에서 · 위 = 앞)</text>
+<svg x="72" y="332" width="368" height="484" viewBox="72 332 368 484" overflow="hidden">
+<rect x="105.1" y="371.9" width="301.4" height="403.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>차체 바닥판 (빅 메인 PCB) (frame-big-main)</title></rect>
+<rect x="143.4" y="397.5" width="71.5" height="46.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<rect x="92.3" y="397.5" width="71.5" height="46.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<rect x="296.6" y="397.5" width="71.5" height="46.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<rect x="347.7" y="397.5" width="71.5" height="46.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축가이드 (axle-guide)</title></rect>
+<rect x="207.2" y="752.4" width="20.4" height="25.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>발사 버튼 L자 2×2 (l-frame-2x2)</title></rect>
+<rect x="161.3" y="458.7" width="189.0" height="158.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배터리케이스 (AA 4개, 6V) (battery-case-4aa)</title></rect>
+<rect x="130.6" y="627.3" width="20.4" height="20.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="130.6" y="678.4" width="20.4" height="20.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="98.7" y="624.7" width="84.3" height="102.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 구동 모터 (DC 130rpm, M1) (dc-motor-130-rs)</title></rect>
+<rect x="9.3" y="599.2" width="84.3" height="204.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 뒤 구동 바퀴 (Ø80 버기 세트) (wheel-80-buggy-set)</title></rect>
+<rect x="6.8" y="416.6" width="191.5" height="7.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 앞 축 (75 mm) (shaft-75)</title></rect>
+<rect x="9.3" y="318.3" width="84.3" height="204.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 앞 바퀴 (Ø80 버기 세트, 헛돎) (wheel-80-buggy-set)</title></rect>
+<rect x="360.5" y="627.3" width="20.4" height="20.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="360.5" y="678.4" width="20.4" height="20.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>구동 모터 받침 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
+<rect x="328.6" y="624.7" width="84.3" height="102.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 구동 모터 (DC 130rpm, M2) (dc-motor-130-rs)</title></rect>
+<rect x="417.9" y="599.2" width="84.3" height="204.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 뒤 구동 바퀴 (Ø80 버기 세트) (wheel-80-buggy-set)</title></rect>
+<rect x="313.2" y="416.6" width="191.5" height="7.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 앞 축 (75 mm) (shaft-75)</title></rect>
+<rect x="417.9" y="318.3" width="84.3" height="204.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 앞 바퀴 (Ø80 버기 세트, 헛돎) (wheel-80-buggy-set)</title></rect>
+<circle cx="191.9" cy="612.0" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></circle>
+<circle cx="191.9" cy="714.1" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></circle>
+<circle cx="319.6" cy="612.0" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></circle>
+<circle cx="319.6" cy="714.1" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 받침 (서포트 25) (support-spacer)</title></circle>
+<rect x="156.2" y="769.0" width="122.6" height="23.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>발사 버튼 (접촉 센서, IN1) (sensor-touch)</title></rect>
+<rect x="177.9" y="557.1" width="155.8" height="212.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>CPU 보드 8M (1대에 1개) (cpu-board-8m)</title></rect>
+<circle cx="255.8" cy="356.6" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 받침 돋움 (서포트 5) (support-spacer)</title></circle>
+<circle cx="255.8" cy="382.1" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 받침 돋움 (서포트 5) (support-spacer)</title></circle>
+<circle cx="128.1" cy="443.4" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>블루투스 받침 (서포트 5) (support-spacer)</title></circle>
+<circle cx="179.2" cy="443.4" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>블루투스 받침 (서포트 5) (support-spacer)</title></circle>
+<rect x="334.9" y="417.9" width="56.2" height="81.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>발사 LED 빨강 (OUT1) (led-board-red-s)</title></rect>
+<rect x="334.9" y="520.0" width="56.2" height="81.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>부저 (OUT2, 발사 경고음) (buzzer-board-s)</title></rect>
+<rect x="247.6" y="663.1" width="16.3" height="25.5" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="247.7" y="688.6" width="16.1" height="4.1" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></rect>
+<rect x="247.6" y="552.7" width="16.3" height="102.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></rect>
+<rect x="247.6" y="450.6" width="16.3" height="102.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></rect>
+<rect x="247.6" y="404.1" width="16.3" height="38.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></rect>
+<rect x="247.6" y="388.8" width="16.3" height="15.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="117.9" y="410.2" width="71.5" height="122.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>블루투스 모듈 (조종 · 발사) (bt-module)</title></rect>
+<circle cx="140.8" cy="637.5" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></circle>
+<circle cx="140.8" cy="714.1" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></circle>
+<circle cx="370.7" cy="637.5" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></circle>
+<circle cx="370.7" cy="714.1" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 아래 (서포트 40) (support-spacer)</title></circle>
+<rect x="207.2" y="691.1" width="20.4" height="25.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 모터 기둥 (L자 2×6) (l-frame-2x6)</title></rect>
+<rect x="334.9" y="691.1" width="20.4" height="25.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 모터 기둥 (L자 2×6) (l-frame-2x6)</title></rect>
+<rect x="204.7" y="680.9" width="153.2" height="102.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 모터 (DC 130rpm, M3) (dc-motor-130-rs)</title></rect>
+<rect x="217.5" y="663.1" width="76.6" height="20.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>로터 허브 (휠가이드 Ø30 나일론) (wheel-guide-30-nylon)</title></rect>
+<rect x="194.5" y="659.0" width="122.6" height="4.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 십자 로터 가로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<rect x="245.6" y="654.9" width="20.4" height="4.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 십자 로터 세로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<rect x="194.5" y="446.5" width="122.6" height="4.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 십자 로터 가로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<rect x="245.6" y="442.4" width="20.4" height="4.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 십자 로터 세로 (소5 PCB) (frame-s5-pcb)</title></rect>
+<rect x="298.7" y="663.1" width="16.3" height="25.5" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="298.8" y="688.6" width="16.1" height="4.1" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></rect>
+<rect x="298.7" y="552.7" width="16.3" height="102.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></rect>
+<rect x="298.7" y="450.6" width="16.3" height="102.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></rect>
+<rect x="298.7" y="404.1" width="16.3" height="38.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></rect>
+<rect x="298.7" y="388.8" width="16.3" height="15.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="196.5" y="663.1" width="16.3" height="25.5" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="196.7" y="688.6" width="16.1" height="4.1" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></rect>
+<rect x="196.5" y="552.7" width="16.3" height="102.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></rect>
+<rect x="196.5" y="450.6" width="16.3" height="102.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></rect>
+<rect x="196.5" y="404.1" width="16.3" height="38.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></rect>
+<rect x="196.5" y="388.8" width="16.3" height="15.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="251.9" y="331.1" width="7.7" height="191.5" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 받침 축 (75 mm) (shaft-75)</title></rect>
+<rect x="245.6" y="341.3" width="20.4" height="25.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 축 받침 (L자 2×6) (l-frame-2x6)</title></rect>
+<rect x="247.6" y="663.1" width="16.3" height="25.5" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="247.7" y="688.6" width="16.1" height="4.1" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>걸쇠 턱 (볼트 3×6 머리) (bolt-m3x6)</title></rect>
+<rect x="247.6" y="552.7" width="16.3" height="102.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 뒤 (서포트 40) (support-spacer)</title></rect>
+<rect x="247.6" y="450.6" width="16.3" height="102.2" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 가운데 (서포트 40) (support-spacer)</title></rect>
+<rect x="247.6" y="404.1" width="16.3" height="38.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배럴 앞 (서포트 15) (support-spacer)</title></rect>
+<rect x="247.6" y="388.8" width="16.3" height="15.3" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>총구 (캡너트) (cap-nut-m3)</title></rect>
+<circle cx="140.8" cy="637.5" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></circle>
+<circle cx="140.8" cy="714.1" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></circle>
+<circle cx="370.7" cy="637.5" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></circle>
+<circle cx="370.7" cy="714.1" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 기둥 위 (서포트 20) (support-spacer)</title></circle>
+<polygon points="182.7,727.4 342.1,607.9 354.4,624.2 195.0,743.8" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.8"><title>격발 쐐기 (소8 PCB, 36.9°) (frame-s8-pcb)</title></polygon>
+<circle cx="217.5" cy="714.1" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>쐐기 내림 (서포트 5) (support-spacer)</title></circle>
+<circle cx="319.6" cy="637.5" r="8.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>쐐기 내림 (서포트 5) (support-spacer)</title></circle>
+<rect x="105.1" y="627.3" width="301.4" height="97.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>아치 판 (5×13 PCB) (frame-5x13-pcb)</title></rect>
+<circle cx="115.3" cy="484.3" r="8.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 받침 아래 (서포트 25) (support-spacer)</title></circle>
+<circle cx="396.2" cy="484.3" r="8.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 받침 아래 (서포트 25) (support-spacer)</title></circle>
+<circle cx="166.4" cy="739.7" r="8.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 받침 기둥 (서포트 40) (support-spacer)</title></circle>
+<circle cx="345.2" cy="739.7" r="8.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 받침 기둥 (서포트 40) (support-spacer)</title></circle>
+<circle cx="115.3" cy="484.3" r="8.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 받침 위 (서포트 20) (support-spacer)</title></circle>
+<circle cx="396.2" cy="484.3" r="8.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>앞 받침 위 (서포트 20) (support-spacer)</title></circle>
+<rect x="156.2" y="716.7" width="199.2" height="46.0" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>뒤 받침대 (중 PCB) (frame-mid-pcb)</title></rect>
+<circle cx="166.4" cy="726.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="166.4" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="166.4" cy="752.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.9" cy="726.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.9" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.9" cy="752.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="217.5" cy="726.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="217.5" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="217.5" cy="752.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="243.0" cy="726.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="243.0" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="243.0" cy="752.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="255.8" cy="726.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="255.8" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="255.8" cy="752.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.5" cy="726.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.5" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.5" cy="752.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="294.1" cy="726.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="294.1" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="294.1" cy="752.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="319.6" cy="726.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="319.6" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="319.6" cy="752.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="345.2" cy="726.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="345.2" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="345.2" cy="752.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<rect x="232.8" y="710.3" width="46.0" height="58.7" rx="1.2" fill="#c9ccd1" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>고각 경첩 (경첩 3×3) (hinge-3x3)</title></rect>
+<rect x="105.1" y="371.9" width="301.4" height="403.5" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>포탑 판 (빅 메인 PCB) (frame-big-main)</title></rect>
+<circle cx="115.3" cy="382.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="140.8" cy="382.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="166.4" cy="382.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="179.2" cy="382.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.9" cy="382.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="217.5" cy="382.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="243.0" cy="382.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="255.8" cy="382.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.5" cy="382.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="294.1" cy="382.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="319.6" cy="382.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="332.4" cy="382.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="345.2" cy="382.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="370.7" cy="382.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="396.2" cy="382.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="115.3" cy="407.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="140.8" cy="407.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="166.4" cy="407.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="179.2" cy="407.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.9" cy="407.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="217.5" cy="407.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="243.0" cy="407.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="255.8" cy="407.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.5" cy="407.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="294.1" cy="407.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="319.6" cy="407.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="332.4" cy="407.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="345.2" cy="407.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="370.7" cy="407.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="396.2" cy="407.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="115.3" cy="433.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="140.8" cy="433.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="166.4" cy="433.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="179.2" cy="433.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.9" cy="433.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="217.5" cy="433.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="243.0" cy="433.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="255.8" cy="433.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.5" cy="433.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="294.1" cy="433.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="319.6" cy="433.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="332.4" cy="433.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="345.2" cy="433.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="370.7" cy="433.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="396.2" cy="433.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="115.3" cy="458.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="140.8" cy="458.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="166.4" cy="458.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="179.2" cy="458.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.9" cy="458.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="217.5" cy="458.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="243.0" cy="458.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="255.8" cy="458.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.5" cy="458.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="294.1" cy="458.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="319.6" cy="458.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="332.4" cy="458.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="345.2" cy="458.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="370.7" cy="458.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="396.2" cy="458.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="115.3" cy="471.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="140.8" cy="471.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="166.4" cy="471.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="179.2" cy="471.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.9" cy="471.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="217.5" cy="471.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="243.0" cy="471.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="255.8" cy="471.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.5" cy="471.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="294.1" cy="471.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="319.6" cy="471.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="332.4" cy="471.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="345.2" cy="471.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="370.7" cy="471.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="396.2" cy="471.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="115.3" cy="484.3" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="140.8" cy="484.3" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="166.4" cy="484.3" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="179.2" cy="484.3" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.9" cy="484.3" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="217.5" cy="484.3" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="243.0" cy="484.3" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="255.8" cy="484.3" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.5" cy="484.3" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="294.1" cy="484.3" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="319.6" cy="484.3" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="332.4" cy="484.3" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="345.2" cy="484.3" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="370.7" cy="484.3" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="396.2" cy="484.3" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="115.3" cy="509.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="140.8" cy="509.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="166.4" cy="509.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="179.2" cy="509.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.9" cy="509.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="217.5" cy="509.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="243.0" cy="509.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="255.8" cy="509.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.5" cy="509.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="294.1" cy="509.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="319.6" cy="509.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="332.4" cy="509.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="345.2" cy="509.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="370.7" cy="509.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="396.2" cy="509.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="115.3" cy="535.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="140.8" cy="535.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="166.4" cy="535.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="179.2" cy="535.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.9" cy="535.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="217.5" cy="535.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="243.0" cy="535.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="255.8" cy="535.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.5" cy="535.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="294.1" cy="535.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="319.6" cy="535.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="332.4" cy="535.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="345.2" cy="535.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="370.7" cy="535.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="396.2" cy="535.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="115.3" cy="560.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="140.8" cy="560.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="166.4" cy="560.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="179.2" cy="560.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.9" cy="560.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="217.5" cy="560.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="243.0" cy="560.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="255.8" cy="560.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.5" cy="560.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="294.1" cy="560.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="319.6" cy="560.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="332.4" cy="560.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="345.2" cy="560.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="370.7" cy="560.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="396.2" cy="560.9" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="115.3" cy="573.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="140.8" cy="573.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="166.4" cy="573.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="179.2" cy="573.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.9" cy="573.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="217.5" cy="573.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="243.0" cy="573.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="255.8" cy="573.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.5" cy="573.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="294.1" cy="573.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="319.6" cy="573.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="332.4" cy="573.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="345.2" cy="573.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="370.7" cy="573.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="396.2" cy="573.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="115.3" cy="586.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="140.8" cy="586.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="166.4" cy="586.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="179.2" cy="586.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.9" cy="586.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="217.5" cy="586.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="243.0" cy="586.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="255.8" cy="586.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.5" cy="586.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="294.1" cy="586.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="319.6" cy="586.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="332.4" cy="586.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="345.2" cy="586.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="370.7" cy="586.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="396.2" cy="586.4" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="115.3" cy="612.0" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="140.8" cy="612.0" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="166.4" cy="612.0" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="179.2" cy="612.0" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.9" cy="612.0" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="217.5" cy="612.0" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="243.0" cy="612.0" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="255.8" cy="612.0" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.5" cy="612.0" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="294.1" cy="612.0" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="319.6" cy="612.0" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="332.4" cy="612.0" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="345.2" cy="612.0" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="370.7" cy="612.0" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="396.2" cy="612.0" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="115.3" cy="637.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="140.8" cy="637.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="166.4" cy="637.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="179.2" cy="637.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.9" cy="637.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="217.5" cy="637.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="243.0" cy="637.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="255.8" cy="637.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.5" cy="637.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="294.1" cy="637.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="319.6" cy="637.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="332.4" cy="637.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="345.2" cy="637.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="370.7" cy="637.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="396.2" cy="637.5" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="115.3" cy="663.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="140.8" cy="663.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="166.4" cy="663.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="179.2" cy="663.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.9" cy="663.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="217.5" cy="663.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="243.0" cy="663.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="255.8" cy="663.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.5" cy="663.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="294.1" cy="663.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="319.6" cy="663.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="332.4" cy="663.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="345.2" cy="663.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="370.7" cy="663.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="396.2" cy="663.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="115.3" cy="675.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="140.8" cy="675.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="166.4" cy="675.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="179.2" cy="675.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.9" cy="675.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="217.5" cy="675.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="243.0" cy="675.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="255.8" cy="675.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.5" cy="675.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="294.1" cy="675.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="319.6" cy="675.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="332.4" cy="675.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="345.2" cy="675.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="370.7" cy="675.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="396.2" cy="675.8" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="115.3" cy="688.6" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="140.8" cy="688.6" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="166.4" cy="688.6" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="179.2" cy="688.6" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.9" cy="688.6" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="217.5" cy="688.6" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="243.0" cy="688.6" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="255.8" cy="688.6" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.5" cy="688.6" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="294.1" cy="688.6" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="319.6" cy="688.6" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="332.4" cy="688.6" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="345.2" cy="688.6" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="370.7" cy="688.6" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="396.2" cy="688.6" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="115.3" cy="714.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="140.8" cy="714.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="166.4" cy="714.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="179.2" cy="714.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.9" cy="714.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="217.5" cy="714.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="243.0" cy="714.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="255.8" cy="714.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.5" cy="714.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="294.1" cy="714.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="319.6" cy="714.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="332.4" cy="714.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="345.2" cy="714.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="370.7" cy="714.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="396.2" cy="714.1" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="115.3" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="140.8" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="166.4" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="179.2" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.9" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="217.5" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="243.0" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="255.8" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.5" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="294.1" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="319.6" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="332.4" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="345.2" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="370.7" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="396.2" cy="739.7" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="115.3" cy="765.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="140.8" cy="765.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="166.4" cy="765.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="179.2" cy="765.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="191.9" cy="765.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="217.5" cy="765.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="243.0" cy="765.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="255.8" cy="765.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="268.5" cy="765.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="294.1" cy="765.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="319.6" cy="765.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="332.4" cy="765.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="345.2" cy="765.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="370.7" cy="765.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+<circle cx="396.2" cy="765.2" r="4.1" fill="#d9dde3" stroke="#8a919c" stroke-width="0.3"/>
+</svg>
+<polyline points="255.8,573.7 445.5,545.7 448.5,545.7" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="255.8" cy="573.7" r="1.7" fill="#e8432a"/>
+<circle cx="457.5" cy="545.7" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="457.5" y="549.3" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">4</text>
+<polyline points="255.8,739.7 445.5,573.7 448.5,573.7" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="255.8" cy="739.7" r="1.7" fill="#e8432a"/>
+<circle cx="457.5" cy="573.7" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="457.5" y="577.3" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">2</text>
+<polyline points="255.8,739.7 445.5,601.7 448.5,601.7" fill="none" stroke="#e8432a" stroke-width="0.7"/>
+<circle cx="255.8" cy="739.7" r="1.7" fill="#e8432a"/>
+<circle cx="457.5" cy="601.7" r="9" fill="#fff" stroke="#e8432a" stroke-width="1.1"/>
+<text x="457.5" y="605.3" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="middle">3</text>
+<line x1="105.1" y1="807.7" x2="406.4" y2="807.7" stroke="#3a7bd5" stroke-width="0.8"/>
+<line x1="105.1" y1="803.7" x2="105.1" y2="811.7" stroke="#3a7bd5"/>
+<line x1="406.4" y1="803.7" x2="406.4" y2="811.7" stroke="#3a7bd5"/>
+<text x="255.8" y="803.7" font-size="10" fill="#3a7bd5" font-weight="700" text-anchor="middle">118</text>
+<line x1="80.0" y1="371.9" x2="80.0" y2="775.4" stroke="#3a7bd5" stroke-width="0.8"/>
+<line x1="76.0" y1="371.9" x2="84.0" y2="371.9" stroke="#3a7bd5"/>
+<line x1="76.0" y1="775.4" x2="84.0" y2="775.4" stroke="#3a7bd5"/>
+<text x="92.0" y="573.7" font-size="10" fill="#3a7bd5" font-weight="700" transform="rotate(-90 92.0 573.7)" text-anchor="middle">158</text>
+<text x="509.5" y="331.7" font-size="12" fill="#1d2230" font-weight="700" text-anchor="start">부품표</text>
+<rect x="509.54430379746833" y="339.67088607594934" width="640.4556962025317" height="18" fill="#1d2230"/>
+<text x="515.5" y="352.2" font-size="9.5" fill="#fff" font-weight="700" text-anchor="start">번호</text>
+<text x="549.5" y="352.2" font-size="9.5" fill="#fff" font-weight="700" text-anchor="start">부품 이름</text>
+<text x="893.8" y="352.2" font-size="9.5" fill="#fff" font-weight="700" text-anchor="start">id</text>
+<text x="1142.0" y="352.2" font-size="9.5" fill="#fff" font-weight="700" text-anchor="end">수량</text>
+<circle cx="523.5443037974683" cy="365.67088607594934" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="523.5" y="368.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">1</text>
+<text x="539.5" y="369.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">뒤 받침 기둥</text>
+<text x="893.8" y="369.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">support-spacer</text>
+<text x="1142.0" y="369.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">2</text>
+<rect x="509.54430379746833" y="373.67088607594934" width="640.4556962025317" height="16" fill="#eef2f7"/>
+<circle cx="523.5443037974683" cy="381.67088607594934" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="523.5" y="384.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">2</text>
+<text x="539.5" y="385.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">뒤 받침대</text>
+<text x="893.8" y="385.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">frame-mid-pcb</text>
+<text x="1142.0" y="385.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">1</text>
+<circle cx="523.5443037974683" cy="397.67088607594934" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="523.5" y="400.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">3</text>
+<text x="539.5" y="401.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">고각 경첩</text>
+<text x="893.8" y="401.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">hinge-3x3</text>
+<text x="1142.0" y="401.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">1</text>
+<rect x="509.54430379746833" y="405.67088607594934" width="640.4556962025317" height="16" fill="#eef2f7"/>
+<circle cx="523.5443037974683" cy="413.67088607594934" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="523.5" y="416.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">4</text>
+<text x="539.5" y="417.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">포탑 판</text>
+<text x="893.8" y="417.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">frame-big-main</text>
+<text x="1142.0" y="417.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">1</text>
+<circle cx="523.5443037974683" cy="429.67088607594934" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="523.5" y="432.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">5</text>
+<text x="539.5" y="433.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">앞 받침 아래</text>
+<text x="893.8" y="433.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">support-spacer</text>
+<text x="1142.0" y="433.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">2</text>
+<rect x="509.54430379746833" y="437.67088607594934" width="640.4556962025317" height="16" fill="#eef2f7"/>
+<circle cx="523.5443037974683" cy="445.67088607594934" r="6.5" fill="#fff" stroke="#e8432a"/>
+<text x="523.5" y="448.7" font-size="8" fill="#e8432a" font-weight="700" text-anchor="middle">6</text>
+<text x="539.5" y="449.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">앞 받침 위</text>
+<text x="893.8" y="449.2" font-size="8.5" fill="#5a6070" font-weight="400" text-anchor="start">support-spacer</text>
+<text x="1142.0" y="449.2" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="end">2</text>
+<text x="509.5" y="479.7" font-size="12" fill="#1d2230" font-weight="700" text-anchor="start">조립 순서</text>
+<text x="509.5" y="496.7" font-size="9.5" fill="#3a4050" font-weight="400" text-anchor="start">• 뒤 받침대 · 경첩: 서포트 40 두 개 (x ±35, z 65)에 중 PCB를 얹고, 경첩 한 날개를 볼트 2개로.</text>
+<text x="509.5" y="513.7" font-size="9.5" fill="#3a4050" font-weight="400" text-anchor="start">• 포탑 판: 빅 메인 PCB 아랫면 뒤쪽에 경첩의 다른 날개를 볼트 2개. 앞은 받침 (서포트 25 + 20, x ±55, z −35) 위에 얹힌다 (볼트로</text>
+<text x="521.5" y="526.7" font-size="9.5" fill="#3a4050" font-weight="400" text-anchor="start">묶지 않음 = 들 수 있음).</text>
+<text x="509.5" y="543.7" font-size="9.5" fill="#3a4050" font-weight="400" text-anchor="start">• 고각 바꾸기: 앞 받침에 서포트 25를 하나씩 더 끼우면 포탑이 +14.5° 들린다 (사격 자세). 빼면 수평 (장전 자세).</text>
+<text x="509.5" y="560.7" font-size="9.5" fill="#3a4050" font-weight="400" text-anchor="start">• 이 도면의 볼트 · 너트: M3 너트 × 8, 볼트 3×6 × 6</text></svg>
