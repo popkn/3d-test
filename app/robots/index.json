@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-14T13:33:42.381Z",
+  "updated": "2026-11-14T14:45:09.269Z",
   "robots": [
     {
       "id": "eagle",
@@ -36,6 +36,15 @@
       "version": "2c9e379b3b",
       "size": 85112,
       "parts": 33
+    },
+    {
+      "id": "gatling",
+      "name": "썬더 개틀링 4연장",
+      "mods": 5,
+      "file": "gatling.js",
+      "version": "e6fe8ed432",
+      "size": 71967,
+      "parts": 23
     }
   ]
 }
