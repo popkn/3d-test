@@ -340,7 +340,7 @@ async function select(id) {
     e.restore();
     const box = e.boxOf('final');
     panel.showSpec({
-      name: STAGED[id].title, url: 'https://github.com/popkn/3d-test/blob/로보로보-3d-test/ASSEMBLY_RULES.md',
+      name: STAGED[id].title, url: 'https://github.com/popkn/3d-test/blob/main/ASSEMBLY_RULES.md',
       size: { x: Math.round(box.max.x - box.min.x), z: Math.round(box.max.z - box.min.z), y: Math.round(box.max.y - box.min.y), estimated: false, note: '파트마다 따로 조립한 뒤 마지막에 연결한다. 같은 부품이 이어지면 한 단계로 묶음.' },
       function: '조립 파트를 고르면 그 파트만 한 단계씩 조립된다. "분해"를 올리면 부품이 벌어져 자세히 볼 수 있다. 마지막 "최종 연결"에서 완성된 파트들이 하나씩 제자리로 붙는다. 부품에 마우스를 올리면 이름이 나온다.',
       specs: e.stages.map((s, i) => [`파트 ${i + 1}`, `${s.name} (${e.steps(i)}단계)`]),
@@ -374,7 +374,7 @@ async function select(id) {
     e.pose(0);
     view.frame(box, { dir: [-1, 0.7, -0.8], fit: 0.55, minDist: 20 });
     panel.showSpec({
-      name: '협동 기차 — 단계별 조립', url: 'https://github.com/popkn/3d-test/blob/로보로보-3d-test/src/train/tree.js',
+      name: '협동 기차 — 단계별 조립', url: 'https://github.com/popkn/3d-test/blob/main/src/train/tree.js',
       size: { x: Math.round(box.max.x - box.min.x), z: Math.round(box.max.z - box.min.z), y: Math.round(box.max.y - box.min.y), estimated: false, note: '단계 하나 = 부품 하나 + 그 단계의 볼트 · 너트. 모듈은 옆(또는 위) 작업대에서 따로 조립한 뒤 통째로 끼운다. 바퀴 · 바퀴 축 · 버기 바퀴는 세트 부품 하나.' },
       function: '재생하면 바닥판부터 한 단계씩 조립된다. 이상한 곳이 보이면 일시정지하고 이전/다음 단계로 확인하세요. 부품에 마우스를 올리면 이름이 나온다.',
       specs: [['단계', `${e.N}단계 (부품 ${e.count} · 모듈 ${e.groups})`], ['구멍 맞춤 검사', e.errors.length ? `오류 ${e.errors.length}건` : '오류 0건'],
@@ -409,7 +409,7 @@ async function select(id) {
     view.frame(box, { dir: [-1, 0.55, -0.7], fit: 1.0, minDist: 20 });
     const size = box.getSize(new THREE.Vector3());
     panel.showSpec({
-      name: '협동 기차 하나로 열차 (조립 규칙으로 조립)', url: 'https://github.com/popkn/3d-test/blob/로보로보-3d-test/ASSEMBLY_GUIDE.md',
+      name: '협동 기차 하나로 열차 (조립 규칙으로 조립)', url: 'https://github.com/popkn/3d-test/blob/main/ASSEMBLY_GUIDE.md',
       size: { x: Math.round(size.x), z: Math.round(size.z), y: Math.round(size.y), estimated: false, note: 'ASSEMBLY_GUIDE.md 규칙으로 조립: 좌표로 놓은 것은 칸마다 바닥판 하나, 나머지는 모두 "구멍 ↔ 구멍" 짝으로 위치를 계산 (src/train/tree.js). 볼트 · 너트도 겹친 두께로 자동 선택.' },
       function: '칸마다 CPU · 블루투스 · 모터가 따로 있어 세 사람이 한 칸씩 조종한다. 같은 방향이면 잘 달리고, 엇갈리면 연결봉으로 서로 끌고 밀며 이상하게 움직인다 (멈추지 않음). 아래에서 칸마다 방향을 골라 보세요.',
       specs: [...Object.entries(e.subs).map(([no, t]) => [`조립 ${no}`, t]),
@@ -445,7 +445,7 @@ async function select(id) {
     view.frame(box, { dir: [-0.9, 0.7, -1], fit: 1.25, minDist: 20 });
     const size = box.getSize(new THREE.Vector3());
     panel.showSpec({
-      name: '배틀로봇 썬더 웨지 (설계도면 조립)', url: 'https://github.com/popkn/3d-test/blob/로보로보-3d-test/battlebot/BLUEPRINT.md',
+      name: '배틀로봇 썬더 웨지 (설계도면 조립)', url: 'https://github.com/popkn/3d-test/blob/main/battlebot/BLUEPRINT.md',
       size: { x: Math.round(size.x), z: Math.round(size.z), y: Math.round(size.y), estimated: false, note: 'battlebot/BLUEPRINT.md 도면 좌표대로 이 저장소의 부품 모델을 놓아 조립했습니다. 볼트 · 너트 · 케이블은 생략.' },
       function: '무한궤도로 달리고, 서보 웨지로 상대를 들어 올려 수평 스피너(배틀무기 U + V 십자 날)로 친다. 궤도 마디는 경로를 따라 실제로 돈다.',
       specs: Object.entries(BB_SHEETS).map(([no, t]) => [`도면 ${no}`, t]),
@@ -476,7 +476,7 @@ async function select(id) {
     view.frame(box, { dir: [-0.9, 0.55, -1], fit: 1.15, minDist: 20 });
     const size = box.getSize(new THREE.Vector3());
     panel.showSpec({
-      name: '독수리 로봇 (설계도면 조립)', url: 'https://github.com/popkn/3d-test/blob/로보로보-3d-test/eagle/BLUEPRINT.md',
+      name: '독수리 로봇 (설계도면 조립)', url: 'https://github.com/popkn/3d-test/blob/main/eagle/BLUEPRINT.md',
       size: { x: Math.round(size.x), z: Math.round(size.z), y: Math.round(size.y), estimated: false, note: 'eagle/BLUEPRINT.md 도면의 좌표대로 이 저장소의 부품 모델을 하나씩 놓아 조립했습니다. 볼트 · 너트 · 케이블은 생략.' },
       function: '흰머리수리가 횃대를 움켜쥐고 앉은 모습. 서보 2개로 날갯짓, 서보 1개로 머리를 돌린다. 부품에 마우스를 올리면 이름이 보입니다.',
       specs: Object.entries(SHEETS).map(([no, t]) => [`도면 ${no}`, t]),
