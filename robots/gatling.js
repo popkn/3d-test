@@ -1,37 +1,43 @@
-import { buildGatling, EXPLODE, TILT_MAX, WHEEL_R } from '../src/gatling/assemble.js';
+import { buildGatling, TILT_MAX, WHEEL_R } from '../src/gatling/assemble.js';
 import { SHEETS } from '../src/gatling/assembly.js';
-import { groupAdapter, DRIVE5 } from './lib.js';
+import { detailAdapter, DRIVE5 } from './lib.js';
 import { loadPart } from 'virtual:parts';
 
-export const meta = { id: 'gatling', name: '썬더 개틀링 4연장', mods: 5 };
+export const meta = { id: 'gatling', name: '썬더 개틀링 6연장', mods: 5 };
 
 export async function makeAdapter(ctx) {
   const e = await buildGatling(loadPart, ctx.onProgress);
-  const keys = Object.keys(SHEETS).filter((k) => e.groups[k]);
-  const ad = groupAdapter(e.root, e.groups, keys, SHEETS, EXPLODE, null, { dir: [-0.9, 0.6, -1], fit: 1.2, minDist: 20 }, e.count);
+  const keys = Object.keys(SHEETS).filter((k) => e.order[k]);
+  let shown = null;
+  // 파트 5개 안의 부품을 하나씩 조립 (도면 순서). 고무줄은 다 조립된 뒤에 건다
+  const ad = detailAdapter(e.root, keys.map((k) => ({ no: k, name: SHEETS[k], holders: e.order[k] })), {
+    frameOpts: { dir: [-0.9, 0.6, -1], fit: 1.15, minDist: 20 }, count: e.count,
+    moduleDir: { '01': [0, -70, 0], '02': [0, -10, 150], '03': [0, 70, -120], '04': [0, 190, 40], '05': [-170, 20, 0] },
+    onPose(T) { const v = T >= ad.N - 0.001; if (v !== shown) { shown = v; e.showBands(v); } },
+  });
   ad.fn = gatlingFn(e);
   return ad;
 }
 
-// 기능: 주행 (M1 · M2) · 고각 (경첩 + 서포트 25) · 발사 (배럴 모터 M3: 1/4바퀴 = 1발)
+// 기능: 주행 (M1 · M2) · 고각 서보 (OUT1) · 발사 (배럴 모터 M3) · 고무줄 자동 장전
 function gatlingFn(e) {
-  const v = { drive: 'stop', aim: false };
-  const live = { tilt: 0 };
-  let dl = 0, dr = 0, yaw = 0, todo = 0;
+  const v = { drive: 'stop', aim: 0, auto: true, loop: false };
+  const live = { aim: 0 };
+  let dl = 0, dr = 0, yaw = 0, want = 0, budget = 0, shots = 0;
   const speed = 130 / 60 * Math.PI * 2 * WHEEL_R;
   const W = 130 / 60 * Math.PI * 2;                       // 배럴 각속도 (rad/s)
   return {
-    title: '주행 · 고무줄 발사',
+    title: '주행 · 고각 · 발사',
     items: [
       { type: 'seg', id: 'drive', label: '조종 (M1 · M2)', options: DRIVE5, wide: true },
-      { type: 'toggles', items: [{ id: 'aim', label: `사격 자세 (+${TILT_MAX.toFixed(1)}°, 서포트 25 추가)` }] },
-      { type: 'actions', items: [{ id: 'fire1', label: '1발', hot: true }, { id: 'fire4', label: '4발 연사', hot: true }, { id: 'reload', label: '고무줄 다시 걸기' }] },
+      { type: 'bar', id: 'aim', label: '고각 (서보)', min: 0, max: Math.floor(TILT_MAX), step: 1, fmt: (x) => `+${Math.round(x)}°` },
+      { type: 'actions', items: [{ id: 'fire1', label: '1발', hot: true }, { id: 'fire6', label: '6발 연사', hot: true }] },
+      { type: 'toggles', items: [{ id: 'auto', label: '고무줄 자동 장전' }, { id: 'loop', label: '계속 발사' }] },
     ],
     v,
     set(id, x) {
-      if (id === 'fire1') todo += Math.PI / 2;
-      else if (id === 'fire4') todo += Math.PI * 2;
-      else if (id === 'reload') { e.reload(); }
+      if (id === 'fire1') { want += 1; budget = Math.PI * 2.2; }
+      else if (id === 'fire6') { want += 6; budget = Math.PI * 4.2; }
       else v[id] = x;
     },
     update(dt) {
@@ -39,18 +45,22 @@ function gatlingFn(e) {
       const [l, r] = { stop: [0, 0], fwd: [1, 1], back: [-1, -1], left: [-1, 1], right: [1, -1] }[v.drive];
       if (l || r) { dl += l * speed * dt; dr += r * speed * dt; e.setWheels(-dl, -dr); moved = true; }
       if (v.drive === 'left' || v.drive === 'right') { yaw += (v.drive === 'left' ? 1 : -1) * dt * 0.7; e.root.rotation.y = yaw; }
-      const tt = v.aim ? TILT_MAX : 0;
-      if (Math.abs(tt - live.tilt) > 0.01) { live.tilt += Math.sign(tt - live.tilt) * Math.min(Math.abs(tt - live.tilt), dt * 25); e.setTilt(live.tilt); moved = true; }
-      if (todo > 1e-4) { const d = Math.min(todo, W * dt); todo -= d; e.spin(d); moved = true; }
+      if (Math.abs(v.aim - live.aim) > 0.01) { live.aim += Math.sign(v.aim - live.aim) * Math.min(Math.abs(v.aim - live.aim), dt * 20); e.setTilt(live.aim); moved = true; }
+      if (v.loop && v.auto) { want = Math.max(want, 1); budget = Math.PI * 2; }
+      if (want > 0 && budget > 0) {
+        const d = W * dt; budget -= d;
+        const n = e.spin(d, v.auto); shots += n; want -= n; moved = true;
+        if (want <= 0 || budget <= 0 || (!v.auto && e.loaded() === 0)) { want = 0; budget = 0; }
+      }
       if (e.flyBands(dt)) moved = true;
       return moved;
     },
     live,
-    stats: () => [['고무줄', `${e.loaded()} / 4`, e.loaded() ? 'ok' : 'bad'], ['고각', `+${live.tilt.toFixed(1)}°`]],
-    busy: () => todo > 1e-4,
+    stats: () => [['고무줄', `${e.loaded()} / 6`, e.loaded() ? 'ok' : 'bad'], ['쏜 수', `${shots}발`]],
+    busy: () => want > 0,
     exit() {
-      Object.assign(v, { drive: 'stop', aim: false });
-      live.tilt = 0; dl = dr = yaw = todo = 0;
+      Object.assign(v, { drive: 'stop', aim: 0, auto: true, loop: false });
+      live.aim = 0; dl = dr = yaw = want = budget = shots = 0;
       e.reset(); e.root.rotation.y = 0;
     },
   };

@@ -1,80 +1,109 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 1010" width="1260" height="1010" font-family="JetBrains Mono, 'Noto Sans KR', sans-serif"><defs><pattern id="g" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="#e3e8ef" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="#f6f8fb"/><rect x="14" y="14" width="1232" height="982" fill="none" stroke="#1d2230" stroke-width="1.2"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 1090" width="1260" height="1090" font-family="JetBrains Mono, 'Noto Sans KR', sans-serif"><defs><pattern id="g" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="#e3e8ef" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="#f6f8fb"/><rect x="14" y="14" width="1232" height="1062" fill="none" stroke="#1d2230" stroke-width="1.2"/>
 <rect x="14" y="14" width="1232" height="46" fill="#1d2230"/>
-<text x="28.0" y="44.0" font-size="13" fill="#9fb3d1" font-weight="700" text-anchor="start">썬더 개틀링 4연장 · 도면 06</text>
-<text x="270.8" y="44.0" font-size="17" fill="#ffffff" font-weight="700" text-anchor="start">작동 원리 (쐐기 격발 · 고각 · 참조 설계 대응표)</text>
-<text x="1232.0" y="44.0" font-size="10.5" fill="#c8d3e6" font-weight="400" text-anchor="end">모터 1개 → 배럴 회전 → 12시 고정 쐐기 → 고무줄 한 발씩</text>
+<text x="28.0" y="44.0" font-size="13" fill="#9fb3d1" font-weight="700" text-anchor="start">썬더 개틀링 6연장 · 도면 06</text>
+<text x="270.8" y="44.0" font-size="17" fill="#ffffff" font-weight="700" text-anchor="start">작동 원리 (쐐기 격발 · 서보 고각 · 무게 계산 · 대응표)</text>
+<text x="1232.0" y="76.0" font-size="10.5" fill="#5a6070" font-weight="400" text-anchor="end">모터 1개 → 배럴 회전 → 12시 고정 쐐기 → 고무줄 한 발씩</text>
 <text x="50.0" y="100.0" font-size="12.5" fill="#1d2230" font-weight="700" text-anchor="start">① 위에서 본 격발 (위 = 앞, 12시 배럴이 왼쪽으로 지나감)</text>
 <rect x="50" y="112" width="560" height="300" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>
-<rect x="248.4" y="222.12" width="163.2" height="10.88" fill="#2b2c30"/>
-<text x="418.4" y="229.6" font-size="9.5" fill="#3a4050" font-weight="400" text-anchor="start">뒤 로터</text>
-<rect x="320.65" y="233.0" width="18.7" height="34.0" fill="#c9ccd1" stroke="#1d2230"/>
-<text x="347.0" y="275.5" font-size="9.5" fill="#3a4050" font-weight="400" text-anchor="start">걸쇠 기둥 (서포트 10)</text>
-<rect x="319.29" y="267.0" width="21.419999999999998" height="5.44" fill="#9a9ca0"/>
+<rect x="231.4" y="226.88" width="197.2" height="5.44" fill="#2b2c30"/>
+<text x="435.4" y="233.0" font-size="9.5" fill="#3a4050" font-weight="400" text-anchor="start">뒤 로터 판</text>
+<rect x="320.65" y="232.32" width="18.7" height="34.0" fill="#c9ccd1" stroke="#1d2230"/>
+<text x="347.0" y="278.9" font-size="9.5" fill="#3a4050" font-weight="400" text-anchor="start">걸쇠 기둥 (서포트 10)</text>
+<rect x="319.29" y="266.32" width="21.419999999999998" height="5.44" fill="#9a9ca0"/>
 <polygon points="232.8,318.7 444.9,159.6 461.2,181.3 249.1,340.4" fill="#c8202b" fill-opacity=".55" stroke="#c8202b"/>
 <text x="153.2" y="314.6" font-size="10" fill="#c8202b" font-weight="700" text-anchor="start">쐐기 (소8 PCB) 36.9°</text>
 <circle cx="279.0" cy="301.0" r="5" fill="#fff" stroke="#c8202b" stroke-width="1.5"/>
 <circle cx="415.0" cy="199.0" r="5" fill="#fff" stroke="#c8202b" stroke-width="1.5"/>
-<path d="M 432.0 239.8 L 357.2 239.8" stroke="#2f7fe8" stroke-width="2.5" marker-end="url(#ar)"/>
-<text x="377.6" y="217.3" font-size="9.5" fill="#2f7fe8" font-weight="700" text-anchor="start">회전 (12시에서 −X)</text>
+<path d="M 432.0 243.2 L 357.2 243.2" stroke="#2f7fe8" stroke-width="2.5"/>
+<text x="370.8" y="235.2" font-size="9.5" fill="#2f7fe8" font-weight="700" text-anchor="start">회전 ←</text>
 <path d="M 340.2 243.2 L 309.6 277.2" stroke="#e8432a" stroke-width="2.5"/>
-<text x="166.8" y="256.8" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="start">고리가 뒤로 밀려</text>
-<text x="166.8" y="269.8" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="start">기둥 끝에서 벗겨짐</text>
-<text x="60.0" y="400.0" font-size="9.5" fill="#3a7bd5" font-weight="700" text-anchor="start">금속 기둥은 쐐기 아래 1.5 mm로 지나가고, 기둥에 걸린 고무줄 고리만 쐐기에 닿는다. 높이는 너트를 끼워 맞춘다.</text>
-<text x="650.0" y="100.0" font-size="12.5" fill="#1d2230" font-weight="700" text-anchor="start">② 옆에서 본 고각 (왼쪽 = 앞) — 장전 0° / 사격 +14.5°</text>
-<rect x="650" y="112" width="560" height="300" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>
-<line x1="650" y1="390" x2="1210" y2="390" stroke="#8a919c" stroke-width="1.5"/>
-<rect x="827.55" y="343.5" width="244.9" height="2.2" fill="#2b2c30"/>
-<circle cx="857.0" cy="328.0" r="62.0" fill="none" stroke="#5a6070"/>
-<circle cx="1027.5" cy="328.0" r="62.0" fill="none" stroke="#5a6070"/>
-<rect x="1048.75" y="281.5" width="4" height="62.0" fill="#c9ccd1" stroke="#1d2230"/>
-<circle cx="1050.75" cy="273.75" r="4" fill="#f2c21b" stroke="#1d2230"/>
-<text x="1058.8" y="277.8" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">경첩</text>
-<line x1="1057.0" y1="273.8" x2="812.0" y2="273.8" stroke="#5a6070" stroke-width="3" stroke-opacity=".85"/>
-<line x1="1019.8" y1="226.3" x2="838.4" y2="226.3" stroke="#5a6070" stroke-width="12.3" stroke-opacity=".5"/>
-<text x="808.4" y="214.3" font-size="10" fill="#5a6070" font-weight="700" text-anchor="start">장전 (수평)</text>
-<line x1="895.75" y1="343.5" x2="895.75" y2="273.8" stroke="#5a6070" stroke-width="3" stroke-dasharray="0"/>
-<line x1="1056.8" y1="275.3" x2="819.6" y2="214.1" stroke="#e8432a" stroke-width="3" stroke-opacity=".85"/>
-<line x1="1032.6" y1="220.1" x2="857.0" y2="174.7" stroke="#e8432a" stroke-width="12.3" stroke-opacity=".5"/>
-<text x="827.0" y="162.7" font-size="10" fill="#e8432a" font-weight="700" text-anchor="start">사격 +14.5°</text>
-<line x1="895.75" y1="343.5" x2="895.75" y2="235.0" stroke="#e8432a" stroke-width="3" stroke-dasharray="5 3"/>
-<text x="795.8" y="315.6" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">앞 받침 25 + 20</text>
-<text x="795.8" y="328.6" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="start">(+ 25 = 사격)</text>
-<text x="660.0" y="400.0" font-size="9.5" fill="#3a7bd5" font-weight="700" text-anchor="start">sin⁻¹(25 / 100) = 14.5° · 고무줄은 12시 (맨 위 배럴)에서만 떠나므로 탄착이 한곳에 모인다.</text>
-<text x="50.0" y="440.0" font-size="12.5" fill="#1d2230" font-weight="700" text-anchor="start">③ 참조 설계 (PROBO 6연장) → 로보로보 부품으로 옮긴 방법</text>
-<rect x="50" y="454" width="1160" height="22" fill="#1d2230"/>
-<text x="60.0" y="469.0" font-size="10" fill="#fff" font-weight="700" text-anchor="start">기능</text>
-<text x="140.0" y="469.0" font-size="10" fill="#fff" font-weight="700" text-anchor="start">참조 설계</text>
-<text x="520.0" y="469.0" font-size="10" fill="#fff" font-weight="700" text-anchor="start">이 설계 (우리 부품)</text>
-<rect x="50" y="476" width="1160" height="36" fill="#eef2f7"/>
-<text x="60.0" y="491.0" font-size="10.5" fill="#e8432a" font-weight="700" text-anchor="start">동력</text>
-<text x="140.0" y="491.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">DC 모터 + 10T:50T 평기어 (1:5 감속, 약 55 rpm)</text>
-<text x="520.0" y="491.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">기어 부품이 없음 → 감속기가 든 DC 130rpm 모터를 로터에 바로 연결. 속도는 켜는 시간으로 조절 (0.12초 = 1발)</text>
-<text x="60.0" y="527.0" font-size="10.5" fill="#e8432a" font-weight="700" text-anchor="start">배럴</text>
-<text x="140.0" y="527.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">6연장 · PCD 56 · 금속 축 + 지지 원판 3장</text>
-<text x="520.0" y="527.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">4연장 · PCD 40 · 서포트를 이어 만든 배럴 + 소5 PCB 십자 로터 2장 (구멍 격자가 네모라 60° 간격이 안 됨 → 90° 간격 4개)</text>
-<rect x="50" y="548" width="1160" height="36" fill="#eef2f7"/>
-<text x="60.0" y="563.0" font-size="10.5" fill="#e8432a" font-weight="700" text-anchor="start">고정 축</text>
-<text x="140.0" y="563.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">비회전 중심 샤프트 Ø4 위에서 원판이 회전</text>
-<text x="520.0" y="563.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">뒤는 모터 축이 돌리고, 앞은 75 mm 축 (L자에 고정)이 로터 가운데 구멍을 받침</text>
-<text x="60.0" y="599.0" font-size="10.5" fill="#e8432a" font-weight="700" text-anchor="start">총구</text>
-<text x="140.0" y="599.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">원추형 테이퍼 노즐 캡</text>
-<text x="520.0" y="599.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">캡너트 (둥근 끝)</text>
-<rect x="50" y="620" width="1160" height="36" fill="#eef2f7"/>
-<text x="60.0" y="635.0" font-size="10.5" fill="#e8432a" font-weight="700" text-anchor="start">걸쇠</text>
-<text x="140.0" y="635.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">후방 걸쇠 링 (턱 3 mm)</text>
-<text x="520.0" y="635.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">로터 뒤로 나온 서포트 10 + 볼트 머리 턱</text>
-<text x="60.0" y="671.0" font-size="10.5" fill="#e8432a" font-weight="700" text-anchor="start">격발</text>
-<text x="140.0" y="671.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">12시 고정 38° 쐐기가 고리를 앞으로 3.5 mm 밀어 냄</text>
-<text x="520.0" y="671.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">12시 고정 36.9° 쐐기 (소8 PCB, 구멍 40 × 30)가 고리를 뒤로 10 mm 밀어 기둥 끝에서 벗김</text>
-<rect x="50" y="692" width="1160" height="36" fill="#eef2f7"/>
-<text x="60.0" y="707.0" font-size="10.5" fill="#e8432a" font-weight="700" text-anchor="start">고각</text>
-<text x="140.0" y="707.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">+14.04° 고정 트러스 (지주 80 / 110, 스팬 120)</text>
-<text x="520.0" y="707.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">경첩 + 앞 받침: 서포트 25를 더하면 +14.5°, 빼면 수평 (장전 자세)</text>
-<text x="60.0" y="743.0" font-size="10.5" fill="#e8432a" font-weight="700" text-anchor="start">차체</text>
-<text x="140.0" y="743.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">4륜 + 배터리 밸러스트 (구동 없음)</text>
-<text x="520.0" y="743.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">4륜 (뒤 2 구동) + 가운데 배터리. 블루투스로 움직이며 쏨</text>
-<text x="50.0" y="790.0" font-size="12.5" fill="#1d2230" font-weight="700" text-anchor="start">④ 조립 뒤 맞추기 (참조 설계의 체크리스트를 우리 부품에 맞게)</text>
-<text x="60.0" y="808.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">• 고무줄이 안 빠지고 같이 돈다 → 쐐기가 높다. 쐐기 내림 서포트 아래에 너트를 1개씩 끼워 내린다 (걸쇠 기둥 위 1 ~ 1.5 mm).</text>
-<text x="60.0" y="822.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">• 쐐기에 걸쇠 기둥이 부딪혀 멈춘다 → 쐐기가 낮다. 너트를 빼거나, 12시 배럴을 손으로 돌려 명함 2장 틈을 확인한다.</text>
-<text x="60.0" y="836.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">• 고무줄끼리 엉킨다 → 4발만 걸고, 마주 보는 순서 (오른 → 왼 → 위 → 아래)로 걸어 한쪽으로 쏠리지 않게 한다.</text>
-<text x="60.0" y="850.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">• 한 번에 여러 발이 나간다 → 모터 켜는 시간을 0.12초로 줄인다 (프로그램). 130 rpm이면 1초에 약 8.7발이다.</text></svg>
+<text x="160.0" y="256.8" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="start">고리가 뒤로 밀려</text>
+<text x="160.0" y="269.8" font-size="9.5" fill="#e8432a" font-weight="700" text-anchor="start">기둥 끝에서 벗겨짐</text>
+<text x="60.0" y="400.0" font-size="9.5" fill="#3a7bd5" font-weight="700" text-anchor="start">금속 기둥은 쐐기 아래 약 1.5 mm로 지나가고, 기둥에 걸린 고무줄 고리만 쐐기에 닿는다. 높이는 너트를 끼워 맞춘다.</text>
+<text x="650.0" y="100.0" font-size="12.5" fill="#1d2230" font-weight="700" text-anchor="start">② 로터 (반지름 25 구멍 6개)</text>
+<rect x="650" y="112" width="260" height="300" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>
+<rect x="704.6" y="161.6" width="150.8" height="202.8" rx="4" fill="#2b2c30" opacity=".9"/>
+<circle cx="780" cy="250" r="65.0" fill="none" stroke="#f2c21b" stroke-dasharray="4 3"/>
+<circle cx="845.0" cy="250.0" r="7.54" fill="#c9ccd1" stroke="#fff"/>
+<text x="869.7" y="254.0" font-size="9" fill="#1d2230" font-weight="700" text-anchor="middle">3시</text>
+<circle cx="819.0" cy="198.0" r="7.54" fill="#c9ccd1" stroke="#fff"/>
+<text x="833.8" y="182.2" font-size="9" fill="#1d2230" font-weight="700" text-anchor="middle">1시</text>
+<circle cx="741.0" cy="198.0" r="7.54" fill="#c9ccd1" stroke="#fff"/>
+<text x="726.2" y="182.2" font-size="9" fill="#1d2230" font-weight="700" text-anchor="middle">11시</text>
+<circle cx="715.0" cy="250.0" r="7.54" fill="#c9ccd1" stroke="#fff"/>
+<text x="690.3" y="254.0" font-size="9" fill="#1d2230" font-weight="700" text-anchor="middle">9시</text>
+<circle cx="741.0" cy="302.0" r="7.54" fill="#c9ccd1" stroke="#fff"/>
+<text x="726.2" y="325.8" font-size="9" fill="#1d2230" font-weight="700" text-anchor="middle">7시</text>
+<circle cx="819.0" cy="302.0" r="7.54" fill="#c9ccd1" stroke="#fff"/>
+<text x="833.8" y="325.8" font-size="9" fill="#1d2230" font-weight="700" text-anchor="middle">5시</text>
+<circle cx="780" cy="276.0" r="4.680000000000001" fill="#f2c21b"/>
+<circle cx="780" cy="224.0" r="4.680000000000001" fill="#f2c21b"/>
+<circle cx="780" cy="250" r="3" fill="#fff"/>
+<text x="658.0" y="400.0" font-size="9.5" fill="#3a7bd5" font-weight="700" text-anchor="start">25² = 15² + 20² · 노랑 = 허브 볼트 2</text>
+<text x="930.0" y="100.0" font-size="12.5" fill="#1d2230" font-weight="700" text-anchor="start">③ 서보 고각 0° ~ +15.9°</text>
+<rect x="930" y="112" width="280" height="300" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>
+<rect x="934" y="390.0" width="272" height="2.4" fill="#2b2c30"/>
+<rect x="1158.75" y="328.0" width="4" height="62.0" fill="#c9ccd1" stroke="#1d2230"/>
+<circle cx="1060.0" cy="345.05" r="23.25" fill="#fff" stroke="#1d2230"/>
+<text x="1014.0" y="385.1" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">서보 크랭크</text>
+<line x1="1166.9" y1="320.2" x2="984.1" y2="320.4" stroke="#5a6070" stroke-width="3" stroke-opacity=".85"/>
+<line x1="1071.7" y1="355.2" x2="1060.0" y2="326.5" stroke="#5a6070" stroke-width="2.5"/><circle cx="1071.7" cy="355.2" r="3.5" fill="#f2c21b" stroke="#1d2230"/><circle cx="1060.0" cy="326.5" r="3.5" fill="#f2c21b" stroke="#1d2230"/>
+<line x1="1129.7" y1="226.3" x2="987.1" y2="226.5" stroke="#5a6070" stroke-width="14" stroke-opacity=".35"/>
+<line x1="1166.7" y1="321.9" x2="990.8" y2="271.8" stroke="#e8432a" stroke-width="3" stroke-opacity=".85"/>
+<line x1="1060.0" y1="329.6" x2="1062.2" y2="298.6" stroke="#e8432a" stroke-width="2.5"/><circle cx="1060.0" cy="329.6" r="3.5" fill="#f2c21b" stroke="#1d2230"/><circle cx="1062.2" cy="298.6" r="3.5" fill="#f2c21b" stroke="#1d2230"/>
+<line x1="1156.7" y1="221.4" x2="1019.5" y2="182.4" stroke="#e8432a" stroke-width="14" stroke-opacity=".35"/>
+<circle cx="1160.75" cy="320.25" r="4" fill="#f2c21b" stroke="#1d2230"/>
+<text x="1150.8" y="312.2" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">경첩</text>
+<text x="938.0" y="400.0" font-size="9.5" fill="#3a7bd5" font-weight="700" text-anchor="start">크랭크 131° 회전 = 0° → +15.9°</text>
+<text x="50.0" y="440.0" font-size="12.5" fill="#1d2230" font-weight="700" text-anchor="start">④ 고각 서보가 들 수 있는 무게인가</text>
+<rect x="50" y="454" width="1160" height="24" fill="#eef2f7"/>
+<text x="60.0" y="470.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">포탑 무게 (포탑 판 + 배럴 구동부 + 쐐기)</text>
+<text x="330.0" y="470.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">약 289 g (서포트 0.12 g/mm · 볼트 · 고무줄 12% 포함, 추정)</text>
+<text x="60.0" y="494.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">무게 중심</text>
+<text x="330.0" y="494.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">경첩에서 앞으로 43 mm → 경첩 둘레 1.24 kg·cm</text>
+<rect x="50" y="502" width="1160" height="24" fill="#eef2f7"/>
+<text x="60.0" y="518.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">링크가 받는 힘</text>
+<text x="330.0" y="518.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">1.24 kg·cm ÷ 6.5 cm (경첩 ~ 링크) = 0.19 kgf</text>
+<text x="60.0" y="542.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">서보 축 토크</text>
+<text x="330.0" y="542.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">0.19 kgf × 크랭크 1.0 cm = 0.19 kg·cm (크랭크가 수평일 때 최대)</text>
+<rect x="50" y="550" width="1160" height="24" fill="#eef2f7"/>
+<text x="60.0" y="566.0" font-size="10.5" fill="#e8432a" font-weight="700" text-anchor="start">판정</text>
+<text x="330.0" y="566.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">서보 4 kg·cm의 5% → 약 21배 여유. 맨 아래 · 맨 위에서는 크랭크와 링크가 일직선이라 서보 힘 없이도 버틴다.</text>
+<text x="50.0" y="598.0" font-size="12.5" fill="#1d2230" font-weight="700" text-anchor="start">⑤ 참조 설계 (PROBO 6연장) → 로보로보 부품으로 옮긴 방법</text>
+<rect x="50" y="612" width="1160" height="22" fill="#1d2230"/>
+<text x="60.0" y="627.0" font-size="10" fill="#fff" font-weight="700" text-anchor="start">기능</text>
+<text x="140.0" y="627.0" font-size="10" fill="#fff" font-weight="700" text-anchor="start">참조 설계</text>
+<text x="520.0" y="627.0" font-size="10" fill="#fff" font-weight="700" text-anchor="start">이 설계 (우리 부품)</text>
+<rect x="50" y="634" width="1160" height="34" fill="#eef2f7"/>
+<text x="60.0" y="649.0" font-size="10.5" fill="#e8432a" font-weight="700" text-anchor="start">동력</text>
+<text x="140.0" y="649.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">DC 모터 + 10T:50T 평기어 (1:5 감속, 약 55 rpm)</text>
+<text x="520.0" y="649.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">기어 부품이 없음 → 감속기가 든 DC 130rpm 모터를 로터에 바로 연결. 켜는 시간으로 조절</text>
+<text x="60.0" y="683.0" font-size="10.5" fill="#e8432a" font-weight="700" text-anchor="start">배럴</text>
+<text x="140.0" y="683.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">6연장 · PCD 56 · 금속 축 + 지지 원판 3장</text>
+<text x="520.0" y="683.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">6연장 · PCD 50 · 서포트를 이어 만든 배럴 + 하프 PCB 로터 2장 (반지름 25가 정확히 같은 구멍 6개)</text>
+<rect x="50" y="702" width="1160" height="34" fill="#eef2f7"/>
+<text x="60.0" y="717.0" font-size="10.5" fill="#e8432a" font-weight="700" text-anchor="start">고정 축</text>
+<text x="140.0" y="717.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">비회전 중심 샤프트 Ø4 위에서 원판이 회전</text>
+<text x="520.0" y="717.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">뒤는 모터 축이 돌리고, 앞은 75 mm 축 (L자에 고정)이 로터 가운데 구멍을 받침</text>
+<text x="60.0" y="751.0" font-size="10.5" fill="#e8432a" font-weight="700" text-anchor="start">총구</text>
+<text x="140.0" y="751.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">원추형 테이퍼 노즐 캡</text>
+<text x="520.0" y="751.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">캡너트 (둥근 끝)</text>
+<rect x="50" y="770" width="1160" height="34" fill="#eef2f7"/>
+<text x="60.0" y="785.0" font-size="10.5" fill="#e8432a" font-weight="700" text-anchor="start">걸쇠</text>
+<text x="140.0" y="785.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">후방 걸쇠 링 (턱 3 mm)</text>
+<text x="520.0" y="785.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">로터 뒤로 나온 서포트 10 + 볼트 머리 턱</text>
+<text x="60.0" y="819.0" font-size="10.5" fill="#e8432a" font-weight="700" text-anchor="start">격발</text>
+<text x="140.0" y="819.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">12시 고정 38° 쐐기가 고리를 앞으로 3.5 mm 밀어 냄</text>
+<text x="520.0" y="819.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">12시 고정 36.9° 쐐기 (소8 PCB)가 고리를 뒤로 10 mm 밀어 기둥 끝에서 벗김</text>
+<rect x="50" y="838" width="1160" height="34" fill="#eef2f7"/>
+<text x="60.0" y="853.0" font-size="10.5" fill="#e8432a" font-weight="700" text-anchor="start">고각</text>
+<text x="140.0" y="853.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">+14.04° 고정 트러스</text>
+<text x="520.0" y="853.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">경첩 + 서보 크랭크 · 링크: 0° ~ +15.9°를 모터로 조절</text>
+<text x="60.0" y="887.0" font-size="10.5" fill="#e8432a" font-weight="700" text-anchor="start">차체</text>
+<text x="140.0" y="887.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">4륜 + 배터리 밸러스트 (구동 없음)</text>
+<text x="520.0" y="887.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">4륜 (뒤 2 구동) + 배터리. 블루투스로 움직이며 쏨</text>
+<text x="50.0" y="932.0" font-size="12.5" fill="#1d2230" font-weight="700" text-anchor="start">⑥ 조립 뒤 맞추기</text>
+<text x="60.0" y="950.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">• 고무줄이 안 빠지고 같이 돈다 → 쐐기가 높다. 쐐기 내림 서포트 위에 너트를 1개씩 끼워 내린다 (걸쇠 기둥 위 1 ~ 1.5 mm).</text>
+<text x="60.0" y="964.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">• 쐐기에 걸쇠 기둥이 부딪혀 멈춘다 → 쐐기가 낮다. 너트를 빼고, 12시 배럴을 손으로 돌려 명함 2장 틈을 확인한다.</text>
+<text x="60.0" y="978.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">• 배럴 간격이 53° · 53° · 74°라 1발 시간이 조금 다르다 → 프로그램에서 0.07초 · 0.07초 · 0.09초 순서로 켠다 (130 rpm 기준).</text>
+<text x="60.0" y="992.0" font-size="9.5" fill="#1d2230" font-weight="400" text-anchor="start">• 고무줄은 마주 보는 순서 (3시 → 9시 → 1시 → 7시 → 11시 → 5시)로 걸어 한쪽으로 쏠리지 않게 한다.</text></svg>
