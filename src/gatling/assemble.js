@@ -3,13 +3,12 @@ import { loadModules, makeHolder } from '../eagle/assemble.js';
 import ASSEMBLY, { GUN } from './assembly.js';
 
 // "썬더 개틀링 6연장" 조립 (도면: gatling/BLUEPRINT.md · tools/gatling_blueprint.py)
-// 움직이는 곳: 바퀴 4 (X축), 배럴 로터 (총열 축 = Z, 12시에서 −X 쪽으로), 포탑 고각 (경첩 축 X · 서보 크랭크 + 링크), 고무줄 6 (12시 쐐기에서 발사 · 6시에서 자동 장전)
+// 움직이는 곳: 바퀴 4 (X축), 배럴 로터 (총열 축 = Z, 12시에서 −X 쪽으로), 포탑 고각 (경첩 축 X · 서보 크랭크 + 링크), 고무줄 6 (12시 쐐기에서 발사 · 날아간 뒤 자동으로 다시 걸림)
 
 const DEG = Math.PI / 180;
 export const WHEEL_R = 40;
 export const TILT_MAX = GUN.tilt;
 const FIRE_AT = Math.PI / 2 + 0.22;          // 12시를 조금 지나 쐐기가 고리를 벗기는 각도
-const LOAD_AT = -Math.PI / 2;                 // 6시: 자동 장전 자리
 const BAND_SPEED = 1400;
 const TWO_PI = Math.PI * 2;
 
@@ -90,7 +89,9 @@ export async function buildGatling(loadPart, onProgress) {
   }
   // 로터를 d (라디안)만큼 돌린다. 12시 쐐기를 지나는 장전된 배럴은 발사, 6시를 지나는 빈 배럴은 자동 장전 (auto일 때)
   const crossed = (a0, before, after, at) => Math.floor((a0 + after - at) / TWO_PI) > Math.floor((a0 + before - at) / TWO_PI);
+  let autoLoad = true;
   function spin(d, auto = true) {
+    autoLoad = auto;
     let fired = 0;
     const before = phi; phi += d;
     rotor.rotation.z = phi;
@@ -100,9 +101,6 @@ export async function buildGatling(loadPart, onProgress) {
         const pv = pivots['03'];
         pv.updateMatrixWorld(true); b.m.getWorldPosition(tmp); pv.worldToLocal(tmp);
         pv.add(b.m); b.m.position.copy(tmp); b.m.rotation.set(0, 0, 0); b.m.scale.set(1, 1, 1); b.m.visible = true;
-      } else if (auto && !b.loaded && b.fly < 0 && crossed(b.a0, before, phi, LOAD_AT)) {
-        b.loaded = true; b.grow = 0;
-        rotor.add(b.m); b.m.position.copy(b.home); b.m.rotation.set(0, 0, 0); b.m.visible = true;
       }
     }
     return fired;
@@ -114,7 +112,10 @@ export async function buildGatling(loadPart, onProgress) {
         b.fly += dt; moving = true;
         b.m.position.z -= BAND_SPEED * dt; b.m.position.y -= 120 * b.fly * dt;
         b.m.scale.z = Math.max(0.35, 1 - b.fly * 2.2);
-        if (b.fly > 0.7) { b.fly = -1; b.m.visible = false; }
+        if (b.fly > 0.7) {
+          b.fly = -1; b.m.visible = false;
+          if (autoLoad) { b.loaded = true; b.grow = 0; rotor.add(b.m); b.m.position.copy(b.home); b.m.rotation.set(0, 0, 0); b.m.scale.set(1, 1, 0.05); b.m.visible = true; }   // 자동 장전
+        }
       } else if (b.loaded && b.grow < 1) {       // 새로 걸리는 고무줄: 총구에서 걸쇠까지 늘어남
         b.grow = Math.min(1, b.grow + dt * 5); moving = true;
         b.m.scale.z = Math.max(0.05, b.grow); b.m.position.z = b.home.z - 47 * (1 - b.grow);
