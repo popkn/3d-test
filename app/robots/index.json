@@ -12,12 +12,12 @@
     },
     {
       "id": "bot",
-      "name": "배틀로봇 썬더 웨지",
+      "name": "배틀로봇 썬더 웨지 V2",
       "mods": 6,
       "file": "bot.js",
-      "version": "8115074c9d",
-      "size": 118750,
-      "parts": 40
+      "version": "496e1a4d06da",
+      "size": 184760,
+      "parts": 43
     },
     {
       "id": "train",
