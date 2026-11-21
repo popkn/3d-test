@@ -24,7 +24,7 @@ const opts = { labels: true, dims: true, spin: false };
 
 // 목록
 const nav = document.getElementById('parts');
-nav.innerHTML = `<a href="#gatling" data-id="gatling" class="all"><b>🎯 썬더 개틀링 6연장 v3 (완성품)</b><small>4륜 전원 모터 · 무관통 격발 메커니즘 확대 학습 · 완전 분해</small></a><a href="#gatling-build" data-id="gatling-build" class="all"><b>🔧 개틀링 단계별 조립 (세분화+메커니즘)</b><small>1부품·1체결 350단계 · 격발 메커니즘 자동 확대 학습</small></a><a href="#eagle" data-id="eagle" class="all"><b>🦅 독수리 조립 (설계도면)</b><small>부품으로 조립한 독수리 · 날갯짓 · 분해 보기</small></a><a href="#battlebot" data-id="battlebot" class="all"><b>⚔ 배틀로봇 썬더 웨지</b><small>무한궤도 · 스피너 · 들어올림 웨지</small></a><a href="#train" data-id="train" class="all"><b>🚂 협동 기차 하나로 열차</b><small>3칸 · 칸마다 CPU · 3명이 따로 조종</small></a><a href="#stage-eagle" data-id="stage-eagle" class="all"><b>🔧 독수리 파트별 조립</b><small>받침대 · 다리 · 몸통 · 얼굴 · 날개 · 꼬리 → 연결 · 분해</small></a><a href="#stage-battlebot" data-id="stage-battlebot" class="all"><b>🔧 배틀로봇 파트별 조립</b><small>섀시 · 구동부 · 무기 · 웨지 · 상판 · 장갑 → 연결 · 분해</small></a><a href="#stage-train" data-id="stage-train" class="all"><b>🔧 기차 파트별 조립</b><small>칸마다 차대 · 차체 → 연결봉 · 분해</small></a><a href="#train-build" data-id="train-build" class="all"><b>🔧 기차 단계별 조립 (모듈 작업대)</b><small>부품 하나씩 · 모듈은 따로 조립 후 끼우기</small></a><a href="#all" data-id="all" class="all"><b>▦ 전체 펼쳐보기</b><small>${catalog.length}개 부품 · 실제 크기로 한 화면에</small></a>` + categories.map(([cat, title]) => `
+nav.innerHTML = `<a href="#gatling" data-id="gatling" class="all"><b>🎯 썬더 개틀링 6연장 v3 (완성품)</b><small>4륜 전원 모터 · 원형 고무줄 탄성 격발 · 거치/격발 테스트</small></a><a href="#gatling-build" data-id="gatling-build" class="all"><b>🔧 개틀링 단계별 조립 (세분화+테스트)</b><small>1부품·1체결 352단계 · 거치/격발 테스트(배경 반투명) 내장</small></a><a href="#eagle" data-id="eagle" class="all"><b>🦅 독수리 조립 (설계도면)</b><small>부품으로 조립한 독수리 · 날갯짓 · 분해 보기</small></a><a href="#battlebot" data-id="battlebot" class="all"><b>⚔ 배틀로봇 썬더 웨지</b><small>무한궤도 · 스피너 · 들어올림 웨지</small></a><a href="#train" data-id="train" class="all"><b>🚂 협동 기차 하나로 열차</b><small>3칸 · 칸마다 CPU · 3명이 따로 조종</small></a><a href="#stage-eagle" data-id="stage-eagle" class="all"><b>🔧 독수리 파트별 조립</b><small>받침대 · 다리 · 몸통 · 얼굴 · 날개 · 꼬리 → 연결 · 분해</small></a><a href="#stage-battlebot" data-id="stage-battlebot" class="all"><b>🔧 배틀로봇 파트별 조립</b><small>섀시 · 구동부 · 무기 · 웨지 · 상판 · 장갑 → 연결 · 분해</small></a><a href="#stage-train" data-id="stage-train" class="all"><b>🔧 기차 파트별 조립</b><small>칸마다 차대 · 차체 → 연결봉 · 분해</small></a><a href="#train-build" data-id="train-build" class="all"><b>🔧 기차 단계별 조립 (모듈 작업대)</b><small>부품 하나씩 · 모듈은 따로 조립 후 끼우기</small></a><a href="#all" data-id="all" class="all"><b>▦ 전체 펼쳐보기</b><small>${catalog.length}개 부품 · 실제 크기로 한 화면에</small></a>` + categories.map(([cat, title]) => `
   <h3>${title}</h3>
   ${catalog.filter((p) => p.category === cat).map((p) => `
     <a href="#${p.id}" data-id="${p.id}"><b>${p.name}</b><small>${p.size.x} × ${p.size.z} × ${p.size.y} mm${p.size.estimated ? ' · 추정' : ''}</small></a>`).join('')}
@@ -324,44 +324,73 @@ function stagedFunction(e) {
   };
 }
 
-// 썬더 개틀링 6연장 v3 (완성품): 4륜 전원 모터 · 서보 고각 · 무관통 6연장 격발 · 메커니즘 확대 학습 · 완전 분해
+// 썬더 개틀링 6연장 v3 (완성품): 4륜 전원 모터 · 서보 고각 · 원형 고무줄 탄성 격발 · 거치/격발 테스트(배경 반투명) · 완전 분해
 let gatling = null;
 function gatlingFunction(e) {
-  const st = { drive: 'stop', aim: 0, liveAim: 0, auto: true, loop: false, slow: false, explode: 0, bolts: true, guides: true, dl: 0, dr: 0, yaw: 0, want: 0, budget: 0, shots: 0, camGoal: null };
+  const st = { drive: 'stop', aim: 0, liveAim: 0, auto: true, loop: false, slow: false, testMode: 'normal', testPhase: 0, testInfo: null, explode: 0, bolts: true, guides: true, dl: 0, dr: 0, yaw: 0, want: 0, budget: 0, shots: 0, camGoal: null };
   const speed = 130 / 60 * Math.PI * 2 * GAT_WHEEL_R;
   const W = 220 / 60 * Math.PI * 2;
-  e.showBolts(true); e.setGuides(true); e.setExplode(0);
+  const stageById = new Map((e.testStages || []).map((t) => [t.id, t]));
+  e.showBolts(true); e.setGuides(true); e.setExplode(0); e.updateTestMode(null);
   panel.ui.controls([
+    {
+      type: 'select', id: 'testMode', label: '🧪 메커니즘 테스트 (배경 반투명 격리)',
+      options: [
+        ['normal', '일반 완성품 (전체 100% 불투명)'],
+        ['hook', '① 원형 고무줄 거치·당김 테스트 (배경 반투명)'],
+        ['trigger', '② 12시 36.9° 쐐기 격발·탄성 발사 테스트 (배경 반투명)'],
+      ],
+      value: 'normal',
+    },
     { type: 'select', id: 'drive', label: '4륜 전원 구동 (M1~M4)', options: [['stop', '정지'], ['fwd', '전진'], ['back', '후진'], ['left', '왼쪽 회전'], ['right', '오른쪽 회전']], value: 'stop' },
     { type: 'slider', id: 'aim', label: '고각 (서보 OUT1)', min: 0, max: Math.floor(GAT_TILT_MAX), step: 1, value: 0, unit: '°' },
-    { type: 'button', id: 'fire1', label: '🎯 1발 발사 (DC 400 · EX-M1)' },
+    { type: 'button', id: 'fire1', label: '🎯 1발 발사 (원형 고무줄 탄성 비행)' },
     { type: 'button', id: 'fire6', label: '🔥 6발 연사' },
-    { type: 'toggle', id: 'slow', label: '슬로우모션 (12시 쐐기 이탈 관찰)', value: false },
-    { type: 'button', id: 'zoomMech', label: '🔍 격발 메커니즘 확대 보기 (12시 트리거 학습)' },
+    { type: 'toggle', id: 'slow', label: '슬로우모션 (탄성·12시 쐐기 관찰)', value: false },
     { type: 'button', id: 'zoomAll', label: '🔄 로봇 전체 보기' },
-    { type: 'toggle', id: 'auto', label: '고무줄 자동 장전', value: true },
+    { type: 'toggle', id: 'auto', label: '원형 고무줄 자동 장전', value: true },
     { type: 'toggle', id: 'loop', label: '계속 발사', value: false },
     { type: 'slider', id: 'explode', label: '분해 보기 (모든 부품 · 볼트 · 너트 · 캡너트)', min: 0, max: 1, step: 0.01, value: 0 },
     { type: 'toggle', id: 'bolts', label: '볼트 · 너트 · 캡너트 보기 (분해 시 자동 포함)', value: true },
     { type: 'toggle', id: 'guides', label: '분해 가이드선 보기', value: true },
     ...Object.entries(GAT_SHEETS).map(([no, t]) => ({ type: 'toggle', id: 'g' + no, label: `${no} ${t.split(' (')[0]}`, value: true, compact: true })),
   ]);
-  panel.ui.readouts([['parts', '실체 배치'], ['mech', '격발 메커니즘'], ['aim', '포탑 고각'], ['ammo', '고무줄'], ['state', '상태']]);
-  const mc = GAT_GUN.mechCam || { pos: [75, 195, -52], target: [0, 174, -36] };
+  panel.ui.readouts([['parts', '실체 배치'], ['mech', '메커니즘 / 테스트 원리'], ['aim', '포탑 고각'], ['ammo', '원형 고무줄'], ['state', '상태']]);
+  const testSelect = () => [...document.querySelectorAll('.p-controls label')].find((l) => l.textContent.includes('메커니즘 테스트'))?.querySelector('select');
+  const exitTest = () => {
+    if (st.testMode === 'normal') return;
+    st.testMode = 'normal'; st.testPhase = 0; st.testInfo = null;
+    e.updateTestMode(null);
+    const el = testSelect(); if (el) el.value = 'normal';
+  };
   return {
     onControl(id, v) {
       if (id.startsWith('g')) e.setHidden(id.slice(1), !v);
-      else if (id === 'fire1') { st.want += 1; st.budget = Math.PI * 2.2; }
-      else if (id === 'fire6') { st.want += 6; st.budget = Math.PI * 4.2; }
-      else if (id === 'zoomMech') {
-        st.camGoal = { pos: new THREE.Vector3(...mc.pos), target: new THREE.Vector3(...mc.target) };
-        st.slow = true;
-      } else if (id === 'zoomAll') {
+      else if (id === 'testMode') {
+        if (v === 'normal') {
+          exitTest();
+          st.camGoal = null;
+          e.root.updateMatrixWorld(true);
+          view.frame(partBounds(e.root), { dir: [-0.9, 0.6, -1], fit: 1.15, minDist: 20 });
+        } else {
+          st.testMode = v; st.testPhase = 0; st.want = 0; st.budget = 0; st.drive = 'stop';
+          st.explode = 0; e.setExplode(0);
+          st.testInfo = e.updateTestMode(v, 0);
+          const ts = stageById.get(v);
+          if (ts?.cam) st.camGoal = { pos: new THREE.Vector3(...ts.cam.pos), target: new THREE.Vector3(...ts.cam.target) };
+        }
+      } else if (id === 'fire1') { exitTest(); st.want += 1; st.budget = Math.PI * 2.2; }
+      else if (id === 'fire6') { exitTest(); st.want += 6; st.budget = Math.PI * 4.2; }
+      else if (id === 'zoomAll') {
+        exitTest();
         st.camGoal = null;
         e.root.updateMatrixWorld(true);
         view.frame(partBounds(e.root), { dir: [-0.9, 0.6, -1], fit: 1.15, minDist: 20 });
-      } else if (id === 'explode') { st.explode = Number(v); e.setExplode(st.explode); }
-      else if (id === 'bolts') { st.bolts = v; e.showBolts(v); }
+      } else if (id === 'explode') {
+        st.explode = Number(v);
+        if (st.explode > 0.005) exitTest();
+        e.setExplode(st.explode);
+      } else if (id === 'bolts') { st.bolts = v; e.showBolts(v); }
       else if (id === 'guides') { st.guides = v; e.setGuides(v); }
       else if (id === 'aim') st.aim = Number(v);
       else st[id] = v;
@@ -374,7 +403,10 @@ function gatlingFunction(e) {
         view.controls.target.lerp(st.camGoal.target, k);
         if (view.camera.position.distanceTo(st.camGoal.pos) < 0.8) st.camGoal = null;
       }
-      if (st.explode < 0.005) {
+      if (st.testMode !== 'normal' && st.explode < 0.005) {
+        st.testPhase = (st.testPhase + dt * (st.slow ? 0.09 : 0.19)) % 1;
+        st.testInfo = e.updateTestMode(st.testMode, st.testPhase);
+      } else if (st.explode < 0.005) {
         const [l, r] = { stop: [0, 0], fwd: [1, 1], back: [-1, -1], left: [-1, 1], right: [1, -1] }[st.drive];
         if (l || r) { st.dl += l * speed * dt; st.dr += r * speed * dt; e.setWheels(-st.dl, -st.dr); }
         if (st.drive === 'left' || st.drive === 'right') { st.yaw += (st.drive === 'left' ? 1 : -1) * dt * 0.7; e.root.rotation.y = st.yaw; }
@@ -388,40 +420,61 @@ function gatlingFunction(e) {
         e.flyBands(dt * (st.slow ? 0.35 : 1));
       }
       panel.ui.readout('parts', `구조 ${e.structCount} + 체결 ${e.fastenerCount} = ${e.count}개 (4WD 전원 모터)`);
-      panel.ui.readout('mech', '총구 캡너트(−Z) ↔ L자 2×1·걸쇠 캡너트(+Z 돔) → 12시 36.9° 쐐기(+Z 이탈 · 무관통)');
+      if (st.testMode !== 'normal' && st.testInfo) {
+        panel.ui.readout('mech', `[${st.testInfo.stage}] ${st.testInfo.detail}`);
+        panel.ui.readout('ammo', `원형 고무줄 신장 ${Math.round(st.testInfo.stretch * 100)}% · 탄성 장력 ${st.testInfo.forceN.toFixed(1)} N`);
+        panel.ui.readout('state', st.testMode === 'hook' ? '🧪 거치·당김 테스트 중 (배경 반투명)' : '🎯 12시 격발 트리거 테스트 중 (배경 반투명)');
+      } else {
+        panel.ui.readout('mech', '순수 원형 고무줄(Ø37): 총구 캡너트(−Z) ↔ 걸쇠 캡너트(+Z) → 12시 36.9° 쐐기 이탈 & 탄성 수축 비행');
+        panel.ui.readout('ammo', `${e.loaded()} / 6 (매듭 0 · 관통 0) · 발사 ${st.shots}발`);
+        panel.ui.readout('state', st.explode > 0.02 ? `완전 분해 ${(st.explode * 100).toFixed(0)}% (볼트 · 너트 · 캡너트 포함)` : st.want > 0 ? (st.slow ? '슬로우모션 탄성 격발 관찰 중' : '발사 중') : st.drive !== 'stop' ? '4WD 주행 중' : '대기');
+      }
       panel.ui.readout('aim', `+${st.liveAim.toFixed(1)}° (서보 토크 ${GAT_GUN.servoNeed} kg·cm)`);
-      panel.ui.readout('ammo', `${e.loaded()} / 6 · 발사 ${st.shots}발`);
-      panel.ui.readout('state', st.explode > 0.02 ? `완전 분해 ${(st.explode * 100).toFixed(0)}% (볼트 · 너트 · 캡너트 포함)` : st.want > 0 ? (st.slow ? '슬로우모션 격발 관찰 중' : '발사 중') : st.drive !== 'stop' ? '4WD 주행 중' : '대기');
     },
     dispose() { e.reset(); e.root.rotation.y = 0; },
   };
 }
 
-// 개틀링 최대 세분화 단계별 조립 (350단계 + 규칙 10.6 메커니즘 확대 학습 단계!)
+// 개틀링 최대 세분화 단계별 조립 (352단계 = 부품·체결 350 + 거치/격발 메커니즘 테스트 2단계 · 배경 반투명!)
 let gatlingSteps = null;
 function gatlingStepFunction(ad) {
   const mechList = ad.mechSteps || [];
   const mechByStep = new Map(mechList.map((m) => [m.step1, m]));
-  const st = { T: 0, play: true, speed: 4, follow: true, bolts: true, guides: true, explode: 0, goal: null, mechIdx: 0, camGoal: null };
-  ad.setBolts(true); ad.setGuides(true); ad.setExplode(0);
+  const testById = new Map((ad.testSteps || []).map((t) => [t.testId, t]));
+  const st = { T: 0, play: true, speed: 4, follow: true, bolts: true, guides: true, testSlow: false, explode: 0, goal: null, mechIdx: 0, camGoal: null, testPhase: 0, lastTestId: null };
+  ad.setBolts(true); ad.setGuides(true); ad.setExplode(0); ad.gatling?.updateTestMode(null);
   panel.ui.controls([
     { type: 'toggle', id: 'play', label: '재생', value: true },
     { type: 'button', id: 'prev', label: '◀ 이전 단계' },
     { type: 'button', id: 'next', label: '다음 단계 ▶' },
-    { type: 'button', id: 'nextMech', label: '🔍 메커니즘 핵심 학습 단계로 이동 (①→④)' },
+    { type: 'button', id: 'testHook', label: '🧪 ① 고무줄 거치·당김 테스트 단계 (배경 반투명)' },
+    { type: 'button', id: 'testTrigger', label: '🎯 ② 12시 격발 트리거 테스트 단계 (배경 반투명)' },
+    { type: 'toggle', id: 'testSlow', label: '테스트 슬로우모션 (탄성·이탈 정밀 관찰)', value: false },
+    { type: 'button', id: 'nextMech', label: '🔍 메커니즘 부품 조립 단계 이동 (①→④)' },
     { type: 'slider', id: 'step', label: '단계로 이동', min: 0, max: ad.N, step: 1, value: 0 },
     { type: 'slider', id: 'speed', label: '속도 (단계 / 초)', min: 0.25, max: 16, step: 0.25, value: 4 },
     { type: 'slider', id: 'explode', label: '분해 보기 (부품 · 볼트 · 너트 · 캡너트)', min: 0, max: 1, step: 0.01, value: 0 },
-    { type: 'toggle', id: 'follow', label: '카메라가 지금 작업을 따라감 (메커니즘 시 자동 확대)', value: true },
+    { type: 'toggle', id: 'follow', label: '카메라가 지금 작업을 따라감 (테스트·메커니즘 자동 확대)', value: true },
     { type: 'toggle', id: 'bolts', label: '볼트 · 너트 · 캡너트 보기 (분해 시 자동 포함)', value: true },
     { type: 'toggle', id: 'guides', label: '진입 · 체결 가이드선 보기', value: true },
     { type: 'button', id: 'restart', label: '처음부터' },
   ]);
-  panel.ui.readouts([['step', '단계'], ['kind', '작업 유형'], ['now', '지금'], ['mech', '메커니즘 원리'], ['total', '전체']]);
+  panel.ui.readouts([['step', '단계'], ['kind', '작업 유형'], ['now', '지금'], ['mech', '메커니즘 / 테스트 원리'], ['total', '전체']]);
   const slider = () => [...document.querySelectorAll('.p-controls label')].find((l) => l.textContent.includes('단계로 이동'))?.querySelector('input');
   const explodeSlider = () => [...document.querySelectorAll('.p-controls label')].find((l) => l.textContent.includes('분해 보기'))?.querySelector('input');
   const playBox = () => [...document.querySelectorAll('.p-controls label')].find((l) => l.textContent.startsWith('재생'))?.querySelector('input');
   const pause = () => { st.play = false; const b = playBox(); if (b) b.checked = false; };
+  const jumpTest = (testId) => {
+    const ts = testById.get(testId);
+    if (!ts) return;
+    pause();
+    st.explode = 0; ad.setExplode(0);
+    const ex = explodeSlider(); if (ex) { ex.value = '0'; ex.nextElementSibling.textContent = '0'; }
+    st.T = ts.step1 - 0.5;
+    st.goal = null;
+    st.testPhase = 0;
+    if (ts.cam) st.camGoal = { pos: new THREE.Vector3(...ts.cam.pos), target: new THREE.Vector3(...ts.cam.target) };
+  };
   const tgt = new THREE.Vector3();
   let lastShown = -1;
   return {
@@ -429,6 +482,8 @@ function gatlingStepFunction(ad) {
       if (id === 'play') { st.play = v; if (v && st.T >= ad.N) st.T = 0; }
       else if (id === 'prev') { pause(); st.goal = Math.max(0, Math.ceil(st.T) - 1); st.camGoal = null; }
       else if (id === 'next') { pause(); st.goal = Math.min(ad.N, Math.floor(st.T) + 1); st.camGoal = null; }
+      else if (id === 'testHook') jumpTest('hook');
+      else if (id === 'testTrigger') jumpTest('trigger');
       else if (id === 'nextMech' && mechList.length) {
         pause();
         const m = mechList[st.mechIdx % mechList.length];
@@ -442,43 +497,75 @@ function gatlingStepFunction(ad) {
       else if (id === 'guides') { st.guides = v; ad.setGuides(v); }
       else if (id === 'speed') st.speed = Number(v);
       else if (id === 'restart') {
-        st.T = 0; st.goal = null; st.play = true; st.explode = 0; st.camGoal = null; ad.setExplode(0);
+        st.T = 0; st.goal = null; st.play = true; st.explode = 0; st.camGoal = null; st.testPhase = 0; st.lastTestId = null;
+        ad.setExplode(0); ad.gatling?.updateTestMode(null);
         const b = playBox(); if (b) b.checked = true;
         const ex = explodeSlider(); if (ex) { ex.value = '0'; ex.nextElementSibling.textContent = '0'; }
       } else st[id] = v;
     },
     update(dt) {
       dt = Math.min(dt, 0.05);
-      if (st.goal !== null) { const d = st.goal - st.T; st.T += Math.sign(d) * Math.min(Math.abs(d), dt * 4); if (Math.abs(d) < 1e-3) { st.T = st.goal; st.goal = null; } }
-      else if (st.play) { st.T = Math.min(ad.N, st.T + dt * st.speed); if (st.T >= ad.N) pause(); }
+      const curStepPre = Math.min(ad.N, Math.max(1, Math.floor(st.T) + 1));
+      const onTestPre = st.T < ad.N ? ad.getTestStep(curStepPre) : null;
+      if (st.goal !== null) {
+        const d = st.goal - st.T;
+        st.T += Math.sign(d) * Math.min(Math.abs(d), dt * 4);
+        if (Math.abs(d) < 1e-3) { st.T = st.goal; st.goal = null; }
+      } else if (st.play) {
+        // 테스트 단계 재생 중에는 1사이클(약 5.5초) 동안 고무줄 거치/격발 시뮬레이션을 충분히 감상한 뒤 다음 단계로 진행!
+        const rate = onTestPre ? (st.testSlow ? 0.09 : 0.18) : st.speed;
+        st.T = Math.min(ad.N, st.T + dt * rate);
+        if (st.T >= ad.N) pause();
+      }
       ad.pose(st.T);
       const s = Math.min(ad.N, Math.max(1, Math.floor(st.T) + 1));
       const done = Math.floor(st.T);
+      const ts = st.T < ad.N ? ad.getTestStep(s) : null;
       const sl = slider(); if (sl && document.activeElement !== sl) { sl.value = String(done); sl.nextElementSibling.textContent = String(done); }
       panel.ui.readout('step', `${done >= ad.N ? ad.N : s} / ${ad.N}`);
-      if (s !== lastShown || st.T >= ad.N) {
-        const m = mechByStep.get(s);
-        panel.ui.readout('kind', st.T >= ad.N ? '완성' : m ? `★ 메커니즘 학습 · ${m.mech.step}` : ad.stepKind(s));
-        panel.ui.readout('now', st.T >= ad.N ? '완성! (🔍 메커니즘 학습 · 분해 보기로 모든 부품 확인)' : ad.stepName(s));
-        panel.ui.readout('mech', st.T >= ad.N ? '총구 캡너트(−Z) ↔ 후방 걸쇠 캡너트(+Z) → 12시 36.9° 쐐기가 +Z로 밀어 무관통 발사' : m ? `[${m.mech.role}] ${m.mech.explain}` : '— (🔍 버튼으로 핵심 격발 메커니즘 4단계 바로 보기)');
-        if (m && st.follow && m.mech?.cam) {
-          st.camGoal = { pos: new THREE.Vector3(...m.mech.cam.pos), target: new THREE.Vector3(...m.mech.cam.target) };
+
+      if (ts && ad.gatling) {
+        if (ts.testId !== st.lastTestId) {
+          st.lastTestId = ts.testId;
+          st.testPhase = 0;
+          if (st.follow && ts.cam) st.camGoal = { pos: new THREE.Vector3(...ts.cam.pos), target: new THREE.Vector3(...ts.cam.target) };
         }
-        lastShown = st.T >= ad.N ? -2 : s;
+        if (!st.play) st.testPhase = (st.testPhase + dt * (st.testSlow ? 0.09 : 0.19)) % 1;
+        const phase = st.play ? Math.max(0, Math.min(1, st.T - (s - 1))) : st.testPhase;
+        const info = ad.gatling.updateTestMode(ts.testId, phase);
+        panel.ui.readout('kind', ts.kind);
+        panel.ui.readout('now', `${ad.stepName(s)} — ${info.stage}`);
+        panel.ui.readout('mech', `[신장 ${Math.round(info.stretch * 100)}% · 장력 ${info.forceN.toFixed(1)} N] ${info.detail}`);
+        lastShown = -3;
+      } else {
+        if (st.lastTestId !== null) {
+          ad.gatling?.updateTestMode(null);
+          st.lastTestId = null;
+        }
+        if (s !== lastShown || st.T >= ad.N) {
+          const m = mechByStep.get(s);
+          panel.ui.readout('kind', st.T >= ad.N ? '완성' : m ? `★ 메커니즘 학습 · ${m.mech.step}` : ad.stepKind(s));
+          panel.ui.readout('now', st.T >= ad.N ? '완성! (🧪 거치·격발 테스트 버튼으로 언제든 원리 복습 가능)' : ad.stepName(s));
+          panel.ui.readout('mech', st.T >= ad.N ? '순수 원형 고무줄: 총구 캡너트(−Z) ↔ 걸쇠 캡너트(+Z) → 12시 36.9° 쐐기 이탈 · 탄성 비행' : m ? `[${m.mech.role}] ${m.mech.explain}` : '— (🧪 거치 테스트 / 🎯 격발 테스트 버튼으로 배경 반투명 시뮬레이션 바로 보기)');
+          if (m && st.follow && m.mech?.cam) {
+            st.camGoal = { pos: new THREE.Vector3(...m.mech.cam.pos), target: new THREE.Vector3(...m.mech.cam.target) };
+          }
+          lastShown = st.T >= ad.N ? -2 : s;
+        }
       }
-      panel.ui.readout('total', `구조 ${GAT_GUN.structCount} + 체결 ${GAT_GUN.fastenerCount} = ${ad.N}단계`);
+      panel.ui.readout('total', `구조 ${GAT_GUN.structCount} + 체결 ${GAT_GUN.fastenerCount} + 테스트 2 = ${ad.N}단계`);
       if (st.camGoal) {
         const k = Math.min(1, dt * 4.5);
         view.camera.position.lerp(st.camGoal.pos, k);
         view.controls.target.lerp(st.camGoal.target, k);
         if (view.camera.position.distanceTo(st.camGoal.pos) < 0.8) st.camGoal = null;
-      } else if (st.follow && st.T < ad.N && st.explode < 0.01) {
+      } else if (st.follow && st.T < ad.N && st.explode < 0.01 && !ts) {
         tgt.copy(ad.focus(s));
         const d = tgt.sub(view.controls.target).multiplyScalar(Math.min(1, dt * 3));
         view.controls.target.add(d); view.camera.position.add(d);
       }
     },
-    dispose() { ad.clearHighlight(); },
+    dispose() { ad.clearHighlight(); ad.gatling?.updateTestMode(null); },
   };
 }
 
@@ -504,9 +591,9 @@ async function select(id) {
     view.frame(box, { dir: [-0.9, 0.6, -1], fit: 1.15, minDist: 20 });
     const size = box.getSize(new THREE.Vector3());
     panel.showSpec({
-      name: '썬더 개틀링 6연장 v3 (4륜 전원 모터 · 무관통 실물 격발)', url: 'https://github.com/popkn/3d-test/blob/parts/gatling/BLUEPRINT.md',
-      size: { x: Math.round(size.x), z: Math.round(size.z), y: Math.round(size.y), estimated: false, note: `규칙 2.5(4륜 전원 DC 130 직결 · 헛바퀴 0) · 규칙 10.6(고무줄 장전선 & 전방 비행선 관통 0건 · 확대 메커니즘 학습) · 구조 ${e.structCount} + 체결 ${e.fastenerCount} = ${e.count}개 전원 완전 분해 지원.` },
-      function: `4륜 전원 주행(M1~M4), 서보 고각(OUT1, 0~${Math.floor(GAT_TILT_MAX)}° · 경첩 연동), 무관통 개방형 6연장 발사(DC 400 · EX-M1). "🔍 격발 메커니즘 확대 보기" + 슬로우모션으로 12시 36.9° 쐐기가 후방 걸쇠 캡너트(+Z 돔)에서 고무줄을 벗겨 발사하는 원리를 직접 확인하세요.`,
+      name: '썬더 개틀링 6연장 v3 (원형 고무줄 탄성 격발 · 4륜 전원)', url: 'https://github.com/popkn/3d-test/blob/parts/gatling/BLUEPRINT.md',
+      size: { x: Math.round(size.x), z: Math.round(size.z), y: Math.round(size.y), estimated: false, note: `규칙 2.5(4륜 전원 DC 130 직결 · 헛바퀴 0) · 규칙 10.6(순수 원형 고무줄 Ø37 탄성 물리 · 거치/격발 배경 반투명 테스트 · 고무줄 관통 0) · 구조 ${e.structCount} + 체결 ${e.fastenerCount} = ${e.count}개.` },
+      function: `4륜 전원 주행(M1~M4), 서보 고각(OUT1, 0~${Math.floor(GAT_TILT_MAX)}°), 매듭 없는 단일 폐곡선 원형 고무줄 탄성 발사(DC 400 · EX-M1). 상단 "🧪 메커니즘 테스트"에서 배경 반투명 격리 상태로 ① 거치·당김 ② 12시 36.9° 쐐기 격발 원리를 직접 확인할 수 있습니다.`,
       specs: [
         ...Object.entries(GAT_SHEETS).map(([no, t]) => [`도면 ${no}`, t]),
         ['5중 자동 검증', `헛바퀴 0 · AABB 충돌 0 · 360° 스윕 0 · 고무줄 관통 0 · 동축 ${e.fastenerCount}개`],
@@ -535,10 +622,12 @@ async function select(id) {
       const a = detailAdapter(e.root, keys.map((k) => ({ no: k, name: GAT_SHEETS[k], holders: e.order[k] })), {
         frameOpts: { dir: [-0.9, 0.6, -1], fit: 1.15, minDist: 20 },
         count: e.count, granular: true, hasBolts: true, guides: true, highlight: true, rate: 4,
+        extraSteps: e.testStages,
         moduleDir: { '01': [0, -50, 0], '02': [0, 0, 120], '03': [0, 60, -110], '04': [0, 160, -15], '05': [-140, 20, 0] },
         onPose(T) { const v = T >= a.N - 0.001; if (v !== shown) { shown = v; e.showBands(v); } },
       });
-      a.mechSteps = e.mechSteps;
+      a.gatling = e;
+      a.mechSteps = e.mechSteps.map((m) => ({ ...m, step1: a.stepOfHolder(m.h) }));
       return a;
     })();
     loading.textContent = '불러오는 중…';
@@ -549,16 +638,17 @@ async function select(id) {
     picks.length = 0;
     view.controls.zoomToCursor = true;
     view.scene.add(ad.root);
+    ad.gatling?.updateTestMode(null);
     ad.setExplode(0); ad.pose(ad.N);
     ad.root.updateMatrixWorld(true);
     const box = partBounds(ad.root);
     ad.pose(0);
     view.frame(box, { dir: [-0.9, 0.6, -1], fit: 0.75, minDist: 20 });
     panel.showSpec({
-      name: '썬더 개틀링 6연장 v3 — 350단계 세분화 + 메커니즘 확대 학습', url: 'https://github.com/popkn/3d-test/blob/parts/gatling/BLUEPRINT.md',
-      size: { x: Math.round(box.max.x - box.min.x), z: Math.round(box.max.z - box.min.z), y: Math.round(box.max.y - box.min.y), estimated: false, note: `규칙 10.3(350단계 최대 세분화) · 규칙 10.6(고무줄 거치·트리거 핵심 4단계 자동 카메라 확대 및 원리 해설).` },
-      function: '1부품 · 1체결씩 순차 조립되며, "🔍 메커니즘 핵심 학습 단계로 이동" 버튼으로 ① L자 2×1 걸쇠 받침 → ② 후방 걸쇠 캡너트 → ③ 총구 거치 캡너트 → ④ 12시 36.9° 격발 쐐기를 확대해 원리를 학습할 수 있습니다.',
-      specs: [['세분화 단계', `${ad.N}단계 (구조 ${GAT_GUN.structCount} + 체결 ${GAT_GUN.fastenerCount})`], ['5중 검증', '헛바퀴 0 · 충돌 0 · 스윕 0 · 고무줄 관통 0 · 동축 완료']],
+      name: '썬더 개틀링 6연장 v3 — 352단계 세분화 + 거치·격발 테스트', url: 'https://github.com/popkn/3d-test/blob/parts/gatling/BLUEPRINT.md',
+      size: { x: Math.round(box.max.x - box.min.x), z: Math.round(box.max.z - box.min.z), y: Math.round(box.max.y - box.min.y), estimated: false, note: `규칙 10.3(350 부품·체결 세분화) + 규칙 10.6(조립 중 원형 고무줄 거치·당김 테스트 & 12시 쐐기 격발 테스트 2단계 내장 · 테스트 시 배경 반투명 격리).` },
+      function: '1시 배럴 캡너트 조립 직후 "① 원형 고무줄 거치·당김 테스트", 12시 36.9° 쐐기 조립 직후 "② 격발 트리거 테스트"가 자동 확대·배경 반투명(opacity 12%)으로 재생됩니다. 🧪/🎯 버튼으로 즉시 이동해 반복 관찰할 수 있습니다.',
+      specs: [['세분화 단계', `${ad.N}단계 (구조 ${GAT_GUN.structCount} + 체결 ${GAT_GUN.fastenerCount} + 메커니즘 테스트 2)`], ['5중 검증', '헛바퀴 0 · 충돌 0 · 스윕 0 · 고무줄 관통 0 · 동축 완료']],
       ports: [],
     });
     let fn = null;

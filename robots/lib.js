@@ -52,16 +52,17 @@ export function groupAdapter(root, groups, keys, names, explode, extra, frameOpt
 //   guides = true: 진입 · 분해 가이드선 표시
 //   highlight = true: 현재 작업 대상 하이라이트
 export function detailAdapter(root, modules, {
-  frameOpts, count, moduleDir = {}, onPose = null,
+  frameOpts, count, moduleDir = {}, onPose = null, extraSteps = [], onTestStep = null,
   granular = false, hasBolts = false, guides = false, highlight = false, rate = 2,
 } = {}) {
   root.updateMatrixWorld(true);
   const full = partBounds(root);
   const all = full.getCenter(new V3());
-  const steps = [], items = [];
+  const steps = [], items = [], testSteps = [];
   const inv = new THREE.Quaternion(), W = new V3();
   const Y = new V3(0, 1, 0), qSpin = new THREE.Quaternion();
   const w0 = new V3(), w1 = new V3();
+  const extraByHolder = new Map(extraSteps.filter((e) => e.afterHolder).map((e) => [e.afterHolder, e]));
 
   modules.forEach((m, mi) => {
     const its = m.holders.map((h) => {
@@ -95,10 +96,22 @@ export function detailAdapter(root, modules, {
         it.come = v.clone().setY(Math.abs(v.y) * 0.6 + 26).normalize().multiplyScalar(48);
       }
       const last = steps[steps.length - 1];
-      if (!granular && last && last.mi === mi && last.name === it.h.userData.name && last.id === it.h.userData.id) last.items.push(it);
+      if (!granular && last && !last.isTest && last.mi === mi && last.name === it.h.userData.name && last.id === it.h.userData.id) last.items.push(it);
       else steps.push({ mi, name: it.h.userData.name, id: it.h.userData.id, note: it.h.userData.note || '', fastener: it.fastener, items: [it] });
       it.step = steps.length - 1;
       items.push(it);
+
+      const exStep = extraByHolder.get(it.h);
+      if (exStep) {
+        const ts = {
+          mi, isTest: true, testId: exStep.id, name: exStep.name, short: exStep.short || exStep.name,
+          kind: exStep.kind || '★ 메커니즘 테스트', cam: exStep.cam || null,
+          focusPt: exStep.focusPt ? exStep.focusPt.clone() : it.c.clone(),
+          items: [],
+        };
+        steps.push(ts);
+        testSteps.push({ ...ts, step1: steps.length });
+      }
     }
   });
 
@@ -115,15 +128,18 @@ export function detailAdapter(root, modules, {
   const off = new V3();
 
   return {
-    root, N: steps.length, rate, hasBolts, frameOpts, full, count, clearHighlight,
+    root, N: steps.length, rate, hasBolts, frameOpts, full, count, clearHighlight, testSteps,
     mods: modules.map((m) => ({ no: m.no, name: m.name, short: m.name.split(' (')[0] })),
+    getTestStep: (s) => { const st = steps[s - 1]; return st?.isTest ? st : null; },
+    stepOfHolder: (h) => { const it = items.find((x) => x.h === h); return it ? it.step + 1 : -1; },
     pose(T) {
       if (onPose) onPose(T);
-      const showFast = boltsOn || ex > 0.005; // 규칙 10.4: 분해 시 볼트 · 너트 · 캡너트 자동 표시
+      const showFast = boltsOn || ex > 0.005;
       const curStepIdx = Math.min(steps.length - 1, Math.max(0, Math.floor(T)));
       const finished = T >= steps.length;
+      const curStep = !finished ? steps[curStepIdx] : null;
       if (highlight) {
-        const want = finished ? -1 : curStepIdx;
+        const want = finished || curStep?.isTest ? -1 : curStepIdx;
         if (want !== hlStep) {
           clearHighlight();
           hlStep = want;
@@ -139,7 +155,6 @@ export function detailAdapter(root, modules, {
         it.h.visible = vis;
         const enter = 1 - ease(t / 0.8);
         off.copy(it.come).multiplyScalar(enter).addScaledVector(m.dir, ex).addScaledVector(it.spread, ex);
-        // 다 조립되고 분해도 0이면 건드리지 않는다 (기능 조작이 링크 · 핀 · 로터를 움직일 수 있게)
         if (off.lengthSq() < 1e-8) {
           if (it.moved) {
             it.h.position.copy(it.p0);
@@ -163,6 +178,7 @@ export function detailAdapter(root, modules, {
         }
       }
       if (guide) guide.update(segs);
+      if (onTestStep) onTestStep(curStep?.isTest ? curStep : null, curStep?.isTest ? Math.max(0, Math.min(1, T - curStepIdx)) : 0);
     },
     setExplode(x) { ex = x; },
     setBolts(v) { boltsOn = v; },
@@ -170,17 +186,24 @@ export function detailAdapter(root, modules, {
     setHidden(i, v) { hidden[i] = v; },
     stepName: (s) => {
       const st = steps[s - 1], m = modules[st.mi];
+      if (st.isTest) return `${m.no} ${m.name.split(' (')[0]} › ${st.name}`;
       const tag = st.fastener ? '[체결] ' : '[부품] ';
       return `${m.no} ${m.name.split(' (')[0]} › ${tag}${st.name}${st.items.length > 1 ? ` × ${st.items.length}` : ''}${st.note ? ` — ${st.note}` : ''}`;
     },
     stepShort: (s) => {
       const st = steps[s - 1];
+      if (st.isTest) return st.short;
       return `${modules[st.mi].no} · ${st.fastener ? '체결: ' : ''}${st.name.split(' (')[0]}${st.items.length > 1 ? ` × ${st.items.length}` : ''}`;
     },
-    stepKind: (s) => (steps[s - 1]?.fastener ? '볼트 · 너트 · 캡너트 체결' : '부품 배치'),
+    stepKind: (s) => {
+      const st = steps[s - 1];
+      if (st?.isTest) return st.kind;
+      return st?.fastener ? '볼트 · 너트 · 캡너트 체결' : '부품 배치';
+    },
     modOfStep: (s) => steps[s - 1].mi,
     focus(s) {
       const st = steps[s - 1], m = modules[st.mi];
+      if (st.isTest) return st.focusPt.clone().addScaledVector(m.dir, ex);
       return st.items[0].c.clone().addScaledVector(m.dir, ex).addScaledVector(st.items[0].spread, ex);
     },
   };
