@@ -1,36 +1,47 @@
-import { buildBattlebot, EXPLODE as EXPLODE2 } from '../src/battlebot/assemble.js';
-import { SHEETS as SHEETS2 } from '../src/battlebot/assembly.js';
-import { groupAdapter, DRIVE5 } from './lib.js';
+import { buildBattlebot, EXPLODE } from '../src/battlebot/assemble.js';
+import { SHEETS } from '../src/battlebot/assembly.js';
+import { detailAdapter, DRIVE5 } from './lib.js';
 import { loadPart } from 'virtual:parts';
 
-export const meta = { id: 'bot', name: '배틀로봇 썬더 웨지', mods: 6 };
+export const meta = { id: 'bot', name: '배틀로봇 썬더 웨지 V2', mods: 6 };
 
 export async function makeAdapter(ctx) {
   const e = await buildBattlebot(loadPart, ctx.onProgress);
   e.setTracks(0, 0);
   e.setWedge(0);
-  const keys = Object.keys(SHEETS2).filter((k) => e.groups[k]);
-  const ad = groupAdapter(e.root, e.groups, keys, SHEETS2, EXPLODE2, null, { dir: [-0.9, 0.7, -1], fit: 1.25, minDist: 20 }, e.count);
+  const keys = Object.keys(SHEETS).filter((k) => e.order[k]);
+  // 규칙 3(motor-drive-set) · 4.2(실구멍 정합) · 10.1~10.4(실체 체결·동축 분해) · 10.3(연속 체결 1단계 그룹화) · 10.7(동적 충돌 0)
+  const ad = detailAdapter(e.root, keys.map((k) => ({ no: k, name: SHEETS[k], holders: e.order[k] })), {
+    frameOpts: { dir: [-0.9, 0.7, -1], fit: 1.25, minDist: 20 },
+    count: e.count,
+    granular: true,
+    hasBolts: true,
+    guides: true,
+    highlight: true,
+    rate: 4,
+    moduleDir: EXPLODE,
+  });
   ad.fn = botFn(e);
   return ad;
 }
 
+// 컴팩트 기능 조작창: 상단 긴 제목 제거 · 조절바 2열 배치(col: ca/cb) · 간결한 라벨
 function botFn(e) {
-  const v = { drive: "stop", rpm: 0, wedge: 0 };
+  const v = { drive: 'stop', rpm: 0, wedge: 0 };
   const live = { rpm: 0, wedge: 0 };
   let dl = 0, dr = 0, yaw = 0, demo = 0;
   const speed = 130 / 60 * Math.PI * 62;
   return {
-    title: "무한궤도 · 무기",
+    title: '',
     items: [
-      { type: "seg", id: "drive", label: "조종", options: DRIVE5, wide: true },
-      { type: "bar", id: "rpm", label: "스피너 (DC 400rpm)", min: 0, max: 400, step: 10, fmt: (x) => `${Math.round(x)} rpm` },
-      { type: "bar", id: "wedge", label: "웨지 들기 (서보)", min: 0, max: 60, step: 1, fmt: (x) => `${Math.round(x)}°` },
-      { type: "actions", items: [{ id: "attack", label: "공격 데모", hot: true }] }
+      { type: 'seg', id: 'drive', label: '주행', options: DRIVE5, wide: true },
+      { type: 'bar', id: 'rpm', label: '스피너', col: 'ca', min: 0, max: 400, step: 10, fmt: (x) => `${Math.round(x)} rpm` },
+      { type: 'bar', id: 'wedge', label: '웨지', col: 'cb', min: 0, max: 60, step: 1, fmt: (x) => `${Math.round(x)}°` },
+      { type: 'actions', items: [{ id: 'attack', label: '⚔ 공격 데모', hot: true }] },
     ],
     v,
     set(id, x) {
-      if (id === "attack") {
+      if (id === 'attack') {
         demo = 3;
         return;
       }
@@ -45,8 +56,8 @@ function botFn(e) {
         e.setTracks(-dl, -dr);
         moved = true;
       }
-      if (v.drive === "left" || v.drive === "right") {
-        yaw += (v.drive === "left" ? 1 : -1) * dt * 0.8;
+      if (v.drive === 'left' || v.drive === 'right') {
+        yaw += (v.drive === 'left' ? 1 : -1) * dt * 0.8;
         e.root.rotation.y = yaw;
       }
       const target = demo > 0 ? 400 : v.rpm;
@@ -68,16 +79,18 @@ function botFn(e) {
       return moved;
     },
     live,
-    stats: () => [["궤도", v.drive === "stop" ? "정지" : `${(speed / 1e3).toFixed(2)} m/s`], ["스피너", `${live.rpm.toFixed(0)} rpm`]],
-    busy: () => demo > 0,
+    stats: () => [
+      ['궤도', v.drive === 'stop' ? '정지' : `${(speed / 1e3).toFixed(2)} m/s`],
+      ['스피너', `${live.rpm.toFixed(0)} rpm`],
+      ['웨지', `${live.wedge.toFixed(0)}°`],
+    ],
+    busy: () => demo > 0 || live.rpm > 1,
     exit() {
-      Object.assign(v, { drive: "stop", rpm: 0, wedge: 0 });
+      Object.assign(v, { drive: 'stop', rpm: 0, wedge: 0 });
       Object.assign(live, { rpm: 0, wedge: 0 });
       dl = dr = yaw = demo = 0;
-      e.setTracks(0, 0);
-      e.setWedge(0);
-      e.spinner.rotation.y = 0;
+      e.reset();
       e.root.rotation.y = 0;
-    }
+    },
   };
 }

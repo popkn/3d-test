@@ -9,7 +9,7 @@ def add(sheet, pid, name, c, s, color, shape='box', note='', **kw):
     d = dict(sheet=sheet, id=pid, name=name, c=tuple(c), s=tuple(s), color=color, shape=shape, note=note)
     d.update(kw); P.append(d); return d
 
-def plate(sheet, pid, name, c, s, color, us, vs, la, wa, note='', skip=None):
+def plate(sheet, pid, name, c, s, color, us, vs, la, wa, note='', skip=None, **kw):
     """판. la = 길이 축, wa = 폭 축 (0 x, 1 y, 2 z). us · vs = 첫 구멍 기준 구멍 위치 (가장자리 여백 4)"""
     holes = []
     for i, u in enumerate(us):
@@ -19,12 +19,12 @@ def plate(sheet, pid, name, c, s, color, us, vs, la, wa, note='', skip=None):
             p[la] = c[la] - s[la] / 2 + 4 + u
             p[wa] = c[wa] - s[wa] / 2 + 4 + v
             holes.append(tuple(p))
-    return add(sheet, pid, name, c, s, color, 'plate', note, holes=holes, normal=3 - la - wa)
+    return add(sheet, pid, name, c, s, color, 'plate', note, holes=holes, normal=3 - la - wa, **kw)
 
-def strip(sheet, pid, name, c, s, color, n_or_us, la, note=''):
+def strip(sheet, pid, name, c, s, color, n_or_us, la, note='', **kw):
     us = list(range(0, 10 * n_or_us, 10)) if isinstance(n_or_us, int) else n_or_us
     wa = [a for a in (0, 1, 2) if a != la and s[a] > 2][0]
-    return plate(sheet, pid, name, c, s, color, us, [0], la, wa, note)
+    return plate(sheet, pid, name, c, s, color, us, [0], la, wa, note, **kw)
 
 MAIN_U = [0, 10, 20, 30, 40, 50, 55, 60, 70, 80, 90, 100, 110]
 MAIN_V = [0, 10, 20, 30, 35, 40, 50, 60, 70]
