@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-21T05:48:41.175Z",
+  "updated": "2026-11-21T07:39:07.467Z",
   "robots": [
     {
       "id": "eagle",
@@ -45,6 +45,15 @@
       "version": "7270fc3e0b",
       "size": 186530,
       "parts": 31
+    },
+    {
+      "id": "scorpion",
+      "name": "크림슨 스콜피온 v2",
+      "mods": 6,
+      "file": "scorpion.js",
+      "version": "a8da982281",
+      "size": 232844,
+      "parts": 38
     }
   ]
 }
