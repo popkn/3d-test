@@ -14,4 +14,5 @@ export default {
   ],
   function: '두 판을 120°로 비스듬히 잇는다. 구멍에 M3 나사산(탭)이 있어 너트 없이 볼트만으로 고정한다.',
   ports: [{ id: 'legs', type: '다리 2개 × 구멍 2 · 2개', role: '두 프레임을 120°로 연결' }],
+  mountHoles: {"boltAllowed": true, "types": ["TAP"], "count": 4, "holes": [[0.5, 1, 0.0, 0, 1, 0, "TAP"], [-9.5, 1, 0.0, 0, 1, 0, "TAP"], [6.5, 3.5, 0.0, -0.9, 0.5, 0, "TAP"], [11.5, 12.1, 0.0, -0.9, 0.5, 0, "TAP"]], "otherMounts": []},
 };

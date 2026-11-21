@@ -17,4 +17,5 @@ export default {
     { id: 'power', type: '2핀 커넥터 (24AWG)', role: 'CPU 보드 배터리 커넥터' },
     { id: 'mount', type: '고정 귀 구멍', role: '프레임 고정' },
   ],
+  mountHoles: {"boltAllowed": true, "types": ["M3"], "count": 4, "holes": [[-35, 1, -20, 0, 1, 0, "M3"], [-35, 1, 20, 0, 1, 0, "M3"], [35, 1, -20, 0, 1, 0, "M3"], [35, 1, 20, 0, 1, 0, "M3"]], "otherMounts": ["E2P"]},
 };

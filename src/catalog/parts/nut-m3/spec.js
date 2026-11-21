@@ -14,4 +14,5 @@ export default {
   ],
   function: '볼트에 끼워 돌려 조이면 프레임과 부품을 고정한다. 한 바퀴 돌릴 때마다 0.5mm씩 이동한다.',
   ports: [{ id: 'thread', type: 'M3 암나사', role: 'M3 볼트 체결' }],
+  mountHoles: {"boltAllowed": false, "types": ["FEM"], "count": 0, "holes": [], "otherMounts": ["FEM"]},
 };

@@ -13,4 +13,5 @@ export default {
   ],
   function: '모터 축에 달고 톱니에 캐터필러 마디를 걸면, 휠이 돌 때 궤도가 함께 움직인다.',
   ports: [{ id: 'hub', type: '가운데 구멍 + 고정 구멍 6개', role: '모터 축 · 휠가이드 연결' }],
+  mountHoles: {"boltAllowed": false, "types": ["DCUT_HUB"], "count": 0, "holes": [], "otherMounts": ["DCUT_HUB"]},
 };

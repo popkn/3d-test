@@ -12,4 +12,5 @@ export default {
   ],
   function: '톱니 휠 두 개에 거는 무한궤도 한 줄. 조립에서는 마디를 하나씩 잇지 않고 완성된 고리 하나로 건다.',
   ports: [{ id: 'loop', type: '고리 (톱니 간격 10)', role: '캐터필러 휠(톱니) 2개에 걸기' }],
+  mountHoles: {"boltAllowed": false, "types": ["LOOP"], "count": 0, "holes": [], "otherMounts": ["LOOP"]},
 };

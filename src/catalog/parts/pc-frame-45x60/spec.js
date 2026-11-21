@@ -13,4 +13,5 @@ export default {
   ],
   function: '투명한 판이라 속이 보이는 덮개, 창문, 깃발 등으로 쓴다. 가위로 잘라 원하는 모양을 만들 수 있다.',
   ports: [{ id: 'holes', type: 'M3 구멍 4개', role: '프레임에 고정' }],
+  mountHoles: {"boltAllowed": true, "types": ["M3"], "count": 4, "holes": [[-15, 1.6, -26, 0, 1, 0, "M3"], [-5, 1.6, -26, 0, 1, 0, "M3"], [5, 1.6, -26, 0, 1, 0, "M3"], [15, 1.6, -26, 0, 1, 0, "M3"]], "otherMounts": []},
 };

@@ -15,4 +15,5 @@ export default {
   ],
   function: 'CPU 보드 출력 포트에 연결하고, 프로그램이 신호를 보내면 소리를 낸다.',
   ports: [{ id: 'signal', type: '3핀 2.54mm', role: 'CPU 출력 포트 연결' }],
+  mountHoles: {"boltAllowed": true, "types": ["H4.2"], "count": 3, "holes": [[-6.6, 3, 11.8, 0, 1, 0, "H4.2"], [0, 3, 11.8, 0, 1, 0, "H4.2"], [6.6, 3, 11.8, 0, 1, 0, "H4.2"]], "otherMounts": ["E3P_M"]},
 };

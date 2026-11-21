@@ -15,4 +15,5 @@ export default {
   ],
   function: '휠 Ø50[V2] 바깥에 끼워 바닥을 붙잡는 고무 테두리. 7호 키트의 "바퀴"는 이 타이어와 흰 휠을 합친 것으로 보인다.',
   ports: [{ id: 'rim', type: '안쪽 홈', role: '휠 Ø50[V2] 테두리' }],
+  mountHoles: {"boltAllowed": false, "types": ["RIM"], "count": 0, "holes": [], "otherMounts": ["RIM"]},
 };

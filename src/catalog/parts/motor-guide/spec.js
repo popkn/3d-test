@@ -16,4 +16,5 @@ export default {
     { id: 'ring', type: '원형 고리 (안지름 약 7mm, 추정)', role: '축 받침' },
     { id: 'hole', type: 'M3 구멍', role: '프레임 고정' },
   ],
+  mountHoles: {"boltAllowed": true, "types": ["M3"], "count": 1, "holes": [[5, 3, 0, 0, 1, 0, "M3"]], "otherMounts": ["BORE7"]},
 };

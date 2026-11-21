@@ -13,4 +13,5 @@ export default {
   ],
   function: '3핀 케이블의 암 커넥터 두 개를 양쪽에서 꽂아 하나로 이어 준다. 케이블 길이가 모자랄 때 쓴다.',
   ports: [{ id: 'pins', type: '3핀 수 · 수', role: '3핀 케이블 연장 (S · + · -)' }],
+  mountHoles: {"boltAllowed": false, "types": ["E3P_M"], "count": 0, "holes": [], "otherMounts": ["E3P_M"]},
 };

@@ -14,4 +14,5 @@ export default {
   ],
   function: 'S후크 끝이나 볼트 끝에 돌려 끼워 고정하고 나사 끝을 덮는다.',
   ports: [{ id: 'thread', type: 'M3 암나사 (막힌 구멍)', role: 'S후크 · M3 볼트 끝' }],
+  mountHoles: {"boltAllowed": false, "types": ["FEM"], "count": 0, "holes": [], "otherMounts": ["FEM"]},
 };

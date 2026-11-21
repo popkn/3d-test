@@ -13,4 +13,5 @@ export default {
   ],
   function: '딱딱한 캐터필러 마디에 끼우면 바닥과 닿는 면이 고무가 되어 미끄러지지 않고 잘 올라간다.',
   ports: [{ id: 'fit', type: '끼움', role: '캐터필러 마디 바깥면' }],
+  mountHoles: {"boltAllowed": false, "types": ["CLIP"], "count": 0, "holes": [], "otherMounts": ["CLIP"]},
 };

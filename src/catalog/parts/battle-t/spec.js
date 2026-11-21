@@ -13,4 +13,5 @@ export default {
   ],
   function: '로봇 앞이나 서보에 볼트로 달아 상대 로봇을 밀거나 막는 배틀 무기.',
   ports: [{ id: 'holes', type: 'M3 구멍', role: '프레임 · 서보 혼 고정' }],
+  mountHoles: {"boltAllowed": true, "types": ["M3"], "count": 4, "holes": [[-1.2, 1.6, 17.4, 0, 1, 0, "M3"], [8.8, 1.6, 17.4, 0, 1, 0, "M3"], [-1.2, 1.6, 25.4, 0, 1, 0, "M3"], [8.8, 1.6, 25.4, 0, 1, 0, "M3"]], "otherMounts": []},
 };

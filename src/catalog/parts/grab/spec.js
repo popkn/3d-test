@@ -13,4 +13,5 @@ export default {
   ],
   function: '두 개를 마주 보게 달아 집게(그리퍼)를 만든다. 빗살 사이로 공 같은 물체를 감싸 쥔다.',
   ports: [{ id: 'mount', type: '고정 구멍', role: '프레임 · 서보에 볼트 고정' }],
+  mountHoles: {"boltAllowed": true, "types": ["M3"], "count": 2, "holes": [[-5, 2, 10, 0, 1, 0, "M3"], [5, 2, 10, 0, 1, 0, "M3"]], "otherMounts": []},
 };

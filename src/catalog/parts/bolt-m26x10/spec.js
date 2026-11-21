@@ -13,4 +13,5 @@ export default {
   ],
   function: '와셔가 붙은 태핑 볼트. 너트 없이 플라스틱에 직접 박아 고정한다.',
   ports: [{ id: 'thread', type: 'M2.6 × 10mm 수나사', role: '플라스틱 구멍에 직접 체결' }],
+  mountHoles: {"boltAllowed": false, "types": ["SCREW"], "count": 0, "holes": [], "otherMounts": ["SCREW"]},
 };

@@ -14,4 +14,5 @@ export default {
   ],
   function: '마디를 이어 고리 모양 궤도를 만들고, 톱니 휠 두 개에 걸어 돌리면 탱크처럼 울퉁불퉁한 곳도 지나간다.',
   ports: [{ id: 'hinge', type: '고리 연결', role: '다음 마디와 연결' }],
+  mountHoles: {"boltAllowed": false, "types": ["LINK_PIN"], "count": 0, "holes": [], "otherMounts": ["LINK_PIN"]},
 };

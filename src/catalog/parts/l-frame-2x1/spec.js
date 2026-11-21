@@ -14,4 +14,5 @@ export default {
   ],
   function: '작은 판을 직각으로 세울 때 쓰는 가장 작은 L 브래킷. 긴 다리 2구멍, 짧은 다리 1구멍.',
   ports: [{ id: 'legs', type: '다리 2개 × 구멍 2 · 1개', role: '두 프레임을 90°로 연결' }],
+  mountHoles: {"boltAllowed": true, "types": ["M3"], "count": 3, "holes": [[5, 1, 0.0, 0, 1, 0, "M3"], [-5, 1, 0.0, 0, 1, 0, "M3"], [9.0, 4.0, 0.0, -1.0, 0.0, 0, "M3"]], "otherMounts": []},
 };

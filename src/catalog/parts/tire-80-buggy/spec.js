@@ -13,4 +13,5 @@ export default {
   ],
   function: '버기 휠 바깥에 끼우고 안에 스폰지 인너를 넣어 쓰는 오프로드 타이어. 무늬가 깊어 거친 바닥에서도 잘 달린다.',
   ports: [{ id: 'rim', type: '안쪽 홈', role: '휠 - Ø80 버기' }],
+  mountHoles: {"boltAllowed": false, "types": ["RIM"], "count": 0, "holes": [], "otherMounts": ["RIM"]},
 };

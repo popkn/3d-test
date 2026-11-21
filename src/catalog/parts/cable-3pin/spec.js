@@ -17,4 +17,5 @@ export default {
     { id: 'a', type: '3핀 암 커넥터', role: 'CPU 보드 포트' },
     { id: 'b', type: '3핀 암 커넥터', role: '센서 · 출력 보드 헤더' },
   ],
+  mountHoles: {"boltAllowed": false, "types": ["E3P_F"], "count": 0, "holes": [], "otherMounts": ["E3P_F"]},
 };

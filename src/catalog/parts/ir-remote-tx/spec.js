@@ -14,4 +14,5 @@ export default {
   ],
   function: '버튼을 누르면 적외선 LED가 그 버튼 번호를 신호로 보낸다. DIP 스위치로 채널을 정해 여러 명이 동시에 써도 섞이지 않는다.',
   ports: [{ id: 'power', type: '2핀 전원', role: '배터리 연결' }],
+  mountHoles: {"boltAllowed": false, "types": ["NONE"], "count": 0, "holes": [], "otherMounts": ["NONE"]},
 };

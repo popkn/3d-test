@@ -12,4 +12,5 @@ export default {
   ],
   function: '모터 없이 따라 굴러가는 바퀴. 축을 프레임 구멍(축가이드 · L자)에 꿰면 끝.',
   ports: [{ id: 'axle', type: 'Ø3 축', role: '프레임 구멍 · 축가이드에 꿰기' }],
+  mountHoles: {"boltAllowed": false, "types": ["SHAFT3"], "count": 0, "holes": [], "otherMounts": ["SHAFT3"]},
 };

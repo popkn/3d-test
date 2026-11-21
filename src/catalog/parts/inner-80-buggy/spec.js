@@ -14,4 +14,5 @@ export default {
   ],
   function: '휠 - Ø80 버기와 타이어 - Ø80 버기 사이에 넣는 스폰지 띠. 휠 가운데 홈에 감아 붙이면 타이어가 찌그러지지 않고 모양을 유지한다.',
   ports: [{ id: 'ring', type: '스폰지 고리', role: '버기 휠 홈 ↔ Ø80 버기 타이어 안쪽' }],
+  mountHoles: {"boltAllowed": false, "types": ["RIM"], "count": 0, "holes": [], "otherMounts": ["RIM"]},
 };

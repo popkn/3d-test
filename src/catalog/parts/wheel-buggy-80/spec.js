@@ -17,4 +17,5 @@ export default {
     { id: 'hub', type: 'D컷 축 구멍', role: 'DC 모터 축에 끼움' },
     { id: 'rim', type: '림', role: '인너 스폰지 + 타이어 Ø80 버기 장착' },
   ],
+  mountHoles: {"boltAllowed": false, "types": ["DCUT_HUB", "RIM"], "count": 0, "holes": [], "otherMounts": ["DCUT_HUB", "RIM"]},
 };

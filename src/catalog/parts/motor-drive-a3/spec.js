@@ -17,4 +17,5 @@ export default {
   ports: [
     { id: 'pins', type: '6핀 × 2줄', role: 'CPU 보드 또는 모터드라이브 연결 보드에 꽂음' },
   ],
+  mountHoles: {"boltAllowed": false, "types": ["PIN254"], "count": 0, "holes": [], "otherMounts": ["PIN254"]},
 };

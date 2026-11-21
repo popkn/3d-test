@@ -12,4 +12,5 @@ export default {
   ],
   function: 'DC 모터 축에 끼워 로봇을 굴리는 기본 바퀴. 조립할 때는 휠과 타이어를 따로 다루지 않고 한 부품으로 쓴다.',
   ports: [{ id: 'hub', type: 'D컷 축 구멍', role: 'DC 모터 축 · 75 mm 축' }],
+  mountHoles: {"boltAllowed": false, "types": ["DCUT_HUB"], "count": 0, "holes": [], "otherMounts": ["DCUT_HUB"]},
 };

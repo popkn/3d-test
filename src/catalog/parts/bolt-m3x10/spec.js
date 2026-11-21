@@ -13,4 +13,5 @@ export default {
   ],
   function: '긴 M3 볼트. 두꺼운 부품이나 지지대를 고정한다.',
   ports: [{ id: 'thread', type: 'M3 × 10mm 수나사', role: 'M3 너트 · 지지대 체결' }],
+  mountHoles: {"boltAllowed": false, "types": ["MALE"], "count": 0, "holes": [], "otherMounts": ["MALE"]},
 };

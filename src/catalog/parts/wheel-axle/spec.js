@@ -14,4 +14,5 @@ export default {
   ],
   function: '모터 허브나 바퀴 사이를 잇는 짧은 축. 모터가 돌면 같이 돌아 바퀴를 굴린다.',
   ports: [{ id: 'hex', type: '육각 끝', role: '바퀴 · 허브 연결' }],
+  mountHoles: {"boltAllowed": false, "types": ["HEX", "ROUND7"], "count": 0, "holes": [], "otherMounts": ["HEX", "ROUND7"]},
 };

@@ -13,4 +13,5 @@ export default {
   ],
   function: '프레임 두 장의 구멍에 눌러 끼우면 빠지지 않으면서도 돌아간다. 링크 · 관절처럼 움직여야 하는 곳을 볼트 대신 잇는다.',
   ports: [{ id: 'shaft', type: 'Ø3.5 축', role: '프레임 두 장을 돌아가게 연결' }],
+  mountHoles: {"boltAllowed": true, "types": ["M3"], "count": 3, "holes": [[0, 6.1, 0, 0, 1, 0, "M3"], [10, 6.1, 0, 0, 1, 0, "M3"], [20, 6.1, 0, 0, 1, 0, "M3"]], "otherMounts": ["PIN35"]},
 };

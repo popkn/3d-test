@@ -12,4 +12,5 @@ export default {
   ],
   function: 'DC 모터에 끼우는 큰 오프로드 바퀴. 인너와 타이어는 휠 없이 쓰지 않으므로 한 부품으로 다룬다.',
   ports: [{ id: 'hub', type: 'D컷 축 구멍', role: 'DC 모터 축' }],
+  mountHoles: {"boltAllowed": false, "types": ["DCUT_HUB"], "count": 0, "holes": [], "otherMounts": ["DCUT_HUB"]},
 };

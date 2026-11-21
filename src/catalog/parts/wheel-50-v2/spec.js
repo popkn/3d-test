@@ -19,4 +19,5 @@ export default {
     { id: 'hub', type: 'D컷 축 구멍', role: 'DC 모터 130 축에 끼움' },
     { id: 'rim', type: '림', role: '타이어 Ø50[V2] 장착' },
   ],
+  mountHoles: {"boltAllowed": false, "types": ["DCUT_HUB", "RIM"], "count": 0, "holes": [], "otherMounts": ["DCUT_HUB", "RIM"]},
 };

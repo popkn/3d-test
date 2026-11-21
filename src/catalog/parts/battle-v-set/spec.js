@@ -14,4 +14,5 @@ export default {
   ],
   function: '배틀 로봇의 무기 날. 낱장으로도 쓰고, 세트로 모아 큰 날로도 쓴다.',
   ports: [{ id: 'holes', type: 'M3 구멍', role: '휠가이드 · 프레임 고정' }],
+  mountHoles: {"boltAllowed": true, "types": ["M3"], "count": 4, "holes": [[-3.9, 1.6, -5, 0, 1, 0, "M3"], [-3.9, 1.6, 5, 0, 1, 0, "M3"], [3.9, 1.6, 5, 0, 1, 0, "M3"], [3.9, 1.6, -5, 0, 1, 0, "M3"]], "otherMounts": []},
 };

@@ -19,4 +19,5 @@ export default {
     { id: 'power', type: '2핀 커넥터', role: '모터 드라이브 보드 연결' },
     { id: 'mount', type: '고정 귀 구멍 4개', role: '프레임에 나사 고정' },
   ],
+  mountHoles: {"boltAllowed": true, "types": ["M3"], "count": 4, "holes": [[-25, 26.4, -5, 0, 1, 0, "M3"], [-25, 26.4, 5, 0, 1, 0, "M3"], [25, 26.4, -5, 0, 1, 0, "M3"], [25, 26.4, 5, 0, 1, 0, "M3"]], "otherMounts": ["DCUT"]},
 };

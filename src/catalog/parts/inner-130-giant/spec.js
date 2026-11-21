@@ -14,4 +14,5 @@ export default {
   ],
   function: '휠 - Ø130 자이언트와 타이어 - Ø130 자이언트 사이에 넣는 단단한 스폰지 띠. 휠 가운데 홀에 감아 붙여 타이어 모양을 유지한다.',
   ports: [{ id: 'ring', type: '스폰지 고리', role: '자이언트 휠 홈 ↔ Ø130 자이언트 타이어 안쪽' }],
+  mountHoles: {"boltAllowed": false, "types": ["RIM"], "count": 0, "holes": [], "otherMounts": ["RIM"]},
 };

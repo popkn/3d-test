@@ -14,4 +14,5 @@ export default {
   ],
   function: '빨강·초록·파랑 세 빛의 밝기를 섞어 원하는 색을 만든다. 흰 덮개가 빛을 고르게 퍼뜨린다.',
   ports: [{ id: 'signal', type: '신호 커넥터', role: 'CPU 출력 포트 연결' }],
+  mountHoles: {"boltAllowed": false, "types": ["CLIP", "E3P_M"], "count": 0, "holes": [], "otherMounts": ["CLIP", "E3P_M"]},
 };

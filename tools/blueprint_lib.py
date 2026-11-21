@@ -318,3 +318,75 @@ def make_overall():
         sv.text(x0, y, '• ' + t, 10, '#3a4050'); y += 15
     return sv.out()
 
+# ───────────── 규칙 4.2 · 10.7 공용 자동 검증 (실구멍 체결 · 동적 이동반경 충돌) ─────────────
+def _load_part_connectors(repo_root=None):
+    import json, pathlib, re
+    base = pathlib.Path(repo_root) if repo_root else pathlib.Path(__file__).resolve().parent.parent
+    txt = (base / 'src' / 'catalog' / 'connectors.js').read_text(encoding='utf-8')
+    return json.loads(re.search(r'export default (\{.*\});', txt, re.S).group(1))
+
+def verify_part_holes(placements, repo_root=None, tol=1.8):
+    """규칙 4.2: 모든 볼트·너트·캡너트가 겹치는 구조 부품의 실제 mountHoles 구멍에만 체결되었는지 검증."""
+    conn = _load_part_connectors(repo_root)
+    fast_ids = {'bolt-m3x6', 'bolt-m3x10', 'bolt-m26x10', 'nut-m3', 'cap-nut-m3', 's-nut-blue'}
+    hole_types = {'M3', 'H4.2', 'TAP', 'TAP_M3', 'HEXNUT', 'M3_NUT', 'M26'}
+    structs = [p for p in placements if not p.get('fastener') and p['id'] not in fast_ids and p['id'] not in ('support-spacer', 's-hook-35')]
+    bolts = [p for p in placements if (p.get('fastener') or p['id'] in fast_ids) and p['id'] != 'bolt-m26x10']
+    errors = []
+
+    def world_holes(p):
+        d = conn.get(p['id'])
+        if not d:
+            return None
+        hs = [x['p'] for x in d.get('c', []) if x.get('t') in hole_types]
+        if not hs:
+            return []
+        up = p.get('up') or (0, 1, 0)
+        xd = p.get('xdir')
+        if not xd:
+            ref = (0, 1, 0) if abs(up[1]) < 0.9 else (1, 0, 0)
+            cx, cy, cz = ref[1]*up[2]-ref[2]*up[1], ref[2]*up[0]-ref[0]*up[2], ref[0]*up[1]-ref[1]*up[0]
+            ln = math.hypot(cx, cy, cz) or 1.0
+            xd = (cx/ln, cy/ln, cz/ln)
+        zd = (xd[1]*up[2]-xd[2]*up[1], xd[2]*up[0]-xd[0]*up[2], xd[0]*up[1]-xd[1]*up[0])
+        o = p.get('origin') or p.get('o') or (p['c'][0], p['c'][1] - p['s'][1]/2, p['c'][2])
+        return [(o[0]+xd[0]*px+up[0]*py+zd[0]*pz,
+                 o[1]+xd[1]*px+up[1]*py+zd[1]*pz,
+                 o[2]+xd[2]*px+up[2]*py+zd[2]*pz) for px, py, pz in hs]
+
+    wh_cache = [world_holes(s) for s in structs]
+    for b in bolts:
+        bx, by, bz = b['c']
+        ax = b.get('axis', 1)
+        for s, wh in zip(structs, wh_cache):
+            sx, sy, sz = s['c']
+            wx, wy, wz = s.get('s') or s.get('z') or (0, 0, 0)
+            if abs(bx-sx) > wx/2 + 1 or abs(by-sy) > wy/2 + 1 or abs(bz-sz) > wz/2 + 1:
+                continue
+            if wh is None:
+                continue
+            if not wh:
+                errors.append(f"규칙 4.2 위반: '{s.get('name', s.get('n'))}'({s['id']})은 볼트 구멍 없음")
+                continue
+            best = min(
+                math.hypot(by-hy, bz-hz) if ax == 0 else (math.hypot(bx-hx, bz-hz) if ax == 1 else math.hypot(bx-hx, by-hy))
+                for hx, hy, hz in wh
+            )
+            if best > tol:
+                errors.append(f"규칙 4.2 위반: '{b.get('name', b.get('n'))}'가 '{s.get('name', s.get('n'))}' 구멍 없는 위치 체결 (오차 {best:.1f} mm)")
+    return errors
+
+def verify_motion_sweep(poses, margin=0.2):
+    """규칙 10.7: 동작·이동 반경 전 구간 3D AABB 충돌 검사 (충돌 0건 필수)."""
+    errors = []
+    for label, moving, targets in poses:
+        for mname, mmin, mmax in moving:
+            for tname, tmin, tmax in targets:
+                if mname == tname:
+                    continue
+                ox = min(mmax[0], tmax[0]) - max(mmin[0], tmin[0])
+                oy = min(mmax[1], tmax[1]) - max(mmin[1], tmin[1])
+                oz = min(mmax[2], tmax[2]) - max(mmin[2], tmin[2])
+                if ox > margin and oy > margin and oz > margin:
+                    errors.append(f"규칙 10.7 위반 [{label}]: '{mname}' ↔ '{tname}' 충돌 ({ox:.1f}×{oy:.1f}×{oz:.1f} mm)")
+    return errors

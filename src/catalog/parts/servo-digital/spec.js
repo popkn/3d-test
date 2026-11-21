@@ -20,4 +20,5 @@ export default {
     { id: 'signal', type: '3선 케이블 (신호 · + · -)', role: 'CPU 출력 포트 연결' },
     { id: 'mount', type: '고정 귀 구멍 4개', role: '모터가이드로 프레임 고정' },
   ],
+  mountHoles: {"boltAllowed": true, "types": ["M3"], "count": 4, "holes": [[-25, 26.4, -5, 0, 1, 0, "M3"], [-25, 26.4, 5, 0, 1, 0, "M3"], [25, 26.4, -5, 0, 1, 0, "M3"], [25, 26.4, 5, 0, 1, 0, "M3"]], "otherMounts": ["SERVO"]},
 };

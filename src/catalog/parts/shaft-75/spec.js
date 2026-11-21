@@ -12,4 +12,5 @@ export default {
   ],
   function: '축가이드나 휠가이드 구멍에 꿰어, 양쪽 바퀴를 하나의 축으로 함께 돌리거나 회전하는 부품을 받친다.',
   ports: [{ id: 'shaft', type: 'Ø3 축', role: '축가이드 · 휠가이드 구멍' }],
+  mountHoles: {"boltAllowed": false, "types": ["SHAFT3"], "count": 0, "holes": [], "otherMounts": ["SHAFT3"]},
 };

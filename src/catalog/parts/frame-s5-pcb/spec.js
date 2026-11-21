@@ -13,4 +13,5 @@ export default {
   ],
   function: '프레임과 프레임, 보드와 모터를 이어 붙이는 막대. 구멍이 10mm 간격이라 모든 로보로보 부품과 맞는다.',
   ports: [{ id: 'holes', type: 'M3 구멍', role: '프레임 · 보드 연결' }],
+  mountHoles: {"boltAllowed": true, "types": ["M3"], "count": 5, "holes": [[-20, 1.6, 0, 0, 1, 0, "M3"], [-10, 1.6, 0, 0, 1, 0, "M3"], [0, 1.6, 0, 0, 1, 0, "M3"], [10, 1.6, 0, 0, 1, 0, "M3"], [20, 1.6, 0, 0, 1, 0, "M3"]], "otherMounts": []},
 };

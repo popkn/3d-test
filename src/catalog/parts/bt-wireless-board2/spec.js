@@ -19,4 +19,5 @@ export default {
     { id: 'bt1', type: 'BLUETOOTH_1 소켓', role: '블루투스 모듈 1' },
     { id: 'bt2', type: 'BLUETOOTH_2 소켓', role: '블루투스 모듈 2' },
   ],
+  mountHoles: {"boltAllowed": false, "types": ["NONE"], "count": 0, "holes": [], "otherMounts": ["NONE"]},
 };

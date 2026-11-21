@@ -14,4 +14,5 @@ export default {
   ],
   function: '육각 구멍으로 축과 함께 돌며, 넓은 테두리가 캐터필러 궤도가 옆으로 빠지지 않게 잡아 준다. 75mm 축과 함께 쓴다.',
   ports: [{ id: 'hex', type: '육각 구멍', role: '축 연결' }],
+  mountHoles: {"boltAllowed": true, "types": ["M3"], "count": 1, "holes": [[0, 15, 0, 1, 0, 0, "M3"]], "otherMounts": ["HEX_HUB"]},
 };

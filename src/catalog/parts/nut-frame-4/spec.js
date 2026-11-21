@@ -13,4 +13,5 @@ export default {
   ],
   function: '육각 홈에 M3 너트를 끼워 두면 너트가 돌지 않아, 반대편에서 볼트만 돌려 쉽게 조립할 수 있다.',
   ports: [{ id: 'holes', type: '육각 홈 4개 (10mm 간격)', role: 'M3 너트 + 볼트 고정' }],
+  mountHoles: {"boltAllowed": true, "types": ["HEXNUT"], "count": 4, "holes": [[-15, 3.5, 0, 0, 1, 0, "HEXNUT"], [-5, 3.5, 0, 0, 1, 0, "HEXNUT"], [5, 3.5, 0, 0, 1, 0, "HEXNUT"], [15, 3.5, 0, 0, 1, 0, "HEXNUT"]], "otherMounts": []},
 };

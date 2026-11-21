@@ -16,4 +16,5 @@ export default {
     { id: 'bore', type: '가로 축 구멍 (Ø3 축용)', role: '축 받침' },
     { id: 'holes', type: '고정 구멍 4개', role: '프레임 고정' },
   ],
+  mountHoles: {"boltAllowed": true, "types": ["M3"], "count": 4, "holes": [[-10, 5, -5, 0, 1, 0, "M3"], [-10, 5, 5, 0, 1, 0, "M3"], [10, 5, -5, 0, 1, 0, "M3"], [10, 5, 5, 0, 1, 0, "M3"]], "otherMounts": ["BORE3"]},
 };

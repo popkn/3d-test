@@ -15,4 +15,5 @@ export default {
   ],
   function: '모터 축에 휠가이드로 연결하는 큰 바퀴. 지름이 커서 한 바퀴에 약 40.8cm를 간다.',
   ports: [{ id: 'hub', type: '휠가이드', role: 'DC 모터 · 서보 축 연결' }],
+  mountHoles: {"boltAllowed": true, "types": ["M3"], "count": 1, "holes": [[0, 65, 0, 1, 0, 0, "M3"]], "otherMounts": []},
 };

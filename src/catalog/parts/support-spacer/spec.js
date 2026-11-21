@@ -17,4 +17,5 @@ export default {
     { id: 'male', type: 'M3 수나사', role: '프레임 구멍 + M3 너트' },
     { id: 'female', type: 'M3 암나사', role: '프레임 구멍 + M3 볼트' },
   ],
+  mountHoles: {"boltAllowed": false, "types": ["FEM", "MALE"], "count": 0, "holes": [], "otherMounts": ["FEM", "MALE"]},
 };

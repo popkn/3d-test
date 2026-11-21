@@ -13,4 +13,5 @@ export default {
   ],
   function: '짧은 M3 볼트. 프레임끼리 너트와 함께 고정한다 (50개입).',
   ports: [{ id: 'thread', type: 'M3 × 6mm 수나사', role: 'M3 너트 · 지지대 체결' }],
+  mountHoles: {"boltAllowed": false, "types": ["MALE"], "count": 0, "holes": [], "otherMounts": ["MALE"]},
 };

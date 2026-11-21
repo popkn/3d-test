@@ -96,8 +96,14 @@ export function detailAdapter(root, modules, {
         it.come = v.clone().setY(Math.abs(v.y) * 0.6 + 26).normalize().multiplyScalar(48);
       }
       const last = steps[steps.length - 1];
-      if (!granular && last && !last.isTest && last.mi === mi && last.name === it.h.userData.name && last.id === it.h.userData.id) last.items.push(it);
-      else steps.push({ mi, name: it.h.userData.name, id: it.h.userData.id, note: it.h.userData.note || '', fastener: it.fastener, items: [it] });
+      // 규칙 10.3: 구조 부품은 1부품=1단계, 연속으로 이어지는 볼트·너트·캡너트 체결은 1단계로 묶음 (중간에 부품 a가 끼면 3단계로 분리)
+      if (it.fastener && last && !last.isTest && last.mi === mi && last.fastener) {
+        last.items.push(it);
+      } else if (!granular && last && !last.isTest && last.mi === mi && last.name === it.h.userData.name && last.id === it.h.userData.id) {
+        last.items.push(it);
+      } else {
+        steps.push({ mi, name: it.h.userData.name, id: it.h.userData.id, note: it.h.userData.note || '', fastener: it.fastener, items: [it] });
+      }
       it.step = steps.length - 1;
       items.push(it);
 
@@ -187,12 +193,19 @@ export function detailAdapter(root, modules, {
     stepName: (s) => {
       const st = steps[s - 1], m = modules[st.mi];
       if (st.isTest) return `${m.no} ${m.name.split(' (')[0]} › ${st.name}`;
+      if (st.fastener && st.items.length > 1) {
+        const cnt = {};
+        for (const x of st.items) { const k = x.h.userData.id; cnt[k] = (cnt[k] || 0) + 1; }
+        const summary = Object.entries(cnt).map(([k, n]) => `${k} × ${n}`).join(' + ');
+        return `${m.no} ${m.name.split(' (')[0]} › [체결 일괄] ${st.name.split(' (')[0]} (${summary}, 총 ${st.items.length}개)`;
+      }
       const tag = st.fastener ? '[체결] ' : '[부품] ';
       return `${m.no} ${m.name.split(' (')[0]} › ${tag}${st.name}${st.items.length > 1 ? ` × ${st.items.length}` : ''}${st.note ? ` — ${st.note}` : ''}`;
     },
     stepShort: (s) => {
       const st = steps[s - 1];
       if (st.isTest) return st.short;
+      if (st.fastener && st.items.length > 1) return `${modules[st.mi].no} · 체결 일괄 (${st.items.length}개)`;
       return `${modules[st.mi].no} · ${st.fastener ? '체결: ' : ''}${st.name.split(' (')[0]}${st.items.length > 1 ? ` × ${st.items.length}` : ''}`;
     },
     stepKind: (s) => {
