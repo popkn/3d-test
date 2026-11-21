@@ -2,8 +2,8 @@
 <rect x="14" y="14" width="1232" height="46" fill="#1d2230"/>
 <text x="28.0" y="44.0" font-size="13" fill="#9fb3d1" font-weight="700" text-anchor="start">배틀로봇 "크림슨 스콜피온" (4WD 쌍발 수직 어퍼컷 낫 · 4절링크 양집게 · 전갈 꼬리 해머) · 도면 07</text>
 <text x="830.0" y="44.0" font-size="17" fill="#ffffff" font-weight="700" text-anchor="start">공격 메커니즘 확대 상세도 (규칙 10.6 · 4절링크 양집게 &amp; 쌍발 수직 어퍼컷 + 전갈 꼬리)</text>
-<text x="1232.0" y="76.0" font-size="10.5" fill="#5a6070" font-weight="400" text-anchor="end">4절링크 오차 0.0000 mm · 토크 2.73× 증폭 · 3종 무기 동시 작동 충돌 0건 검증</text>
-<text x="45.0" y="96.0" font-size="12.0" fill="#1d2230" font-weight="700" text-anchor="start">① [윗면 확대 X-Z] 대칭 4절링크 집게 크러셔 (OUT1·OUT2 · 열림 160 mm ↔ 압착 36 mm · 낫 간격 7.3+ mm)</text>
+<text x="1232.0" y="76.0" font-size="10.5" fill="#5a6070" font-weight="400" text-anchor="end">4절링크 오차 0.0000 mm · 토크 2.87× 증폭 · 3종 무기 동시 작동 충돌 0건 검증</text>
+<text x="45.0" y="96.0" font-size="12.0" fill="#1d2230" font-weight="700" text-anchor="start">① [윗면 확대 X-Z] 대칭 4절링크 집게 크러셔 (OUT1·OUT2 · 열림 160 mm ↔ 압착 38 mm · 그랩 포함 낫 간격 12.1+ mm)</text>
 <rect x="45" y="108" width="1170" height="450" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>
 <rect x="485.4" y="423.2" width="289.1" height="107.8" fill="#dfe5ee" stroke="#5b6578" stroke-width="1.2"/>
 <text x="630.0" y="506.5" font-size="9.0" fill="#445" font-weight="700" text-anchor="middle">상부 갑판 (x ∈ [-59,+59], z ≥ -59)</text>
@@ -21,11 +21,11 @@
 <line x1="508.6" y1="455.6" x2="431.7" y2="184.6" stroke="#2f7fe8" stroke-width="5.2" stroke-linecap="round" stroke-dasharray="6 3"/>
 <circle cx="604.0" cy="478.1" r="3.5" fill="#f2c21b" stroke="#1d2230"/>
 <circle cx="508.6" cy="455.6" r="3.5" fill="#f2c21b" stroke="#1d2230"/>
-<line x1="581.0" y1="469.8" x2="568.8" y2="491.0" stroke="#c8202b" stroke-width="2.5"/>
-<line x1="568.8" y1="491.0" x2="477.9" y2="454.3" stroke="#c8202b" stroke-width="3.0"/>
-<line x1="477.9" y1="454.3" x2="577.8" y2="190.9" stroke="#c8202b" stroke-width="5.2" stroke-linecap="round"/>
-<circle cx="568.8" cy="491.0" r="3.5" fill="#f2c21b" stroke="#1d2230"/>
-<circle cx="477.9" cy="454.3" r="3.5" fill="#f2c21b" stroke="#1d2230"/>
+<line x1="581.0" y1="469.8" x2="573.4" y2="493.1" stroke="#c8202b" stroke-width="2.5"/>
+<line x1="573.4" y1="493.1" x2="482.8" y2="455.9" stroke="#c8202b" stroke-width="3.0"/>
+<line x1="482.8" y1="455.9" x2="554.6" y2="183.4" stroke="#c8202b" stroke-width="5.2" stroke-linecap="round"/>
+<circle cx="573.4" cy="493.1" r="3.5" fill="#f2c21b" stroke="#1d2230"/>
+<circle cx="482.8" cy="455.9" r="3.5" fill="#f2c21b" stroke="#1d2230"/>
 <circle cx="679.0" cy="469.8" r="36.8" fill="#fff" stroke="#2f6fe0" stroke-width="1.4"/>
 <circle cx="764.8" cy="408.5" r="5" fill="#f2c21b" stroke="#1d2230" stroke-width="1.5"/>
 <line x1="679.0" y1="469.8" x2="656.0" y2="478.1" stroke="#2f7fe8" stroke-width="2.5" stroke-dasharray="6 3"/>
@@ -34,13 +34,13 @@
 <circle cx="656.0" cy="478.1" r="3.5" fill="#f2c21b" stroke="#1d2230"/>
 <circle cx="751.4" cy="455.6" r="3.5" fill="#f2c21b" stroke="#1d2230"/>
 <text x="840.3" y="184.6" font-size="9.0" fill="#2f7fe8" font-weight="700" text-anchor="start">열림 +15.9° (x=81.0)</text>
-<line x1="679.0" y1="469.8" x2="691.2" y2="491.0" stroke="#c8202b" stroke-width="2.5"/>
-<line x1="691.2" y1="491.0" x2="782.1" y2="454.3" stroke="#c8202b" stroke-width="3.0"/>
-<line x1="782.1" y1="454.3" x2="682.2" y2="190.9" stroke="#c8202b" stroke-width="5.2" stroke-linecap="round"/>
-<circle cx="691.2" cy="491.0" r="3.5" fill="#f2c21b" stroke="#1d2230"/>
-<circle cx="782.1" cy="454.3" r="3.5" fill="#f2c21b" stroke="#1d2230"/>
-<text x="694.2" y="190.9" font-size="9.0" fill="#c8202b" font-weight="700" text-anchor="start">압착 −20.8° (x=21.3)</text>
-<text x="63.0" y="550.0" font-size="9.2" fill="#1d2230" font-weight="700" text-anchor="start">기구학 공식: 크랭크 R=10 mm · 커플러 L=40 mm(소5) · 로커 r=20 mm(소8) → 서보 100° 회전 시 집게 36.6° 구동 · 토크 증폭 2.73× · 전구간 오차 0.0000 mm</text>
+<line x1="679.0" y1="469.8" x2="686.6" y2="493.1" stroke="#c8202b" stroke-width="2.5"/>
+<line x1="686.6" y1="493.1" x2="777.2" y2="455.9" stroke="#c8202b" stroke-width="3.0"/>
+<line x1="777.2" y1="455.9" x2="705.4" y2="183.4" stroke="#c8202b" stroke-width="5.2" stroke-linecap="round"/>
+<circle cx="686.6" cy="493.1" r="3.5" fill="#f2c21b" stroke="#1d2230"/>
+<circle cx="777.2" cy="455.9" r="3.5" fill="#f2c21b" stroke="#1d2230"/>
+<text x="717.4" y="183.4" font-size="9.0" fill="#c8202b" font-weight="700" text-anchor="start">압착 −14.8° (x=30.8)</text>
+<text x="63.0" y="550.0" font-size="9.2" fill="#1d2230" font-weight="700" text-anchor="start">기구학 공식: 크랭크 R=10 mm · 커플러 L=40 mm(소5) · 로커 r=20 mm(소8) → 서보 88° 회전 시 집게 30.6° 구동 · 토크 증폭 2.87× · 전구간 오차 0.0000 mm</text>
 <text x="45.0" y="578.0" font-size="12.0" fill="#1d2230" font-weight="700" text-anchor="start">② [측면 확대 Y-Z] 쌍발 400rpm 수직 어퍼컷 낫(Ø104) 360° 스윕 &amp; 오버헤드 전갈 꼬리 해머(55°→0°) 안전 여유 검증</text>
 <rect x="45" y="590" width="1170" height="540" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>
 <line x1="65" y1="1078.0" x2="1195" y2="1078.0" stroke="#1d2230" stroke-width="2"/>
@@ -63,7 +63,7 @@
 <text x="633.4" y="508.6" font-size="9.2" fill="#9b51e0" font-weight="700" text-anchor="end">대기 +55° (전갈 꼬리 자세)</text>
 <line x1="808.0" y1="753.7" x2="521.0" y2="753.7" stroke="#c8202b" stroke-width="4.2"/>
 <rect x="500.5" y="743.4" width="41.0" height="20.5" fill="#c8202b" opacity="0.8"/>
-<text x="511.0" y="743.7" font-size="9.2" fill="#c8202b" font-weight="700" text-anchor="end">타격 0° (독침 끝 y=140.6 mm)</text>
-<line x1="490.2" y1="811.1" x2="490.2" y2="789.8" stroke="#2fae67" stroke-width="3"/>
-<text x="500.5" y="800.4" font-size="9.5" fill="#2fae67" font-weight="700" text-anchor="start">안전 여유 +10.4 mm (동시 작동 충돌 0!)</text>
+<text x="511.0" y="743.7" font-size="9.2" fill="#c8202b" font-weight="700" text-anchor="end">타격 0° (독침 끝 y=141.6 mm)</text>
+<line x1="490.2" y1="811.1" x2="490.2" y2="787.7" stroke="#2fae67" stroke-width="3"/>
+<text x="500.5" y="799.4" font-size="9.5" fill="#2fae67" font-weight="700" text-anchor="start">안전 여유 +11.4 mm (동시 작동 충돌 0!)</text>
 <text x="63.0" y="1110.0" font-size="9.4" fill="#1d2230" font-weight="700" text-anchor="start">3단 콤보 시퀀스: ① 전방 IR(IN1) 상대 포착 → ② 양집게(OUT1·2) −20.8° 압착 포획 → ③ 쌍발 400rpm 수직 낫 어퍼컷 + 꼬리 해머(OUT3) 55°→0° 동시 격파!</text></svg>

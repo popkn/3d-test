@@ -2,7 +2,7 @@
 <rect x="14" y="14" width="1232" height="46" fill="#1d2230"/>
 <text x="28.0" y="44.0" font-size="13" fill="#9fb3d1" font-weight="700" text-anchor="start">배틀로봇 "크림슨 스콜피온" (4WD 쌍발 수직 어퍼컷 낫 · 4절링크 양집게 · 전갈 꼬리 해머) · 도면 08</text>
 <text x="830.0" y="44.0" font-size="17" fill="#ffffff" font-weight="700" text-anchor="start">전기 배선 · 5중 검증표 · 3단 공격 콤보</text>
-<text x="1232.0" y="76.0" font-size="10.5" fill="#5a6070" font-weight="400" text-anchor="end">CPU 1 · DC 130×4 · DC 400×2 · 확장보드 A3 1 · 서보 3 · 센서 3 · 무게 1396 g</text>
+<text x="1232.0" y="76.0" font-size="10.5" fill="#5a6070" font-weight="400" text-anchor="end">CPU 1 · DC 130×4 · DC 400×2 · 확장보드 A3 1 · 서보 3 · 센서 3 · 무게 1394 g</text>
 <text x="50.0" y="96.0" font-size="12.5" fill="#1d2230" font-weight="700" text-anchor="start">① 자동 규칙 · 충돌 · 3무기 동시 스윕 검증 (전 항목 통과)</text>
 <rect x="50" y="112" width="1160" height="24" fill="#f7f9fc" stroke="#d5dde8"/>
 <text x="60.0" y="129.0" font-size="10.5" fill="#2fae67" font-weight="700" text-anchor="start">✔ 1.1 CPU 수량</text>
@@ -21,13 +21,13 @@
 <text x="390.0" y="233.0" font-size="10.0" fill="#1d2230" font-weight="400" text-anchor="start">출력 OUT 5/5 (서보 3 · RGB · 부저) · 입력 IN 3/7 (적외선 · 컬러 · 접촉) · BT 1</text>
 <rect x="50" y="242" width="1160" height="24" fill="#f7f9fc" stroke="#d5dde8"/>
 <text x="60.0" y="259.0" font-size="10.5" fill="#2fae67" font-weight="700" text-anchor="start">✔ 10.1~10.2 공중 고정 0 · 동축 체결</text>
-<text x="390.0" y="259.0" font-size="10.0" fill="#1d2230" font-weight="400" text-anchor="start">구조 131개 전원 물리 체결 · 볼트/너트/캡너트 377개 동축 100%</text>
+<text x="390.0" y="259.0" font-size="10.0" fill="#1d2230" font-weight="400" text-anchor="start">구조 131개 전원 물리 체결 · 볼트/너트/캡너트 367개 동축 100%</text>
 <rect x="50" y="268" width="1160" height="24" fill="#f7f9fc" stroke="#d5dde8"/>
 <text x="60.0" y="285.0" font-size="10.5" fill="#2fae67" font-weight="700" text-anchor="start">✔ 10.6 4절링크 &amp; 3무기 동시 스윕</text>
-<text x="390.0" y="285.0" font-size="10.0" fill="#1d2230" font-weight="400" text-anchor="start">링크 오차 0.0000 mm · 집게↔낫 5.8 mm · 꼬리↔낫 10.4 mm · AABB 충돌 0</text>
+<text x="390.0" y="285.0" font-size="10.0" fill="#1d2230" font-weight="400" text-anchor="start">링크 오차 0.0000 mm · 집게↔낫 12.1 mm · 꼬리↔낫 11.4 mm · AABB 충돌 0</text>
 <rect x="50" y="294" width="1160" height="24" fill="#f7f9fc" stroke="#d5dde8"/>
 <text x="60.0" y="311.0" font-size="10.5" fill="#2fae67" font-weight="700" text-anchor="start">✔ 꼬리 해머 서보 토크 여유</text>
-<text x="390.0" y="311.0" font-size="10.0" fill="#1d2230" font-weight="400" text-anchor="start">필요 0.43 kg·cm / 서보 4.0 kg·cm (안전율 9.2×)</text>
+<text x="390.0" y="311.0" font-size="10.0" fill="#1d2230" font-weight="400" text-anchor="start">필요 0.44 kg·cm / 서보 4.0 kg·cm (안전율 9.2×)</text>
 <text x="50.0" y="342.0" font-size="12.5" fill="#1d2230" font-weight="700" text-anchor="start">② 전기 배선 (4WD M1~M4 + 확장 보드 EX-M1/M2 + OUT1~5 + IN1~3)</text>
 <rect x="50" y="356" width="1160" height="22" fill="#1d2230"/>
 <text x="60.0" y="371.0" font-size="10" fill="#fff" font-weight="700" text-anchor="start">포트</text>
@@ -64,11 +64,11 @@
 <rect x="58" y="519" width="56" height="16" rx="3" fill="#f2c21b"/>
 <text x="86.0" y="531.0" font-size="9.2" fill="#1d2230" font-weight="700" text-anchor="middle">OUT1</text>
 <text x="160.0" y="531.0" font-size="10.2" fill="#1d2230" font-weight="700" text-anchor="start">Servo Motor (왼 집게)</text>
-<text x="480.0" y="531.0" font-size="9.8" fill="#1d2230" font-weight="400" text-anchor="start">좌측 4절링크 집게 크러셔 (60°↔160° · 토크 2.73× 증폭)</text>
+<text x="480.0" y="531.0" font-size="9.8" fill="#1d2230" font-weight="400" text-anchor="start">좌측 4절링크 집게 크러셔 (72°↔160° · 토크 2.87× 증폭)</text>
 <rect x="58" y="542" width="56" height="16" rx="3" fill="#f2c21b"/>
 <text x="86.0" y="554.0" font-size="9.2" fill="#1d2230" font-weight="700" text-anchor="middle">OUT2</text>
 <text x="160.0" y="554.0" font-size="10.2" fill="#1d2230" font-weight="700" text-anchor="start">Servo Motor (오른 집게)</text>
-<text x="480.0" y="554.0" font-size="9.8" fill="#1d2230" font-weight="400" text-anchor="start">우측 4절링크 집게 크러셔 (60°↔160° · 토크 2.73× 증폭)</text>
+<text x="480.0" y="554.0" font-size="9.8" fill="#1d2230" font-weight="400" text-anchor="start">우측 4절링크 집게 크러셔 (72°↔160° · 토크 2.87× 증폭)</text>
 <rect x="50" y="562" width="1160" height="23" fill="#eef2f7"/>
 <rect x="58" y="565" width="56" height="16" rx="3" fill="#f2c21b"/>
 <text x="86.0" y="577.0" font-size="9.2" fill="#1d2230" font-weight="700" text-anchor="middle">OUT3</text>
@@ -108,6 +108,6 @@
 <text x="50.0" y="770.0" font-size="12.5" fill="#1d2230" font-weight="700" text-anchor="start">③ 전투 운용 &amp; 안전 페일세이프</text>
 <text x="60.0" y="788.0" font-size="9.8" fill="#1d2230" font-weight="400" text-anchor="start">• 4WD 주행 (M1~M4): 130rpm × 4 · Ø50 바퀴 직결 · 최고 0.34 m/s · 제자리 초신속 선회</text>
 <text x="60.0" y="805.0" font-size="9.8" fill="#1d2230" font-weight="400" text-anchor="start">• 무기 1 (EX-M1/M2): 쌍발 400rpm 수직 어퍼컷 초승달 낫 (Ø104 mm · 날 끝 2.18 m/s · 자이로 상쇄)</text>
-<text x="60.0" y="822.0" font-size="9.8" fill="#1d2230" font-weight="400" text-anchor="start">• 무기 2 (OUT1/OUT2): 대칭 4절링크 양집게 크러셔 (160 mm 개방 ↔ 36 mm 압착 · 토크 2.73× 증폭)</text>
-<text x="60.0" y="839.0" font-size="9.8" fill="#1d2230" font-weight="400" text-anchor="start">• 무기 3 (OUT3): 오버헤드 전갈 꼬리 해머 (55° 대기 → 0° 내려찍기 · 수직 낫 상단 +10.4 mm 여유)</text>
+<text x="60.0" y="822.0" font-size="9.8" fill="#1d2230" font-weight="400" text-anchor="start">• 무기 2 (OUT1/OUT2): 대칭 4절링크 양집게 크러셔 (160 mm 개방 ↔ 37.7 mm 압착 · 토크 2.87× 증폭)</text>
+<text x="60.0" y="839.0" font-size="9.8" fill="#1d2230" font-weight="400" text-anchor="start">• 무기 3 (OUT3): 오버헤드 전갈 꼬리 해머 (55° 대기 → 0° 내려찍기 · 수직 낫 상단 +11.4 mm 여유)</text>
 <text x="60.0" y="856.0" font-size="9.8" fill="#1d2230" font-weight="400" text-anchor="start">• 안전 페일세이프: 블루투스 신호 0.5초 이상 끊김 시 구동 4축 + 수직 낫 2축 즉시 정지, 집게 개방, 꼬리 대기 복귀.</text></svg>
