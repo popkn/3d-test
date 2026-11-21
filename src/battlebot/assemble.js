@@ -257,7 +257,7 @@ export async function buildBattlebot(loadPart, onProgress) {
     const t = explode;
     const showBoltNow = boltsPref || t > 0.001;
     root.updateMatrixWorld(true);
-    guide.begin();
+    const segs = [];
     for (const it of items) {
       const vis = !hidden[it.a.s] && (!it.fastener || showBoltNow);
       it.h.visible = vis;
@@ -278,11 +278,11 @@ export async function buildBattlebot(loadPart, onProgress) {
         if (guidesOn && vis && it.expW.lengthSq() > 4) {
           w0.copy(it.p0).applyMatrix4(it.parent.matrixWorld);
           w1.copy(it.h.position).applyMatrix4(it.parent.matrixWorld);
-          guide.segment(w0, w1);
+          if (w0.distanceToSquared(w1) > 1) segs.push([w0.x, w0.y, w0.z, w1.x, w1.y, w1.z]);
         }
       }
     }
-    guide.end();
+    guide.update(segs);
   }
 
   function setExplode(t) { explode = Math.max(0, Math.min(1, t)); applyPose(); }
