@@ -11,6 +11,8 @@ import { buildTrain, SPEED as TRAIN_SPEED } from './train/assemble.js';
 import { buildTrainSteps, buildTrainStaged } from './train/build.js';
 import { buildGatling, TILT_MAX as GAT_TILT_MAX, WHEEL_R as GAT_WHEEL_R } from './gatling/assemble.js';
 import { SHEETS as GAT_SHEETS, GUN as GAT_GUN } from './gatling/assembly.js';
+import { buildScorpion, WHEEL_R as SCORP_WHEEL_R, CLAW_OPEN as SCORP_OPEN, CLAW_NEUT as SCORP_NEUT, CLAW_CLAMP as SCORP_CLAMP, TAIL_READY as SCORP_TAIL_READY, TAIL_SMASH as SCORP_TAIL_SMASH } from './scorpion/assemble.js';
+import { SHEETS as SCORP_SHEETS, BOT as SCORP_BOT } from './scorpion/assembly.js';
 import { detailAdapter } from '../robots/lib.js';
 import { createStaged } from './assembly/staged.js';
 
@@ -24,7 +26,7 @@ const opts = { labels: true, dims: true, spin: false };
 
 // 목록
 const nav = document.getElementById('parts');
-nav.innerHTML = `<a href="#gatling" data-id="gatling" class="all"><b>🎯 썬더 개틀링 6연장 v3 (완성품)</b><small>4륜 전원 모터 · 원형 고무줄 탄성 격발 · 거치/격발 테스트</small></a><a href="#gatling-build" data-id="gatling-build" class="all"><b>🔧 개틀링 단계별 조립 (세분화+테스트)</b><small>1부품·1체결 352단계 · 거치/격발 테스트(배경 반투명) 내장</small></a><a href="#eagle" data-id="eagle" class="all"><b>🦅 독수리 조립 (설계도면)</b><small>부품으로 조립한 독수리 · 날갯짓 · 분해 보기</small></a><a href="#battlebot" data-id="battlebot" class="all"><b>⚔ 배틀로봇 썬더 웨지</b><small>무한궤도 · 스피너 · 들어올림 웨지</small></a><a href="#train" data-id="train" class="all"><b>🚂 협동 기차 하나로 열차</b><small>3칸 · 칸마다 CPU · 3명이 따로 조종</small></a><a href="#stage-eagle" data-id="stage-eagle" class="all"><b>🔧 독수리 파트별 조립</b><small>받침대 · 다리 · 몸통 · 얼굴 · 날개 · 꼬리 → 연결 · 분해</small></a><a href="#stage-battlebot" data-id="stage-battlebot" class="all"><b>🔧 배틀로봇 파트별 조립</b><small>섀시 · 구동부 · 무기 · 웨지 · 상판 · 장갑 → 연결 · 분해</small></a><a href="#stage-train" data-id="stage-train" class="all"><b>🔧 기차 파트별 조립</b><small>칸마다 차대 · 차체 → 연결봉 · 분해</small></a><a href="#train-build" data-id="train-build" class="all"><b>🔧 기차 단계별 조립 (모듈 작업대)</b><small>부품 하나씩 · 모듈은 따로 조립 후 끼우기</small></a><a href="#all" data-id="all" class="all"><b>▦ 전체 펼쳐보기</b><small>${catalog.length}개 부품 · 실제 크기로 한 화면에</small></a>` + categories.map(([cat, title]) => `
+nav.innerHTML = `<a href="#scorpion" data-id="scorpion" class="all"><b>🦂 크림슨 스콜피온 v2 (완성품)</b><small>4WD 전원 · 쌍발 400rpm 수직 낫 · 4절링크 집게 · 꼬리 해머</small></a><a href="#scorpion-build" data-id="scorpion-build" class="all"><b>🔧 스콜피온 단계별 조립 (501단계+테스트)</b><small>1부품·1체결 498단계 + 3무기 메커니즘 테스트(배경 반투명)</small></a><a href="#gatling" data-id="gatling" class="all"><b>🎯 썬더 개틀링 6연장 v3 (완성품)</b><small>4륜 전원 모터 · 원형 고무줄 탄성 격발 · 거치/격발 테스트</small></a><a href="#gatling-build" data-id="gatling-build" class="all"><b>🔧 개틀링 단계별 조립 (세분화+테스트)</b><small>1부품·1체결 352단계 · 거치/격발 테스트(배경 반투명) 내장</small></a><a href="#eagle" data-id="eagle" class="all"><b>🦅 독수리 조립 (설계도면)</b><small>부품으로 조립한 독수리 · 날갯짓 · 분해 보기</small></a><a href="#battlebot" data-id="battlebot" class="all"><b>⚔ 배틀로봇 썬더 웨지</b><small>무한궤도 · 스피너 · 들어올림 웨지</small></a><a href="#train" data-id="train" class="all"><b>🚂 협동 기차 하나로 열차</b><small>3칸 · 칸마다 CPU · 3명이 따로 조종</small></a><a href="#stage-eagle" data-id="stage-eagle" class="all"><b>🔧 독수리 파트별 조립</b><small>받침대 · 다리 · 몸통 · 얼굴 · 날개 · 꼬리 → 연결 · 분해</small></a><a href="#stage-battlebot" data-id="stage-battlebot" class="all"><b>🔧 배틀로봇 파트별 조립</b><small>섀시 · 구동부 · 무기 · 웨지 · 상판 · 장갑 → 연결 · 분해</small></a><a href="#stage-train" data-id="stage-train" class="all"><b>🔧 기차 파트별 조립</b><small>칸마다 차대 · 차체 → 연결봉 · 분해</small></a><a href="#train-build" data-id="train-build" class="all"><b>🔧 기차 단계별 조립 (모듈 작업대)</b><small>부품 하나씩 · 모듈은 따로 조립 후 끼우기</small></a><a href="#all" data-id="all" class="all"><b>▦ 전체 펼쳐보기</b><small>${catalog.length}개 부품 · 실제 크기로 한 화면에</small></a>` + categories.map(([cat, title]) => `
   <h3>${title}</h3>
   ${catalog.filter((p) => p.category === cat).map((p) => `
     <a href="#${p.id}" data-id="${p.id}"><b>${p.name}</b><small>${p.size.x} × ${p.size.z} × ${p.size.y} mm${p.size.estimated ? ' · 추정' : ''}</small></a>`).join('')}
@@ -569,7 +571,348 @@ function gatlingStepFunction(ad) {
   };
 }
 
+
+// 크림슨 스콜피온 v2 (완성품): 4WD · 쌍발 400rpm 수직 낫 · 4절링크 집게 · 꼬리 해머 · 3무기 테스트 · 완전 분해
+let scorpion = null;
+function scorpionFunction(e) {
+  const st = {
+    drive: 'stop', spin: false, rpm: 0, spinAng: 0,
+    claw: SCORP_NEUT, liveClaw: SCORP_NEUT,
+    tail: SCORP_TAIL_READY, liveTail: SCORP_TAIL_READY,
+    slow: false, combo: 0,
+    testMode: 'normal', testPhase: 0, testInfo: null,
+    explode: 0, bolts: true, guides: true,
+    dl: 0, dr: 0, yaw: 0, camGoal: null,
+  };
+  const speed = 130 / 60 * Math.PI * 2 * SCORP_WHEEL_R;
+  const stageById = new Map((e.testStages || []).map((t) => [t.id, t]));
+  e.showBolts(true); e.setGuides(true); e.setExplode(0); e.updateTestMode(null);
+  panel.ui.controls([
+    {
+      type: 'select', id: 'testMode', label: '🧪 메커니즘 테스트 (배경 반투명 격리)',
+      options: [
+        ['normal', '일반 완성품 (전체 100% 불투명)'],
+        ['spin', '① 쌍발 400rpm 수직 어퍼컷 낫 테스트 (배경 반투명)'],
+        ['claw', '② 좌·우 대칭 4절링크 집게 크러셔 테스트 (배경 반투명)'],
+        ['tail', '③ 오버헤드 전갈 꼬리 해머 타격 테스트 (배경 반투명)'],
+      ],
+      value: 'normal',
+    },
+    { type: 'select', id: 'drive', label: '4륜 전원 구동 (M1~M4)', options: [['stop', '정지'], ['fwd', '전진'], ['back', '후진'], ['left', '왼쪽 회전'], ['right', '오른쪽 회전']], value: 'stop' },
+    { type: 'toggle', id: 'spin', label: '쌍발 수직 어퍼컷 낫 (DC 400rpm × 2 · EX-M1/M2)', value: false },
+    { type: 'slider', id: 'claw', label: '4절링크 집게 (72° 압착 ↔ 160° 열림)', min: SCORP_CLAMP, max: SCORP_OPEN, step: 1, value: SCORP_NEUT, unit: '°' },
+    { type: 'slider', id: 'tail', label: '전갈 꼬리 해머 (0° 타격 ↔ 55° 대기)', min: SCORP_TAIL_SMASH, max: SCORP_TAIL_READY, step: 1, value: SCORP_TAIL_READY, unit: '°' },
+    { type: 'button', id: 'combo', label: '🦂 3무기 필살 콤보 (포획 → 어퍼컷 → 꼬리 강타)' },
+    { type: 'toggle', id: 'slow', label: '슬로우모션 관찰', value: false },
+    { type: 'button', id: 'zoomAll', label: '🔄 로봇 전체 보기' },
+    { type: 'slider', id: 'explode', label: '분해 보기 (모든 부품 · 볼트 · 너트 · 캡너트)', min: 0, max: 1, step: 0.01, value: 0 },
+    { type: 'toggle', id: 'bolts', label: '볼트 · 너트 · 캡너트 보기 (분해 시 자동 포함)', value: true },
+    { type: 'toggle', id: 'guides', label: '분해 가이드선 보기', value: true },
+    ...Object.entries(SCORP_SHEETS).map(([no, t]) => ({ type: 'toggle', id: 'g' + no, label: `${no} ${t.split(' (')[0]}`, value: true, compact: true })),
+  ]);
+  panel.ui.readouts([['parts', '실체 배치'], ['mech', '메커니즘 / 테스트 원리'], ['spin', '쌍발 수직 낫'], ['claw', '4절링크 집게'], ['tail', '꼬리 해머']]);
+  const testSelect = () => [...document.querySelectorAll('.p-controls label')].find((l) => l.textContent.includes('메커니즘 테스트'))?.querySelector('select');
+  const exitTest = () => {
+    if (st.testMode === 'normal') return;
+    st.testMode = 'normal'; st.testPhase = 0; st.testInfo = null;
+    e.updateTestMode(null);
+    const el = testSelect(); if (el) el.value = 'normal';
+  };
+  return {
+    onControl(id, v) {
+      if (id.startsWith('g')) e.setHidden(id.slice(1), !v);
+      else if (id === 'testMode') {
+        if (v === 'normal') {
+          exitTest(); st.camGoal = null;
+          e.root.updateMatrixWorld(true);
+          view.frame(partBounds(e.root), { dir: [-0.9, 0.6, -1], fit: 1.15, minDist: 20 });
+        } else {
+          st.testMode = v; st.testPhase = 0; st.combo = 0; st.drive = 'stop';
+          st.explode = 0; e.setExplode(0);
+          st.testInfo = e.updateTestMode(v, 0);
+          const ts = stageById.get(v);
+          if (ts?.cam) st.camGoal = { pos: new THREE.Vector3(...ts.cam.pos), target: new THREE.Vector3(...ts.cam.target) };
+        }
+      } else if (id === 'combo') { exitTest(); st.combo = 3.6; st.spin = true; }
+      else if (id === 'zoomAll') {
+        exitTest(); st.camGoal = null;
+        e.root.updateMatrixWorld(true);
+        view.frame(partBounds(e.root), { dir: [-0.9, 0.6, -1], fit: 1.15, minDist: 20 });
+      } else if (id === 'explode') {
+        st.explode = Number(v);
+        if (st.explode > 0.005) exitTest();
+        e.setExplode(st.explode);
+      } else if (id === 'bolts') { st.bolts = v; e.showBolts(v); }
+      else if (id === 'guides') { st.guides = v; e.setGuides(v); }
+      else if (id === 'claw' || id === 'tail') st[id] = Number(v);
+      else st[id] = v;
+    },
+    update(dt) {
+      dt = Math.min(dt, 0.05);
+      if (st.camGoal) {
+        const k = Math.min(1, dt * 5);
+        view.camera.position.lerp(st.camGoal.pos, k);
+        view.controls.target.lerp(st.camGoal.target, k);
+        if (view.camera.position.distanceTo(st.camGoal.pos) < 0.8) st.camGoal = null;
+      }
+      if (st.testMode !== 'normal' && st.explode < 0.005) {
+        st.testPhase = (st.testPhase + dt * (st.slow ? 0.08 : 0.18)) % 1;
+        st.testInfo = e.updateTestMode(st.testMode, st.testPhase);
+      } else if (st.explode < 0.005) {
+        const sc = st.slow ? 0.25 : 1;
+        const [l, r] = { stop: [0, 0], fwd: [1, 1], back: [-1, -1], left: [-1, 1], right: [1, -1] }[st.drive];
+        if (l || r) { st.dl += l * speed * dt * sc; st.dr += r * speed * dt * sc; e.setWheels(-st.dl, -st.dr); }
+        if (st.drive === 'left' || st.drive === 'right') { st.yaw += (st.drive === 'left' ? 1 : -1) * dt * 0.7 * sc; e.root.rotation.y = st.yaw; }
+        const targetRpm = st.spin ? 400 : 0;
+        st.rpm += Math.sign(targetRpm - st.rpm) * Math.min(Math.abs(targetRpm - st.rpm), dt * 320);
+        if (st.rpm > 0.5) { st.spinAng += (st.rpm / 60) * Math.PI * 2 * dt * sc; e.setSpin(st.spinAng); }
+        let tgtClaw = st.claw, tgtTail = st.tail;
+        if (st.combo > 0) {
+          st.combo = Math.max(0, st.combo - dt * sc);
+          const t = 3.6 - st.combo;
+          if (t < 0.7) { tgtClaw = SCORP_OPEN; tgtTail = SCORP_TAIL_READY; }
+          else if (t < 1.5) { tgtClaw = SCORP_CLAMP; tgtTail = SCORP_TAIL_READY; }
+          else if (t < 2.3) { tgtClaw = SCORP_CLAMP; tgtTail = SCORP_TAIL_SMASH; }
+          else if (t < 3.0) { tgtClaw = SCORP_CLAMP; tgtTail = SCORP_TAIL_READY; }
+          else { tgtClaw = SCORP_NEUT; tgtTail = SCORP_TAIL_READY; }
+          if (st.combo <= 0) st.spin = false;
+        }
+        if (Math.abs(tgtClaw - st.liveClaw) > 0.05) {
+          st.liveClaw += Math.sign(tgtClaw - st.liveClaw) * Math.min(Math.abs(tgtClaw - st.liveClaw), dt * 160);
+          e.setClaws(st.liveClaw, st.liveClaw);
+        }
+        if (Math.abs(tgtTail - st.liveTail) > 0.05) {
+          st.liveTail += Math.sign(tgtTail - st.liveTail) * Math.min(Math.abs(tgtTail - st.liveTail), dt * 180);
+          e.setTail(st.liveTail);
+        }
+      }
+      panel.ui.readout('parts', `구조 ${e.structCount} + 체결 ${e.fastenerCount} = ${e.count}개 (BOM 506개 · ${SCORP_BOT.massG} g)`);
+      if (st.testMode !== 'normal' && st.testInfo) {
+        panel.ui.readout('mech', `[${st.testInfo.stage}] ${st.testInfo.detail}`);
+      } else {
+        panel.ui.readout('mech', st.explode > 0.02 ? `완전 분해 ${(st.explode * 100).toFixed(0)}%` : st.combo > 0 ? '🦂 3무기 필살 콤보 실행 중!' : '4절링크 집게(토크 2.87×) + 쌍발 400rpm 수직 낫 + 오버헤드 꼬리 해머');
+      }
+      panel.ui.readout('spin', `${st.rpm.toFixed(0)} rpm · 날 끝 ${(st.rpm / 60 * Math.PI * 0.104).toFixed(2)} m/s`);
+      panel.ui.readout('claw', `서보 ${st.liveClaw.toFixed(0)}° (낫 여유 +12.1 mm)`);
+      panel.ui.readout('tail', `${st.liveTail.toFixed(0)}° (낫 위 +${SCORP_BOT.tailSpinGap} mm 여유)`);
+    },
+    dispose() { e.reset(); e.root.rotation.y = 0; },
+  };
+}
+
+// 크림슨 스콜피온 최대 세분화 단계별 조립 (501단계 = 부품·체결 498 + 3무기 메커니즘 테스트 3단계)
+let scorpionSteps = null;
+function scorpionStepFunction(ad) {
+  const mechList = ad.mechSteps || [];
+  const mechByStep = new Map(mechList.map((m) => [m.step1, m]));
+  const testById = new Map((ad.testSteps || []).map((t) => [t.testId, t]));
+  const st = { T: 0, play: true, speed: 5, follow: true, bolts: true, guides: true, testSlow: false, explode: 0, goal: null, mechIdx: 0, camGoal: null, testPhase: 0, lastTestId: null };
+  ad.setBolts(true); ad.setGuides(true); ad.setExplode(0); ad.scorpion?.updateTestMode(null);
+  panel.ui.controls([
+    { type: 'toggle', id: 'play', label: '재생', value: true },
+    { type: 'button', id: 'prev', label: '◀ 이전 단계' },
+    { type: 'button', id: 'next', label: '다음 단계 ▶' },
+    { type: 'button', id: 'testSpin', label: '🧪 ① 쌍발 400rpm 수직 낫 테스트 단계' },
+    { type: 'button', id: 'testClaw', label: '🧪 ② 4절링크 집게 크러셔 테스트 단계' },
+    { type: 'button', id: 'testTail', label: '🧪 ③ 전갈 꼬리 해머 타격 테스트 단계' },
+    { type: 'toggle', id: 'testSlow', label: '테스트 슬로우모션', value: false },
+    { type: 'button', id: 'nextMech', label: '🔍 메커니즘 부품 단계 이동 (①→⑥)' },
+    { type: 'slider', id: 'step', label: '단계로 이동', min: 0, max: ad.N, step: 1, value: 0 },
+    { type: 'slider', id: 'speed', label: '속도 (단계 / 초)', min: 0.25, max: 20, step: 0.25, value: 5 },
+    { type: 'slider', id: 'explode', label: '분해 보기 (부품 · 볼트 · 너트 · 캡너트)', min: 0, max: 1, step: 0.01, value: 0 },
+    { type: 'toggle', id: 'follow', label: '카메라가 지금 작업을 따라감', value: true },
+    { type: 'toggle', id: 'bolts', label: '볼트 · 너트 · 캡너트 보기', value: true },
+    { type: 'toggle', id: 'guides', label: '진입 · 체결 가이드선 보기', value: true },
+    { type: 'button', id: 'restart', label: '처음부터' },
+  ]);
+  panel.ui.readouts([['step', '단계'], ['kind', '작업 유형'], ['now', '지금'], ['mech', '메커니즘 / 테스트 원리'], ['total', '전체']]);
+  const slider = () => [...document.querySelectorAll('.p-controls label')].find((l) => l.textContent.includes('단계로 이동'))?.querySelector('input');
+  const explodeSlider = () => [...document.querySelectorAll('.p-controls label')].find((l) => l.textContent.includes('분해 보기'))?.querySelector('input');
+  const playBox = () => [...document.querySelectorAll('.p-controls label')].find((l) => l.textContent.startsWith('재생'))?.querySelector('input');
+  const pause = () => { st.play = false; const b = playBox(); if (b) b.checked = false; };
+  const jumpTest = (testId) => {
+    const ts = testById.get(testId);
+    if (!ts) return;
+    pause();
+    st.explode = 0; ad.setExplode(0);
+    const ex = explodeSlider(); if (ex) { ex.value = '0'; ex.nextElementSibling.textContent = '0'; }
+    st.T = ts.step1 - 0.5; st.goal = null; st.testPhase = 0;
+    if (ts.cam) st.camGoal = { pos: new THREE.Vector3(...ts.cam.pos), target: new THREE.Vector3(...ts.cam.target) };
+  };
+  const tgt = new THREE.Vector3();
+  let lastShown = -1;
+  return {
+    onControl(id, v) {
+      if (id === 'play') { st.play = v; if (v && st.T >= ad.N) st.T = 0; }
+      else if (id === 'prev') { pause(); st.goal = Math.max(0, Math.ceil(st.T) - 1); st.camGoal = null; }
+      else if (id === 'next') { pause(); st.goal = Math.min(ad.N, Math.floor(st.T) + 1); st.camGoal = null; }
+      else if (id === 'testSpin') jumpTest('spin');
+      else if (id === 'testClaw') jumpTest('claw');
+      else if (id === 'testTail') jumpTest('tail');
+      else if (id === 'nextMech' && mechList.length) {
+        pause();
+        const m = mechList[st.mechIdx % mechList.length];
+        st.mechIdx = (st.mechIdx + 1) % mechList.length;
+        st.T = m.step1 - 0.15; st.goal = null;
+        if (m.mech?.cam) st.camGoal = { pos: new THREE.Vector3(...m.mech.cam.pos), target: new THREE.Vector3(...m.mech.cam.target) };
+      } else if (id === 'step') { pause(); st.T = Number(v); st.goal = null; st.camGoal = null; }
+      else if (id === 'explode') { st.explode = Number(v); ad.setExplode(st.explode); }
+      else if (id === 'bolts') { st.bolts = v; ad.setBolts(v); }
+      else if (id === 'guides') { st.guides = v; ad.setGuides(v); }
+      else if (id === 'speed') st.speed = Number(v);
+      else if (id === 'restart') {
+        st.T = 0; st.goal = null; st.play = true; st.explode = 0; st.camGoal = null; st.testPhase = 0; st.lastTestId = null;
+        ad.setExplode(0); ad.scorpion?.updateTestMode(null);
+        const b = playBox(); if (b) b.checked = true;
+        const ex = explodeSlider(); if (ex) { ex.value = '0'; ex.nextElementSibling.textContent = '0'; }
+      } else st[id] = v;
+    },
+    update(dt) {
+      dt = Math.min(dt, 0.05);
+      const curStepPre = Math.min(ad.N, Math.max(1, Math.floor(st.T) + 1));
+      const onTestPre = st.T < ad.N ? ad.getTestStep(curStepPre) : null;
+      if (st.goal !== null) {
+        const d = st.goal - st.T;
+        st.T += Math.sign(d) * Math.min(Math.abs(d), dt * 4);
+        if (Math.abs(d) < 1e-3) { st.T = st.goal; st.goal = null; }
+      } else if (st.play) {
+        const rate = onTestPre ? (st.testSlow ? 0.08 : 0.18) : st.speed;
+        st.T = Math.min(ad.N, st.T + dt * rate);
+        if (st.T >= ad.N) pause();
+      }
+      ad.pose(st.T);
+      const s = Math.min(ad.N, Math.max(1, Math.floor(st.T) + 1));
+      const done = Math.floor(st.T);
+      const ts = st.T < ad.N ? ad.getTestStep(s) : null;
+      const sl = slider(); if (sl && document.activeElement !== sl) { sl.value = String(done); sl.nextElementSibling.textContent = String(done); }
+      panel.ui.readout('step', `${done >= ad.N ? ad.N : s} / ${ad.N}`);
+
+      if (ts && ad.scorpion) {
+        if (ts.testId !== st.lastTestId) {
+          st.lastTestId = ts.testId; st.testPhase = 0;
+          if (st.follow && ts.cam) st.camGoal = { pos: new THREE.Vector3(...ts.cam.pos), target: new THREE.Vector3(...ts.cam.target) };
+        }
+        if (!st.play) st.testPhase = (st.testPhase + dt * (st.testSlow ? 0.08 : 0.18)) % 1;
+        const phase = st.play ? Math.max(0, Math.min(1, st.T - (s - 1))) : st.testPhase;
+        const info = ad.scorpion.updateTestMode(ts.testId, phase);
+        panel.ui.readout('kind', ts.kind);
+        panel.ui.readout('now', `${ad.stepName(s)} — ${info.stage}`);
+        panel.ui.readout('mech', `[${info.metric}] ${info.detail}`);
+        lastShown = -3;
+      } else {
+        if (st.lastTestId !== null) { ad.scorpion?.updateTestMode(null); st.lastTestId = null; }
+        if (s !== lastShown || st.T >= ad.N) {
+          const m = mechByStep.get(s);
+          panel.ui.readout('kind', st.T >= ad.N ? '완성' : m ? `★ 메커니즘 학습 · ${m.mech.step}` : ad.stepKind(s));
+          panel.ui.readout('now', st.T >= ad.N ? '크림슨 스콜피온 v2 완성!' : ad.stepName(s));
+          panel.ui.readout('mech', st.T >= ad.N ? '4WD + 쌍발 400rpm 수직 낫 + 4절링크 집게(2.87×) + 전갈 꼬리 해머 검증 완료' : m ? `[${m.mech.role}] ${m.mech.explain}` : '—');
+          if (m && st.follow && m.mech?.cam) st.camGoal = { pos: new THREE.Vector3(...m.mech.cam.pos), target: new THREE.Vector3(...m.mech.cam.target) };
+          lastShown = st.T >= ad.N ? -2 : s;
+        }
+      }
+      panel.ui.readout('total', `구조 ${SCORP_BOT.structCount} + 체결 ${SCORP_BOT.fastenerCount} + 테스트 3 = ${ad.N}단계`);
+      if (st.camGoal) {
+        const k = Math.min(1, dt * 4.5);
+        view.camera.position.lerp(st.camGoal.pos, k);
+        view.controls.target.lerp(st.camGoal.target, k);
+        if (view.camera.position.distanceTo(st.camGoal.pos) < 0.8) st.camGoal = null;
+      } else if (st.follow && st.T < ad.N && st.explode < 0.01 && !ts) {
+        tgt.copy(ad.focus(s));
+        const d = tgt.sub(view.controls.target).multiplyScalar(Math.min(1, dt * 3));
+        view.controls.target.add(d); view.camera.position.add(d);
+      }
+    },
+    dispose() { ad.clearHighlight(); ad.scorpion?.updateTestMode(null); },
+  };
+}
+
 async function select(id) {
+  if (id === 'scorpion') {
+    if (current?.id === 'scorpion') return;
+    const token = ++loadToken;
+    const loading = document.getElementById('loading');
+    loading.style.display = 'block';
+    nav.querySelectorAll('a').forEach((a) => a.classList.toggle('on', a.dataset.id === 'scorpion'));
+    const e = scorpion ?? await buildScorpion(loadPart, (k) => { loading.textContent = `크림슨 스콜피온 부품 불러오는 중… ${Math.round(k * 100)}%`; });
+    loading.textContent = '불러오는 중…';
+    if (token !== loadToken) return;
+    scorpion = e;
+    if (current) { current.fn?.dispose?.(); view.scene.remove(current.root); }
+    overlay.clear();
+    picks.length = 0;
+    view.controls.zoomToCursor = true;
+    e.reset();
+    view.scene.add(e.root);
+    e.root.updateMatrixWorld(true);
+    const box = partBounds(e.root);
+    view.frame(box, { dir: [-0.9, 0.6, -1], fit: 1.15, minDist: 20 });
+    const size = box.getSize(new THREE.Vector3());
+    panel.showSpec({
+      name: '크림슨 스콜피온 v2 (3중 무기 배틀로봇)', url: 'https://github.com/popkn/3d-test/blob/parts/scorpion/BLUEPRINT.md',
+      size: { x: Math.round(size.x), z: Math.round(size.z), y: Math.round(size.y), estimated: false, note: `v2 전수 감사 수정 완료 · 4WD 전원 DC130×4 + 쌍발 DC400×2 + 4절링크 집게(토크 ${SCORP_BOT.clawAdv}× · 그랩 포함 낫 여유 +12.1 mm) + 전갈 꼬리 해머(낫 위 +${SCORP_BOT.tailSpinGap} mm) · 구조 ${e.structCount} + 체결 ${e.fastenerCount} = ${e.count}개.` },
+      function: '4륜 전원 주행(M1~M4), 쌍발 400rpm 수직 어퍼컷 초승달 낫(EX-M1/M2), 좌·우 대칭 4절링크 집게 크러셔(OUT1/OUT2), 오버헤드 전갈 꼬리 해머(OUT3). 상단 "🧪 메커니즘 테스트"에서 3대 무기를 배경 반투명 격리 상태로 관찰할 수 있습니다.',
+      specs: [
+        ...Object.entries(SCORP_SHEETS).map(([no, t]) => [`도면 ${no}`, t]),
+        ['v2 검증', `충돌 0 · 스윕 0(그랩 포함) · 4절링크 오차 0.0000 mm · 헛바퀴 0`],
+        ['볼트 · 너트 · 캡너트', Object.entries(e.bom).filter(([k]) => /^(bolt|nut|cap)/.test(k)).map(([k, n]) => `${k} ${n}`).join(' · ')],
+        ['서포트 규격', Object.entries(e.spacers).sort((a, b) => a[0] - b[0]).map(([l, n]) => `${l}mm × ${n}`).join(' · ')],
+      ],
+      ports: [],
+    });
+    let fn = null;
+    panel.reset((cid, v) => fn?.onControl?.(cid, v));
+    fn = scorpionFunction(e);
+    current = { id: 'scorpion', root: e.root, fn };
+    loading.style.display = 'none';
+    return;
+  }
+  if (id === 'scorpion-build') {
+    if (current?.id === 'scorpion-build') return;
+    const token = ++loadToken;
+    const loading = document.getElementById('loading');
+    loading.style.display = 'block';
+    nav.querySelectorAll('a').forEach((a) => a.classList.toggle('on', a.dataset.id === 'scorpion-build'));
+    const ad = scorpionSteps ?? await (async () => {
+      const e = await buildScorpion(loadPart, (k) => { loading.textContent = `크림슨 스콜피온 부품 불러오는 중… ${Math.round(k * 100)}%`; });
+      const keys = Object.keys(SCORP_SHEETS).filter((k) => e.order[k]);
+      const a = detailAdapter(e.root, keys.map((k) => ({ no: k, name: SCORP_SHEETS[k], holders: e.order[k] })), {
+        frameOpts: { dir: [-0.9, 0.6, -1], fit: 1.15, minDist: 20 },
+        count: e.count, granular: true, hasBolts: true, guides: true, highlight: true, rate: 5,
+        extraSteps: e.testStages,
+        moduleDir: { '01': [0, -45, 0], '02': [0, 35, -95], '03': [0, -15, -75], '04': [0, 125, 35], '05': [0, 65, 25], '06': [0, 30, 85] },
+      });
+      a.scorpion = e;
+      a.mechSteps = e.mechSteps.map((m) => ({ ...m, step1: a.stepOfHolder(m.h) }));
+      return a;
+    })();
+    loading.textContent = '불러오는 중…';
+    if (token !== loadToken) return;
+    scorpionSteps = ad;
+    if (current) { current.fn?.dispose?.(); view.scene.remove(current.root); }
+    overlay.clear();
+    picks.length = 0;
+    view.controls.zoomToCursor = true;
+    view.scene.add(ad.root);
+    ad.scorpion?.updateTestMode(null);
+    ad.setExplode(0); ad.pose(ad.N);
+    ad.root.updateMatrixWorld(true);
+    const box = partBounds(ad.root);
+    ad.pose(0);
+    view.frame(box, { dir: [-0.9, 0.6, -1], fit: 0.75, minDist: 20 });
+    panel.showSpec({
+      name: '크림슨 스콜피온 v2 — 501단계 세분화 + 3무기 테스트', url: 'https://github.com/popkn/3d-test/blob/parts/scorpion/BLUEPRINT.md',
+      size: { x: Math.round(box.max.x - box.min.x), z: Math.round(box.max.z - box.min.z), y: Math.round(box.max.y - box.min.y), estimated: false, note: `규칙 10.3(498 부품·체결 세분화) + 규칙 10.6(수직 낫·4절링크 집게·꼬리 해머 3종 메커니즘 테스트 내장).` },
+      function: '각 무기 조립 완료 직후 배경 반투명(opacity 12%) 격리 상태로 ① 쌍발 400rpm 수직 낫 ② 4절링크 집게 ③ 전갈 꼬리 해머 작동 테스트가 자동 재생됩니다.',
+      specs: [['세분화 단계', `${ad.N}단계 (구조 ${SCORP_BOT.structCount} + 체결 ${SCORP_BOT.fastenerCount} + 메커니즘 테스트 3)`], ['v2 검증', '충돌 0 · 스윕 0(그랩 포함) · 4절링크 오차 0.0000 mm']],
+      ports: [],
+    });
+    let fn = null;
+    panel.reset((cid, v) => fn?.onControl?.(cid, v));
+    fn = scorpionStepFunction(ad);
+    current = { id: 'scorpion-build', root: ad.root, fn };
+    loading.style.display = 'none';
+    return;
+  }
   if (id === 'gatling') {
     if (current?.id === 'gatling') return;
     const token = ++loadToken;
@@ -904,7 +1247,7 @@ tipEl.className = 'tag hover-tip';
 tipEl.style.cssText = 'position:absolute;pointer-events:none;opacity:0;z-index:5';
 stage.appendChild(tipEl);
 view.renderer.domElement.addEventListener('pointermove', (e) => {
-  const asm = current?.id === 'gatling' ? gatling : current?.id === 'gatling-build' ? gatlingSteps : current?.id === 'eagle' ? eagle : current?.id === 'battlebot' ? bot : current?.id === 'train' ? train : current?.id === 'train-build' ? trainSteps : STAGED[current?.id] ? stagedCache[current.id] : null;
+  const asm = current?.id === 'scorpion' ? scorpion : current?.id === 'scorpion-build' ? scorpionSteps : current?.id === 'gatling' ? gatling : current?.id === 'gatling-build' ? gatlingSteps : current?.id === 'eagle' ? eagle : current?.id === 'battlebot' ? bot : current?.id === 'train' ? train : current?.id === 'train-build' ? trainSteps : STAGED[current?.id] ? stagedCache[current.id] : null;
   if (!asm) { tipEl.style.opacity = 0; return; }
   const r = view.renderer.domElement.getBoundingClientRect();
   const v = new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
