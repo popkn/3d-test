@@ -349,7 +349,7 @@ def verify_part_holes(placements, repo_root=None, tol=1.8):
             ln = math.hypot(cx, cy, cz) or 1.0
             xd = (cx/ln, cy/ln, cz/ln)
         zd = (xd[1]*up[2]-xd[2]*up[1], xd[2]*up[0]-xd[0]*up[2], xd[0]*up[1]-xd[1]*up[0])
-        o = p.get('origin') or p.get('o') or (p['c'][0], p['c'][1] - p['s'][1]/2, p['c'][2])
+        o = p.get('origin') or p.get('o') or (p['c'][0], p['c'][1] - (p['z'][1] if isinstance(p.get('s'), str) else p['s'][1])/2, p['c'][2])
         return [(o[0]+xd[0]*px+up[0]*py+zd[0]*pz,
                  o[1]+xd[1]*px+up[1]*py+zd[1]*pz,
                  o[2]+xd[2]*px+up[2]*py+zd[2]*pz) for px, py, pz in hs]
@@ -360,7 +360,7 @@ def verify_part_holes(placements, repo_root=None, tol=1.8):
         ax = b.get('axis', 1)
         for s, wh in zip(structs, wh_cache):
             sx, sy, sz = s['c']
-            wx, wy, wz = s.get('s') or s.get('z') or (0, 0, 0)
+            wx, wy, wz = s['z'] if isinstance(s.get('s'), str) else (s.get('s') or (0, 0, 0))
             if abs(bx-sx) > wx/2 + 1 or abs(by-sy) > wy/2 + 1 or abs(bz-sz) > wz/2 + 1:
                 continue
             if wh is None:

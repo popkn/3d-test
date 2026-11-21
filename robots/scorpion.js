@@ -1,14 +1,14 @@
 import { buildScorpion, WHEEL_R, CLAW_OPEN, CLAW_NEUT, CLAW_CLAMP, TAIL_READY, TAIL_SMASH } from '../src/scorpion/assemble.js';
-import { SHEETS, BOT } from '../src/scorpion/assembly.js';
+import { SHEETS } from '../src/scorpion/assembly.js';
 import { detailAdapter, DRIVE5 } from './lib.js';
 import { loadPart } from 'virtual:parts';
 
-export const meta = { id: 'scorpion', name: '크림슨 스콜피온 v3', mods: 6 };
+export const meta = { id: 'scorpion', name: '크림슨 스콜피온 v4', mods: 6 };
 
 export async function makeAdapter(ctx) {
   const e = await buildScorpion(loadPart, ctx.onProgress);
   const keys = Object.keys(SHEETS).filter((k) => e.order[k]);
-  // 규칙 2.4(쌍발 400rpm) · 2.5(4WD 전원) · 10.1~10.6(최대 세분화 501단계 · 3무기 배경 반투명 메커니즘 테스트)
+  // 규칙 2.4 · 2.5 · 4.2(전 부품 실구멍) · 10.3(연속 볼트/너트 1단계 그룹화) · 10.7(전 구간 충돌 0)
   const ad = detailAdapter(e.root, keys.map((k) => ({ no: k, name: SHEETS[k], holders: e.order[k] })), {
     frameOpts: { dir: [-0.9, 0.6, -1], fit: 1.15, minDist: 20 },
     count: e.count,
@@ -17,8 +17,6 @@ export async function makeAdapter(ctx) {
     guides: true,
     highlight: true,
     rate: 4,
-    extraSteps: e.testStages,
-    onTestStep(ts, phase) { e.updateTestMode(ts ? ts.testId : null, phase); },
     moduleDir: {
       '01': [0, -45, 0],
       '02': [0, 35, -95],
@@ -34,44 +32,27 @@ export async function makeAdapter(ctx) {
   return ad;
 }
 
-// 기능: 4WD 주행(M1~M4) · 쌍발 400rpm 수직 어퍼컷 낫(EX-M1/M2) · 4절링크 집게(OUT1/OUT2) · 꼬리 해머(OUT3) · 3무기 콤보 데모
+// 컴팩트 기능 조작창: 상단 긴 제목 제거 · 메커니즘 테스트 버튼 제거 · 조절바 2열 배치(col: ca/cb) · 간결한 라벨
 function scorpionFn(e) {
-  const v = { drive: 'stop', spin: false, claw: CLAW_NEUT, tail: TAIL_READY, slow: false, test: 'normal' };
+  const v = { drive: 'stop', spin: false, claw: CLAW_NEUT, tail: TAIL_READY, slow: false };
   const live = { rpm: 0, claw: CLAW_NEUT, tail: TAIL_READY };
-  let dl = 0, dr = 0, yaw = 0, spinAng = 0, combo = 0, testPhase = 0, testInfo = null;
+  let dl = 0, dr = 0, yaw = 0, spinAng = 0, combo = 0;
   const speed = 130 / 60 * Math.PI * 2 * WHEEL_R;
   return {
-    title: '4WD · 쌍발 400rpm 낫 · 4절링크 집게 · 꼬리 해머',
+    title: '',
     items: [
-      { type: 'seg', id: 'test', label: '메커니즘 테스트 (배경 반투명)', options: [['normal', '완성품'], ['spin', '① 수직 낫'], ['claw', '② 4절링크 집게'], ['tail', '③ 꼬리 해머']], wide: true },
-      { type: 'seg', id: 'drive', label: '4륜 전원 구동 (M1~M4)', options: DRIVE5, wide: true },
-      { type: 'toggles', items: [{ id: 'spin', label: '쌍발 수직 어퍼컷 낫 (DC 400rpm × 2 · EX-M1/M2)' }, { id: 'slow', label: '슬로우모션 관찰' }] },
-      { type: 'bar', id: 'claw', label: '4절링크 집게 (72° 압착 ↔ 160° 열림)', min: CLAW_CLAMP, max: CLAW_OPEN, step: 1, fmt: (x) => `${Math.round(x)}°` },
-      { type: 'bar', id: 'tail', label: '전갈 꼬리 해머 (0° 타격 ↔ 55° 대기)', min: TAIL_SMASH, max: TAIL_READY, step: 1, fmt: (x) => `${Math.round(x)}°` },
-      { type: 'actions', items: [{ id: 'combo', label: '🦂 3무기 필살 콤보 (포획 → 어퍼컷 → 꼬리 강타)', hot: true }] },
+      { type: 'seg', id: 'drive', label: '주행', options: DRIVE5, wide: true },
+      { type: 'bar', id: 'claw', label: '집게', col: 'ca', min: CLAW_CLAMP, max: CLAW_OPEN, step: 1, fmt: (x) => `${Math.round(x)}°` },
+      { type: 'bar', id: 'tail', label: '꼬리', col: 'cb', min: TAIL_SMASH, max: TAIL_READY, step: 1, fmt: (x) => `${Math.round(x)}°` },
+      { type: 'toggles', items: [{ id: 'spin', label: '어퍼컷 낫' }, { id: 'slow', label: '슬로우' }] },
+      { type: 'actions', items: [{ id: 'combo', label: '🦂 3무기 콤보', hot: true }] },
     ],
     v,
     set(id, x) {
-      if (id === 'test') {
-        v.test = x;
-        testPhase = 0;
-        combo = 0;
-        if (x === 'normal') { e.updateTestMode(null); testInfo = null; }
-        else { v.drive = 'stop'; testInfo = e.updateTestMode(x, 0); }
-      } else if (id === 'combo') {
-        if (v.test !== 'normal') { v.test = 'normal'; e.updateTestMode(null); testInfo = null; }
-        combo = 3.6;
-        v.spin = true;
-      } else {
-        v[id] = x;
-      }
+      if (id === 'combo') { combo = 3.6; v.spin = true; return; }
+      v[id] = x;
     },
     update(dt) {
-      if (v.test !== 'normal') {
-        testPhase = (testPhase + dt * (v.slow ? 0.08 : 0.18)) % 1;
-        testInfo = e.updateTestMode(v.test, testPhase);
-        return true;
-      }
       let moved = false;
       const scale = v.slow ? 0.25 : 1;
       const [l, r] = { stop: [0, 0], fwd: [1, 1], back: [-1, -1], left: [-1, 1], right: [1, -1] }[v.drive];
@@ -92,7 +73,7 @@ function scorpionFn(e) {
       let tgtTail = v.tail;
       if (combo > 0) {
         combo = Math.max(0, combo - dt * scale);
-        const t = 3.6 - combo; // 0 → 3.6s
+        const t = 3.6 - combo;
         if (t < 0.7) { tgtClaw = CLAW_OPEN; tgtTail = TAIL_READY; }
         else if (t < 1.5) { tgtClaw = CLAW_CLAMP; tgtTail = TAIL_READY; }
         else if (t < 2.3) { tgtClaw = CLAW_CLAMP; tgtTail = TAIL_SMASH; }
@@ -114,20 +95,16 @@ function scorpionFn(e) {
       return moved;
     },
     live,
-    stats: () => (v.test !== 'normal' && testInfo ? [
-      ['테스트 단계', testInfo.stage, 'ok'],
-      ['계측', testInfo.metric],
-      ['메커니즘', testInfo.detail],
-    ] : [
-      ['수직 낫 (400rpm×2)', live.rpm > 1 ? `${live.rpm.toFixed(0)} rpm · 날 끝 ${(live.rpm / 60 * Math.PI * 0.104).toFixed(2)} m/s` : '대기', live.rpm > 1 ? 'bad' : 'ok'],
-      ['4절링크 집게', `서보 ${live.claw.toFixed(0)}° (토크 ${BOT.clawAdv}× · 낫 여유 +12.1 mm)`],
-      ['전갈 꼬리 해머', `${live.tail.toFixed(0)}° (낫 위 +${BOT.tailSpinGap} mm 여유)`],
-    ]),
-    busy: () => combo > 0 || live.rpm > 1 || v.test !== 'normal',
+    stats: () => [
+      ['낫', live.rpm > 1 ? `${live.rpm.toFixed(0)} rpm` : '대기', live.rpm > 1 ? 'bad' : 'ok'],
+      ['집게', `${live.claw.toFixed(0)}°`],
+      ['꼬리', `${live.tail.toFixed(0)}°`],
+    ],
+    busy: () => combo > 0 || live.rpm > 1,
     exit() {
-      Object.assign(v, { drive: 'stop', spin: false, claw: CLAW_NEUT, tail: TAIL_READY, slow: false, test: 'normal' });
+      Object.assign(v, { drive: 'stop', spin: false, claw: CLAW_NEUT, tail: TAIL_READY, slow: false });
       Object.assign(live, { rpm: 0, claw: CLAW_NEUT, tail: TAIL_READY });
-      dl = dr = yaw = spinAng = combo = testPhase = 0; testInfo = null;
+      dl = dr = yaw = spinAng = combo = 0;
       e.reset(); e.root.rotation.y = 0;
     },
   };

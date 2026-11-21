@@ -6,7 +6,7 @@
 <rect x="72" y="100" width="225" height="355" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>
 <text x="72.0" y="92.0" font-size="12" fill="#1d2230" font-weight="700" text-anchor="start">정면도 (앞에서)</text>
 <svg x="72" y="100" width="225" height="355" viewBox="72 100 225 355" overflow="hidden">
-<rect x="120.3" y="87.4" width="151.1" height="169.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>후방 대형 등갑 방패 (배틀무기 S) (battle-s)</title></rect>
+<rect x="120.3" y="54.0" width="151.1" height="169.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>후방 대형 등갑 방패 (배틀무기 S) (battle-s)</title></rect>
 <circle cx="168.2" cy="198.7" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>후방 등갑 방패 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="223.5" cy="198.7" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>후방 등갑 방패 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <polygon points="172.8,201.3 168.2,204.0 163.5,201.3 163.5,196.0 168.2,193.3 172.8,196.0" fill="none" stroke="#1d2230" stroke-width="0.65"><title>후방 등갑 방패 체결 (M3 너트) (nut-m3)</title></polygon>
@@ -142,8 +142,8 @@
 <rect x="87.1" y="320.3" width="217.4" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>상부 장갑 갑판 (Big Main PCB) (frame-big-main)</title></rect>
 <rect x="125.5" y="317.5" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>상부 갑판 중간 왼 기둥 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="254.5" y="317.5" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>상부 갑판 중간 오른 기둥 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="84.2" y="233.7" width="2.9" height="84.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 측면 도끼 장갑 핀 (배틀무기 V) (battle-v)</title></rect>
-<rect x="304.5" y="233.7" width="2.9" height="84.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 측면 도끼 장갑 핀 (배틀무기 V) (battle-v)</title></rect>
+<rect x="84.2" y="270.5" width="2.9" height="84.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 측면 도끼 장갑 핀 (배틀무기 V) (battle-v)</title></rect>
+<rect x="304.5" y="270.5" width="2.9" height="84.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 측면 도끼 장갑 핀 (배틀무기 V) (battle-v)</title></rect>
 <rect x="87.1" y="287.1" width="33.2" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 측면 장갑 받침 앞 (L자 2×2) (l-frame-2x2)</title></rect>
 <rect x="107.1" y="315.7" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 측면 장갑 받침 앞 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="107.6" y="323.2" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 측면 장갑 받침 앞 체결 (M3 너트) (nut-m3)</title></rect>
@@ -225,14 +225,14 @@
 <rect x="363.5" y="373.5" width="21.7" height="13.6" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>앞 오른 구동 바퀴 축 고정 (볼트 2.6×10) (bolt-m26x10)</title></rect>
 <rect x="140.5" y="348.3" width="36.9" height="60.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 크러셔 서보 (OUT1) (servo-digital)</title></rect>
 <rect x="214.2" y="348.3" width="36.9" height="60.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 크러셔 서보 (OUT2) (servo-digital)</title></rect>
-<rect x="156.2" y="334.6" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 크랭크 핀 A (후크 S35) (s-hook-35)</title></rect>
-<rect x="223.5" y="334.6" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 크랭크 핀 A (후크 S35) (s-hook-35)</title></rect>
-<rect x="83.7" y="342.7" width="88.4" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 푸시로드 링크 (소5 PCB, L=40) (frame-s5-pcb)</title></rect>
-<rect x="219.5" y="342.7" width="88.4" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 푸시로드 링크 (소5 PCB, L=40) (frame-s5-pcb)</title></rect>
-<rect x="131.3" y="326.9" width="55.3" height="14.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 크랭크 (휠가이드 서보) (wheel-guide-30-servo)</title></rect>
-<rect x="152.1" y="323.6" width="13.6" height="21.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 크랭크 축 고정 (볼트 2.6×10) (bolt-m26x10)</title></rect>
-<rect x="205.0" y="326.9" width="55.3" height="14.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 크랭크 (휠가이드 서보) (wheel-guide-30-servo)</title></rect>
-<rect x="225.8" y="323.6" width="13.6" height="21.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 크랭크 축 고정 (볼트 2.6×10) (bolt-m26x10)</title></rect>
+<rect x="156.2" y="330.9" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 크랭크 핀 A (후크 S35) (s-hook-35)</title></rect>
+<rect x="223.5" y="330.9" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 크랭크 핀 A (후크 S35) (s-hook-35)</title></rect>
+<rect x="83.7" y="338.7" width="88.4" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 푸시로드 링크 (소5 PCB, L=40) (frame-s5-pcb)</title></rect>
+<rect x="219.5" y="338.7" width="88.4" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 푸시로드 링크 (소5 PCB, L=40) (frame-s5-pcb)</title></rect>
+<rect x="131.3" y="323.9" width="55.3" height="14.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 크랭크 (휠가이드 서보) (wheel-guide-30-servo)</title></rect>
+<rect x="152.1" y="320.6" width="13.6" height="21.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 크랭크 축 고정 (볼트 2.6×10) (bolt-m26x10)</title></rect>
+<rect x="205.0" y="323.9" width="55.3" height="14.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 크랭크 (휠가이드 서보) (wheel-guide-30-servo)</title></rect>
+<rect x="225.8" y="320.6" width="13.6" height="21.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 크랭크 축 고정 (볼트 2.6×10) (bolt-m26x10)</title></rect>
 <rect x="87.1" y="363.7" width="51.6" height="51.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 왼 구동 모터 받침 앞 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
 <rect x="107.1" y="410.7" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>앞 왼 모터 받침 앞 바닥 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="107.6" y="418.3" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>앞 왼 모터 받침 앞 바닥 체결 (M3 너트) (nut-m3)</title></rect>
@@ -251,8 +251,8 @@
 <rect x="293.8" y="384.2" width="4.4" height="10.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>앞 오른 구동 모터 귀 체결 (M3 너트) (nut-m3)</title></rect>
 <rect x="293.5" y="365.3" width="13.8" height="11.6" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>앞 오른 구동 모터 귀 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="293.8" y="365.8" width="4.4" height="10.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>앞 오른 구동 모터 귀 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="87.7" y="338.7" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 로커 핀 B (후크 S35) (s-hook-35)</title></rect>
-<rect x="291.9" y="338.7" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 로커 핀 B (후크 S35) (s-hook-35)</title></rect>
+<rect x="87.7" y="334.6" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 로커 핀 B (후크 S35) (s-hook-35)</title></rect>
+<rect x="291.9" y="334.6" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 로커 핀 B (후크 S35) (s-hook-35)</title></rect>
 <rect x="125.5" y="314.6" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 무기 레일 갑판 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="126.0" y="323.2" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 무기 레일 갑판 체결 (M3 너트) (nut-m3)</title></rect>
 <rect x="107.1" y="314.6" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 무기 레일 갑판 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
@@ -267,30 +267,30 @@
 <rect x="144.4" y="418.3" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 서보 받침 바닥 고정 (M3 너트) (nut-m3)</title></rect>
 <rect x="162.4" y="362.1" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 서보 귀 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="143.9" y="362.1" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 서보 귀 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="107.0" y="323.2" width="11.8" height="12.9" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 피벗 브래킷 기둥 (서포트 7) (support-spacer)</title></rect>
-<rect x="107.6" y="315.8" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 피벗 기둥 상판 고정 (M3 너트) (nut-m3)</title></rect>
-<rect x="88.6" y="323.2" width="11.8" height="12.9" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 피벗 브래킷 기둥 (서포트 7) (support-spacer)</title></rect>
-<rect x="89.1" y="315.8" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 피벗 기둥 상판 고정 (M3 너트) (nut-m3)</title></rect>
-<rect x="107.1" y="328.0" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="88.7" y="328.0" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="217.6" y="369.3" width="11.8" height="46.1" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 서보 받침 (서포트 25) (support-spacer)</title></rect>
 <rect x="218.1" y="418.3" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 서보 받침 바닥 고정 (M3 너트) (nut-m3)</title></rect>
 <rect x="236.0" y="369.3" width="11.8" height="46.1" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 서보 받침 (서포트 25) (support-spacer)</title></rect>
 <rect x="236.5" y="418.3" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 서보 받침 바닥 고정 (M3 너트) (nut-m3)</title></rect>
 <rect x="217.6" y="362.1" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 서보 귀 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="236.1" y="362.1" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 서보 귀 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="272.8" y="323.2" width="11.8" height="12.9" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 피벗 브래킷 기둥 (서포트 7) (support-spacer)</title></rect>
-<rect x="273.4" y="315.8" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 피벗 기둥 상판 고정 (M3 너트) (nut-m3)</title></rect>
-<rect x="291.3" y="323.2" width="11.8" height="12.9" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 피벗 브래킷 기둥 (서포트 7) (support-spacer)</title></rect>
-<rect x="291.8" y="315.8" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 피벗 기둥 상판 고정 (M3 너트) (nut-m3)</title></rect>
-<rect x="272.9" y="328.0" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="291.3" y="328.0" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="88.5" y="335.7" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 메인 피벗 핀 P (후크 S35) (s-hook-35)</title></rect>
-<rect x="291.2" y="335.7" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 메인 피벗 핀 P (후크 S35) (s-hook-35)</title></rect>
+<rect x="107.0" y="320.3" width="11.8" height="18.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 피벗 브래킷 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="107.6" y="312.9" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 피벗 기둥 레일 고정 (M3 너트) (nut-m3)</title></rect>
+<rect x="107.1" y="330.6" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="88.5" y="334.6" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 메인 피벗 핀 P (후크 S35) (s-hook-35)</title></rect>
+<rect x="272.8" y="320.3" width="11.8" height="18.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 피벗 브래킷 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="273.4" y="312.9" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 피벗 기둥 레일 고정 (M3 너트) (nut-m3)</title></rect>
+<rect x="272.9" y="330.6" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="291.2" y="334.6" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 메인 피벗 핀 P (후크 S35) (s-hook-35)</title></rect>
 <rect x="105.5" y="317.3" width="33.2" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 수직 낫 포크 레일 (중16 PCB) (frame-m16-pcb)</title></rect>
 <rect x="252.9" y="317.3" width="33.2" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 수직 낫 포크 레일 (중16 PCB) (frame-m16-pcb)</title></rect>
-<rect x="87.1" y="336.1" width="33.2" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 피벗 브래킷 (옵션 PCB) (frame-option-pcb)</title></rect>
-<rect x="271.4" y="336.1" width="33.2" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 피벗 브래킷 (옵션 PCB) (frame-option-pcb)</title></rect>
+<rect x="87.1" y="338.7" width="33.2" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 피벗 브래킷 (옵션 PCB) (frame-option-pcb)</title></rect>
+<rect x="271.4" y="338.7" width="33.2" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 피벗 브래킷 (옵션 PCB) (frame-option-pcb)</title></rect>
+<rect x="107.0" y="320.3" width="11.8" height="18.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 피벗 브래킷 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="107.6" y="312.9" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 피벗 기둥 레일 고정 (M3 너트) (nut-m3)</title></rect>
+<rect x="107.1" y="330.6" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="272.8" y="320.3" width="11.8" height="18.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 피벗 브래킷 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="273.4" y="312.9" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 피벗 기둥 레일 고정 (M3 너트) (nut-m3)</title></rect>
+<rect x="272.9" y="330.6" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="164.1" y="118.3" width="33.2" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>해머 헤드 브래킷 뒤 (L자 2×2) (l-frame-2x2)</title></rect>
 <rect x="192.7" y="138.3" width="13.8" height="11.6" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>해머 브래킷 뒤 암 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="200.2" y="138.8" width="4.4" height="10.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>해머 브래킷 뒤 암 체결 (M3 너트) (nut-m3)</title></rect>
@@ -300,8 +300,8 @@
 <rect x="166.1" y="154.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>해머 헤드 체결 (M3 너트) (nut-m3)</title></rect>
 <rect x="184.1" y="146.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>해머 헤드 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="184.6" y="154.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>해머 헤드 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="87.1" y="345.7" width="14.7" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 주 팔 (소8 PCB) (frame-s8-pcb)</title></rect>
-<rect x="289.8" y="345.7" width="14.7" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 주 팔 (소8 PCB) (frame-s8-pcb)</title></rect>
+<rect x="87.1" y="341.6" width="14.7" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 주 팔 (소8 PCB) (frame-s8-pcb)</title></rect>
+<rect x="289.8" y="341.6" width="14.7" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 주 팔 (소8 PCB) (frame-s8-pcb)</title></rect>
 <rect x="108.8" y="151.5" width="180.6" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>전갈 독침 해머 헤드 (배틀무기 G) (battle-g)</title></rect>
 <rect x="87.1" y="265.7" width="51.6" height="51.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 낫 모터 받침 뒤 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
 <rect x="125.5" y="312.7" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 낫 모터 받침 뒤 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
@@ -330,30 +330,32 @@
 <rect x="166.1" y="154.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>해머 헤드 체결 (M3 너트) (nut-m3)</title></rect>
 <rect x="184.1" y="146.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>해머 헤드 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="184.6" y="154.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>해머 헤드 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="110.4" y="176.4" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="110.3" y="182.1" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></rect>
-<rect x="128.8" y="176.4" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="128.7" y="182.1" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></rect>
-<rect x="257.8" y="176.4" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="257.7" y="182.1" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></rect>
-<rect x="276.2" y="176.4" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="276.1" y="182.1" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></rect>
-<rect x="88.7" y="342.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="89.1" y="351.6" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="291.3" y="342.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="291.8" y="351.6" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="175.9" y="290.3" width="2.9" height="76.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 어퍼컷 초승달 낫 아래쪽 날 (배틀무기 T) (battle-t)</title></rect>
-<rect x="212.8" y="290.3" width="2.9" height="76.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 어퍼컷 초승달 낫 아래쪽 날 (배틀무기 T) (battle-t)</title></rect>
-<rect x="88.7" y="342.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="89.1" y="351.6" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="291.3" y="342.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="291.8" y="351.6" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="110.4" y="148.7" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="110.3" y="154.4" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="128.8" y="148.7" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="128.7" y="154.4" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="257.8" y="148.7" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="257.7" y="154.4" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="276.2" y="148.7" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="276.1" y="154.4" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="88.7" y="338.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="89.1" y="347.5" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="291.3" y="338.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="291.8" y="347.5" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="88.7" y="338.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="89.1" y="347.5" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="291.3" y="338.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="291.8" y="347.5" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
 <rect x="92.6" y="263.9" width="60.8" height="36.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 수직 어퍼컷 모터 (DC 400rpm, EX-M1) (dc-motor-400-rs)</title></rect>
 <rect x="238.2" y="263.9" width="60.8" height="36.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 수직 어퍼컷 모터 (DC 400rpm, EX-M2) (dc-motor-400-rs)</title></rect>
-<rect x="88.7" y="342.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="89.1" y="351.6" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="291.3" y="342.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="291.8" y="351.6" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="48.4" y="344.6" width="55.3" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 불꽃 집게 날 (배틀무기 I) (battle-i)</title></rect>
+<rect x="88.7" y="338.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="89.1" y="347.5" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="287.9" y="344.6" width="55.3" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 불꽃 집게 날 (배틀무기 J) (battle-j)</title></rect>
+<rect x="291.3" y="338.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="291.8" y="347.5" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="175.9" y="198.2" width="2.9" height="76.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 어퍼컷 초승달 낫 위쪽 날 (배틀무기 T) (battle-t)</title></rect>
+<rect x="212.8" y="290.3" width="2.9" height="76.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 어퍼컷 초승달 낫 아래쪽 날 (배틀무기 T) (battle-t)</title></rect>
 <rect x="158.2" y="254.7" width="14.7" height="55.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 수직 낫 허브 (휠가이드 Ø30) (wheel-guide-30-nylon)</title></rect>
 <rect x="154.5" y="275.5" width="21.7" height="13.6" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 수직 낫 허브 축 고정 (볼트 2.6×10) (bolt-m26x10)</title></rect>
 <rect x="173.0" y="219.7" width="2.9" height="125.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 수직 낫 척추 막대 (소7 PCB) (frame-s7-pcb)</title></rect>
@@ -384,8 +386,12 @@
 <rect x="218.7" y="313.8" width="4.4" height="10.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 초승달 낫 아래쪽 날 체결 (M3 너트) (nut-m3)</title></rect>
 <rect x="210.0" y="331.8" width="13.8" height="11.6" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 초승달 낫 아래쪽 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="218.7" y="332.2" width="4.4" height="10.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 초승달 낫 아래쪽 날 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="48.4" y="348.6" width="55.3" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 불꽃 집게 날 (배틀무기 I) (battle-i)</title></rect>
-<rect x="287.9" y="348.6" width="55.3" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 불꽃 집게 날 (배틀무기 J) (battle-j)</title></rect>
+<rect x="175.9" y="290.3" width="2.9" height="76.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 어퍼컷 초승달 낫 아래쪽 날 (배틀무기 T) (battle-t)</title></rect>
+<rect x="212.8" y="198.2" width="2.9" height="76.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 어퍼컷 초승달 낫 위쪽 날 (배틀무기 T) (battle-t)</title></rect>
+<rect x="88.7" y="336.5" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 이빨 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="88.6" y="333.5" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 압착 이빨 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="291.3" y="336.5" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 이빨 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="291.3" y="333.5" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 압착 이빨 (캡너트) (cap-nut-m3)</title></rect>
 <rect x="87.1" y="265.7" width="51.6" height="51.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 낫 모터 받침 앞 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
 <rect x="125.5" y="312.7" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 낫 모터 받침 앞 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="126.0" y="320.3" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 낫 모터 받침 앞 체결 (M3 너트) (nut-m3)</title></rect>
@@ -404,54 +410,40 @@
 <rect x="259.2" y="286.2" width="4.4" height="10.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 낫 모터 귀 체결 (M3 너트) (nut-m3)</title></rect>
 <rect x="250.2" y="267.3" width="13.8" height="11.6" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 낫 모터 귀 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="259.2" y="267.8" width="4.4" height="10.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 낫 모터 귀 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="88.7" y="340.5" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 이빨 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="88.6" y="337.6" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 압착 이빨 (캡너트) (cap-nut-m3)</title></rect>
-<rect x="291.3" y="340.5" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 이빨 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="291.3" y="337.6" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 압착 이빨 (캡너트) (cap-nut-m3)</title></rect>
-<rect x="175.9" y="198.2" width="2.9" height="76.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 어퍼컷 초승달 낫 위쪽 날 (배틀무기 T) (battle-t)</title></rect>
-<rect x="212.8" y="198.2" width="2.9" height="76.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 어퍼컷 초승달 낫 위쪽 날 (배틀무기 T) (battle-t)</title></rect>
-<rect x="88.7" y="340.5" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 이빨 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="88.6" y="337.6" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 압착 이빨 (캡너트) (cap-nut-m3)</title></rect>
-<rect x="291.3" y="340.5" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 이빨 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="291.3" y="337.6" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 압착 이빨 (캡너트) (cap-nut-m3)</title></rect>
-<rect x="88.7" y="345.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="89.1" y="353.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="70.2" y="345.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="70.7" y="353.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="291.3" y="345.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="291.8" y="353.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="309.8" y="345.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="310.2" y="353.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="87.1" y="351.6" width="14.7" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 그랩 고정 브래킷 (L자 2×2) (l-frame-2x2)</title></rect>
-<rect x="68.7" y="351.6" width="14.7" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 그랩 고정 브래킷 (L자 2×2) (l-frame-2x2)</title></rect>
-<rect x="289.8" y="351.6" width="14.7" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 그랩 고정 브래킷 (L자 2×2) (l-frame-2x2)</title></rect>
-<rect x="308.2" y="351.6" width="14.7" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 그랩 고정 브래킷 (L자 2×2) (l-frame-2x2)</title></rect>
-<rect x="88.7" y="345.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="89.1" y="353.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="70.2" y="345.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="70.7" y="353.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="291.3" y="345.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="291.8" y="353.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="309.8" y="345.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="310.2" y="353.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
-<circle cx="94.5" cy="377.4" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 그랩 후면 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
-<circle cx="94.5" cy="359.0" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 그랩 후면 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
-<circle cx="76.0" cy="377.4" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 그랩 후면 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
-<circle cx="76.0" cy="359.0" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 그랩 후면 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
-<circle cx="297.2" cy="377.4" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 그랩 후면 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
-<circle cx="297.2" cy="359.0" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 그랩 후면 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
-<circle cx="315.6" cy="377.4" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 그랩 후면 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
-<circle cx="315.6" cy="359.0" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 그랩 후면 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
-<polygon points="99.1,380.1 94.5,382.7 89.8,380.1 89.8,374.7 94.5,372.0 99.1,374.7" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 그랩 후면 체결 (M3 너트) (nut-m3)</title></polygon>
-<polygon points="99.1,361.6 94.5,364.3 89.8,361.6 89.8,356.3 94.5,353.6 99.1,356.3" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 그랩 후면 체결 (M3 너트) (nut-m3)</title></polygon>
-<polygon points="80.7,380.1 76.0,382.7 71.4,380.1 71.4,374.7 76.0,372.0 80.7,374.7" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 그랩 후면 체결 (M3 너트) (nut-m3)</title></polygon>
-<polygon points="80.7,361.6 76.0,364.3 71.4,361.6 71.4,356.3 76.0,353.6 80.7,356.3" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 그랩 후면 체결 (M3 너트) (nut-m3)</title></polygon>
-<polygon points="301.8,380.1 297.2,382.7 292.5,380.1 292.5,374.7 297.2,372.0 301.8,374.7" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 그랩 후면 체결 (M3 너트) (nut-m3)</title></polygon>
-<polygon points="301.8,361.6 297.2,364.3 292.5,361.6 292.5,356.3 297.2,353.6 301.8,356.3" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 그랩 후면 체결 (M3 너트) (nut-m3)</title></polygon>
-<polygon points="320.2,380.1 315.6,382.7 310.9,380.1 310.9,374.7 315.6,372.0 320.2,374.7" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 그랩 후면 체결 (M3 너트) (nut-m3)</title></polygon>
-<polygon points="320.2,361.6 315.6,364.3 310.9,361.6 310.9,356.3 315.6,353.6 320.2,356.3" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 그랩 후면 체결 (M3 너트) (nut-m3)</title></polygon>
-<rect x="20.8" y="327.6" width="92.1" height="62.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 스쿠프 집게 그랩 (PFOG-N001) (grab)</title></rect>
-<rect x="278.7" y="327.6" width="92.1" height="62.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 스쿠프 집게 그랩 (PFOG-N001) (grab)</title></rect>
+<rect x="88.7" y="336.5" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 이빨 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="88.6" y="333.5" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 압착 이빨 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="70.2" y="341.8" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="70.7" y="349.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="51.8" y="341.8" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="52.3" y="349.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="291.3" y="336.5" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 이빨 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="291.3" y="333.5" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 압착 이빨 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="309.8" y="341.8" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="310.2" y="349.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="328.2" y="341.8" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="328.7" y="349.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="68.7" y="347.5" width="14.7" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 그랩 고정 브래킷 (L자 2×2) (l-frame-2x2)</title></rect>
+<rect x="50.3" y="347.5" width="14.7" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 그랩 고정 브래킷 (L자 2×2) (l-frame-2x2)</title></rect>
+<rect x="308.2" y="347.5" width="14.7" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 그랩 고정 브래킷 (L자 2×2) (l-frame-2x2)</title></rect>
+<rect x="326.6" y="347.5" width="14.7" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 그랩 고정 브래킷 (L자 2×2) (l-frame-2x2)</title></rect>
+<rect x="70.2" y="341.8" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="70.7" y="349.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="51.8" y="341.8" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="52.3" y="349.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="309.8" y="341.8" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="310.2" y="349.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="328.2" y="341.8" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="328.7" y="349.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
+<circle cx="76.0" cy="373.3" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 그랩 후면 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
+<circle cx="57.6" cy="373.3" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 그랩 후면 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
+<circle cx="315.6" cy="373.3" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 그랩 후면 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
+<circle cx="334.0" cy="373.3" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 그랩 후면 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
+<polygon points="80.7,376.0 76.0,378.7 71.4,376.0 71.4,370.7 76.0,368.0 80.7,370.7" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 그랩 후면 체결 (M3 너트) (nut-m3)</title></polygon>
+<polygon points="62.3,376.0 57.6,378.7 53.0,376.0 53.0,370.7 57.6,368.0 62.3,370.7" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 그랩 후면 체결 (M3 너트) (nut-m3)</title></polygon>
+<polygon points="320.2,376.0 315.6,378.7 310.9,376.0 310.9,370.7 315.6,368.0 320.2,370.7" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 그랩 후면 체결 (M3 너트) (nut-m3)</title></polygon>
+<polygon points="338.6,376.0 334.0,378.7 329.4,376.0 329.4,370.7 334.0,368.0 338.6,370.7" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 그랩 후면 체결 (M3 너트) (nut-m3)</title></polygon>
+<rect x="44.7" y="354.9" width="62.6" height="92.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 수평 스쿠프 집게 그랩 (PFOG-N001) (grab)</title></rect>
+<rect x="284.3" y="354.9" width="62.6" height="92.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 수평 스쿠프 집게 그랩 (PFOG-N001) (grab)</title></rect>
 <rect x="149.7" y="387.7" width="92.1" height="18.4" rx="1.2" fill="#2f7fe8" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>바닥 경계선 컬러 센서 (IN2 · 링아웃 방지) (sensor-color)</title></rect>
 <rect x="160.8" y="384.7" width="33.2" height="2.9" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>컬러 센서 지지 브래킷 왼 (옵션 PCB) (frame-option-pcb)</title></rect>
 <rect x="197.7" y="384.7" width="33.2" height="2.9" rx="1.2" fill="#2b2c30" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.5"><title>컬러 센서 지지 브래킷 오른 (옵션 PCB) (frame-option-pcb)</title></rect>
@@ -647,8 +639,18 @@
 <circle cx="679.3" cy="380.3" r="6.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>뒤 왼 구동 바퀴 축 고정 (볼트 2.6×10) (bolt-m26x10)</title></circle>
 <circle cx="495.0" cy="380.3" r="70.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 왼 구동 바퀴 (Ø80 버기 세트, M1) (wheel-80-buggy-set)</title></circle>
 <circle cx="679.3" cy="380.3" r="70.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 왼 구동 바퀴 (Ø80 버기 세트, M3) (wheel-80-buggy-set)</title></circle>
-<rect x="246.3" y="348.6" width="165.8" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 불꽃 집게 날 (배틀무기 I) (battle-i)</title></rect>
-<rect x="513.4" y="233.7" width="147.4" height="84.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 측면 도끼 장갑 핀 (배틀무기 V) (battle-v)</title></rect>
+<rect x="275.8" y="347.5" width="33.2" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 그랩 고정 브래킷 (L자 2×2) (l-frame-2x2)</title></rect>
+<rect x="295.7" y="341.8" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="296.2" y="349.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="277.3" y="341.8" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="277.8" y="349.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="255.5" y="344.6" width="165.8" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 불꽃 집게 날 (배틀무기 I) (battle-i)</title></rect>
+<rect x="275.8" y="347.5" width="33.2" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 그랩 고정 브래킷 (L자 2×2) (l-frame-2x2)</title></rect>
+<rect x="295.7" y="341.8" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="296.2" y="349.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="277.3" y="341.8" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="277.8" y="349.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="513.4" y="270.5" width="147.4" height="84.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 측면 도끼 장갑 핀 (배틀무기 V) (battle-v)</title></rect>
 <circle cx="577.9" cy="312.9" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 측면 도끼 장갑 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="596.3" cy="312.9" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 측면 도끼 장갑 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <polygon points="582.6,315.6 577.9,318.2 573.3,315.6 573.3,310.2 577.9,307.5 582.6,310.2" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 측면 도끼 장갑 체결 (M3 너트) (nut-m3)</title></polygon>
@@ -661,7 +663,7 @@
 <circle cx="614.8" cy="371.1" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>뒤 왼 구동 모터 귀 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="706.9" cy="389.5" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>뒤 왼 구동 모터 귀 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="706.9" cy="371.1" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>뒤 왼 구동 모터 귀 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
-<rect x="461.4" y="338.7" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 로커 핀 B (후크 S35) (s-hook-35)</title></rect>
+<rect x="461.4" y="334.6" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 로커 핀 B (후크 S35) (s-hook-35)</title></rect>
 <rect x="461.6" y="410.7" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>앞 왼 모터 받침 앞 바닥 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="462.0" y="418.3" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>앞 왼 모터 받침 앞 바닥 체결 (M3 너트) (nut-m3)</title></rect>
 <rect x="553.7" y="410.7" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>앞 왼 모터 받침 뒤 바닥 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
@@ -670,21 +672,18 @@
 <rect x="609.4" y="418.3" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>뒤 왼 모터 받침 앞 바닥 체결 (M3 너트) (nut-m3)</title></rect>
 <rect x="701.1" y="410.7" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>뒤 왼 모터 받침 뒤 바닥 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="701.6" y="418.3" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>뒤 왼 모터 받침 뒤 바닥 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="443.1" y="323.2" width="11.8" height="12.9" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 피벗 브래킷 기둥 (서포트 7) (support-spacer)</title></rect>
-<rect x="443.6" y="315.8" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 피벗 기둥 상판 고정 (M3 너트) (nut-m3)</title></rect>
-<rect x="443.1" y="328.0" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="424.5" y="335.7" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 메인 피벗 핀 P (후크 S35) (s-hook-35)</title></rect>
-<rect x="331.0" y="345.7" width="143.7" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 주 팔 (소8 PCB) (frame-s8-pcb)</title></rect>
-<rect x="369.4" y="342.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="369.9" y="351.6" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="351.0" y="342.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="351.5" y="351.6" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="332.6" y="342.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="333.1" y="351.6" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="295.7" y="340.5" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 이빨 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="295.7" y="337.6" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 압착 이빨 (캡너트) (cap-nut-m3)</title></rect>
-<rect x="277.3" y="340.5" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 이빨 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="277.2" y="337.6" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 압착 이빨 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="424.5" y="334.6" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 메인 피벗 핀 P (후크 S35) (s-hook-35)</title></rect>
+<rect x="331.0" y="341.6" width="143.7" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 주 팔 (소8 PCB) (frame-s8-pcb)</title></rect>
+<rect x="369.4" y="338.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="369.9" y="347.5" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="351.0" y="338.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="351.5" y="347.5" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="332.6" y="338.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="333.1" y="347.5" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="314.2" y="336.5" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 이빨 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="314.1" y="333.5" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 압착 이빨 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="295.7" y="336.5" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 이빨 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="295.7" y="333.5" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 압착 이빨 (캡너트) (cap-nut-m3)</title></rect>
 <rect x="645.7" y="246.6" width="11.8" height="73.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꼬리 타워 아래 왼 앞 (서포트 40) (support-spacer)</title></rect>
 <rect x="646.3" y="323.2" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>꼬리 타워 왼 앞 갑판 고정 (M3 너트) (nut-m3)</title></rect>
 <rect x="645.7" y="172.9" width="11.8" height="73.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꼬리 타워 위 왼 앞 (서포트 40) (support-spacer)</title></rect>
@@ -707,7 +706,7 @@
 <polygon points="711.5,373.8 706.9,376.5 702.3,373.8 702.3,368.4 706.9,365.8 711.5,368.4" fill="none" stroke="#1d2230" stroke-width="0.65"><title>뒤 왼 구동 모터 귀 체결 (M3 너트) (nut-m3)</title></polygon>
 <rect x="476.6" y="361.9" width="73.7" height="36.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 왼 구동 모터 (DC 130rpm, M1) (dc-motor-130-rs)</title></rect>
 <rect x="624.0" y="361.9" width="73.7" height="36.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 왼 구동 모터 (DC 130rpm, M3) (dc-motor-130-rs)</title></rect>
-<rect x="386.3" y="336.1" width="70.0" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 피벗 브래킷 (옵션 PCB) (frame-option-pcb)</title></rect>
+<rect x="386.3" y="338.7" width="70.0" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 피벗 브래킷 (옵션 PCB) (frame-option-pcb)</title></rect>
 <rect x="570.6" y="287.1" width="14.7" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 측면 장갑 받침 앞 (L자 2×2) (l-frame-2x2)</title></rect>
 <rect x="589.0" y="287.1" width="14.7" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 측면 장갑 받침 뒤 (L자 2×2) (l-frame-2x2)</title></rect>
 <rect x="460.0" y="363.7" width="14.7" height="51.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 왼 구동 모터 받침 앞 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
@@ -734,18 +733,21 @@
 <rect x="386.3" y="265.7" width="14.7" height="51.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 낫 모터 받침 뒤 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
 <rect x="387.9" y="312.7" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 낫 모터 받침 뒤 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="388.3" y="320.3" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 낫 모터 받침 뒤 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="443.1" y="323.2" width="11.8" height="12.9" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 피벗 브래킷 기둥 (서포트 7) (support-spacer)</title></rect>
-<rect x="443.6" y="315.8" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 피벗 기둥 상판 고정 (M3 너트) (nut-m3)</title></rect>
-<rect x="443.1" y="328.0" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="424.6" y="320.3" width="11.8" height="18.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 피벗 브래킷 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="425.2" y="312.9" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 피벗 기둥 레일 고정 (M3 너트) (nut-m3)</title></rect>
+<rect x="406.2" y="320.3" width="11.8" height="18.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 피벗 브래킷 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="406.8" y="312.9" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 피벗 기둥 레일 고정 (M3 너트) (nut-m3)</title></rect>
+<rect x="424.7" y="330.6" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="406.3" y="330.6" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="572.1" y="315.7" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 측면 장갑 받침 앞 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="572.6" y="323.2" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 측면 장갑 받침 앞 체결 (M3 너트) (nut-m3)</title></rect>
 <rect x="590.5" y="315.7" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 측면 장갑 받침 뒤 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="591.0" y="323.2" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 측면 장갑 받침 뒤 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="387.9" y="176.4" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="387.8" y="182.1" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="387.9" y="148.7" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="387.8" y="154.4" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></rect>
 <rect x="275.8" y="317.3" width="291.1" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 수직 낫 포크 레일 (중16 PCB) (frame-m16-pcb)</title></rect>
 <rect x="310.8" y="263.9" width="73.7" height="36.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 수직 어퍼컷 모터 (DC 400rpm, EX-M1) (dc-motor-400-rs)</title></rect>
-<rect x="473.7" y="342.7" width="14.7" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 푸시로드 링크 (소5 PCB, L=40) (frame-s5-pcb)</title></rect>
+<rect x="473.7" y="338.7" width="14.7" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 푸시로드 링크 (소5 PCB, L=40) (frame-s5-pcb)</title></rect>
 <polygon points="306.2,294.2 301.5,296.9 296.9,294.2 296.9,288.8 301.5,286.2 306.2,288.8" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 낫 모터 귀 체결 (M3 너트) (nut-m3)</title></polygon>
 <polygon points="306.2,275.8 301.5,278.4 296.9,275.8 296.9,270.4 301.5,267.8 306.2,270.4" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 낫 모터 귀 체결 (M3 너트) (nut-m3)</title></polygon>
 <polygon points="398.3,294.2 393.7,296.9 389.0,294.2 389.0,288.8 393.7,286.2 398.3,288.8" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 낫 모터 귀 체결 (M3 너트) (nut-m3)</title></polygon>
@@ -768,8 +770,8 @@
 <circle cx="301.5" cy="273.1" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 낫 모터 귀 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="393.7" cy="291.5" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 낫 모터 귀 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="393.7" cy="273.1" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 낫 모터 귀 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
-<rect x="387.9" y="176.4" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="387.8" y="182.1" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="387.9" y="148.7" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="387.8" y="154.4" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></rect>
 <rect x="719.4" y="341.6" width="11.8" height="73.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>상판 기둥 아래 뒤 왼 (서포트 40) (support-spacer)</title></rect>
 <rect x="720.0" y="418.3" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>상판 기둥 뒤 왼 바닥 고정 (M3 너트) (nut-m3)</title></rect>
 <rect x="719.4" y="323.2" width="11.8" height="18.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>상판 기둥 위 뒤 왼 (서포트 10) (support-spacer)</title></rect>
@@ -781,9 +783,9 @@
 <rect x="443.1" y="362.1" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 서보 귀 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="535.3" y="362.1" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 서보 귀 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="458.2" y="348.3" width="73.7" height="60.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 크러셔 서보 (OUT1) (servo-digital)</title></rect>
-<rect x="448.9" y="326.9" width="55.3" height="14.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 크랭크 (휠가이드 서보) (wheel-guide-30-servo)</title></rect>
-<rect x="469.8" y="323.6" width="13.6" height="21.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 크랭크 축 고정 (볼트 2.6×10) (bolt-m26x10)</title></rect>
-<rect x="488.7" y="334.6" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 크랭크 핀 A (후크 S35) (s-hook-35)</title></rect>
+<rect x="448.9" y="323.9" width="55.3" height="14.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 크랭크 (휠가이드 서보) (wheel-guide-30-servo)</title></rect>
+<rect x="469.8" y="320.6" width="13.6" height="21.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 집게 크랭크 축 고정 (볼트 2.6×10) (bolt-m26x10)</title></rect>
+<rect x="488.7" y="330.9" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 크랭크 핀 A (후크 S35) (s-hook-35)</title></rect>
 <circle cx="329.2" cy="282.3" r="6.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 수직 낫 허브 축 고정 (볼트 2.6×10) (bolt-m26x10)</title></circle>
 <circle cx="329.2" cy="282.3" r="27.6" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 수직 낫 허브 (휠가이드 Ø30) (wheel-guide-30-nylon)</title></circle>
 <polygon points="333.8,303.4 329.2,306.1 324.6,303.4 324.6,298.1 329.2,295.4 333.8,298.1" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 낫 척추 허브 체결 (M3 너트) (nut-m3)</title></polygon>
@@ -820,8 +822,8 @@
 <circle cx="329.2" cy="227.0" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 초승달 낫 위쪽 날 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="329.2" cy="319.2" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 초승달 낫 아래쪽 날 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="329.2" cy="337.6" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 초승달 낫 아래쪽 날 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
-<rect x="235.0" y="198.2" width="108.7" height="76.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 어퍼컷 초승달 낫 위쪽 날 (배틀무기 T) (battle-t)</title></rect>
-<rect x="314.6" y="290.3" width="108.7" height="76.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 어퍼컷 초승달 낫 아래쪽 날 (배틀무기 T) (battle-t)</title></rect>
+<rect x="282.6" y="198.2" width="108.7" height="76.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 어퍼컷 초승달 낫 위쪽 날 (배틀무기 T) (battle-t)</title></rect>
+<rect x="267.1" y="290.3" width="108.7" height="76.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 어퍼컷 초승달 낫 아래쪽 날 (배틀무기 T) (battle-t)</title></rect>
 <rect x="386.3" y="118.3" width="14.7" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>해머 헤드 브래킷 앞 (L자 2×2) (l-frame-2x2)</title></rect>
 <rect x="404.7" y="118.3" width="14.7" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>해머 헤드 브래킷 뒤 (L자 2×2) (l-frame-2x2)</title></rect>
 <rect x="516.8" y="341.6" width="11.8" height="73.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>상판 기둥 아래 앞 왼 (서포트 40) (support-spacer)</title></rect>
@@ -836,7 +838,7 @@
 <rect x="550.7" y="380.7" width="146.7" height="34.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>배터리케이스 (AA 4개, 6V) (battery-case-4aa)</title></rect>
 <rect x="441.6" y="320.3" width="291.1" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>상부 장갑 갑판 (Big Main PCB) (frame-big-main)</title></rect>
 <rect x="607.4" y="169.9" width="143.7" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꼬리 아치 브리지 (Main PCB 8×12) (frame-main-pcb)</title></rect>
-<rect x="751.1" y="87.4" width="2.9" height="169.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>후방 대형 등갑 방패 (배틀무기 S) (battle-s)</title></rect>
+<rect x="751.1" y="54.0" width="2.9" height="169.5" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>후방 대형 등갑 방패 (배틀무기 S) (battle-s)</title></rect>
 <rect x="386.3" y="118.3" width="291.1" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>전갈 꼬리 타격 암 (중16 PCB) (frame-m16-pcb)</title></rect>
 <rect x="384.5" y="151.5" width="36.9" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>전갈 독침 해머 헤드 (배틀무기 G) (battle-g)</title></rect>
 <circle cx="393.7" cy="144.1" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>해머 브래킷 앞 암 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
@@ -857,8 +859,8 @@
 <polygon points="683.9,137.6 679.3,140.2 674.6,137.6 674.6,132.2 679.3,129.6 683.9,132.2" fill="none" stroke="#1d2230" stroke-width="0.65"><title>꼬리 암 허브 체결 (M3 너트) (nut-m3)</title></polygon>
 <circle cx="660.8" cy="134.9" r="27.6" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꼬리 해머 크랭크 허브 (휠가이드 서보) (wheel-guide-30-servo)</title></circle>
 <circle cx="660.8" cy="134.9" r="6.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>꼬리 해머 허브 축 고정 (볼트 2.6×10) (bolt-m26x10)</title></circle>
-<rect x="235.0" y="198.2" width="108.7" height="76.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 어퍼컷 초승달 낫 위쪽 날 (배틀무기 T) (battle-t)</title></rect>
-<rect x="314.6" y="290.3" width="108.7" height="76.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 어퍼컷 초승달 낫 아래쪽 날 (배틀무기 T) (battle-t)</title></rect>
+<rect x="267.1" y="198.2" width="108.7" height="76.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 어퍼컷 초승달 낫 위쪽 날 (배틀무기 T) (battle-t)</title></rect>
+<rect x="282.6" y="290.3" width="108.7" height="76.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 어퍼컷 초승달 낫 아래쪽 날 (배틀무기 T) (battle-t)</title></rect>
 <circle cx="329.2" cy="245.5" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 초승달 낫 위쪽 날 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="329.2" cy="227.0" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 초승달 낫 위쪽 날 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="329.2" cy="319.2" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 초승달 낫 아래쪽 날 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
@@ -891,10 +893,10 @@
 <polygon points="333.8,266.6 329.2,269.2 324.6,266.6 324.6,261.2 329.2,258.5 333.8,261.2" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 낫 척추 허브 체결 (M3 너트) (nut-m3)</title></polygon>
 <circle cx="329.2" cy="282.3" r="27.6" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 수직 낫 허브 (휠가이드 Ø30) (wheel-guide-30-nylon)</title></circle>
 <circle cx="329.2" cy="282.3" r="6.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 수직 낫 허브 축 고정 (볼트 2.6×10) (bolt-m26x10)</title></circle>
-<rect x="488.7" y="334.6" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 크랭크 핀 A (후크 S35) (s-hook-35)</title></rect>
+<rect x="488.7" y="330.9" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 크랭크 핀 A (후크 S35) (s-hook-35)</title></rect>
 <rect x="458.2" y="348.3" width="73.7" height="60.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 크러셔 서보 (OUT2) (servo-digital)</title></rect>
-<rect x="448.9" y="326.9" width="55.3" height="14.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 크랭크 (휠가이드 서보) (wheel-guide-30-servo)</title></rect>
-<rect x="469.8" y="323.6" width="13.6" height="21.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 크랭크 축 고정 (볼트 2.6×10) (bolt-m26x10)</title></rect>
+<rect x="448.9" y="323.9" width="55.3" height="14.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 크랭크 (휠가이드 서보) (wheel-guide-30-servo)</title></rect>
+<rect x="469.8" y="320.6" width="13.6" height="21.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 크랭크 축 고정 (볼트 2.6×10) (bolt-m26x10)</title></rect>
 <circle cx="633.2" cy="144.1" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>꼬리 해머 서보 귀 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="633.2" cy="125.7" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>꼬리 해머 서보 귀 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="725.3" cy="144.1" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>꼬리 해머 서보 귀 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
@@ -946,9 +948,9 @@
 <polygon points="306.2,275.8 301.5,278.4 296.9,275.8 296.9,270.4 301.5,267.8 306.2,270.4" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 낫 모터 귀 체결 (M3 너트) (nut-m3)</title></polygon>
 <polygon points="398.3,294.2 393.7,296.9 389.0,294.2 389.0,288.8 393.7,286.2 398.3,288.8" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 낫 모터 귀 체결 (M3 너트) (nut-m3)</title></polygon>
 <polygon points="398.3,275.8 393.7,278.4 389.0,275.8 389.0,270.4 393.7,267.8 398.3,270.4" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 낫 모터 귀 체결 (M3 너트) (nut-m3)</title></polygon>
-<rect x="387.9" y="176.4" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="387.8" y="182.1" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></rect>
-<rect x="473.7" y="342.7" width="14.7" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 푸시로드 링크 (소5 PCB, L=40) (frame-s5-pcb)</title></rect>
+<rect x="387.9" y="148.7" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="387.8" y="154.4" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="473.7" y="338.7" width="14.7" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 푸시로드 링크 (소5 PCB, L=40) (frame-s5-pcb)</title></rect>
 <rect x="310.8" y="263.9" width="73.7" height="36.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 수직 어퍼컷 모터 (DC 400rpm, EX-M2) (dc-motor-400-rs)</title></rect>
 <rect x="275.8" y="317.3" width="291.1" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 수직 낫 포크 레일 (중16 PCB) (frame-m16-pcb)</title></rect>
 <rect x="460.0" y="363.7" width="14.7" height="51.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 오른 구동 모터 받침 앞 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
@@ -975,16 +977,19 @@
 <rect x="386.3" y="265.7" width="14.7" height="51.6" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 낫 모터 받침 뒤 (모터프레임 3×3) (motor-frame-3x3)</title></rect>
 <rect x="387.9" y="312.7" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 낫 모터 받침 뒤 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="388.3" y="320.3" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 낫 모터 받침 뒤 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="443.1" y="323.2" width="11.8" height="12.9" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 피벗 브래킷 기둥 (서포트 7) (support-spacer)</title></rect>
-<rect x="443.6" y="315.8" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 피벗 기둥 상판 고정 (M3 너트) (nut-m3)</title></rect>
-<rect x="443.1" y="328.0" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="424.6" y="320.3" width="11.8" height="18.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 피벗 브래킷 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="425.2" y="312.9" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 피벗 기둥 레일 고정 (M3 너트) (nut-m3)</title></rect>
+<rect x="406.2" y="320.3" width="11.8" height="18.4" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 피벗 브래킷 기둥 (서포트 10) (support-spacer)</title></rect>
+<rect x="406.8" y="312.9" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 피벗 기둥 레일 고정 (M3 너트) (nut-m3)</title></rect>
+<rect x="424.7" y="330.6" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="406.3" y="330.6" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="572.1" y="315.7" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 측면 장갑 받침 앞 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="572.6" y="323.2" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 측면 장갑 받침 앞 체결 (M3 너트) (nut-m3)</title></rect>
 <rect x="590.5" y="315.7" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 측면 장갑 받침 뒤 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="591.0" y="323.2" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 측면 장갑 받침 뒤 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="387.9" y="176.4" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="387.8" y="182.1" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></rect>
-<rect x="386.3" y="336.1" width="70.0" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 피벗 브래킷 (옵션 PCB) (frame-option-pcb)</title></rect>
+<rect x="387.9" y="148.7" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="387.8" y="154.4" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="386.3" y="338.7" width="70.0" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 피벗 브래킷 (옵션 PCB) (frame-option-pcb)</title></rect>
 <rect x="570.6" y="287.1" width="14.7" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 측면 장갑 받침 앞 (L자 2×2) (l-frame-2x2)</title></rect>
 <rect x="589.0" y="287.1" width="14.7" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 측면 장갑 받침 뒤 (L자 2×2) (l-frame-2x2)</title></rect>
 <rect x="476.6" y="361.9" width="73.7" height="36.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 오른 구동 모터 (DC 130rpm, M2) (dc-motor-130-rs)</title></rect>
@@ -1005,21 +1010,18 @@
 <rect x="609.4" y="418.3" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>뒤 오른 모터 받침 앞 바닥 체결 (M3 너트) (nut-m3)</title></rect>
 <rect x="701.1" y="410.7" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>뒤 오른 모터 받침 뒤 바닥 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="701.6" y="418.3" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>뒤 오른 모터 받침 뒤 바닥 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="443.1" y="323.2" width="11.8" height="12.9" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 피벗 브래킷 기둥 (서포트 7) (support-spacer)</title></rect>
-<rect x="443.6" y="315.8" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 피벗 기둥 상판 고정 (M3 너트) (nut-m3)</title></rect>
-<rect x="443.1" y="328.0" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="424.5" y="335.7" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 메인 피벗 핀 P (후크 S35) (s-hook-35)</title></rect>
-<rect x="331.0" y="345.7" width="143.7" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 주 팔 (소8 PCB) (frame-s8-pcb)</title></rect>
-<rect x="369.4" y="342.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="369.9" y="351.6" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="351.0" y="342.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="351.5" y="351.6" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="332.6" y="342.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="333.1" y="351.6" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="295.7" y="340.5" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 이빨 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="295.7" y="337.6" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 압착 이빨 (캡너트) (cap-nut-m3)</title></rect>
-<rect x="277.3" y="340.5" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 이빨 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
-<rect x="277.2" y="337.6" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 압착 이빨 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="424.5" y="334.6" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 메인 피벗 핀 P (후크 S35) (s-hook-35)</title></rect>
+<rect x="331.0" y="341.6" width="143.7" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 주 팔 (소8 PCB) (frame-s8-pcb)</title></rect>
+<rect x="369.4" y="338.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="369.9" y="347.5" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="351.0" y="338.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="351.5" y="347.5" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="332.6" y="338.9" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="333.1" y="347.5" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="314.2" y="336.5" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 이빨 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="314.1" y="333.5" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 압착 이빨 (캡너트) (cap-nut-m3)</title></rect>
+<rect x="295.7" y="336.5" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 이빨 볼트 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="295.7" y="333.5" width="11.8" height="11.1" rx="1.4" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 집게 압착 이빨 (캡너트) (cap-nut-m3)</title></rect>
 <rect x="645.7" y="246.6" width="11.8" height="73.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꼬리 타워 아래 오른 앞 (서포트 40) (support-spacer)</title></rect>
 <rect x="646.3" y="323.2" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>꼬리 타워 오른 앞 갑판 고정 (M3 너트) (nut-m3)</title></rect>
 <rect x="645.7" y="172.9" width="11.8" height="73.7" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꼬리 타워 위 오른 앞 (서포트 40) (support-spacer)</title></rect>
@@ -1032,7 +1034,7 @@
 <rect x="572.6" y="323.2" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 측면 장갑 받침 앞 체결 (M3 너트) (nut-m3)</title></rect>
 <rect x="590.5" y="315.7" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 측면 장갑 받침 뒤 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="591.0" y="323.2" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 측면 장갑 받침 뒤 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="461.4" y="338.7" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 로커 핀 B (후크 S35) (s-hook-35)</title></rect>
+<rect x="461.4" y="334.6" width="12.0" height="14.0" rx="0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 로커 핀 B (후크 S35) (s-hook-35)</title></rect>
 <circle cx="467.4" cy="389.5" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>앞 오른 구동 모터 귀 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="467.4" cy="371.1" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>앞 오른 구동 모터 귀 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="559.5" cy="389.5" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>앞 오른 구동 모터 귀 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
@@ -1045,8 +1047,18 @@
 <polygon points="601.0,315.6 596.3,318.2 591.7,315.6 591.7,310.2 596.3,307.5 601.0,310.2" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 측면 도끼 장갑 체결 (M3 너트) (nut-m3)</title></polygon>
 <circle cx="577.9" cy="312.9" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 측면 도끼 장갑 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="596.3" cy="312.9" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 측면 도끼 장갑 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
-<rect x="513.4" y="233.7" width="147.4" height="84.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 측면 도끼 장갑 핀 (배틀무기 V) (battle-v)</title></rect>
-<rect x="246.3" y="348.6" width="165.8" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 불꽃 집게 날 (배틀무기 J) (battle-j)</title></rect>
+<rect x="513.4" y="270.5" width="147.4" height="84.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 측면 도끼 장갑 핀 (배틀무기 V) (battle-v)</title></rect>
+<rect x="255.5" y="344.6" width="165.8" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 불꽃 집게 날 (배틀무기 J) (battle-j)</title></rect>
+<rect x="275.8" y="347.5" width="33.2" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 그랩 고정 브래킷 (L자 2×2) (l-frame-2x2)</title></rect>
+<rect x="295.7" y="341.8" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="296.2" y="349.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="277.3" y="341.8" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="277.8" y="349.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="275.8" y="347.5" width="33.2" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 그랩 고정 브래킷 (L자 2×2) (l-frame-2x2)</title></rect>
+<rect x="295.7" y="341.8" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="296.2" y="349.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="277.3" y="341.8" width="11.6" height="13.8" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
+<rect x="277.8" y="349.4" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></rect>
 <circle cx="495.0" cy="380.3" r="70.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>앞 오른 구동 바퀴 (Ø80 버기 세트, M2) (wheel-80-buggy-set)</title></circle>
 <circle cx="679.3" cy="380.3" r="70.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>뒤 오른 구동 바퀴 (Ø80 버기 세트, M4) (wheel-80-buggy-set)</title></circle>
 <circle cx="495.0" cy="380.3" r="6.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>앞 오른 구동 바퀴 축 고정 (볼트 2.6×10) (bolt-m26x10)</title></circle>
@@ -1318,64 +1330,84 @@
 <circle cx="223.5" cy="681.5" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 집게 서보 귀 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="241.9" cy="589.4" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 집게 서보 귀 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="241.9" cy="681.5" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 집게 서보 귀 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
+<rect x="68.7" y="416.2" width="14.7" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 그랩 고정 브래킷 (L자 2×2) (l-frame-2x2)</title></rect>
+<rect x="50.3" y="416.2" width="14.7" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 그랩 고정 브래킷 (L자 2×2) (l-frame-2x2)</title></rect>
+<rect x="308.2" y="416.2" width="14.7" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 그랩 고정 브래킷 (L자 2×2) (l-frame-2x2)</title></rect>
+<rect x="326.6" y="416.2" width="14.7" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 그랩 고정 브래킷 (L자 2×2) (l-frame-2x2)</title></rect>
+<polygon points="80.7,444.7 76.0,447.3 71.4,444.7 71.4,439.3 76.0,436.6 80.7,439.3" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></polygon>
+<polygon points="80.7,426.2 76.0,428.9 71.4,426.2 71.4,420.9 76.0,418.2 80.7,420.9" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></polygon>
+<polygon points="62.3,444.7 57.6,447.3 53.0,444.7 53.0,439.3 57.6,436.6 62.3,439.3" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></polygon>
+<polygon points="62.3,426.2 57.6,428.9 53.0,426.2 53.0,420.9 57.6,418.2 62.3,420.9" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></polygon>
+<polygon points="320.2,444.7 315.6,447.3 310.9,444.7 310.9,439.3 315.6,436.6 320.2,439.3" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></polygon>
+<polygon points="320.2,426.2 315.6,428.9 310.9,426.2 310.9,420.9 315.6,418.2 320.2,420.9" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></polygon>
+<polygon points="338.6,444.7 334.0,447.3 329.4,444.7 329.4,439.3 334.0,436.6 338.6,439.3" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></polygon>
+<polygon points="338.6,426.2 334.0,428.9 329.4,426.2 329.4,420.9 334.0,418.2 338.6,420.9" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 그랩 브래킷 날 체결 (M3 너트) (nut-m3)</title></polygon>
 <polygon points="99.1,518.4 94.5,521.0 89.8,518.4 89.8,513.0 94.5,510.3 99.1,513.0" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 집게 날 체결 (M3 너트) (nut-m3)</title></polygon>
 <polygon points="99.1,499.9 94.5,502.6 89.8,499.9 89.8,494.6 94.5,491.9 99.1,494.6" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 집게 날 체결 (M3 너트) (nut-m3)</title></polygon>
 <polygon points="99.1,481.5 94.5,484.2 89.8,481.5 89.8,476.2 94.5,473.5 99.1,476.2" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 집게 날 체결 (M3 너트) (nut-m3)</title></polygon>
 <polygon points="301.8,518.4 297.2,521.0 292.5,518.4 292.5,513.0 297.2,510.3 301.8,513.0" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 집게 날 체결 (M3 너트) (nut-m3)</title></polygon>
 <polygon points="301.8,499.9 297.2,502.6 292.5,499.9 292.5,494.6 297.2,491.9 301.8,494.6" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 집게 날 체결 (M3 너트) (nut-m3)</title></polygon>
 <polygon points="301.8,481.5 297.2,484.2 292.5,481.5 292.5,476.2 297.2,473.5 301.8,476.2" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 집게 날 체결 (M3 너트) (nut-m3)</title></polygon>
-<rect x="48.4" y="386.7" width="55.3" height="165.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 불꽃 집게 날 (배틀무기 I) (battle-i)</title></rect>
-<rect x="287.9" y="386.7" width="55.3" height="165.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 불꽃 집게 날 (배틀무기 J) (battle-j)</title></rect>
+<circle cx="76.0" cy="442.0" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
+<circle cx="76.0" cy="423.6" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
+<circle cx="57.6" cy="442.0" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
+<circle cx="57.6" cy="423.6" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
+<circle cx="315.6" cy="442.0" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
+<circle cx="315.6" cy="423.6" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
+<circle cx="334.0" cy="442.0" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
+<circle cx="334.0" cy="423.6" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 그랩 브래킷 날 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
+<rect x="48.4" y="395.9" width="55.3" height="165.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 불꽃 집게 날 (배틀무기 I) (battle-i)</title></rect>
+<rect x="287.9" y="395.9" width="55.3" height="165.8" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 불꽃 집게 날 (배틀무기 J) (battle-j)</title></rect>
 <circle cx="94.5" cy="515.7" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="94.5" cy="497.3" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="94.5" cy="478.8" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="297.2" cy="515.7" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="297.2" cy="497.3" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="297.2" cy="478.8" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 집게 날 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
+<circle cx="94.5" cy="460.4" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 집게 이빨 볼트 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="94.5" cy="442.0" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 집게 이빨 볼트 (볼트 3×6) (bolt-m3x6)</title></circle>
-<circle cx="94.5" cy="423.6" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 집게 이빨 볼트 (볼트 3×6) (bolt-m3x6)</title></circle>
+<circle cx="297.2" cy="460.4" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 집게 이빨 볼트 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="297.2" cy="442.0" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 집게 이빨 볼트 (볼트 3×6) (bolt-m3x6)</title></circle>
-<circle cx="297.2" cy="423.6" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 집게 이빨 볼트 (볼트 3×6) (bolt-m3x6)</title></circle>
 <rect x="87.1" y="471.5" width="14.7" height="143.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 주 팔 (소8 PCB) (frame-s8-pcb)</title></rect>
 <rect x="289.8" y="471.5" width="14.7" height="143.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 주 팔 (소8 PCB) (frame-s8-pcb)</title></rect>
 <circle cx="93.7" cy="607.8" r="6.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 로커 핀 B (후크 S35) (s-hook-35)</title></circle>
+<circle cx="94.5" cy="571.0" r="6.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 메인 피벗 핀 P (후크 S35) (s-hook-35)</title></circle>
 <circle cx="297.9" cy="607.8" r="6.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 로커 핀 B (후크 S35) (s-hook-35)</title></circle>
+<circle cx="297.2" cy="571.0" r="6.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 메인 피벗 핀 P (후크 S35) (s-hook-35)</title></circle>
+<rect x="87.1" y="526.7" width="33.2" height="70.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 피벗 브래킷 (옵션 PCB) (frame-option-pcb)</title></rect>
+<rect x="271.4" y="526.7" width="33.2" height="70.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 피벗 브래킷 (옵션 PCB) (frame-option-pcb)</title></rect>
 <rect x="83.7" y="614.1" width="88.4" height="14.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 푸시로드 링크 (소5 PCB, L=40) (frame-s5-pcb)</title></rect>
 <rect x="219.5" y="614.1" width="88.4" height="14.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 푸시로드 링크 (소5 PCB, L=40) (frame-s5-pcb)</title></rect>
+<polygon points="99.6,463.4 94.5,466.3 89.4,463.4 89.4,457.5 94.5,454.5 99.6,457.5" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 집게 압착 이빨 (캡너트) (cap-nut-m3)</title></polygon>
 <polygon points="99.6,444.9 94.5,447.9 89.4,444.9 89.4,439.0 94.5,436.1 99.6,439.0" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 집게 압착 이빨 (캡너트) (cap-nut-m3)</title></polygon>
-<polygon points="99.6,426.5 94.5,429.5 89.4,426.5 89.4,420.6 94.5,417.7 99.6,420.6" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 집게 압착 이빨 (캡너트) (cap-nut-m3)</title></polygon>
+<polygon points="302.3,463.4 297.2,466.3 292.0,463.4 292.0,457.5 297.2,454.5 302.3,457.5" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 집게 압착 이빨 (캡너트) (cap-nut-m3)</title></polygon>
 <polygon points="302.3,444.9 297.2,447.9 292.0,444.9 292.0,439.0 297.2,436.1 302.3,439.0" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 집게 압착 이빨 (캡너트) (cap-nut-m3)</title></polygon>
-<polygon points="302.3,426.5 297.2,429.5 292.0,426.5 292.0,420.6 297.2,417.7 302.3,420.6" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 집게 압착 이빨 (캡너트) (cap-nut-m3)</title></polygon>
-<circle cx="94.5" cy="571.0" r="6.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 메인 피벗 핀 P (후크 S35) (s-hook-35)</title></circle>
-<circle cx="297.2" cy="571.0" r="6.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 메인 피벗 핀 P (후크 S35) (s-hook-35)</title></circle>
 <circle cx="162.2" cy="635.2" r="6.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 크랭크 핀 A (후크 S35) (s-hook-35)</title></circle>
 <circle cx="229.5" cy="635.2" r="6.0" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 크랭크 핀 A (후크 S35) (s-hook-35)</title></circle>
 <rect x="167.8" y="463.8" width="13.8" height="11.6" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 초승달 낫 아래쪽 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="168.5" y="464.3" width="4.4" height="10.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 초승달 낫 아래쪽 날 체결 (M3 너트) (nut-m3)</title></rect>
 <rect x="210.0" y="463.8" width="13.8" height="11.6" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 초승달 낫 아래쪽 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="218.7" y="464.3" width="4.4" height="10.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 초승달 낫 아래쪽 날 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="87.1" y="526.7" width="33.2" height="70.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 피벗 브래킷 (옵션 PCB) (frame-option-pcb)</title></rect>
-<rect x="271.4" y="526.7" width="33.2" height="70.0" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 피벗 브래킷 (옵션 PCB) (frame-option-pcb)</title></rect>
-<circle cx="112.9" cy="589.4" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
-<circle cx="94.5" cy="589.4" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
-<circle cx="278.7" cy="589.4" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
-<circle cx="297.2" cy="589.4" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
-<circle cx="159.0" cy="617.0" r="6.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 집게 크랭크 축 고정 (볼트 2.6×10) (bolt-m26x10)</title></circle>
-<circle cx="232.7" cy="617.0" r="6.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 집게 크랭크 축 고정 (볼트 2.6×10) (bolt-m26x10)</title></circle>
-<circle cx="159.0" cy="617.0" r="27.6" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 크랭크 (휠가이드 서보) (wheel-guide-30-servo)</title></circle>
-<circle cx="232.7" cy="617.0" r="27.6" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 크랭크 (휠가이드 서보) (wheel-guide-30-servo)</title></circle>
+<circle cx="112.9" cy="571.0" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
+<circle cx="112.9" cy="552.5" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
+<circle cx="278.7" cy="571.0" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
+<circle cx="278.7" cy="552.5" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 피벗 브래킷 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="149.7" cy="865.8" r="5.9" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>상판 기둥 위 뒤 왼 (서포트 10) (support-spacer)</title></circle>
 <circle cx="241.9" cy="865.8" r="5.9" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>상판 기둥 위 뒤 오른 (서포트 10) (support-spacer)</title></circle>
 <circle cx="131.3" cy="727.6" r="5.9" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>상판 기둥 위 중간 왼 (서포트 10) (support-spacer)</title></circle>
 <circle cx="260.3" cy="727.6" r="5.9" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>상판 기둥 위 중간 오른 (서포트 10) (support-spacer)</title></circle>
 <circle cx="186.6" cy="663.1" r="5.9" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>상판 기둥 위 앞 왼 (서포트 10) (support-spacer)</title></circle>
 <circle cx="205.0" cy="663.1" r="5.9" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>상판 기둥 위 앞 오른 (서포트 10) (support-spacer)</title></circle>
-<circle cx="112.9" cy="589.4" r="5.9" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 피벗 브래킷 기둥 (서포트 7) (support-spacer)</title></circle>
-<circle cx="94.5" cy="589.4" r="5.9" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 피벗 브래킷 기둥 (서포트 7) (support-spacer)</title></circle>
-<circle cx="278.7" cy="589.4" r="5.9" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 피벗 브래킷 기둥 (서포트 7) (support-spacer)</title></circle>
-<circle cx="297.2" cy="589.4" r="5.9" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 피벗 브래킷 기둥 (서포트 7) (support-spacer)</title></circle>
-<rect x="175.9" y="455.1" width="2.9" height="108.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 어퍼컷 초승달 낫 아래쪽 날 (배틀무기 T) (battle-t)</title></rect>
-<rect x="212.8" y="455.1" width="2.9" height="108.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 어퍼컷 초승달 낫 아래쪽 날 (배틀무기 T) (battle-t)</title></rect>
+<circle cx="159.0" cy="617.0" r="6.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>왼 집게 크랭크 축 고정 (볼트 2.6×10) (bolt-m26x10)</title></circle>
+<circle cx="232.7" cy="617.0" r="6.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>오른 집게 크랭크 축 고정 (볼트 2.6×10) (bolt-m26x10)</title></circle>
+<circle cx="159.0" cy="617.0" r="27.6" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 크랭크 (휠가이드 서보) (wheel-guide-30-servo)</title></circle>
+<circle cx="232.7" cy="617.0" r="27.6" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 크랭크 (휠가이드 서보) (wheel-guide-30-servo)</title></circle>
+<circle cx="112.9" cy="571.0" r="5.9" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 피벗 브래킷 기둥 (서포트 10) (support-spacer)</title></circle>
+<circle cx="112.9" cy="552.5" r="5.9" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 집게 피벗 브래킷 기둥 (서포트 10) (support-spacer)</title></circle>
+<circle cx="278.7" cy="571.0" r="5.9" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 피벗 브래킷 기둥 (서포트 10) (support-spacer)</title></circle>
+<circle cx="278.7" cy="552.5" r="5.9" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 집게 피벗 브래킷 기둥 (서포트 10) (support-spacer)</title></circle>
+<rect x="175.9" y="407.5" width="2.9" height="108.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 어퍼컷 초승달 낫 아래쪽 날 (배틀무기 T) (battle-t)</title></rect>
+<rect x="212.8" y="423.0" width="2.9" height="108.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 어퍼컷 초승달 낫 아래쪽 날 (배틀무기 T) (battle-t)</title></rect>
 <polygon points="136.0,592.1 131.3,594.7 126.7,592.1 126.7,586.7 131.3,584.0 136.0,586.7" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 무기 레일 갑판 체결 (M3 너트) (nut-m3)</title></polygon>
 <polygon points="117.5,592.1 112.9,594.7 108.3,592.1 108.3,586.7 112.9,584.0 117.5,586.7" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 무기 레일 갑판 체결 (M3 너트) (nut-m3)</title></polygon>
 <polygon points="136.0,647.3 131.3,650.0 126.7,647.3 126.7,642.0 131.3,639.3 136.0,642.0" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 무기 레일 갑판 체결 (M3 너트) (nut-m3)</title></polygon>
@@ -1449,14 +1481,16 @@
 <rect x="218.7" y="464.3" width="4.4" height="10.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 초승달 낫 아래쪽 날 체결 (M3 너트) (nut-m3)</title></rect>
 <rect x="105.5" y="416.2" width="33.2" height="291.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 수직 낫 포크 레일 (중16 PCB) (frame-m16-pcb)</title></rect>
 <rect x="252.9" y="416.2" width="33.2" height="291.1" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 수직 낫 포크 레일 (중16 PCB) (frame-m16-pcb)</title></rect>
-<polygon points="117.5,592.1 112.9,594.7 108.3,592.1 108.3,586.7 112.9,584.0 117.5,586.7" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 집게 피벗 기둥 상판 고정 (M3 너트) (nut-m3)</title></polygon>
-<polygon points="99.1,592.1 94.5,594.7 89.8,592.1 89.8,586.7 94.5,584.0 99.1,586.7" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 집게 피벗 기둥 상판 고정 (M3 너트) (nut-m3)</title></polygon>
-<polygon points="283.4,592.1 278.7,594.7 274.1,592.1 274.1,586.7 278.7,584.0 283.4,586.7" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 집게 피벗 기둥 상판 고정 (M3 너트) (nut-m3)</title></polygon>
-<polygon points="301.8,592.1 297.2,594.7 292.5,592.1 292.5,586.7 297.2,584.0 301.8,586.7" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 집게 피벗 기둥 상판 고정 (M3 너트) (nut-m3)</title></polygon>
+<polygon points="117.5,573.6 112.9,576.3 108.3,573.6 108.3,568.3 112.9,565.6 117.5,568.3" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 집게 피벗 기둥 레일 고정 (M3 너트) (nut-m3)</title></polygon>
+<polygon points="117.5,555.2 112.9,557.9 108.3,555.2 108.3,549.9 112.9,547.2 117.5,549.9" fill="none" stroke="#1d2230" stroke-width="0.65"><title>왼 집게 피벗 기둥 레일 고정 (M3 너트) (nut-m3)</title></polygon>
+<polygon points="283.4,573.6 278.7,576.3 274.1,573.6 274.1,568.3 278.7,565.6 283.4,568.3" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 집게 피벗 기둥 레일 고정 (M3 너트) (nut-m3)</title></polygon>
+<polygon points="283.4,555.2 278.7,557.9 274.1,555.2 274.1,549.9 278.7,547.2 283.4,549.9" fill="none" stroke="#1d2230" stroke-width="0.65"><title>오른 집게 피벗 기둥 레일 고정 (M3 너트) (nut-m3)</title></polygon>
+<rect x="84.2" y="653.9" width="2.9" height="147.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 측면 도끼 장갑 핀 (배틀무기 V) (battle-v)</title></rect>
 <rect x="81.4" y="712.6" width="13.8" height="11.6" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 측면 도끼 장갑 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="88.9" y="713.0" width="4.4" height="10.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 측면 도끼 장갑 체결 (M3 너트) (nut-m3)</title></rect>
 <rect x="81.4" y="731.0" width="13.8" height="11.6" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 측면 도끼 장갑 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="88.9" y="731.4" width="4.4" height="10.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 측면 도끼 장갑 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="304.5" y="653.9" width="2.9" height="147.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 측면 도끼 장갑 핀 (배틀무기 V) (battle-v)</title></rect>
 <rect x="296.4" y="712.6" width="13.8" height="11.6" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 측면 도끼 장갑 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="298.3" y="713.0" width="4.4" height="10.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 측면 도끼 장갑 체결 (M3 너트) (nut-m3)</title></rect>
 <rect x="296.4" y="731.0" width="13.8" height="11.6" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 측면 도끼 장갑 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
@@ -1493,8 +1527,6 @@
 <rect x="218.7" y="442.0" width="14.7" height="55.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 수직 낫 허브 (휠가이드 Ø30) (wheel-guide-30-nylon)</title></rect>
 <rect x="215.3" y="462.8" width="21.7" height="13.6" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 수직 낫 허브 축 고정 (볼트 2.6×10) (bolt-m26x10)</title></rect>
 <rect x="215.7" y="462.3" width="2.9" height="14.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 수직 낫 척추 막대 (소7 PCB) (frame-s7-pcb)</title></rect>
-<rect x="84.2" y="653.9" width="2.9" height="147.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 측면 도끼 장갑 핀 (배틀무기 V) (battle-v)</title></rect>
-<rect x="304.5" y="653.9" width="2.9" height="147.4" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 측면 도끼 장갑 핀 (배틀무기 V) (battle-v)</title></rect>
 <rect x="127.6" y="436.2" width="13.8" height="11.6" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 낫 모터 귀 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="128.0" y="436.6" width="4.4" height="10.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 낫 모터 귀 체결 (M3 너트) (nut-m3)</title></rect>
 <rect x="127.6" y="528.3" width="13.8" height="11.6" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 낫 모터 귀 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
@@ -1511,8 +1543,8 @@
 <rect x="168.5" y="464.3" width="4.4" height="10.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 초승달 낫 위쪽 날 체결 (M3 너트) (nut-m3)</title></rect>
 <rect x="210.0" y="463.8" width="13.8" height="11.6" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 초승달 낫 위쪽 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="218.7" y="464.3" width="4.4" height="10.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 초승달 낫 위쪽 날 체결 (M3 너트) (nut-m3)</title></rect>
-<rect x="175.9" y="375.5" width="2.9" height="108.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 어퍼컷 초승달 낫 위쪽 날 (배틀무기 T) (battle-t)</title></rect>
-<rect x="212.8" y="375.5" width="2.9" height="108.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 어퍼컷 초승달 낫 위쪽 날 (배틀무기 T) (battle-t)</title></rect>
+<rect x="175.9" y="423.0" width="2.9" height="108.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>왼 어퍼컷 초승달 낫 위쪽 날 (배틀무기 T) (battle-t)</title></rect>
+<rect x="212.8" y="407.5" width="2.9" height="108.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>오른 어퍼컷 초승달 낫 위쪽 날 (배틀무기 T) (battle-t)</title></rect>
 <rect x="167.8" y="463.8" width="13.8" height="11.6" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 초승달 낫 위쪽 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="168.5" y="464.3" width="4.4" height="10.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>왼 초승달 낫 위쪽 날 체결 (M3 너트) (nut-m3)</title></rect>
 <rect x="210.0" y="463.8" width="13.8" height="11.6" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>오른 초승달 낫 위쪽 날 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
@@ -1527,14 +1559,6 @@
 <rect x="218.1" y="885.3" width="10.7" height="4.4" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>후방 등갑 방패 체결 (M3 너트) (nut-m3)</title></rect>
 <rect x="160.8" y="860.2" width="14.7" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>후방 방패 받침 왼 (L자 2×2) (l-frame-2x2)</title></rect>
 <rect x="216.1" y="860.2" width="14.7" height="33.2" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>후방 방패 받침 오른 (L자 2×2) (l-frame-2x2)</title></rect>
-<polygon points="121.3,537.1 116.2,540.0 111.1,537.1 111.1,531.2 116.2,528.2 121.3,531.2" fill="none" stroke="#1d2230" stroke-width="0.65"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></polygon>
-<polygon points="139.7,537.1 134.6,540.0 129.5,537.1 129.5,531.2 134.6,528.2 139.7,531.2" fill="none" stroke="#1d2230" stroke-width="0.65"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></polygon>
-<polygon points="268.7,537.1 263.6,540.0 258.5,537.1 258.5,531.2 263.6,528.2 268.7,531.2" fill="none" stroke="#1d2230" stroke-width="0.65"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></polygon>
-<polygon points="287.1,537.1 282.0,540.0 276.9,537.1 276.9,531.2 282.0,528.2 287.1,531.2" fill="none" stroke="#1d2230" stroke-width="0.65"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></polygon>
-<circle cx="116.2" cy="534.1" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></circle>
-<circle cx="134.6" cy="534.1" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></circle>
-<circle cx="263.6" cy="534.1" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></circle>
-<circle cx="282.0" cy="534.1" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></circle>
 <polygon points="172.8,868.4 168.2,871.1 163.5,868.4 163.5,863.1 168.2,860.4 172.8,863.1" fill="none" stroke="#1d2230" stroke-width="0.65"><title>후방 방패 받침 왼 체결 (M3 너트) (nut-m3)</title></polygon>
 <polygon points="172.8,886.9 168.2,889.5 163.5,886.9 163.5,881.5 168.2,878.8 172.8,881.5" fill="none" stroke="#1d2230" stroke-width="0.65"><title>후방 방패 받침 왼 체결 (M3 너트) (nut-m3)</title></polygon>
 <polygon points="228.1,868.4 223.5,871.1 218.8,868.4 218.8,863.1 223.5,860.4 228.1,863.1" fill="none" stroke="#1d2230" stroke-width="0.65"><title>후방 방패 받침 오른 체결 (M3 너트) (nut-m3)</title></polygon>
@@ -1555,12 +1579,19 @@
 <circle cx="260.3" cy="773.6" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>꼬리 서보 받침 앞 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="241.9" cy="865.8" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>꼬리 서보 받침 뒤 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="260.3" cy="865.8" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>꼬리 서보 받침 뒤 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
-<rect x="120.3" y="891.6" width="151.1" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>후방 대형 등갑 방패 (배틀무기 S) (battle-s)</title></rect>
 <rect x="87.1" y="747.8" width="217.4" height="143.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꼬리 아치 브리지 (Main PCB 8×12) (frame-main-pcb)</title></rect>
+<polygon points="121.3,537.1 116.2,540.0 111.1,537.1 111.1,531.2 116.2,528.2 121.3,531.2" fill="none" stroke="#1d2230" stroke-width="0.65"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></polygon>
+<polygon points="139.7,537.1 134.6,540.0 129.5,537.1 129.5,531.2 134.6,528.2 139.7,531.2" fill="none" stroke="#1d2230" stroke-width="0.65"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></polygon>
+<polygon points="268.7,537.1 263.6,540.0 258.5,537.1 258.5,531.2 263.6,528.2 268.7,531.2" fill="none" stroke="#1d2230" stroke-width="0.65"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></polygon>
+<polygon points="287.1,537.1 282.0,540.0 276.9,537.1 276.9,531.2 282.0,528.2 287.1,531.2" fill="none" stroke="#1d2230" stroke-width="0.65"><title>전갈 독침 스파이크 (캡너트) (cap-nut-m3)</title></polygon>
 <polygon points="176.1,536.8 171.5,539.5 166.9,536.8 166.9,531.4 171.5,528.8 176.1,531.4" fill="none" stroke="#1d2230" stroke-width="0.65"><title>해머 헤드 체결 (M3 너트) (nut-m3)</title></polygon>
 <polygon points="176.1,555.2 171.5,557.9 166.9,555.2 166.9,549.9 171.5,547.2 176.1,549.9" fill="none" stroke="#1d2230" stroke-width="0.65"><title>해머 헤드 체결 (M3 너트) (nut-m3)</title></polygon>
 <polygon points="194.5,536.8 189.9,539.5 185.3,536.8 185.3,531.4 189.9,528.8 194.5,531.4" fill="none" stroke="#1d2230" stroke-width="0.65"><title>해머 헤드 체결 (M3 너트) (nut-m3)</title></polygon>
 <polygon points="194.5,555.2 189.9,557.9 185.3,555.2 185.3,549.9 189.9,547.2 194.5,549.9" fill="none" stroke="#1d2230" stroke-width="0.65"><title>해머 헤드 체결 (M3 너트) (nut-m3)</title></polygon>
+<circle cx="116.2" cy="534.1" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></circle>
+<circle cx="134.6" cy="534.1" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></circle>
+<circle cx="263.6" cy="534.1" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></circle>
+<circle cx="282.0" cy="534.1" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>독침 스파이크 볼트 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="171.5" cy="534.1" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>해머 헤드 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="171.5" cy="552.5" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>해머 헤드 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
 <circle cx="189.9" cy="534.1" r="5.8" fill="none" stroke="#1d2230" stroke-width="0.7"><title>해머 헤드 체결 (볼트 3×6) (bolt-m3x6)</title></circle>
@@ -1576,6 +1607,7 @@
 <rect x="200.2" y="528.8" width="4.4" height="10.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>해머 브래킷 앞 암 체결 (M3 너트) (nut-m3)</title></rect>
 <rect x="192.7" y="546.7" width="13.8" height="11.6" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>해머 브래킷 뒤 암 체결 (볼트 3×6) (bolt-m3x6)</title></rect>
 <rect x="200.2" y="547.2" width="4.4" height="10.7" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>해머 브래킷 뒤 암 체결 (M3 너트) (nut-m3)</title></rect>
+<rect x="120.3" y="891.6" width="151.1" height="2.9" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>후방 대형 등갑 방패 (배틀무기 S) (battle-s)</title></rect>
 <rect x="219.8" y="782.9" width="60.8" height="73.7" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>전갈 꼬리 해머 서보 (OUT3) (servo-digital)</title></rect>
 <rect x="200.2" y="773.6" width="14.7" height="55.3" rx="1.2" fill="none" fill-opacity="0.93" stroke="#b9c2cf" stroke-width="0.5"><title>꼬리 해머 크랭크 허브 (휠가이드 서보) (wheel-guide-30-servo)</title></rect>
 <rect x="196.9" y="794.5" width="21.7" height="13.6" rx="0.5" fill="none" fill-opacity="0.93" stroke="#1d2230" stroke-width="0.55"><title>꼬리 해머 허브 축 고정 (볼트 2.6×10) (bolt-m26x10)</title></rect>

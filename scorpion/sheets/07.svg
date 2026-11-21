@@ -55,7 +55,7 @@
 <circle cx="439.0" cy="886.9" r="5" fill="#c8202b"/>
 <text x="439.0" y="768.0" font-size="9.2" fill="#c8202b" font-weight="700" text-anchor="middle">수직 어퍼컷 낫 최상단 y=145.2 mm</text>
 <text x="439.0" y="1018.1" font-size="9.0" fill="#c8202b" font-weight="700" text-anchor="middle">최하단 y=41.2 mm (어퍼컷 방향 ↻)</text>
-<text x="439.0" y="959.1" font-size="8.8" fill="#f08a24" font-weight="700" text-anchor="middle">◀ 집게 팔 y=43.6 mm (낫 좌/우 외측)</text>
+<text x="439.0" y="954.6" font-size="8.8" fill="#f08a24" font-weight="700" text-anchor="middle">◀ 집게 팔 y=43.6 mm (낫 좌/우 외측)</text>
 <rect x="357.0" y="983.7" width="205.0" height="10.2" fill="#f08a24" opacity="0.55"/>
 <circle cx="808.0" cy="722.9" r="5" fill="#9b51e0"/>
 <line x1="808.0" y1="722.9" x2="643.4" y2="487.8" stroke="#9b51e0" stroke-width="4.2" stroke-dasharray="6 3"/>

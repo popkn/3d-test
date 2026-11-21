@@ -4,7 +4,7 @@ import { createGuideLines } from '../assembly/render.js';
 import { BOLT_PITCH } from '../assembly/solver.js';
 import ASSEMBLY, { BOT, BOM, SPACERS } from './assembly.js';
 
-// "크림슨 스콜피온 (Crimson Scorpion) v3" 완성품 3D 조립 (ASSEMBLY_RULES.md 1~10장 · 규칙 2.4 · 2.5 · 10.6 완전 준수)
+// "크림슨 스콜피온 (Crimson Scorpion) v4" 완성품 3D 조립 (ASSEMBLY_RULES.md 1~10장 · 규칙 2.4 · 2.5 · 10.6 완전 준수)
 // - [규칙 2.5] 4륜 전원 DC 130rpm 직결 (M1~M4 · Ø50 × 4 · 헛바퀴 0)
 // - [규칙 2.4] 쌍발 400rpm 수직 어퍼컷 초승달 낫 스피너 (EX-M1 · EX-M2 · battle-t × 4 · Ø104 mm)
 // - [규칙 10.6] 좌·우 대칭 4절링크 집게 크러셔 (OUT1·OUT2 · R=10/L=40/r=20 · 오차 0.0000 mm · 토크 2.87× · 낫 여유 +12.1 mm)
@@ -96,6 +96,49 @@ function placePart(a, mods) {
   }
   holder.position.set(a.o[0], a.o[1], a.o[2]);
   return holder;
+}
+
+
+// 디테일 3D 배선 (배터리·4WD 모터·쌍발 400rpm·서보 3개·센서·LED·부저·BT → CPU, 후방 방패 battle-s 및 가동부 관통 0!)
+function buildWiring() {
+  const wg = new THREE.Group();
+  wg.name = 'wiring';
+  const matRed = new THREE.MeshStandardMaterial({ color: 0xdc2626, roughness: 0.55 });
+  const matBlk = new THREE.MeshStandardMaterial({ color: 0x1f2937, roughness: 0.6 });
+  const matYel = new THREE.MeshStandardMaterial({ color: 0xeab308, roughness: 0.5 });
+  const matBlu = new THREE.MeshStandardMaterial({ color: 0x2563eb, roughness: 0.55 });
+  const addWire = (pts, mat, r = 1.05, label = '배선 케이블') => {
+    const curve = new THREE.CatmullRomCurve3(pts.map(([x, y, z]) => new THREE.Vector3(x, y, z)));
+    const m = new THREE.Mesh(new THREE.TubeGeometry(curve, 22, r, 6, false), mat);
+    m.userData = { name: label, id: 'cable-3pin', sheet: '05' };
+    wg.add(m);
+  };
+  // 1) 배터리 6V → CPU 전원 (빨강+검정 트윈 선, 내부 섀시 통과)
+  addWire([[4, 34, 78], [4, 52, 82], [-8, 76, 80], [-14, 86, 72]], matRed, 1.2, '전원 케이블 (+6V 빨강)');
+  addWire([[-4, 34, 78], [-4, 52, 82], [-12, 76, 80], [-18, 86, 72]], matBlk, 1.2, '전원 케이블 (GND 검정)');
+  // 2) 4WD 구동 모터 (M1~M4) → CPU (차체 내부 측면 채널 경유)
+  addWire([[-34, 40, -15], [-30, 48, 5], [-28, 76, 30], [-24, 86, 48]], matRed, 0.95, 'M1 앞 왼 구동 모터 배선');
+  addWire([[34, 40, -15], [30, 48, 5], [28, 76, 30], [24, 86, 48]], matRed, 0.95, 'M2 앞 오른 구동 모터 배선');
+  addWire([[-34, 40, 58], [-32, 58, 62], [-30, 82, 62], [-26, 86, 62]], matBlk, 0.95, 'M3 뒤 왼 구동 모터 배선');
+  addWire([[34, 40, 58], [32, 58, 62], [30, 82, 62], [26, 86, 62]], matBlk, 0.95, 'M4 뒤 오른 구동 모터 배선');
+  // 3) CPU → 모터 확장 보드(A3) → 쌍발 400rpm 어퍼컷 모터 (EX-M1/EX-M2, 무기 레일 상단 경유)
+  addWire([[-6, 86, 38], [-6, 84, 15], [-6, 84, -8]], matBlu, 1.1, 'CPU ↔ 모터 확장 보드 신호선');
+  addWire([[-18, 84, -22], [-34, 79, -42], [-38, 81, -82], [-39, 90, -104]], matRed, 1.05, 'EX-M1 왼 어퍼컷 400rpm 배선');
+  addWire([[18, 84, -22], [34, 79, -42], [38, 81, -82], [39, 90, -104]], matRed, 1.05, 'EX-M2 오른 어퍼컷 400rpm 배선');
+  // 4) 서보 3개 (OUT1 왼 집게 · OUT2 오른 집게 · OUT3 꼬리 해머) → CPU (3핀 노랑 신호선)
+  addWire([[-20, 38, -12], [-20, 58, 12], [-18, 79, 34], [-14, 86, 46]], matYel, 0.95, 'OUT1 왼 집게 서보 3핀 케이블');
+  addWire([[20, 38, -12], [20, 58, 12], [18, 79, 34], [14, 86, 46]], matYel, 0.95, 'OUT2 오른 집게 서보 3핀 케이블');
+  // 꼬리 서보: 우측 타워 기둥 안쪽(z=+70, battle-s z=+109 앞쪽 39 mm!)을 따라 상승 → 방패 관통 0!
+  addWire([[34, 168, 72], [46, 148, 72], [48, 108, 70], [34, 88, 68]], matYel, 1.0, 'OUT3 전갈 꼬리 서보 3핀 케이블');
+  // 5) 센서 · 부저 · RGB LED · 블루투스 → CPU (모두 battle-s 앞쪽 경유 · 방패 관통 0!)
+  addWire([[0, 82, -55], [10, 82, -32], [10, 83, 18], [8, 86, 42]], matYel, 0.85, 'IN1 전방 적외선 센서 3핀 케이블');
+  // 바닥 컬러 센서(z=127, y=31): 하부 섀시 아래 z=105→88→상승(battle-s y≥126 아래·앞쪽 통과 → 관통 0!)
+  addWire([[0, 33, 118], [0, 35, 96], [6, 56, 86], [8, 84, 80]], matYel, 0.85, 'IN2 바닥 컬러 센서 3핀 케이블');
+  // 후방 접촉 센서(z=103, y=88): 상판 위 y=82로 바로 전진(battle-s z=109 앞쪽 → 관통 0!)
+  addWire([[0, 86, 98], [0, 82, 86], [4, 85, 76]], matYel, 0.85, 'IN3 후방 접촉 센서 3핀 케이블');
+  addWire([[-4, 82, 24], [-4, 84, 42]], matYel, 0.85, 'OUT5 부저 보드 3핀 케이블');
+  addWire([[-25, 154, 48], [-44, 146, 58], [-46, 106, 62], [-30, 87, 64]], matBlu, 0.9, 'OUT4 RGB LED · BT 3핀 케이블');
+  return wg;
 }
 
 export async function buildScorpion(loadPart, onProgress) {
@@ -220,6 +263,8 @@ export async function buildScorpion(loadPart, onProgress) {
   groups['04'].add(tailArm);
   for (const g of Object.values(groups)) root.add(g);
 
+  const wiring = buildWiring();
+  groups['05'].add(wiring);
   const guide = createGuideLines(items.length, 0xef4444, 0.55);
   root.add(guide.object);
 
@@ -346,6 +391,7 @@ export async function buildScorpion(loadPart, onProgress) {
         if (it.fastener) it.h.quaternion.copy(it.q0);
       }
     }
+    wiring.visible = e < 0.02 && !hidden['05'];
     guide.update(segs);
   }
 
