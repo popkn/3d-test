@@ -60,6 +60,18 @@ export async function loadRobot(id) {
 }
 export const robotCode = (id) => codes[id];
 export const robotMeta = (id) => index?.robots.find((x) => x.id === id);
+export async function clearRobotCache(id) {
+  delete codes[id];
+  try {
+    const db = await idb();
+    await new Promise((ok) => {
+      const t = db.transaction(STORE, 'readwrite');
+      t.objectStore(STORE).delete('code:' + id);
+      t.oncomplete = ok;
+      t.onerror = ok;
+    });
+  } catch (e) { /* 무시 */ }
+}
 
 // 뒤에서 GitHub 확인: 바뀐 로봇만 받아 저장. 바뀐 게 있으면 'robots-updated' 이벤트
 let checking = false;
@@ -82,6 +94,10 @@ export async function checkUpdates() {
       if (have?.version === r.version || (!have && local?.version === r.version)) continue;
       try {
         const code = await getText(REMOTE + r.file + '?v=' + encodeURIComponent(r.version || Date.now()), 20000);
+        if (r.size && Math.abs(code.length - r.size) > 64) {
+          console.warn('로봇 파일 크기 불일치(CDN 캐시 지연 가능), 다음 주기에 재시도', r.id, code.length, r.size);
+          return false;
+        }
         await dbPut('code:' + r.id, { version: r.version, code });
         delete codes[r.id];
         changed = true;

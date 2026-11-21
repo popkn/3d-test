@@ -3,7 +3,7 @@
 import * as THREE107 from 'three';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { createScene, partBounds } from './scene.js';
-import { initRobots, loadRobot, robotCode, checkUpdates } from './robots.js';
+import { initRobots, loadRobot, robotCode, checkUpdates, clearRobotCache } from './robots.js';
 
 var $ = (s) => document.querySelector(s);
 var stage = $("#stage");
@@ -837,6 +837,10 @@ function ensureAdapter(id) {
       if (meta && ad.count) meta.innerHTML = `<span>모듈 ${r.mods}</span><span>부품 ${ad.count}</span>`;
       updateThumb(id);
       return ad;
+    }).catch((err) => {
+      delete pending[id];
+      clearRobotCache(id);
+      throw err;
     });
   }
   return pending[id];
