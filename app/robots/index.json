@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-21T07:39:07.467Z",
+  "updated": "2026-11-21T08:53:05.130Z",
   "robots": [
     {
       "id": "eagle",
@@ -42,8 +42,8 @@
       "name": "썬더 개틀링 6연장 v3",
       "mods": 5,
       "file": "gatling.js",
-      "version": "7270fc3e0b",
-      "size": 186530,
+      "version": "2356bb5827",
+      "size": 190020,
       "parts": 31
     },
     {
@@ -51,8 +51,8 @@
       "name": "크림슨 스콜피온 v2",
       "mods": 6,
       "file": "scorpion.js",
-      "version": "a8da982281",
-      "size": 232844,
+      "version": "61d4a028ae",
+      "size": 236951,
       "parts": 38
     }
   ]
