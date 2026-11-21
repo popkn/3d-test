@@ -1,13 +1,13 @@
 {
-  "updated": "2026-11-15T00:51:43.111Z",
+  "updated": "2026-11-21T03:04:44.839Z",
   "robots": [
     {
       "id": "eagle",
       "name": "독수리 로봇",
       "mods": 6,
       "file": "eagle.js",
-      "version": "89d12b8cdb",
-      "size": 89304,
+      "version": "5c04b99da4",
+      "size": 89730,
       "parts": 34
     },
     {
@@ -15,8 +15,8 @@
       "name": "배틀로봇 썬더 웨지",
       "mods": 6,
       "file": "bot.js",
-      "version": "a46a751159",
-      "size": 118320,
+      "version": "2c39fcb7d9",
+      "size": 118750,
       "parts": 40
     },
     {
@@ -24,8 +24,8 @@
       "name": "협동 기차 하나로 열차",
       "mods": 4,
       "file": "train.js",
-      "version": "1a075c9a01",
-      "size": 162063,
+      "version": "5689165f25",
+      "size": 170333,
       "parts": 31
     },
     {
@@ -33,8 +33,8 @@
       "name": "배틀로봇 썬더 타이탄 6륜",
       "mods": 7,
       "file": "bigbot.js",
-      "version": "1d9e046a22",
-      "size": 85112,
+      "version": "dfa2a02130",
+      "size": 85536,
       "parts": 33
     },
     {
@@ -42,9 +42,9 @@
       "name": "썬더 개틀링 6연장",
       "mods": 5,
       "file": "gatling.js",
-      "version": "a54fba591e",
-      "size": 89440,
-      "parts": 29
+      "version": "918229dbc1",
+      "size": 146986,
+      "parts": 32
     }
   ]
 }
