@@ -1538,10 +1538,19 @@ window.__mode = () => mode;
   sync();
 })();
 
-// ───────── 자동 업데이트: 앱을 열고 조금 뒤 GitHub에서 바뀐 로봇을 받는다 ─────────
+// ───────── 자동 업데이트: 앱을 열거나 다시 돌아올 때 GitHub에서 바뀐 로봇을 받는다 ─────────
 window.addEventListener('robots-updated', () => {
   htoast('새 로봇 · 업데이트를 받았어요');
   const apply = () => { if (!$('#viewer') || $('#viewer').hidden) setTimeout(() => location.reload(), 1200); else window.addEventListener('hashchange', apply, { once: true }); };
   apply();
 });
-setTimeout(() => checkUpdates(), 2500);
+let lastCheckAt = 0;
+const runCheck = () => {
+  const now = Date.now();
+  if (now - lastCheckAt < 15000) return;
+  lastCheckAt = now;
+  checkUpdates();
+};
+setTimeout(runCheck, 2500);
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') runCheck(); });
+window.addEventListener('online', runCheck);

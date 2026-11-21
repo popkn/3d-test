@@ -62,18 +62,37 @@ export const robotCode = (id) => codes[id];
 export const robotMeta = (id) => index?.robots.find((x) => x.id === id);
 
 // 뒤에서 GitHub 확인: 바뀐 로봇만 받아 저장. 바뀐 게 있으면 'robots-updated' 이벤트
+let checking = false;
 export async function checkUpdates() {
-  if (SINGLE_CODE || !navigator.onLine) return false;
-  let remote;
-  try { remote = JSON.parse(await getText(REMOTE + 'index.json')); } catch (e) { console.warn('로봇 업데이트 확인 실패', e); return false; }
-  if (!remote?.robots || (index?.updated && remote.updated <= index.updated)) return false;
-  for (const r of remote.robots) {
-    const have = await dbGet('code:' + r.id);
-    const local = index?.robots.find((x) => x.id === r.id);
-    if (have?.version === r.version || (!have && local?.version === r.version)) continue;
-    try { await dbPut('code:' + r.id, { version: r.version, code: await getText(REMOTE + r.file, 20000) }); } catch (e) { console.warn('로봇 파일 받기 실패', r.id, e); return false; }   // 하나라도 실패하면 다음에 다시
+  if (SINGLE_CODE || !navigator.onLine || checking) return false;
+  checking = true;
+  try {
+    let remote;
+    try { remote = JSON.parse(await getText(REMOTE + 'index.json?t=' + Date.now())); } catch (e) { console.warn('로봇 업데이트 확인 실패', e); return false; }
+    if (!Array.isArray(remote?.robots)) return false;
+
+    const cur = index?.robots || [];
+    const curMap = new Map(cur.map((x) => [x.id, x]));
+    let changed = cur.length !== remote.robots.length;
+
+    for (const r of remote.robots) {
+      const local = curMap.get(r.id);
+      const have = await dbGet('code:' + r.id);
+      if (!local || local.name !== r.name || local.version !== r.version || local.mods !== r.mods) changed = true;
+      if (have?.version === r.version || (!have && local?.version === r.version)) continue;
+      try {
+        const code = await getText(REMOTE + r.file + '?v=' + encodeURIComponent(r.version || Date.now()), 20000);
+        await dbPut('code:' + r.id, { version: r.version, code });
+        delete codes[r.id];
+        changed = true;
+      } catch (e) { console.warn('로봇 파일 받기 실패', r.id, e); return false; }   // 하나라도 실패하면 다음에 다시
+    }
+    if (!changed && (!remote.updated || (index?.updated && remote.updated <= index.updated))) return false;
+    index = remote;
+    await dbPut('index', remote);
+    window.dispatchEvent(new CustomEvent('robots-updated', { detail: remote }));
+    return true;
+  } finally {
+    checking = false;
   }
-  await dbPut('index', remote);
-  window.dispatchEvent(new CustomEvent('robots-updated', { detail: remote }));
-  return true;
 }
