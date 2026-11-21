@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-21T03:57:26.890Z",
+  "updated": "2026-11-21T04:33:04.793Z",
   "robots": [
     {
       "id": "eagle",
@@ -24,8 +24,8 @@
       "name": "협동 기차 하나로 열차",
       "mods": 4,
       "file": "train.js",
-      "version": "5689165f25",
-      "size": 170333,
+      "version": "3ce1d2f969",
+      "size": 170829,
       "parts": 31
     },
     {
@@ -39,12 +39,12 @@
     },
     {
       "id": "gatling",
-      "name": "썬더 개틀링 6연장 v2",
+      "name": "썬더 개틀링 6연장 v3",
       "mods": 5,
       "file": "gatling.js",
-      "version": "253e10aa4b",
-      "size": 155581,
-      "parts": 30
+      "version": "3b032bbdfb",
+      "size": 175524,
+      "parts": 31
     }
   ]
 }
