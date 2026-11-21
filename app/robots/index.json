@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-21T17:37:00.000Z",
+  "updated": "2026-11-21T23:43:09.982Z",
   "robots": [
     {
       "id": "eagle",
@@ -12,11 +12,11 @@
     },
     {
       "id": "bot",
-      "name": "배틀로봇 썬더 웨지 V2",
+      "name": "배틀로봇 썬더 웨지 V3",
       "mods": 6,
       "file": "bot.js",
-      "version": "090cb1525c-r2",
-      "size": 183710,
+      "version": "414675be77",
+      "size": 244923,
       "parts": 43
     },
     {
