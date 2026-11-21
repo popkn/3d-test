@@ -1,80 +1,77 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 820" width="1260" height="820" font-family="JetBrains Mono, 'Noto Sans KR', sans-serif"><defs><pattern id="g" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="#e3e8ef" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="#f6f8fb"/><rect x="14" y="14" width="1232" height="792" fill="none" stroke="#1d2230" stroke-width="1.2"/>
 <rect x="14" y="14" width="1232" height="46" fill="#1d2230"/>
-<text x="28.0" y="44.0" font-size="13" fill="#9fb3d1" font-weight="700" text-anchor="start">썬더 개틀링 6연장 · 도면 07</text>
-<text x="270.8" y="44.0" font-size="17" fill="#ffffff" font-weight="700" text-anchor="start">규칙 검사 · 배선</text>
-<text x="1232.0" y="44.0" font-size="10.5" fill="#c8d3e6" font-weight="400" text-anchor="end">ASSEMBLY_RULES.md 1~10장 · 공중 고정 0 · 볼트/너트/캡너트 필수 체결</text>
-<text x="50.0" y="100.0" font-size="12.5" fill="#1d2230" font-weight="700" text-anchor="start">① 조립 규칙 검사 (1~10장 자동 검증)</text>
+<text x="28.0" y="44.0" font-size="13" fill="#9fb3d1" font-weight="700" text-anchor="start">썬더 개틀링 6연장 (v2 전면 재설계) · 도면 07</text>
+<text x="408.5" y="44.0" font-size="17" fill="#ffffff" font-weight="700" text-anchor="start">규칙 검사 (1~10장) · 배선</text>
+<text x="1232.0" y="44.0" font-size="10.5" fill="#c8d3e6" font-weight="400" text-anchor="end">공중 고정 0 · 3D 충돌 0 · 로터 스윕 충돌 0 · 캡너트/볼트 동축 정렬</text>
+<text x="50.0" y="100.0" font-size="12.5" fill="#1d2230" font-weight="700" text-anchor="start">① 조립 규칙 · 충돌 자동 검증 결과</text>
 <rect x="50" y="114" width="1160" height="26" fill="#eef2f7"/>
 <text x="60.0" y="131.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 1.1 CPU 1대당 1개</text>
-<text x="380.0" y="131.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">CPU 보드 1개</text>
+<text x="390.0" y="131.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">CPU 보드 1개 (서포트 40 위, 모터·경첩과 무충돌)</text>
 <text x="60.0" y="157.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 2.1 CPU 모터 최대 6 · 조작 4</text>
-<text x="380.0" y="157.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">DC 모터 3개 (구동 2 + 배럴 1), 모두 조작 자리 M1 ~ M3</text>
+<text x="390.0" y="157.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">DC 모터 3개 (구동 2 + 배럴 1), 조작 자리 M1 ~ M3</text>
 <rect x="50" y="166" width="1160" height="26" fill="#eef2f7"/>
-<text x="60.0" y="183.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 2.2 확장 보드</text>
-<text x="380.0" y="183.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">필요 없음</text>
-<text x="60.0" y="209.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 2.3 수량 130 × 4</text>
-<text x="380.0" y="209.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">130 모터 3개 사용 (1개 남음)</text>
+<text x="60.0" y="183.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 2.2 확장 보드 · 2.3 수량</text>
+<text x="390.0" y="183.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">확장 보드 불필요 · DC 130 × 3 (4개 중 1개 남음)</text>
+<text x="60.0" y="209.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 4 구멍 격자 0.0 mm 일치</text>
+<text x="390.0" y="209.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">앞·뒤 바닥판 z=±80, 모터 귀 50 mm, 앞 축 38.0 mm, 배럴 축 139.6 mm 일치</text>
 <rect x="50" y="218" width="1160" height="26" fill="#eef2f7"/>
-<text x="60.0" y="235.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 2.4 배틀 무기 = 400 모터</text>
-<text x="380.0" y="235.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">배틀무기 판을 쓰지 않음. 배럴은 130 모터 (고무줄 발사)</text>
-<text x="60.0" y="261.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 10.1 공중 고정 금지 · 볼트/너트 필수</text>
-<text x="380.0" y="261.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">구조 부품 100개 전원 실체 체결 · 볼트/너트/캡너트 202개 도면+3D 구현</text>
+<text x="60.0" y="235.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 10.1 공중 고정 금지 · 볼트/너트 필수</text>
+<text x="390.0" y="235.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">구조 113개 전원 실체 체결 · 볼트/너트/캡너트 206개 도면 배치</text>
+<text x="60.0" y="261.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 10.2 캡너트 · 볼트 동축 정렬</text>
+<text x="390.0" y="261.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">총구 캡너트 6 · 걸쇠 볼트 6 포함 206개 전원 동축 검증 통과</text>
 <rect x="50" y="270" width="1160" height="26" fill="#eef2f7"/>
-<text x="60.0" y="287.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 10.2 캡너트 · 볼트 동축 방향 정렬</text>
-<text x="380.0" y="287.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">총구 캡너트 6 · 걸쇠 볼트 6 포함 체결 202개 전원 동축 검증 통과 (옆으로 누움 0건)</text>
-<text x="60.0" y="313.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 10.3 최대 세분화 · 10.4 완전 분해</text>
-<text x="380.0" y="313.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">총 302단계 세분화 (묶기 0) · 모든 부품 + 볼트 + 너트 + 캡너트 축 분해 + 가이드선</text>
-<rect x="50" y="322" width="1160" height="26" fill="#eef2f7"/>
-<text x="60.0" y="339.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 고각 서보 힘</text>
-<text x="380.0" y="339.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">필요 0.18 kg·cm / 서보 4 kg·cm (5%)</text>
-<text x="50.0" y="372.0" font-size="12.5" fill="#1d2230" font-weight="700" text-anchor="start">② 배선</text>
-<rect x="50" y="386" width="1160" height="22" fill="#1d2230"/>
-<text x="60.0" y="401.0" font-size="10" fill="#fff" font-weight="700" text-anchor="start">포트</text>
-<text x="160.0" y="401.0" font-size="10" fill="#fff" font-weight="700" text-anchor="start">부품</text>
-<text x="520.0" y="401.0" font-size="10" fill="#fff" font-weight="700" text-anchor="start">역할</text>
-<rect x="50" y="408" width="1160" height="24" fill="#eef2f7"/>
-<rect x="58" y="412" width="56" height="16" rx="3" fill="#f2c21b"/>
-<text x="86.0" y="424.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">IN1</text>
-<text x="160.0" y="424.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">발사 버튼</text>
-<text x="520.0" y="424.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">누르면 1발</text>
-<rect x="58" y="436" width="56" height="16" rx="3" fill="#f2c21b"/>
-<text x="86.0" y="448.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">OUT1</text>
-<text x="160.0" y="448.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">고각 서보</text>
-<text x="520.0" y="448.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">0° ~ +15.9° (크랭크 131° 회전)</text>
-<rect x="50" y="456" width="1160" height="24" fill="#eef2f7"/>
-<rect x="58" y="460" width="56" height="16" rx="3" fill="#f2c21b"/>
-<text x="86.0" y="472.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">OUT2</text>
-<text x="160.0" y="472.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">발사 LED 빨강</text>
-<text x="520.0" y="472.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">배럴이 도는 동안 켜짐</text>
-<rect x="58" y="484" width="56" height="16" rx="3" fill="#f2c21b"/>
-<text x="86.0" y="496.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">OUT3</text>
-<text x="160.0" y="496.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">부저</text>
-<text x="520.0" y="496.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">발사 전 짧은 경고음</text>
-<rect x="50" y="504" width="1160" height="24" fill="#eef2f7"/>
-<rect x="58" y="508" width="56" height="16" rx="3" fill="#f2c21b"/>
-<text x="86.0" y="520.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">M1</text>
-<text x="160.0" y="520.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">왼쪽 구동 모터 (DC 130)</text>
-<text x="520.0" y="520.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">조작</text>
-<rect x="58" y="532" width="56" height="16" rx="3" fill="#f2c21b"/>
-<text x="86.0" y="544.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">M2</text>
-<text x="160.0" y="544.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">오른쪽 구동 모터 (DC 130)</text>
-<text x="520.0" y="544.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">조작</text>
-<rect x="50" y="552" width="1160" height="24" fill="#eef2f7"/>
-<rect x="58" y="556" width="56" height="16" rx="3" fill="#f2c21b"/>
-<text x="86.0" y="568.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">M3</text>
-<text x="160.0" y="568.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">배럴 모터 (DC 130)</text>
-<text x="520.0" y="568.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">조작 · 약 0.08초 = 1발, 0.46초 = 6발 연사</text>
-<rect x="58" y="580" width="56" height="16" rx="3" fill="#f2c21b"/>
-<text x="86.0" y="592.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">UART</text>
-<text x="160.0" y="592.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">블루투스 모듈</text>
-<text x="520.0" y="592.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">스마트폰 조종 · 고각 · 발사</text>
-<rect x="50" y="600" width="1160" height="24" fill="#eef2f7"/>
-<rect x="58" y="604" width="56" height="16" rx="3" fill="#f2c21b"/>
-<text x="86.0" y="616.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">BATT</text>
-<text x="160.0" y="616.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">배터리케이스 4AA 6V</text>
-<text x="520.0" y="616.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">CPU 6V (서보 6 V 이하)</text>
-<text x="50.0" y="648.0" font-size="12.5" fill="#1d2230" font-weight="700" text-anchor="start">③ 동작</text>
-<text x="60.0" y="666.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">• 조종 (블루투스): 전진 · 후진 · 제자리 회전 (M1 · M2) / 고각 올림 · 내림 (서보) / 발사 1발 · 6발 연사 (M3)</text>
-<text x="60.0" y="682.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">• 발사: 부저 짧게 → LED 빨강 켜짐 → 배럴 모터 약 0.08초 (1발) 또는 0.46초 (6발) → LED 꺼짐</text>
-<text x="60.0" y="698.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">• 발사 버튼 (IN1): 손으로 누르면 1발 (블루투스 없이 시험할 때)</text>
-<text x="60.0" y="714.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">• 안전: 사람 · 동물 쪽으로 쏘지 않는다. 고무줄을 걸 때는 전원을 끄고 고각 0°로.</text></svg>
+<text x="60.0" y="287.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 3D AABB &amp; 로터 360° 회전 충돌 검사</text>
+<text x="390.0" y="287.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">구조 부품 쌍 충돌 0건 · 로터/걸쇠 360° 스윕 충돌 0건</text>
+<text x="60.0" y="313.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 고각 서보 토크 여유</text>
+<text x="390.0" y="313.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">필요 0.23 kg·cm / 서보 4 kg·cm (6%)</text>
+<text x="50.0" y="346.0" font-size="12.5" fill="#1d2230" font-weight="700" text-anchor="start">② 배선</text>
+<rect x="50" y="360" width="1160" height="22" fill="#1d2230"/>
+<text x="60.0" y="375.0" font-size="10" fill="#fff" font-weight="700" text-anchor="start">포트</text>
+<text x="160.0" y="375.0" font-size="10" fill="#fff" font-weight="700" text-anchor="start">부품</text>
+<text x="520.0" y="375.0" font-size="10" fill="#fff" font-weight="700" text-anchor="start">역할</text>
+<rect x="50" y="382" width="1160" height="24" fill="#eef2f7"/>
+<rect x="58" y="386" width="56" height="16" rx="3" fill="#f2c21b"/>
+<text x="86.0" y="398.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">IN1</text>
+<text x="160.0" y="398.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">발사 버튼</text>
+<text x="520.0" y="398.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">누르면 1발</text>
+<rect x="58" y="410" width="56" height="16" rx="3" fill="#f2c21b"/>
+<text x="86.0" y="422.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">OUT1</text>
+<text x="160.0" y="422.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">고각 서보</text>
+<text x="520.0" y="422.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">0° ~ +16.3° (크랭크 180° 회전)</text>
+<rect x="50" y="430" width="1160" height="24" fill="#eef2f7"/>
+<rect x="58" y="434" width="56" height="16" rx="3" fill="#f2c21b"/>
+<text x="86.0" y="446.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">OUT2</text>
+<text x="160.0" y="446.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">발사 LED 빨강</text>
+<text x="520.0" y="446.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">배럴이 도는 동안 켜짐</text>
+<rect x="58" y="458" width="56" height="16" rx="3" fill="#f2c21b"/>
+<text x="86.0" y="470.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">OUT3</text>
+<text x="160.0" y="470.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">부저</text>
+<text x="520.0" y="470.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">발사 전 짧은 경고음</text>
+<rect x="50" y="478" width="1160" height="24" fill="#eef2f7"/>
+<rect x="58" y="482" width="56" height="16" rx="3" fill="#f2c21b"/>
+<text x="86.0" y="494.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">M1</text>
+<text x="160.0" y="494.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">왼쪽 구동 모터 (DC 130)</text>
+<text x="520.0" y="494.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">조작</text>
+<rect x="58" y="506" width="56" height="16" rx="3" fill="#f2c21b"/>
+<text x="86.0" y="518.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">M2</text>
+<text x="160.0" y="518.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">오른쪽 구동 모터 (DC 130)</text>
+<text x="520.0" y="518.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">조작</text>
+<rect x="50" y="526" width="1160" height="24" fill="#eef2f7"/>
+<rect x="58" y="530" width="56" height="16" rx="3" fill="#f2c21b"/>
+<text x="86.0" y="542.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">M3</text>
+<text x="160.0" y="542.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">배럴 모터 (DC 130)</text>
+<text x="520.0" y="542.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">조작 · 약 0.08초 = 1발, 0.46초 = 6발 연사</text>
+<rect x="58" y="554" width="56" height="16" rx="3" fill="#f2c21b"/>
+<text x="86.0" y="566.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">UART</text>
+<text x="160.0" y="566.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">블루투스 모듈</text>
+<text x="520.0" y="566.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">스마트폰 조종 · 고각 · 발사</text>
+<rect x="50" y="574" width="1160" height="24" fill="#eef2f7"/>
+<rect x="58" y="578" width="56" height="16" rx="3" fill="#f2c21b"/>
+<text x="86.0" y="590.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">BATT</text>
+<text x="160.0" y="590.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">배터리케이스 4AA 6V</text>
+<text x="520.0" y="590.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">CPU 6V (서보 6 V 이하)</text>
+<text x="50.0" y="622.0" font-size="12.5" fill="#1d2230" font-weight="700" text-anchor="start">③ 동작</text>
+<text x="60.0" y="640.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">• 조종 (블루투스): 전진 · 후진 · 제자리 회전 (M1 · M2) / 고각 0°~+15° (서보 OUT1) / 발사 1발 · 6발 연사 (M3)</text>
+<text x="60.0" y="656.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">• 발사: 부저 짧게 (OUT3) → LED 빨강 켜짐 (OUT2) → 배럴 모터 약 0.08초(1발) / 0.46초(6발) → LED 꺼짐</text>
+<text x="60.0" y="672.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">• 발사 버튼 (IN1): 차체 뒤 끝 접촉 센서로 수동 1발 시험</text>
+<text x="60.0" y="688.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">• 안전: 고무줄을 걸 때는 전원을 끄고 고각 0°로 맞춘 뒤 마주 보는 순서로 장착.</text></svg>
