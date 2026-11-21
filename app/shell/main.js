@@ -1133,7 +1133,8 @@ function setMode(m, instant) {
 function buildFnUI(F) {
   fnBars = {};
   fnSegs = {};
-  $("#fnTitle").textContent = F.title;
+  $("#fnTitle").textContent = F.title || "";
+  const ft = $("#fnTitle").closest(".ftitle"); if (ft) ft.hidden = !F.title;
   const grid = $("#fnGrid");
   grid.innerHTML = F.items.map((it, k) => {
     const d = `style="animation-delay:${0.06 + k * 0.045}s"` + (it.col ? ` data-col="${it.col}"` : "");
