@@ -1,12 +1,12 @@
 {
-  "updated": "2026-11-21T04:33:04.793Z",
+  "updated": "2026-11-21T05:48:41.175Z",
   "robots": [
     {
       "id": "eagle",
       "name": "독수리 로봇",
       "mods": 6,
       "file": "eagle.js",
-      "version": "5c04b99da4",
+      "version": "69a89aa565",
       "size": 89730,
       "parts": 34
     },
@@ -15,7 +15,7 @@
       "name": "배틀로봇 썬더 웨지",
       "mods": 6,
       "file": "bot.js",
-      "version": "2c39fcb7d9",
+      "version": "8115074c9d",
       "size": 118750,
       "parts": 40
     },
@@ -24,7 +24,7 @@
       "name": "협동 기차 하나로 열차",
       "mods": 4,
       "file": "train.js",
-      "version": "3ce1d2f969",
+      "version": "b24b49c843",
       "size": 170829,
       "parts": 31
     },
@@ -42,8 +42,8 @@
       "name": "썬더 개틀링 6연장 v3",
       "mods": 5,
       "file": "gatling.js",
-      "version": "3b032bbdfb",
-      "size": 175524,
+      "version": "7270fc3e0b",
+      "size": 186530,
       "parts": 31
     }
   ]
