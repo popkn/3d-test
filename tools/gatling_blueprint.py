@@ -36,11 +36,15 @@ M16_U = [0, 10, 20, 30, 40, 50, 60, 70, 75, 80, 90, 100, 110, 120, 130, 140, 150
 HALF_U = [0, 10, 20, 25, 30, 40, 50]; HALF_V = [0, 10, 20, 30, 35, 40, 50, 60, 70]
 
 _plate = plate
-def plate(*a, h='', turret=False, spins=False, attached=True, **k):
+def plate(*a, h='', turret=False, spins=False, attached=True, origin=None, xdir=None, up=None, exp=None, **k):
     d = _plate(*a, **k)
     d['h'] = h; d['attached'] = attached
     if turret: d['turret'] = True
     if spins: d['spins'] = True
+    if origin is not None: d['origin'] = origin
+    if xdir is not None: d['xdir'] = xdir
+    if up is not None: d['up'] = up
+    if exp is not None: d['exp'] = exp
     return d
 
 def part(sheet, pid, name, c, s, color, shape='box', note='', h='', turret=False, spins=False, attached=True, **kw):
@@ -73,20 +77,23 @@ def fasten_bolt(sheet, pt_head, up, thickness, label, bolt_id=None, nut=True, tu
     ax = _axis_of(up)
     shift = (L - H) / 2.0
     bc = tuple(pt_head[i] - up[i] * shift for i in range(3))
+    bo = tuple(pt_head[i] - up[i] * L for i in range(3))  # boltSim.js: y=L = 머리 아랫면(체결면)
     add(sheet, bolt_id, f'{label} ({NAMES[bolt_id]})', bc, _size_along(ax, D, L + H), BOLT_COL, 'bolt',
-        f'두께 {thickness:.1f} mm', axis=ax, up=tuple(up), exp=tuple(up),
+        f'두께 {thickness:.1f} mm', axis=ax, origin=bo, up=tuple(up), exp=tuple(up),
         h=f'{NAMES[bolt_id]} 체결 (두께 {thickness:.1f} mm)', turret=turret, spins=spins, attached=True, fastener=True)
     if nut:
         nc = tuple(pt_head[i] - up[i] * (thickness + 1.2) for i in range(3))
+        no = tuple(pt_head[i] - up[i] * (thickness + 2.4) for i in range(3))  # nut-m3: y=2.4 = 체결면
         add(sheet, 'nut-m3', f'{label} (M3 너트)', nc, _size_along(ax, 5.8, 2.4), NUT_COL, 'nut',
-            '볼트 반대쪽 체결', axis=ax, up=tuple(up), exp=tuple(-u for u in up),
+            '볼트 반대쪽 체결', axis=ax, origin=no, up=tuple(up), exp=tuple(-u for u in up),
             h='M3 너트 체결', turret=turret, spins=spins, attached=True, fastener=True)
 
 def fasten_nut(sheet, pt_face, up, label, turret=False, spins=False):
     ax = _axis_of(up)
     nc = tuple(pt_face[i] - up[i] * 1.2 for i in range(3))
+    no = tuple(pt_face[i] - up[i] * 2.4 for i in range(3))
     add(sheet, 'nut-m3', f'{label} (M3 너트)', nc, _size_along(ax, 5.8, 2.4), NUT_COL, 'nut',
-        '서포트 수나사 고정', axis=ax, up=tuple(up), exp=tuple(-u for u in up),
+        '서포트 수나사 고정', axis=ax, origin=no, up=tuple(up), exp=tuple(-u for u in up),
         h='서포트 수나사에 M3 너트', turret=turret, spins=spins, attached=True, fastener=True)
 
 def fasten_tapping(sheet, pt_head, up, label, turret=False, spins=False):
@@ -94,42 +101,44 @@ def fasten_tapping(sheet, pt_head, up, label, turret=False, spins=False):
     ax = _axis_of(up)
     shift = (L - H) / 2.0
     bc = tuple(pt_head[i] - up[i] * shift for i in range(3))
+    bo = tuple(pt_head[i] - up[i] * L for i in range(3))
     add(sheet, 'bolt-m26x10', f'{label} (볼트 2.6×10)', bc, _size_along(ax, D, L + H), BOLT_COL, 'bolt',
-        '축 허브 동축 고정', axis=ax, up=tuple(up), exp=tuple(up),
+        '축 허브 동축 고정', axis=ax, origin=bo, up=tuple(up), exp=tuple(up),
         h='허브 중심에 볼트 2.6×10', turret=turret, spins=spins, attached=True, fastener=True)
 
 def fasten_capnut(sheet, pt_face, stud_dir, label, turret=False, spins=False):
-    """규칙 10.2: 캡너트 동축 체결. capNut.js 모델은 +Y=암나사 입구, -Y=둥근 돔 → up=-stud_dir."""
+    """규칙 10.2: 캡너트 동축 체결. capNut.js 모델은 +Y=암나사 입구(y=6), -Y=둥근 돔(y=0) → up=-stud_dir."""
     ax = _axis_of(stud_dir)
     up = tuple(-d for d in stud_dir)
     cc = tuple(pt_face[i] + stud_dir[i] * 3.0 for i in range(3))
+    co = tuple(pt_face[i] + stud_dir[i] * 6.0 for i in range(3))  # y=6이 pt_face, y=0 돔이 바깥
     add(sheet, 'cap-nut-m3', f'{label} (캡너트)', cc, _size_along(ax, 6.4, 6.0), CAP_COL, 'capnut',
-        '수나사 끝 동축 체결 · 둥근 돔 바깥쪽', axis=ax, up=up, exp=tuple(stud_dir),
+        '수나사 끝 동축 체결 · 둥근 돔 바깥쪽', axis=ax, origin=co, up=up, exp=tuple(stud_dir),
         h='수나사 끝에 동축으로 돌려 끼움 (돔이 바깥)', turret=turret, spins=spins, attached=True, fastener=True)
 
 # ═══════════════════════════════════════════════════════════════════════
-# ── 마스터 치수 (실측 connectors.json 기반 · 모든 구멍 0.0 mm 격자 일치)
+# ── 마스터 치수 (실측 3D 모델 원점 · connectors.json 기반 · 모든 구멍 0.0 mm 격자 일치)
 # ═══════════════════════════════════════════════════════════════════════
-AXLE = 38.0           # 바퀴 축 높이 (wheel-80-buggy-set 실측 지름 76 mm → 반지름 38.0 mm)
-TOP = 19.0            # 차체 바닥판 윗면 (아랫면 BOT = 17.4, 모터 받침 2·3번 구멍 19+14=33, 19+24=43 → 축 38.0 일치!)
+AXLE = 38.0           # 바퀴 축 높이 (모터프레임 2·3번 구멍 19+14=33, 19+24=43 → 축 38.0 일치!)
+TOP = 19.0            # 차체 바닥판 윗면 (아랫면 BOT = 17.4)
 BOT = TOP - 1.6       # 17.4
-CB = 79.0             # 포탑 판 아랫면 (바닥판 위 60.0 mm: 뒤 서포트 40+15=55 + 받침 1.6 + 경첩 2.4 = 59.0~60.0)
+CB = 79.0             # 포탑 판 아랫면 (뒤 서포트 40+15=55 + 받침 1.6 + 경첩 2.4~3.4)
 CT = CB + 1.6         # 포탑 판 윗면 (80.6)
 AX = CT + 59.0        # 배럴 회전 축 (139.6: 돋움 10 + L자 2×6 5·6번 구멍 44·54 가운데 = 80.6+10+49 = 139.6 일치!)
 R_B = 25.0            # 배럴 피치 반지름 (PCD 50, 6연장: 25² = 15² + 20²)
 HINGE_Z = 70.0        # 경첩 축 (뒤 받침 z=75 ↔ 포탑 판 z=65, 10 mm 격자 정확 일치!)
 LIFT_Z = -10.0        # 고각 서보 축 Z (서보 중심 z=0, 귀 z=±25 → 축 z=-10)
 LEVER = HINGE_Z - LIFT_Z   # 80.0 mm
-SERVO_Y = TOP + 29.0  # 48.0 mm (L자 2×6 3·4번 구멍 19+24=43, 19+34=53 가운데 = 48.0 일치!)
+SERVO_Y = TOP + 19.0  # 38.0 mm (L자 2×6 2·3번 구멍 19+14=33, 19+24=43 가운데 = 38.0 일치 · 소5 링크 30 mm 전 구간 오차 0.0 mm!)
 CRANK, LINK = 10.0, 30.0   # 소5 PCB 링크 (핀 간격 30 mm)
 TAB_Y = CB - 14.0     # 65.0 mm (포탑 판 아래 L자 2×2 2번 구멍)
 WEDGE = math.atan2(30, 40) / DEG
 BARRELS = [(25, 0, '3시'), (15, 20, '1시'), (-15, 20, '11시'), (-25, 0, '9시'), (-15, -20, '7시'), (15, -20, '5시')]
 
-# 포탑 내부 배럴 Z 배치 (뒤 로터↔아치 7.3 mm · 걸쇠↔모터 4.2 mm · 총구↔앞 축 받침 6.5 mm · 전방위 무충돌!)
-Z_MLEG = 45.0         # 배럴 모터 기둥 L자 2×6 세운 다리 앞면 (두께 1 mm: [45, 46])
-Z_REAR = 12.9         # 뒤 로터 판 중심 ([12.1, 13.7]) — 아치 판 앞면(21.0)과 7.3 mm, 쐐기 앞 끝(16.4)과 2.7 mm 완전 분리!
-Z_FRONT = -53.7       # 앞 로터 판 중심 ([-54.5, -52.9]) — 총구 캡너트 돔 끝(-67.5) vs 앞 축 받침(-74.0) 6.5 mm 여유!
+# 포탑 내부 배럴 Z 배치 (실측 모터 높이 33 mm · L자 4/14 mm 꺾임 격자 0.0 mm 완전 일치 · 전방위 무충돌!)
+Z_MLEG = 51.0         # 배럴 모터 기둥 L자 2×6 세운 다리 앞면 (두께 1 mm: [51, 52], 바닥 구멍 z=55, 65 정확 일치!)
+Z_REAR = 13.9         # 뒤 로터 판 중심 ([13.1, 14.7]) — 아치 판 앞면(21.0)과 6.3 mm, 쐐기 앞 끝(16.4)과 1.7 mm 분리!
+Z_FRONT = -52.7       # 앞 로터 판 중심 ([-53.5, -51.9]) — 총구 캡너트 돔 끝(-66.5) vs 앞 축 받침(-78.0) 11.5 mm 여유!
 
 def tilt_of(a):
     pz, py = LIFT_Z + CRANK * math.sin(a), SERVO_Y - CRANK * math.cos(a)
@@ -151,34 +160,38 @@ TILT = T_HI
 # ═══════════════════════════════════════════════════════════════════════
 S1 = '01'
 plate(S1, 'frame-big-main', '차체 바닥판 뒤 (빅 메인 PCB)', (0, TOP - 0.8, 80), (118, 1.6, 158), BLACK, BIG_U, BIG_V, 2, 0,
-      '기준 부품 · z [1, 159] · 구멍 z=5, 15, ..., 155', h='기준 부품')
+      '기준 부품 · z [1, 159] · 구멍 z=5, 15, ..., 155', origin=(0, BOT, 80), xdir=(0, 0, 1), up=(0, 1, 0), exp=(0, 0, 12), h='기준 부품')
 plate(S1, 'frame-big-main', '차체 바닥판 앞 (빅 메인 PCB)', (0, TOP - 0.8, -80), (118, 1.6, 158), BLACK, BIG_U, BIG_V, 2, 0,
-      'z [-159, -1] · 뒤 판과 2 mm 간격 → 이음판 10 mm 격자 일치', h='뒤 판과 이음판으로 체결')
+      'z [-159, -1] · 뒤 판과 2 mm 간격 → 이음판 10 mm 격자 일치', origin=(0, BOT, -80), xdir=(0, 0, 1), up=(0, 1, 0), exp=(0, 0, -12), h='뒤 판과 이음판으로 체결')
 
 for sx in (-1, 1):
     side = '오른' if sx > 0 else '왼'
     plate(S1, 'frame-m16-pcb', f'{side} 이음판 (중16 PCB)', (45 * sx, BOT - 0.8, 0), (18, 1.6, 158), BLACK, M16_U, ROW3, 2, 0,
-          '앞·뒤 바닥판 아래 밀착 (y [15.8, 17.4]) · 구멍 0.0 mm 일치', h='앞·뒤 판에 볼트 3×6 + 너트 4벌씩')
+          '앞·뒤 바닥판 아래 밀착 (y [15.8, 17.4]) · 구멍 0.0 mm 일치',
+          origin=(45 * sx, BOT - 1.6, 0), xdir=(0, 0, 1), up=(0, 1, 0), exp=(0, -28, 0), h='앞·뒤 판에 볼트 3×6 + 너트 4벌씩')
     for z in (-75, -55, -35, -15, 15, 35, 55, 75):
         fasten_bolt(S1, (45 * sx, TOP, z), (0, 1, 0), 3.2, f'{side} 이음판 체결')
 
-# 뒤 구동 모듈 × 2 (DC 130rpm · 몸통 x [±31.6, ±64.6], y [28, 48], z [90, 130] · 귀 z=85, 135)
+# 뒤 구동 모듈 × 2 (DC 130rpm 실측 몸통 33 mm: x [±34.0, ±67.0], y [28, 48], z [90, 130] · 귀 z=85, 135)
 for sx in (-1, 1):
     side = '오른' if sx > 0 else '왼'
     for gz, tag in ((85, '앞'), (135, '뒤')):
         part(S1, 'motor-frame-3x3', f'{side} 구동 모터 받침 {tag} (모터프레임 3×3)', (45 * sx, TOP + 14.0, gz), (28, 28, 8), METAL,
-             note=f'세운 다리 x={58.5*sx:+.1f} · 바닥 구멍 x={45*sx:+.0f},{55*sx:+.0f} · z={gz}', h='바닥판에 볼트 3×6 + 너트 2벌')
+             note=f'세운 다리 x=[{58*sx:+.0f},{59*sx:+.0f}] · 바닥 구멍 x={45*sx:+.0f},{55*sx:+.0f} (0.0 mm 일치) · z={gz}',
+             origin=(59 * sx, TOP, gz), xdir=(sx, 0, 0), up=(0, 1, 0), exp=(18 * sx, 16, 0), h='바닥판에 볼트 3×6 + 너트 2벌')
         for dx in (45, 55):
             fasten_bolt(S1, (dx * sx, TOP + 1.0, gz), (0, 1, 0), 2.6, f'{side} 모터 받침 {tag} 바닥 체결')
-    part(S1, 'dc-motor-130-rs', f'{side} 구동 모터 (DC 130rpm, M{1 if sx < 0 else 2})', (48.1 * sx, AXLE, 110), (33, 20, 40), BLACK, 'servo',
-         f'귀 x=±58 밀착 · 몸통 x [{31.6*sx:+.1f}, {64.6*sx:+.1f}] · 축 z=120 · y=38.0',
-         shaft=(68.0 * sx, AXLE, 120), up=(sx, 0, 0), xdir=(0, 0, -1), h='귀 구멍 4곳을 모터프레임 2·3번 구멍(y 33·43)에 볼트 3×6 + 너트')
+    part(S1, 'dc-motor-130-rs', f'{side} 구동 모터 (DC 130rpm, M{1 if sx < 0 else 2})', (50.5 * sx, AXLE, 110), (33, 20, 40), BLACK, 'servo',
+         f'귀 x=±58 밀착 · 몸통 x [{34*sx:+.0f}, {67*sx:+.0f}] · 축 z=120 · y=38.0',
+         origin=(34.0 * sx, AXLE, 110.0), shaft=(72.0 * sx, AXLE, 120), up=(sx, 0, 0), xdir=(0, 0, -1), exp=(34 * sx, 0, 0),
+         h='귀 구멍 4곳을 모터프레임 2·3번 구멍(y 33·43)에 볼트 3×6 + 너트')
     for gz in (85, 135):
         for dy in (-5, 5):
             fasten_bolt(S1, (59.0 * sx, AXLE + dy, gz), (sx, 0, 0), 3.4, f'{side} 구동 모터 귀 체결')
-    part(S1, 'wheel-80-buggy-set', f'{side} 뒤 구동 바퀴 (Ø80 버기 세트)', (82.0 * sx, AXLE, 120), (33, 76, 76), BLACK, 'disc',
-         '모터 D컷 축 장착 · 안쪽 면 x=±65.5 (모터 64.6과 0.9 mm 여유)', axis=0, h='축에 끼우고 볼트 2.6×10')
-    fasten_tapping(S1, (98.5 * sx, AXLE, 120), (sx, 0, 0), f'{side} 뒤 구동 바퀴 축 고정')
+    part(S1, 'wheel-80-buggy-set', f'{side} 뒤 구동 바퀴 (Ø80 버기 세트)', (84.5 * sx, AXLE, 120), (33, 76, 76), BLACK, 'disc',
+         '모터 D컷 축 장착 · 안쪽 면 x=±68.0 (모터 67.0과 1.0 mm 여유)', axis=0,
+         xdir=(0, 0, -sx), up=(0, 1, 0), exp=(70 * sx, 0, 0), h='축에 끼우고 볼트 2.6×10')
+    fasten_tapping(S1, (101.0 * sx, AXLE, 120), (sx, 0, 0), f'{side} 뒤 구동 바퀴 축 고정')
 
 # 앞바퀴 모듈 × 2 (헛돎 · z = -120 · 서포트 5 mm + L자 6×6 2개 → 축 높이 19+5+14 = 38.0 mm 정확 일치!)
 for sx in (-1, 1):
@@ -186,230 +199,282 @@ for sx in (-1, 1):
     for bx_leg, xs_holes, tag in ((59, (45, 55), '바깥'), (39, (25, 35), '안쪽')):
         for hx in xs_holes:
             part(S1, 'support-spacer', f'{side} 앞 축 돋움 {tag} (서포트 5)', (hx * sx, TOP + 2.5, -120), (6.4, 5, 6.4), METAL, 'cyl',
-                 '19 + 5 + 14 = 축 높이 38.0 일치', axis=1, length=5, h='수나사를 바닥판 구멍에 넣고 아래에서 너트')
+                 '19 + 5 + 14 = 축 높이 38.0 일치 · 수나사 아래(−Y)', axis=1, length=5,
+                 origin=(hx * sx, TOP + 5.0, -120), up=(0, -1, 0), exp=(0, 14, 0), h='수나사를 바닥판 구멍에 넣고 아래에서 너트')
             fasten_nut(S1, (hx * sx, BOT, -120), (0, 1, 0), f'{side} 앞 축 돋움 {tag} 바닥 고정')
         part(S1, 'l-frame-6x6', f'{side} 앞 축 받침 {tag} (L자 6×6)', ((bx_leg - 9) * sx, TOP + 5 + 9.0, -120), (18, 18, 18), METAL,
-             note=f'세운 다리 x={bx_leg*sx:+.0f} · 2번 구멍 y=38.0', h='돋움 서포트 암나사에 볼트 3×6 2개')
+             note=f'세운 다리 x=[{(bx_leg-1)*sx:+.0f},{bx_leg*sx:+.0f}] · 바닥 구멍 {xs_holes[0]*sx:+.0f},{xs_holes[1]*sx:+.0f} (0.0 mm 일치) · 2번 구멍 y=38.0',
+             origin=(bx_leg * sx, TOP + 5.0, -120), xdir=(sx, 0, 0), up=(0, 1, 0), exp=(0, 26, 0), h='돋움 서포트 암나사에 볼트 3×6 2개')
         for hx in xs_holes:
             fasten_bolt(S1, (hx * sx, TOP + 6.0, -120), (0, 1, 0), 1.0, f'{side} 앞 축 받침 {tag} 체결', nut=False)
-    part(S1, 'shaft-75', f'{side} 앞 축 (75 mm)', (62.0 * sx, AXLE, -120), (75, 3.2, 3.2), METAL, 'cyl',
-         '안쪽(39) · 바깥(59) L자 2번 구멍(y 38.0) 동축 관통', axis=0, h='L자 6×6 두 개 구멍에 꿴다')
-    part(S1, 'wheel-80-buggy-set', f'{side} 앞 바퀴 (Ø80 버기 세트, 헛돎)', (82.0 * sx, AXLE, -120), (33, 76, 76), BLACK, 'disc',
-         '앞 축 끝 장착 · x [±65.5, ±98.5]', axis=0, h='축 끝에 끼우고 볼트 2.6×10 빠짐 방지')
-    fasten_tapping(S1, (98.5 * sx, AXLE, -120), (sx, 0, 0), f'{side} 앞 바퀴 축 빠짐 방지')
+    part(S1, 'shaft-75', f'{side} 앞 축 (75 mm)', (64.5 * sx, AXLE, -120), (75, 3.2, 3.2), METAL, 'cyl',
+         '안쪽(39) · 바깥(59) L자 2번 구멍(y 38.0) 동축 관통 → 앞바퀴 지지', axis=0,
+         exp=(46 * sx, 0, 0), h='L자 6×6 두 개 구멍에 꿴다')
+    part(S1, 'wheel-80-buggy-set', f'{side} 앞 바퀴 (Ø80 버기 세트, 헛돎)', (84.5 * sx, AXLE, -120), (33, 76, 76), BLACK, 'disc',
+         '앞 축 끝 장착 · x [±68.0, ±101.0]', axis=0,
+         xdir=(0, 0, -sx), up=(0, 1, 0), exp=(70 * sx, 0, 0), h='축 끝에 끼우고 볼트 2.6×10 빠짐 방지')
+    fasten_tapping(S1, (101.0 * sx, AXLE, -120), (sx, 0, 0), f'{side} 앞 바퀴 축 빠짐 방지')
 
 part(S1, 'battery-case-4aa', '배터리케이스 (AA 4개, 6V)', (0, TOP + 9.4, -65), (79.6, 18.8, 62), BLACK,
-     note='앞 판 가운데 · y [19.0, 37.8] · 귀 (±35, -85/-45) 격자 일치', h='귀 구멍 4개 볼트 3×6 + 너트')
+     note='앞 판 가운데 · y [19.0, 37.8] · 귀 (±35, -85/-45) 격자 일치',
+     origin=(0, TOP, -65), xdir=(1, 0, 0), up=(0, 1, 0), exp=(0, 30, -16), h='귀 구멍 4개 볼트 3×6 + 너트')
 for bx in (-35, 35):
     for bz in (-85, -45):
         fasten_bolt(S1, (bx, TOP + 2.0, bz), (0, 1, 0), 3.6, '배터리케이스 체결')
 
 # ═══════════════════════════════════════════════════════════════════════
-# ── 02 포탑 받침 · 고각 서보 (뒤 서포트 40+15 · 경첩 z=70 · 서보 x=[15,41.4], z=0 · 포탑 판 Big Main)
+# ── 02 포탑 받침 · 고각 서보 (뒤 서포트 40+15 · 경첩 z=70 · 서보 x=[13,46], z=0 · 포탑 판 Big Main)
 # ═══════════════════════════════════════════════════════════════════════
 S2 = '02'
 for sx in (-1, 1):
     side = '오른' if sx > 0 else '왼'
     part(S2, 'support-spacer', f'{side} 뒤 받침 기둥 아래 (서포트 40)', (35 * sx, TOP + 20, 75), (6.4, 40, 6.4), METAL, 'cyl',
-         '차체 바닥판(19) → y=59', axis=1, length=40, h='바닥판 구멍 관통 + 아래 너트')
+         '차체 바닥판(19) → y=59 · 수나사 아래(−Y)', axis=1, length=40,
+         origin=(35 * sx, TOP + 40.0, 75), up=(0, -1, 0), exp=(0, 14, 0), h='바닥판 구멍 관통 + 아래 너트')
     fasten_nut(S2, (35 * sx, BOT, 75), (0, 1, 0), f'{side} 뒤 받침 기둥 바닥 고정')
     part(S2, 'support-spacer', f'{side} 뒤 받침 기둥 위 (서포트 15)', (35 * sx, TOP + 40 + 7.5, 75), (6.4, 15, 6.4), METAL, 'cyl',
-         '서포트 40 + 15 = 55 mm → y=74', axis=1, length=15, h='서포트 40 수나사에 돌려 끼움')
+         '서포트 40 + 15 = 55 mm → y=74 · 수나사 아래(−Y)', axis=1, length=15,
+         origin=(35 * sx, TOP + 55.0, 75), up=(0, -1, 0), exp=(0, 28, 0), h='서포트 40 암나사에 돌려 끼움')
 
 plate(S2, 'frame-mid-pcb', '뒤 받침대 (중 PCB)', (0, 74.8, 75), (78, 1.6, 18), BLACK, MID_U, ROW3, 0, 2,
-      'y [74.0, 75.6] · 기둥 2개 위', h='기둥 암나사에 볼트 3×6 2개')
+      'y [74.0, 75.6] · 기둥 2개 위', origin=(0, 74.0, 75), xdir=(1, 0, 0), up=(0, 1, 0), exp=(0, 36, 0), h='기둥 암나사에 볼트 3×6 2개')
 for sx in (-1, 1):
     fasten_bolt(S2, (35 * sx, 75.6, 75), (0, 1, 0), 1.6, '뒤 받침대 체결', nut=False)
 
 part(S2, 'hinge-3x3', '고각 경첩 (경첩 3×3)', (0, 77.3, HINGE_Z), (18, 3.4, 23), METAL,
-     note='축 z=70 (좌우 X) · 아래 날개 z=75(받침대) · 위 날개 z=65(포탑 판)', h='아래·위 날개 볼트 3×6 + 너트 2벌씩')
+     note='축 z=70 (좌우 X) · 아래 날개 z=75(받침대) · 위 날개 z=65(포탑 판)',
+     origin=(0, 75.6, HINGE_Z), xdir=(0, 0, -1), up=(0, 1, 0), exp=(0, 44, 0), h='아래·위 날개 볼트 3×6 + 너트 2벌씩')
 for hx in (-5, 5):
     fasten_bolt(S2, (hx, 76.6, 75), (0, 1, 0), 2.6, '고각 경첩 아래 날개 체결')
 
+# 고각 서보 기둥 × 2 (L자 2×6: 꺾임 모서리 x=19 → 바닥 구멍 x=5, 15 0.0 mm 일치 · 세운 다리 x=[18,19])
 for z, tag in ((-25, '앞'), (25, '뒤')):
-    part(S2, 'l-frame-2x6', f'고각 서보 기둥 {tag} (L자 2×6)', (23.0, TOP + 29.0, z), (18, 58, 8), METAL,
-         note=f'세운 다리 x=[14,15] · 바닥 다리 x=[14,32] · 구멍 3·4번(y 43·53)에 서보 귀', h='바닥판 구멍 x=15,25에 볼트 3×6 + 너트 2벌')
-    for hx in (15, 25):
+    part(S2, 'l-frame-2x6', f'고각 서보 기둥 {tag} (L자 2×6)', (10.0, TOP + 29.0, z), (18, 58, 8), METAL,
+         note=f'세운 다리 x=[18,19] · 바닥 다리 x=[1,19] · 바닥 구멍 x=5,15 (0.0 mm 일치) · 2·3번 구멍(y 33·43) 서보 귀',
+         origin=(19.0, TOP, z), xdir=(1, 0, 0), up=(0, 1, 0), exp=(22, 16, 0), h='바닥판 구멍 x=5,15에 볼트 3×6 + 너트 2벌')
+    for hx in (5, 15):
         fasten_bolt(S2, (hx, TOP + 1.0, z), (0, 1, 0), 2.6, f'고각 서보 기둥 {tag} 바닥 체결')
 
-part(S2, 'servo-digital', '고각 서보 (OUT1)', (28.2, SERVO_Y, 0), (26.4, 20, 40), BLACK, 'servo',
-     '귀 x=15 밀착 · 몸통 x [15, 41.4] · 출력 축 (-X) z=-10 · y=48', shaft=(5.0, SERVO_Y, LIFT_Z),
-     up=(-1, 0, 0), xdir=(0, 0, 1), h='귀 구멍 4곳을 L자 2×6 3·4번 구멍에 볼트 3×6 + 너트')
+# 고각 서보 (OUT1): 귀 x=19 밀착 → 몸통 x=[10, 43] (33 mm 실측) · 출력 축 (-X) x=[2.8, 8.0], z=-10, y=38
+part(S2, 'servo-digital', '고각 서보 (OUT1)', (26.5, SERVO_Y, 0), (33, 20, 40), BLACK, 'servo',
+     '귀 x=19 밀착 · 몸통 x [10, 43] · 출력 축 (-X) z=-10 · y=38',
+     origin=(43.0, SERVO_Y, 0), shaft=(5.5, SERVO_Y, LIFT_Z), up=(-1, 0, 0), xdir=(0, 0, 1), exp=(38, 0, 0),
+     h='귀 구멍 4곳을 L자 2×6 2·3번 구멍에 볼트 3×6 + 너트')
 for z in (-25, 25):
     for dy in (-5, 5):
-        fasten_bolt(S2, (14.0, SERVO_Y + dy, z), (-1, 0, 0), 3.4, '고각 서보 귀 체결')
+        fasten_bolt(S2, (18.0, SERVO_Y + dy, z), (-1, 0, 0), 3.4, '고각 서보 귀 체결')
 
-part(S2, 'wheel-guide-30-servo', '고각 크랭크 (휠가이드 서보)', (4.5, SERVO_Y, LIFT_Z), (8.3, 30, 30), WHITE, 'disc',
-     '서보 축 장착 · x [0.35, 8.65] (L자 14와 5.3 mm 여유)', axis=0, h='서보 축에 끼우고 볼트 2.6×10')
-fasten_tapping(S2, (0.35, SERVO_Y, LIFT_Z), (-1, 0, 0), '고각 크랭크 서보 축 고정')
+# 고각 크랭크 (휠가이드 Ø30 서보): 평평한 면 x=0.6 (-X), 허브 x=[0.6, 8.6] → 서보 축([2.8, 8.0]) 동축 결합 · 몸통(10)과 1.4 mm 여유!
+part(S2, 'wheel-guide-30-servo', '고각 크랭크 (휠가이드 서보)', (4.6, SERVO_Y, LIFT_Z), (8.0, 30, 30), WHITE, 'disc',
+     '서보 축 장착 · x [0.6, 8.6] (서보 몸통 10과 1.4 mm · 고각 탭 -1과 1.6 mm 여유)', axis=0,
+     origin=(0.6, SERVO_Y, LIFT_Z), xdir=(0, 0, 1), up=(1, 0, 0), exp=(-20, 0, 0), h='서보 축에 끼우고 볼트 2.6×10')
+fasten_tapping(S2, (0.6, SERVO_Y, LIFT_Z), (-1, 0, 0), '고각 크랭크 서보 축 고정')
 
-part(S2, 'frame-s5-pcb', '고각 링크 (소5 PCB, 핀 간격 30)', (-1.2, (SERVO_Y - CRANK + TAB_Y) / 2, LIFT_Z), (1.6, 48, 8), BLACK,
-     note='x [-2.0, -0.4] · 크랭크(x=0.35)와 탭(x=-2.0) 사이 수직 링크', h='양 끝 구멍(간격 30)을 후크 S35로')
-part(S2, 's-hook-35', '링크 아래 핀 (후크 S35)', (0.0, SERVO_Y - CRANK, LIFT_Z), (7.6, 6.5, 6.5), YELLOW, 'cyl',
-     '크랭크 반지름 10 구멍 ↔ 링크 아래 구멍 회전 핀', axis=0, h='눌러 끼움 (회전 관절)')
-part(S2, 's-hook-35', '링크 위 핀 (후크 S35)', (-2.5, TAB_Y, LIFT_Z), (7.6, 6.5, 6.5), YELLOW, 'cyl',
-     '고각 탭 2번 구멍(y 65) ↔ 링크 위 구멍 회전 핀', axis=0, h='눌러 끼움 (회전 관절)')
+# 고각 링크 (소5 PCB): x [-1.0, +0.6] · 크랭크(0.6)와 포탑 고각 탭(-1.0) 사이 0.0 mm 밀착!
+part(S2, 'frame-s5-pcb', '고각 링크 (소5 PCB, 핀 간격 30)', (-0.2, (SERVO_Y - CRANK + TAB_Y) / 2, LIFT_Z), (1.6, 48, 8), BLACK,
+     note='x [-1.0, +0.6] · 크랭크(x=+0.6)와 탭(x=-1.0) 사이 수직 링크',
+     exp=(-36, 0, 0), h='양 끝 구멍(간격 30)을 후크 S35로')
+part(S2, 's-hook-35', '링크 아래 핀 (후크 S35)', (1.0, SERVO_Y - CRANK, LIFT_Z), (7.6, 6.5, 6.5), YELLOW, 'cyl',
+     '크랭크 반지름 10 구멍 ↔ 링크 아래 구멍 회전 핀', axis=0,
+     origin=(-1.0, SERVO_Y - CRANK, LIFT_Z), up=(-1, 0, 0), exp=(-52, 0, 0), h='눌러 끼움 (회전 관절)')
+part(S2, 's-hook-35', '링크 위 핀 (후크 S35)', (-1.5, TAB_Y, LIFT_Z), (7.6, 6.5, 6.5), YELLOW, 'cyl',
+     '고각 탭 2번 구멍(y 65) ↔ 링크 위 구멍 회전 핀', axis=0,
+     origin=(0.6, TAB_Y, LIFT_Z), up=(1, 0, 0), exp=(-52, 0, 0), h='눌러 끼움 (회전 관절)')
 
 plate(S2, 'frame-big-main', '포탑 판 (빅 메인 PCB)', (0, CB + 0.8, 0), (118, 1.6, 158), BLACK, BIG_U, BIG_V, 2, 0,
-      'y [79.0, 80.6] · x [-59, +59] · 뒤 경첩(z=65) + 앞 고각 탭(z=-10)', h='뒤=경첩 위 날개 볼트 2벌, 앞=고각 탭 볼트 2벌', turret=True)
+      'y [79.0, 80.6] · x [-59, +59] · 뒤 경첩(z=65) + 앞 고각 탭(z=-10)',
+      origin=(0, CB, 0), xdir=(0, 0, 1), up=(0, 1, 0), exp=(0, 18, 0), h='뒤=경첩 위 날개 볼트 2벌, 앞=고각 탭 볼트 2벌', turret=True)
 for hx in (-5, 5):
     fasten_bolt(S2, (hx, CT, 65), (0, 1, 0), 2.6, '포탑 판 ↔ 경첩 위 날개 체결', turret=True)
 
-part(S2, 'l-frame-2x2', '고각 탭 (L자 2×2, 포탑 판 아래)', (-11.0, CB - 9.0, LIFT_Z), (18, 18, 8), METAL,
-     note='세운 다리 x=[-3,-2] · 바닥 다리 x=[-20,-2] 포탑 판 아랫면 밀착 · 2번 구멍 y=65', h='포탑 판 구멍 x=-15,-5에 볼트 3×6 + 너트 2벌', turret=True)
+# 고각 탭 (L자 2×2, 포탑 판 아래): 꺾임 모서리 x=-1 → 바닥 구멍 x=-5, -15 (0.0 mm 일치!) · 세운 다리 x=[-2, -1] · 2번 구멍 y=65
+part(S2, 'l-frame-2x2', '고각 탭 (L자 2×2, 포탑 판 아래)', (-10.0, CB - 9.0, LIFT_Z), (18, 18, 8), METAL,
+     note='세운 다리 x=[-2,-1] · 바닥 다리 x=[-19,-1] · 바닥 구멍 x=-5,-15 (0.0 mm 일치) · 2번 구멍 y=65',
+     origin=(-1.0, CB, LIFT_Z), xdir=(1, 0, 0), up=(0, -1, 0), exp=(0, -24, 0), h='포탑 판 구멍 x=-15,-5에 볼트 3×6 + 너트 2벌', turret=True)
 for hx in (-15, -5):
     fasten_bolt(S2, (hx, CT, LIFT_Z), (0, 1, 0), 2.6, '고각 탭 ↔ 포탑 판 체결', turret=True)
 
 # ═══════════════════════════════════════════════════════════════════════
-# ── 03 6연장 배럴 구동부 (포탑 판 CT=80.6 위 · 로터 축 AX=139.6 · 0 충돌!)
+# ── 03 6연장 배럴 구동부 (포탑 판 CT=80.6 위 · 로터 축 AX=139.6 · 0 충돌 · 전 구멍 0.0 mm 일치!)
 # ═══════════════════════════════════════════════════════════════════════
 S3 = '03'
-# 배럴 모터 돋움(서포트 10) × 4 + 기둥(L자 2×6) × 2: x = -15, +35, z = 45, 55
+# 배럴 모터 돋움(서포트 10) × 4 + 기둥(L자 2×6) × 2: x = -15, +35, z = 55, 65 (L자 꺾임 z=51 → 4/14 mm = z=55/65 정확 일치!)
 for x, side in ((-15, '왼'), (35, '오른')):
-    for z in (45, 55):
+    for z in (55, 65):
         part(S3, 'support-spacer', f'배럴 모터 돋움 {side} (서포트 10)', (x, CT + 5.0, z), (6.4, 10, 6.4), METAL, 'cyl',
-             'CT 80.6 + 10 + L자(44·54 가운데 49) = 축 높이 139.6 일치', axis=1, length=10, h='포탑 판 관통 + 아래 너트', turret=True)
+             'CT 80.6 + 10 + L자(44·54 가운데 49) = 축 높이 139.6 일치 · 수나사 아래(−Y)', axis=1, length=10,
+             origin=(x, CT + 10.0, z), up=(0, -1, 0), exp=(0, 14, 0), h='포탑 판 관통 + 아래 너트', turret=True)
         fasten_nut(S3, (x, CB, z), (0, 1, 0), f'배럴 모터 돋움 {side} 바닥 고정', turret=True)
-    part(S3, 'l-frame-2x6', f'배럴 모터 기둥 {side} (L자 2×6)', (x, CT + 10 + 29.0, 54.0), (8, 58, 18), METAL,
-         note=f'x={x:+d} · 세운 다리 z=[45,46] · 5·6번 구멍 y=134.6, 144.6', h='돋움 서포트 2개에 볼트 3×6', turret=True)
-    for z in (45, 55):
+    part(S3, 'l-frame-2x6', f'배럴 모터 기둥 {side} (L자 2×6)', (x, CT + 10 + 29.0, 60.0), (8, 58, 18), METAL,
+         note=f'x={x:+d} · 세운 다리 z=[51,52] · 바닥 구멍 z=55,65 (0.0 mm 일치) · 5·6번 구멍 y=134.6, 144.6',
+         origin=(x, CT + 10.0, Z_MLEG), xdir=(0, 0, -1), up=(0, 1, 0), exp=(0, 26, 20), h='돋움 서포트 2개에 볼트 3×6', turret=True)
+    for z in (55, 65):
         fasten_bolt(S3, (x, CT + 11.0, z), (0, 1, 0), 1.0, f'배럴 모터 기둥 {side} 체결', nut=False, turret=True)
 
-# 배럴 모터: 귀 윗면 z=46 밀착 → 몸통 z=[46, 72.4], 앞 기어면 z=39.4, 출력 축 z=[32.4, 39.4], x=[-10,+30]
-part(S3, 'dc-motor-130-rs', '배럴 모터 (DC 130rpm, M3)', (10, AX, 59.2), (40, 20, 26.4), BLACK, 'servo',
-     '귀 z=46 밀착 · 몸통 x [-10,+30], z [46, 72.4] · 축 x=0, y=139.6, z=35',
-     shaft=(0, AX, 35.0), up=(0, 0, -1), xdir=(1, 0, 0), h='귀 구멍 4곳을 L자 2×6 5·6번 구멍에 볼트 3×6 + 너트', turret=True)
+# 배럴 모터 (M3): 귀 z=52 밀착 → 실측 몸통 33 mm: z [43.0, 76.0] · 출력 축 (-Z) x=0, y=139.6, z=[35.8, 41.0]
+part(S3, 'dc-motor-130-rs', '배럴 모터 (DC 130rpm, M3)', (10, AX, 59.5), (40, 20, 33), BLACK, 'servo',
+     '귀 z=52 밀착 · 몸통 x [-10,+30], z [43.0, 76.0] · 축 x=0, y=139.6, z=38',
+     origin=(10.0, AX, 76.0), shaft=(0, AX, 38.0), up=(0, 0, -1), xdir=(1, 0, 0), exp=(0, 0, 44),
+     h='귀 구멍 4곳을 L자 2×6 5·6번 구멍에 볼트 3×6 + 너트', turret=True)
 for x in (-15, 35):
     for dy in (-5, 5):
-        fasten_bolt(S3, (x, AX + dy, 45.0), (0, 0, -1), 3.4, '배럴 모터 귀 체결', turret=True)
+        fasten_bolt(S3, (x, AX + dy, Z_MLEG), (0, 0, -1), 3.4, '배럴 모터 귀 체결', turret=True)
 
-# 로터 허브 + 15 mm 간격 서포트 2개 → 뒤 로터 판 z=12.9 (걸쇠 20 mm 끝 z=35.2 vs 모터 앞면 39.4 → 4.2 mm 여유!)
-part(S3, 'wheel-guide-30-nylon', '로터 허브 (휠가이드 Ø30 나일론)', (0, AX, 32.85), (30, 30, 8.3), BLACK, 'disc',
-     '모터 D컷 축 장착 · z [28.7, 37.0]', axis=2, h='모터 축에 끼우고 볼트 2.6×10', turret=True, spins=True)
-fasten_tapping(S3, (0, AX, 28.7), (0, 0, -1), '로터 허브 모터 축 고정', turret=True, spins=True)
+# 로터 허브 (z [34.7, 42.7]) + 20 mm 간격 서포트 2개 → 뒤 로터 판 z=13.9 (걸쇠 20 mm 끝 z=36.2 vs 모터 앞면 43.0 → 6.8 mm 여유!)
+part(S3, 'wheel-guide-30-nylon', '로터 허브 (휠가이드 Ø30 나일론)', (0, AX, 38.7), (30, 30, 8.0), BLACK, 'disc',
+     '모터 D컷 축 장착 · z [34.7, 42.7] (모터 앞면 43.0과 0.3 mm 여유)', axis=2,
+     origin=(0, AX, 34.7), xdir=(1, 0, 0), up=(0, 0, 1), exp=(0, 0, 18), h='모터 축에 끼우고 볼트 2.6×10', turret=True, spins=True)
+fasten_tapping(S3, (0, AX, 34.7), (0, 0, -1), '로터 허브 모터 축 고정', turret=True, spins=True)
 
 for dy, tag in ((-10, '아래'), (10, '위')):
-    part(S3, 'support-spacer', f'로터 간격 서포트 {tag} (서포트 15)', (0, AX + dy, 21.2), (6.4, 6.4, 15), METAL, 'cyl',
-         '허브(28.7) ↔ 뒤 로터(13.7) 15 mm 간격 확보 (걸쇠↔모터 4.2 mm 여유)', axis=2, length=15, h='허브 구멍 관통 + 뒤 너트', turret=True, spins=True)
-    fasten_nut(S3, (0, AX + dy, 31.1), (0, 0, -1), f'로터 간격 서포트 {tag} 허브 고정', turret=True, spins=True)
+    part(S3, 'support-spacer', f'로터 간격 서포트 {tag} (서포트 20)', (0, AX + dy, 24.7), (6.4, 6.4, 20), METAL, 'cyl',
+         '허브(34.7) ↔ 뒤 로터(14.7) 20 mm 간격 확보 (걸쇠↔모터 6.8 mm 여유) · 수나사 뒤(+Z)', axis=2, length=20,
+         origin=(0, AX + dy, 14.7), up=(0, 0, 1), exp=(0, 0, 10), h='허브 구멍 관통 + 뒤 너트', turret=True, spins=True)
+    fasten_nut(S3, (0, AX + dy, 37.1), (0, 0, -1), f'로터 간격 서포트 {tag} 허브 고정', turret=True, spins=True)
 
 plate(S3, 'frame-half-pcb', '뒤 로터 판 (하프 PCB)', (0, AX - 5, Z_REAR), (58, 78, 1.6), BLACK, HALF_U, HALF_V, 0, 1,
-      'z [12.1, 13.7] · 구멍 (0, 5)=회전 중심 · 모서리 r=52.7 < 59 (포탑 판 6.3 mm · 아치 7.3 mm 여유)', h='로터 간격 서포트 암나사 2곳에 볼트 3×6', turret=True, spins=True)
+      'z [13.1, 14.7] · 구멍 (0, 5)=회전 중심 · 모서리 r=52.7 (포탑 6.3 · 아치 6.3 · 쐐기 1.7 mm 여유)',
+      origin=(0, AX - 5, Z_REAR - 0.8), xdir=(1, 0, 0), up=(0, 0, 1), exp=(0, 0, -6), h='로터 간격 서포트 암나사 2곳에 볼트 3×6', turret=True, spins=True)
 for dy in (-10, 10):
-    fasten_bolt(S3, (0, AX + dy, 12.1), (0, 0, -1), 1.6, '뒤 로터 ↔ 허브 서포트 체결', nut=False, turret=True, spins=True)
+    fasten_bolt(S3, (0, AX + dy, 13.1), (0, 0, -1), 1.6, '뒤 로터 ↔ 허브 서포트 체결', nut=False, turret=True, spins=True)
 
 # 6연장 배럴 (반지름 25 · 걸쇠 기둥 20 + 걸쇠 턱 볼트 + 배럴 뒤 40 + 가운데 25 + 앞 로터 + 앞 7 + 총구 캡너트 동축!)
 for bx, by, nm in BARRELS:
-    part(S3, 'support-spacer', f'걸쇠 기둥 {nm} (서포트 20)', (bx, AX + by, 23.7), (6.4, 6.4, 20), METAL, 'cyl',
-         f'{nm} 배럴 · z [13.7, 33.7] · 뒤 로터 관통 · 쐐기 작동 구간', axis=2, length=20, h='수나사를 뒤 로터 구멍에 뒤에서 넣음', turret=True, spins=True)
-    fasten_bolt(S3, (bx, AX + by, 33.7), (0, 0, 1), 1.6, f'걸쇠 턱 {nm}', bolt_id='bolt-m3x6', nut=False, turret=True, spins=True)
-    part(S3, 'support-spacer', f'배럴 뒤 {nm} (서포트 40)', (bx, AX + by, -7.9), (6.4, 6.4, 40), METAL, 'cyl',
-         f'{nm} 배럴 · z [-27.9, +12.1]', axis=2, length=40, h='걸쇠 기둥 수나사에 돌려 끼움 (뒤 로터 물림)', turret=True, spins=True)
-    part(S3, 'support-spacer', f'배럴 가운데 {nm} (서포트 25)', (bx, AX + by, -40.4), (6.4, 6.4, 25), METAL, 'cyl',
-         f'{nm} 배럴 · z [-52.9, -27.9]', axis=2, length=25, h='배럴 뒤 수나사에 돌려 끼움', turret=True, spins=True)
+    rx, ry = bx / R_B, by / R_B
+    part(S3, 'support-spacer', f'걸쇠 기둥 {nm} (서포트 20)', (bx, AX + by, 24.7), (6.4, 6.4, 20), METAL, 'cyl',
+         f'{nm} 배럴 · z [14.7, 34.7] · 수나사 앞(−Z) 뒤 로터 관통 · 쐐기 작동 구간', axis=2, length=20,
+         origin=(bx, AX + by, 34.7), up=(0, 0, -1), exp=(rx * 18, ry * 18, 26), h='수나사를 뒤 로터 구멍에 뒤에서 넣음', turret=True, spins=True)
+    fasten_bolt(S3, (bx, AX + by, 34.7), (0, 0, 1), 1.6, f'걸쇠 턱 {nm}', bolt_id='bolt-m3x6', nut=False, turret=True, spins=True)
+    part(S3, 'support-spacer', f'배럴 뒤 {nm} (서포트 40)', (bx, AX + by, -6.9), (6.4, 6.4, 40), METAL, 'cyl',
+         f'{nm} 배럴 · z [-26.9, +13.1] · 수나사 앞(−Z)', axis=2, length=40,
+         origin=(bx, AX + by, 13.1), up=(0, 0, -1), exp=(rx * 18, ry * 18, -14), h='걸쇠 기둥 수나사에 돌려 끼움 (뒤 로터 물림)', turret=True, spins=True)
+    part(S3, 'support-spacer', f'배럴 가운데 {nm} (서포트 25)', (bx, AX + by, -39.4), (6.4, 6.4, 25), METAL, 'cyl',
+         f'{nm} 배럴 · z [-51.9, -26.9] · 수나사 앞(−Z)', axis=2, length=25,
+         origin=(bx, AX + by, -26.9), up=(0, 0, -1), exp=(rx * 18, ry * 18, -32), h='배럴 뒤 수나사에 돌려 끼움', turret=True, spins=True)
 
 plate(S3, 'frame-half-pcb', '앞 로터 판 (하프 PCB)', (0, AX - 5, Z_FRONT), (58, 78, 1.6), BLACK, HALF_U, HALF_V, 0, 1,
-      'z [-54.5, -52.9] · 배럴 6개 수나사 관통 · 가운데 앞 받침 축', h='배럴 6개 수나사에 끼우고 배럴 앞으로 조임', turret=True, spins=True)
+      'z [-53.5, -51.9] · 배럴 6개 수나사 관통 · 가운데 앞 받침 축',
+      origin=(0, AX - 5, Z_FRONT - 0.8), xdir=(1, 0, 0), up=(0, 0, 1), exp=(0, 0, -48), h='배럴 6개 수나사에 끼우고 배럴 앞으로 조임', turret=True, spins=True)
 
 for bx, by, nm in BARRELS:
-    part(S3, 'support-spacer', f'배럴 앞 {nm} (서포트 7)', (bx, AX + by, -58.0), (6.4, 6.4, 7), METAL, 'cyl',
-         f'{nm} 배럴 · z [-61.5, -54.5] (앞 로터 물림)', axis=2, length=7, h='앞 로터 관통 수나사에 돌려 끼움', turret=True, spins=True)
-    fasten_capnut(S3, (bx, AX + by, -61.5), (0, 0, -1), f'총구 {nm}', turret=True, spins=True)
+    rx, ry = bx / R_B, by / R_B
+    part(S3, 'support-spacer', f'배럴 앞 {nm} (서포트 7)', (bx, AX + by, -57.0), (6.4, 6.4, 7), METAL, 'cyl',
+         f'{nm} 배럴 · z [-60.5, -53.5] (앞 로터 물림) · 수나사 앞(−Z)', axis=2, length=7,
+         origin=(bx, AX + by, -53.5), up=(0, 0, -1), exp=(rx * 18, ry * 18, -64), h='앞 로터 관통 수나사에 돌려 끼움', turret=True, spins=True)
+    fasten_capnut(S3, (bx, AX + by, -60.5), (0, 0, -1), f'총구 {nm}', turret=True, spins=True)
 
 for z in (-75, -65):
     part(S3, 'support-spacer', '앞 받침 돋움 (서포트 5)', (0, CT + 2.5, z), (6.4, 5, 6.4), METAL, 'cyl',
-         'CT 80.6 + 5 + 54 = 축 높이 139.6 정확 일치', axis=1, length=5, h='포탑 판 아래에 너트', turret=True)
+         'CT 80.6 + 5 + 54 = 축 높이 139.6 정확 일치 · 수나사 아래(−Y)', axis=1, length=5,
+         origin=(0, CT + 5.0, z), up=(0, -1, 0), exp=(0, 14, -40), h='포탑 판 아래에 너트', turret=True)
     fasten_nut(S3, (0, CB, z), (0, 1, 0), '앞 받침 돋움 바닥 고정', turret=True)
 
-part(S3, 'l-frame-2x6', '앞 축 받침 (L자 2×6)', (0, CT + 5 + 29.0, -66.0), (8, 58, 18), METAL,
-     note='세운 다리 z=[-75,-74] (총구 -67.5와 6.5 mm 여유) · 6번 구멍 y=139.6', h='돋움 서포트 2개에 볼트 3×6', turret=True)
+# 앞 축 받침 (L자 2×6): 꺾임 모서리 z=-79 → 바닥 구멍 z=-75, -65 (0.0 mm 일치!) · 세운 다리 z=[-79, -78] (총구 -66.5와 11.5 mm 여유!)
+part(S3, 'l-frame-2x6', '앞 축 받침 (L자 2×6)', (0, CT + 5 + 29.0, -70.0), (8, 58, 18), METAL,
+     note='세운 다리 z=[-79,-78] (총구 -66.5와 11.5 mm 여유) · 바닥 구멍 z=-75,-65 (0.0 mm 일치) · 6번 구멍 y=139.6',
+     origin=(0, CT + 5.0, -79.0), xdir=(0, 0, -1), up=(0, 1, 0), exp=(0, 22, -62), h='돋움 서포트 2개에 볼트 3×6', turret=True)
 for z in (-75, -65):
     fasten_bolt(S3, (0, CT + 6.0, z), (0, 1, 0), 1.0, '앞 축 받침 체결', nut=False, turret=True)
 
-part(S3, 'shaft-75', '앞 받침 축 (75 mm)', (0, AX, -39.0), (3.2, 3.2, 75), METAL, 'cyl',
-     'z [-76.5, -1.5] · L자(-74.5) → 앞 로터(-53.7) 관통 · 뒤 로터(12.1) 앞 13.6 mm 여유', axis=2, h='L자 구멍에서 앞 로터 가운데로 꿴다', turret=True)
+part(S3, 'shaft-75', '앞 받침 축 (75 mm)', (0, AX, -42.5), (3.2, 3.2, 75), METAL, 'cyl',
+     'z [-80.0, -5.0] · L자(-78.5) → 앞 로터(-52.7) 관통 · 뒤 로터(13.1) 앞 18.1 mm 여유', axis=2,
+     exp=(0, 0, -86), h='L자 구멍에서 앞 로터 가운데로 꿴다', turret=True)
 
 # ═══════════════════════════════════════════════════════════════════════
-# ── 04 격발 쐐기 아치 (포탑 판 x=±55, z=25·55 · 아치 판 z=[21,59] — 뒤 로터 13.7과 7.3 mm 완전 분리!)
+# ── 04 격발 쐐기 아치 (포탑 판 x=±55, z=25·55 · 아치 판 z=[21,59] — 뒤 로터 14.7과 6.3 mm 분리!)
 # ═══════════════════════════════════════════════════════════════════════
 S4 = '04'
 for sx in (-1, 1):
     for z in (25, 55):
         part(S4, 'support-spacer', '아치 기둥 1 (서포트 40)', (55 * sx, CT + 20, z), (6.4, 40, 6.4), METAL, 'cyl',
-             f'x={55*sx:+d}, z={z} · 로터(z=13.7)와 Z 8.1 mm, 배럴(r=28.2)과 X 23 mm 여유', axis=1, length=40, h='포탑 판 아래 너트', turret=True)
+             f'x={55*sx:+d}, z={z} · 로터(z=14.7)와 Z 7.1 mm, 배럴(r=28.2)과 X 23 mm 여유 · 수나사 아래(−Y)', axis=1, length=40,
+             origin=(55 * sx, CT + 40.0, z), up=(0, -1, 0), exp=(12 * sx, 10, 0), h='포탑 판 아래 너트', turret=True)
         fasten_nut(S4, (55 * sx, CB, z), (0, 1, 0), '아치 기둥 바닥 고정', turret=True)
         part(S4, 'support-spacer', '아치 기둥 2 (서포트 40)', (55 * sx, CT + 60, z), (6.4, 40, 6.4), METAL, 'cyl',
-             '기둥 1 수나사에 돌려 끼움', axis=1, length=40, h='돌려 끼움', turret=True)
+             '기둥 1 암나사에 돌려 끼움 · 수나사 아래(−Y)', axis=1, length=40,
+             origin=(55 * sx, CT + 80.0, z), up=(0, -1, 0), exp=(12 * sx, 26, 0), h='돌려 끼움', turret=True)
         part(S4, 'support-spacer', '아치 기둥 3 (서포트 15)', (55 * sx, CT + 87.5, z), (6.4, 15, 6.4), METAL, 'cyl',
-             '40+40+15 = 95 mm → 아치 판 아랫면 y=175.6', axis=1, length=15, h='돌려 끼움', turret=True)
+             '40+40+15 = 95 mm → 아치 판 아랫면 y=175.6 · 수나사 아래(−Y)', axis=1, length=15,
+             origin=(55 * sx, CT + 95.0, z), up=(0, -1, 0), exp=(12 * sx, 40, 0), h='돌려 끼움', turret=True)
 
 plate(S4, 'frame-5x13-pcb', '아치 판 (5×13 PCB)', (0, CT + 95.8, 40), (118, 1.6, 38), BLACK, X5, V5, 0, 2,
-      'y [175.6, 177.2] · z [21, 59] (뒤 로터 13.7과 7.3 mm 분리) · 기둥 ±55, z=25/55 일치', h='아치 기둥 4개 암나사에 볼트 3×6', turret=True)
+      'y [175.6, 177.2] · z [21, 59] (뒤 로터 14.7과 6.3 mm 분리) · 기둥 ±55, z=25/55 일치',
+      origin=(0, CT + 95.0, 40), xdir=(1, 0, 0), up=(0, 1, 0), exp=(0, 52, 0), h='아치 기둥 4개 암나사에 볼트 3×6', turret=True)
 for sx in (-1, 1):
     for z in (25, 55):
         fasten_bolt(S4, (55 * sx, CT + 96.6, z), (0, 1, 0), 1.6, '아치 판 기둥 체결', nut=False, turret=True)
 
-# 쐐기 내림 서포트 5 mm × 2 (아치 판 구멍 (-15, 55) · (+25, 25) → 가로 40, 세로 30, 36.9°, 소7 PCB 구멍 ±25 간격 50 mm!)
+# 쐐기 내림 서포트 5 mm × 2 (아치 판 구멍 (-15, 55) · (+25, 25) → 수나사 위(+Y) 아치 판 관통 + 위 너트!)
 for x, z in ((-15, 55), (25, 25)):
     part(S4, 'support-spacer', '쐐기 내림 (서포트 5)', (x, CT + 92.5, z), (6.4, 5, 6.4), METAL, 'cyl',
-         '아치 판 아래 y [170.6, 175.6] · 위에서 너트 체결', axis=1, length=5, h='수나사를 아치 판 위로 넣고 너트 체결', turret=True)
+         '아치 판 아래 y [170.6, 175.6] · 수나사 위(+Y) 아치 판 관통 + 위 너트', axis=1, length=5,
+         origin=(x, CT + 90.0, z), up=(0, 1, 0), exp=(0, 38, 0), h='수나사를 아치 판 위로 넣고 너트 체결', turret=True)
     fasten_nut(S4, (x, CT + 96.6, z), (0, -1, 0), '쐐기 내림 아치 고정', turret=True)
 
 ca, sa = math.cos(WEDGE * DEG), math.sin(WEDGE * DEG)
 def rot(u, v): return (u * ca + v * sa, -u * sa + v * ca)
 part(S4, 'frame-s7-pcb', f'격발 쐐기 (소7 PCB, {WEDGE:.1f}°)', (5, CT + 89.2, 40), (68 * ca + 8 * sa, 1.6, 68 * sa + 8 * ca), RED, 'poly',
-     f'y [169.0, 170.6] (걸쇠 상단 167.8 위 1.2 mm 틈) · z_min=16.4 (뒤 로터 13.7과 2.7 mm 분리!)', euler=(0, WEDGE, 0), plane=(0, 2),
-     outline=[rot(-34, -4), rot(34, -4), rot(34, 4), rot(-34, 4)], h='구멍 ±25(간격 50)를 내림 서포트 암나사에 볼트 3×6', turret=True)
+     f'y [169.0, 170.6] (걸쇠 상단 167.8 위 1.2 mm 틈) · z_min=16.4 (뒤 로터 14.7과 1.7 mm 분리!)',
+     origin=(5, CT + 88.4, 40), euler=(0, WEDGE, 0), plane=(0, 2),
+     outline=[rot(-34, -4), rot(34, -4), rot(34, 4), rot(-34, 4)], exp=(0, 24, 0), h='구멍 ±25(간격 50)를 내림 서포트 암나사에 볼트 3×6', turret=True)
 for x, z in ((-15, 55), (25, 25)):
     fasten_bolt(S4, (x, CT + 88.4, z), (0, -1, 0), 1.6, '격발 쐐기 체결', nut=False, turret=True)
 
 # ═══════════════════════════════════════════════════════════════════════
-# ── 05 전자부 (차체 바닥판 위 · 모터/배터리/서보/포탑과 100% 무충돌!)
+# ── 05 전자부 (차체 바닥판 위 · 모터/배터리/서보/포탑과 100% 무충돌 · 전 구멍 0.0 mm 일치!)
 # ═══════════════════════════════════════════════════════════════════════
 S5 = '05'
-# CPU 보드 8M (81×13.5×61): 서포트 40 mm 4개 (x=±25, z=85/135) → 모터(x≥31.6, y≤48)와 X 3.4 mm · Y 11 mm 여유!
+# CPU 보드 8M (81×13.5×61): 서포트 40 mm 4개 (x=±25, z=85/135) → 모터(x≥34.0, y≤48)와 X 5.8 mm · Y 11 mm 여유!
 for x in (-25, 25):
     for z in (85, 135):
         part(S5, 'support-spacer', 'CPU 받침 (서포트 40)', (x, TOP + 20, z), (6.4, 40, 6.4), METAL, 'cyl',
-             '구동 모터(y≤48) 위 y=59로 띄움 · x=±25 (모터 x≥31.6과 3.4 mm 여유)', axis=1, length=40, h='바닥판 아래 너트')
+             '구동 모터(y≤48) 위 y=59로 띄움 · x=±25 (모터 x≥34.0과 5.8 mm 여유) · 수나사 아래(−Y)', axis=1, length=40,
+             origin=(x, TOP + 40.0, z), up=(0, -1, 0), exp=(0, 16, 12), h='바닥판 아래 너트')
         fasten_nut(S5, (x, BOT, z), (0, 1, 0), 'CPU 받침 바닥 고정')
 part(S5, 'cpu-board-8m', 'CPU 보드 8M (1대에 1개)', (-2.5, TOP + 40 + 6.75, 112.5), (81, 13.5, 61), BLACK,
-     note='y [59.0, 72.5] · z [82.0, 143.0] · 경첩(z=70) 뒤 12 mm 여유 · 전압 6V', h='받침 4개 암나사에 볼트 3×6')
+     note='y [59.0, 72.5] · z [82.0, 143.0] · 경첩(z=70) 뒤 12 mm 여유 · 전압 6V',
+     origin=(-2.5, TOP + 40.0, 112.5), xdir=(1, 0, 0), up=(0, 1, 0), exp=(0, 36, 20), h='받침 4개 암나사에 볼트 3×6')
 for x in (-25, 25):
     for z in (85, 135):
         fasten_bolt(S5, (x, TOP + 41.6, z), (0, 1, 0), 1.6, 'CPU 보드 체결', nut=False)
 
-# 블루투스 모듈: 차체 앞 끝 (z=-145, 서포트 5 mm 2개 x=±15, z=-155 · 앞 축 받침 z=-120과 11 mm 여유)
+# 블루투스 모듈: 차체 앞 끝 (z=-144, 서포트 5 mm 2개 x=±15, z=-155 · 앞 축 받침 z=-120과 10 mm 여유)
 for x in (-15, 15):
     part(S5, 'support-spacer', '블루투스 받침 (서포트 5)', (x, TOP + 2.5, -155), (6.4, 5, 6.4), METAL, 'cyl',
-         '앞 바닥판 끝 구멍 x=±15, z=-155 일치', axis=1, length=5, h='바닥판 아래 너트')
+         '앞 바닥판 끝 구멍 x=±15, z=-155 일치 · 수나사 아래(−Y)', axis=1, length=5,
+         origin=(x, TOP + 5.0, -155), up=(0, -1, 0), exp=(0, 14, -24), h='바닥판 아래 너트')
     fasten_nut(S5, (x, BOT, -155), (0, 1, 0), '블루투스 받침 바닥 고정')
 part(S5, 'bt-module', '블루투스 모듈 (조종 · 발사)', (0, TOP + 5 + 4.75, -144), (48, 9.5, 28), BLACK,
-     note='y [24.0, 33.5] · z [-158, -130] · 앞 축 받침(-120)과 10 mm 여유', h='받침 2개 암나사에 볼트 3×6')
+     note='y [24.0, 33.5] · z [-158, -130] · 앞 축 받침(-120)과 10 mm 여유',
+     origin=(0, TOP + 5.0, -144.0), xdir=(1, 0, 0), up=(0, 1, 0), exp=(0, 28, -32), h='받침 2개 암나사에 볼트 3×6')
 for x in (-15, 15):
     fasten_bolt(S5, (x, TOP + 7.0, -155), (0, 1, 0), 2.0, '블루투스 모듈 체결', nut=False)
 
-# 발사 LED · 부저: 차체 왼쪽 빈 공간 (x=-40, z=-5 / z=+40 — 배터리 z≤-34 · 서보 x≥15 · 뒤 받침 z=75와 모두 무충돌!)
-part(S5, 'led-board-red-s', '발사 LED 빨강 (OUT2)', (-40, TOP + 6.75, -5), (22, 13.5, 32), RED,
-     note='차체 왼쪽 빈 공간 · x [-51,-29], z [-21,+11]', h='바닥판에 볼트 3×6 + 너트 2벌')
+# 발사 LED · 부저: 차체 왼쪽 빈 공간 (x=-40, 구멍 z=+5 / z=+50 일치!)
+part(S5, 'led-board-red-s', '발사 LED 빨강 (OUT2)', (-40, TOP + 6.75, -6.8), (22, 13.5, 32), RED,
+     note='차체 왼쪽 빈 공간 · x [-51,-29], z [-22.8,+9.2] · 구멍 z=+5 일치',
+     origin=(-40, TOP, -6.8), xdir=(1, 0, 0), up=(0, 1, 0), exp=(-28, 22, 0), h='바닥판에 볼트 3×6 + 너트 2벌')
 for dx in (-5, 5):
     fasten_bolt(S5, (-40 + dx, TOP + 1.6, 5), (0, 1, 0), 3.2, '발사 LED 체결')
 
-part(S5, 'buzzer-board-s', '부저 (OUT3, 발사 경고음)', (-40, TOP + 6.75, 40), (22, 13.5, 32), BLACK,
-     note='차체 왼쪽 빈 공간 · x [-51,-29], z [+24,+56]', h='바닥판에 볼트 3×6 + 너트 2벌')
+part(S5, 'buzzer-board-s', '부저 (OUT3, 발사 경고음)', (-40, TOP + 6.75, 38.2), (22, 13.5, 32), BLACK,
+     note='차체 왼쪽 빈 공간 · x [-51,-29], z [+22.2,+54.2] · 구멍 z=+50 일치',
+     origin=(-40, TOP, 38.2), xdir=(1, 0, 0), up=(0, 1, 0), exp=(-28, 22, 0), h='바닥판에 볼트 3×6 + 너트 2벌')
 for dx in (-5, 5):
     fasten_bolt(S5, (-40 + dx, TOP + 1.6, 50), (0, 1, 0), 3.2, '부저 보드 체결')
 
-# 발사 버튼 (접촉 센서): 차체 맨 뒤 끝 z=155 L자 2×2 2개 + 세운 접촉 센서 (CPU z≤143과 12 mm 여유!)
+# 발사 버튼 (접촉 센서): 차체 맨 뒤 끝 L자 2×2 2개 (꺾임 z=159 → 구멍 z=145, 155 일치) + 세운 접촉 센서 (y [30, 58])
 for x in (-15, 15):
-    part(S5, 'l-frame-2x2', '발사 버튼 L자 2×2', (x, TOP + 9.0, 149), (8, 18, 18), METAL,
-         note=f'x={x:+d} · 바닥 구멍 z=145, 155 · 세운 다리 z=[157,158]', h='바닥판에 볼트 3×6 + 너트 2벌')
+    part(S5, 'l-frame-2x2', '발사 버튼 L자 2×2', (x, TOP + 9.0, 150.0), (8, 18, 18), METAL,
+         note=f'x={x:+d} · 바닥 구멍 z=145, 155 (0.0 mm 일치) · 세운 다리 z=[158,159]',
+         origin=(x, TOP, 159.0), xdir=(0, 0, 1), up=(0, 1, 0), exp=(0, 16, 22), h='바닥판에 볼트 3×6 + 너트 2벌')
     for hz in (145, 155):
         fasten_bolt(S5, (x, TOP + 1.0, hz), (0, 1, 0), 2.6, '발사 버튼 L자 바닥 체결')
-part(S5, 'sensor-touch', '발사 버튼 (접촉 센서, IN1)', (0, TOP + 15.0, 163.25), (48, 28, 10.5), BLACK,
-     note='z [158, 168.5] · 버튼이 뒤(+Z) · CPU(z≤143)와 15 mm 여유', up=(0, 0, 1), h='L자 2개 세운 다리에 볼트 3×6 + 너트 2벌')
+part(S5, 'sensor-touch', '발사 버튼 (접촉 센서, IN1)', (0, TOP + 25.0, 164.25), (48, 28, 10.5), BLACK,
+     note='z [159, 169.5], y [30, 58] · 버튼이 뒤(+Z) · 구멍 x=±15, y=33 (0.0 mm 일치)',
+     origin=(0, TOP + 25.0, 159.0), xdir=(-1, 0, 0), up=(0, 0, 1), exp=(0, 0, 38), h='L자 2개 세운 다리에 볼트 3×6 + 너트 2벌')
 for x in (-15, 15):
-    fasten_bolt(S5, (x, TOP + 14.0, 157.0), (0, 0, -1), 4.0, '발사 버튼 체결')
+    fasten_bolt(S5, (x, TOP + 14.0, 158.0), (0, 0, -1), 2.6, '발사 버튼 체결')
 
 # ═══════════════════════════════════════════════════════════════════════
 # ── 자동 검증기: ① 공중 고정 ② 캡너트/볼트 동축 ③ 3D AABB 충돌 ④ 로터 360° 스윕 충돌
@@ -430,12 +495,41 @@ for p in P:
         if p['id'] == 'cap-nut-m3' and p.get('axis') != _axis_of(up):
             VALIDATION_ERRORS.append(f"캡너트 축 불일치: {p['name']}")
 
-# 2) 구조 부품 3D AABB 간섭(충돌) 검사 — 체결 관통 관계(축↔L자/로터, 핀↔크랭크/링크/탭, 경첩↔판) 외 0.5 mm 초과 겹침 차단!
+# 2) 구조 부품 실체 3D 간섭(충돌) 검사
+#    L자/모터프레임은 빈 L자 형상이므로 실제 1 mm 금속 판 2개(바닥 다리 + 세운 다리)로 분해해 모든 부품과 정밀 검사!
+L_DIMS = {
+    'motor-frame-3x3': (28.0, 28.0, 8.0),
+    'l-frame-2x2': (18.0, 18.0, 8.0),
+    'l-frame-2x6': (18.0, 58.0, 8.0),
+    'l-frame-6x6': (18.0, 18.0, 18.0),
+}
+
+def _cross(a, b):
+    return (a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0])
+
+def _box_from_local(o, xd, yd, zd, x0, x1, y0, y1, z0, z1):
+    pts = []
+    for lx in (x0, x1):
+        for ly in (y0, y1):
+            for lz in (z0, z1):
+                pts.append(tuple(o[k] + lx*xd[k] + ly*yd[k] + lz*zd[k] for k in range(3)))
+    return [(min(p[k] for p in pts), max(p[k] for p in pts)) for k in range(3)]
+
+def part_boxes(p):
+    if p['id'] in L_DIMS and p.get('origin') and p.get('xdir') and p.get('up'):
+        la, lb, w = L_DIMS[p['id']]
+        o, xd, yd = p['origin'], p['xdir'], p['up']
+        zd = _cross(xd, yd)
+        return [
+            _box_from_local(o, xd, yd, zd, -la, 0.0, 0.0, 1.0, -w/2, w/2),
+            _box_from_local(o, xd, yd, zd, -1.0, 0.0, 0.0, lb, -w/2, w/2),
+        ]
+    return [[(p['c'][k] - p['s'][k] / 2, p['c'][k] + p['s'][k] / 2) for k in range(3)]]
+
 def aabb(p):
     return [(p['c'][k] - p['s'][k] / 2, p['c'][k] + p['s'][k] / 2) for k in range(3)]
 
-def overlap3(a, b):
-    ba, bb = aabb(a), aabb(b)
+def box_overlap(ba, bb):
     ov = [min(ba[k][1], bb[k][1]) - max(ba[k][0], bb[k][0]) for k in range(3)]
     return min(ov), ov
 
@@ -447,11 +541,6 @@ def is_allowed_penetration(a, b):
     # 후크 S35 핀이 크랭크/링크/탭 구멍을 관통하는 정상 결합
     if 's-hook-35' in ids and ids & {'wheel-guide-30-servo', 'frame-s5-pcb', 'l-frame-2x2'}:
         return True
-    # L자/모터프레임은 빈 L자 형상(AABB는 직육면체지만 내부가 비어 있음)이므로,
-    # L자에 볼트로 직결되는 모터 귀/기어부/허브 또는 인접 부품은 실제 판 두께(1 mm) 영역으로 별도 검사!
-    if ids & {'l-frame-2x6', 'l-frame-2x2', 'l-frame-6x6', 'motor-frame-3x3'}:
-        if ids & {'dc-motor-130-rs', 'servo-digital', 'support-spacer', 'frame-big-main', 'frame-s5-pcb', 'sensor-touch'}:
-            return True
     return False
 
 COLLISIONS = []
@@ -459,32 +548,33 @@ for i in range(len(STRUCT_PARTS)):
     for j in range(i + 1, len(STRUCT_PARTS)):
         a, b = STRUCT_PARTS[i], STRUCT_PARTS[j]
         if is_allowed_penetration(a, b): continue
-        m, ov = overlap3(a, b)
-        if m > 0.5:
-            COLLISIONS.append(f"{a['name']} ↔ {b['name']} (겹침 {ov[0]:.1f} × {ov[1]:.1f} × {ov[2]:.1f} mm)")
+        for ba in part_boxes(a):
+            for bb in part_boxes(b):
+                m, ov = box_overlap(ba, bb)
+                if m > 0.5:
+                    COLLISIONS.append(f"{a['name']} ↔ {b['name']} (겹침 {ov[0]:.1f} × {ov[1]:.1f} × {ov[2]:.1f} mm)")
 
-# 3) 로터 360° 회전 스윕 충돌 검사: 로터 판(r=52.7) 및 걸쇠 기둥(r=29.6)이 비회전 포탑 부품과 충돌하는지 검사!
+# 3) 로터 360° 회전 스윕 충돌 검사: 로터 판(r=52.7) 및 걸쇠 기둥(r=28.2)이 비회전 포탑 부품과 충돌하는지 검사!
 NON_SPIN = [p for p in STRUCT_PARTS if not p.get('spins') and p['id'] != 'shaft-75']
 SWEEP_ERRORS = []
 for p in NON_SPIN:
-    bx, by, bz = aabb(p)
-    # 3a) 뒤 로터(z=[12.1, 13.7]) · 앞 로터(z=[-54.5, -52.9]) 모서리 회전 원판 r=52.7
-    for rz0, rz1, rname in ((12.1, 13.7, '뒤 로터 판'), (-54.5, -52.9, '앞 로터 판')):
-        if min(bz[1], rz1) - max(bz[0], rz0) > 0.1:
-            # 원 중심 (0, AX)에서 AABB [bx, by]까지 최단 거리
-            dx = max(bx[0], 0.0) if bx[0] > 0 else (min(bx[1], 0.0) if bx[1] < 0 else 0.0)
-            dy = max(by[0] - AX, 0.0) if by[0] > AX else (min(by[1] - AX, 0.0) if by[1] < AX else 0.0)
-            dist = math.hypot(dx, dy)
-            if dist < 52.7 - 0.1:
-                SWEEP_ERRORS.append(f"{rname} 회전(r=52.7) ↔ {p['name']} (최단거리 {dist:.1f} mm)")
-    # 3b) 걸쇠 기둥 + 볼트 머리(z=[13.7, 35.2], 금속 외곽 r=28.2) 회전 링 — 쐐기 아랫면(r=29.4)과 1.2 mm 틈 확인
-    if p['id'] not in ('wheel-guide-30-nylon',):
-        if min(bz[1], 35.2) - max(bz[0], 13.7) > 0.1:
-            dx = max(bx[0], 0.0) if bx[0] > 0 else (min(bx[1], 0.0) if bx[1] < 0 else 0.0)
-            dy = max(by[0] - AX, 0.0) if by[0] > AX else (min(by[1] - AX, 0.0) if by[1] < AX else 0.0)
-            dist = math.hypot(dx, dy)
-            if dist < 28.2 - 0.1:
-                SWEEP_ERRORS.append(f"걸쇠 기둥 회전(r=28.2) ↔ {p['name']} (최단거리 {dist:.1f} mm)")
+    for bx, by, bz in part_boxes(p):
+        # 3a) 뒤 로터(z=[13.1, 14.7]) · 앞 로터(z=[-53.5, -51.9]) 모서리 회전 원판 r=52.7
+        for rz0, rz1, rname in ((Z_REAR - 0.8, Z_REAR + 0.8, '뒤 로터 판'), (Z_FRONT - 0.8, Z_FRONT + 0.8, '앞 로터 판')):
+            if min(bz[1], rz1) - max(bz[0], rz0) > 0.1:
+                dx = max(bx[0], 0.0) if bx[0] > 0 else (min(bx[1], 0.0) if bx[1] < 0 else 0.0)
+                dy = max(by[0] - AX, 0.0) if by[0] > AX else (min(by[1] - AX, 0.0) if by[1] < AX else 0.0)
+                dist = math.hypot(dx, dy)
+                if dist < 52.7 - 0.1:
+                    SWEEP_ERRORS.append(f"{rname} 회전(r=52.7) ↔ {p['name']} (최단거리 {dist:.1f} mm)")
+        # 3b) 걸쇠 기둥 + 볼트 머리(z=[14.7, 36.2], 금속 외곽 r=28.2) 회전 링 — 쐐기 아랫면(r=29.4)과 1.2 mm 틈 확인
+        if p['id'] not in ('wheel-guide-30-nylon',):
+            if min(bz[1], 36.2) - max(bz[0], 14.7) > 0.1:
+                dx = max(bx[0], 0.0) if bx[0] > 0 else (min(bx[1], 0.0) if bx[1] < 0 else 0.0)
+                dy = max(by[0] - AX, 0.0) if by[0] > AX else (min(by[1] - AX, 0.0) if by[1] < AX else 0.0)
+                dist = math.hypot(dx, dy)
+                if dist < 28.2 - 0.1:
+                    SWEEP_ERRORS.append(f"걸쇠 기둥 회전(r=28.2) ↔ {p['name']} (최단거리 {dist:.1f} mm)")
 
 VALIDATION_ERRORS.extend(COLLISIONS)
 VALIDATION_ERRORS.extend(SWEEP_ERRORS)
@@ -498,7 +588,7 @@ SHEET_INFO = OrderedDict([
     ('00', ('전체 조립도 (v2 전면 재설계 · 볼트 · 너트 · 캡너트 포함)', None)),
     ('01', ('차체 · 4륜 구동 (바닥판 2 · 이음판 2 · 모터 2 · 앞 L자 축 받침 · 배터리)', S1)),
     ('02', ('포탑 받침 · 고각 서보 (서포트 40+15 · 경첩 · 서보 크랭크 · 소5 링크 · Big Main 포탑 판)', S2)),
-    ('03', ('배럴 구동부 (모터 1 · 15 mm 간격 허브 · 로터 판 2 · 배럴 6 · 총구 캡너트 6 · 앞 축)', S3)),
+    ('03', ('배럴 구동부 (모터 1 · 20 mm 간격 허브 · 로터 판 2 · 배럴 6 · 총구 캡너트 6 · 앞 축)', S3)),
     ('04', ('격발 쐐기 아치 (x=±55, z=25·55 아치 기둥 4 · 5×13 판 · 36.9° 소7 쐐기)', S4)),
     ('05', ('전자부 (차체 위: 서포트 40 위 CPU · 앞 끝 블루투스 · 왼쪽 LED/부저 · 뒤 발사 버튼)', S5)),
     ('06', ('작동 원리 · 충돌 검증 · 무게 계산 · 대응표', None)),
@@ -510,16 +600,16 @@ def sheet_fast_counts(no):
 
 STEPS = [
     ('01', '바닥판 · 이음판 체결', '빅 메인 PCB 2장을 z=±80에 놓고 아래 중16 PCB 2개(x=±45, 구멍 0.0 mm 일치)를 볼트 3×6 + 너트 16벌로 체결.', {}),
-    ('01', '뒤 구동 모터 · 바퀴 (×2)', '모터프레임 3×3 4개(z=85, 135, 귀 간격 50 mm)를 볼트+너트로 고정 → DC 130 모터 귀 4곳을 2·3번 구멍(y=33, 43 → 축 38.0)에 체결 → 버기 바퀴 2.6×10.', {}),
+    ('01', '뒤 구동 모터 · 바퀴 (×2)', '모터프레임 3×3 4개(z=85, 135, 바닥 구멍 ±45, ±55 0.0 mm 일치)를 볼트+너트로 고정 → DC 130 모터 귀 4곳을 2·3번 구멍(y=33, 43 → 축 38.0)에 체결 → 버기 바퀴 2.6×10.', {}),
     ('01', '앞바퀴 (×2) · 배터리', '서포트 5 mm + L자 6×6 2개(z=-120, 축 높이 19+5+14=38.0 일치) → 75 mm 축 · 바퀴 · 2.6×10. 배터리는 앞 판 가운데(z=-65) 볼트+너트 4벌.', {}),
     ('02', '뒤 받침대 · 경첩', '서포트 40+15 두 줄(x=±35, z=75, 아래 너트 2) → 중 PCB(볼트 2) → 경첩 3×3 아래 날개(z=75, 볼트+너트 2벌).', {}),
-    ('02', '고각 서보 · 크랭크 · 링크', 'L자 2×6 두 개(z=±25, 세운 다리 x=14~15) 고정 → 서보 귀 4곳을 3·4번 구멍(y=43, 53 → 축 48)에 체결 → 크랭크 2.6×10 → 소5 링크 + 후크 S35 핀 2개.', {}),
-    ('02', '포탑 판 (Big Main) · 고각 탭', '포탑 판(x=[-59,+59], y=79) 뒤쪽(z=65)에 경첩 위 날개 볼트 2벌, 앞쪽(z=-10)에 L자 2×2 탭 볼트 2벌 체결.', {}),
-    ('03', '배럴 모터 · 기둥', '서포트 10 네 개(x=-15,+35, z=45,55, 아래 너트 4) → L자 2×6 두 개(볼트 4) → 배럴 모터 귀 4곳을 5·6번 구멍(축 y=139.6)에 체결.', {}),
-    ('03', '로터 허브 · 15 mm 간격 · 뒤 로터 · 배럴 6', '나일론 허브(2.6×10) → 서포트 15 mm 2개(너트 2) → 뒤 로터 판(볼트 2, 걸쇠↔모터 4.2 mm 여유) → 반지름 25 구멍 6개에 걸쇠 20 + 볼트 3×6 턱 + 배럴 40 + 25.', {}),
-    ('03', '앞 로터 · 총구 캡너트 · 앞 축 받침', '앞 로터 → 서포트 7 × 6 → 총구 캡너트 6개(동축: 암나사 +Z, 둥근 돔 −Z). 돋움 서포트 5 × 2 → L자 2×6(z=-75, 총구와 6.5 mm 여유) → 75 mm 축.', {}),
-    ('04', '아치 (x=±55, z=25·55) · 36.9° 격발 쐐기', '서포트 40+40+15 4줄(x=±55, z=25,55, 로터와 Z 8.1 mm 여유) → 5×13 판(z=[21,59], 볼트 4) → 내림 서포트 5 × 2(위 너트 2) → 소7 쐐기(아래 볼트 2, 걸쇠 위 1.2 mm 틈).', {}),
-    ('05', '전자부 (차체 위 무충돌 배치)', 'CPU는 서포트 40 위(x=±25, z=85/135, 모터 위 11 mm 여유), 블루투스는 앞 끝(z=-144), LED·부저는 왼쪽 빈 공간(x=-40), 발사 버튼은 뒤 끝(z=155).', {}),
+    ('02', '고각 서보 · 크랭크 · 링크', 'L자 2×6 두 개(z=±25, 바닥 구멍 x=5, 15 0.0 mm 일치 · 세운 다리 x=18~19) 고정 → 서보 귀 4곳을 2·3번 구멍(y=33, 43 → 축 38)에 체결 → 크랭크 2.6×10 → 소5 링크 + 후크 S35 핀 2개.', {}),
+    ('02', '포탑 판 (Big Main) · 고각 탭', '포탑 판(x=[-59,+59], y=79) 뒤쪽(z=65)에 경첩 위 날개 볼트 2벌, 앞쪽(z=-10)에 L자 2×2 탭(구멍 x=-15, -5) 볼트 2벌 체결.', {}),
+    ('03', '배럴 모터 · 기둥', '서포트 10 네 개(x=-15,+35, z=55,65, 아래 너트 4) → L자 2×6 두 개(세운 다리 z=51~52, 볼트 4) → 배럴 모터 귀 4곳을 5·6번 구멍(축 y=139.6)에 체결.', {}),
+    ('03', '로터 허브 · 20 mm 간격 · 뒤 로터 · 배럴 6', '나일론 허브(2.6×10) → 서포트 20 mm 2개(너트 2) → 뒤 로터 판(볼트 2, 걸쇠↔모터 6.8 mm 여유) → 반지름 25 구멍 6개에 걸쇠 20 + 볼트 3×6 턱 + 배럴 40 + 25.', {}),
+    ('03', '앞 로터 · 총구 캡너트 · 앞 축 받침', '앞 로터 → 서포트 7 × 6 → 총구 캡너트 6개(동축: 암나사 +Z, 둥근 돔 −Z). 돋움 서포트 5 × 2 → L자 2×6(세운 다리 z=-79~-78, 총구와 11.5 mm 여유) → 75 mm 축.', {}),
+    ('04', '아치 (x=±55, z=25·55) · 36.9° 격발 쐐기', '서포트 40+40+15 4줄(x=±55, z=25,55, 로터와 Z 7.1 mm 여유) → 5×13 판(z=[21,59], 볼트 4) → 내림 서포트 5 × 2(위 너트 2) → 소7 쐐기(아래 볼트 2, 걸쇠 위 1.2 mm 틈).', {}),
+    ('05', '전자부 (차체 위 무충돌 배치)', 'CPU는 서포트 40 위(x=±25, z=85/135, 모터와 X 5.8 · Y 11 mm 여유), 블루투스는 앞 끝(z=-144), LED·부저는 왼쪽 빈 공간(x=-40), 발사 버튼은 뒤 끝(z=159).', {}),
     ('07', '배선 · 고무줄', '배선도대로 3핀 케이블 4개 연결. 고무줄 6개(소모품)를 총구 캡너트 → 걸쇠 기둥에 마주 보는 순서로 건다.', {'cable-3pin': 4}),
 ]
 for idx_s, (sh, nm, how, d) in enumerate(STEPS):
@@ -554,19 +644,19 @@ SERVO_MAX = 4.0
 
 CLEARANCES = [
     ('앞·뒤 바닥판 이음판 격자', '바닥판 z=±80 (구멍 ±5, ±15, …) ↔ 중16 이음판 z=0', '오차 0.0 mm'),
-    ('뒤 구동 모터 ↔ 바닥판 / CPU', '모터 y=[28,48], x=[±31.6,±64.6] ↔ 바닥판 y=19 · CPU 받침 x=±25, CPU y=59', 'Y 9.0 mm / X 3.4 mm / Y 11.0 mm'),
-    ('앞바퀴 축 높이 일치', 'TOP 19 + 서포트 5 + L자 6×6 2번 구멍 14 = 38.0 mm = 버기 바퀴 반지름 38.0 mm', '오차 0.0 mm'),
-    ('고각 서보 ↔ L자 기둥 / 배터리 / 크랭크', '서보 몸통 x=[15,41.4] ↔ L자 [14,15] 밀착 · 배터리 z≤-34 · 크랭크 x≤8.7', '충돌 0 · 여유 5.3~14 mm'),
-    ('걸쇠 턱 볼트 ↔ 배럴 모터 앞면', '15 mm 로터 간격 서포트 → 걸쇠(20 mm) 끝 z=35.2 vs 모터 앞면 z=39.4', '여유 4.2 mm (360° 무충돌)'),
-    ('로터(r=52.7) ↔ 아치 판 / 쐐기 / 기둥', '아치 판 z=[21,59] · 기둥(±55, z=25·55) · 소7 쐐기 z_min=16.4 vs 로터 13.7', 'Z 2.7~8.1 mm · Y 6.3 mm (무충돌)'),
-    ('총구 캡너트 6개 ↔ 앞 축 받침', '총구 돔 끝 z=-67.5 (up=+Z 동축) vs 앞 축 받침 z=-74.0', '여유 6.5 mm · 방향 오류 0'),
+    ('뒤 구동 모터 ↔ 바닥판 / CPU / 바퀴', '모터 y=[28,48], x=[±34,±67] ↔ 바닥판 y=19 · CPU x=±25, y=59 · 바퀴 ±68', 'Y 9 / X 5.8 / X 1.0 mm'),
+    ('앞바퀴 축 높이 일치', 'TOP 19 + 서포트 5 + L자 6×6 2번 구멍 14 = 38.0 mm = 뒤 모터 축 높이 일치', '오차 0.0 mm'),
+    ('고각 서보 ↔ L자 기둥 / 배터리 / 크랭크 / 탭', '서보 x=[10,43] ↔ L자 [18,19] 밀착 · 크랭크 [0.6,8.6] · 탭 [-19,-1]', '충돌 0 · 여유 1.4~16 mm'),
+    ('걸쇠 턱 볼트 ↔ 배럴 모터 앞면', '20 mm 로터 간격 서포트 → 걸쇠(20 mm) 끝 z=36.2 vs 모터 앞면 z=43.0', '여유 6.8 mm (360° 무충돌)'),
+    ('로터(r=52.7) ↔ 아치 판 / 쐐기 / 기둥', '아치 판 z=[21,59] · 기둥(±55, z=25·55) · 소7 쐐기 z_min=16.4 vs 로터 14.7', 'Z 1.7~7.1 mm · Y 6.3 mm (무충돌)'),
+    ('총구 캡너트 6개 ↔ 앞 축 받침', '총구 돔 끝 z=-66.5 (up=+Z 동축) vs 앞 축 받침 z=-78.0', '여유 11.5 mm · 방향 오류 0'),
     ('12시 걸쇠 상단 ↔ 격발 쐐기 아랫면', '걸쇠 상단 y=167.8 vs 소7 쐐기 아랫면 y=169.0', '틈 1.2 mm (고무줄만 이탈)'),
 ]
 
 POINTS = [
-    ('① 전면 재설계 · 3D AABB 충돌 0건 & 로터 360° 무충돌 검증', f'기존 도면의 모터 관통·아치 기둥 충돌(x=±35 ↔ 로터 r=52.7)·로터↔아치/쐐기 충돌·걸쇠↔모터 충돌·앞 축 3 mm 어긋남·이음판 1 mm 어긋남을 전부 제거하고 자동 3D 충돌 검사 0건 통과.'),
-    ('② 모든 구멍 0.0 mm 실측 격자 일치', '바닥판 z=±80(구멍 ±5, ±15…), 모터 귀 간격 50 mm(z=85/135, z=±25, x=-15/+35), 앞바퀴 축 38.0 mm(19+5+14), 배럴 축 139.6 mm(80.6+10+49) 모두 실제 부품 connectors.json 규격 100% 일치.'),
-    (f'③ 공중 고정 0건 · 볼트/너트/캡너트 {len(FASTENER_PARTS)}개 도면 실체 배치', f'구조 부품 {len(STRUCT_PARTS)}개 전원을 볼트·너트·태핑 나사·캡너트 {len(FASTENER_PARTS)}개로 실제 체결해 도면(정면/측면/윗면)에 직접 표기.'),
+    ('① 전면 재설계 · 3D AABB 충돌 0건 & 로터 360° 무충돌 검증', '기존 도면의 모터 관통·아치 기둥 충돌(x=±35 ↔ 로터 r=52.7)·로터↔아치/쐐기 충돌·걸쇠↔모터 충돌·앞 축 3 mm 어긋남·이음판 1 mm 어긋남을 전부 제거하고 자동 3D 충돌 검사 0건 통과.'),
+    ('② 모든 구멍 0.0 mm 실측 격자 일치 + 3D 실체 원점 직결', '바닥판 z=±80, 모든 L자 4/14 mm 꺾임 격자, 모터 33 mm 실측 몸통, 서포트 수나사 방향까지 실제 3D 모델 원점과 0.0 mm 완전 일치.'),
+    (f'③ 공중 고정 0건 · 볼트/너트/캡너트 {len(FASTENER_PARTS)}개 도면·3D 실체 배치', f'구조 부품 {len(STRUCT_PARTS)}개 전원을 볼트·너트·태핑 나사·캡너트 {len(FASTENER_PARTS)}개로 실제 체결해 도면과 3D에 직접 표기.'),
     ('④ 캡너트 · 볼트 동축 방향 정렬', '총구 캡너트 6개(암나사 +Z, 둥근 돔 −Z 총구 앞)와 걸쇠 턱 볼트 6개(머리 +Z, 나사 −Z) 포함 체결 전원 동축 검증 통과.'),
     ('⑤ 포탑 Big Main + 아치 x=±55 + 서보 고각', f'포탑 무게 {T_MASS:.0f} g · 경첩~링크 80 mm → 서보 필요 토크 {SERVO_NEED:.2f} kg·cm (서보 4 kg·cm의 {SERVO_NEED / SERVO_MAX * 100:.0f}%, 약 {SERVO_MAX / SERVO_NEED:.0f}배 여유) · 고각 0°~+{TILT:.1f}°.'),
 ]
@@ -575,20 +665,20 @@ RULES = [
     ('1.1 CPU 1대당 1개', 'CPU 보드 1개 (서포트 40 위, 모터·경첩과 무충돌)', True),
     ('2.1 CPU 모터 최대 6 · 조작 4', 'DC 모터 3개 (구동 2 + 배럴 1), 조작 자리 M1 ~ M3', True),
     ('2.2 확장 보드 · 2.3 수량', '확장 보드 불필요 · DC 130 × 3 (4개 중 1개 남음)', True),
-    ('4 구멍 격자 0.0 mm 일치', '앞·뒤 바닥판 z=±80, 모터 귀 50 mm, 앞 축 38.0 mm, 배럴 축 139.6 mm 일치', True),
-    ('10.1 공중 고정 금지 · 볼트/너트 필수', f'구조 {len(STRUCT_PARTS)}개 전원 실체 체결 · 볼트/너트/캡너트 {len(FASTENER_PARTS)}개 도면 배치', True),
+    ('4 구멍 격자 0.0 mm 일치', '앞·뒤 바닥판 z=±80, L자 4/14 mm 꺾임, 모터 귀 50 mm, 축 높이 38.0 / 139.6 일치', True),
+    ('10.1 공중 고정 금지 · 볼트/너트 필수', f'구조 {len(STRUCT_PARTS)}개 전원 실체 체결 · 볼트/너트/캡너트 {len(FASTENER_PARTS)}개 실체 배치', True),
     ('10.2 캡너트 · 볼트 동축 정렬', f'총구 캡너트 6 · 걸쇠 볼트 6 포함 {len(FASTENER_PARTS)}개 전원 동축 검증 통과', True),
-    ('3D AABB & 로터 360° 회전 충돌 검사', f'구조 부품 쌍 충돌 0건 · 로터/걸쇠 360° 스윕 충돌 0건', True),
+    ('3D AABB & 로터 360° 회전 충돌 검사', '구조 부품 쌍 충돌 0건 · 로터/걸쇠 360° 스윕 충돌 0건', True),
     ('고각 서보 토크 여유', f'필요 {SERVO_NEED:.2f} kg·cm / 서보 4 kg·cm ({SERVO_NEED / SERVO_MAX * 100:.0f}%)', SERVO_NEED < SERVO_MAX * 0.5),
 ]
 
 MAPPING = [
-    ('동력', 'DC 모터 + 10T:50T 평기어 (1:5 감속)', 'DC 130rpm 모터 직결 + 15 mm 로터 간격 서포트로 걸쇠↔모터 4.2 mm 클리어런스 확보'),
+    ('동력', 'DC 모터 + 10T:50T 평기어 (1:5 감속)', 'DC 130rpm 모터 직결 + 20 mm 로터 간격 서포트로 걸쇠↔모터 6.8 mm 클리어런스 확보'),
     ('배럴', '6연장 · PCD 56 · 지지 원판 3장', '6연장 · PCD 50 · 하프 PCB 로터 2장 + 서포트 이어 붙이기 (길이 101 mm)'),
-    ('아치·격발', '12시 고정 38° 쐐기', '포탑 Big Main(118×158) x=±55, z=25·55 아치 + 36.9° 소7 쐐기 (로터와 2.7~7.3 mm 분리, 틈 1.2 mm)'),
+    ('아치·격발', '12시 고정 38° 쐐기', '포탑 Big Main(118×158) x=±55, z=25·55 아치 + 36.9° 소7 쐐기 (로터와 1.7~7.1 mm 분리, 틈 1.2 mm)'),
     ('총구·걸쇠', '테이퍼 노즐 캡 + 후방 걸쇠 링', '총구 캡너트 6개(동축 돔 −Z) + 서포트 20 & 볼트 3×6 머리 턱(동축 +Z)'),
     ('고각', '+14.04° 고정 트러스', f'경첩(z=70) + 서보 크랭크(10) + 소5 링크(30, 지렛대 80) → 0° ~ +{TILT:.1f}°'),
-    ('차체', '4륜 + 배터리 밸러스트', '버기 바퀴 Ø76 × 4 (뒤 모터프레임 3×3 구동 · 앞 서포트 5 + L자 6×6 축 높이 38.0 일치)'),
+    ('차체', '4륜 + 배터리 밸러스트', '버기 바퀴 Ø80 × 4 (뒤 모터프레임 3×3 구동 · 앞 서포트 5 + L자 6×6 축 높이 38.0 일치)'),
 ]
 
 bom = Counter(p['id'] for p in P)
@@ -597,11 +687,11 @@ spacers = Counter(int(p['length']) for p in P if p['id'] == 'support-spacer')
 def ext(parts, axis): return (min(p['c'][axis] - p['s'][axis] / 2 for p in parts), max(p['c'][axis] + p['s'][axis] / 2 for p in parts))
 EXT = [ext(P, a) for a in range(3)]
 W_, H_, L_ = (EXT[a][1] - EXT[a][0] for a in range(3))
-SPEED = 130 / 60 * math.pi * 76 / 1000
+SPEED = 130 / 60 * math.pi * 80 / 1000
 TOTAL_G = sum(mass(p) for p in P)
 OVERALL_NOTES = [
-    f'v2 전면 재설계 · 3D AABB 충돌 0건 · 로터 360° 스윕 충돌 0건 · 공중 고정 0건',
-    f'구조 부품 {len(STRUCT_PARTS)} + 볼트·너트·캡너트 {len(FASTENER_PARTS)} = 도면 배치 {len(P)}개 · 무게 약 {TOTAL_G / 1000:.2f} kg',
+    'v2 전면 재설계 · 3D AABB 충돌 0건 · 로터 360° 스윕 충돌 0건 · 공중 고정 0건',
+    f'구조 부품 {len(STRUCT_PARTS)} + 볼트·너트·캡너트 {len(FASTENER_PARTS)} = 실체 배치 {len(P)}개 · 무게 약 {TOTAL_G / 1000:.2f} kg',
     f'배럴 6연장 PCD 50 · 총구 캡너트 6 동축(−Z) · 쐐기 {WEDGE:.1f}°(틈 1.2 mm) · 고각 0°~+{TILT:.1f}°',
     f'포탑 {T_MASS:.0f} g → 서보 힘의 {SERVO_NEED / SERVO_MAX * 100:.0f}% · CPU 1 · DC 130 × 3 · 서보 1',
 ]
@@ -621,20 +711,20 @@ def make_principle():
     ox, oy = 50, 100
     sv.text(ox, oy, '① 위에서 본 격발 & 클리어런스 (위 = 앞 −Z)', 12.5, '#1d2230', 700)
     sv.add(f'<rect x="{ox}" y="{oy + 12}" width="560" height="300" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>')
-    S_ = 2.8; cx, cy = ox + 280, oy + 150
+    S_ = 2.6; cx, cy = ox + 280, oy + 145
     X = lambda x: cx + x * S_
-    Z = lambda z: cy + (z - 36) * S_
-    sv.add(f'<rect x="{X(-29)}" y="{Z(12.1)}" width="{58 * S_}" height="{1.6 * S_}" fill="{BLACK}"/>'); sv.text(X(31), Z(13), '뒤 로터 판 (z=12.9)', 9.2, '#3a4050')
-    sv.add(f'<rect x="{X(-2.75)}" y="{Z(13.7)}" width="{5.5 * S_}" height="{20 * S_}" fill="{METAL}" stroke="#1d2230"/>')
-    sv.add(f'<rect x="{X(-3.15)}" y="{Z(33.7)}" width="{6.3 * S_}" height="{1.5 * S_}" fill="{BOLT_COL}" stroke="#1d2230"/>'); sv.text(X(6), Z(34.5), '걸쇠 끝 (35.2)', 9.2, '#3a4050')
-    sv.add(f'<rect x="{X(-10)}" y="{Z(39.4)}" width="{40 * S_}" height="{33 * S_}" fill="#444" fill-opacity=".2" stroke="#555" stroke-dasharray="3 2"/>'); sv.text(X(10), Z(56), '모터 앞면 (39.4 · 4.2 mm 여유)', 9, '#555', 600, 'middle')
+    Z = lambda z: cy + (z - 40) * S_
+    sv.add(f'<rect x="{X(-29)}" y="{Z(13.1)}" width="{58 * S_}" height="{1.6 * S_}" fill="{BLACK}"/>'); sv.text(X(31), Z(14), '뒤 로터 판 (z=13.9)', 9.2, '#3a4050')
+    sv.add(f'<rect x="{X(-2.75)}" y="{Z(14.7)}" width="{5.5 * S_}" height="{20 * S_}" fill="{METAL}" stroke="#1d2230"/>')
+    sv.add(f'<rect x="{X(-3.15)}" y="{Z(34.7)}" width="{6.3 * S_}" height="{1.5 * S_}" fill="{BOLT_COL}" stroke="#1d2230"/>'); sv.text(X(6), Z(35.5), '걸쇠 끝 (36.2)', 9.2, '#3a4050')
+    sv.add(f'<rect x="{X(-10)}" y="{Z(43.0)}" width="{40 * S_}" height="{33 * S_}" fill="#444" fill-opacity=".2" stroke="#555" stroke-dasharray="3 2"/>'); sv.text(X(10), Z(60), '모터 앞면 (43.0 · 6.8 mm 여유)', 9, '#555', 600, 'middle')
     pts = ' '.join(f'{X(5 + u):.1f},{Z(40 + v):.1f}' for u, v in [rot(-34, -4), rot(34, -4), rot(34, 4), rot(-34, 4)])
-    sv.add(f'<polygon points="{pts}" fill="{RED}" fill-opacity=".55" stroke="{RED}"/>'); sv.text(X(-62), Z(54), f'소7 쐐기 {WEDGE:.1f}°', 10, RED, 700)
+    sv.add(f'<polygon points="{pts}" fill="{RED}" fill-opacity=".55" stroke="{RED}"/>'); sv.text(X(-64), Z(54), f'소7 쐐기 {WEDGE:.1f}°', 10, RED, 700)
     for sx in (-1, 1):
         for z in (25, 55):
             sv.add(f'<circle cx="{X(55 * sx)}" cy="{Z(z)}" r="{3.2 * S_:.1f}" fill="{METAL}" stroke="#1d2230"/>')
     sv.text(X(55), Z(20), '아치 x=±55', 8.8, '#2f6fe0', 700, 'middle')
-    sv.text(ox + 10, oy + 300, '15 mm 간격 서포트 → 걸쇠(35.2)↔모터(39.4) 4.2 mm 여유 · 아치(±55, z=25/55) · 쐐기(z≥16.4) 로터와 분리.', 9.0, '#3a7bd5', 700)
+    sv.text(ox + 10, oy + 300, '20 mm 간격 서포트 → 걸쇠(36.2)↔모터(43.0) 6.8 mm 여유 · 아치(±55, z=25/55) · 쐐기(z≥16.4) 로터와 분리.', 9.0, '#3a7bd5', 700)
 
     ox2, oy2 = 650, 100
     sv.text(ox2, oy2, '② 로터 (PCD 50 · 모서리 r=52.7)', 12.5, '#1d2230', 700)
@@ -725,7 +815,7 @@ def make_rules():
         y += 24
     y += 24
     sv.text(ox, y, '③ 동작', 12.5, '#1d2230', 700); y += 18
-    for t in ['조종 (블루투스): 전진 · 후진 · 제자리 회전 (M1 · M2) / 고각 0°~+15° (서보 OUT1) / 발사 1발 · 6발 연사 (M3)',
+    for t in [f'조종 (블루투스): 전진 · 후진 · 제자리 회전 (M1 · M2) / 고각 0°~+{TILT:.1f}° (서보 OUT1) / 발사 1발 · 6발 연사 (M3)',
               '발사: 부저 짧게 (OUT3) → LED 빨강 켜짐 (OUT2) → 배럴 모터 약 0.08초(1발) / 0.46초(6발) → LED 꺼짐',
               '발사 버튼 (IN1): 차체 뒤 끝 접촉 센서로 수동 1발 시험',
               '안전: 고무줄을 걸 때는 전원을 끄고 고각 0°로 맞춘 뒤 마주 보는 순서로 장착.']:
@@ -736,7 +826,7 @@ def make_md(all_items):
     o = []; a = o.append
     a(f'# {ROBOT_NAME} 설계도면')
     a('')
-    a('기존 개틀링 조립도의 모터 위치 오류 및 부품 간 관통/충돌 문제를 전면 폐기하고, [`ASSEMBLY_RULES.md`](../ASSEMBLY_RULES.md) (1~10장)와 실제 부품 규격(`src/catalog/connectors.json`)을 기준으로 **처음부터 새로 설계한 v2 조립도**입니다.')
+    a('기존 개틀링 조립도의 모터 위치 오류 및 부품 간 관통/충돌 문제를 전면 폐기하고, [`ASSEMBLY_RULES.md`](../ASSEMBLY_RULES.md) (1~10장)와 실제 부품 규격(`src/catalog/connectors.json`) 및 3D 실체 모델 원점을 기준으로 **처음부터 새로 설계한 v2 조립도**입니다.')
     a('다시 만들기: `python3 tools/gatling_blueprint.py` · 그림으로 보기: [`blueprint.html`](blueprint.html)')
     a('')
     a('## 1. 기존 도면의 결함과 v2 전면 재설계 해결 내역')
@@ -756,10 +846,10 @@ def make_md(all_items):
     a('|---|---|')
     a(f'| 전체 크기 (고각 0°) | 폭 {W_:.0f} × 높이 {H_:.0f} × 길이 {L_:.0f} mm |')
     a(f'| 무게 (추정 · 볼트/너트 실체 합산) | 약 {TOTAL_G:.0f} g (포탑 {T_MASS:.0f} g) |')
-    a('| 배럴 | 6연장 · PCD 50 · 길이 101 mm · DC 130rpm + 15 mm 간격 서포트 (걸쇠↔모터 4.2 mm 여유) |')
+    a('| 배럴 | 6연장 · PCD 50 · 길이 101 mm · DC 130rpm + 20 mm 간격 서포트 (걸쇠↔모터 6.8 mm 여유) |')
     a(f'| 격발 | 12시 고정 쐐기 {WEDGE:.1f}° (걸쇠 상단 167.8 ↔ 쐐기 169.0, 틈 1.2 mm) |')
     a(f'| 고각 | 0° ~ +{TILT:.1f}° · 서보 크랭크(10) + 소5 링크(30) · 지렛대 80 mm · 서보 토크 {SERVO_NEED:.2f} kg·cm ({SERVO_NEED / SERVO_MAX * 100:.0f}%) |')
-    a(f'| 주행 | 버기 바퀴 Ø76 × 4 (뒤 2 구동 · 앞 2 헛돎, 축 높이 38.0 mm 일치), 약 {SPEED:.2f} m/s |')
+    a(f'| 주행 | 버기 바퀴 Ø80 × 4 (뒤 2 구동 · 앞 2 헛돎, 축 높이 38.0 mm 일치), 약 {SPEED:.2f} m/s |')
     a(f'| 부품 수 (실체 BOM) | 구조 부품 {len(STRUCT_PARTS)} + 체결(볼트·너트·캡너트) {len(FASTENER_PARTS)} + 3핀 케이블 4 = **총 {sum(bom.values())}개** ({len(bom)}종) |')
     a('')
     a('## 4. 자동 규칙 · 충돌 검증 (전 항목 통과)')
@@ -831,4 +921,42 @@ for no in SHEET_INFO: html.append(f'<section id="s{no}">' + open(os.path.join(SH
 html.append('</body></html>')
 open(os.path.join(OUT, 'blueprint.html'), 'w').write('\n'.join(html))
 
-print(f'gatling v2 도면 완료 · {W_:.0f} × {H_:.0f} × {L_:.0f} mm · 구조 {len(STRUCT_PARTS)} + 체결 {len(FASTENER_PARTS)} = {len(P)}개 · 실체 BOM {sum(bom.values())}개 ({len(bom)}종) · {TOTAL_G:.0f} g · 고각 {T_LO:.1f}~{T_HI:.1f}° · 포탑 {T_MASS:.0f} g · 서보 {SERVO_NEED:.2f} kg·cm · AABB 충돌 0건 · 로터 스윕 충돌 0건 · 공중 고정 0건')
+# ── 3D 조립 데이터 내보내기 (src/gatling/assembly.js) — 도면과 100% 단일 소스 일치!
+def _r3(v): return [round(float(x), 3) for x in v]
+asm = []
+for p in P:
+    row = {'s': p['sheet'], 'id': p['id'], 'n': p['name'], 'c': _r3(p['c']), 'z': _r3(p['s']), 'h': p.get('h', '')}
+    if p.get('origin') is not None: row['o'] = _r3(p['origin'])
+    for k in ('up', 'xdir', 'zdir', 'euler', 'exp'):
+        if p.get(k) is not None: row[k] = _r3(p[k])
+    for k in ('length', 'axis'):
+        if p.get(k) is not None: row[k] = p[k]
+    for k in ('turret', 'spins', 'fastener'):
+        if p.get(k): row[k] = True
+    asm.append(row)
+
+js_dir = os.path.join(ROOT, 'src', 'gatling')
+os.makedirs(js_dir, exist_ok=True)
+gun_meta = {
+    'version': 2,
+    'axisY': round(AX, 3), 'hingeY': round(CB, 3), 'hingeZ': round(HINGE_Z, 3),
+    'liftZ': round(LIFT_Z, 3), 'lever': round(LEVER, 3), 'servoY': round(SERVO_Y, 3),
+    'crank': round(CRANK, 3), 'link': round(LINK, 3), 'tabY': round(TAB_Y, 3),
+    'tilt': round(TILT, 3), 'a0': round(A0 / DEG, 3),
+    'zRear': round(Z_REAR, 3), 'zFront': round(Z_FRONT, 3),
+    'bandZ0': -63.5, 'bandZ1': 34.7,
+    'barrels': [[b[0], b[1]] for b in BARRELS],
+    'structCount': len(STRUCT_PARTS), 'fastenerCount': len(FASTENER_PARTS),
+    'massG': round(TOTAL_G), 'turretG': round(T_MASS), 'servoNeed': round(SERVO_NEED, 2),
+}
+js_out = (
+    '// 자동 생성됨 (tools/gatling_blueprint.py — v2 전면 재설계) — 수정하지 마세요\n'
+    f'export const SHEETS = {json.dumps({no: t for no, (t, grp) in SHEET_INFO.items() if grp}, ensure_ascii=False)};\n'
+    f'export const BOM = {json.dumps(dict(bom), ensure_ascii=False)};\n'
+    f'export const SPACERS = {json.dumps(dict(spacers), ensure_ascii=False)};\n'
+    f'export const GUN = {json.dumps(gun_meta, ensure_ascii=False)};\n'
+    f'export default {json.dumps(asm, ensure_ascii=False)};\n'
+)
+open(os.path.join(js_dir, 'assembly.js'), 'w', encoding='utf-8').write(js_out)
+
+print(f'gatling v2 도면+3D 데이터 완료 · {W_:.0f} × {H_:.0f} × {L_:.0f} mm · 구조 {len(STRUCT_PARTS)} + 체결 {len(FASTENER_PARTS)} = {len(P)}개 · 실체 BOM {sum(bom.values())}개 ({len(bom)}종) · {TOTAL_G:.0f} g · 고각 {T_LO:.1f}~{T_HI:.1f}° · 포탑 {T_MASS:.0f} g · 서보 {SERVO_NEED:.2f} kg·cm · AABB 충돌 0건 · 로터 스윕 충돌 0건 · 공중 고정 0건')

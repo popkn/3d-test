@@ -13,10 +13,10 @@
 <text x="60.0" y="183.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 2.2 확장 보드 · 2.3 수량</text>
 <text x="390.0" y="183.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">확장 보드 불필요 · DC 130 × 3 (4개 중 1개 남음)</text>
 <text x="60.0" y="209.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 4 구멍 격자 0.0 mm 일치</text>
-<text x="390.0" y="209.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">앞·뒤 바닥판 z=±80, 모터 귀 50 mm, 앞 축 38.0 mm, 배럴 축 139.6 mm 일치</text>
+<text x="390.0" y="209.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">앞·뒤 바닥판 z=±80, L자 4/14 mm 꺾임, 모터 귀 50 mm, 축 높이 38.0 / 139.6 일치</text>
 <rect x="50" y="218" width="1160" height="26" fill="#eef2f7"/>
 <text x="60.0" y="235.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 10.1 공중 고정 금지 · 볼트/너트 필수</text>
-<text x="390.0" y="235.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">구조 113개 전원 실체 체결 · 볼트/너트/캡너트 206개 도면 배치</text>
+<text x="390.0" y="235.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">구조 113개 전원 실체 체결 · 볼트/너트/캡너트 206개 실체 배치</text>
 <text x="60.0" y="261.0" font-size="10.5" fill="#1f8a50" font-weight="700" text-anchor="start">✔ 10.2 캡너트 · 볼트 동축 정렬</text>
 <text x="390.0" y="261.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">총구 캡너트 6 · 걸쇠 볼트 6 포함 206개 전원 동축 검증 통과</text>
 <rect x="50" y="270" width="1160" height="26" fill="#eef2f7"/>
@@ -37,7 +37,7 @@
 <rect x="58" y="410" width="56" height="16" rx="3" fill="#f2c21b"/>
 <text x="86.0" y="422.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">OUT1</text>
 <text x="160.0" y="422.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">고각 서보</text>
-<text x="520.0" y="422.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">0° ~ +16.3° (크랭크 180° 회전)</text>
+<text x="520.0" y="422.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">0° ~ +9.2° (크랭크 98° 회전)</text>
 <rect x="50" y="430" width="1160" height="24" fill="#eef2f7"/>
 <rect x="58" y="434" width="56" height="16" rx="3" fill="#f2c21b"/>
 <text x="86.0" y="446.0" font-size="9.5" fill="#1d2230" font-weight="700" text-anchor="middle">OUT2</text>
@@ -71,7 +71,7 @@
 <text x="160.0" y="590.0" font-size="10.5" fill="#1d2230" font-weight="700" text-anchor="start">배터리케이스 4AA 6V</text>
 <text x="520.0" y="590.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">CPU 6V (서보 6 V 이하)</text>
 <text x="50.0" y="622.0" font-size="12.5" fill="#1d2230" font-weight="700" text-anchor="start">③ 동작</text>
-<text x="60.0" y="640.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">• 조종 (블루투스): 전진 · 후진 · 제자리 회전 (M1 · M2) / 고각 0°~+15° (서보 OUT1) / 발사 1발 · 6발 연사 (M3)</text>
+<text x="60.0" y="640.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">• 조종 (블루투스): 전진 · 후진 · 제자리 회전 (M1 · M2) / 고각 0°~+9.2° (서보 OUT1) / 발사 1발 · 6발 연사 (M3)</text>
 <text x="60.0" y="656.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">• 발사: 부저 짧게 (OUT3) → LED 빨강 켜짐 (OUT2) → 배럴 모터 약 0.08초(1발) / 0.46초(6발) → LED 꺼짐</text>
 <text x="60.0" y="672.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">• 발사 버튼 (IN1): 차체 뒤 끝 접촉 센서로 수동 1발 시험</text>
 <text x="60.0" y="688.0" font-size="10" fill="#1d2230" font-weight="400" text-anchor="start">• 안전: 고무줄을 걸 때는 전원을 끄고 고각 0°로 맞춘 뒤 마주 보는 순서로 장착.</text></svg>

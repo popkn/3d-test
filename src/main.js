@@ -24,7 +24,7 @@ const opts = { labels: true, dims: true, spin: false };
 
 // 목록
 const nav = document.getElementById('parts');
-nav.innerHTML = `<a href="#gatling" data-id="gatling" class="all"><b>🎯 썬더 개틀링 6연장 (완성품)</b><small>볼트 · 너트 · 캡너트 포함 · 6연장 발사 · 완전 분해</small></a><a href="#gatling-build" data-id="gatling-build" class="all"><b>🔧 개틀링 단계별 조립 (세분화)</b><small>부품 1개 · 볼트/너트 1개씩 302단계 · 분해</small></a><a href="#eagle" data-id="eagle" class="all"><b>🦅 독수리 조립 (설계도면)</b><small>부품으로 조립한 독수리 · 날갯짓 · 분해 보기</small></a><a href="#battlebot" data-id="battlebot" class="all"><b>⚔ 배틀로봇 썬더 웨지</b><small>무한궤도 · 스피너 · 들어올림 웨지</small></a><a href="#train" data-id="train" class="all"><b>🚂 협동 기차 하나로 열차</b><small>3칸 · 칸마다 CPU · 3명이 따로 조종</small></a><a href="#stage-eagle" data-id="stage-eagle" class="all"><b>🔧 독수리 파트별 조립</b><small>받침대 · 다리 · 몸통 · 얼굴 · 날개 · 꼬리 → 연결 · 분해</small></a><a href="#stage-battlebot" data-id="stage-battlebot" class="all"><b>🔧 배틀로봇 파트별 조립</b><small>섀시 · 구동부 · 무기 · 웨지 · 상판 · 장갑 → 연결 · 분해</small></a><a href="#stage-train" data-id="stage-train" class="all"><b>🔧 기차 파트별 조립</b><small>칸마다 차대 · 차체 → 연결봉 · 분해</small></a><a href="#train-build" data-id="train-build" class="all"><b>🔧 기차 단계별 조립 (모듈 작업대)</b><small>부품 하나씩 · 모듈은 따로 조립 후 끼우기</small></a><a href="#all" data-id="all" class="all"><b>▦ 전체 펼쳐보기</b><small>${catalog.length}개 부품 · 실제 크기로 한 화면에</small></a>` + categories.map(([cat, title]) => `
+nav.innerHTML = `<a href="#gatling" data-id="gatling" class="all"><b>🎯 썬더 개틀링 6연장 v2 (완성품)</b><small>전면 재설계 · 충돌 0 · 볼트/너트/캡너트 206개 · 완전 분해</small></a><a href="#gatling-build" data-id="gatling-build" class="all"><b>🔧 개틀링 단계별 조립 (세분화)</b><small>부품 1개 · 볼트/너트 1개씩 319단계 · 분해</small></a><a href="#eagle" data-id="eagle" class="all"><b>🦅 독수리 조립 (설계도면)</b><small>부품으로 조립한 독수리 · 날갯짓 · 분해 보기</small></a><a href="#battlebot" data-id="battlebot" class="all"><b>⚔ 배틀로봇 썬더 웨지</b><small>무한궤도 · 스피너 · 들어올림 웨지</small></a><a href="#train" data-id="train" class="all"><b>🚂 협동 기차 하나로 열차</b><small>3칸 · 칸마다 CPU · 3명이 따로 조종</small></a><a href="#stage-eagle" data-id="stage-eagle" class="all"><b>🔧 독수리 파트별 조립</b><small>받침대 · 다리 · 몸통 · 얼굴 · 날개 · 꼬리 → 연결 · 분해</small></a><a href="#stage-battlebot" data-id="stage-battlebot" class="all"><b>🔧 배틀로봇 파트별 조립</b><small>섀시 · 구동부 · 무기 · 웨지 · 상판 · 장갑 → 연결 · 분해</small></a><a href="#stage-train" data-id="stage-train" class="all"><b>🔧 기차 파트별 조립</b><small>칸마다 차대 · 차체 → 연결봉 · 분해</small></a><a href="#train-build" data-id="train-build" class="all"><b>🔧 기차 단계별 조립 (모듈 작업대)</b><small>부품 하나씩 · 모듈은 따로 조립 후 끼우기</small></a><a href="#all" data-id="all" class="all"><b>▦ 전체 펼쳐보기</b><small>${catalog.length}개 부품 · 실제 크기로 한 화면에</small></a>` + categories.map(([cat, title]) => `
   <h3>${title}</h3>
   ${catalog.filter((p) => p.category === cat).map((p) => `
     <a href="#${p.id}" data-id="${p.id}"><b>${p.name}</b><small>${p.size.x} × ${p.size.z} × ${p.size.y} mm${p.size.estimated ? ' · 추정' : ''}</small></a>`).join('')}
@@ -466,12 +466,12 @@ async function select(id) {
     view.frame(box, { dir: [-0.9, 0.6, -1], fit: 1.15, minDist: 20 });
     const size = box.getSize(new THREE.Vector3());
     panel.showSpec({
-      name: '썬더 개틀링 6연장 (개정 조립 규칙 완성품)', url: 'https://github.com/popkn/3d-test/blob/parts/gatling/BLUEPRINT.md',
-      size: { x: Math.round(size.x), z: Math.round(size.z), y: Math.round(size.y), estimated: false, note: 'ASSEMBLY_RULES.md 1~10장 준수: 공중 고정 0건 · 모든 체결의 볼트/너트/캡너트 202개 동축 배치 · 총구 캡너트 6개 둥근 돔 앞(−Z) 정렬 · 분해 보기 시 모든 부품+볼트+너트+캡너트가 축을 따라 나사 회전하며 분해됩니다.' },
-      function: '4륜 주행(M1·M2), 서보 고각(OUT1, 0~15°), 배럴 회전 12시 쐐기 격발(M3, 고무줄 자동 장전). 아래 분해 보기 슬라이더로 모든 부품과 볼트 · 너트 · 캡너트를 분해해 확인하세요.',
+      name: '썬더 개틀링 6연장 v2 (전면 재설계 완성품)', url: 'https://github.com/popkn/3d-test/blob/parts/gatling/BLUEPRINT.md',
+      size: { x: Math.round(size.x), z: Math.round(size.z), y: Math.round(size.y), estimated: false, note: `ASSEMBLY_RULES.md 1~10장 · v2 전면 재설계: 3D 충돌 0건 · 로터 360° 스윕 충돌 0건 · 공중 고정 0건 · 볼트/너트/캡너트 ${e.fastenerCount}개 동축 실체 배치 · 모든 부품+볼트+너트+캡너트 완전 분해 지원.` },
+      function: `4륜 주행(M1·M2), 서보 고각(OUT1, 0~${Math.floor(GAT_TILT_MAX)}° · 경첩 연동), 배럴 회전 12시 쐐기 격발(M3, 고무줄 자동 장전). 아래 분해 보기 슬라이더로 모든 부품과 볼트 · 너트 · 캡너트를 분해해 확인하세요.`,
       specs: [
         ...Object.entries(GAT_SHEETS).map(([no, t]) => [`도면 ${no}`, t]),
-        ['규칙 검사', `오류 0건 · 공중 고정 0 · 캡너트/볼트 동축 정렬 ${e.fastenerCount}개`],
+        ['규칙 · 충돌 검사', `AABB 충돌 0건 · 로터 스윕 충돌 0건 · 공중 고정 0 · 동축 정렬 ${e.fastenerCount}개`],
         ['볼트 · 너트 · 캡너트', Object.entries(e.bom).filter(([k]) => /^(bolt|nut|cap)/.test(k)).map(([k, n]) => `${k} ${n}`).join(' · ')],
         ['서포트 규격', Object.entries(e.spacers).sort((a, b) => a[0] - b[0]).map(([l, n]) => `${l}mm × ${n}`).join(' · ')],
       ],

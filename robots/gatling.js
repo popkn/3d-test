@@ -3,13 +3,13 @@ import { SHEETS } from '../src/gatling/assembly.js';
 import { detailAdapter, DRIVE5 } from './lib.js';
 import { loadPart } from 'virtual:parts';
 
-export const meta = { id: 'gatling', name: '썬더 개틀링 6연장', mods: 5 };
+export const meta = { id: 'gatling', name: '썬더 개틀링 6연장 v2', mods: 5 };
 
 export async function makeAdapter(ctx) {
   const e = await buildGatling(loadPart, ctx.onProgress);
   const keys = Object.keys(SHEETS).filter((k) => e.order[k]);
   let shown = null;
-  // 규칙 10.1~10.5: 최대 세분화 (1부품 · 1체결 = 1단계, 총 302단계), 볼트·너트·캡너트 기본 표시 + 완전 분해 + 나사 회전 + 가이드선 + 하이라이트
+  // 규칙 10.1~10.5 (v2 전면 재설계): 최대 세분화 (1부품 · 1체결 = 1단계, 총 319단계), 충돌 0 · 공중 고정 0 · 볼트/너트/캡너트 기본 표시 + 완전 분해 + 나사 회전 + 가이드선 + 하이라이트
   const ad = detailAdapter(e.root, keys.map((k) => ({ no: k, name: SHEETS[k], holders: e.order[k] })), {
     frameOpts: { dir: [-0.9, 0.6, -1], fit: 1.15, minDist: 20 },
     count: e.count,
