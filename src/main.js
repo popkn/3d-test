@@ -9,6 +9,9 @@ import { buildBattlebot, EXPLODE as BB_EXPLODE } from './battlebot/assemble.js';
 import { SHEETS as BB_SHEETS, BOM_TOTAL as BB_TOTAL } from './battlebot/assembly.js';
 import { buildTrain, SPEED as TRAIN_SPEED } from './train/assemble.js';
 import { buildTrainSteps, buildTrainStaged } from './train/build.js';
+import { buildGatling, TILT_MAX as GAT_TILT_MAX, WHEEL_R as GAT_WHEEL_R } from './gatling/assemble.js';
+import { SHEETS as GAT_SHEETS, GUN as GAT_GUN } from './gatling/assembly.js';
+import { detailAdapter } from '../robots/lib.js';
 import { createStaged } from './assembly/staged.js';
 
 // 로보로보 부품 뷰어: 왼쪽 목록에서 부품을 고르면 3D 모양과 기능(조작 패널)을 불러온다.
@@ -21,7 +24,7 @@ const opts = { labels: true, dims: true, spin: false };
 
 // 목록
 const nav = document.getElementById('parts');
-nav.innerHTML = `<a href="#eagle" data-id="eagle" class="all"><b>🦅 독수리 조립 (설계도면)</b><small>부품으로 조립한 독수리 · 날갯짓 · 분해 보기</small></a><a href="#battlebot" data-id="battlebot" class="all"><b>⚔ 배틀로봇 썬더 웨지</b><small>무한궤도 · 스피너 · 들어올림 웨지</small></a><a href="#train" data-id="train" class="all"><b>🚂 협동 기차 하나로 열차</b><small>3칸 · 칸마다 CPU · 3명이 따로 조종</small></a><a href="#stage-eagle" data-id="stage-eagle" class="all"><b>🔧 독수리 파트별 조립</b><small>받침대 · 다리 · 몸통 · 얼굴 · 날개 · 꼬리 → 연결 · 분해</small></a><a href="#stage-battlebot" data-id="stage-battlebot" class="all"><b>🔧 배틀로봇 파트별 조립</b><small>섀시 · 구동부 · 무기 · 웨지 · 상판 · 장갑 → 연결 · 분해</small></a><a href="#stage-train" data-id="stage-train" class="all"><b>🔧 기차 파트별 조립</b><small>칸마다 차대 · 차체 → 연결봉 · 분해</small></a><a href="#train-build" data-id="train-build" class="all"><b>🔧 기차 단계별 조립 (모듈 작업대)</b><small>부품 하나씩 · 모듈은 따로 조립 후 끼우기</small></a><a href="#all" data-id="all" class="all"><b>▦ 전체 펼쳐보기</b><small>${catalog.length}개 부품 · 실제 크기로 한 화면에</small></a>` + categories.map(([cat, title]) => `
+nav.innerHTML = `<a href="#gatling" data-id="gatling" class="all"><b>🎯 썬더 개틀링 6연장 (완성품)</b><small>볼트 · 너트 · 캡너트 포함 · 6연장 발사 · 완전 분해</small></a><a href="#gatling-build" data-id="gatling-build" class="all"><b>🔧 개틀링 단계별 조립 (세분화)</b><small>부품 1개 · 볼트/너트 1개씩 302단계 · 분해</small></a><a href="#eagle" data-id="eagle" class="all"><b>🦅 독수리 조립 (설계도면)</b><small>부품으로 조립한 독수리 · 날갯짓 · 분해 보기</small></a><a href="#battlebot" data-id="battlebot" class="all"><b>⚔ 배틀로봇 썬더 웨지</b><small>무한궤도 · 스피너 · 들어올림 웨지</small></a><a href="#train" data-id="train" class="all"><b>🚂 협동 기차 하나로 열차</b><small>3칸 · 칸마다 CPU · 3명이 따로 조종</small></a><a href="#stage-eagle" data-id="stage-eagle" class="all"><b>🔧 독수리 파트별 조립</b><small>받침대 · 다리 · 몸통 · 얼굴 · 날개 · 꼬리 → 연결 · 분해</small></a><a href="#stage-battlebot" data-id="stage-battlebot" class="all"><b>🔧 배틀로봇 파트별 조립</b><small>섀시 · 구동부 · 무기 · 웨지 · 상판 · 장갑 → 연결 · 분해</small></a><a href="#stage-train" data-id="stage-train" class="all"><b>🔧 기차 파트별 조립</b><small>칸마다 차대 · 차체 → 연결봉 · 분해</small></a><a href="#train-build" data-id="train-build" class="all"><b>🔧 기차 단계별 조립 (모듈 작업대)</b><small>부품 하나씩 · 모듈은 따로 조립 후 끼우기</small></a><a href="#all" data-id="all" class="all"><b>▦ 전체 펼쳐보기</b><small>${catalog.length}개 부품 · 실제 크기로 한 화면에</small></a>` + categories.map(([cat, title]) => `
   <h3>${title}</h3>
   ${catalog.filter((p) => p.category === cat).map((p) => `
     <a href="#${p.id}" data-id="${p.id}"><b>${p.name}</b><small>${p.size.x} × ${p.size.z} × ${p.size.y} mm${p.size.estimated ? ' · 추정' : ''}</small></a>`).join('')}
@@ -321,7 +324,211 @@ function stagedFunction(e) {
   };
 }
 
+// 썬더 개틀링 6연장 (완성품): 주행 · 서보 고각 · 6연장 발사 · 모든 부품 + 볼트/너트/캡너트 완전 분해
+let gatling = null;
+function gatlingFunction(e) {
+  const st = { drive: 'stop', aim: 0, liveAim: 0, auto: true, loop: false, explode: 0, bolts: true, guides: true, dl: 0, dr: 0, yaw: 0, want: 0, budget: 0, shots: 0 };
+  const speed = 130 / 60 * Math.PI * 2 * GAT_WHEEL_R;
+  const W = 130 / 60 * Math.PI * 2;
+  e.showBolts(true); e.setGuides(true); e.setExplode(0);
+  panel.ui.controls([
+    { type: 'select', id: 'drive', label: '조종 (M1 · M2)', options: [['stop', '정지'], ['fwd', '전진'], ['back', '후진'], ['left', '왼쪽 회전'], ['right', '오른쪽 회전']], value: 'stop' },
+    { type: 'slider', id: 'aim', label: '고각 (서보 OUT1)', min: 0, max: Math.floor(GAT_TILT_MAX), step: 1, value: 0, unit: '°' },
+    { type: 'button', id: 'fire1', label: '🎯 1발 발사 (배럴 M3)' },
+    { type: 'button', id: 'fire6', label: '🔥 6발 연사' },
+    { type: 'toggle', id: 'auto', label: '고무줄 자동 장전', value: true },
+    { type: 'toggle', id: 'loop', label: '계속 발사', value: false },
+    { type: 'slider', id: 'explode', label: '분해 보기 (모든 부품 · 볼트 · 너트 · 캡너트)', min: 0, max: 1, step: 0.01, value: 0 },
+    { type: 'toggle', id: 'bolts', label: '볼트 · 너트 · 캡너트 보기 (분해 시 자동 포함)', value: true },
+    { type: 'toggle', id: 'guides', label: '분해 가이드선 보기', value: true },
+    ...Object.entries(GAT_SHEETS).map(([no, t]) => ({ type: 'toggle', id: 'g' + no, label: `${no} ${t.split(' (')[0]}`, value: true, compact: true })),
+  ]);
+  panel.ui.readouts([['parts', '실체 배치'], ['aim', '포탑 고각'], ['ammo', '고무줄'], ['state', '상태']]);
+  return {
+    onControl(id, v) {
+      if (id.startsWith('g')) e.setHidden(id.slice(1), !v);
+      else if (id === 'fire1') { st.want += 1; st.budget = Math.PI * 2.2; }
+      else if (id === 'fire6') { st.want += 6; st.budget = Math.PI * 4.2; }
+      else if (id === 'explode') { st.explode = Number(v); e.setExplode(st.explode); }
+      else if (id === 'bolts') { st.bolts = v; e.showBolts(v); }
+      else if (id === 'guides') { st.guides = v; e.setGuides(v); }
+      else if (id === 'aim') st.aim = Number(v);
+      else st[id] = v;
+    },
+    update(dt) {
+      dt = Math.min(dt, 0.05);
+      if (st.explode < 0.005) {
+        const [l, r] = { stop: [0, 0], fwd: [1, 1], back: [-1, -1], left: [-1, 1], right: [1, -1] }[st.drive];
+        if (l || r) { st.dl += l * speed * dt; st.dr += r * speed * dt; e.setWheels(-st.dl, -st.dr); }
+        if (st.drive === 'left' || st.drive === 'right') { st.yaw += (st.drive === 'left' ? 1 : -1) * dt * 0.7; e.root.rotation.y = st.yaw; }
+        if (Math.abs(st.aim - st.liveAim) > 0.01) { st.liveAim += Math.sign(st.aim - st.liveAim) * Math.min(Math.abs(st.aim - st.liveAim), dt * 20); e.setTilt(st.liveAim); }
+        if (st.loop && st.auto) { st.want = Math.max(st.want, 1); st.budget = Math.PI * 2; }
+        if (st.want > 0 && st.budget > 0) {
+          const d = W * dt; st.budget -= d;
+          const n = e.spin(d, st.auto); st.shots += n; st.want -= n;
+          if (st.want <= 0 || st.budget <= 0 || (!st.auto && e.loaded() === 0)) { st.want = 0; st.budget = 0; }
+        }
+        e.flyBands(dt);
+      }
+      panel.ui.readout('parts', `구조 ${e.structCount} + 볼트·너트·캡너트 ${e.fastenerCount} = ${e.count}개`);
+      panel.ui.readout('aim', `+${st.liveAim.toFixed(1)}° (서보 토크 ${GAT_GUN.servoNeed} kg·cm)`);
+      panel.ui.readout('ammo', `${e.loaded()} / 6 · 발사 ${st.shots}발`);
+      panel.ui.readout('state', st.explode > 0.02 ? `완전 분해 ${(st.explode * 100).toFixed(0)}% (볼트 · 너트 · 캡너트 포함)` : st.want > 0 ? '발사 중' : st.drive !== 'stop' ? '주행 중' : '대기');
+    },
+    dispose() { e.reset(); e.root.rotation.y = 0; },
+  };
+}
+
+// 개틀링 최대 세분화 단계별 조립 (302단계: 1부품 배치 + 1볼트/너트/캡너트 체결)
+let gatlingSteps = null;
+function gatlingStepFunction(ad) {
+  const st = { T: 0, play: true, speed: 4, follow: true, bolts: true, guides: true, explode: 0, goal: null };
+  ad.setBolts(true); ad.setGuides(true); ad.setExplode(0);
+  panel.ui.controls([
+    { type: 'toggle', id: 'play', label: '재생', value: true },
+    { type: 'button', id: 'prev', label: '◀ 이전 단계' },
+    { type: 'button', id: 'next', label: '다음 단계 ▶' },
+    { type: 'slider', id: 'step', label: '단계로 이동', min: 0, max: ad.N, step: 1, value: 0 },
+    { type: 'slider', id: 'speed', label: '속도 (단계 / 초)', min: 0.25, max: 16, step: 0.25, value: 4 },
+    { type: 'slider', id: 'explode', label: '분해 보기 (부품 · 볼트 · 너트 · 캡너트)', min: 0, max: 1, step: 0.01, value: 0 },
+    { type: 'toggle', id: 'follow', label: '카메라가 지금 작업을 따라감', value: true },
+    { type: 'toggle', id: 'bolts', label: '볼트 · 너트 · 캡너트 보기 (분해 시 자동 포함)', value: true },
+    { type: 'toggle', id: 'guides', label: '진입 · 체결 가이드선 보기', value: true },
+    { type: 'button', id: 'restart', label: '처음부터' },
+  ]);
+  panel.ui.readouts([['step', '단계'], ['kind', '작업 유형'], ['now', '지금'], ['total', '전체']]);
+  const slider = () => [...document.querySelectorAll('.p-controls label')].find((l) => l.textContent.includes('단계로 이동'))?.querySelector('input');
+  const explodeSlider = () => [...document.querySelectorAll('.p-controls label')].find((l) => l.textContent.includes('분해 보기'))?.querySelector('input');
+  const playBox = () => [...document.querySelectorAll('.p-controls label')].find((l) => l.textContent.startsWith('재생'))?.querySelector('input');
+  const pause = () => { st.play = false; const b = playBox(); if (b) b.checked = false; };
+  const tgt = new THREE.Vector3();
+  let lastShown = -1;
+  return {
+    onControl(id, v) {
+      if (id === 'play') { st.play = v; if (v && st.T >= ad.N) st.T = 0; }
+      else if (id === 'prev') { pause(); st.goal = Math.max(0, Math.ceil(st.T) - 1); }
+      else if (id === 'next') { pause(); st.goal = Math.min(ad.N, Math.floor(st.T) + 1); }
+      else if (id === 'step') { pause(); st.T = Number(v); st.goal = null; }
+      else if (id === 'explode') { st.explode = Number(v); ad.setExplode(st.explode); }
+      else if (id === 'bolts') { st.bolts = v; ad.setBolts(v); }
+      else if (id === 'guides') { st.guides = v; ad.setGuides(v); }
+      else if (id === 'speed') st.speed = Number(v);
+      else if (id === 'restart') {
+        st.T = 0; st.goal = null; st.play = true; st.explode = 0; ad.setExplode(0);
+        const b = playBox(); if (b) b.checked = true;
+        const ex = explodeSlider(); if (ex) { ex.value = '0'; ex.nextElementSibling.textContent = '0'; }
+      } else st[id] = v;
+    },
+    update(dt) {
+      dt = Math.min(dt, 0.05);
+      if (st.goal !== null) { const d = st.goal - st.T; st.T += Math.sign(d) * Math.min(Math.abs(d), dt * 4); if (Math.abs(d) < 1e-3) { st.T = st.goal; st.goal = null; } }
+      else if (st.play) { st.T = Math.min(ad.N, st.T + dt * st.speed); if (st.T >= ad.N) pause(); }
+      ad.pose(st.T);
+      const s = Math.min(ad.N, Math.max(1, Math.floor(st.T) + 1));
+      const done = Math.floor(st.T);
+      const sl = slider(); if (sl && document.activeElement !== sl) { sl.value = String(done); sl.nextElementSibling.textContent = String(done); }
+      panel.ui.readout('step', `${done >= ad.N ? ad.N : s} / ${ad.N}`);
+      if (s !== lastShown || st.T >= ad.N) {
+        panel.ui.readout('kind', st.T >= ad.N ? '완성' : ad.stepKind(s));
+        panel.ui.readout('now', st.T >= ad.N ? '완성! (분해 보기로 모든 부품 · 볼트 · 너트 · 캡너트 확인)' : ad.stepName(s));
+        lastShown = st.T >= ad.N ? -2 : s;
+      }
+      panel.ui.readout('total', `구조 ${GAT_GUN.structCount} + 볼트·너트·캡너트 ${GAT_GUN.fastenerCount} = ${ad.N}단계`);
+      if (st.follow && st.T < ad.N && st.explode < 0.01) {
+        tgt.copy(ad.focus(s));
+        const d = tgt.sub(view.controls.target).multiplyScalar(Math.min(1, dt * 3));
+        view.controls.target.add(d); view.camera.position.add(d);
+      }
+    },
+    dispose() { ad.clearHighlight(); },
+  };
+}
+
 async function select(id) {
+  if (id === 'gatling') {
+    if (current?.id === 'gatling') return;
+    const token = ++loadToken;
+    const loading = document.getElementById('loading');
+    loading.style.display = 'block';
+    nav.querySelectorAll('a').forEach((a) => a.classList.toggle('on', a.dataset.id === 'gatling'));
+    const e = gatling ?? await buildGatling(loadPart, (k) => { loading.textContent = `개틀링 부품 불러오는 중… ${Math.round(k * 100)}%`; });
+    loading.textContent = '불러오는 중…';
+    if (token !== loadToken) return;
+    gatling = e;
+    if (current) { current.fn?.dispose?.(); view.scene.remove(current.root); }
+    overlay.clear();
+    picks.length = 0;
+    view.controls.zoomToCursor = true;
+    e.reset();
+    view.scene.add(e.root);
+    e.root.updateMatrixWorld(true);
+    const box = partBounds(e.root);
+    view.frame(box, { dir: [-0.9, 0.6, -1], fit: 1.15, minDist: 20 });
+    const size = box.getSize(new THREE.Vector3());
+    panel.showSpec({
+      name: '썬더 개틀링 6연장 (개정 조립 규칙 완성품)', url: 'https://github.com/popkn/3d-test/blob/parts/gatling/BLUEPRINT.md',
+      size: { x: Math.round(size.x), z: Math.round(size.z), y: Math.round(size.y), estimated: false, note: 'ASSEMBLY_RULES.md 1~10장 준수: 공중 고정 0건 · 모든 체결의 볼트/너트/캡너트 202개 동축 배치 · 총구 캡너트 6개 둥근 돔 앞(−Z) 정렬 · 분해 보기 시 모든 부품+볼트+너트+캡너트가 축을 따라 나사 회전하며 분해됩니다.' },
+      function: '4륜 주행(M1·M2), 서보 고각(OUT1, 0~15°), 배럴 회전 12시 쐐기 격발(M3, 고무줄 자동 장전). 아래 분해 보기 슬라이더로 모든 부품과 볼트 · 너트 · 캡너트를 분해해 확인하세요.',
+      specs: [
+        ...Object.entries(GAT_SHEETS).map(([no, t]) => [`도면 ${no}`, t]),
+        ['규칙 검사', `오류 0건 · 공중 고정 0 · 캡너트/볼트 동축 정렬 ${e.fastenerCount}개`],
+        ['볼트 · 너트 · 캡너트', Object.entries(e.bom).filter(([k]) => /^(bolt|nut|cap)/.test(k)).map(([k, n]) => `${k} ${n}`).join(' · ')],
+        ['서포트 규격', Object.entries(e.spacers).sort((a, b) => a[0] - b[0]).map(([l, n]) => `${l}mm × ${n}`).join(' · ')],
+      ],
+      ports: [],
+    });
+    let fn = null;
+    panel.reset((cid, v) => fn?.onControl?.(cid, v));
+    fn = gatlingFunction(e);
+    current = { id: 'gatling', root: e.root, fn };
+    loading.style.display = 'none';
+    return;
+  }
+  if (id === 'gatling-build') {
+    if (current?.id === 'gatling-build') return;
+    const token = ++loadToken;
+    const loading = document.getElementById('loading');
+    loading.style.display = 'block';
+    nav.querySelectorAll('a').forEach((a) => a.classList.toggle('on', a.dataset.id === 'gatling-build'));
+    const ad = gatlingSteps ?? await (async () => {
+      const e = await buildGatling(loadPart, (k) => { loading.textContent = `개틀링 부품 불러오는 중… ${Math.round(k * 100)}%`; });
+      const keys = Object.keys(GAT_SHEETS).filter((k) => e.order[k]);
+      let shown = null;
+      const a = detailAdapter(e.root, keys.map((k) => ({ no: k, name: GAT_SHEETS[k], holders: e.order[k] })), {
+        frameOpts: { dir: [-0.9, 0.6, -1], fit: 1.15, minDist: 20 },
+        count: e.count, granular: true, hasBolts: true, guides: true, highlight: true, rate: 4,
+        moduleDir: { '01': [0, -50, 0], '02': [0, 0, 120], '03': [0, 60, -110], '04': [0, 160, 35], '05': [-140, 20, 0] },
+        onPose(T) { const v = T >= a.N - 0.001; if (v !== shown) { shown = v; e.showBands(v); } },
+      });
+      return a;
+    })();
+    loading.textContent = '불러오는 중…';
+    if (token !== loadToken) return;
+    gatlingSteps = ad;
+    if (current) { current.fn?.dispose?.(); view.scene.remove(current.root); }
+    overlay.clear();
+    picks.length = 0;
+    view.controls.zoomToCursor = true;
+    view.scene.add(ad.root);
+    ad.setExplode(0); ad.pose(ad.N);
+    ad.root.updateMatrixWorld(true);
+    const box = partBounds(ad.root);
+    ad.pose(0);
+    view.frame(box, { dir: [-0.9, 0.6, -1], fit: 0.75, minDist: 20 });
+    panel.showSpec({
+      name: '썬더 개틀링 6연장 — 최대 세분화 단계 조립', url: 'https://github.com/popkn/3d-test/blob/parts/gatling/BLUEPRINT.md',
+      size: { x: Math.round(box.max.x - box.min.x), z: Math.round(box.max.z - box.min.z), y: Math.round(box.max.y - box.min.y), estimated: false, note: `규칙 10.3 최대 세분화: 부품 1개 배치 + 볼트/너트/캡너트 1개 체결씩 총 ${ad.N}단계. 현재 작업 대상 강조 + 축 점선 가이드선 + 임의 단계 분해 지원.` },
+      function: '바닥판부터 부품 1개 · 볼트/너트/캡너트 1개씩 순차적으로 조립됩니다. 일시정지 후 이전/다음 단계 또는 분해 보기로 모든 체결 상태를 자세히 확인하세요.',
+      specs: [['세분화 단계', `${ad.N}단계 (구조 ${GAT_GUN.structCount} + 체결 ${GAT_GUN.fastenerCount})`], ['규칙 검사', '오류 0건 · 공중 고정 0 · 동축 정렬 완료']],
+      ports: [],
+    });
+    let fn = null;
+    panel.reset((cid, v) => fn?.onControl?.(cid, v));
+    fn = gatlingStepFunction(ad);
+    current = { id: 'gatling-build', root: ad.root, fn };
+    loading.style.display = 'none';
+    return;
+  }
   if (STAGED[id]) {
     if (current?.id === id) return;
     const token = ++loadToken;
@@ -568,7 +775,7 @@ tipEl.className = 'tag hover-tip';
 tipEl.style.cssText = 'position:absolute;pointer-events:none;opacity:0;z-index:5';
 stage.appendChild(tipEl);
 view.renderer.domElement.addEventListener('pointermove', (e) => {
-  const asm = current?.id === 'eagle' ? eagle : current?.id === 'battlebot' ? bot : current?.id === 'train' ? train : current?.id === 'train-build' ? trainSteps : STAGED[current?.id] ? stagedCache[current.id] : null;
+  const asm = current?.id === 'gatling' ? gatling : current?.id === 'gatling-build' ? gatlingSteps : current?.id === 'eagle' ? eagle : current?.id === 'battlebot' ? bot : current?.id === 'train' ? train : current?.id === 'train-build' ? trainSteps : STAGED[current?.id] ? stagedCache[current.id] : null;
   if (!asm) { tipEl.style.opacity = 0; return; }
   const r = view.renderer.domElement.getBoundingClientRect();
   const v = new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);

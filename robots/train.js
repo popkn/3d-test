@@ -35,6 +35,7 @@ export async function makeAdapter(ctx) {
     },
     setExplode(x) {
       ex = x;
+      e.setExplode?.(x);
     },
     setHidden(i, v) {
       hidden[i] = v;

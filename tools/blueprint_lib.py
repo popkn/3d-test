@@ -82,6 +82,33 @@ def draw_part(sv, view, p, X, Y, S, ghost=False):
     sh = p['shape']
     if sh == 'ball':
         sv.add(f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{s[0] / 2 * S:.1f}" fill="{fill}" stroke="{stroke}" stroke-width="0.5">{tip}</circle>'); return
+    if sh in ('bolt', 'nut', 'capnut'):
+        if p.get('axis') == la:
+            r = max(1.6, (s[ha] / 2) * S)
+            if sh == 'bolt':
+                sv.add(f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{r:.1f}" fill="{fill}" stroke="#1d2230" stroke-width="0.7">{tip}</circle>')
+                if not ghost:
+                    cr = r * 0.55
+                    sv.add(f'<path d="M {cx - cr:.1f} {cy:.1f} H {cx + cr:.1f} M {cx:.1f} {cy - cr:.1f} V {cy + cr:.1f}" stroke="#1d2230" stroke-width="0.6"/>')
+            else:
+                pts = ' '.join(f'{cx + math.cos(math.radians(60 * k + 30)) * r:.1f},{cy + math.sin(math.radians(60 * k + 30)) * r:.1f}' for k in range(6))
+                sv.add(f'<polygon points="{pts}" fill="{fill}" stroke="#1d2230" stroke-width="0.65">{tip}</polygon>')
+                if not ghost:
+                    sv.add(f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{r * (0.45 if sh == "nut" else 0.65):.1f}" fill="{"#fff" if sh == "nut" else "none"}" stroke="#1d2230" stroke-width="0.45"/>')
+            return
+        # 측면에서 본 볼트 · 너트 · 캡너트 (축 방향을 정확히 표시)
+        ax = p.get('axis', 1)
+        sv.add(f'<rect x="{cx - w / 2:.1f}" y="{cy - h / 2:.1f}" width="{max(w, 1.4):.1f}" height="{max(h, 1.4):.1f}" rx="{1.4 if sh == "capnut" else 0.5}" fill="{fill}" fill-opacity="{fo}" stroke="#1d2230" stroke-width="0.55">{tip}</rect>')
+        if not ghost and sh == 'bolt' and p.get('up'):
+            # 볼트 머리 강조선 (up 방향 끝)
+            up = p['up']
+            if ax == ha:
+                hx = cx + (w / 2 if up[ha] * hs > 0 else -w / 2)
+                sv.add(f'<line x1="{hx:.1f}" y1="{cy - max(h * 0.6, 1.8):.1f}" x2="{hx:.1f}" y2="{cy + max(h * 0.6, 1.8):.1f}" stroke="#1d2230" stroke-width="1.3"/>')
+            elif ax == va:
+                hy = cy + (h / 2 if up[va] * vs > 0 else -h / 2)
+                sv.add(f'<line x1="{cx - max(w * 0.6, 1.8):.1f}" y1="{hy:.1f}" x2="{cx + max(w * 0.6, 1.8):.1f}" y2="{hy:.1f}" stroke="#1d2230" stroke-width="1.3"/>')
+        return
     if sh in ('cyl', 'disc') and p['axis'] == la:
         sv.add(f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{s[ha] / 2 * S:.1f}" fill="{fill}" fill-opacity="{fo}" stroke="{stroke}" stroke-width="0.5">{tip}</circle>')
         if sh == 'disc' and not ghost:

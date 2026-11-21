@@ -51,12 +51,16 @@ export async function loadModules(list, loadPart, onProgress) {
   return mods;
 }
 
+// 축 대칭 체결 부품: 크기 비율로 방향을 추측하면 옆으로 눕는 오류가 생기므로 up 벡터로 직접 동축 정렬 (규칙 10.2)
+const FASTENER_IDS = new Set(['bolt-m3x6', 'bolt-m3x10', 'bolt-m26x10', 'nut-m3', 'cap-nut-m3', 's-nut-blue']);
+const UP_Y = new THREE.Vector3(0, 1, 0);
+
 // 배치 하나 → 부품 모델을 도면 위치 · 크기 · 방향에 맞춰 넣은 그룹 (월드 좌표)
 export function makeHolder(a, mods) {
   const model = mods[a.id].build();
   hideDemo(model.object3d);
   const holder = new THREE.Group();
-  holder.userData = { name: a.n, id: a.id, sheet: a.s };
+  holder.userData = { name: a.n, id: a.id, sheet: a.s, fastener: FASTENER_IDS.has(a.id), up: a.up ? [...a.up] : null, expDir: a.exp ? [...a.exp] : null };
   if (a.id === 'support-spacer' && a.length && model.handles?.setLength) {
     // 서포트: 길이를 도면 값으로, 몸통 아래가 도면 상자 아래에
     model.handles.setLength(a.length);
@@ -71,6 +75,7 @@ export function makeHolder(a, mods) {
     const size = box.getSize(new THREE.Vector3()), c = box.getCenter(new THREE.Vector3());
     model.object3d.position.sub(c);
     if (a.euler) holder.rotation.set(...a.euler.map((d) => THREE.MathUtils.degToRad(d)), a.eorder || 'XYZ');
+    else if (FASTENER_IDS.has(a.id) && a.up) holder.quaternion.setFromUnitVectors(UP_Y, new THREE.Vector3(...a.up).normalize());
     else holder.quaternion.setFromRotationMatrix(chooseRotation([size.x, size.y, size.z], a.z, a));
     // flip: 자동으로 고른 방향을 월드 축으로 180° 더 돌린다 (예: 부리 갈고리를 아래로)
     if (a.flip) holder.quaternion.premultiply(new THREE.Quaternion().setFromAxisAngle(axisVec('xyz'.indexOf(a.flip)), Math.PI));

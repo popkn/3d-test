@@ -9,10 +9,16 @@ export async function makeAdapter(ctx) {
   const e = await buildGatling(loadPart, ctx.onProgress);
   const keys = Object.keys(SHEETS).filter((k) => e.order[k]);
   let shown = null;
-  // 파트 5개 안의 부품을 하나씩 조립 (도면 순서). 고무줄은 다 조립된 뒤에 건다
+  // 규칙 10.1~10.5: 최대 세분화 (1부품 · 1체결 = 1단계, 총 302단계), 볼트·너트·캡너트 기본 표시 + 완전 분해 + 나사 회전 + 가이드선 + 하이라이트
   const ad = detailAdapter(e.root, keys.map((k) => ({ no: k, name: SHEETS[k], holders: e.order[k] })), {
-    frameOpts: { dir: [-0.9, 0.6, -1], fit: 1.15, minDist: 20 }, count: e.count,
-    moduleDir: { '01': [0, -70, 0], '02': [0, -10, 150], '03': [0, 70, -120], '04': [0, 190, 40], '05': [-170, 20, 0] },
+    frameOpts: { dir: [-0.9, 0.6, -1], fit: 1.15, minDist: 20 },
+    count: e.count,
+    granular: true,
+    hasBolts: true,
+    guides: true,
+    highlight: true,
+    rate: 4,
+    moduleDir: { '01': [0, -50, 0], '02': [0, 0, 120], '03': [0, 60, -110], '04': [0, 160, 35], '05': [-140, 20, 0] },
     onPose(T) { const v = T >= ad.N - 0.001; if (v !== shown) { shown = v; e.showBands(v); } },
   });
   ad.fn = gatlingFn(e);
@@ -25,7 +31,7 @@ function gatlingFn(e) {
   const live = { aim: 0 };
   let dl = 0, dr = 0, yaw = 0, want = 0, budget = 0, shots = 0;
   const speed = 130 / 60 * Math.PI * 2 * WHEEL_R;
-  const W = 130 / 60 * Math.PI * 2;                       // 배럴 각속도 (rad/s)
+  const W = 130 / 60 * Math.PI * 2;
   return {
     title: '주행 · 고각 · 발사',
     items: [
