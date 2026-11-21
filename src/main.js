@@ -128,7 +128,7 @@ function botFunction(e) {
   panel.ui.controls([
     { type: 'select', id: 'drive', label: '조종', options: [['stop', '정지'], ['fwd', '전진 (궤도)'], ['back', '후진'], ['left', '제자리 왼쪽 회전'], ['right', '제자리 오른쪽 회전']], value: 'stop' },
     { type: 'toggle', id: 'spin', label: '스피너 (DC 400rpm)', value: false },
-    { type: 'slider', id: 'wedge', label: '웨지 들기 (서보)', min: 0, max: 60, step: 1, value: 0, unit: '°' },
+    { type: 'slider', id: 'wedge', label: '웨지 들기 (서보)', min: 0, max: 38, step: 1, value: 0, unit: '°' },
     { type: 'button', id: 'attack', label: '공격 데모 (웨지 들기 + 스피너)' },
     { type: 'slider', id: 'explode', label: '분해 보기', min: 0, max: 1, step: 0.01, value: 0 },
     ...Object.entries(BB_SHEETS).map(([no, t]) => ({ type: 'toggle', id: 'g' + no, label: `${no} ${t}`, value: true, compact: true })),
@@ -142,16 +142,16 @@ function botFunction(e) {
       else st[id] = id === 'drive' ? v : id === 'spin' ? v : Number(v);
     },
     update(dt) {
-      const v = 130 / 60 * Math.PI * 62;   // mm/s
+      const v = 130 / 60 * Math.PI * 71;   // mm/s (러버 외경 Ø71 → 0.48 m/s)
       const [l, r] = { stop: [0, 0], fwd: [1, 1], back: [-1, -1], left: [-1, 1], right: [1, -1] }[st.drive];
       st.dl += l * v * dt; st.dr += r * v * dt;
-      e.setTracks(-st.dl, -st.dr);
+      e.setTracks(st.dl, st.dr);
       if (st.drive === 'left' || st.drive === 'right') { st.yaw += (st.drive === 'left' ? 1 : -1) * dt * 0.8; e.root.rotation.y = st.yaw; }
       const target = st.spin ? 400 : 0;
       st.rpm += Math.sign(target - st.rpm) * Math.min(Math.abs(target - st.rpm), dt * 300);
       e.spinner.rotation.y -= st.rpm / 60 * Math.PI * 2 * dt;
       let w = st.wedge;
-      if (demo > 0) { demo -= dt; w = demo > 2 ? (3 - demo) * 60 : demo > 1 ? 60 : demo * 60; if (demo <= 0) st.spin = false; }
+      if (demo > 0) { demo -= dt; w = demo > 2 ? (3 - demo) * 38 : demo > 1 ? 38 : Math.max(0, demo) * 38; if (demo <= 0) st.spin = false; }
       e.setWedge(w);
       for (const [no, g] of Object.entries(e.groups)) {
         const d = BB_EXPLODE[no] || [0, 0, 0];
@@ -160,7 +160,7 @@ function botFunction(e) {
       }
       panel.ui.readout('parts', `${e.count}개 (볼트 · 너트 포함 ${BB_TOTAL}개)`);
       panel.ui.readout('track', st.drive === 'stop' ? '정지' : `${(v / 1000).toFixed(2)} m/s · ${{ fwd: '전진', back: '후진', left: '왼쪽 회전', right: '오른쪽 회전' }[st.drive]}`);
-      panel.ui.readout('spin', `${st.rpm.toFixed(0)} rpm · 날 끝 ${(st.rpm / 60 * Math.PI * 0.084).toFixed(2)} m/s`);
+      panel.ui.readout('spin', `${st.rpm.toFixed(0)} rpm · 날 끝 ${(st.rpm / 60 * Math.PI * 0.097).toFixed(2)} m/s`);
       panel.ui.readout('wedge', `${w.toFixed(0)}°${demo > 0 ? ' (공격 데모)' : ''}`);
     },
   };
