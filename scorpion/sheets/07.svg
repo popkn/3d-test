@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 1260" width="1260" height="1260" font-family="JetBrains Mono, 'Noto Sans KR', sans-serif"><defs><pattern id="g" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="#e3e8ef" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="#f6f8fb"/><rect x="14" y="14" width="1232" height="1232" fill="none" stroke="#1d2230" stroke-width="1.2"/>
+<rect x="14" y="14" width="1232" height="46" fill="#1d2230"/>
+<text x="28.0" y="44.0" font-size="13" fill="#9fb3d1" font-weight="700" text-anchor="start">배틀로봇 "크림슨 스콜피온" (4WD 쌍발 수직 어퍼컷 낫 · 4절링크 양집게 · 전갈 꼬리 해머) · 도면 07</text>
+<text x="830.0" y="44.0" font-size="17" fill="#ffffff" font-weight="700" text-anchor="start">공격 메커니즘 확대 상세도 (규칙 10.6 · 4절링크 양집게 &amp; 쌍발 수직 어퍼컷 + 전갈 꼬리)</text>
+<text x="1232.0" y="76.0" font-size="10.5" fill="#5a6070" font-weight="400" text-anchor="end">4절링크 오차 0.0000 mm · 토크 2.73× 증폭 · 3종 무기 동시 작동 충돌 0건 검증</text>
+<text x="45.0" y="96.0" font-size="12.0" fill="#1d2230" font-weight="700" text-anchor="start">① [윗면 확대 X-Z] 대칭 4절링크 집게 크러셔 (OUT1·OUT2 · 열림 160 mm ↔ 압착 36 mm · 낫 간격 7.3+ mm)</text>
+<rect x="45" y="108" width="1170" height="450" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>
+<rect x="485.4" y="423.2" width="289.1" height="107.8" fill="#dfe5ee" stroke="#5b6578" stroke-width="1.2"/>
+<text x="630.0" y="506.5" font-size="9.0" fill="#445" font-weight="700" text-anchor="middle">상부 갑판 (x ∈ [-59,+59], z ≥ -59)</text>
+<rect x="601.8" y="146.3" width="7.4" height="254.8" fill="#c8202b" opacity="0.85"/>
+<rect x="650.8" y="146.3" width="7.4" height="254.8" fill="#c8202b" opacity="0.85"/>
+<text x="630.0" y="163.5" font-size="9.2" fill="#c8202b" font-weight="700" text-anchor="middle">쌍발 수직 어퍼컷 낫 (x=±10 · Ø104)</text>
+<rect x="429.1" y="433.0" width="34.3" height="122.5" fill="#33363c" rx="3"/>
+<text x="446.2" y="494.2" font-size="8.0" fill="#fff" font-weight="700" text-anchor="middle">앞바퀴</text>
+<rect x="796.6" y="433.0" width="34.3" height="122.5" fill="#33363c" rx="3"/>
+<text x="813.8" y="494.2" font-size="8.0" fill="#fff" font-weight="700" text-anchor="middle">앞바퀴</text>
+<circle cx="581.0" cy="469.8" r="36.8" fill="#fff" stroke="#2f6fe0" stroke-width="1.4"/>
+<circle cx="495.2" cy="408.5" r="5" fill="#f2c21b" stroke="#1d2230" stroke-width="1.5"/>
+<line x1="581.0" y1="469.8" x2="604.0" y2="478.1" stroke="#2f7fe8" stroke-width="2.5" stroke-dasharray="6 3"/>
+<line x1="604.0" y1="478.1" x2="508.6" y2="455.6" stroke="#2f7fe8" stroke-width="3.0" stroke-dasharray="6 3"/>
+<line x1="508.6" y1="455.6" x2="431.7" y2="184.6" stroke="#2f7fe8" stroke-width="5.2" stroke-linecap="round" stroke-dasharray="6 3"/>
+<circle cx="604.0" cy="478.1" r="3.5" fill="#f2c21b" stroke="#1d2230"/>
+<circle cx="508.6" cy="455.6" r="3.5" fill="#f2c21b" stroke="#1d2230"/>
+<line x1="581.0" y1="469.8" x2="568.8" y2="491.0" stroke="#c8202b" stroke-width="2.5"/>
+<line x1="568.8" y1="491.0" x2="477.9" y2="454.3" stroke="#c8202b" stroke-width="3.0"/>
+<line x1="477.9" y1="454.3" x2="577.8" y2="190.9" stroke="#c8202b" stroke-width="5.2" stroke-linecap="round"/>
+<circle cx="568.8" cy="491.0" r="3.5" fill="#f2c21b" stroke="#1d2230"/>
+<circle cx="477.9" cy="454.3" r="3.5" fill="#f2c21b" stroke="#1d2230"/>
+<circle cx="679.0" cy="469.8" r="36.8" fill="#fff" stroke="#2f6fe0" stroke-width="1.4"/>
+<circle cx="764.8" cy="408.5" r="5" fill="#f2c21b" stroke="#1d2230" stroke-width="1.5"/>
+<line x1="679.0" y1="469.8" x2="656.0" y2="478.1" stroke="#2f7fe8" stroke-width="2.5" stroke-dasharray="6 3"/>
+<line x1="656.0" y1="478.1" x2="751.4" y2="455.6" stroke="#2f7fe8" stroke-width="3.0" stroke-dasharray="6 3"/>
+<line x1="751.4" y1="455.6" x2="828.3" y2="184.6" stroke="#2f7fe8" stroke-width="5.2" stroke-linecap="round" stroke-dasharray="6 3"/>
+<circle cx="656.0" cy="478.1" r="3.5" fill="#f2c21b" stroke="#1d2230"/>
+<circle cx="751.4" cy="455.6" r="3.5" fill="#f2c21b" stroke="#1d2230"/>
+<text x="840.3" y="184.6" font-size="9.0" fill="#2f7fe8" font-weight="700" text-anchor="start">열림 +15.9° (x=81.0)</text>
+<line x1="679.0" y1="469.8" x2="691.2" y2="491.0" stroke="#c8202b" stroke-width="2.5"/>
+<line x1="691.2" y1="491.0" x2="782.1" y2="454.3" stroke="#c8202b" stroke-width="3.0"/>
+<line x1="782.1" y1="454.3" x2="682.2" y2="190.9" stroke="#c8202b" stroke-width="5.2" stroke-linecap="round"/>
+<circle cx="691.2" cy="491.0" r="3.5" fill="#f2c21b" stroke="#1d2230"/>
+<circle cx="782.1" cy="454.3" r="3.5" fill="#f2c21b" stroke="#1d2230"/>
+<text x="694.2" y="190.9" font-size="9.0" fill="#c8202b" font-weight="700" text-anchor="start">압착 −20.8° (x=21.3)</text>
+<text x="63.0" y="550.0" font-size="9.2" fill="#1d2230" font-weight="700" text-anchor="start">기구학 공식: 크랭크 R=10 mm · 커플러 L=40 mm(소5) · 로커 r=20 mm(소8) → 서보 100° 회전 시 집게 36.6° 구동 · 토크 증폭 2.73× · 전구간 오차 0.0000 mm</text>
+<text x="45.0" y="578.0" font-size="12.0" fill="#1d2230" font-weight="700" text-anchor="start">② [측면 확대 Y-Z] 쌍발 400rpm 수직 어퍼컷 낫(Ø104) 360° 스윕 &amp; 오버헤드 전갈 꼬리 해머(55°→0°) 안전 여유 검증</text>
+<rect x="45" y="590" width="1170" height="540" fill="url(#g)" stroke="#aab4c3" stroke-dasharray="4 3"/>
+<line x1="65" y1="1078.0" x2="1195" y2="1078.0" stroke="#1d2230" stroke-width="2"/>
+<text x="75.0" y="1072.0" font-size="8.8" fill="#445" font-weight="700" text-anchor="start">아레나 지면 y = 0.0 mm</text>
+<rect x="564.0" y="1065.7" width="323.9" height="3.3" fill="#2b2c30"/>
+<rect x="564.0" y="959.9" width="323.9" height="3.3" fill="#2b2c30"/>
+<rect x="379.6" y="956.6" width="323.9" height="3.3" fill="#445"/>
+<rect x="789.5" y="792.6" width="77.9" height="3.3" fill="#2b2c30"/>
+<circle cx="623.5" cy="1026.8" r="51.2" fill="none" stroke="#33363c" stroke-width="3"/>
+<circle cx="828.5" cy="1026.8" r="51.2" fill="none" stroke="#33363c" stroke-width="3"/>
+<circle cx="439.0" cy="917.7" r="106.6" fill="#c8202b" fill-opacity="0.14" stroke="#c8202b" stroke-width="2.4" stroke-dasharray="6 3"/>
+<circle cx="439.0" cy="917.7" r="5" fill="#c8202b"/>
+<text x="439.0" y="798.8" font-size="9.2" fill="#c8202b" font-weight="700" text-anchor="middle">수직 어퍼컷 낫 최상단 y=130.2 mm</text>
+<text x="439.0" y="1048.9" font-size="9.0" fill="#c8202b" font-weight="700" text-anchor="middle">최하단 y=26.2 mm (어퍼컷 방향 ↻)</text>
+<text x="439.0" y="988.6" font-size="8.8" fill="#f08a24" font-weight="700" text-anchor="middle">◀ 집게 팔 y=43.6 mm (낫 좌/우 외측)</text>
+<rect x="357.0" y="983.7" width="205.0" height="10.2" fill="#f08a24" opacity="0.55"/>
+<circle cx="808.0" cy="753.7" r="5" fill="#9b51e0"/>
+<line x1="808.0" y1="753.7" x2="643.4" y2="518.6" stroke="#9b51e0" stroke-width="4.2" stroke-dasharray="6 3"/>
+<rect x="622.9" y="508.3" width="41.0" height="20.5" fill="#9b51e0" opacity="0.8"/>
+<text x="633.4" y="508.6" font-size="9.2" fill="#9b51e0" font-weight="700" text-anchor="end">대기 +55° (전갈 꼬리 자세)</text>
+<line x1="808.0" y1="753.7" x2="521.0" y2="753.7" stroke="#c8202b" stroke-width="4.2"/>
+<rect x="500.5" y="743.4" width="41.0" height="20.5" fill="#c8202b" opacity="0.8"/>
+<text x="511.0" y="743.7" font-size="9.2" fill="#c8202b" font-weight="700" text-anchor="end">타격 0° (독침 끝 y=140.6 mm)</text>
+<line x1="490.2" y1="811.1" x2="490.2" y2="789.8" stroke="#2fae67" stroke-width="3"/>
+<text x="500.5" y="800.4" font-size="9.5" fill="#2fae67" font-weight="700" text-anchor="start">안전 여유 +10.4 mm (동시 작동 충돌 0!)</text>
+<text x="63.0" y="1110.0" font-size="9.4" fill="#1d2230" font-weight="700" text-anchor="start">3단 콤보 시퀀스: ① 전방 IR(IN1) 상대 포착 → ② 양집게(OUT1·2) −20.8° 압착 포획 → ③ 쌍발 400rpm 수직 낫 어퍼컷 + 꼬리 해머(OUT3) 55°→0° 동시 격파!</text></svg>
