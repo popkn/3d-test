@@ -4,16 +4,16 @@ import { createGuideLines } from '../assembly/render.js';
 import { BOLT_PITCH } from '../assembly/solver.js';
 import ASSEMBLY, { GUN, BOM, SPACERS } from './assembly.js';
 
-// "썬더 개틀링 6연장 v2" 완성품 3D 조립 (ASSEMBLY_RULES.md 1~10장 · 무충돌 전면 재설계)
-// - 구조 부품 113개 + 볼트 · 너트 · 캡너트 206개 = 319개 전원 실제 3D 모델 원점 직결 배치 (공중 고정 0 · 충돌 0)
-// - 전선 오프셋(partBounds 중심 왜곡) 및 L자 뒤집힘 원천 차단: origin + 정규직교 기저(xdir, up) 직접 구성
-// - 볼트 · 너트 · 캡너트 기본 표시 (visible = true) + 완전 분해 시 전원 결합 축 따라 나사 회전하며 분해 + 점선 가이드선
-// - 기능: 버기 4륜 주행 (M1·M2), 6연장 배럴 로터 회전 (M3), 고각 서보 크랭크+소5 링크+경첩 연동 (OUT1), 12시 쐐기 격발
+// "썬더 개틀링 6연장 v3" 완성품 3D 조립 (ASSEMBLY_RULES.md 1~10장 · 규칙 2.5 · 10.6 완전 준수)
+// - [규칙 2.5] 4륜 전원 DC 130rpm 직결 (앞 M1·M2 + 뒤 M3·M4, 헛바퀴 0개) + 배럴 DC 400rpm (EX-M1 · 모터 확장 보드 A3)
+// - [규칙 10.6] 뒤 2중 로터 케이지 외팔보 + 개방형 배럴 + L자 2×1/후방 걸쇠 캡너트(+Z 돔) ↔ 총구 캡너트(−Z 돔) ↔ 12시 36.9° 격발 쐐기
+//   → 고무줄 장전선 관통 0건 · 전방 발사 비행선(−Z) 장애물 0건 · 학습용 메커니즘 확대 메타 포함
+// - 구조 112 + 볼트/너트/캡너트 238 = 350개 전원 실제 3D 원점 직결 · 완전 분해 시 전원 결합 축 따라 나사 회전
 
 const DEG = Math.PI / 180;
 export const WHEEL_R = 40;
 export const TILT_MAX = GUN.tilt;
-const FIRE_AT = Math.PI / 2 + 0.22;          // 12시를 조금 지나 쐐기가 고리를 벗기는 각도
+const FIRE_AT = Math.PI / 2 + 0.14;          // 12시를 지나며 36.9° 쐐기가 걸쇠 돔 끝(−12.5)에서 고리를 밀어 이탈시키는 각도
 const BAND_SPEED = 1400;
 const TWO_PI = Math.PI * 2;
 const UP_Y = new THREE.Vector3(0, 1, 0);
@@ -22,7 +22,7 @@ const PART_OFFSET = {
   '01': [0, 0, 0],
   '02': [0, 22, 26],
   '03': [0, 58, -32],
-  '04': [0, 106, 20],
+  '04': [0, 108, -10],
   '05': [0, 26, 0],
 };
 
@@ -35,6 +35,7 @@ function placePart(a, mods) {
   if (!a.o) {
     const h = makeHolder(a, mods);
     h.userData.note = a.h || '';
+    if (a.mech) h.userData.mech = a.mech;
     return h;
   }
   const model = mods[a.id].build();
@@ -51,6 +52,7 @@ function placePart(a, mods) {
     up: a.up ? [...a.up] : null,
     expDir: a.exp ? [...a.exp] : null,
     note: a.h || '',
+    mech: a.mech || null,
   };
   if (a.id === 'hinge-3x3' && model.handles?.pivot) {
     holder.userData.hingePivot = model.handles.pivot;
@@ -74,16 +76,53 @@ function placePart(a, mods) {
   return holder;
 }
 
+// 실물 고무줄 고리(소모품): 총구 캡너트 뒤(r=28.8, z=-74.5) ↔ 후방 걸쇠 캡너트 상단(r=38.6, z=-16.5) 100% 개방 공간 직선 장전!
+function makeRubberBand(bx, by, mat) {
+  const r = Math.hypot(bx, by), ux = bx / r, uy = by / r;
+  const tx = -uy, ty = ux; // 접선 방향
+  const rF = GUN.bandFrontR ?? 28.8, zF = GUN.bandFrontZ ?? -74.5;
+  const rR = GUN.bandRearR ?? 38.6, zR = GUN.bandRearZ ?? -16.5;
+  const pF = new THREE.Vector3(ux * rF, uy * rF, zF);
+  const pR = new THREE.Vector3(ux * rR, uy * rR, zR);
+  const mid = new THREE.Vector3().addVectors(pF, pR).multiplyScalar(0.5);
+  const g = new THREE.Group();
+  g.userData = { name: '고무줄 (소모품 · 총구 ↔ 후방 걸쇠)', id: 'rubber-band', sheet: '03' };
+
+  // 양쪽 가닥 (총구 캡너트 옆면 ↔ 걸쇠 캡너트 양옆을 감싸는 실제 고리 형태)
+  const halfSep = 2.6;
+  const len = pF.distanceTo(pR);
+  const dir = new THREE.Vector3().subVectors(pR, pF).normalize();
+  const qStrand = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 0, 1), dir);
+  const strandGeo = new THREE.BoxGeometry(1.1, 1.3, len);
+  for (const s of [-1, 1]) {
+    const strand = new THREE.Mesh(strandGeo, mat);
+    strand.position.set(tx * halfSep * s, ty * halfSep * s, 0);
+    strand.quaternion.copy(qStrand);
+    strand.castShadow = true;
+    g.add(strand);
+  }
+  // 총구 앞 고리 & 걸쇠 뒤 고리 (실제 캡너트 몸통에 감긴 모습)
+  const loopGeo = new THREE.TorusGeometry(3.5, 0.75, 8, 20);
+  const frontLoop = new THREE.Mesh(loopGeo, mat);
+  frontLoop.position.set(ux * (25.0 - (rF + rR) / 2), uy * (25.0 - (rF + rR) / 2), zF - mid.z);
+  const rearLoop = new THREE.Mesh(loopGeo, mat);
+  rearLoop.position.set(ux * (35.0 - (rF + rR) / 2), uy * (35.0 - (rF + rR) / 2), zR - mid.z);
+  g.add(frontLoop, rearLoop);
+
+  return { m: g, home: mid, len, a0: Math.atan2(uy, ux) };
+}
+
 export async function buildGatling(loadPart, onProgress) {
   const mods = await loadModules(ASSEMBLY, loadPart, onProgress);
   const root = new THREE.Group();
-  root.position.y = 1.6; // 버기 타이어(실측 반지름 39.6) 바닥이 지면 y=0에 정확히 닿도록
+  root.position.y = 1.6; // 버기 타이어 바닥 y=0 접지
   const groups = {}, pivots = {}, order = {};
   const wheels = [];
   const rotor = new THREE.Group();
   const crank = new THREE.Group(); crank.position.set(0, GUN.servoY, GUN.liftZ);
   let link = null, pinLo = null, pinHi = null, hingePivot = null;
-  const items = []; // 완전 분해 · 볼트 토글 · 가이드선 대상 (319개 전원)
+  const items = [];
+  const mechSteps = [];
 
   const pivotOf = (s) => {
     if (!pivots[s]) {
@@ -94,9 +133,11 @@ export async function buildGatling(loadPart, onProgress) {
     return pivots[s];
   };
 
-  for (const a of ASSEMBLY) {
+  for (let idx = 0; idx < ASSEMBLY.length; idx++) {
+    const a = ASSEMBLY[idx];
     const h = placePart(a, mods);
     if (h.userData.hingePivot) hingePivot = h.userData.hingePivot;
+    if (a.mech) mechSteps.push({ step1: idx + 1, name: a.n, mech: a.mech, h });
     (order[a.s] ??= []).push(h);
     const g = groups[a.s] ??= new THREE.Group();
 
@@ -129,12 +170,10 @@ export async function buildGatling(loadPart, onProgress) {
     }
     parent.add(h);
 
-    // 분해 벡터 계산 (월드 기준): 파트 기본 오프셋 + 부품/체결 고유 축 방향
     const po = PART_OFFSET[a.s] || [0, 0, 0];
     const expW = new THREE.Vector3(po[0], po[1], po[2]);
     if (a.exp) {
       if (a.fastener) {
-        // 볼트 · 너트 · 캡너트: 파트 오프셋에 상쇄되지 않고 자기 체결 축(exp)으로 최소 34 mm 순수 분리
         const dir = new THREE.Vector3(...a.exp).normalize();
         const proj = expW.dot(dir);
         if (proj < 0) expW.addScaledVector(dir, -proj);
@@ -158,28 +197,21 @@ export async function buildGatling(loadPart, onProgress) {
   rotor.position.set(0, GUN.axisY - GUN.hingeY, -GUN.hingeZ);
   pivotOf('03').add(rotor);
 
-  // 고무줄 6개 (소모품 · 부품 목록 밖): 총구 캡너트(z=-63.5) → 걸쇠 기둥(z=+34.7), 배럴 바깥쪽
-  const bandLen = (GUN.bandZ1 ?? 34.7) - (GUN.bandZ0 ?? -63.5);
-  const bandMidZ = ((GUN.bandZ0 ?? -63.5) + (GUN.bandZ1 ?? 34.7)) / 2;
-  const bandMat = new THREE.MeshStandardMaterial({ color: 0xd9a441, roughness: 0.7 });
+  // 고무줄 6개 (실제 총구 캡너트 ↔ 후방 걸쇠 캡너트 장전 고리 · 장애물 0건)
+  const bandMat = new THREE.MeshStandardMaterial({ color: 0xe6a119, roughness: 0.65 });
   const bands = GUN.barrels.map(([bx, by]) => {
-    const r = Math.hypot(bx, by), ux = bx / r, uy = by / r;
-    const m = new THREE.Mesh(new THREE.BoxGeometry(1.6, 1.6, bandLen), bandMat);
-    m.userData = { name: '고무줄 (소모품)', id: 'rubber-band', sheet: '03' };
-    const home = new THREE.Vector3(ux * (r + 3.8), uy * (r + 3.8), bandMidZ);
-    m.castShadow = true;
-    return { m, home, a0: Math.atan2(uy, ux), loaded: true, fly: -1, grow: 1 };
+    const rb = makeRubberBand(bx, by, bandMat);
+    return { ...rb, loaded: true, fly: -1, grow: 1 };
   });
   for (const g of Object.values(groups)) root.add(g);
   for (const b of bands) { b.m.position.copy(b.home); rotor.add(b.m); }
 
-  // 분해 가이드선 (단일 LineSegments 드로우콜)
   const guide = createGuideLines(items.length, 0x38bdf8, 0.55);
   root.add(guide.object);
 
   let phi = 0;
   let explode = 0;
-  let boltsPref = true;   // 규칙 10.1: 볼트 · 너트 · 캡너트 기본 켬
+  let boltsPref = true;
   let guidesOn = true;
   let bandsPref = true;
   const hidden = {};
@@ -190,7 +222,6 @@ export async function buildGatling(loadPart, onProgress) {
     for (const W of wheels) W.h.quaternion.copy(qx.setFromAxisAngle(X, -(W.side > 0 ? dr : dl) / WHEEL_R)).multiply(W.q0);
   }
 
-  // 고각: 포탑 각도 → 경첩 날개 + 탭 위치 → 크랭크 핀 (소5 링크 길이 30) → 서보 각도 · 링크 자세
   let crankA = GUN.a0 * DEG;
   const linkX = link ? link.position.x : -0.2;
   function setTilt(deg) {
@@ -210,7 +241,6 @@ export async function buildGatling(loadPart, onProgress) {
     const pz = GUN.liftZ + GUN.crank * Math.sin(best), py = GUN.servoY - GUN.crank * Math.cos(best);
     if (link) {
       const ang = Math.atan2(tz - pz, ty - py);
-      // 소5 PCB 구멍(-20,-10,0,+10,+20) 중 -10 ↔ +20(간격 30)이 양 핀에 0.0 mm 정렬되도록 -5 mm 오프셋
       link.position.set(linkX, (py + ty) / 2 - 5 * Math.cos(ang), (pz + tz) / 2 - 5 * Math.sin(ang));
       link.rotation.set(ang, 0, Math.PI / 2);
     }
@@ -224,7 +254,6 @@ export async function buildGatling(loadPart, onProgress) {
     }
   }
 
-  // 규칙 10.4: 모든 부품(볼트 · 너트 · 캡너트 포함) 완전 분해 + 나사 피치 회전 + 가이드선
   function applyExplode() {
     const e = explode;
     const showFast = boltsPref || e > 0.005;
@@ -288,7 +317,7 @@ export async function buildGatling(loadPart, onProgress) {
         }
       } else if (b.loaded && b.grow < 1) {
         b.grow = Math.min(1, b.grow + dt * 5); moving = true;
-        b.m.scale.z = Math.max(0.05, b.grow); b.m.position.z = b.home.z - (bandLen / 2) * (1 - b.grow);
+        b.m.scale.z = Math.max(0.05, b.grow); b.m.position.z = b.home.z - (b.len / 2) * (1 - b.grow);
       }
     }
     return moving;
@@ -306,7 +335,7 @@ export async function buildGatling(loadPart, onProgress) {
 
   setWheels(0, 0); setTilt(0); applyExplode();
   return {
-    root, groups, order, items, rotor,
+    root, groups, order, items, rotor, mechSteps,
     setWheels, setTilt, spin, flyBands, reload, reset,
     showBands, showBolts, setExplode, setGuides, setHidden,
     loaded: () => bands.filter((b) => b.loaded).length,
