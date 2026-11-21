@@ -3,7 +3,7 @@ import { SHEETS, BOT } from '../src/scorpion/assembly.js';
 import { detailAdapter, DRIVE5 } from './lib.js';
 import { loadPart } from 'virtual:parts';
 
-export const meta = { id: 'scorpion', name: '크림슨 스콜피온 v2', mods: 6 };
+export const meta = { id: 'scorpion', name: '크림슨 스콜피온 v3', mods: 6 };
 
 export async function makeAdapter(ctx) {
   const e = await buildScorpion(loadPart, ctx.onProgress);

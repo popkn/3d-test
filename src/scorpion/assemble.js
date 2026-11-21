@@ -4,7 +4,7 @@ import { createGuideLines } from '../assembly/render.js';
 import { BOLT_PITCH } from '../assembly/solver.js';
 import ASSEMBLY, { BOT, BOM, SPACERS } from './assembly.js';
 
-// "크림슨 스콜피온 (Crimson Scorpion) v2" 완성품 3D 조립 (ASSEMBLY_RULES.md 1~10장 · 규칙 2.4 · 2.5 · 10.6 완전 준수)
+// "크림슨 스콜피온 (Crimson Scorpion) v3" 완성품 3D 조립 (ASSEMBLY_RULES.md 1~10장 · 규칙 2.4 · 2.5 · 10.6 완전 준수)
 // - [규칙 2.5] 4륜 전원 DC 130rpm 직결 (M1~M4 · Ø50 × 4 · 헛바퀴 0)
 // - [규칙 2.4] 쌍발 400rpm 수직 어퍼컷 초승달 낫 스피너 (EX-M1 · EX-M2 · battle-t × 4 · Ø104 mm)
 // - [규칙 10.6] 좌·우 대칭 4절링크 집게 크러셔 (OUT1·OUT2 · R=10/L=40/r=20 · 오차 0.0000 mm · 토크 2.87× · 낫 여유 +12.1 mm)
@@ -107,18 +107,18 @@ export async function buildScorpion(loadPart, onProgress) {
 
   // 구동부 피벗 그룹
   const wheelPivots = {
-    wheel_M1: { g: new THREE.Group(), side: -1, pos: [-75, BOT.axleY, -30] },
-    wheel_M2: { g: new THREE.Group(), side: +1, pos: [+75, BOT.axleY, -30] },
-    wheel_M3: { g: new THREE.Group(), side: -1, pos: [-75, BOT.axleY, +70] },
-    wheel_M4: { g: new THREE.Group(), side: +1, pos: [+75, BOT.axleY, +70] },
+    wheel_M1: { g: new THREE.Group(), side: -1, pos: [-(BOT.wheelX || 84.5), BOT.axleY, -30] },
+    wheel_M2: { g: new THREE.Group(), side: +1, pos: [+(BOT.wheelX || 84.5), BOT.axleY, -30] },
+    wheel_M3: { g: new THREE.Group(), side: -1, pos: [-(BOT.wheelX || 84.5), BOT.axleY, +70] },
+    wheel_M4: { g: new THREE.Group(), side: +1, pos: [+(BOT.wheelX || 84.5), BOT.axleY, +70] },
   };
   for (const wp of Object.values(wheelPivots)) wp.g.position.set(...wp.pos);
 
   const spinL = new THREE.Group(); spinL.position.set(0, BOT.spinY, BOT.spinZ);
   const spinR = new THREE.Group(); spinR.position.set(0, BOT.spinY, BOT.spinZ);
 
-  const crankL = new THREE.Group(); crankL.position.set(-BOT.clawSX, 50.0, BOT.clawSZ);
-  const crankR = new THREE.Group(); crankR.position.set(+BOT.clawSX, 50.0, BOT.clawSZ);
+  const crankL = new THREE.Group(); crankL.position.set(-BOT.clawSX, BOT.clawCrankY || 65.0, BOT.clawSZ);
+  const crankR = new THREE.Group(); crankR.position.set(+BOT.clawSX, BOT.clawCrankY || 65.0, BOT.clawSZ);
   const clawL = new THREE.Group(); clawL.position.set(-BOT.clawPX, BOT.clawYArm, BOT.clawPZ);
   const clawR = new THREE.Group(); clawR.position.set(+BOT.clawPX, BOT.clawYArm, BOT.clawPZ);
 

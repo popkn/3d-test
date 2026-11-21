@@ -31,7 +31,7 @@ NAMES = {
     'motor-frame-3x3': '모터프레임 [3×3]',
     'l-frame-2x2': '프레임 2×2 [L자]',
     'l-frame-2x6': '프레임 2×6 [L자]',
-    'dc-motor-130-rs': 'DC Motor 130rpm [RS]',
+    'wheel-80-buggy-set': '바퀴 Ø80 버기 세트', 'dc-motor-130-rs': 'DC Motor 130rpm [RS]',
     'dc-motor-400-rs': 'DC Motor 400rpm [RS]',
     'servo-digital': 'Servo Motor [Digital]',
     'motor-drive-set': '모터 드라이브 확장 세트 (연결 보드 + A3)',
@@ -172,12 +172,12 @@ def fasten_capnut(sheet, pt_face, stud_dir, label, group=None, mech=None, note_e
 # ═══════════════════════════════════════════════════════════════════════
 # ── 마스터 치수 (실측 3D 모델 원점 · 4WD 전원 구동 · 3중 공격 메커니즘!)
 # ═══════════════════════════════════════════════════════════════════════
-WHEEL_R = 25.0        # 바퀴 Ø50 세트 반지름 (지면 y=0 → AXLE=25.0)
-AXLE = WHEEL_R        # 25.0 mm (motor-frame-3x3 2·3번 구멍 6+14=20, 6+24=30 → 축 25.0 정확 일치!)
-TOP = 6.0             # 하부 섀시 바닥판 윗면 (아랫면 BOT=4.4, 바닥 너트 최하단 y=2.0 — 초저중심!)
-BOT = TOP - 1.6       # 4.4 mm
-DECK_B = TOP + 50.0   # 56.0 mm (서포트 40 + 10 = 50 mm 기둥 6개 → 하부 구동부·집게 4절링크 완전 방호)
-DECK_T = DECK_B + 1.6 # 57.6 mm
+WHEEL_R = 40.0        # 바퀴 Ø80 버기 세트 반지름 (지면 y=0 → AXLE=40.0)
+AXLE = WHEEL_R        # 40.0 mm (motor-frame-3x3 2·3번 구멍 21+14=35, 21+24=45 → 축 40.0 정확 일치!)
+TOP = 21.0            # 하부 섀시 바닥판 윗면 (아랫면 BOT=19.4, 지상고 19.4 mm)
+BOT = TOP - 1.6       # 19.4 mm
+DECK_B = TOP + 50.0   # 71.0 mm (서포트 40 + 10 = 50 mm 기둥 6개 → 하부 구동부·집게 4절링크 완전 방호)
+DECK_T = DECK_B + 1.6 # 72.6 mm
 
 # 무기 1: 전방 중앙 쌍발 400rpm 수직 어퍼컷 초승달 낫 스피너 (EX-M1 왼 · EX-M2 오른)
 RAIL_T = DECK_T + 1.6 # 59.2 mm (좌·우 frame-m16-pcb 포크 레일 윗면, x ∈ [±31, ±49], z ∈ [-149, +9])
@@ -192,8 +192,8 @@ CLAW_PX, CLAW_PZ = 55.0, -65.0   # 우측 집게 피벗 P = (+55, -65) (좌측 -
 CLAW_RC = 10.0                   # 휠가이드 서보 크랭크 반지름 (10 mm)
 CLAW_RR = 20.0                   # 집게 로커 레버 길이 (피벗 뒤 2구멍 = 20 mm)
 CLAW_L  = 40.0                   # 소5 PCB 커플러 링크 핀 간격 (4구멍 = 40 mm)
-CLAW_Y_ARM = 43.6                # 집게 팔 중심 y (y ∈ [42.8, 44.4], 하부 모터 35 위 7.8 mm · 상판 56 아래 11.6 mm!)
-CLAW_Y_LNK = 45.2                # 커플러 링크 중심 y (y ∈ [44.4, 46.0], 크랭크 밑면 44.4와 정확 밀착!)
+CLAW_Y_ARM = TOP + 37.0          # 58.0 mm (y ∈ [57.2, 58.8] — 피벗 브래킷 볼트 최하단 60.9 mm 아래 +2.1 mm 완전 회피!)
+CLAW_Y_LNK = TOP + 38.6          # 59.6 mm (y ∈ [58.8, 60.4] — 피벗 브래킷 볼트 최하단 60.9 mm 아래 +0.5 mm 완전 회피!)
 CLAW_A_OPEN = 160.0              # 서보 열림 각도 (°) → 집게 +15.86° (양끝 160 mm 개방!)
 CLAW_A_NEUT = 100.0              # 서보 중립 각도 (°) → 집게 -1.16° (도면 기본 자세: 직진 -Z 정렬!)
 CLAW_A_CLAMP = 72.0              # 서보 압착 각도 (°) → 집게 -14.78° (v2: 그랩 포함 전구간 낫과 +12.1 mm 여유!)
@@ -224,9 +224,9 @@ TAIL_R = 140.0            # 꼬리 암 유효 타격 반지름 (z = +60 → -80,
 TAIL_ANG_READY = 55.0     # 대기 자세 (위로 55° 치켜든 전갈 꼬리!)
 TAIL_ANG_SMASH = 0.0      # 타격 최저 자세 (수평 0°: 해머 스파이크 끝 y=139.8 > 수직 낫 최상단 130.2 → 9.6 mm 안전 여유!)
 
-MECH_CAM_CLAW = {'pos': [110, 128, -115], 'target': [32, 44, -68]}
-MECH_CAM_SPIN = {'pos': [115, 118, -170], 'target': [0, 78, -118]}
-MECH_CAM_TAIL = {'pos': [175, 195, -25],  'target': [0, 148, -15]}
+MECH_CAM_CLAW = {'pos': [118, 145, -130], 'target': [32, 58, -85]}
+MECH_CAM_SPIN = {'pos': [120, 135, -180], 'target': [0, 93, -118]}
+MECH_CAM_TAIL = {'pos': [180, 210, -25],  'target': [0, 163, -15]}
 
 # ═══════════════════════════════════════════════════════════════════════
 # ── 01 4WD 초저중심 섀시 · 4륜 전원 구동 (DC 130×4 · M1~M4 · Ø50×4 · 배터리)
@@ -257,10 +257,10 @@ for sx, sz, label, mport, gzs, mz, wz, mxdir in DRIVE_UNITS:
     for gz in gzs:
         for dy in (-5, 5):
             fasten_bolt(S1, (59.0 * sx, AXLE + dy, gz), (sx, 0, 0), 3.4, f'{label} 구동 모터 귀 체결')
-    part(S1, 'wheel-50-set', f'{label} 구동 바퀴 (Ø50 세트, {mport})', (75.0 * sx, AXLE, wz), (14, 50, 50), BLACK, 'disc',
-         f'{mport} 모터 D컷 축 직접 장착 · x [{68*sx:+.0f},{82*sx:+.0f}] (모터 67과 1.0 mm 여유)', axis=0,
-         xdir=(0, 0, -sx), up=(0, 1, 0), exp=(60 * sx, 0, 0), group=f'wheel_{mport}', h='모터 축 직결 후 볼트 2.6×10')
-    fasten_tapping(S1, (82.0 * sx, AXLE, wz), (sx, 0, 0), f'{label} 구동 바퀴 축 고정', group=f'wheel_{mport}')
+    part(S1, 'wheel-80-buggy-set', f'{label} 구동 바퀴 (Ø80 버기 세트, {mport})', (84.5 * sx, AXLE, wz), (33, 76, 76), BLACK, 'disc',
+         f'{mport} 모터 D컷 축 직접 장착 · Ø80×33 큰 바퀴 · 안쪽 면 x=±68.0 (모터 67.0과 +1.0 mm 여유) · 지면 y=0', axis=0,
+         xdir=(0, 0, -sx), up=(0, 1, 0), exp=(70 * sx, 0, 0), group=f'wheel_{mport}', h='모터 축 직결 후 볼트 2.6×10')
+    fasten_tapping(S1, (101.0 * sx, AXLE, wz), (sx, 0, 0), f'{label} 구동 바퀴 축 고정', group=f'wheel_{mport}')
 
 # AA 배터리케이스 1×4 (하부 바닥 중앙·저중심: x [-29,+29] · z [0.2, 79.8] → 4개 모터 ±34와 5 mm 여유!)
 part(S1, 'battery-case-4aa', '배터리케이스 (AA 4개, 6V)', (0, TOP + 9.4, 40.0), (58, 18.8, 79.6), BLACK,
@@ -366,88 +366,98 @@ for sx, sport, side in ((-1, 'OUT1', '왼'), (1, 'OUT2', '오른')):
             fasten_nut(S3, (dx * sx, BOT, dz), (0, 1, 0), f'{side} 집게 서보 받침 바닥 고정')
 
     # ② 집게 크러셔 서보 (OUT1 / OUT2, 수직 +Y 출력축 S=(±20, -40))
-    part(S3, 'servo-digital', f'{side} 집게 크러셔 서보 ({sport})', (20.0 * sx, 25.9, -30.0), (20, 33, 40), BLACK, 'servo',
+    part(S3, 'servo-digital', f'{side} 집게 크러셔 서보 ({sport})', (20.0 * sx, TOP + 19.9, -30.0), (20, 33, 40), BLACK, 'servo',
          f'수직 배치 · x [{10*sx:+.0f},{30*sx:+.0f}] (앞 모터 ±34와 4 mm 여유) · 출력축 S=({20*sx:+.0f}, -40)',
-         origin=(20.0 * sx, 9.4, -30.0), shaft=(20.0 * sx, 49.6, -40.0), up=(0, 1, 0), xdir=(0, 0, 1), exp=(0, 30, -16),
+         origin=(20.0 * sx, TOP + 3.4, -30.0), shaft=(20.0 * sx, TOP + 43.6, -40.0), up=(0, 1, 0), xdir=(0, 0, 1), exp=(0, 30, -16),
          h='귀 구멍 4곳을 서포트 25 암나사에 볼트 3×6',
          mech={'step': '① 집게 구동 서보', 'role': '4절링크 입력 크랭크 동력원', 'cam': MECH_CAM_CLAW,
                'explain': '차체 하부 앞쪽에 좌·우 독립 서보(OUT1·OUT2)를 배치해 양쪽 집게가 완전 대칭으로 압착(합산 토크 11 kg·cm)하며 개별 비틀기 공격도 가능합니다.'} if sx > 0 else None)
     for dx in (15, 25):
         for dz in (-55, -5):
-            fasten_bolt(S3, (dx * sx, 33.4, dz), (0, 1, 0), 2.4, f'{side} 집게 서보 귀 체결', nut=False)
+            fasten_bolt(S3, (dx * sx, TOP + 27.4, dz), (0, 1, 0), 2.4, f'{side} 집게 서보 귀 체결', nut=False)
 
-    # ③ 서보 크랭크 (wheel-guide-30-servo, R=10 mm, y [46.0, 54.0] → 밑면 y=46.0에 커플러 밀착 · 상판 56 아래 2.0 mm 여유!)
+    # ③ 서보 크랭크 (wheel-guide-30-servo, R=10 mm, y [TOP+40, TOP+48] = [61.0, 69.0] → 상판 71.0 아래 2.0 mm 여유!)
     cgrp = f'crank_{"R" if sx > 0 else "L"}'
-    part(S3, 'wheel-guide-30-servo', f'{side} 집게 크랭크 (휠가이드 서보)', (20.0 * sx, 50.0, -40.0), (30, 8.0, 30), WHITE, 'disc',
-         f'크랭크 반지름 R={CLAW_RC:.0f} mm · y [46.0, 54.0] (상판 56 아래 2.0 mm · 커플러 46.0 밀착)', axis=1,
-         origin=(20.0 * sx, 46.0, -40.0), xdir=(sx, 0, 0), up=(0, 1, 0), exp=(0, 38, -20), group=cgrp,
+    part(S3, 'wheel-guide-30-servo', f'{side} 집게 크랭크 (휠가이드 서보)', (20.0 * sx, TOP + 44.0, -40.0), (30, 8.0, 30), WHITE, 'disc',
+         f'크랭크 반지름 R={CLAW_RC:.0f} mm · y [{TOP+40:.1f}, {TOP+48:.1f}] (상판 {DECK_B:.1f} 아래 2.0 mm 여유)', axis=1,
+         origin=(20.0 * sx, TOP + 40.0, -40.0), xdir=(sx, 0, 0), up=(0, 1, 0), exp=(0, 38, -20), group=cgrp,
          h='서보 출력축에 끼우고 볼트 2.6×10')
-    fasten_tapping(S3, (20.0 * sx, 54.0, -40.0), (0, 1, 0), f'{side} 집게 크랭크 축 고정', group=cgrp)
+    fasten_tapping(S3, (20.0 * sx, TOP + 48.0, -40.0), (0, 1, 0), f'{side} 집게 크랭크 축 고정', group=cgrp)
 
-    # ④ 집게 피벗 브래킷 (상판 DECK_B=56.0에서 서포트 10 × 2로 매달린 frame-option-pcb, y [44.4, 46.0], z [-89, -51] → 로커 B(-45)와 6 mm 이격!)
+    # ④ 집게 피벗 브래킷 (v3: 서포트 7 mm × 2 → 브래킷 y [62.4, 64.0], 볼트 머리 최하단 60.9 mm > 링크 상단 60.4 mm · 팔 상단 58.8 mm → 이동 반경 간섭 0!)
+    BRK_B = DECK_B - 7.0 - 1.6  # 62.4 mm
     for dx in (45, 55):
-        part(S3, 'support-spacer', f'{side} 집게 피벗 브래킷 기둥 (서포트 10)', (dx * sx, DECK_B - 5.0, -55.0), (6.4, 10, 6.4), METAL, 'cyl',
-             f'상판(56.0) 아래 y [46.0, 56.0] · ({dx*sx:+d}, -55)', axis=1, length=10,
-             origin=(dx * sx, DECK_B - 10.0, -55.0), up=(0, 1, 0), exp=(12 * sx, 16, -18), h='상부 갑판 구멍 관통 + 위 너트')
+        part(S3, 'support-spacer', f'{side} 집게 피벗 브래킷 기둥 (서포트 7)', (dx * sx, DECK_B - 3.5, -55.0), (6.4, 7, 6.4), METAL, 'cyl',
+             f'상판({DECK_B:.1f}) 아래 y [{DECK_B-7:.1f}, {DECK_B:.1f}] · ({dx*sx:+d}, -55)', axis=1, length=7,
+             origin=(dx * sx, DECK_B - 7.0, -55.0), up=(0, 1, 0), exp=(12 * sx, 16, -18), h='상부 갑판 구멍 관통 + 위 너트')
         fasten_nut(S3, (dx * sx, DECK_T, -55.0), (0, -1, 0), f'{side} 집게 피벗 기둥 상판 고정')
-    plate(S3, 'frame-option-pcb', f'{side} 집게 피벗 브래킷 (옵션 PCB)', (50.0 * sx, 45.2, -70.0), (18, 1.6, 38), BLACK,
-          OPT_V, OPT_U, 0, 2, f'y [44.4, 46.0] · z [-89, -51] (로커 -45와 6 mm 여유) · 피벗 P=({CLAW_PX*sx:+.0f}, {CLAW_PZ:+.0f})',
-          origin=(50.0 * sx, 44.4, -70.0), xdir=(0, 0, 1), up=(0, 1, 0), exp=(18 * sx, 10, -24),
-          h='서포트 10 암나사 2곳에 볼트 3×6 (아래→위)')
+    plate(S3, 'frame-option-pcb', f'{side} 집게 피벗 브래킷 (옵션 PCB)', (50.0 * sx, BRK_B + 0.8, -70.0), (18, 1.6, 38), BLACK,
+          OPT_V, OPT_U, 0, 2, f'y [{BRK_B:.1f}, {BRK_B+1.6:.1f}] · 볼트 최하단 {BRK_B-1.5:.1f} > 집게 링크 {CLAW_Y_LNK+0.8:.1f} (통과 충돌 0!)',
+          origin=(50.0 * sx, BRK_B, -70.0), xdir=(0, 0, 1), up=(0, 1, 0), exp=(18 * sx, 10, -24),
+          h='서포트 7 암나사 2곳에 볼트 3×6 (아래→위)')
     for dx in (45, 55):
-        fasten_bolt(S3, (dx * sx, 44.4, -55.0), (0, -1, 0), 1.6, f'{side} 피벗 브래킷 체결', nut=False)
+        fasten_bolt(S3, (dx * sx, BRK_B, -55.0), (0, -1, 0), 1.6, f'{side} 피벗 브래킷 체결', nut=False)
 
-    # ⑤ 4절링크 커플러 (frame-s5-pcb, 핀 간격 L=40.0 mm, y [44.4, 46.0], 양끝 s-hook-35 회전 관절!)
+    # ⑤ 4절링크 커플러 (frame-s5-pcb, L=40.0 mm, y [58.8, 60.4] — 브래킷 볼트 60.9 mm 아래 완전 회피!)
     lgrp = f'link_{"R" if sx > 0 else "L"}'
     Ax, Az, Bx, Bz = Ax0 * sx, Az0, Bx0 * sx, Bz0
     ang_l = math.atan2(Bz - Az, Bx - Ax) / DEG
     part(S3, 'frame-s5-pcb', f'{side} 집게 푸시로드 링크 (소5 PCB, L=40)', ((Ax + Bx) / 2, CLAW_Y_LNK, (Az + Bz) / 2), (48, 1.6, 8), BLACK,
-         note=f'4절링크 커플러 L=40.0 mm (오차 {ERR0:.3f} mm) · 크랭크 A ↔ 로커 B · y [44.4, 46.0]',
+         note=f'4절링크 커플러 L=40.0 mm (오차 {ERR0:.3f} mm) · 크랭크 A ↔ 로커 B · y [{CLAW_Y_LNK-0.8:.1f}, {CLAW_Y_LNK+0.8:.1f}]',
          euler=(0, -ang_l, 0), exp=(16 * sx, 16, -22), group=lgrp,
          h='양끝 40 mm 구멍을 후크 S35로 크랭크·로커에 회전 연결',
          mech={'step': '④ 4절링크 푸시로드', 'role': '2.87× 토크 증폭 4절링크 전달부', 'cam': MECH_CAM_CLAW,
-               'explain': '서보 크랭크(R=10)가 88° 회전하면 40 mm 소5 커플러가 20 mm 로커를 밀어 집게를 +15.9°(160 mm 열림) ↔ −14.8°(압착)로 움직이며 토크를 2.87배 증폭합니다.'} if sx > 0 else None)
-    part(S3, 's-hook-35', f'{side} 크랭크 핀 A (후크 S35)', (Ax, 46.4, Az), (6.5, 7.6, 6.5), YELLOW, 'cyl',
-         '크랭크(R=10) ↔ 커플러 링크 회전 관절 · y [42.6, 50.2] (서보 몸통 42.4 위 여유)', axis=1,
-         origin=(Ax, 48.4, Az), up=(0, 1, 0), exp=(12 * sx, 26, -22), group=lgrp, h='눌러 끼움 (회전 핀)')
-    part(S3, 's-hook-35', f'{side} 로커 핀 B (후크 S35)', (Bx, 44.4, Bz), (6.5, 7.6, 6.5), YELLOW, 'cyl',
+               'explain': '서보 크랭크(R=10)가 88° 회전하면 40 mm 소5 커플러가 20 mm 로커를 밀어 집게를 +15.9°(열림) ↔ −14.8°(압착)로 움직이며 토크를 2.87배 증폭합니다.'} if sx > 0 else None)
+    part(S3, 's-hook-35', f'{side} 크랭크 핀 A (후크 S35)', (Ax, CLAW_Y_LNK + 1.4, Az), (6.5, 7.6, 6.5), YELLOW, 'cyl',
+         '크랭크(R=10) ↔ 커플러 링크 회전 관절', axis=1,
+         origin=(Ax, CLAW_Y_LNK + 3.4, Az), up=(0, 1, 0), exp=(12 * sx, 26, -22), group=lgrp, h='눌러 끼움 (회전 핀)')
+    part(S3, 's-hook-35', f'{side} 로커 핀 B (후크 S35)', (Bx, CLAW_Y_ARM + 0.8, Bz), (6.5, 7.6, 6.5), YELLOW, 'cyl',
          '커플러 링크 ↔ 집게 로커(r=20) 회전 관절', axis=1,
-         origin=(Bx, 46.0, Bz), up=(0, 1, 0), exp=(24 * sx, 26, -24), group=lgrp, h='눌러 끼움 (회전 핀)')
+         origin=(Bx, CLAW_Y_ARM + 2.4, Bz), up=(0, 1, 0), exp=(24 * sx, 26, -24), group=lgrp, h='눌러 끼움 (회전 핀)')
 
-    # ⑥ 집게 주 팔 (frame-s8-pcb 78×8×1.6, y [42.8, 44.4], 피벗 P=(±55,-65) 기준 뒤 20 mm 로커 + 앞 50 mm 집게 팔!)
+    # ⑥ 집게 주 팔 (frame-s8-pcb 78×8×1.6, y [57.2, 58.8] — 브래킷 볼트 60.9 mm 아래 +2.1 mm 완전 회피!)
     jawgrp = f'claw_{"R" if sx > 0 else "L"}'
-    part(S3, 's-hook-35', f'{side} 집게 메인 피벗 핀 P (후크 S35)', (CLAW_PX * sx, 44.4, CLAW_PZ), (6.5, 7.6, 6.5), YELLOW, 'cyl',
+    part(S3, 's-hook-35', f'{side} 집게 메인 피벗 핀 P (후크 S35)', (CLAW_PX * sx, CLAW_Y_ARM + 2.4, CLAW_PZ), (6.5, 7.6, 6.5), YELLOW, 'cyl',
          f'피벗 브래킷 ↔ 집게 팔 회전축 P=({CLAW_PX*sx:+.0f}, {CLAW_PZ:+.0f})', axis=1,
-         origin=(CLAW_PX * sx, 46.0, CLAW_PZ), up=(0, 1, 0), exp=(26 * sx, 22, -28), group=jawgrp, h='눌러 끼움 (메인 회전축)')
-    # 중립 자세(직진 -Z): 피벗 P=(±55, -65)가 뒤에서 3번째 구멍(+20 뒤 = -45, 앞 5구멍 = -115 → 팔 중심 z=-80)
+         origin=(CLAW_PX * sx, BRK_B + 1.6, CLAW_PZ), up=(0, 1, 0), exp=(26 * sx, 22, -28), group=jawgrp, h='눌러 끼움 (메인 회전축)')
     plate(S3, 'frame-s8-pcb', f'{side} 집게 주 팔 (소8 PCB)', (CLAW_PX * sx, CLAW_Y_ARM, CLAW_PZ - 15.0), (8, 1.6, 78), BLACK,
-          [0], S8_U, 0, 2, f'y [42.8, 44.4] · z [-119, -41] · 뒤(-45) 로커 핀 B · 피벗(-65) P · 앞(-95~-115) 집게날',
-          origin=(CLAW_PX * sx, 42.8, CLAW_PZ - 15.0), xdir=(0, 0, 1), up=(0, 1, 0), exp=(32 * sx, 6, -34), group=jawgrp,
+          [0], S8_U, 0, 2, f'y [{CLAW_Y_ARM-0.8:.1f}, {CLAW_Y_ARM+0.8:.1f}] · 브래킷 볼트(60.9) 아래 +2.1 mm 여유 · 통과 오류 0!',
+          origin=(CLAW_PX * sx, CLAW_Y_ARM - 0.8, CLAW_PZ - 15.0), xdir=(0, 0, 1), up=(0, 1, 0), exp=(32 * sx, 6, -34), group=jawgrp,
           h='피벗 P에 후크 S35로 회전 결합')
 
-    # ⑦ 불꽃 톱니 집게 날 (좌 battle-i / 우 battle-j, 90×30×1.6, y [41.2, 42.8], z [-165, -75] → 피벗 핀 P(-65)와 6.75 mm 여유!)
+    # ⑦ 불꽃 톱니 집게 날 (좌 battle-i / 우 battle-j, 90×30×1.6, y [55.6, 57.2])
+    BLADE_B = CLAW_Y_ARM - 2.4  # 55.6 mm
     b_id = 'battle-j' if sx > 0 else 'battle-i'
-    part(S3, b_id, f'{side} 불꽃 집게 날 ({NAMES[b_id].split("(")[0].strip()})', (65.0 * sx, 42.0, -120.0), (30, 1.6, 90), RED, 'blade',
-         f'안쪽 에지 x={50*sx:+.0f} · 바깥 톱니 방호 x={80*sx:+.0f} · z [-165,-75] (피벗 -65와 6.75 mm 여유) · 팔 아래 볼트 3벌',
-         origin=(65.0 * sx, 41.2, -120.0), xdir=(0, 0, -1), up=(0, 1, 0), exp=(44 * sx, 0, -44), group=jawgrp,
+    part(S3, b_id, f'{side} 불꽃 집게 날 ({NAMES[b_id].split("(")[0].strip()})', (65.0 * sx, BLADE_B + 0.8, -120.0), (30, 1.6, 90), RED, 'blade',
+         f'안쪽 에지 x={50*sx:+.0f} · 바깥 톱니 방호 x={80*sx:+.0f} · z [-165,-75] · 팔 아래 볼트 3벌',
+         origin=(65.0 * sx, BLADE_B, -120.0), xdir=(0, 0, -1), up=(0, 1, 0), exp=(44 * sx, 0, -44), group=jawgrp,
          h='집게 팔 z=-95,-105,-115 구멍에 볼트 3×6 + 너트 3벌',
          mech={'step': '⑤ 톱니 집게발', 'role': '상대 포획·중앙 유도 압착부', 'cam': MECH_CAM_CLAW,
-               'explain': 'battle-i/j 불꽃 날과 끝단 그랩(5갈래)이 상대를 160 mm 입으로 포획해 중앙 수직 어퍼컷 낫 앞으로 밀어 고정합니다 (최대 압착 시에도 낫과 12.1 mm 이상 여유).'} if sx > 0 else None)
+               'explain': 'battle-i/j 불꽃 날과 실물 스쿠프형 그랩(PFOG-N001)이 상대를 깊게 포획해 중앙 수직 어퍼컷 낫 앞으로 밀어 고정합니다 (전 구간 충돌 0).'} if sx > 0 else None)
     for jz in (-95, -105, -115):
-        fasten_bolt(S3, (CLAW_PX * sx, 44.4, jz), (0, 1, 0), 3.2, f'{side} 집게 날 체결', group=jawgrp)
+        fasten_bolt(S3, (CLAW_PX * sx, CLAW_Y_ARM + 0.8, jz), (0, 1, 0), 3.2, f'{side} 집게 날 체결', group=jawgrp)
 
-    # 안쪽 압착 스파이크 (볼트 + 캡너트 2개 — z=-135, -145 안쪽 줄 x=±55, 둥근 돔이 위/안쪽으로 상대를 물음!)
+    # 안쪽 압착 스파이크 (볼트 + 캡너트 2개 — z=-135, -145 안쪽 줄 x=±55)
     for tz in (-135, -145):
-        fasten_bolt(S3, (CLAW_PX * sx, 41.2, tz), (0, -1, 0), 1.6, f'{side} 집게 이빨 볼트', nut=False, group=jawgrp)
-        fasten_capnut(S3, (CLAW_PX * sx, 42.8, tz), (0, 1, 0), f'{side} 집게 압착 이빨', group=jawgrp, note_extra=' · 포획 그립 돌기')
+        fasten_bolt(S3, (CLAW_PX * sx, BLADE_B, tz), (0, -1, 0), 1.6, f'{side} 집게 이빨 볼트', nut=False, group=jawgrp)
+        fasten_capnut(S3, (CLAW_PX * sx, BLADE_B + 1.6, tz), (0, 1, 0), f'{side} 집게 압착 이빨', group=jawgrp, note_extra=' · 포획 그립 돌기')
 
-    # 끝단 그랩 5갈래 집게발 (v2: x=±60 외측 배치 → 구멍 ±55/±65 battle-i/j 0.0 mm 정합 & 수직 낫과 +12.1 mm 안전 여유!)
-    part(S3, 'grab', f'{side} 집게 끝단 그랩 (5갈래 발톱)', (60.0 * sx, 48.8, -168.0), (22, 12, 32), ORANGE, 'blade',
-         '5갈래 포획 발톱 · x=±60 외측 정렬 · z [-184,-152] · 수직 낫 전구간 +12.1 mm 여유',
-         origin=(60.0 * sx, 42.8, -168.0), xdir=(-sx, 0, 0), up=(0, 1, 0), exp=(48 * sx, 10, -64), group=jawgrp,
-         h='집게 날 앞 구멍 x=±55, ±65에 볼트 M3×10 + 너트 2벌')
+    # ⑧ 실물 스쿠프형 그랩 (PFOG-N001, 50×34×76 mm, 후면 4×3=12 M3 실구멍 체결 · L자 브래킷 2개 · 무기 레일 72.6 아래 +4.0 mm 여유!)
     for gx in (55, 65):
-        fasten_bolt(S3, (gx * sx, 41.2, -158.0), (0, -1, 0), 4.0, f'{side} 그랩 집게발 체결', bolt_id='bolt-m3x10', group=jawgrp)
+        part(S3, 'l-frame-2x2', f'{side} 그랩 고정 브래킷 (L자 2×2)', (gx * sx, BLADE_B - 9.0, -156.0), (8, 18, 18), METAL,
+             f'battle-i/j 앞 구멍({gx*sx:+d},-150/-160) ↔ 그랩 후면 M3 구멍(y 41.6/51.6, z=-165) 직각 연결',
+             origin=(gx * sx, BLADE_B, -165.0), xdir=(0, 0, -1), up=(0, -1, 0), exp=(44 * sx, -6, -54), group=jawgrp,
+             h='집게 날 앞 구멍에 볼트 3×6 + 너트 2벌')
+        for lz in (-150, -160):
+            fasten_bolt(S3, (gx * sx, BLADE_B + 1.6, lz), (0, 1, 0), 2.6, f'{side} 그랩 브래킷 날 체결', group=jawgrp)
+    GRAB_B = BLADE_B - 21.0  # 34.6 mm (y ∈ [34.6, 68.6] → 지상고 34.6 mm, 무기 레일 72.6 아래 +4.0 mm 여유!)
+    part(S3, 'grab', f'{side} 스쿠프 집게 그랩 (PFOG-N001)', (70.0 * sx, GRAB_B + 17.0, -203.0), (50, 34, 76), ORANGE, 'blade',
+         f'실물 스쿠프형 버킷(50×34×76) · x [{45*sx:+.0f},{95*sx:+.0f}] · y [{GRAB_B:.1f},{GRAB_B+34:.1f}] · z [-241,-165] · 후면 실구멍 4곳 체결',
+         origin=(70.0 * sx, GRAB_B, -203.0), xdir=(-1, 0, 0), up=(0, 1, 0), exp=(54 * sx, 0, -76), group=jawgrp,
+         h='그랩 후면 M3 구멍(x=±55,±65 · y=41.6,51.6)에 볼트 3×6 + 너트 4벌')
+    for gx in (55, 65):
+        for gy in (GRAB_B + 7.0, GRAB_B + 17.0):
+            fasten_bolt(S3, (gx * sx, gy, -164.0), (0, 0, 1), 3.4, f'{side} 그랩 후면 체결', group=jawgrp)
 
 # ═══════════════════════════════════════════════════════════════════════
 # ── 04 상부 오버헤드 전갈 꼬리 해머 (OUT3 · 아치 타워 y=139.2 · 별 해머 + 스파이크 4발)
@@ -511,18 +521,18 @@ for dz in (-10, 10):
 for hz, tag in ((-85, '앞'), (-75, '뒤')):
     part(S4, 'l-frame-2x2', f'해머 헤드 브래킷 {tag} (L자 2×2)', (-8.2, TAIL_Y, hz), (18, 18, 8), METAL,
          note=f'v2 0.0 mm 정합 · 수직 구멍 y=153.2/163.2 · 아래 구멍 x=-13.2/-3.2 · y=[149.2,150.2] · z={hz}',
-         origin=(0.8, 149.2, hz), xdir=(1, 0, 0), up=(0, 1, 0), exp=(-28, 72, -24), group=TGRP, h='꼬리 암 끝에 볼트 3×6 + 너트 2벌')
+         origin=(0.8, TAIL_Y - 9.0, hz), xdir=(1, 0, 0), up=(0, 1, 0), exp=(-28, 72, -24), group=TGRP, h='꼬리 암 끝에 볼트 3×6 + 너트 2벌')
     for dy in (-5, 5):
         fasten_bolt(S4, (-0.2, TAIL_Y + dy, hz), (-1, 0, 0), 2.6, f'해머 브래킷 {tag} 암 체결', group=TGRP)
 
 # 전갈 독침 별 막대 해머 헤드 (v2: 중심 x=+1.8, y=148.4 → 브래킷 x=-13.2/-3.2 및 실구멍열 z=-85/-75 0.0 mm 완벽 정합!)
-part(S4, 'battle-g', '전갈 독침 해머 헤드 (배틀무기 G)', (1.8, 148.4, -80.0), (98, 1.6, 20), RED, 'blade',
+part(S4, 'battle-g', '전갈 독침 해머 헤드 (배틀무기 G)', (1.8, TAIL_Y - 9.8, -80.0), (98, 1.6, 20), RED, 'blade',
      'v2 구멍 0.0 mm 정합 · 가로 T자 해머 98×20 · y [147.6, 149.2] · 전방 구멍열(z=-85) 독침 4발',
-     origin=(1.8, 147.6, -80.0), xdir=(1, 0, 0), up=(0, 1, 0), exp=(0, 64, -36), group=TGRP,
+     origin=(1.8, TAIL_Y - 10.6, -80.0), xdir=(1, 0, 0), up=(0, 1, 0), exp=(0, 64, -36), group=TGRP,
      h='해머 브래킷 아래 다리 x=-13.2,-3.2 · z=-85,-75에 볼트 3×6 + 너트 4벌')
 for hx in (-13.2, -3.2):
     for hz in (-85, -75):
-        fasten_bolt(S4, (hx, 150.2, hz), (0, 1, 0), 2.6, '해머 헤드 체결', group=TGRP)
+        fasten_bolt(S4, (hx, TAIL_Y - 8.0, hz), (0, 1, 0), 2.6, '해머 헤드 체결', group=TGRP)
 
 # 전갈 독침 타격 스파이크 4발 (v2: battle-g 실제 전방 구멍열 z=-85.0 체결 · 돔 끝 y=141.6 > 수직 낫 130.2 → +11.4 mm 여유!)
 for sx_p in (-43.2, -33.2, 36.8, 46.8):
@@ -540,12 +550,12 @@ for bx in (-35, 35):
              f'v2 나사 여유 +2.6 mm · y [57.6, 64.6] · ({bx:+d}, {bz:+d})', axis=1, length=7,
              origin=(bx, DECK_T + 7.0, bz), up=(0, -1, 0), exp=(0, 22, 12), h='상판 관통 + 아래 너트')
         fasten_nut(S5, (bx, DECK_B, bz), (0, 1, 0), 'CPU 받침 상판 고정')
-part(S5, 'cpu-board-8m', 'CPU 보드 (두뇌 · M1~M4 · OUT1~5 · IN1~3)', (0.0, 71.6, 65.0), (83, 14, 61), WHITE,
+part(S5, 'cpu-board-8m', 'CPU 보드 (두뇌 · M1~M4 · OUT1~5 · IN1~3)', (0.0, DECK_T + 14.0, 65.0), (83, 14, 61), WHITE,
      note='y [64.6, 78.6] · 서포트 7 mm 위 · 꼬리 타워 기둥 ±55와 10.3 mm 여유',
-     origin=(0.0, 64.6, 65.0), xdir=(1, 0, 0), up=(0, 1, 0), exp=(0, 34, 14), h='받침 4개 암나사에 볼트 3×6')
+     origin=(0.0, DECK_T + 7.0, 65.0), xdir=(1, 0, 0), up=(0, 1, 0), exp=(0, 34, 14), h='받침 4개 암나사에 볼트 3×6')
 for bx in (-35, 35):
     for bz in (45, 85):
-        fasten_bolt(S5, (bx, 66.2, bz), (0, 1, 0), 1.6, 'CPU 보드 체결', nut=False)
+        fasten_bolt(S5, (bx, DECK_T + 8.6, bz), (0, 1, 0), 1.6, 'CPU 보드 체결', nut=False)
 
 # ② 모터 확장 보드 세트 (v2: 서포트 7 mm × 4 위 y [64.6, 81.6] · z=-20.0 [-45,+5] · EX-M1/EX-M2 400rpm 쌍발 제어 · 규칙 2.2)
 for bx in (-15, 15):
@@ -554,12 +564,12 @@ for bx in (-15, 15):
              f'v2 나사 여유 +2.6 mm · y [57.6, 64.6] · ({bx:+d}, {bz:+d})', axis=1, length=7,
              origin=(bx, DECK_T + 7.0, bz), up=(0, -1, 0), exp=(0, 22, -10), h='상판 관통 + 아래 너트')
         fasten_nut(S5, (bx, DECK_B, bz), (0, 1, 0), '모터 확장 받침 상판 고정')
-part(S5, 'motor-drive-set', '모터 확장 보드 (연결 보드 + A3 · EX-M1/M2)', (0.0, 73.1, -20.0), (50, 17, 50), BLUE,
+part(S5, 'motor-drive-set', '모터 확장 보드 (연결 보드 + A3 · EX-M1/M2)', (0.0, DECK_T + 15.5, -20.0), (50, 17, 50), BLUE,
      note='규칙 2.2 · 서포트 7 mm 위 · x [-25,+25] (무기 레일 ±31과 6.0 mm 여유) · z [-45,+5]',
-     origin=(0.0, 64.6, -20.0), xdir=(1, 0, 0), up=(0, 1, 0), exp=(0, 36, -12), h='받침 4개 암나사에 볼트 3×6')
+     origin=(0.0, DECK_T + 7.0, -20.0), xdir=(1, 0, 0), up=(0, 1, 0), exp=(0, 36, -12), h='받침 4개 암나사에 볼트 3×6')
 for bx in (-15, 15):
     for bz in (-35, -5):
-        fasten_bolt(S5, (bx, 66.2, bz), (0, 1, 0), 1.6, '모터 확장 보드 체결', nut=False)
+        fasten_bolt(S5, (bx, DECK_T + 8.6, bz), (0, 1, 0), 1.6, '모터 확장 보드 체결', nut=False)
 
 # ③ 부저 보드 (OUT5 · v2: 실제 중앙 H4.2 구멍 z_local=+11.8 → (-15.0, 20.0) 0.0 mm 정합 · 확장(+5) +4 mm / CPU(+34.5) +3.5 mm 여유)
 part(S5, 'buzzer-board-s', '부저 보드 (OUT5 · 타격 경보음)', (-3.2, DECK_T + 6.0, 20.0), (32, 12, 22), BLACK,
@@ -573,11 +583,11 @@ for bx in (-45, -15):
          f'v2 나사 여유 +2.6 mm · y [139.2, 146.2] · ({bx:+d}, +70)', axis=1, length=7,
          origin=(bx, TOWER_T + 7.0, 70.0), up=(0, -1, 0), exp=(-14, 60, 20), h='꼬리 브리지 관통 + 아래 너트')
     fasten_nut(S5, (bx, TOWER_B, 70.0), (0, 1, 0), '블루투스 받침 브리지 고정')
-part(S5, 'bt-module', '블루투스 모듈 (무선 조종 · 0.5초 페일세이프)', (-30.0, 150.7, 81.0), (48, 9, 28), BLUE,
+part(S5, 'bt-module', '블루투스 모듈 (무선 조종 · 0.5초 페일세이프)', (-30.0, TOWER_T + 11.5, 81.0), (48, 9, 28), BLUE,
      note='v2 실구멍 정합 · 앞줄 M3 구멍 z=70.0 (x=-45,-15) 0.0 mm 일치 · 꼬리 서보(+13)와 19 mm 여유',
-     origin=(-30.0, 146.2, 81.0), xdir=(1, 0, 0), up=(0, 1, 0), exp=(-18, 72, 20), h='받침 2개 암나사에 볼트 3×6')
+     origin=(-30.0, TOWER_T + 7.0, 81.0), xdir=(1, 0, 0), up=(0, 1, 0), exp=(-18, 72, 20), h='받침 2개 암나사에 볼트 3×6')
 for bx in (-45, -15):
-    fasten_bolt(S5, (bx, 147.8, 70.0), (0, 1, 0), 1.6, '블루투스 모듈 체결', nut=False)
+    fasten_bolt(S5, (bx, TOWER_T + 8.6, 70.0), (0, 1, 0), 1.6, '블루투스 모듈 체결', nut=False)
 
 # ⑤ RGB LED 전투 눈 (OUT4 · v2: 실제 부품 규격 CLIP 전용 — 허위 볼트 제거, 꼬리 브리지 앞 가장자리 z=+31 클립 직결!)
 part(S5, 'rgb-led-bright', 'RGB 전투 눈 LED (OUT4 · 클립 직결)', (-25.0, TOWER_T + 10.2, 40.0), (23, 20.4, 18.7), WHITE,
@@ -620,11 +630,11 @@ for sx, side in ((-1, '왼'), (1, '오른')):
           OPT_V, OPT_U, 0, 2, f'v2 실구멍 정합 · x [{1*sx:+.0f},{19*sx:+.0f}] (뒤 기둥 ±25와 2.8 mm 여유) · z [91,129] · 서포트(95)+센서(105)',
           origin=(10.0 * sx, TOP + 15.0, 110.0), xdir=(0, 0, 1), up=(0, 1, 0), exp=(0, 14, 34), h='서포트 15 암나사에 볼트 3×6')
     fasten_bolt(S5, (15.0 * sx, TOP + 16.6, 95.0), (0, 1, 0), 1.6, f'컬러 지지 브래킷 {side} 체결', nut=False)
-part(S5, 'sensor-color', '바닥 경계선 컬러 센서 (IN2 · 링아웃 방지)', (0.0, 16.0, 127.0), (50, 10, 50), BLUE,
+part(S5, 'sensor-color', '바닥 경계선 컬러 센서 (IN2 · 링아웃 방지)', (0.0, TOP + 10.0, 127.0), (50, 10, 50), BLUE,
      note='v2 실구멍 정합 · 하향(-Y) · 앞줄 M3 구멍(x=±15, z=105) 체결 · 지면 11 mm 최적 감지',
-     origin=(0.0, 21.0, 127.0), xdir=(1, 0, 0), up=(0, -1, 0), exp=(0, -14, 46), h='좌·우 옵션 PCB에 앞줄 구멍(x=±15, z=105) 볼트 M3×10 + 너트 2벌')
+     origin=(0.0, TOP + 15.0, 127.0), xdir=(1, 0, 0), up=(0, -1, 0), exp=(0, -14, 46), h='좌·우 옵션 PCB에 앞줄 구멍(x=±15, z=105) 볼트 M3×10 + 너트 2벌')
 for sx in (-1, 1):
-    fasten_bolt(S5, (15.0 * sx, 22.6, 105.0), (0, 1, 0), 3.6, '바닥 컬러 센서 체결', bolt_id='bolt-m3x10')
+    fasten_bolt(S5, (15.0 * sx, TOP + 16.6, 105.0), (0, 1, 0), 3.6, '바닥 컬러 센서 체결', bolt_id='bolt-m3x10')
 
 # ═══════════════════════════════════════════════════════════════════════
 # ── 06 외장 장갑 (좌·우 battle-v 도끼 측면 스커트 · 후방 battle-s 대형 등갑 방패)
@@ -638,7 +648,7 @@ for sx, side in ((-1, '왼'), (1, '오른')):
              origin=(59.0 * sx, DECK_T, lz), xdir=(sx, 0, 0), up=(0, 1, 0), exp=(24 * sx, 20, 0), h='상부 갑판에 볼트 3×6 + 너트 2벌')
         for rx in (45, 55):
             fasten_bolt(S6, (rx * sx, DECK_T + 1.0, lz), (0, 1, 0), 2.6, f'{side} 측면 장갑 받침 {tag} 체결')
-    part(S6, 'battle-v', f'{side} 측면 도끼 장갑 핀 (배틀무기 V)', (59.8 * sx, 81.6, 20.0), (1.6, 46, 80), RED, 'blade',
+    part(S6, 'battle-v', f'{side} 측면 도끼 장갑 핀 (배틀무기 V)', (59.8 * sx, DECK_T + 24.0, 20.0), (1.6, 46, 80), RED, 'blade',
          f'x [{59.0*sx:+.1f},{60.6*sx:+.1f}] · y [58.6, 104.6] (바퀴 최상단 50.0 위 8.6 mm 여유) · z [-20, +60]',
          origin=(59.0 * sx, 61.6, 20.0), xdir=(0, 1, 0), up=(sx, 0, 0), exp=(48 * sx, 24, 0),
          h='L자 세운 다리 z=15,25 구멍에 볼트 3×6 + 너트 2벌')
@@ -652,9 +662,9 @@ for sx, side in ((-1, '왼'), (1, '오른')):
          origin=(15.0 * sx, TOWER_B, 109.0), xdir=(0, 0, 1), up=(0, -1, 0), exp=(0, 44, 28), h='꼬리 브리지에 볼트 3×6 + 너트 2벌')
     for lz in (95, 105):
         fasten_bolt(S6, (15.0 * sx, TOWER_T, lz), (0, 1, 0), 2.6, f'후방 방패 받침 {side} 체결')
-part(S6, 'battle-s', '후방 대형 등갑 방패 (배틀무기 S)', (0.0, 138.0, 109.8), (82, 92, 1.6), RED, 'blade',
+part(S6, 'battle-s', '후방 대형 등갑 방패 (배틀무기 S)', (0.0, TOWER_B + 0.4, 109.8), (82, 92, 1.6), RED, 'blade',
      'z [109.0, 110.6] · y [92, 184] · 꼬리 서보(+90) 뒤 19 mm 여유 · 타워 후면 방호',
-     origin=(0.0, 138.0, 109.0), xdir=(1, 0, 0), up=(0, 0, 1), exp=(0, 48, 44),
+     origin=(0.0, TOWER_B + 0.4, 109.0), xdir=(1, 0, 0), up=(0, 0, 1), exp=(0, 48, 44),
      h='후방 방패 받침 2개에 볼트 3×6 + 너트 2벌')
 for sx in (-1, 1):
     fasten_bolt(S6, (15.0 * sx, TOWER_B - 14.0, 110.6), (0, 0, 1), 2.6, '후방 등갑 방패 체결')
@@ -740,12 +750,12 @@ for ad in range(int(CLAW_A_CLAMP), int(CLAW_A_OPEN) + 1, 2):
     for t_len in range(10, 101, 5):
         ix = CLAW_PX + t_len * ux - 5.0 * nx
         iz = CLAW_PZ + t_len * uz - 5.0 * nz
-        if math.hypot(SPIN_Y - 42.8, iz - SPIN_Z) < SPIN_R:
+        if math.hypot(SPIN_Y - (CLAW_Y_ARM - 1.6), iz - SPIN_Z) < SPIN_R:
             min_claw_to_spin = min(min_claw_to_spin, ix - 10.8)
-    for t_len in range(87, 120, 4):
-        ix = CLAW_PX + t_len * ux - 6.0 * nx
-        iz = CLAW_PZ + t_len * uz - 6.0 * nz
-        if math.hypot(SPIN_Y - 54.8, iz - SPIN_Z) < SPIN_R:
+    for t_len in range(100, 177, 4):
+        ix = CLAW_PX + t_len * ux - 10.0 * nx
+        iz = CLAW_PZ + t_len * uz - 10.0 * nz
+        if math.hypot(SPIN_Y - (CLAW_Y_ARM - 10.0), iz - SPIN_Z) < SPIN_R or math.hypot(SPIN_Y - (CLAW_Y_ARM + 10.0), iz - SPIN_Z) < SPIN_R:
             min_claw_to_spin = min(min_claw_to_spin, ix - 10.8)
     # 로커 핀 B vs 앞바퀴(x >= 68, z ∈ [-55, -5])
     if -58 <= Bz <= -2:
@@ -773,7 +783,7 @@ for p in STRUCT_PARTS:
 assert not spin_static_hits, f'수직 낫 360° 스윕 충돌: {spin_static_hits}'
 
 #   4c. 오버헤드 전갈 꼬리 해머(0°~55° 스윕) vs 수직 낫 최상단(130.2 mm) & 전자부
-tail_lowest_tip = 147.6 - 6.0  # v2: 0° 수평 타격 시 하향 캡너트 돔 끝 = 141.6 mm
+tail_lowest_tip = (TAIL_Y - 10.6) - 6.0  # v2: 0° 수평 타격 시 하향 캡너트 돔 끝 = 141.6 mm
 spin_highest_tip = SPIN_Y + SPIN_R  # 78.2 + 52.0 = 130.2 mm
 tail_spin_gap = tail_lowest_tip - spin_highest_tip  # +10.4 mm!
 assert tail_spin_gap >= 5.0, f'꼬리 해머 ↔ 수직 낫 상단 간섭: {tail_spin_gap:.2f} mm'
@@ -783,7 +793,7 @@ c_cpu = sum(1 for p in P if p['id'] == 'cpu-board-8m')
 c_130 = sum(1 for p in P if p['id'] == 'dc-motor-130-rs')
 c_400 = sum(1 for p in P if p['id'] == 'dc-motor-400-rs')
 c_ext = sum(1 for p in P if p['id'] == 'motor-drive-set')
-c_whl = sum(1 for p in P if p['id'] == 'wheel-50-set')
+c_whl = sum(1 for p in P if p['id'] in ('wheel-80-buggy-set', 'wheel-50-set'))
 assert c_cpu == 1 and c_130 == 4 and c_400 == 2 and c_ext == 1 and c_whl == 4, '모터·바퀴 수량 규칙 위반'
 
 MASS = {
@@ -815,7 +825,7 @@ DRIVE_MS = 130 / 60 * math.pi * (WHEEL_R * 2) / 1000.0
 # ═══════════════════════════════════════════════════════════════════════
 SHEET_INFO = OrderedDict([
     ('00', ('전체 조립도 (정면 · 측면 · 윗면 · 볼트/너트/캡너트 전수 표기)', None)),
-    ('01', ('4WD 초저중심 섀시 · 4륜 전원 구동 (M1~M4 · Ø50 × 4)', '01')),
+    ('01', ('4WD 초저중심 섀시 · 4륜 전원 구동 (M1~M4 · Ø80 버기 × 4)', '01')),
     ('02', ('쌍발 400rpm 수직 어퍼컷 초승달 낫 스피너 (EX-M1 · EX-M2)', '02')),
     ('03', ('좌·우 대칭 4절링크 집게 크러셔 (OUT1 · OUT2 · 규칙 10.6)', '03')),
     ('04', ('상부 오버헤드 전갈 꼬리 해머 (OUT3 · 별 해머 + 독침 4발)', '04')),
@@ -1148,8 +1158,8 @@ for p in P:
 js_dir = os.path.join(ROOT, 'src', 'scorpion')
 os.makedirs(js_dir, exist_ok=True)
 bot_meta = {
-    'version': 2,
-    'wheelR': WHEEL_R, 'axleY': AXLE,
+    'version': 3,
+    'wheelR': WHEEL_R, 'axleY': AXLE, 'wheelX': 84.5, 'clawCrankY': TOP + 44.0,
     'spinY': SPIN_Y, 'spinZ': SPIN_Z, 'spinR': SPIN_R, 'spinX': SPIN_X,
     'clawSX': CLAW_SX, 'clawSZ': CLAW_SZ, 'clawPX': CLAW_PX, 'clawPZ': CLAW_PZ,
     'clawRC': CLAW_RC, 'clawRR': CLAW_RR, 'clawL': CLAW_L,
@@ -1164,7 +1174,7 @@ bot_meta = {
     'mechCams': {'claw': MECH_CAM_CLAW, 'spin': MECH_CAM_SPIN, 'tail': MECH_CAM_TAIL},
 }
 js_out = (
-    '// 자동 생성됨 (tools/scorpion_blueprint.py — 크림슨 스콜피온 v2) — 수정하지 마세요\n'
+    '// 자동 생성됨 (tools/scorpion_blueprint.py — 크림슨 스콜피온 v3) — 수정하지 마세요\n'
     f'export const SHEETS = {json.dumps({no: t for no, (t, grp) in SHEET_INFO.items() if grp}, ensure_ascii=False)};\n'
     f'export const BOM = {json.dumps(dict(bom), ensure_ascii=False)};\n'
     f'export const SPACERS = {json.dumps(dict(spacers), ensure_ascii=False)};\n'

@@ -26,7 +26,7 @@ const opts = { labels: true, dims: true, spin: false };
 
 // 목록
 const nav = document.getElementById('parts');
-nav.innerHTML = `<a href="#scorpion" data-id="scorpion" class="all"><b>🦂 크림슨 스콜피온 v2 (완성품)</b><small>4WD 전원 · 쌍발 400rpm 수직 낫 · 4절링크 집게 · 꼬리 해머</small></a><a href="#scorpion-build" data-id="scorpion-build" class="all"><b>🔧 스콜피온 단계별 조립 (501단계+테스트)</b><small>1부품·1체결 498단계 + 3무기 메커니즘 테스트(배경 반투명)</small></a><a href="#gatling" data-id="gatling" class="all"><b>🎯 썬더 개틀링 6연장 v3 (완성품)</b><small>4륜 전원 모터 · 원형 고무줄 탄성 격발 · 거치/격발 테스트</small></a><a href="#gatling-build" data-id="gatling-build" class="all"><b>🔧 개틀링 단계별 조립 (세분화+테스트)</b><small>1부품·1체결 352단계 · 거치/격발 테스트(배경 반투명) 내장</small></a><a href="#eagle" data-id="eagle" class="all"><b>🦅 독수리 조립 (설계도면)</b><small>부품으로 조립한 독수리 · 날갯짓 · 분해 보기</small></a><a href="#battlebot" data-id="battlebot" class="all"><b>⚔ 배틀로봇 썬더 웨지</b><small>무한궤도 · 스피너 · 들어올림 웨지</small></a><a href="#train" data-id="train" class="all"><b>🚂 협동 기차 하나로 열차</b><small>3칸 · 칸마다 CPU · 3명이 따로 조종</small></a><a href="#stage-eagle" data-id="stage-eagle" class="all"><b>🔧 독수리 파트별 조립</b><small>받침대 · 다리 · 몸통 · 얼굴 · 날개 · 꼬리 → 연결 · 분해</small></a><a href="#stage-battlebot" data-id="stage-battlebot" class="all"><b>🔧 배틀로봇 파트별 조립</b><small>섀시 · 구동부 · 무기 · 웨지 · 상판 · 장갑 → 연결 · 분해</small></a><a href="#stage-train" data-id="stage-train" class="all"><b>🔧 기차 파트별 조립</b><small>칸마다 차대 · 차체 → 연결봉 · 분해</small></a><a href="#train-build" data-id="train-build" class="all"><b>🔧 기차 단계별 조립 (모듈 작업대)</b><small>부품 하나씩 · 모듈은 따로 조립 후 끼우기</small></a><a href="#all" data-id="all" class="all"><b>▦ 전체 펼쳐보기</b><small>${catalog.length}개 부품 · 실제 크기로 한 화면에</small></a>` + categories.map(([cat, title]) => `
+nav.innerHTML = `<a href="#scorpion" data-id="scorpion" class="all"><b>🦂 크림슨 스콜피온 v3 (완성품)</b><small>4WD 전원 · 쌍발 400rpm 수직 낫 · 4절링크 집게 · 꼬리 해머</small></a><a href="#scorpion-build" data-id="scorpion-build" class="all"><b>🔧 스콜피온 단계별 조립 (501단계+테스트)</b><small>1부품·1체결 498단계 + 3무기 메커니즘 테스트(배경 반투명)</small></a><a href="#gatling" data-id="gatling" class="all"><b>🎯 썬더 개틀링 6연장 v3 (완성품)</b><small>4륜 전원 모터 · 원형 고무줄 탄성 격발 · 거치/격발 테스트</small></a><a href="#gatling-build" data-id="gatling-build" class="all"><b>🔧 개틀링 단계별 조립 (세분화+테스트)</b><small>1부품·1체결 352단계 · 거치/격발 테스트(배경 반투명) 내장</small></a><a href="#eagle" data-id="eagle" class="all"><b>🦅 독수리 조립 (설계도면)</b><small>부품으로 조립한 독수리 · 날갯짓 · 분해 보기</small></a><a href="#battlebot" data-id="battlebot" class="all"><b>⚔ 배틀로봇 썬더 웨지</b><small>무한궤도 · 스피너 · 들어올림 웨지</small></a><a href="#train" data-id="train" class="all"><b>🚂 협동 기차 하나로 열차</b><small>3칸 · 칸마다 CPU · 3명이 따로 조종</small></a><a href="#stage-eagle" data-id="stage-eagle" class="all"><b>🔧 독수리 파트별 조립</b><small>받침대 · 다리 · 몸통 · 얼굴 · 날개 · 꼬리 → 연결 · 분해</small></a><a href="#stage-battlebot" data-id="stage-battlebot" class="all"><b>🔧 배틀로봇 파트별 조립</b><small>섀시 · 구동부 · 무기 · 웨지 · 상판 · 장갑 → 연결 · 분해</small></a><a href="#stage-train" data-id="stage-train" class="all"><b>🔧 기차 파트별 조립</b><small>칸마다 차대 · 차체 → 연결봉 · 분해</small></a><a href="#train-build" data-id="train-build" class="all"><b>🔧 기차 단계별 조립 (모듈 작업대)</b><small>부품 하나씩 · 모듈은 따로 조립 후 끼우기</small></a><a href="#all" data-id="all" class="all"><b>▦ 전체 펼쳐보기</b><small>${catalog.length}개 부품 · 실제 크기로 한 화면에</small></a>` + categories.map(([cat, title]) => `
   <h3>${title}</h3>
   ${catalog.filter((p) => p.category === cat).map((p) => `
     <a href="#${p.id}" data-id="${p.id}"><b>${p.name}</b><small>${p.size.x} × ${p.size.z} × ${p.size.y} mm${p.size.estimated ? ' · 추정' : ''}</small></a>`).join('')}
@@ -572,7 +572,7 @@ function gatlingStepFunction(ad) {
 }
 
 
-// 크림슨 스콜피온 v2 (완성품): 4WD · 쌍발 400rpm 수직 낫 · 4절링크 집게 · 꼬리 해머 · 3무기 테스트 · 완전 분해
+// 크림슨 스콜피온 v3 (완성품): 4WD · 쌍발 400rpm 수직 낫 · 4절링크 집게 · 꼬리 해머 · 3무기 테스트 · 완전 분해
 let scorpion = null;
 function scorpionFunction(e) {
   const st = {
@@ -804,7 +804,7 @@ function scorpionStepFunction(ad) {
         if (s !== lastShown || st.T >= ad.N) {
           const m = mechByStep.get(s);
           panel.ui.readout('kind', st.T >= ad.N ? '완성' : m ? `★ 메커니즘 학습 · ${m.mech.step}` : ad.stepKind(s));
-          panel.ui.readout('now', st.T >= ad.N ? '크림슨 스콜피온 v2 완성!' : ad.stepName(s));
+          panel.ui.readout('now', st.T >= ad.N ? '크림슨 스콜피온 v3 완성!' : ad.stepName(s));
           panel.ui.readout('mech', st.T >= ad.N ? '4WD + 쌍발 400rpm 수직 낫 + 4절링크 집게(2.87×) + 전갈 꼬리 해머 검증 완료' : m ? `[${m.mech.role}] ${m.mech.explain}` : '—');
           if (m && st.follow && m.mech?.cam) st.camGoal = { pos: new THREE.Vector3(...m.mech.cam.pos), target: new THREE.Vector3(...m.mech.cam.target) };
           lastShown = st.T >= ad.N ? -2 : s;
@@ -848,7 +848,7 @@ async function select(id) {
     view.frame(box, { dir: [-0.9, 0.6, -1], fit: 1.15, minDist: 20 });
     const size = box.getSize(new THREE.Vector3());
     panel.showSpec({
-      name: '크림슨 스콜피온 v2 (3중 무기 배틀로봇)', url: 'https://github.com/popkn/3d-test/blob/parts/scorpion/BLUEPRINT.md',
+      name: '크림슨 스콜피온 v3 (3중 무기 배틀로봇)', url: 'https://github.com/popkn/3d-test/blob/parts/scorpion/BLUEPRINT.md',
       size: { x: Math.round(size.x), z: Math.round(size.z), y: Math.round(size.y), estimated: false, note: `v2 전수 감사 수정 완료 · 4WD 전원 DC130×4 + 쌍발 DC400×2 + 4절링크 집게(토크 ${SCORP_BOT.clawAdv}× · 그랩 포함 낫 여유 +12.1 mm) + 전갈 꼬리 해머(낫 위 +${SCORP_BOT.tailSpinGap} mm) · 구조 ${e.structCount} + 체결 ${e.fastenerCount} = ${e.count}개.` },
       function: '4륜 전원 주행(M1~M4), 쌍발 400rpm 수직 어퍼컷 초승달 낫(EX-M1/M2), 좌·우 대칭 4절링크 집게 크러셔(OUT1/OUT2), 오버헤드 전갈 꼬리 해머(OUT3). 상단 "🧪 메커니즘 테스트"에서 3대 무기를 배경 반투명 격리 상태로 관찰할 수 있습니다.',
       specs: [
@@ -900,7 +900,7 @@ async function select(id) {
     ad.pose(0);
     view.frame(box, { dir: [-0.9, 0.6, -1], fit: 0.75, minDist: 20 });
     panel.showSpec({
-      name: '크림슨 스콜피온 v2 — 501단계 세분화 + 3무기 테스트', url: 'https://github.com/popkn/3d-test/blob/parts/scorpion/BLUEPRINT.md',
+      name: '크림슨 스콜피온 v3 — 501단계 세분화 + 3무기 테스트', url: 'https://github.com/popkn/3d-test/blob/parts/scorpion/BLUEPRINT.md',
       size: { x: Math.round(box.max.x - box.min.x), z: Math.round(box.max.z - box.min.z), y: Math.round(box.max.y - box.min.y), estimated: false, note: `규칙 10.3(498 부품·체결 세분화) + 규칙 10.6(수직 낫·4절링크 집게·꼬리 해머 3종 메커니즘 테스트 내장).` },
       function: '각 무기 조립 완료 직후 배경 반투명(opacity 12%) 격리 상태로 ① 쌍발 400rpm 수직 낫 ② 4절링크 집게 ③ 전갈 꼬리 해머 작동 테스트가 자동 재생됩니다.',
       specs: [['세분화 단계', `${ad.N}단계 (구조 ${SCORP_BOT.structCount} + 체결 ${SCORP_BOT.fastenerCount} + 메커니즘 테스트 3)`], ['v2 검증', '충돌 0 · 스윕 0(그랩 포함) · 4절링크 오차 0.0000 mm']],
