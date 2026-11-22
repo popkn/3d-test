@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="Pretendard,Apple SD Gothic Neo,sans-serif">
+<rect width="960" height="560" fill="#f8fafc"/>
+<rect x="16" y="16" width="928" height="54" rx="10" fill="#2f6fe0"/>
+<text x="34" y="42" fill="#fff" font-size="19" font-weight="800">W01 · 그라쇼프 크랭크-로커 와이퍼 (360° 연속)</text>
+<text x="34" y="60" fill="#f1f5f9" font-size="12">난이도 ★1 · Ø30 나일론 단일 핀 (R=10) · S후크 3개 · 가동 범위 0°~360° · 폐루프 오차 0.0000 mm</text>
+<rect x="16" y="82" width="600" height="462" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.2"/>
+<line x1="104.9" y1="94" x2="104.9" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="143.7" y1="94" x2="143.7" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="182.5" y1="94" x2="182.5" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="221.4" y1="94" x2="221.4" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="260.2" y1="94" x2="260.2" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="299.0" y1="94" x2="299.0" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="337.8" y1="94" x2="337.8" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="376.7" y1="94" x2="376.7" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="415.5" y1="94" x2="415.5" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="454.3" y1="94" x2="454.3" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="493.1" y1="94" x2="493.1" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="123.3" x2="604" y2="123.3" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="162.1" x2="604" y2="162.1" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="200.9" x2="604" y2="200.9" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="239.8" x2="604" y2="239.8" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="278.6" x2="604" y2="278.6" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="317.4" x2="604" y2="317.4" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="356.2" x2="604" y2="356.2" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="395.1" x2="604" y2="395.1" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="433.9" x2="604" y2="433.9" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="472.7" x2="604" y2="472.7" stroke="#eef1f6" stroke-width="1"/>
+<circle cx="221.4" cy="200.9" r="58.2" fill="#e2e8f0" stroke="#334155" stroke-width="2.0"/>
+<circle cx="221.4" cy="200.9" r="38.8" fill="none" stroke="#334155" stroke-width="1" stroke-opacity="0.55" stroke-dasharray="3 2"/>
+<circle cx="221.4" cy="200.9" r="4" fill="#334155"/>
+<polyline points="434.9,426.5 437.4,425.8 439.7,425.2 441.7,424.6 443.5,424.1 445.1,423.6 446.4,423.2 447.5,422.9 448.3,422.6 448.9,422.4 449.3,422.3 449.5,422.2 449.4,422.2 449.1,422.3 448.6,422.5 447.9,422.7 447.0,423.0 445.9,423.4 444.6,423.8 443.1,424.2 441.5,424.7 439.6,425.2 437.7,425.8 435.5,426.3 433.3,426.9 430.8,427.5 428.3,428.1 425.6,428.7 422.8,429.3 419.8,429.8 416.8,430.4 413.7,430.9 410.4,431.4 407.1,431.9 403.7,432.3 400.2,432.7 396.6,433.0 392.9,433.3 389.2,433.5 385.5,433.7 381.6,433.8 377.8,433.9 373.9,433.9 369.9,433.8 366.0,433.6 362.0,433.4 358.0,433.1 354.0,432.8 349.9,432.3 345.9,431.8 341.9,431.3 337.8,430.6 333.8,429.9 329.8,429.1 325.9,428.3 321.9,427.4 318.0,426.4 314.1,425.3 310.3,424.2 306.5,423.1 302.7,421.8 299.0,420.6 295.3,419.2 291.8,417.9 288.2,416.4 284.8,415.0 281.4,413.5 278.0,412.0 274.8,410.4 271.6,408.9 268.5,407.3 265.5,405.6 262.6,404.0 259.7,402.4 256.9,400.8 254.3,399.1 251.7,397.5 249.2,395.9 246.8,394.3 244.5,392.7 242.3,391.2 240.1,389.7 238.1,388.2 236.2,386.8 234.3,385.3 232.6,384.0 230.9,382.7 229.4,381.4 227.9,380.2 226.5,379.1 225.3,378.0 224.1,376.9 223.0,376.0 222.0,375.1 221.0,374.3 220.2,373.5 219.5,372.8 218.8,372.2 218.2,371.7 217.7,371.2 217.3,370.9 217.0,370.6 216.8,370.3 216.6,370.2 216.5,370.1 216.5,370.1 216.6,370.2 216.8,370.3 217.0,370.6 217.3,370.9 217.7,371.2 218.2,371.7 218.7,372.2 219.4,372.8 220.1,373.4 220.9,374.1 221.7,374.9 222.7,375.7 223.7,376.6 224.8,377.6 226.0,378.6 227.3,379.7 228.6,380.8 230.1,382.0 231.6,383.2 233.2,384.5 234.9,385.8 236.7,387.1 238.5,388.5 240.5,390.0 242.6,391.4 244.7,392.9 247.0,394.4 249.3,396.0 251.8,397.6 254.3,399.2 257.0,400.8 259.7,402.4 262.6,404.0 265.5,405.7 268.6,407.3 271.8,408.9 275.1,410.6 278.4,412.2 281.9,413.8 285.6,415.3 289.3,416.9 293.1,418.4 297.0,419.8 301.0,421.3 305.2,422.6 309.4,424.0 313.7,425.2 318.1,426.4 322.6,427.5 327.2,428.6 331.8,429.5 336.5,430.4 341.3,431.2 346.1,431.9 351.0,432.5 355.8,433.0 360.7,433.3 365.6,433.6 370.5,433.8 375.3,433.9 380.1,433.9 384.9,433.7 389.6,433.5 394.2,433.2 398.7,432.8 403.0,432.4 407.3,431.9 411.4,431.3 415.3,430.7 419.1,430.0 422.6,429.3 426.0,428.6 429.2,427.9 432.2,427.2 434.9,426.5" fill="none" stroke="#2f6fe0" stroke-width="2.4" stroke-opacity="0.75" stroke-dasharray="5 3"/>
+<line x1="260.2" y1="200.9" x2="396.1" y2="276.1" stroke="#3b82f6" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="376.7" y1="200.9" x2="434.9" y2="426.5" stroke="#3b82f6" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="182.5" y1="200.9" x2="326.2" y2="259.9" stroke="#64748b" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="376.7" y1="200.9" x2="225.3" y2="378.0" stroke="#64748b" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="221.4" y1="162.1" x2="335.9" y2="267.0" stroke="#e03636" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="376.7" y1="200.9" x2="254.3" y2="399.2" stroke="#e03636" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<circle cx="221.4" cy="162.1" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="228.4" y="157.1" font-size="10" font-weight="700" fill="#1d2230">C</text>
+<circle cx="335.9" cy="267.0" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="342.9" y="262.0" font-size="10" font-weight="700" fill="#1d2230">Q</text>
+<circle cx="376.7" cy="200.9" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="383.7" y="195.9" font-size="10" font-weight="700" fill="#1d2230">P</text>
+<text x="34" y="532" fill="#64748b" font-size="11">파랑 점선 = 시작각 · 회색 = 중간 · 빨강 실선 = 끝/270° · 노랑 점 = S후크 핀 · 점선 곡선 = 출력 궤적</text>
+<rect x="630" y="82" width="314" height="462" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="648" y="110" fill="#0f172a" font-size="14" font-weight="800">기구학 · 검증 명세</text>
+<text x="648" y="136" fill="#334155" font-size="11.5">• 구동 방식: DC 130rpm 1개 + wheel-guide-30-nylon</text>
+<text x="648" y="156" fill="#334155" font-size="11.5">• 핀 활용: Ø30 나일론 단일 핀 (R=10)</text>
+<text x="648" y="176" fill="#334155" font-size="11.5">• 회전 관절: 후크 S35 × 3개</text>
+<text x="648" y="196" fill="#334155" font-size="11.5">• 테스트 리그: 수평 XZ 벤치</text>
+<text x="648" y="216" fill="#334155" font-size="11.5">• 회전 범위: 0° ~ 360°</text>
+<text x="648" y="236" fill="#334155" font-size="11.5">• 출력 범위: 71.8 ~ 133.4</text>
+<text x="648" y="256" fill="#15803d" font-size="12" font-weight="800">✔ 기구학 폐루프 오차: 0.0000 mm</text>
+<text x="648" y="276" fill="#15803d" font-size="12" font-weight="800">✔ 실구멍 정합 &amp; 지면 접지: 0건 오류</text>
+<line x1="648" y1="296" x2="926" y2="296" stroke="#e2e8f0"/>
+<text x="648" y="320" fill="#0f172a" font-size="13" font-weight="800">핵심 동작 요약</text>
+<text x="648" y="344" fill="#475569" font-size="11.5">DC 360° 연속 회전 → 와이퍼 레버 61.</text>
+<text x="648" y="363" fill="#475569" font-size="11.5">6° 무정지 연속 왕복 (s+l=50 < p+q</text>
+<text x="648" y="382" fill="#475569" font-size="11.5">=60)</text>
+<line x1="648" y1="406" x2="926" y2="406" stroke="#e2e8f0"/>
+<text x="648" y="430" fill="#0f172a" font-size="13" font-weight="800">벤치 구성 부품 (31개 + 가동 링크)</text>
+<text x="648" y="452" fill="#475569" font-size="11">• bolt-m3x6 × 10</text>
+<text x="648" y="469" fill="#475569" font-size="11">• dc-motor-130-rs × 1</text>
+<text x="648" y="486" fill="#475569" font-size="11">• frame-big-main × 1</text>
+<text x="648" y="503" fill="#475569" font-size="11">• frame-m6-pcb × 1</text>
+<text x="648" y="520" fill="#475569" font-size="11">• nut-m3 × 6</text>
+</svg>
