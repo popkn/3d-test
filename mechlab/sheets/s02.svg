@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="Pretendard,Apple SD Gothic Neo,sans-serif">
+<rect width="960" height="560" fill="#f8fafc"/>
+<rect x="16" y="16" width="928" height="54" rx="10" fill="#2f6fe0"/>
+<text x="34" y="42" fill="#fff" font-size="19" font-weight="800">S02 · 서보 휠가이드 20mm 풀행정 피스톤</text>
+<text x="34" y="60" fill="#f1f5f9" font-size="12">난이도 ★1 · 서보 휠가이드 Ø30 단일 핀 (R=10) · S후크 2개 · 가동 범위 0°~180° · 폐루프 오차 0.0000 mm</text>
+<rect x="16" y="82" width="600" height="462" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.2"/>
+<line x1="67.2" y1="94" x2="67.2" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="122.5" y1="94" x2="122.5" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="177.8" y1="94" x2="177.8" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="233.1" y1="94" x2="233.1" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="288.4" y1="94" x2="288.4" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="343.6" y1="94" x2="343.6" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="398.9" y1="94" x2="398.9" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="454.2" y1="94" x2="454.2" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="509.5" y1="94" x2="509.5" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="564.8" y1="94" x2="564.8" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="159.8" x2="604" y2="159.8" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="215.1" x2="604" y2="215.1" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="270.4" x2="604" y2="270.4" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="325.6" x2="604" y2="325.6" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="380.9" x2="604" y2="380.9" stroke="#eef1f6" stroke-width="1"/>
+<circle cx="177.8" cy="270.4" r="82.9" fill="#f8fafc" stroke="#334155" stroke-width="2.0"/>
+<circle cx="177.8" cy="270.4" r="55.3" fill="none" stroke="#334155" stroke-width="1" stroke-opacity="0.55" stroke-dasharray="3 2"/>
+<circle cx="177.8" cy="270.4" r="4" fill="#334155"/>
+<polyline points="509.5,270.4 509.5,270.4 509.4,270.4 509.2,270.4 508.9,270.4 508.5,270.4 508.1,270.4 507.6,270.4 507.0,270.4 506.3,270.4 505.5,270.4 504.7,270.4 503.8,270.4 502.9,270.4 501.8,270.4 500.7,270.4 499.6,270.4 498.3,270.4 497.1,270.4 495.7,270.4 494.3,270.4 492.8,270.4 491.3,270.4 489.8,270.4 488.2,270.4 486.5,270.4 484.8,270.4 483.1,270.4 481.3,270.4 479.5,270.4 477.7,270.4 475.8,270.4 474.0,270.4 472.1,270.4 470.2,270.4 468.2,270.4 466.3,270.4 464.3,270.4 462.4,270.4 460.4,270.4 458.4,270.4 456.5,270.4 454.5,270.4 452.5,270.4 450.6,270.4 448.6,270.4 446.7,270.4 444.8,270.4 442.9,270.4 441.1,270.4 439.2,270.4 437.4,270.4 435.6,270.4 433.8,270.4 432.1,270.4 430.4,270.4 428.7,270.4 427.1,270.4 425.5,270.4 423.9,270.4 422.4,270.4 420.9,270.4 419.5,270.4 418.1,270.4 416.7,270.4 415.4,270.4 414.2,270.4 412.9,270.4 411.8,270.4 410.7,270.4 409.6,270.4 408.6,270.4 407.6,270.4 406.7,270.4 405.8,270.4 405.0,270.4 404.2,270.4 403.5,270.4 402.8,270.4 402.2,270.4 401.6,270.4 401.1,270.4 400.7,270.4 400.3,270.4 399.9,270.4 399.6,270.4 399.4,270.4 399.2,270.4 399.0,270.4 399.0,270.4 398.9,270.4" fill="none" stroke="#2f6fe0" stroke-width="2.4" stroke-opacity="0.75" stroke-dasharray="5 3"/>
+<line x1="233.1" y1="270.4" x2="509.5" y2="270.4" stroke="#3b82f6" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="177.8" y1="325.6" x2="448.6" y2="270.4" stroke="#64748b" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="122.5" y1="270.4" x2="398.9" y2="270.4" stroke="#e03636" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<circle cx="122.5" cy="270.4" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="129.5" y="265.4" font-size="10" font-weight="700" fill="#1d2230">C</text>
+<circle cx="398.9" cy="270.4" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="405.9" y="265.4" font-size="10" font-weight="700" fill="#1d2230">X</text>
+<text x="34" y="532" fill="#64748b" font-size="11">파랑 점선 = 시작각 · 회색 = 중간 · 빨강 실선 = 끝 · 노랑 점 = S후크(2장 밀착) · 점선 = 출력 궤적</text>
+<rect x="630" y="82" width="314" height="462" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="648" y="110" fill="#0f172a" font-size="14" font-weight="800">기구학 · 검증 명세</text>
+<text x="648" y="136" fill="#334155" font-size="11.5">• 구동 방식: 서보 1개 + 서보 휠가이드(Ø30/Servo)</text>
+<text x="648" y="156" fill="#334155" font-size="11.5">• 핀 활용: 서보 휠가이드 Ø30 단일 핀 (R=10)</text>
+<text x="648" y="176" fill="#334155" font-size="11.5">• 회전 관절: 후크 S35 × 2개 (전원 2장)</text>
+<text x="648" y="196" fill="#334155" font-size="11.5">• 테스트 리그: 수평 XZ 벤치</text>
+<text x="648" y="216" fill="#334155" font-size="11.5">• 회전 범위: 0° ~ 180°</text>
+<text x="648" y="236" fill="#334155" font-size="11.5">• 출력 범위: 0.0 ~ 20.0</text>
+<text x="648" y="256" fill="#15803d" font-size="12" font-weight="800">✔ 기구학 폐루프 오차: 0.0000 mm</text>
+<text x="648" y="276" fill="#15803d" font-size="12" font-weight="800">✔ S후크 2장 밀착 · 충돌 0 검증</text>
+<line x1="648" y1="296" x2="926" y2="296" stroke="#e2e8f0"/>
+<text x="648" y="320" fill="#0f172a" font-size="13" font-weight="800">핵심 동작 요약</text>
+<text x="648" y="344" fill="#475569" font-size="11.5">가이드라인 제한 없이 0°~180° 전각 회전 </text>
+<text x="648" y="363" fill="#475569" font-size="11.5">→ PCB 채널 위 20.0 mm 풀스트로크</text>
+</svg>

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="Pretendard,Apple SD Gothic Neo,sans-serif">
+<rect width="960" height="560" fill="#f8fafc"/>
+<rect x="16" y="16" width="928" height="54" rx="10" fill="#1f9d60"/>
+<text x="34" y="42" fill="#fff" font-size="19" font-weight="800">S06 · 서보휠 서포트 다층 양날개 오니톱터</text>
+<text x="34" y="60" fill="#f1f5f9" font-size="12">난이도 ★2 · 서보 휠 → 서포트 → 1층 → 서포트 → 2층 · S후크 6개 · 가동 범위 45°~135° · 폐루프 오차 0.0000 mm</text>
+<rect x="16" y="82" width="600" height="462" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.2"/>
+<line x1="118.3" y1="94" x2="118.3" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="147.2" y1="94" x2="147.2" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="176.1" y1="94" x2="176.1" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="205.0" y1="94" x2="205.0" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="234.0" y1="94" x2="234.0" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="262.9" y1="94" x2="262.9" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="291.8" y1="94" x2="291.8" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="320.7" y1="94" x2="320.7" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="349.7" y1="94" x2="349.7" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="378.6" y1="94" x2="378.6" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="407.5" y1="94" x2="407.5" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="436.4" y1="94" x2="436.4" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="465.4" y1="94" x2="465.4" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="494.8" x2="604" y2="494.8" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="465.9" x2="604" y2="465.9" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="437.0" x2="604" y2="437.0" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="408.1" x2="604" y2="408.1" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="379.1" x2="604" y2="379.1" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="350.2" x2="604" y2="350.2" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="321.3" x2="604" y2="321.3" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="292.4" x2="604" y2="292.4" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="263.4" x2="604" y2="263.4" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="234.5" x2="604" y2="234.5" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="205.6" x2="604" y2="205.6" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="176.7" x2="604" y2="176.7" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="147.7" x2="604" y2="147.7" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="118.8" x2="604" y2="118.8" stroke="#eef1f6" stroke-width="1"/>
+<circle cx="320.7" cy="420.8" r="43.4" fill="#f8fafc" stroke="#334155" stroke-width="2.0"/>
+<circle cx="320.7" cy="420.8" r="28.9" fill="none" stroke="#334155" stroke-width="1" stroke-opacity="0.55" stroke-dasharray="3 2"/>
+<circle cx="320.7" cy="420.8" r="4" fill="#334155"/>
+<polyline points="396.8,146.3 395.1,146.4 393.3,146.5 391.4,146.6 389.4,146.8 387.4,147.0 385.2,147.2 383.0,147.5 380.7,147.8 378.3,148.1 375.9,148.5 373.3,148.9 370.8,149.4 368.1,149.9 365.4,150.4 362.7,151.0 359.9,151.7 357.0,152.4 354.1,153.2 351.2,154.0 348.2,154.9 345.2,155.8 342.2,156.8 339.1,157.9 336.0,159.0 332.9,160.2 329.8,161.5 326.7,162.8 323.6,164.2 320.4,165.7 317.3,167.2 314.2,168.8 311.1,170.4 308.0,172.1 304.9,173.9 301.9,175.7 298.9,177.6 295.9,179.6 292.9,181.5 290.0,183.6 287.1,185.7 284.3,187.8 281.5,190.0 278.8,192.2 276.1,194.4 273.5,196.7" fill="none" stroke="#1f9d60" stroke-width="2.4" stroke-opacity="0.75" stroke-dasharray="5 3"/>
+<line x1="341.2" y1="400.3" x2="225.6" y2="405.7" stroke="#3b82f6" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="300.3" y1="441.2" x2="410.6" y2="406.2" stroke="#3b82f6" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="225.6" y1="405.7" x2="263.2" y2="148.1" stroke="#3b82f6" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="410.6" y1="406.2" x2="396.8" y2="146.3" stroke="#3b82f6" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="320.7" y1="391.9" x2="205.2" y2="398.7" stroke="#64748b" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="320.7" y1="449.7" x2="426.6" y2="403.1" stroke="#64748b" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="205.2" y1="398.7" x2="334.5" y2="172.7" stroke="#64748b" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="426.6" y1="403.1" x2="340.6" y2="157.4" stroke="#64748b" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="300.3" y1="400.3" x2="186.2" y2="381.1" stroke="#e03636" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="341.2" y1="441.2" x2="445.8" y2="391.8" stroke="#e03636" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="186.2" y1="381.1" x2="401.2" y2="234.3" stroke="#e03636" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="445.8" y1="391.8" x2="273.5" y2="196.7" stroke="#e03636" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<circle cx="300.3" cy="400.3" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="307.3" y="395.3" font-size="10" font-weight="700" fill="#1d2230">C1</text>
+<circle cx="341.2" cy="441.2" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="348.2" y="436.2" font-size="10" font-weight="700" fill="#1d2230">C2</text>
+<circle cx="186.2" cy="381.1" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="193.2" y="376.1" font-size="10" font-weight="700" fill="#1d2230">QL</text>
+<circle cx="445.8" cy="391.8" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="452.8" y="386.8" font-size="10" font-weight="700" fill="#1d2230">QR</text>
+<circle cx="234.0" cy="348.5" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="241.0" y="343.5" font-size="10" font-weight="700" fill="#1d2230">PL</text>
+<circle cx="407.5" cy="348.5" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="414.5" y="343.5" font-size="10" font-weight="700" fill="#1d2230">PR</text>
+<text x="34" y="532" fill="#64748b" font-size="11">파랑 점선 = 시작각 · 회색 = 중간 · 빨강 실선 = 끝 · 노랑 점 = S후크(2장 밀착) · 점선 = 출력 궤적</text>
+<rect x="630" y="82" width="314" height="462" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="648" y="110" fill="#0f172a" font-size="14" font-weight="800">기구학 · 검증 명세</text>
+<text x="648" y="136" fill="#334155" font-size="11.5">• 구동 방식: 서보 1개 + 서보 휠가이드(Ø30/Servo)</text>
+<text x="648" y="156" fill="#334155" font-size="11.5">• 핀 활용: 서보 휠 → 서포트 → 1층 → 서포트 → 2층</text>
+<text x="648" y="176" fill="#334155" font-size="11.5">• 회전 관절: 후크 S35 × 6개 (전원 2장)</text>
+<text x="648" y="196" fill="#334155" font-size="11.5">• 테스트 리그: 수직 3D 타워</text>
+<text x="648" y="216" fill="#334155" font-size="11.5">• 회전 범위: 45° ~ 135°</text>
+<text x="648" y="236" fill="#334155" font-size="11.5">• 출력 범위: 93.0 ~ 131.5</text>
+<text x="648" y="256" fill="#15803d" font-size="12" font-weight="800">✔ 기구학 폐루프 오차: 0.0000 mm</text>
+<text x="648" y="276" fill="#15803d" font-size="12" font-weight="800">✔ S후크 2장 밀착 · 충돌 0 검증</text>
+<line x1="648" y1="296" x2="926" y2="296" stroke="#e2e8f0"/>
+<text x="648" y="320" fill="#0f172a" font-size="13" font-weight="800">핵심 동작 요약</text>
+<text x="648" y="344" fill="#475569" font-size="11.5">서보휠 → 서포트 10mm → 1층 왼날개 → </text>
+<text x="648" y="363" fill="#475569" font-size="11.5">서포트 10mm → 2층 오른날개 완벽 대칭 펄</text>
+<text x="648" y="382" fill="#475569" font-size="11.5">럭임</text>
+</svg>

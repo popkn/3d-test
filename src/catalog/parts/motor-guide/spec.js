@@ -1,20 +1,29 @@
-// 모터가이드: 축이나 모터 출력부를 프레임에 잡아 주는 작은 받침
+// 서보/모터 가이드: 모터축 구멍 양옆 가이드라인 벽(내폭 8.2 mm) + 10 mm 간격 자유 구멍
 export default {
   id: 'motor-guide',
-  name: '모터가이드',
+  name: '모터가이드 (서보 가이드)',
   category: 'hardware',
   productNo: 177,
   url: 'https://roboroboshop.com/product/detail.html?product_no=177&cate_no=194',
-  size: { x: 20, y: 7.5, z: 11, estimated: false, note: '상품 페이지 공식 규격 20 × 11 × 7.5 mm' },
+  size: { x: 20, y: 9.1, z: 10.8, estimated: false, note: '실물 기준 20 × 10.8 mm · 구멍 간격 10.0 mm · 가이드라인 내폭 8.2 mm' },
   specs: [
     ['재질', 'ABS'],
-    ['크기', '20 × 11 × 7.5 mm'],
-    ['구성', '원형 고리(축 받침) + 고정 구멍'],
+    ['크기', '20 × 10.8 mm (구멍 간격 10.0 mm)'],
+    ['구성', 'Hole A(모터축 + 양옆 가이드라인) + Hole B(자유 M3 구멍)'],
   ],
-  function: '고리에 축(바퀴축 Ø7)을 끼워 흔들리지 않게 받치고, 구멍에 볼트를 넣어 프레임에 고정한다. 서보모터에도 1개 들어 있다.',
+  function: 'Hole A에 1열 프레임을 볼트 1개로 결합하면 양옆 가이드라인에 고정되어 회전하지 않으며, Hole B에 S후크로 결합하면 가이드라인 단턱까지 양방향 ±90°(총 180°) 회전한다.',
   ports: [
-    { id: 'ring', type: '원형 고리 (안지름 약 7mm, 추정)', role: '축 받침' },
-    { id: 'hole', type: 'M3 구멍', role: '프레임 고정' },
+    { id: 'shaft', type: '모터축 구멍 + 양옆 가이드라인 (내폭 8.2 mm)', role: '1열 프레임 단일 볼트 회전 고정' },
+    { id: 'hole', type: '자유 M3 구멍 (R=10.0 mm)', role: 'S후크 ±90°(총 180°) 힌지 연결' },
   ],
-  mountHoles: {"boltAllowed": true, "types": ["M3"], "count": 1, "holes": [[5, 3, 0, 0, 1, 0, "M3"]], "otherMounts": ["BORE7"]},
+  mountHoles: {
+    boltAllowed: true,
+    types: ['M3'],
+    count: 2,
+    holes: [
+      [-5, 2.8, 0, 0, 1, 0, 'M3'],
+      [5, 2.8, 0, 0, 1, 0, 'M3'],
+    ],
+    otherMounts: ['SERVO_HEX'],
+  },
 };

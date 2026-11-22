@@ -1,13 +1,17 @@
 import * as THREE from 'three';
-import { buildMechLab } from '../src/mechlab/assemble.js';
+import { buildMechLab, SERVO_PART_IDS } from '../src/mechlab/assemble.js';
 import { GUIDES, TIERS_BY_GUIDE, MECH_BY_CODE } from '../src/mechlab/catalog.js';
 import { partBounds } from './lib.js';
 import { loadPart } from 'virtual:parts';
 
-export const meta = { id: 'mechlab', name: '서보·휠 메커니즘 30종', mods: 5, fnOnly: true };
+export const meta = { id: 'mechlab', name: '서보 메커니즘', mods: 5, fnOnly: true };
 
 export async function makeAdapter(ctx) {
-  const lab = await buildMechLab(loadPart, ctx.onProgress);
+  const lab = await buildMechLab(loadPart, ctx.onProgress, {
+    filter: (sp) => sp.robot === 'servo',
+    partIds: SERVO_PART_IDS,
+    initialCode: 'M01',
+  });
   lab.root.updateMatrixWorld(true);
   const full = partBounds(lab.rigs.M01.root);
 
@@ -26,13 +30,13 @@ export async function makeAdapter(ctx) {
     fnOnly: true,
     frameOpts: frameFor('M01').opts,
     full,
-    count: 30,
+    count: lab.count,
     mods: TIERS_BY_GUIDE.servo.map((t) => ({ no: `★${t.tier}`, name: t.title, short: t.label })),
     pose() {},
     setExplode() {},
     setHidden() {},
-    stepName: () => '기능 조작 전용 (서보 15종 · 휠 15종)',
-    stepShort: () => '메커니즘 선택',
+    stepName: () => '서보 메커니즘 전용 (서보 가이드 15종 · 휠 가이드 15종)',
+    stepShort: () => '서보 메커니즘',
     modOfStep: () => 0,
     focus: () => full.getCenter(new THREE.Vector3()),
   };
@@ -42,10 +46,7 @@ export async function makeAdapter(ctx) {
     tier: '1',
     code: 'M01',
     deg: MECH_BY_CODE.M01.rest,
-    rpm: 60,
-    run: true,
     auto: true,
-    rev: false,
     slow: false,
   };
   let phase = 0;
@@ -67,23 +68,13 @@ export async function makeAdapter(ctx) {
     const tiers = tiersNow();
     const tierObj = tiers.find((t) => String(t.tier) === state.tier) || tiers[0];
     const sp = MECH_BY_CODE[state.code];
-    const items = [
+    return [
       { type: 'seg', id: 'guide', label: '가이드', wide: true, options: GUIDES.map((g) => [g.id, g.label]) },
       { type: 'seg', id: 'tier', label: '난이도', wide: true, options: tiers.map((t) => [String(t.tier), t.label]) },
       { type: 'seg', id: 'code', label: '코드', wide: true, options: tierObj.codes.map((c) => [c, MECH_BY_CODE[c].short]) },
+      { type: 'toggles', items: [{ id: 'auto', label: '자동 왕복' }, { id: 'slow', label: '슬로우' }] },
+      { type: 'bar', id: 'deg', label: '서보 각도', min: sp.range[0], max: sp.range[1], step: 1, fmt: (x) => `${Math.round(x)}°` },
     ];
-    if (state.guide === 'servo') {
-      items.push(
-        { type: 'toggles', items: [{ id: 'auto', label: '자동 왕복' }, { id: 'slow', label: '슬로우' }] },
-        { type: 'bar', id: 'deg', label: '서보 각도', min: sp.range[0], max: sp.range[1], step: 1, fmt: (x) => `${Math.round(x)}°` },
-      );
-    } else {
-      items.push(
-        { type: 'toggles', items: [{ id: 'run', label: '모터 회전' }, { id: 'rev', label: '역회전' }, { id: 'slow', label: '슬로우' }] },
-        { type: 'bar', id: 'rpm', label: 'DC 속도', min: 0, max: 130, step: 5, fmt: (x) => `${Math.round(x)} rpm` },
-      );
-    }
-    return items;
   };
 
   const fn = {
@@ -101,8 +92,7 @@ export async function makeAdapter(ctx) {
         if (state.guide === val) return;
         state.guide = val;
         state.tier = '1';
-        const firstCode = tiersNow()[0].codes[0];
-        selectCode(firstCode);
+        selectCode(tiersNow()[0].codes[0]);
         return 'rebuild';
       }
       if (id === 'tier') {
@@ -121,54 +111,32 @@ export async function makeAdapter(ctx) {
         lab.setAngle(state.deg);
         return;
       }
-      if (id === 'run') {
-        state.run = !!val;
-        state.rpm = state.run ? (state.rpm > 0 ? state.rpm : 60) : 0;
-        return;
-      }
-      if (id === 'rpm') {
-        state.rpm = Number(val);
-        state.run = state.rpm > 0;
-        return;
-      }
       state[id] = val;
     },
     update(dt) {
+      if (!state.auto) return false;
       const sp = MECH_BY_CODE[state.code];
-      if (state.guide === 'servo') {
-        if (!state.auto) return false;
-        const [lo, hi] = sp.range;
-        phase += dt * (state.slow ? 0.55 : 1.75);
-        state.deg = lo + (0.5 - 0.5 * Math.cos(phase)) * (hi - lo);
-        lab.setAngle(state.deg);
-        return true;
-      }
-      if (!state.run || state.rpm < 0.5) return false;
-      const scale = state.slow ? 0.25 : 1;
-      const dir = state.rev ? -1 : 1;
-      state.deg = (state.deg + dir * (state.rpm / 60) * 360 * dt * scale + 360) % 360;
+      const [lo, hi] = sp.range;
+      phase += dt * (state.slow ? 0.55 : 1.75);
+      state.deg = lo + (0.5 - 0.5 * Math.cos(phase)) * (hi - lo);
       lab.setAngle(state.deg);
       return true;
     },
     stats() {
       const { spec, deg, res } = lab.getActive();
-      const driveTxt = spec.guide === 'servo' ? `${deg.toFixed(0)}°` : `${state.rpm} rpm`;
       return [
         ['코드', `${spec.code} (★${spec.tier})`],
         ['S후크', `${spec.hooks}개`],
-        [spec.guide === 'servo' ? '서보' : 'DC', driveTxt],
+        ['서보', `${deg.toFixed(0)}°`],
         [res?.statLabel || '출력', res?.statVal || '-'],
         ['오차', `${(res?.err ?? 0).toFixed(3)} mm`, 'ok'],
       ];
     },
-    busy: () => (state.guide === 'servo' ? state.auto : state.run && state.rpm > 0.5),
+    busy: () => state.auto,
     exit() {
       state.guide = 'servo';
       state.tier = '1';
-      state.rpm = 60;
-      state.run = true;
       state.auto = true;
-      state.rev = false;
       state.slow = false;
       selectCode('M01');
     },

@@ -2,7 +2,7 @@
 <rect width="960" height="560" fill="#f8fafc"/>
 <rect x="16" y="16" width="928" height="54" rx="10" fill="#e87a1e"/>
 <text x="34" y="42" fill="#fff" font-size="19" font-weight="800">W08 · 드래그링크 비등속 360° 변속기 (Double-Crank)</text>
-<text x="34" y="60" fill="#f1f5f9" font-size="12">난이도 ★3 · Ø40 노랑 + R30 확장 암 · S후크 3개 · 가동 범위 0°~360° · 폐루프 오차 0.0000 mm</text>
+<text x="34" y="60" fill="#f1f5f9" font-size="12">난이도 ★3 · Ø40 노랑 + R30 확장 암 + 상부 브릿지 · S후크 3개 · 가동 범위 0°~360° · 폐루프 오차 0.0000 mm</text>
 <rect x="16" y="82" width="600" height="462" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.2"/>
 <line x1="59.5" y1="94" x2="59.5" y2="502" stroke="#eef1f6" stroke-width="1"/>
 <line x1="94.9" y1="94" x2="94.9" y2="502" stroke="#eef1f6" stroke-width="1"/>
@@ -48,27 +48,20 @@
 <text x="210.4" y="318.9" font-size="10" font-weight="700" fill="#1d2230">Q</text>
 <circle cx="342.5" cy="297.9" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
 <text x="349.5" y="292.9" font-size="10" font-weight="700" fill="#1d2230">P</text>
-<text x="34" y="532" fill="#64748b" font-size="11">파랑 점선 = 시작각 · 회색 = 중간 · 빨강 실선 = 끝/270° · 노랑 점 = S후크 핀 · 점선 곡선 = 출력 궤적</text>
+<text x="34" y="532" fill="#64748b" font-size="11">파랑 점선 = 시작각 · 회색 = 중간 · 빨강 실선 = 끝 · 노랑 점 = S후크(2장 밀착) · 점선 = 출력 궤적</text>
 <rect x="630" y="82" width="314" height="462" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.2"/>
 <text x="648" y="110" fill="#0f172a" font-size="14" font-weight="800">기구학 · 검증 명세</text>
 <text x="648" y="136" fill="#334155" font-size="11.5">• 구동 방식: DC 130rpm 1개 + wheel-guide-40-yellow</text>
-<text x="648" y="156" fill="#334155" font-size="11.5">• 핀 활용: Ø40 노랑 + R30 확장 암</text>
-<text x="648" y="176" fill="#334155" font-size="11.5">• 회전 관절: 후크 S35 × 3개</text>
+<text x="648" y="156" fill="#334155" font-size="11.5">• 핀 활용: Ø40 노랑 + R30 확장 암 + 상부 브릿지</text>
+<text x="648" y="176" fill="#334155" font-size="11.5">• 회전 관절: 후크 S35 × 3개 (전원 2장)</text>
 <text x="648" y="196" fill="#334155" font-size="11.5">• 테스트 리그: 수평 XZ 벤치</text>
 <text x="648" y="216" fill="#334155" font-size="11.5">• 회전 범위: 0° ~ 360°</text>
 <text x="648" y="236" fill="#334155" font-size="11.5">• 출력 범위: -179.9 ~ 179.3</text>
 <text x="648" y="256" fill="#15803d" font-size="12" font-weight="800">✔ 기구학 폐루프 오차: 0.0000 mm</text>
-<text x="648" y="276" fill="#15803d" font-size="12" font-weight="800">✔ 실구멍 정합 &amp; 지면 접지: 0건 오류</text>
+<text x="648" y="276" fill="#15803d" font-size="12" font-weight="800">✔ S후크 2장 밀착 · 충돌 0 검증</text>
 <line x1="648" y1="296" x2="926" y2="296" stroke="#e2e8f0"/>
 <text x="648" y="320" fill="#0f172a" font-size="13" font-weight="800">핵심 동작 요약</text>
 <text x="648" y="344" fill="#475569" font-size="11.5">상부 브릿지 피벗(25 mm)이 최단 링크 → </text>
 <text x="648" y="363" fill="#475569" font-size="11.5">간섭 0으로 매 회전 0.4×↔2.5× 비등속 </text>
 <text x="648" y="382" fill="#475569" font-size="11.5">360° 출력</text>
-<line x1="648" y1="406" x2="926" y2="406" stroke="#e2e8f0"/>
-<text x="648" y="430" fill="#0f172a" font-size="13" font-weight="800">벤치 구성 부품 (37개 + 가동 링크)</text>
-<text x="648" y="452" fill="#475569" font-size="11">• bolt-m3x10 × 1</text>
-<text x="648" y="469" fill="#475569" font-size="11">• bolt-m3x6 × 6</text>
-<text x="648" y="486" fill="#475569" font-size="11">• dc-motor-130-rs × 1</text>
-<text x="648" y="503" fill="#475569" font-size="11">• frame-big-main × 1</text>
-<text x="648" y="520" fill="#475569" font-size="11">• frame-s3-pcb × 4</text>
 </svg>

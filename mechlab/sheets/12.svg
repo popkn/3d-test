@@ -1,63 +1,59 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="Pretendard,Apple SD Gothic Neo,sans-serif">
 <rect width="960" height="560" fill="#f8fafc"/>
 <rect x="16" y="16" width="928" height="54" rx="10" fill="#8b46d9"/>
-<text x="34" y="42" fill="#fff" font-size="19" font-weight="800">M12 · 1-서보 보행 다리 모듈 (Walking Leg)</text>
-<text x="34" y="60" fill="#f1f5f9" font-size="12">난이도 ★4 · 모터가이드 단일 핀 (R=9.5) · S후크 3개 · 가동 범위 0°~180° · 폐루프 오차 0.0000 mm</text>
+<text x="34" y="42" fill="#fff" font-size="19" font-weight="800">M12 · 1-서보 보행 다리 모듈 (Hole B ±90°)</text>
+<text x="34" y="60" fill="#f1f5f9" font-size="12">난이도 ★4 · 서보가이드 Hole B (R=10 · ±86.4° 이내) · S후크 3개 · 가동 범위 30°~150° · 폐루프 오차 0.0000 mm</text>
 <rect x="16" y="82" width="600" height="462" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.2"/>
-<line x1="177.2" y1="94" x2="177.2" y2="502" stroke="#eef1f6" stroke-width="1"/>
-<line x1="216.6" y1="94" x2="216.6" y2="502" stroke="#eef1f6" stroke-width="1"/>
-<line x1="256.0" y1="94" x2="256.0" y2="502" stroke="#eef1f6" stroke-width="1"/>
-<line x1="295.3" y1="94" x2="295.3" y2="502" stroke="#eef1f6" stroke-width="1"/>
-<line x1="334.7" y1="94" x2="334.7" y2="502" stroke="#eef1f6" stroke-width="1"/>
-<line x1="374.1" y1="94" x2="374.1" y2="502" stroke="#eef1f6" stroke-width="1"/>
-<line x1="413.5" y1="94" x2="413.5" y2="502" stroke="#eef1f6" stroke-width="1"/>
-<line x1="28" y1="478.4" x2="604" y2="478.4" stroke="#eef1f6" stroke-width="1"/>
-<line x1="28" y1="439.0" x2="604" y2="439.0" stroke="#eef1f6" stroke-width="1"/>
-<line x1="28" y1="399.6" x2="604" y2="399.6" stroke="#eef1f6" stroke-width="1"/>
-<line x1="28" y1="360.3" x2="604" y2="360.3" stroke="#eef1f6" stroke-width="1"/>
-<line x1="28" y1="320.9" x2="604" y2="320.9" stroke="#eef1f6" stroke-width="1"/>
-<line x1="28" y1="281.5" x2="604" y2="281.5" stroke="#eef1f6" stroke-width="1"/>
-<line x1="28" y1="242.1" x2="604" y2="242.1" stroke="#eef1f6" stroke-width="1"/>
-<line x1="28" y1="202.8" x2="604" y2="202.8" stroke="#eef1f6" stroke-width="1"/>
-<line x1="28" y1="163.4" x2="604" y2="163.4" stroke="#eef1f6" stroke-width="1"/>
-<line x1="28" y1="124.0" x2="604" y2="124.0" stroke="#eef1f6" stroke-width="1"/>
-<circle cx="295.3" cy="200.4" r="37.4" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
-<line x1="295.3" y1="200.4" x2="257.9" y2="200.4" stroke="#111827" stroke-width="9.0" stroke-linecap="round"/>
-<circle cx="295.3" cy="200.4" r="17.7" fill="#111827" stroke="#475569" stroke-width="1"/>
-<circle cx="295.3" cy="200.4" r="3.2" fill="#e2e8f0"/>
-<polyline points="374.1,433.0 366.7,432.9 359.5,432.5 352.3,431.9 345.3,431.1 338.5,430.1 331.9,428.9 325.7,427.5 319.7,426.1 314.1,424.5 308.8,422.9 303.9,421.2 299.3,419.5 295.1,417.8 291.2,416.1 287.7,414.5 284.5,413.0 281.6,411.5 279.0,410.0 276.7,408.7 274.7,407.4 273.0,406.2 271.5,405.1 270.2,404.1 269.1,403.2 268.3,402.4 267.6,401.7 267.1,401.0 266.8,400.4 266.7,399.9 266.7,399.5 266.8,399.1 267.1,398.8 267.5,398.5 268.0,398.3 268.7,398.2 269.4,398.1 270.2,398.0 271.2,398.0 272.2,398.0 273.3,398.1 274.5,398.2 275.7,398.3 277.0,398.4 278.4,398.6 279.9,398.7 281.4,398.9 282.9,399.1 284.5,399.3 286.2,399.6 287.9,399.8 289.7,400.1 291.4,400.3 293.3,400.5 295.1,400.8 297.0,401.1 299.0,401.3 300.9,401.6 302.9,401.8 304.9,402.1 307.0,402.3 309.0,402.5 311.1,402.8 313.2,403.0 315.3,403.2 317.5,403.4 319.6,403.6 321.8,403.8 324.0,404.0 326.2,404.2 328.4,404.4 330.6,404.6 332.9,404.7 335.1,404.9 337.4,405.0 339.6,405.2 341.9,405.3 344.2,405.4 346.4,405.5 348.7,405.6 351.0,405.7 353.3,405.8 355.6,405.8 357.9,405.9 360.2,406.0 362.5,406.0 364.8,406.1 367.1,406.1 369.5,406.1 371.8,406.1 374.1,406.1" fill="none" stroke="#8b46d9" stroke-width="2.4" stroke-opacity="0.75" stroke-dasharray="5 3"/>
-<line x1="332.7" y1="200.4" x2="374.1" y2="433.0" stroke="#3b82f6" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
-<line x1="374.1" y1="200.4" x2="353.4" y2="316.7" stroke="#3b82f6" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
-<line x1="295.3" y1="163.0" x2="279.9" y2="398.7" stroke="#64748b" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45"/>
-<line x1="374.1" y1="200.4" x2="287.6" y2="280.9" stroke="#64748b" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45"/>
-<line x1="257.9" y1="200.4" x2="374.1" y2="406.1" stroke="#e03636" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.95"/>
-<line x1="374.1" y1="200.4" x2="316.0" y2="303.3" stroke="#e03636" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.95"/>
-<circle cx="257.9" cy="200.4" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
-<text x="264.9" y="195.4" font-size="10" font-weight="700" fill="#1d2230">C</text>
-<circle cx="316.0" cy="303.3" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
-<text x="323.0" y="298.3" font-size="10" font-weight="700" fill="#1d2230">Q</text>
-<circle cx="374.1" cy="200.4" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
-<text x="381.1" y="195.4" font-size="10" font-weight="700" fill="#1d2230">P</text>
-<text x="34" y="532" fill="#64748b" font-size="11">파랑 점선 = 시작각 · 회색 = 중간 · 빨강 실선 = 끝/270° · 노랑 점 = S후크 핀 · 점선 곡선 = 출력 궤적</text>
+<line x1="90.6" y1="94" x2="90.6" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="134.1" y1="94" x2="134.1" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="177.5" y1="94" x2="177.5" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="221.0" y1="94" x2="221.0" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="264.4" y1="94" x2="264.4" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="307.8" y1="94" x2="307.8" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="351.3" y1="94" x2="351.3" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="394.7" y1="94" x2="394.7" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="438.2" y1="94" x2="438.2" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="481.6" y1="94" x2="481.6" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="476.2" x2="604" y2="476.2" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="432.7" x2="604" y2="432.7" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="389.3" x2="604" y2="389.3" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="345.9" x2="604" y2="345.9" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="302.4" x2="604" y2="302.4" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="259.0" x2="604" y2="259.0" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="215.5" x2="604" y2="215.5" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="172.1" x2="604" y2="172.1" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="128.7" x2="604" y2="128.7" stroke="#eef1f6" stroke-width="1"/>
+<circle cx="221.0" cy="169.5" r="43.4" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<line x1="221.0" y1="169.5" x2="264.4" y2="169.5" stroke="#111827" stroke-width="9.0" stroke-linecap="square"/>
+<circle cx="221.0" cy="169.5" r="19.5" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="221.0" cy="169.5" r="3.2" fill="#e2e8f0"/>
+<polyline points="384.4,390.5 386.8,390.2 389.1,389.9 391.4,389.6 393.7,389.3 395.9,389.0 398.1,388.6 400.3,388.3 402.4,388.0 404.5,387.7 406.5,387.3 408.5,387.0 410.5,386.7 412.4,386.4 414.2,386.1 416.0,385.8 417.7,385.6 419.4,385.3 421.0,385.1 422.5,384.9 423.9,384.8 425.3,384.6 426.5,384.5 427.7,384.5 428.7,384.5 429.7,384.5 430.5,384.6 431.3,384.8 431.9,385.0 432.3,385.3 432.6,385.6 432.8,386.0 432.7,386.6 432.5,387.2 432.2,387.9 431.6,388.7 430.7,389.6 429.7,390.6 428.4,391.8 426.8,393.0 425.0,394.4 422.8,395.8 420.3,397.4 417.5,399.1 414.3,400.9 410.7,402.8 406.7,404.8 402.3,406.9 397.5,409.0 392.2,411.1 386.5,413.2 380.3,415.3 373.6,417.3 366.5,419.3 359.0,421.0 351.1,422.6 342.9,423.9 334.4,425.0 325.7,425.8 316.8,426.3 307.8,426.5" fill="none" stroke="#8b46d9" stroke-width="2.4" stroke-opacity="0.75" stroke-dasharray="5 3"/>
+<line x1="199.2" y1="207.1" x2="384.4" y2="390.5" stroke="#3b82f6" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="307.8" y1="169.5" x2="291.8" y2="298.8" stroke="#3b82f6" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="242.7" y1="207.1" x2="432.6" y2="385.6" stroke="#64748b" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="307.8" y1="169.5" x2="337.6" y2="296.4" stroke="#64748b" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="264.4" y1="169.5" x2="307.8" y2="426.5" stroke="#e03636" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="307.8" y1="169.5" x2="286.1" y2="298.0" stroke="#e03636" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<circle cx="264.4" cy="169.5" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="271.4" y="164.5" font-size="10" font-weight="700" fill="#1d2230">C</text>
+<circle cx="286.1" cy="298.0" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="293.1" y="293.0" font-size="10" font-weight="700" fill="#1d2230">Q</text>
+<circle cx="307.8" cy="169.5" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="314.8" y="164.5" font-size="10" font-weight="700" fill="#1d2230">P</text>
+<text x="34" y="532" fill="#64748b" font-size="11">파랑 점선 = 시작각 · 회색 = 중간 · 빨강 실선 = 끝 · 노랑 점 = S후크(2장 밀착) · 점선 = 출력 궤적</text>
 <rect x="630" y="82" width="314" height="462" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.2"/>
 <text x="648" y="110" fill="#0f172a" font-size="14" font-weight="800">기구학 · 검증 명세</text>
-<text x="648" y="136" fill="#334155" font-size="11.5">• 구동 방식: 서보 1개 + 모터가이드 (motor-guide · R=9.5)</text>
-<text x="648" y="156" fill="#334155" font-size="11.5">• 핀 활용: 모터가이드 단일 핀 (R=9.5)</text>
-<text x="648" y="176" fill="#334155" font-size="11.5">• 회전 관절: 후크 S35 × 3개</text>
+<text x="648" y="136" fill="#334155" font-size="11.5">• 구동 방식: 서보 1개 + 서보 가이드(motor-guide · R=10)</text>
+<text x="648" y="156" fill="#334155" font-size="11.5">• 핀 활용: 서보가이드 Hole B (R=10 · ±86.4° 이내)</text>
+<text x="648" y="176" fill="#334155" font-size="11.5">• 회전 관절: 후크 S35 × 3개 (전원 2장)</text>
 <text x="648" y="196" fill="#334155" font-size="11.5">• 테스트 리그: 수직 3D 타워</text>
-<text x="648" y="216" fill="#334155" font-size="11.5">• 회전 범위: 0° ~ 180°</text>
-<text x="648" y="236" fill="#334155" font-size="11.5">• 출력 범위: 11.5 ~ 20.4</text>
+<text x="648" y="216" fill="#334155" font-size="11.5">• 회전 범위: 30° ~ 150°</text>
+<text x="648" y="236" fill="#334155" font-size="11.5">• 출력 범위: 11.4 ~ 21.1</text>
 <text x="648" y="256" fill="#15803d" font-size="12" font-weight="800">✔ 기구학 폐루프 오차: 0.0000 mm</text>
-<text x="648" y="276" fill="#15803d" font-size="12" font-weight="800">✔ 실구멍 정합 &amp; 지면 접지: 0건 오류</text>
+<text x="648" y="276" fill="#15803d" font-size="12" font-weight="800">✔ S후크 2장 밀착 · 충돌 0 검증</text>
 <line x1="648" y1="296" x2="926" y2="296" stroke="#e2e8f0"/>
 <text x="648" y="320" fill="#0f172a" font-size="13" font-weight="800">핵심 동작 요약</text>
-<text x="648" y="344" fill="#475569" font-size="11.5">일체형 다리 바(C-Q-F) + 로커 → S후크</text>
-<text x="648" y="363" fill="#475569" font-size="11.5"> 3개(2장 밀착)로 D자 보행 궤적 생성</text>
-<line x1="648" y1="406" x2="926" y2="406" stroke="#e2e8f0"/>
-<text x="648" y="430" fill="#0f172a" font-size="13" font-weight="800">벤치 구성 부품 (51개 + 가동 링크)</text>
-<text x="648" y="452" fill="#475569" font-size="11">• bolt-m3x6 × 15</text>
-<text x="648" y="469" fill="#475569" font-size="11">• frame-big-main × 1</text>
-<text x="648" y="486" fill="#475569" font-size="11">• frame-m6-pcb × 1</text>
-<text x="648" y="503" fill="#475569" font-size="11">• frame-main-pcb × 1</text>
-<text x="648" y="520" fill="#475569" font-size="11">• frame-s3-pcb × 1</text>
+<text x="648" y="344" fill="#475569" font-size="11.5">서보가이드 Hole B ±90° 안전 구간 구동</text>
+<text x="648" y="363" fill="#475569" font-size="11.5"> + 일체형 다리 바(C-Q-F) → D자 보행</text>
+<text x="648" y="382" fill="#475569" font-size="11.5"> 궤적</text>
 </svg>
