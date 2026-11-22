@@ -1,13 +1,12 @@
 // 로보로보 완성 로봇 조립 — 앱 화면 (모바일 D안 · 몰입형 HUD)
 // 로봇 자체(조립 데이터 · 부품 모양 · 기능)는 완성 로봇 파일(app/robots/)에서 불러온다 → GitHub main에 로봇을 올리면 앱이 자동 업데이트.
 import * as THREE107 from 'three';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { createScene, partBounds } from './scene.js';
 import { initRobots, loadRobot, robotCode, checkUpdates, clearRobotCache } from './robots.js';
 
 var $ = (s) => document.querySelector(s);
 var stage = $("#stage");
-var view = createScene(stage);
+var view = null;
 var V3 = THREE107.Vector3;
 var clamp = (x, a, b) => Math.max(a, Math.min(b, x));
 var buzz = () => {
@@ -128,11 +127,7 @@ $("#fbar").addEventListener("click", (ev) => {
   setActive(b.dataset.f);
 });
 
-// ───────── 로봇 카드 ─────────
-function ring(p, wait) {
-  const C = 2 * Math.PI * 18;
-  return `<div class="tload${wait ? " wait" : ""}"><svg viewBox="0 0 44 44" aria-hidden="true"><circle class="trk" cx="22" cy="22" r="18" fill="none" stroke-width="4"/><circle class="arc" cx="22" cy="22" r="18" fill="none" stroke-width="4" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${(C * (1 - p)).toFixed(1)}"/></svg><span>${wait ? "대기 중" : `${Math.round(p * 100)}%`}</span></div>`;
-}
+// ───────── 로봇 목록 (이름 선택 · 첫 화면 3D 로딩 없음) ─────────
 function renderCards() {
   const list = inView();
   const box2 = $("#cards"), empty = $("#empty");
@@ -143,88 +138,21 @@ function renderCards() {
     empty.innerHTML = `<div class="eic">${I.box}</div><b>‘${esc(f?.name || "")}’ 폴더가 비어 있어요</b><p>로봇을 담으면 여기에서 바로 조립을 볼 수 있어요.</p><button type="button" class="primary pr" id="fillFolder">${I.plus}로봇 담기</button>`;
   }
   box2.innerHTML = list.map((r, i) => {
-    const f = folderOf(r), ready = !!previews[r.id]?.ready, prog = progress[r.id] ?? 0;
-    return `<article class="card" data-id="${r.id}" style="animation-delay:${i * 70}ms">
-  <button type="button" class="thumb${ready ? " ready" : ""}" data-open="${r.id}" aria-label="${esc(r.name)} 조립 보기">
-    <canvas class="tcan" aria-hidden="true"></canvas><span class="idx">0${robots.indexOf(r) + 1}</span>${ring(prog, !(r.id in progress))}</button>
-  <div class="info">
-    <div class="itop"><div class="names">${f && store.active === "all" ? `<span class="chipf"><i style="background:${f.color}"></i>${esc(f.name)}</span>` : ""}
-      <span class="lbl">로봇 이름</span><b class="rname">${esc(r.name)}</b>
-      <span class="lbl">제작자</span><span class="maker${r.maker ? "" : " none"}">${r.maker ? esc(r.maker) : "미입력"}</span></div>
-      <div class="mini"><button type="button" class="ibtn pr" data-edit="${r.id}" aria-expanded="false" aria-label="${esc(r.name)} 정보 수정">${I.edit}</button>
-        <button type="button" class="ibtn pr dl" data-dl="${r.id}" aria-label="${esc(r.name)} 조립 보기 HTML 내려받기">${I.download}</button></div></div>
-    <div class="meta"><span>${r.fnOnly ? `단계 ★1~★${r.mods}` : `모듈 ${r.mods}`}</span>${r.count ? `<span>${r.fnOnly ? `메커니즘 ${r.count}종` : `부품 ${r.count}`}</span>` : ""}</div>
-    <button type="button" class="primary pr" data-open="${r.id}">${I.play}${r.fnOnly ? "기능 조작" : "조립 보기"}</button>
-  </div></article>`;
+    const f = folderOf(r);
+    const num = String(robots.indexOf(r) + 1).padStart(2, "0");
+    return `<article class="card" data-id="${r.id}" style="animation-delay:${i * 35}ms">
+  <button type="button" class="cmain pr" data-open="${r.id}" aria-label="${esc(r.name)} ${r.fnOnly ? "기능 조작" : "조립 보기"}">
+    <span class="cidx">${num}</span>
+    <span class="names">${f && store.active === "all" ? `<span class="chipf"><i style="background:${f.color}"></i>${esc(f.name)}</span>` : ""}
+      <b class="rname">${esc(r.name)}</b>${r.maker ? `<span class="maker">${esc(r.maker)}</span>` : ""}</span>
+    <span class="cgo" aria-hidden="true">${I.play}</span>
+  </button>
+  <div class="mini"><button type="button" class="ibtn pr" data-edit="${r.id}" aria-label="${esc(r.name)} 정보 수정">${I.edit}</button>
+    <button type="button" class="ibtn pr dl" data-dl="${r.id}" aria-label="${esc(r.name)} 조립 보기 HTML 내려받기">${I.download}</button></div>
+</article>`;
   }).join("");
 }
-function updateThumb(id) {
-  const t = document.querySelector(`.card[data-id="${id}"] .thumb`);
-  if (!t) return;
-  if (previews[id]?.ready) t.classList.add("ready");
-  const old = t.querySelector(".tload");
-  if (old && !previews[id]?.ready) old.outerHTML = ring(progress[id] ?? 0, !(id in progress));
-}
-// 카드 3D: 손가락으로 돌리기 (확대 · 이동 없음)
-// 손가락은 목표 각도만 바꾸고, 화면은 목표를 부드럽게 따라간다. 놓을 때 속도는 최근 120ms 기록으로 계산.
-var tdrag = null;
-$("#cards").addEventListener("pointerdown", (ev) => {
-  const t = ev.target.closest(".thumb");
-  const p = t && previews[t.dataset.open];
-  if (!p || tdrag) return;
-  p.vel = 0;
-  tdrag = { t, p, id: ev.pointerId, x: ev.clientX, y: ev.clientY, lx: ev.clientX, ly: ev.clientY, moved: false, hist: [], lastMove: performance.now() };
-  // 손가락(터치)은 옆으로 끌 때만 붙잡는다 → 위아래로 밀면 목록이 스크롤 (마우스는 바로 붙잡음)
-  if (ev.pointerType !== "touch") t.setPointerCapture(ev.pointerId);
-});
-$("#cards").addEventListener("contextmenu", (ev) => {
-  if (ev.target.closest(".thumb")) ev.preventDefault();
-});
-$("#cards").addEventListener("pointermove", (ev) => {
-  if (!tdrag || ev.pointerId !== tdrag.id) return;
-  const d = tdrag, now = performance.now();
-  if (!d.moved && Math.hypot(ev.clientX - d.x, ev.clientY - d.y) > 6) {
-    if (ev.pointerType === "touch") {
-      if (Math.abs(ev.clientY - d.y) > Math.abs(ev.clientX - d.x)) { tdrag = null; return; }   // 위아래 = 스크롤에 맡김
-      try { d.t.setPointerCapture(ev.pointerId); } catch (e) {}
-    }
-    d.moved = true;
-    d.p.drag = true;
-    d.p.spin = 0;
-    d.lx = ev.clientX;
-    d.ly = ev.clientY;
-    d.t.classList.add("tdrag");
-  }
-  if (!d.moved) return;
-  const bb = d.t.getBoundingClientRect(), w = Math.max(120, bb.width), h = Math.max(120, bb.height);
-  d.p.ta -= (ev.clientX - d.lx) / w * Math.PI * 0.9;
-  d.p.te = clamp(d.p.te + (ev.clientY - d.ly) / h * 0.7, 0.15, 0.95);
-  d.lx = ev.clientX;
-  d.ly = ev.clientY;
-  d.lastMove = now;
-  d.hist.push([now, d.p.ta]);
-  while (d.hist.length > 2 && now - d.hist[0][0] > 120) d.hist.shift();
-});
-function endThumbDrag(ev) {
-  if (!tdrag || ev.pointerId !== tdrag.id) return;
-  const d = tdrag, now = performance.now();
-  tdrag = null;
-  d.t.classList.remove("tdrag");
-  if (!d.moved) return;
-  d.p.drag = false;
-  d.p.idle = now + 2600;
-  const h0 = d.hist[0], h1 = d.hist[d.hist.length - 1];
-  const span = h0 && h1 ? (h1[0] - h0[0]) / 1000 : 0;
-  d.p.vel = span > 0.02 && now - d.lastMove < 70 ? clamp((h1[1] - h0[1]) / span * 0.6, -2.4, 2.4) : 0;
-  d.t.dataset.dragged = "1";
-  setTimeout(() => delete d.t.dataset.dragged, 350);
-}
-$("#cards").addEventListener("pointerup", endThumbDrag);
-$("#cards").addEventListener("pointercancel", endThumbDrag);
 document.getElementById("home").addEventListener("click", (ev) => {
-  const th = ev.target.closest(".thumb");
-  if (th && th.dataset.dragged) return;
-  if (ev.target.closest(".cedit")) return;
   const o = ev.target.closest("[data-open]"), mv = ev.target.closest("[data-move]"), ed = ev.target.closest("[data-edit]"), dl = ev.target.closest("[data-dl]");
   if (dl) {
     buzz();
@@ -238,108 +166,61 @@ document.getElementById("home").addEventListener("click", (ev) => {
     moveSheet(robots.find((r) => r.id === mv.dataset.move));
   } else if (ed) {
     buzz();
-    toggleCardEdit(ed.closest(".card"), robots.find((r) => r.id === ed.dataset.edit), ed);
+    editRobotSheet(robots.find((r) => r.id === ed.dataset.edit));
   } else if (ev.target.closest("#fillFolder")) {
     buzz();
     fillSheet(store.folders.find((f) => f.id === store.active));
   }
 });
-// ───────── 카드 편집 패널 (연필 버튼 자리에서 원형으로 펼쳐짐) ─────────
-var cedit = null;
-function closeCardEdit(cb) {
-  if (!cedit) return cb && cb();
-  const { card, panel, btn } = cedit;
-  cedit = null;
-  btn.setAttribute("aria-expanded", "false");
-  card.classList.remove("editing");
-  panel.classList.add("out");
-  setTimeout(() => {
-    panel.remove();
-    if (cb) cb();
-  }, 230);
-}
-function toggleCardEdit(card, r, btn) {
-  if (cedit && cedit.card === card) return closeCardEdit();
-  closeCardEdit();
-  $("#htoast").classList.remove("show");
+function editRobotSheet(r) {
+  if (!r) return;
   let folder = store.inFolder[r.id] || "";
   const chip = (id, label, color) => `<button type="button" class="fchip" role="radio" data-f="${id}" aria-checked="${folder === id}">${color ? `<i style="background:${color}"></i>` : ""}${label}</button>`;
-  const panel = document.createElement("form");
-  panel.className = "cedit";
-  panel.setAttribute("role", "dialog");
-  panel.setAttribute("aria-label", `${r.name} 정보 수정`);
-  panel.noValidate = true;
-  panel.innerHTML = `<div class="ce-h"><b><span class="bar"></span>로봇 정보</b><button type="button" class="ce-x" data-x aria-label="닫기">${I.close}</button></div>
-    <label class="cfield"><span class="row2">로봇 이름<i>${r.name.length} / 30</i></span><input name="name" type="text" maxlength="30" value="${esc(r.name)}" placeholder="예: 하늘 독수리" autocomplete="off" enterkeyhint="next"></label>
-    <label class="cfield"><span class="row2">제작자<i>${r.maker.length} / 20</i></span><input name="maker" type="text" maxlength="20" value="${esc(r.maker)}" placeholder="만든 사람 이름" autocomplete="off" enterkeyhint="done"></label>
-    <div class="cfield">폴더<div class="fchips" role="radiogroup" aria-label="폴더">${chip("", "없음")}${store.folders.map((f) => chip(f.id, esc(f.name), f.color)).join("")}<button type="button" class="fchip add" data-newf>+ 새 폴더</button></div></div>
-    <div class="two"><button type="button" class="ghost pr" data-x>취소</button><button type="submit" class="solid pr">저장</button></div>`;
-  card.appendChild(panel);
-  // 펼침 원점 = 연필 버튼 중심, 넘치면 카드 아래쪽 기준으로
-  const cr = card.getBoundingClientRect(), br = btn.getBoundingClientRect();
-  const ph = panel.offsetHeight, room = innerHeight - cr.top - 8;
-  if (ph + 6 > room) panel.style.top = `${Math.max(6 - cr.top + 8, room - ph)}px`;
-  const pr2 = panel.getBoundingClientRect();
-  panel.style.setProperty("--ox", `${br.left + br.width / 2 - pr2.left}px`);
-  panel.style.setProperty("--oy", `${br.top + br.height / 2 - pr2.top}px`);
-  card.classList.add("editing");
-  btn.setAttribute("aria-expanded", "true");
-  cedit = { card, panel, btn, r };
-  panel.addEventListener("input", (ev) => {
-    const i = ev.target.closest(".cfield")?.querySelector(".row2 i");
-    if (i) i.textContent = `${ev.target.value.length} / ${ev.target.maxLength}`;
-  });
-  panel.addEventListener("click", (ev) => {
-    const c = ev.target.closest(".fchip:not(.add)");
-    if (c) {
-      buzz();
-      folder = c.dataset.f;
-      panel.querySelectorAll(".fchip:not(.add)").forEach((x) => x.setAttribute("aria-checked", String(x === c)));
-    } else if (ev.target.closest("[data-newf]")) {
-      buzz();
-      closeCardEdit(() => folderSheet(null, r));
-    } else if (ev.target.closest("[data-x]")) {
-      buzz();
-      closeCardEdit();
-    }
-  });
-  panel.addEventListener("keydown", (ev) => {
-    if (ev.key === "Escape") closeCardEdit();
-    if (ev.key === "Enter" && ev.target.name === "name") {
-      ev.preventDefault();
-      panel.querySelector('[name="maker"]').focus();
-    }
-  });
-  panel.addEventListener("submit", (ev) => {
-    ev.preventDefault();
-    buzz();
-    const fd = new FormData(panel);
+  openSheet(`<h2><span class="bar"></span>로봇 정보</h2>
+    ${field("name", "로봇 이름", r.name, 30, "예: 하늘 독수리")}
+    ${field("maker", "제작자", r.maker, 20, "만든 사람 이름")}
+    <div class="field">폴더<div class="fchips" role="radiogroup" aria-label="폴더">${chip("", "없음")}${store.folders.map((f) => chip(f.id, esc(f.name), f.color)).join("")}<button type="button" class="fchip add" data-newf>+ 새 폴더</button></div></div>
+    <div class="two"><button type="button" class="ghost pr" data-close>취소</button><button type="submit" class="solid pr" data-need="name">저장</button></div>`, (fd) => {
     const before = store.inFolder[r.id] || "";
     r.name = String(fd.get("name")).trim() || r.name;
     r.maker = String(fd.get("maker")).trim();
     if (folder) store.inFolder[r.id] = folder;
     else delete store.inFolder[r.id];
     persist();
-    closeCardEdit(() => {
-      renderFolders();
-      if (store.active !== "all" && (store.inFolder[r.id] || "") !== store.active) renderCards();
-      else patchCard(r);
-      htoast(before !== folder ? "저장했어요 · 폴더를 옮겼어요" : "저장했어요");
-    });
+    renderFolders();
+    if (store.active !== "all" && (store.inFolder[r.id] || "") !== store.active) renderCards();
+    else patchCard(r);
+    if (cur?.id === r.id) setTitle(r);
+    closeSheet();
+    htoast(before !== folder ? "저장했어요 · 폴더를 옮겼어요" : "저장했어요");
+  }, '[name="name"]');
+  const sh = $("#sheet");
+  const onChip = (ev) => {
+    const c = ev.target.closest(".fchip:not(.add)");
+    if (c) {
+      buzz();
+      folder = c.dataset.f;
+      sh.querySelectorAll(".fchip:not(.add)").forEach((x) => x.setAttribute("aria-checked", String(x === c)));
+    } else if (ev.target.closest("[data-newf]")) {
+      buzz();
+      closeSheet();
+      setTimeout(() => folderSheet(null, r), 260);
+    }
+  };
+  sh.addEventListener("click", onChip);
+  const mo = new MutationObserver(() => {
+    if ($("#modal").hidden) { sh.removeEventListener("click", onChip); mo.disconnect(); }
   });
+  mo.observe($("#modal"), { attributes: true, attributeFilter: ["hidden"] });
 }
 function patchCard(r) {
   const card = document.querySelector(`.card[data-id="${r.id}"]`);
   if (!card) return renderCards();
   const f = folderOf(r);
   card.querySelector(".names").innerHTML = `${f && store.active === "all" ? `<span class="chipf"><i style="background:${f.color}"></i>${esc(f.name)}</span>` : ""}
-      <span class="lbl">로봇 이름</span><b class="rname">${esc(r.name)}</b>
-      <span class="lbl">제작자</span><span class="maker${r.maker ? "" : " none"}">${r.maker ? esc(r.maker) : "미입력"}</span>`;
-  card.querySelector(".names").animate([{ opacity: 0, transform: "translateY(6px)" }, { opacity: 1, transform: "none" }], { duration: 320, easing: "cubic-bezier(.2,.8,.2,1)" });
+      <b class="rname">${esc(r.name)}</b>${r.maker ? `<span class="maker">${esc(r.maker)}</span>` : ""}`;
+  card.querySelector(".names").animate([{ opacity: 0, transform: "translateY(6px)" }, { opacity: 1, transform: "none" }], { duration: 260, easing: "cubic-bezier(.2,.8,.2,1)" });
 }
-document.addEventListener("pointerdown", (ev) => {
-  if (cedit && !ev.target.closest(".cedit") && !ev.target.closest("[data-edit]")) closeCardEdit();
-}, true);
 
 // ───────── 로봇 하나의 조립 보기만 HTML로 내려받기 ─────────
 async function downloadRobot(r, btn) {
@@ -733,14 +614,16 @@ class TickBar {
   }
 }
 
-// ───────── 로봇 어댑터: 완성 로봇 파일(app/robots/<id>.js)에서 불러온다 ─────────
+// ───────── 로봇 어댑터: 선택한 로봇 파일(app/robots/<id>.js)만 필요할 때 불러온다 ─────────
 async function makeAdapter(id, onProgress) {
   const mod = await loadRobot(id);
-  return mod.makeAdapter({ view, st, onProgress });
+  return mod.makeAdapter({ view: ensureView(), st, onProgress });
 }
 
 // ───────── 뷰어 상태 ─────────
 var cache = {};
+var progress = {};
+var pending = {};
 var cur = null;
 var A = null;
 var loadToken = 0;
@@ -753,89 +636,34 @@ var modEls = [], lastStep = -1, lastDone = null, lastStepTxt = "", lastPoseKey =
 var timer = new THREE107.Timer();
 var REDUCE = matchMedia("(prefers-reduced-motion: reduce)");
 
-// 렌더링 최적화: 해상도 배율 1.5 제한 · 필요할 때만 렌더 · 그림자는 모델이 움직일 때만
-view.renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.5));
-view.renderer.shadowMap.autoUpdate = false;
+// 렌더링 최적화: 첫 화면에서는 3D WebGL을 만들지 않고, 로봇을 열 때 딱 1번 초기화
 var dirty = 2;
 function invalidate(shadow) {
   dirty = 2;
-  if (shadow) view.renderer.shadowMap.needsUpdate = true;
+  if (shadow && view) view.renderer.shadowMap.needsUpdate = true;
 }
-view.controls.addEventListener("change", () => invalidate(false));
-new ResizeObserver(() => invalidate(false)).observe(stage);
-
-// ───────── 첫 화면 3D 미리보기 (카드마다 자기 캔버스 · 손가락으로 회전만) ─────────
-var previews = {}, progress = {}, pending = {};
-var TDPR = Math.min(devicePixelRatio || 1, 1.5);
-var tr3 = new THREE107.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
-tr3.setPixelRatio(1);
-tr3.outputColorSpace = THREE107.SRGBColorSpace;
-tr3.toneMapping = THREE107.ACESFilmicToneMapping;
-tr3.shadowMap.enabled = true;
-tr3.shadowMap.type = THREE107.PCFSoftShadowMap;
-tr3.shadowMap.autoUpdate = false;
-tr3.setClearColor(0, 0);
-var tr3W = 0, tr3H = 0;
-var henv = new THREE107.PMREMGenerator(tr3).fromScene(new RoomEnvironment(), 0.04).texture;
-var START_ANGLE = { eagle: -0.7, bot: -0.8, train: -0.9 };
-function resetPose(ad) {
-  ad.setExplode(0);
-  ad.mods.forEach((m, i) => ad.setHidden(i, false));
-  if (ad.hasBolts) ad.setBolts(true);
-  ad.pose(ad.N);
-}
-function placeHome(id) {
-  const p = previews[id];
-  if (!p) return;
-  resetPose(p.ad);
-  p.sc.add(p.ad.root);
-  p.home = true;
-  p.shadow = true;
-  p.due = 0;
-}
-function attachPreview(id, ad) {
-  const sc = new THREE107.Scene();
-  sc.environment = henv;
-  sc.environmentIntensity = 0.65;
-  sc.add(new THREE107.HemisphereLight(16777215, 14210252, 1.05));
-  const box2 = ad.full, center = box2.getCenter(new V3()), r = box2.getSize(new V3()).length() / 2;
-  const key = new THREE107.DirectionalLight(16777215, 2.3);
-  key.castShadow = true;
-  key.shadow.mapSize.set(1024, 1024);
-  key.shadow.bias = -4e-4;
-  key.position.set(center.x - r * 1.1, center.y + r * 3, center.z + r * 1.5);
-  key.target.position.copy(center);
-  Object.assign(key.shadow.camera, { left: -r * 1.5, right: r * 1.5, top: r * 1.5, bottom: -r * 1.5, near: r * 0.1, far: r * 8 });
-  key.shadow.camera.updateProjectionMatrix();
-  sc.add(key, key.target);
-  const fill = new THREE107.DirectionalLight(16774380, 0.45);
-  fill.position.set(center.x + r * 2, r, center.z - r * 2);
-  sc.add(fill);
-  const ground = new THREE107.Mesh(new THREE107.PlaneGeometry(r * 10, r * 10), new THREE107.ShadowMaterial({ opacity: 0.17 }));
-  ground.rotation.x = -Math.PI / 2;
-  ground.position.y = box2.min.y;
-  ground.receiveShadow = true;
-  sc.add(ground);
-  const cam = new THREE107.PerspectiveCamera(28, 1, r / 40, r * 40);
-  previews[id] = { sc, cam, ad, center, r, angle: START_ANGLE[id] ?? 0, ta: START_ANGLE[id] ?? 0, elev: 0.42, te: 0.42, vel: 0, spin: 0.32, drag: false, idle: 0, ready: true, shadow: true, due: 0 };
-  if (!(cur?.id === id && !$("#viewer").hidden)) placeHome(id);
+function ensureView() {
+  if (view) return view;
+  view = createScene(stage);
+  view.renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.5));
+  view.renderer.shadowMap.autoUpdate = false;
+  view.controls.addEventListener("change", () => invalidate(false));
+  new ResizeObserver(() => invalidate(false)).observe(stage);
+  bindStageTap(view);
+  startViewerLoop(view);
+  window.__view = view;
+  return view;
 }
 function ensureAdapter(id) {
   if (!pending[id]) {
     progress[id] = 0;
-    updateThumb(id);
     pending[id] = makeAdapter(id, (k) => {
       progress[id] = k;
-      updateThumb(id);
       if (waitingId === id) showLoad(k);
     }).then((ad) => {
       cache[id] = ad;
       const r = robots.find((x) => x.id === id);
-      r.count = ad.count;
-      attachPreview(id, ad);
-      const meta = document.querySelector(`.card[data-id="${id}"] .meta`);
-      if (meta && ad.count) meta.innerHTML = r.fnOnly ? `<span>단계 ★1~★${r.mods}</span><span>메커니즘 ${ad.count}종</span>` : `<span>모듈 ${r.mods}</span><span>부품 ${ad.count}</span>`;
-      updateThumb(id);
+      if (r) r.count = ad.count;
       return ad;
     }).catch((err) => {
       delete pending[id];
@@ -845,89 +673,6 @@ function ensureAdapter(id) {
   }
   return pending[id];
 }
-async function startPreviews() {
-  const first = location.hash.slice(1);
-  const order = robots.map((r) => r.id).sort((a, b) => (b === first) - (a === first));
-  for (const id of order) {
-    try {
-      await ensureAdapter(id);
-    } catch (e) {
-      console.error(e);
-    }
-  }
-}
-function renderThumb(el, p) {
-  const cv = el.querySelector(".tcan");
-  if (!cv) return;
-  const b = el.getBoundingClientRect();
-  if (b.width < 4 || b.height < 4) return;
-  const cw = Math.round(b.width * TDPR), ch = Math.round(b.height * TDPR);
-  if (cw > tr3W || ch > tr3H) {
-    tr3W = Math.max(tr3W, cw);
-    tr3H = Math.max(tr3H, ch);
-    tr3.setSize(tr3W, tr3H, false);
-  }
-  if (cv.width !== cw || cv.height !== ch) {
-    cv.width = cw;
-    cv.height = ch;
-  }
-  const aspect = cw / ch, fv = THREE107.MathUtils.degToRad(p.cam.fov);
-  const fh = 2 * Math.atan(Math.tan(fv / 2) * aspect);
-  const dist = p.r / Math.sin(Math.min(fv, fh) / 2) * 0.86;
-  p.cam.aspect = aspect;
-  p.cam.position.set(p.center.x + Math.sin(p.angle) * Math.cos(p.elev) * dist, p.center.y + Math.sin(p.elev) * dist, p.center.z + Math.cos(p.angle) * Math.cos(p.elev) * dist);
-  p.cam.lookAt(p.center);
-  p.cam.updateProjectionMatrix();
-  tr3.setScissorTest(true);
-  tr3.setViewport(0, 0, cw, ch);
-  tr3.setScissor(0, 0, cw, ch);
-  if (p.shadow) {
-    tr3.shadowMap.needsUpdate = true;
-    p.shadow = false;
-  }
-  tr3.render(p.sc, p.cam);
-  const ctx = cv.getContext("2d");
-  ctx.clearRect(0, 0, cw, ch);
-  ctx.drawImage(tr3.domElement, 0, tr3H - ch, cw, ch, 0, 0, cw, ch);
-}
-var hTimer = new THREE107.Timer();
-function homeLoop(ts) {
-  requestAnimationFrame(homeLoop);
-  hTimer.update(ts);
-  const dt = Math.min(hTimer.getDelta(), 0.1);
-  if ($("#home").hidden || !$("#modal").hidden && false) return;
-  const now = performance.now();
-  for (const el of document.querySelectorAll(".card .thumb")) {
-    const p = previews[el.dataset.open];
-    if (!p || !p.home) continue;
-    let need = false;
-    if (!p.drag) {
-      if (p.vel) {
-        p.ta += p.vel * dt;
-        p.vel *= Math.exp(-dt * 4);
-        if (Math.abs(p.vel) < 0.03) p.vel = 0;
-      }
-      const auto = now > p.idle && !REDUCE.matches ? 0.32 : 0;
-      p.spin += (auto - p.spin) * Math.min(1, dt * 1.5);
-      if (p.spin < 1e-3 && auto === 0) p.spin = 0;
-      p.ta += p.spin * dt;
-    }
-    const k = 1 - Math.exp(-dt * 16), da = p.ta - p.angle, de = p.te - p.elev;
-    const busy = p.drag || p.vel || Math.abs(da) > 0.05 || Math.abs(de) > 2e-3;
-    p.angle += da * k;
-    p.elev += de * k;
-    // 손가락으로 돌리는 중 · 관성 · 따라가는 중이면 매 프레임, 자동 회전만이면 초당 30장
-    if (busy && (Math.abs(da) > 1e-4 || Math.abs(de) > 1e-4)) need = true;
-    else if (p.spin && now >= p.due) need = true;
-    if (!el.classList.contains("drawn")) need = true;
-    if (need) {
-      renderThumb(el, p);
-      el.classList.add("drawn");
-      p.due = now + 33;
-    }
-  }
-}
-requestAnimationFrame(homeLoop);
 
 function setTitle(r) {
   $("#vName").textContent = r.name;
@@ -1017,8 +762,15 @@ async function openRobot(id) {
   const r = robots.find((x) => x.id === id);
   if (!r) return showHome();
   closeSheet();
+  setPlay(false);
+  if (mode === "fn") leaveFn(true);
+  if (view && A) view.scene.remove(A.root);
+  if (view && fnRoot) { view.scene.remove(fnRoot); fnRoot = null; }
+  cur = null;
+  A = null;
   $("#home").hidden = true;
   $("#viewer").hidden = false;
+  ensureView();
   setTitle(r);
   closePop(true);
   const token = ++loadToken;
@@ -1028,13 +780,23 @@ async function openRobot(id) {
     ld.hidden = false;
     showLoad(progress[id] ?? 0, "부품 불러오는 중");
   }
-  const ad = cache[id] || await ensureAdapter(id);
+  let ad;
+  try {
+    ad = cache[id] || await ensureAdapter(id);
+  } catch (err) {
+    if (token !== loadToken) return;
+    console.error(err);
+    waitingId = null;
+    ld.hidden = true;
+    showHome();
+    htoast("로봇을 불러오지 못했어요");
+    return;
+  }
   if (token !== loadToken) return;
   waitingId = null;
   ld.hidden = true;
   cur = r;
   A = ad;
-  if (previews[id]) previews[id].home = false;
   view.scene.add(A.root);
   st.hidden = {};
   A.mods.forEach((m, i) => A.setHidden(i, false));
@@ -1072,7 +834,8 @@ function showHome() {
   setPlay(false);
   closePop(true);
   if (mode === "fn") leaveFn(true);
-  if (cur && A) placeHome(cur.id);
+  if (view && A) view.scene.remove(A.root);
+  if (view && fnRoot) { view.scene.remove(fnRoot); fnRoot = null; }
   cur = null;
   A = null;
   $("#viewer").hidden = true;
@@ -1398,31 +1161,33 @@ var tip = $("#tip"), tipT = 0;
 var ray = new THREE107.Raycaster();
 var ptr = new THREE107.Vector2();
 var down = null;
-view.renderer.domElement.addEventListener("pointerdown", (e) => {
-  down = [e.clientX, e.clientY];
-});
-view.renderer.domElement.addEventListener("pointerup", (e) => {
-  if (!A || !down || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 6) return;
-  const r = view.renderer.domElement.getBoundingClientRect();
-  ptr.set((e.clientX - r.left) / r.width * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
-  ray.setFromCamera(ptr, view.camera);
-  const hit = ray.intersectObject(fnRoot || A.root, true).find((h) => {
-    for (let o = h.object; o; o = o.parent) if (!o.visible) return false;
-    return true;
+function bindStageTap(v) {
+  v.renderer.domElement.addEventListener("pointerdown", (e) => {
+    down = [e.clientX, e.clientY];
   });
-  let o = hit?.object;
-  while (o && !o.userData?.name) o = o.parent;
-  if (!o) {
-    tip.classList.remove("show");
-    return;
-  }
-  tip.innerHTML = `${esc(o.userData.name)}<small>${esc(o.userData.id || "")}${o.userData.sheet ? ` · 도면 ${esc(o.userData.sheet)}` : ""}</small>`;
-  const x = clamp(e.clientX - r.left + 12, 8, r.width - 250), y = clamp(e.clientY - r.top - 50, 70, r.height - 60);
-  tip.style.transform = `translate(${x}px, ${y}px)`;
-  tip.classList.add("show");
-  clearTimeout(tipT);
-  tipT = setTimeout(() => tip.classList.remove("show"), 2200);
-});
+  v.renderer.domElement.addEventListener("pointerup", (e) => {
+    if (!A || !down || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 6) return;
+    const r = v.renderer.domElement.getBoundingClientRect();
+    ptr.set((e.clientX - r.left) / r.width * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+    ray.setFromCamera(ptr, v.camera);
+    const hit = ray.intersectObject(fnRoot || A.root, true).find((h) => {
+      for (let o = h.object; o; o = o.parent) if (!o.visible) return false;
+      return true;
+    });
+    let o = hit?.object;
+    while (o && !o.userData?.name) o = o.parent;
+    if (!o) {
+      tip.classList.remove("show");
+      return;
+    }
+    tip.innerHTML = `${esc(o.userData.name)}<small>${esc(o.userData.id || "")}${o.userData.sheet ? ` · 도면 ${esc(o.userData.sheet)}` : ""}</small>`;
+    const x = clamp(e.clientX - r.left + 12, 8, r.width - 250), y = clamp(e.clientY - r.top - 50, 70, r.height - 60);
+    tip.style.transform = `translate(${x}px, ${y}px)`;
+    tip.classList.add("show");
+    clearTimeout(tipT);
+    tipT = setTimeout(() => tip.classList.remove("show"), 2200);
+  });
+}
 
 // ───────── 매 프레임 ─────────
 var tgt = new V3();
@@ -1502,30 +1267,30 @@ function tickFn(dt) {
     updateFnStats(F);
   }
 }
-view.renderer.setAnimationLoop((ts) => {
-  timer.update(ts);
-  const dt = Math.min(timer.getDelta(), 0.1);
-  if ($("#viewer").hidden) return;
-  if (view.controls.update()) dirty = Math.max(dirty, 1);
-  if (A) {
-    if (mode === "fn") tickFn(dt);
-    else tickAsm(dt);
-  }
-  if (dirty > 0) {
-    view.renderer.render(view.scene, view.camera);
-    dirty--;
-  }
-});
+function startViewerLoop(v) {
+  v.renderer.setAnimationLoop((ts) => {
+    timer.update(ts);
+    const dt = Math.min(timer.getDelta(), 0.1);
+    if ($("#viewer").hidden) return;
+    if (v.controls.update()) dirty = Math.max(dirty, 1);
+    if (A) {
+      if (mode === "fn") tickFn(dt);
+      else tickAsm(dt);
+    }
+    if (dirty > 0) {
+      v.renderer.render(v.scene, v.camera);
+      dirty--;
+    }
+  });
+}
 if (SINGLE) route();
 else {
   renderFolders();
   renderCards();
   route();
-  startPreviews();
 }
-window.__view = view;
+window.__view = null;
 window.__state = st;
-window.__previews = previews;
 window.__mode = () => mode;
 
 
