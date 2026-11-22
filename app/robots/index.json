@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-22T01:49:00.276Z",
+  "updated": "2026-11-22T02:11:07.974Z",
   "robots": [
     {
       "id": "eagle",
@@ -57,13 +57,13 @@
     },
     {
       "id": "mechlab",
-      "name": "서보·휠 메커니즘 15종",
+      "name": "서보·휠 메커니즘 30종",
       "mods": 5,
       "fnOnly": true,
       "file": "mechlab.js",
-      "version": "7f6c730274",
-      "size": 154481,
-      "parts": 25
+      "version": "8fb79878d5",
+      "size": 256894,
+      "parts": 28
     }
   ]
 }
