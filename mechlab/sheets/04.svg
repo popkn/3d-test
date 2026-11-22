@@ -1,80 +1,84 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="Pretendard,Apple SD Gothic Neo,sans-serif">
 <rect width="960" height="560" fill="#f8fafc"/>
 <rect x="16" y="16" width="928" height="54" rx="10" fill="#1f9d60"/>
-<text x="34" y="42" fill="#fff" font-size="19" font-weight="800">M04 · 1-서보 단일핀 대칭 집게 (Dual Gripper)</text>
-<text x="34" y="60" fill="#f1f5f9" font-size="12">난이도 ★2 · 단일 핀 적층 (R=9.5 · L1+L2) · S후크 5개 · 가동 범위 15°~165° · 폐루프 오차 0.0000 mm</text>
+<text x="34" y="42" fill="#fff" font-size="19" font-weight="800">M04 · 1-서보 2장밀착 대칭 집게 (Dual Gripper)</text>
+<text x="34" y="60" fill="#f1f5f9" font-size="12">난이도 ★2 · 모터가이드 1차 링크 분기 (2장 밀착) · S후크 6개 · 가동 범위 15°~165° · 폐루프 오차 0.0000 mm</text>
 <rect x="16" y="82" width="600" height="462" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.2"/>
-<line x1="108.4" y1="94" x2="108.4" y2="502" stroke="#eef1f6" stroke-width="1"/>
-<line x1="141.4" y1="94" x2="141.4" y2="502" stroke="#eef1f6" stroke-width="1"/>
-<line x1="174.3" y1="94" x2="174.3" y2="502" stroke="#eef1f6" stroke-width="1"/>
-<line x1="207.3" y1="94" x2="207.3" y2="502" stroke="#eef1f6" stroke-width="1"/>
-<line x1="240.3" y1="94" x2="240.3" y2="502" stroke="#eef1f6" stroke-width="1"/>
-<line x1="273.3" y1="94" x2="273.3" y2="502" stroke="#eef1f6" stroke-width="1"/>
-<line x1="306.2" y1="94" x2="306.2" y2="502" stroke="#eef1f6" stroke-width="1"/>
-<line x1="339.2" y1="94" x2="339.2" y2="502" stroke="#eef1f6" stroke-width="1"/>
-<line x1="372.2" y1="94" x2="372.2" y2="502" stroke="#eef1f6" stroke-width="1"/>
-<line x1="405.1" y1="94" x2="405.1" y2="502" stroke="#eef1f6" stroke-width="1"/>
-<line x1="438.1" y1="94" x2="438.1" y2="502" stroke="#eef1f6" stroke-width="1"/>
-<line x1="471.1" y1="94" x2="471.1" y2="502" stroke="#eef1f6" stroke-width="1"/>
-<line x1="28" y1="116.3" x2="604" y2="116.3" stroke="#eef1f6" stroke-width="1"/>
-<line x1="28" y1="149.2" x2="604" y2="149.2" stroke="#eef1f6" stroke-width="1"/>
-<line x1="28" y1="182.2" x2="604" y2="182.2" stroke="#eef1f6" stroke-width="1"/>
-<line x1="28" y1="215.2" x2="604" y2="215.2" stroke="#eef1f6" stroke-width="1"/>
-<line x1="28" y1="248.1" x2="604" y2="248.1" stroke="#eef1f6" stroke-width="1"/>
-<line x1="28" y1="281.1" x2="604" y2="281.1" stroke="#eef1f6" stroke-width="1"/>
-<line x1="28" y1="314.1" x2="604" y2="314.1" stroke="#eef1f6" stroke-width="1"/>
-<line x1="28" y1="347.0" x2="604" y2="347.0" stroke="#eef1f6" stroke-width="1"/>
-<line x1="28" y1="380.0" x2="604" y2="380.0" stroke="#eef1f6" stroke-width="1"/>
-<line x1="28" y1="413.0" x2="604" y2="413.0" stroke="#eef1f6" stroke-width="1"/>
-<line x1="28" y1="446.0" x2="604" y2="446.0" stroke="#eef1f6" stroke-width="1"/>
-<line x1="28" y1="478.9" x2="604" y2="478.9" stroke="#eef1f6" stroke-width="1"/>
-<circle cx="306.2" cy="413.0" r="31.3" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
-<line x1="306.2" y1="413.0" x2="314.3" y2="443.2" stroke="#111827" stroke-width="9.0" stroke-linecap="round"/>
-<circle cx="306.2" cy="413.0" r="14.8" fill="#111827" stroke="#475569" stroke-width="1"/>
-<circle cx="306.2" cy="413.0" r="3.2" fill="#e2e8f0"/>
-<polyline points="253.8,219.2 252.0,221.8 250.3,224.4 248.7,227.0 247.1,229.5 245.7,232.0 244.3,234.4 243.1,236.8 241.9,239.0 240.8,241.2 239.8,243.2 238.9,245.2 238.1,247.0 237.3,248.6 236.7,250.2 236.1,251.6 235.6,252.8 235.2,253.9 234.8,254.9 234.5,255.7 234.3,256.3 234.1,256.8 234.0,257.1 233.9,257.2 233.9,257.3 233.9,257.1 234.1,256.8 234.2,256.4 234.4,255.9 234.7,255.2 235.0,254.4 235.3,253.5 235.8,252.4 236.2,251.3 236.7,250.0 237.3,248.7 237.9,247.3 238.6,245.7 239.4,244.2 240.2,242.5 241.0,240.8 241.9,239.0 242.9,237.1 243.9,235.3 244.9,233.3 246.1,231.4 247.2,229.4 248.5,227.3 249.8,225.3 251.1,223.2 252.5,221.1 253.9,219.0 255.5,216.9 257.0,214.8 258.6,212.8 260.3,210.7 262.0,208.6 263.7,206.5 265.5,204.5 267.3,202.5 269.2,200.5 271.1,198.5 273.1,196.5 275.1,194.6 277.1,192.7 279.1,190.9 281.2,189.1 283.3,187.3 285.4,185.6 287.5,183.9 289.7,182.2 291.8,180.6 294.0,179.1 296.2,177.6 298.4,176.1 300.6,174.7" fill="none" stroke="#1f9d60" stroke-width="2.4" stroke-opacity="0.75" stroke-dasharray="5 3"/>
-<line x1="314.3" y1="382.7" x2="183.5" y2="366.3" stroke="#3b82f6" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
-<line x1="314.3" y1="382.7" x2="442.6" y2="352.0" stroke="#3b82f6" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
-<line x1="183.5" y1="366.3" x2="324.6" y2="183.6" stroke="#3b82f6" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
-<line x1="442.6" y1="352.0" x2="253.8" y2="219.2" stroke="#3b82f6" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
-<line x1="337.5" y1="413.0" x2="210.2" y2="378.6" stroke="#64748b" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45"/>
-<line x1="337.5" y1="413.0" x2="448.5" y2="341.7" stroke="#64748b" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45"/>
-<line x1="210.2" y1="378.6" x2="257.7" y2="152.8" stroke="#64748b" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45"/>
-<line x1="448.5" y1="341.7" x2="239.0" y2="245.0" stroke="#64748b" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45"/>
-<line x1="314.3" y1="443.2" x2="200.9" y2="375.9" stroke="#e03636" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.95"/>
-<line x1="314.3" y1="443.2" x2="423.9" y2="369.8" stroke="#e03636" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.95"/>
-<line x1="200.9" y1="375.9" x2="281.0" y2="159.5" stroke="#e03636" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.95"/>
-<line x1="423.9" y1="369.8" x2="300.6" y2="174.7" stroke="#e03636" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.95"/>
-<circle cx="314.3" cy="443.2" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
-<text x="321.3" y="438.2" font-size="10" font-weight="700" fill="#1d2230">C1</text>
-<circle cx="200.9" cy="375.9" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
-<text x="207.9" y="370.9" font-size="10" font-weight="700" fill="#1d2230">QL</text>
-<circle cx="423.9" cy="369.8" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
-<text x="430.9" y="364.8" font-size="10" font-weight="700" fill="#1d2230">QR</text>
-<circle cx="223.8" cy="314.1" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
-<text x="230.8" y="309.1" font-size="10" font-weight="700" fill="#1d2230">PL</text>
-<circle cx="388.7" cy="314.1" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
-<text x="395.7" y="309.1" font-size="10" font-weight="700" fill="#1d2230">PR</text>
+<line x1="104.4" y1="94" x2="104.4" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="137.1" y1="94" x2="137.1" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="169.8" y1="94" x2="169.8" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="202.5" y1="94" x2="202.5" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="235.2" y1="94" x2="235.2" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="267.9" y1="94" x2="267.9" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="300.6" y1="94" x2="300.6" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="333.3" y1="94" x2="333.3" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="366.0" y1="94" x2="366.0" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="398.7" y1="94" x2="398.7" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="431.3" y1="94" x2="431.3" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="464.0" y1="94" x2="464.0" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="496.7" y1="94" x2="496.7" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="119.5" x2="604" y2="119.5" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="152.2" x2="604" y2="152.2" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="184.9" x2="604" y2="184.9" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="217.6" x2="604" y2="217.6" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="250.3" x2="604" y2="250.3" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="282.9" x2="604" y2="282.9" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="315.6" x2="604" y2="315.6" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="348.3" x2="604" y2="348.3" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="381.0" x2="604" y2="381.0" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="413.7" x2="604" y2="413.7" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="446.4" x2="604" y2="446.4" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="479.1" x2="604" y2="479.1" stroke="#eef1f6" stroke-width="1"/>
+<circle cx="300.6" cy="413.7" r="31.1" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<line x1="300.6" y1="413.7" x2="308.6" y2="443.7" stroke="#111827" stroke-width="9.0" stroke-linecap="round"/>
+<circle cx="300.6" cy="413.7" r="14.7" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="300.6" cy="413.7" r="3.2" fill="#e2e8f0"/>
+<polyline points="298.3,186.6 296.0,188.5 293.7,190.3 291.4,192.3 289.3,194.2 287.1,196.1 285.1,198.1 283.1,200.0 281.2,202.0 279.4,203.9 277.6,205.8 275.9,207.7 274.3,209.5 272.8,211.3 271.4,213.1 270.1,214.7 268.8,216.4 267.6,217.9 266.5,219.4 265.5,220.8 264.6,222.1 263.8,223.3 263.0,224.4 262.3,225.5 261.7,226.4 261.2,227.2 260.7,227.9 260.4,228.5 260.1,229.0 259.8,229.4 259.6,229.7 259.5,229.8 259.5,229.9 259.5,229.8 259.6,229.7 259.8,229.4 260.0,229.0 260.3,228.6 260.7,228.0 261.1,227.4 261.5,226.7 262.1,225.8 262.7,224.9 263.3,224.0 264.0,222.9 264.8,221.8 265.6,220.7 266.5,219.4 267.5,218.1 268.5,216.8 269.5,215.4 270.6,214.0 271.8,212.5 273.0,211.0 274.3,209.5 275.7,208.0 277.1,206.4 278.5,204.8 280.0,203.2 281.6,201.6 283.2,200.0 284.8,198.3 286.5,196.7 288.3,195.1 290.1,193.5 291.9,191.9 293.8,190.3 295.7,188.7 297.6,187.2 299.6,185.6 301.6,184.1 303.7,182.6 305.7,181.2 307.8,179.7 310.0,178.3 312.1,177.0" fill="none" stroke="#1f9d60" stroke-width="2.4" stroke-opacity="0.75" stroke-dasharray="5 3"/>
+<line x1="308.6" y1="383.7" x2="178.1" y2="376.3" stroke="#3b82f6" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="276.0" y1="381.8" x2="438.8" y2="367.2" stroke="#3b82f6" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="178.1" y1="376.3" x2="263.6" y2="164.0" stroke="#3b82f6" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="438.8" y1="367.2" x2="298.3" y2="186.6" stroke="#3b82f6" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="331.6" y1="413.7" x2="205.0" y2="381.0" stroke="#64748b" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="300.0" y1="405.5" x2="453.9" y2="350.6" stroke="#64748b" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="205.0" y1="381.0" x2="196.2" y2="152.3" stroke="#64748b" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="453.9" y1="350.6" x2="260.5" y2="228.3" stroke="#64748b" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="308.6" y1="443.7" x2="194.2" y2="380.5" stroke="#e03636" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="280.0" y1="427.9" x2="433.3" y2="371.1" stroke="#e03636" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="194.2" y1="380.5" x2="223.4" y2="153.5" stroke="#e03636" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="433.3" y1="371.1" x2="312.1" y2="177.0" stroke="#e03636" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<circle cx="308.6" cy="443.7" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="315.6" y="438.7" font-size="10" font-weight="700" fill="#1d2230">C1</text>
+<circle cx="280.0" cy="427.9" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="287.0" y="422.9" font-size="10" font-weight="700" fill="#1d2230">M</text>
+<circle cx="194.2" cy="380.5" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="201.2" y="375.5" font-size="10" font-weight="700" fill="#1d2230">QL</text>
+<circle cx="433.3" cy="371.1" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="440.3" y="366.1" font-size="10" font-weight="700" fill="#1d2230">QR</text>
+<circle cx="202.5" cy="315.6" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="209.5" y="310.6" font-size="10" font-weight="700" fill="#1d2230">PL</text>
+<circle cx="398.7" cy="315.6" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="405.7" y="310.6" font-size="10" font-weight="700" fill="#1d2230">PR</text>
 <text x="34" y="532" fill="#64748b" font-size="11">파랑 점선 = 시작각 · 회색 = 중간 · 빨강 실선 = 끝/270° · 노랑 점 = S후크 핀 · 점선 곡선 = 출력 궤적</text>
 <rect x="630" y="82" width="314" height="462" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.2"/>
 <text x="648" y="110" fill="#0f172a" font-size="14" font-weight="800">기구학 · 검증 명세</text>
 <text x="648" y="136" fill="#334155" font-size="11.5">• 구동 방식: 서보 1개 + 모터가이드 (motor-guide · R=9.5)</text>
-<text x="648" y="156" fill="#334155" font-size="11.5">• 핀 활용: 단일 핀 적층 (R=9.5 · L1+L2)</text>
-<text x="648" y="176" fill="#334155" font-size="11.5">• 회전 관절: 후크 S35 × 5개</text>
+<text x="648" y="156" fill="#334155" font-size="11.5">• 핀 활용: 모터가이드 1차 링크 분기 (2장 밀착)</text>
+<text x="648" y="176" fill="#334155" font-size="11.5">• 회전 관절: 후크 S35 × 6개</text>
 <text x="648" y="196" fill="#334155" font-size="11.5">• 테스트 리그: 수평 XZ 벤치</text>
 <text x="648" y="216" fill="#334155" font-size="11.5">• 회전 범위: 15° ~ 165°</text>
-<text x="648" y="236" fill="#334155" font-size="11.5">• 출력 범위: 7.5 ~ 32.7</text>
+<text x="648" y="236" fill="#334155" font-size="11.5">• 출력 범위: 12.7 ~ 30.6</text>
 <text x="648" y="256" fill="#15803d" font-size="12" font-weight="800">✔ 기구학 폐루프 오차: 0.0000 mm</text>
 <text x="648" y="276" fill="#15803d" font-size="12" font-weight="800">✔ 실구멍 정합 &amp; 지면 접지: 0건 오류</text>
 <line x1="648" y1="296" x2="926" y2="296" stroke="#e2e8f0"/>
 <text x="648" y="320" fill="#0f172a" font-size="13" font-weight="800">핵심 동작 요약</text>
-<text x="648" y="344" fill="#475569" font-size="11.5">모터가이드 1구멍에 좌·우 커플러 적층 → 서보</text>
-<text x="648" y="363" fill="#475569" font-size="11.5"> 1개로 양쪽 집게 동시 개폐</text>
+<text x="648" y="344" fill="#475569" font-size="11.5">모터가이드 → 1차 커플러(L1) + 중간 구멍</text>
+<text x="648" y="363" fill="#475569" font-size="11.5"> 분기(L2) → 양쪽 집게 2장 밀착 동시 개</text>
+<text x="648" y="382" fill="#475569" font-size="11.5">폐</text>
 <line x1="648" y1="406" x2="926" y2="406" stroke="#e2e8f0"/>
-<text x="648" y="430" fill="#0f172a" font-size="13" font-weight="800">벤치 구성 부품 (40개 + 가동 링크)</text>
-<text x="648" y="452" fill="#475569" font-size="11">• bolt-m3x6 × 12</text>
+<text x="648" y="430" fill="#0f172a" font-size="13" font-weight="800">벤치 구성 부품 (43개 + 가동 링크)</text>
+<text x="648" y="452" fill="#475569" font-size="11">• bolt-m3x6 × 9</text>
 <text x="648" y="469" fill="#475569" font-size="11">• frame-big-main × 1</text>
 <text x="648" y="486" fill="#475569" font-size="11">• frame-m6-pcb × 2</text>
-<text x="648" y="503" fill="#475569" font-size="11">• nut-m3 × 8</text>
-<text x="648" y="520" fill="#475569" font-size="11">• servo-digital × 1</text>
+<text x="648" y="503" fill="#475569" font-size="11">• frame-s3-pcb × 1</text>
+<text x="648" y="520" fill="#475569" font-size="11">• nut-m3 × 13</text>
 </svg>

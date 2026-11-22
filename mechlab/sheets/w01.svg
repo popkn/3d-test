@@ -58,10 +58,10 @@
 <text x="648" y="363" fill="#475569" font-size="11.5">6° 무정지 연속 왕복 (s+l=50 < p+q</text>
 <text x="648" y="382" fill="#475569" font-size="11.5">=60)</text>
 <line x1="648" y1="406" x2="926" y2="406" stroke="#e2e8f0"/>
-<text x="648" y="430" fill="#0f172a" font-size="13" font-weight="800">벤치 구성 부품 (31개 + 가동 링크)</text>
-<text x="648" y="452" fill="#475569" font-size="11">• bolt-m3x6 × 10</text>
+<text x="648" y="430" fill="#0f172a" font-size="13" font-weight="800">벤치 구성 부품 (34개 + 가동 링크)</text>
+<text x="648" y="452" fill="#475569" font-size="11">• bolt-m3x6 × 7</text>
 <text x="648" y="469" fill="#475569" font-size="11">• dc-motor-130-rs × 1</text>
 <text x="648" y="486" fill="#475569" font-size="11">• frame-big-main × 1</text>
 <text x="648" y="503" fill="#475569" font-size="11">• frame-m6-pcb × 1</text>
-<text x="648" y="520" fill="#475569" font-size="11">• nut-m3 × 6</text>
+<text x="648" y="520" fill="#475569" font-size="11">• frame-s3-pcb × 1</text>
 </svg>

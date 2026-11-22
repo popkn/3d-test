@@ -2,7 +2,7 @@
 <rect width="960" height="560" fill="#f8fafc"/>
 <rect x="16" y="16" width="928" height="54" rx="10" fill="#2f6fe0"/>
 <text x="34" y="42" fill="#fff" font-size="19" font-weight="800">W03 · 평행 2축 360° 오비탈 셰이커 (Orbital Shaker)</text>
-<text x="34" y="60" fill="#f1f5f9" font-size="12">난이도 ★1 · Ø40 노랑 단일 핀 (R=10) · S후크 4개 · 가동 범위 0°~360° · 폐루프 오차 0.0000 mm</text>
+<text x="34" y="60" fill="#f1f5f9" font-size="12">난이도 ★1 · Ø40 노랑 + R10 크랭크 바 · S후크 3개 · 가동 범위 0°~360° · 폐루프 오차 0.0000 mm</text>
 <rect x="16" y="82" width="600" height="462" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.2"/>
 <line x1="70.8" y1="94" x2="70.8" y2="502" stroke="#eef1f6" stroke-width="1"/>
 <line x1="132.1" y1="94" x2="132.1" y2="502" stroke="#eef1f6" stroke-width="1"/>
@@ -23,12 +23,15 @@
 <circle cx="193.4" cy="298.0" r="61.3" fill="none" stroke="#ca8a04" stroke-width="1" stroke-opacity="0.55" stroke-dasharray="3 2"/>
 <circle cx="193.4" cy="298.0" r="4" fill="#ca8a04"/>
 <polyline points="377.3,298.0 377.3,300.1 377.2,302.3 377.0,304.4 376.7,306.5 376.4,308.6 376.0,310.7 375.5,312.8 374.9,314.9 374.3,316.9 373.6,319.0 372.8,321.0 372.0,322.9 371.1,324.9 370.1,326.8 369.1,328.7 368.0,330.5 366.8,332.3 365.6,334.0 364.3,335.7 363.0,337.4 361.6,339.0 360.1,340.6 358.6,342.1 357.0,343.6 355.4,345.0 353.7,346.3 352.0,347.6 350.3,348.8 348.5,350.0 346.7,351.1 344.8,352.1 342.9,353.1 340.9,354.0 339.0,354.8 337.0,355.6 334.9,356.3 332.9,356.9 330.8,357.5 328.7,358.0 326.6,358.4 324.5,358.7 322.4,359.0 320.3,359.2 318.1,359.3 316.0,359.3 313.9,359.3 311.7,359.2 309.6,359.0 307.5,358.7 305.4,358.4 303.3,358.0 301.2,357.5 299.1,356.9 297.1,356.3 295.0,355.6 293.0,354.8 291.1,354.0 289.1,353.1 287.2,352.1 285.3,351.1 283.5,350.0 281.7,348.8 280.0,347.6 278.3,346.3 276.6,345.0 275.0,343.6 273.4,342.1 271.9,340.6 270.4,339.0 269.0,337.4 267.7,335.7 266.4,334.0 265.2,332.3 264.0,330.5 262.9,328.7 261.9,326.8 260.9,324.9 260.0,322.9 259.2,321.0 258.4,319.0 257.7,316.9 257.1,314.9 256.5,312.8 256.0,310.7 255.6,308.6 255.3,306.5 255.0,304.4 254.8,302.3 254.7,300.1 254.7,298.0 254.7,295.9 254.8,293.7 255.0,291.6 255.3,289.5 255.6,287.4 256.0,285.3 256.5,283.2 257.1,281.1 257.7,279.1 258.4,277.0 259.2,275.0 260.0,273.1 260.9,271.1 261.9,269.2 262.9,267.3 264.0,265.5 265.2,263.7 266.4,262.0 267.7,260.3 269.0,258.6 270.4,257.0 271.9,255.4 273.4,253.9 275.0,252.4 276.6,251.0 278.3,249.7 280.0,248.4 281.7,247.2 283.5,246.0 285.3,244.9 287.2,243.9 289.1,242.9 291.1,242.0 293.0,241.2 295.0,240.4 297.1,239.7 299.1,239.1 301.2,238.5 303.3,238.0 305.4,237.6 307.5,237.3 309.6,237.0 311.7,236.8 313.9,236.7 316.0,236.7 318.1,236.7 320.3,236.8 322.4,237.0 324.5,237.3 326.6,237.6 328.7,238.0 330.8,238.5 332.9,239.1 334.9,239.7 337.0,240.4 339.0,241.2 340.9,242.0 342.9,242.9 344.8,243.9 346.7,244.9 348.5,246.0 350.3,247.2 352.0,248.4 353.7,249.7 355.4,251.0 357.0,252.4 358.6,253.9 360.1,255.4 361.6,257.0 363.0,258.6 364.3,260.3 365.6,262.0 366.8,263.7 368.0,265.5 369.1,267.3 370.1,269.2 371.1,271.1 372.0,273.1 372.8,275.0 373.6,277.0 374.3,279.1 374.9,281.1 375.5,283.2 376.0,285.3 376.4,287.4 376.7,289.5 377.0,291.6 377.2,293.7 377.3,295.9 377.3,298.0" fill="none" stroke="#2f6fe0" stroke-width="2.4" stroke-opacity="0.75" stroke-dasharray="5 3"/>
-<line x1="254.7" y1="298.0" x2="499.9" y2="298.0" stroke="#3b82f6" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
-<line x1="438.6" y1="298.0" x2="499.9" y2="298.0" stroke="#3b82f6" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
-<line x1="132.1" y1="298.0" x2="377.3" y2="298.0" stroke="#64748b" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45"/>
-<line x1="438.6" y1="298.0" x2="377.3" y2="298.0" stroke="#64748b" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45"/>
-<line x1="193.4" y1="236.7" x2="438.6" y2="236.7" stroke="#e03636" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.95"/>
-<line x1="438.6" y1="298.0" x2="438.6" y2="236.7" stroke="#e03636" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="193.4" y1="298.0" x2="254.7" y2="298.0" stroke="#3b82f6" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="438.6" y1="298.0" x2="499.9" y2="298.0" stroke="#3b82f6" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="254.7" y1="298.0" x2="499.9" y2="298.0" stroke="#3b82f6" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="193.4" y1="298.0" x2="132.1" y2="298.0" stroke="#64748b" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="438.6" y1="298.0" x2="377.3" y2="298.0" stroke="#64748b" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="132.1" y1="298.0" x2="377.3" y2="298.0" stroke="#64748b" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="193.4" y1="298.0" x2="193.4" y2="236.7" stroke="#e03636" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="438.6" y1="298.0" x2="438.6" y2="236.7" stroke="#e03636" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="193.4" y1="236.7" x2="438.6" y2="236.7" stroke="#e03636" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.95"/>
 <circle cx="193.4" cy="236.7" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
 <text x="200.4" y="231.7" font-size="10" font-weight="700" fill="#1d2230">C</text>
 <circle cx="438.6" cy="236.7" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
@@ -39,8 +42,8 @@
 <rect x="630" y="82" width="314" height="462" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.2"/>
 <text x="648" y="110" fill="#0f172a" font-size="14" font-weight="800">기구학 · 검증 명세</text>
 <text x="648" y="136" fill="#334155" font-size="11.5">• 구동 방식: DC 130rpm 1개 + wheel-guide-40-yellow</text>
-<text x="648" y="156" fill="#334155" font-size="11.5">• 핀 활용: Ø40 노랑 단일 핀 (R=10)</text>
-<text x="648" y="176" fill="#334155" font-size="11.5">• 회전 관절: 후크 S35 × 4개</text>
+<text x="648" y="156" fill="#334155" font-size="11.5">• 핀 활용: Ø40 노랑 + R10 크랭크 바</text>
+<text x="648" y="176" fill="#334155" font-size="11.5">• 회전 관절: 후크 S35 × 3개</text>
 <text x="648" y="196" fill="#334155" font-size="11.5">• 테스트 리그: 수평 XZ 벤치</text>
 <text x="648" y="216" fill="#334155" font-size="11.5">• 회전 범위: 0° ~ 360°</text>
 <text x="648" y="236" fill="#334155" font-size="11.5">• 출력 범위: 0.0 ~ 0.0</text>
@@ -52,9 +55,9 @@
 <text x="648" y="363" fill="#475569" font-size="11.5">않고(0.0°) 연속 원형 진동(연마·교반기)</text>
 <line x1="648" y1="406" x2="926" y2="406" stroke="#e2e8f0"/>
 <text x="648" y="430" fill="#0f172a" font-size="13" font-weight="800">벤치 구성 부품 (31개 + 가동 링크)</text>
-<text x="648" y="452" fill="#475569" font-size="11">• bolt-m3x6 × 10</text>
+<text x="648" y="452" fill="#475569" font-size="11">• bolt-m3x6 × 6</text>
 <text x="648" y="469" fill="#475569" font-size="11">• dc-motor-130-rs × 1</text>
 <text x="648" y="486" fill="#475569" font-size="11">• frame-big-main × 1</text>
 <text x="648" y="503" fill="#475569" font-size="11">• frame-m6-pcb × 1</text>
-<text x="648" y="520" fill="#475569" font-size="11">• nut-m3 × 6</text>
+<text x="648" y="520" fill="#475569" font-size="11">• nut-m3 × 10</text>
 </svg>
