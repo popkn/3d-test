@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-22T03:45:43.630Z",
+  "updated": "2026-11-22T04:45:58.516Z",
   "robots": [
     {
       "id": "eagle",
@@ -61,8 +61,8 @@
       "mods": 5,
       "fnOnly": true,
       "file": "mechlab.js",
-      "version": "7aefa8270e",
-      "size": 259568,
+      "version": "ddd62f70c8",
+      "size": 255948,
       "parts": 28
     }
   ]
