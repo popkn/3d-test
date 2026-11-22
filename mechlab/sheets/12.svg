@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="Pretendard,Apple SD Gothic Neo,sans-serif">
+<rect width="960" height="560" fill="#f8fafc"/>
+<rect x="16" y="16" width="928" height="54" rx="10" fill="#8b46d9"/>
+<text x="34" y="42" fill="#fff" font-size="19" font-weight="800">M12 · 1-서보 6절 보행 다리 모듈 (Walking Leg)</text>
+<text x="34" y="60" fill="#f1f5f9" font-size="12">난이도 ★4 · 단일 핀 (R=10) · S후크 6개 · 가동 범위 0°~180° · 폐루프 오차 0.0000 mm</text>
+<rect x="16" y="82" width="600" height="462" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.2"/>
+<line x1="69.0" y1="94" x2="69.0" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="127.3" y1="94" x2="127.3" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="185.7" y1="94" x2="185.7" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="244.0" y1="94" x2="244.0" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="302.3" y1="94" x2="302.3" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="360.6" y1="94" x2="360.6" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="419.0" y1="94" x2="419.0" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="477.3" y1="94" x2="477.3" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="535.6" y1="94" x2="535.6" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="594.0" y1="94" x2="594.0" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="447.0" x2="604" y2="447.0" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="388.7" x2="604" y2="388.7" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="330.4" x2="604" y2="330.4" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="272.0" x2="604" y2="272.0" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="213.7" x2="604" y2="213.7" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="155.4" x2="604" y2="155.4" stroke="#eef1f6" stroke-width="1"/>
+<circle cx="185.7" cy="385.2" r="87.5" fill="#f7f9fc" stroke="#2f6fe0" stroke-width="2.0"/>
+<circle cx="185.7" cy="385.2" r="58.3" fill="none" stroke="#9bb7ea" stroke-width="1" stroke-dasharray="3 2"/>
+<circle cx="185.7" cy="385.2" r="4" fill="#2f6fe0"/>
+<polyline points="474.5,246.7 479.1,252.8 483.5,259.1 487.4,265.6 491.0,272.1 494.1,278.7 496.8,285.1 499.1,291.5 500.9,297.6 502.4,303.6 503.5,309.2 504.2,314.6 504.6,319.7 504.7,324.5 504.5,329.0 504.1,333.1 503.5,337.0 502.6,340.5 501.6,343.7 500.5,346.6 499.2,349.2 497.8,351.6 496.4,353.7 494.8,355.6 493.1,357.3 491.4,358.8 489.6,360.1 487.8,361.2 486.0,362.1 484.1,363.0 482.2,363.6 480.2,364.2 478.2,364.6 476.2,364.9 474.2,365.2 472.2,365.3 470.2,365.4 468.2,365.4 466.1,365.3 464.1,365.2 462.1,365.0 460.1,364.8 458.0,364.5 456.0,364.3 454.0,363.9 452.0,363.6 450.1,363.2 448.1,362.8 446.1,362.4 444.2,361.9 442.3,361.5 440.4,361.0 438.5,360.6 436.7,360.1 434.9,359.6 433.1,359.1 431.3,358.6 429.5,358.1 427.8,357.6 426.1,357.1 424.5,356.6 422.9,356.1 421.3,355.5 419.7,355.0 418.2,354.5 416.7,353.9 415.3,353.4 413.9,352.8 412.5,352.3 411.1,351.7 409.8,351.1 408.6,350.5 407.4,349.9 406.2,349.3 405.0,348.7 403.9,348.1 402.8,347.4 401.8,346.7 400.8,346.0 399.9,345.3 398.9,344.6 398.1,343.8 397.2,343.0 396.4,342.2 395.6,341.4 394.9,340.5 394.2,339.6 393.5,338.7 392.8,337.7 392.2,336.8 391.6,335.7" fill="none" stroke="#8b46d9" stroke-width="2.4" stroke-opacity="0.7" stroke-dasharray="5 3"/>
+<line x1="244.0" y1="385.2" x2="273.2" y2="212.7" stroke="#3b82f6" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="302.3" y1="385.2" x2="273.2" y2="212.7" stroke="#3b82f6" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="273.2" y1="212.7" x2="474.5" y2="246.7" stroke="#3b82f6" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="244.0" y1="385.2" x2="474.5" y2="246.7" stroke="#3b82f6" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="185.7" y1="326.9" x2="316.6" y2="210.8" stroke="#64748b" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="302.3" y1="385.2" x2="316.6" y2="210.8" stroke="#64748b" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="316.6" y1="210.8" x2="452.0" y2="363.6" stroke="#64748b" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="185.7" y1="326.9" x2="452.0" y2="363.6" stroke="#64748b" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="127.3" y1="385.2" x2="214.8" y2="233.7" stroke="#e03636" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="302.3" y1="385.2" x2="214.8" y2="233.7" stroke="#e03636" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="214.8" y1="233.7" x2="391.6" y2="335.7" stroke="#e03636" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="127.3" y1="385.2" x2="391.6" y2="335.7" stroke="#e03636" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<circle cx="127.3" cy="385.2" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="134.3" y="380.2" font-size="10" font-weight="700" fill="#1d2230">C</text>
+<circle cx="214.8" cy="233.7" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="221.8" y="228.7" font-size="10" font-weight="700" fill="#1d2230">Q</text>
+<circle cx="302.3" cy="385.2" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="309.3" y="380.2" font-size="10" font-weight="700" fill="#1d2230">P</text>
+<text x="34" y="532" fill="#64748b" font-size="11">파랑 점선 = 최소각(시작) · 회색 = 중립 · 빨강 실선 = 최대각(끝) · 노랑 점 = S후크 핀 · 점선 곡선 = 출력 궤적</text>
+<rect x="630" y="82" width="314" height="462" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="648" y="110" fill="#0f172a" font-size="14" font-weight="800">기구학 · 검증 명세</text>
+<text x="648" y="136" fill="#334155" font-size="11.5">• 구동 방식: 서보모터 1개 + Ø30 서보 가이드</text>
+<text x="648" y="156" fill="#334155" font-size="11.5">• 핀 활용: 단일 핀 (R=10)</text>
+<text x="648" y="176" fill="#334155" font-size="11.5">• 회전 관절: 후크 S35 × 6개</text>
+<text x="648" y="196" fill="#334155" font-size="11.5">• 테스트 리그: 수직 3D 타워</text>
+<text x="648" y="216" fill="#334155" font-size="11.5">• 서보 각도: 0° ~ 180°</text>
+<text x="648" y="236" fill="#334155" font-size="11.5">• 출력 범위: 64.0 ~ 84.3</text>
+<text x="648" y="256" fill="#15803d" font-size="12" font-weight="800">✔ 기구학 폐루프 오차: 0.0000 mm</text>
+<text x="648" y="276" fill="#15803d" font-size="12" font-weight="800">✔ 실구멍 정합 &amp; 공중 부양: 0건</text>
+<line x1="648" y1="296" x2="926" y2="296" stroke="#e2e8f0"/>
+<text x="648" y="320" fill="#0f172a" font-size="13" font-weight="800">핵심 동작 요약</text>
+<text x="648" y="344" fill="#475569" font-size="11.5">삼각 커플러(중6 PCB) + 보조 링크 → 발</text>
+<text x="648" y="363" fill="#475569" font-size="11.5">끝이 D자 보행 궤적(폭 20 × 높이 23 m</text>
+<text x="648" y="382" fill="#475569" font-size="11.5">m) 생성</text>
+<line x1="648" y1="406" x2="926" y2="406" stroke="#e2e8f0"/>
+<text x="648" y="430" fill="#0f172a" font-size="13" font-weight="800">벤치 구성 부품 (48개 + 가동 링크)</text>
+<text x="648" y="452" fill="#475569" font-size="11">• bolt-m3x6 × 18</text>
+<text x="648" y="469" fill="#475569" font-size="11">• frame-big-main × 1</text>
+<text x="648" y="486" fill="#475569" font-size="11">• frame-m6-pcb × 1</text>
+<text x="648" y="503" fill="#475569" font-size="11">• frame-main-pcb × 1</text>
+<text x="648" y="520" fill="#475569" font-size="11">• l-frame-2x2 × 2</text>
+</svg>

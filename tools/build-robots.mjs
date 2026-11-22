@@ -23,6 +23,7 @@ const ROBOTS = {
   bigbot: async () => (await imp('src/bigbot/assembly.js')).default.map((a) => a.id),
   gatling: async () => (await imp('src/gatling/assembly.js')).default.map((a) => a.id),
   scorpion: async () => (await imp('src/scorpion/assembly.js')).default.map((a) => a.id),
+  mechlab: async () => (await imp('src/mechlab/assemble.js')).MECHLAB_PART_IDS,
 };
 
 rmSync(gen, { recursive: true, force: true });
