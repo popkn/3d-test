@@ -1,6 +1,6 @@
-import { buildGatling, TILT_MAX, WHEEL_R } from '../src/gatling/assemble.js';
+import { buildGatling, TILT_MAX } from '../src/gatling/assemble.js';
 import { SHEETS, GUN } from '../src/gatling/assembly.js';
-import { detailAdapter, DRIVE5 } from './lib.js';
+import { detailAdapter } from './lib.js';
 import { loadPart } from 'virtual:parts';
 
 export const meta = { id: 'gatling', name: '썬더 개틀링 6연장 v3', mods: 5 };
@@ -29,21 +29,19 @@ export async function makeAdapter(ctx) {
   return ad;
 }
 
-// 기능: 4륜 전원 주행 (M1~M4) · 고각 서보 (OUT1) · 원형 고무줄 탄성 격발 (EX-M1) · 메커니즘 테스트(거치/격발 · 배경 반투명)
+// 기능 조작: 펼침 = ON/OFF·격발·테스트 버튼 · 접힘 = 고각 조절바 (주행 제거)
 function gatlingFn(e) {
-  const v = { drive: 'stop', aim: 0, auto: true, loop: false, slow: false, test: 'normal' };
+  const v = { aim: 0, auto: true, loop: false, slow: false, test: 'normal' };
   const live = { aim: 0 };
-  let dl = 0, dr = 0, yaw = 0, want = 0, budget = 0, shots = 0, testPhase = 0, testInfo = null;
-  const speed = 130 / 60 * Math.PI * 2 * WHEEL_R;
+  let want = 0, budget = 0, shots = 0, testPhase = 0, testInfo = null;
   const W = 220 / 60 * Math.PI * 2; // DC 400rpm (시각적으로 격발이 잘 보이도록 조절)
   return {
-    title: '4WD 주행 · 고각 · 원형 고무줄 격발 & 테스트',
+    title: '',
     items: [
       { type: 'seg', id: 'test', label: '메커니즘 테스트 (배경 반투명)', options: [['normal', '일반 완성품'], ['hook', '① 거치·당김'], ['trigger', '② 12시 격발']], wide: true },
-      { type: 'seg', id: 'drive', label: '4륜 전원 구동 (M1~M4)', options: DRIVE5, wide: true },
-      { type: 'bar', id: 'aim', label: '고각 (서보 OUT1)', min: 0, max: Math.floor(TILT_MAX), step: 1, fmt: (x) => `+${Math.round(x)}°` },
       { type: 'actions', items: [{ id: 'fire1', label: '1발 (탄성 발사)', hot: true }, { id: 'fire6', label: '6발 연사', hot: true }] },
-      { type: 'toggles', items: [{ id: 'slow', label: '슬로우모션 (탄성·쐐기 관찰)' }, { id: 'auto', label: '원형 고무줄 자동 장전' }, { id: 'loop', label: '계속 발사' }] },
+      { type: 'toggles', items: [{ id: 'slow', label: '슬로우모션' }, { id: 'auto', label: '자동 장전' }, { id: 'loop', label: '계속 발사' }] },
+      { type: 'bar', id: 'aim', label: '고각 (서보 OUT1)', min: 0, max: Math.floor(TILT_MAX), step: 1, fmt: (x) => `+${Math.round(x)}°` },
     ],
     v,
     set(id, x) {
@@ -51,7 +49,7 @@ function gatlingFn(e) {
         v.test = x;
         testPhase = 0;
         if (x === 'normal') { e.updateTestMode(null); testInfo = null; }
-        else { want = 0; budget = 0; v.drive = 'stop'; testInfo = e.updateTestMode(x, 0); }
+        else { want = 0; budget = 0; testInfo = e.updateTestMode(x, 0); }
       } else if (id === 'fire1' || id === 'fire6') {
         if (v.test !== 'normal') { v.test = 'normal'; e.updateTestMode(null); testInfo = null; }
         want += id === 'fire1' ? 1 : 6;
@@ -67,9 +65,6 @@ function gatlingFn(e) {
         return true;
       }
       let moved = false;
-      const [l, r] = { stop: [0, 0], fwd: [1, 1], back: [-1, -1], left: [-1, 1], right: [1, -1] }[v.drive];
-      if (l || r) { dl += l * speed * dt; dr += r * speed * dt; e.setWheels(-dl, -dr); moved = true; }
-      if (v.drive === 'left' || v.drive === 'right') { yaw += (v.drive === 'left' ? 1 : -1) * dt * 0.7; e.root.rotation.y = yaw; }
       if (Math.abs(v.aim - live.aim) > 0.01) { live.aim += Math.sign(v.aim - live.aim) * Math.min(Math.abs(v.aim - live.aim), dt * 20); e.setTilt(live.aim); moved = true; }
       if (v.loop && v.auto) { want = Math.max(want, 1); budget = Math.PI * 2; }
       if (want > 0 && budget > 0) {
@@ -88,12 +83,11 @@ function gatlingFn(e) {
     ] : [
       ['원형 고무줄', `${e.loaded()} / 6 (매듭 0 · 관통 0)`, e.loaded() ? 'ok' : 'bad'],
       ['쏜 수', `${shots}발`],
-      ['메커니즘', '총구캡(−Z) ↔ 걸쇠캡(+Z) → 12시 36.9° 쐐기 이탈'],
     ]),
     busy: () => want > 0 || v.test !== 'normal',
     exit() {
-      Object.assign(v, { drive: 'stop', aim: 0, auto: true, loop: false, slow: false, test: 'normal' });
-      live.aim = 0; dl = dr = yaw = want = budget = shots = testPhase = 0; testInfo = null;
+      Object.assign(v, { aim: 0, auto: true, loop: false, slow: false, test: 'normal' });
+      live.aim = 0; want = budget = shots = testPhase = 0; testInfo = null;
       e.reset(); e.root.rotation.y = 0;
     },
   };

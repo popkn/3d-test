@@ -1,6 +1,6 @@
-import { buildScorpion, WHEEL_R, CLAW_OPEN, CLAW_NEUT, CLAW_CLAMP, TAIL_READY, TAIL_SMASH } from '../src/scorpion/assemble.js';
+import { buildScorpion, CLAW_OPEN, CLAW_NEUT, CLAW_CLAMP, TAIL_READY, TAIL_SMASH } from '../src/scorpion/assemble.js';
 import { SHEETS } from '../src/scorpion/assembly.js';
-import { detailAdapter, DRIVE5 } from './lib.js';
+import { detailAdapter } from './lib.js';
 import { loadPart } from 'virtual:parts';
 
 export const meta = { id: 'scorpion', name: '크림슨 스콜피온 v4', mods: 6 };
@@ -32,32 +32,31 @@ export async function makeAdapter(ctx) {
   return ad;
 }
 
-// 컴팩트 기능 조작창: 상단 긴 제목 제거 · 메커니즘 테스트 버튼 제거 · 조절바 2열 배치(col: ca/cb) · 간결한 라벨
+// 기능 조작: 펼침 = ON/OFF 버튼 · 접힘 = 집게/꼬리 조절바 (주행 제거)
 function scorpionFn(e) {
-  const v = { drive: 'stop', spin: false, claw: CLAW_NEUT, tail: TAIL_READY, slow: false };
+  const v = { spin: false, clawOn: false, tailOn: false, claw: CLAW_NEUT, tail: TAIL_READY, slow: false };
   const live = { rpm: 0, claw: CLAW_NEUT, tail: TAIL_READY };
-  let dl = 0, dr = 0, yaw = 0, spinAng = 0, combo = 0;
-  const speed = 130 / 60 * Math.PI * 2 * WHEEL_R;
+  let spinAng = 0, combo = 0;
   return {
     title: '',
     items: [
-      { type: 'seg', id: 'drive', label: '주행', options: DRIVE5, wide: true },
+      { type: 'toggles', items: [{ id: 'spin', label: '어퍼컷 낫' }, { id: 'clawOn', label: '집게 닫기' }, { id: 'tailOn', label: '꼬리 타격' }, { id: 'slow', label: '슬로우' }] },
+      { type: 'actions', items: [{ id: 'combo', label: '🦂 3무기 콤보', hot: true }] },
       { type: 'bar', id: 'claw', label: '집게', col: 'ca', min: CLAW_CLAMP, max: CLAW_OPEN, step: 1, fmt: (x) => `${Math.round(x)}°` },
       { type: 'bar', id: 'tail', label: '꼬리', col: 'cb', min: TAIL_SMASH, max: TAIL_READY, step: 1, fmt: (x) => `${Math.round(x)}°` },
-      { type: 'toggles', items: [{ id: 'spin', label: '어퍼컷 낫' }, { id: 'slow', label: '슬로우' }] },
-      { type: 'actions', items: [{ id: 'combo', label: '🦂 3무기 콤보', hot: true }] },
     ],
     v,
     set(id, x) {
       if (id === 'combo') { combo = 3.6; v.spin = true; return; }
+      if (id === 'clawOn') { v.clawOn = !!x; v.claw = v.clawOn ? CLAW_CLAMP : CLAW_OPEN; return; }
+      if (id === 'tailOn') { v.tailOn = !!x; v.tail = v.tailOn ? TAIL_SMASH : TAIL_READY; return; }
       v[id] = x;
+      if (id === 'claw') v.clawOn = x < (CLAW_CLAMP + CLAW_OPEN) / 2;
+      if (id === 'tail') v.tailOn = x < (TAIL_SMASH + TAIL_READY) / 2;
     },
     update(dt) {
       let moved = false;
       const scale = v.slow ? 0.25 : 1;
-      const [l, r] = { stop: [0, 0], fwd: [1, 1], back: [-1, -1], left: [-1, 1], right: [1, -1] }[v.drive];
-      if (l || r) { dl += l * speed * dt * scale; dr += r * speed * dt * scale; e.setWheels(-dl, -dr); moved = true; }
-      if (v.drive === 'left' || v.drive === 'right') { yaw += (v.drive === 'left' ? 1 : -1) * dt * 0.7 * scale; e.root.rotation.y = yaw; }
 
       const targetRpm = v.spin ? 400 : 0;
       if (Math.abs(targetRpm - live.rpm) > 0.2) {
@@ -102,9 +101,9 @@ function scorpionFn(e) {
     ],
     busy: () => combo > 0 || live.rpm > 1,
     exit() {
-      Object.assign(v, { drive: 'stop', spin: false, claw: CLAW_NEUT, tail: TAIL_READY, slow: false });
+      Object.assign(v, { spin: false, clawOn: false, tailOn: false, claw: CLAW_NEUT, tail: TAIL_READY, slow: false });
       Object.assign(live, { rpm: 0, claw: CLAW_NEUT, tail: TAIL_READY });
-      dl = dr = yaw = spinAng = combo = 0;
+      spinAng = combo = 0;
       e.reset(); e.root.rotation.y = 0;
     },
   };

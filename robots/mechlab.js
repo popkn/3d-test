@@ -43,6 +43,7 @@ export async function makeAdapter(ctx) {
     code: 'M01',
     deg: MECH_BY_CODE.M01.rest,
     rpm: 60,
+    run: true,
     auto: true,
     rev: false,
     slow: false,
@@ -73,13 +74,13 @@ export async function makeAdapter(ctx) {
     ];
     if (state.guide === 'servo') {
       items.push(
-        { type: 'bar', id: 'deg', label: '서보 각도', min: sp.range[0], max: sp.range[1], step: 1, fmt: (x) => `${Math.round(x)}°` },
         { type: 'toggles', items: [{ id: 'auto', label: '자동 왕복' }, { id: 'slow', label: '슬로우' }] },
+        { type: 'bar', id: 'deg', label: '서보 각도', min: sp.range[0], max: sp.range[1], step: 1, fmt: (x) => `${Math.round(x)}°` },
       );
     } else {
       items.push(
+        { type: 'toggles', items: [{ id: 'run', label: '모터 회전' }, { id: 'rev', label: '역회전' }, { id: 'slow', label: '슬로우' }] },
         { type: 'bar', id: 'rpm', label: 'DC 속도', min: 0, max: 130, step: 5, fmt: (x) => `${Math.round(x)} rpm` },
-        { type: 'toggles', items: [{ id: 'rev', label: '역회전' }, { id: 'slow', label: '슬로우' }] },
       );
     }
     return items;
@@ -120,8 +121,14 @@ export async function makeAdapter(ctx) {
         lab.setAngle(state.deg);
         return;
       }
+      if (id === 'run') {
+        state.run = !!val;
+        state.rpm = state.run ? (state.rpm > 0 ? state.rpm : 60) : 0;
+        return;
+      }
       if (id === 'rpm') {
         state.rpm = Number(val);
+        state.run = state.rpm > 0;
         return;
       }
       state[id] = val;
@@ -136,7 +143,7 @@ export async function makeAdapter(ctx) {
         lab.setAngle(state.deg);
         return true;
       }
-      if (state.rpm < 0.5) return false;
+      if (!state.run || state.rpm < 0.5) return false;
       const scale = state.slow ? 0.25 : 1;
       const dir = state.rev ? -1 : 1;
       state.deg = (state.deg + dir * (state.rpm / 60) * 360 * dt * scale + 360) % 360;
@@ -154,11 +161,12 @@ export async function makeAdapter(ctx) {
         ['오차', `${(res?.err ?? 0).toFixed(3)} mm`, 'ok'],
       ];
     },
-    busy: () => (state.guide === 'servo' ? state.auto : state.rpm > 0.5),
+    busy: () => (state.guide === 'servo' ? state.auto : state.run && state.rpm > 0.5),
     exit() {
       state.guide = 'servo';
       state.tier = '1';
       state.rpm = 60;
+      state.run = true;
       state.auto = true;
       state.rev = false;
       state.slow = false;

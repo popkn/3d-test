@@ -31,11 +31,11 @@ function eagleFn(e) {
     e.head.rotation.y = rad(live.head - 90);
   };
   return {
-    title: "날갯짓 · 머리",
+    title: "",
     items: [
+      { type: "toggles", items: [{ id: "auto", label: "자동 날갯짓" }, { id: "scan", label: "머리 둘러보기" }] },
       { type: "bar", id: "flap", label: "날개 각도", min: -20, max: 45, step: 1, fmt: (x) => `${Math.round(x)}°` },
-      { type: "bar", id: "head", label: "머리 방향", min: 45, max: 135, step: 1, fmt: (x) => Math.round(x) === 90 ? "정면" : `${x > 90 ? "왼쪽" : "오른쪽"} ${Math.abs(Math.round(x) - 90)}°` },
-      { type: "toggles", items: [{ id: "auto", label: "자동 날갯짓" }, { id: "scan", label: "머리 둘러보기" }] }
+      { type: "bar", id: "head", label: "머리 방향", min: 45, max: 135, step: 1, fmt: (x) => Math.round(x) === 90 ? "정면" : `${x > 90 ? "왼쪽" : "오른쪽"} ${Math.abs(Math.round(x) - 90)}°` }
     ],
     v,
     set(id, x) {

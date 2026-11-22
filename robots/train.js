@@ -1,6 +1,6 @@
 import { buildTrainSteps } from '../src/train/build.js';
 import { buildTrain } from '../src/train/assemble.js';
-import { partBounds, DRIVE5, V3 } from './lib.js';
+import { partBounds } from './lib.js';
 import { loadPart } from 'virtual:parts';
 
 export const meta = { id: 'train', name: '협동 기차 하나로 열차', mods: 4 };
@@ -50,18 +50,14 @@ export async function makeAdapter(ctx) {
 }
 
 function trainFn(ctx) {
-  const { view, st } = ctx;
-  const v = { c0: "stop", c1: "stop", c2: "stop", speed: 100, body: true };
-  let drive = null, bend = [0, 0], center = new V3();
+  const v = { body: true, speed: 100 };
+  let drive = null;
   return {
-    title: "세 칸 따로 조종",
+    title: "",
     items: [
-      { type: "seg", id: "c0", label: "앞칸", options: DRIVE5, inline: true, col: "ca" },
-      { type: "seg", id: "c1", label: "중간칸", options: DRIVE5, inline: true, col: "ca" },
-      { type: "seg", id: "c2", label: "마지막칸", options: DRIVE5, inline: true, col: "ca" },
-      { type: "bar", id: "speed", label: "속도", min: 20, max: 100, step: 5, fmt: (x) => `${Math.round(x)}%`, col: "cb" },
-      { type: "actions", col: "cb", items: [{ id: "same", label: "셋 다 전진" }, { id: "mixed", label: "엇갈림 예" }, { id: "reset", label: "처음 자리로" }] },
-      { type: "toggles", col: "cb", items: [{ id: "body", label: "차체 보이기" }] }
+      { type: "toggles", items: [{ id: "body", label: "차체 보이기" }] },
+      { type: "actions", items: [{ id: "reset", label: "처음 자리로" }] },
+      { type: "bar", id: "speed", label: "속도", min: 20, max: 100, step: 5, fmt: (x) => `${Math.round(x)}%` }
     ],
     v,
     async enter(onProgress) {
@@ -71,38 +67,22 @@ function trainFn(ctx) {
       return { root: drive.root, box: partBounds(drive.root), frameOpts: { dir: [-1, 0.55, -0.7], fit: 1, minDist: 20 } };
     },
     set(id, x) {
-      if (id === "same") Object.assign(v, { c0: "fwd", c1: "fwd", c2: "fwd" });
-      else if (id === "mixed") Object.assign(v, { c0: "left", c1: "back", c2: "right" });
-      else if (id === "reset") {
-        Object.assign(v, { c0: "stop", c1: "stop", c2: "stop" });
-        drive?.reset();
-      } else v[id] = x;
+      if (id === "reset") drive?.reset();
+      else v[id] = x;
+      if (drive) for (const c of drive.cars) for (const hh of c.body) hh.visible = v.body;
     },
     setBolts(b) {
       drive?.showBolts(b);
     },
-    update(dt) {
+    update() {
       if (!drive) return false;
-      const cmd = [v.c0, v.c1, v.c2];
-      const moving = cmd.some((c) => c !== "stop");
-      if (moving) bend = drive.step(Math.min(dt, 0.05), cmd, v.speed / 100);
       for (const c of drive.cars) for (const hh of c.body) hh.visible = v.body;
-      if (moving && st.follow) {
-        center.set((drive.cars[0].x + drive.cars[2].x) / 2, 60, (drive.cars[0].z + drive.cars[2].z) / 2);
-        const d = center.clone().sub(view.controls.target).multiplyScalar(Math.min(1, dt * 3));
-        view.controls.target.add(d);
-        view.camera.position.add(d);
-      }
-      return moving;
+      return false;
     },
     live: {},
-    stats: () => {
-      const cmd = [v.c0, v.c1, v.c2], same = cmd.every((c) => c === cmd[0]);
-      return [["세 사람", same ? cmd[0] === "stop" ? "모두 정지" : "같은 방향" : "엇갈림", same ? "ok" : "bad"], ["꺾임", `${bend[0].toFixed(0)}° · ${bend[1].toFixed(0)}°`]];
-    },
+    stats: () => [["차체", v.body ? "보임" : "숨김"]],
     exit() {
-      Object.assign(v, { c0: "stop", c1: "stop", c2: "stop", speed: 100, body: true });
-      bend = [0, 0];
+      Object.assign(v, { body: true, speed: 100 });
       if (drive) {
         drive.reset();
         for (const c of drive.cars) for (const hh of c.body) hh.visible = true;
