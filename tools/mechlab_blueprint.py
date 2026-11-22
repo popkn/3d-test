@@ -1,5 +1,5 @@
 """
-로보로보 7호 서보 가이드(wheel-guide-30-servo) 15종 (M01~M15)
+로보로보 7호 서보 모터가이드(motor-guide) 15종 (M01~M15)
 + DC 모터 휠 가이드(wheel-guide-30-nylon / wheel-guide-40-yellow) 15종 (W01~W15)
 = 총 30종 S후크(s-hook-35) 메커니즘 전수 설계도 + 0.000 mm 기구학 검증 + 3D 시뮬레이션 데이터 생성기.
 
@@ -122,10 +122,10 @@ def add_v_tower(parts, sx, sy, motor_id='servo-digital'):
 # ── 난이도별 매핑 (서보 가이드 15종 + 휠 가이드 15종 = 30종)
 # ═══════════════════════════════════════════════════════════════════════
 TIERS_SERVO = [
-    {'tier': 1, 'label': '★1 기초', 'title': 'Tier 1 · 기초 4절 링크 (단일 핀)', 'codes': ['M01', 'M02', 'M03']},
-    {'tier': 2, 'label': '★2 대칭', 'title': 'Tier 2 · 서보 가이드 쌍핀(±10) 대칭', 'codes': ['M04', 'M05', 'M06']},
-    {'tier': 3, 'label': '★3 직선', 'title': 'Tier 3 · 직선 변환 · 토글 잠금', 'codes': ['M07', 'M08', 'M09', 'M10']},
-    {'tier': 4, 'label': '★4 다절', 'title': 'Tier 4 · 다절 신축 · 보행 · 90° 2단', 'codes': ['M11', 'M12', 'M13']},
+    {'tier': 1, 'label': '★1 기초', 'title': 'Tier 1 · 모터가이드(R=9.5) 기초 4절 링크', 'codes': ['M01', 'M02', 'M03']},
+    {'tier': 2, 'label': '★2 대칭', 'title': 'Tier 2 · 단일 핀 적층 대칭 동기화', 'codes': ['M04', 'M05', 'M06']},
+    {'tier': 3, 'label': '★3 직선', 'title': 'Tier 3 · 직선 변환 · 교대 피스톤 · 토글', 'codes': ['M07', 'M08', 'M09', 'M10']},
+    {'tier': 4, 'label': '★4 다절', 'title': 'Tier 4 · 다절 신축 · 보행 · 2축 연동', 'codes': ['M11', 'M12', 'M13']},
     {'tier': 5, 'label': '★5 복합', 'title': 'Tier 5 · 6절 궤적 · 3D 래칫 스텝', 'codes': ['M14', 'M15']},
 ]
 
@@ -137,83 +137,83 @@ TIERS_WHEEL = [
     {'tier': 5, 'label': '★5 간헐', 'title': 'Tier 5 · 6절 정지 프레스 · 360° 간헐 인덱서', 'codes': ['W14', 'W15']},
 ]
 
-# ── 서보 가이드 15종 (M01~M15)
+# ── 서보 가이드(motor-guide · 검은 레버 암 · 단일 M3 구멍 R=9.5 mm) 15종 (M01~M15)
 SERVO_SPECS = [
-    {'code': 'M01', 'guide': 'servo', 'guidePart': 'wheel-guide-30-servo', 'motorPart': 'servo-digital',
+    {'code': 'M01', 'guide': 'servo', 'guidePart': 'motor-guide', 'motorPart': 'servo-digital',
      'tier': 1, 'short': 'M01 로커', 'name': '단일 로커 4절 링크 (스콜피언 집게 원형)',
-     'pinMode': '단일 핀 (R=10)', 'hooks': 3, 'rig': 'H', 'range': [0, 180], 'rest': 90,
-     'summary': '서보 180° 회전 → 출력 레버 58.8° 고토크(3.06×) 증폭',
-     'kin': {'type': 'rocker4', 'S': [-20, 0], 'R': 10, 'P': [20, 0], 'Rout': 20, 'L': 40, 'sgn': 1, 'armLen': 60}},
-    {'code': 'M02', 'guide': 'servo', 'guidePart': 'wheel-guide-30-servo', 'motorPart': 'servo-digital',
+     'pinMode': '모터가이드 단일 핀 (R=9.5)', 'hooks': 3, 'rig': 'H', 'range': [0, 180], 'rest': 90,
+     'summary': '모터가이드 180° 회전 → 출력 레버 55.9° 고토크(3.2×) 증폭',
+     'kin': {'type': 'rocker4', 'S': [-20, 0], 'R': 9.5, 'P': [20, 0], 'Rout': 20, 'L': 40, 'sgn': 1, 'armLen': 60}},
+    {'code': 'M02', 'guide': 'servo', 'guidePart': 'motor-guide', 'motorPart': 'servo-digital',
      'tier': 1, 'short': 'M02 경첩', 'name': '경첩 승강 4절 링크 (썬더 웨지 원형)',
-     'pinMode': '단일 핀 (R=10)', 'hooks': 2, 'rig': 'V_WEDGE', 'range': [0, 180], 'rest': 0,
-     'summary': '수평 서보 → 소12 푸시로드(L=80) → 경첩 판 0°~38° 승강 (토크 3.12×)',
-     'kin': {'type': 'wedge4', 'PZ': -50, 'PY': 19.6, 'SZ': 10, 'SY': 77.2, 'tabU': 15, 'tabV': 21, 'R': 10, 'L': 80, 'restDeg': 9.0, 'maxLift': 38.0, 'linkX': 59.0}},
-    {'code': 'M03', 'guide': 'servo', 'guidePart': 'wheel-guide-30-servo', 'motorPart': 'servo-digital',
+     'pinMode': '모터가이드 단일 핀 (R=9.5)', 'hooks': 2, 'rig': 'V_WEDGE', 'range': [0, 180], 'rest': 0,
+     'summary': '수평 서보 + 모터가이드 → 소12 푸시로드(L=80) → 경첩 판 0°~38° 승강',
+     'kin': {'type': 'wedge4', 'PZ': -50, 'PY': 19.6, 'SZ': 10, 'SY': 77.2, 'tabU': 15, 'tabV': 21, 'R': 9.5, 'L': 80, 'restDeg': 9.0, 'maxLift': 38.0, 'linkX': 59.0}},
+    {'code': 'M03', 'guide': 'servo', 'guidePart': 'motor-guide', 'motorPart': 'servo-digital',
      'tier': 1, 'short': 'M03 평행', 'name': '평행사변형 수평 유지 링크 (Parallelogram)',
-     'pinMode': '단일 핀 (R=10)', 'hooks': 4, 'rig': 'H', 'range': [20, 160], 'rest': 90,
-     'summary': '서보 140° 회전 동안 끝단 플랫폼이 기울어짐 0.0° 수평 유지',
-     'kin': {'type': 'parallel4', 'S': [-20, 0], 'R': 10, 'P': [20, 0], 'L': 40}},
-    {'code': 'M04', 'guide': 'servo', 'guidePart': 'wheel-guide-30-servo', 'motorPart': 'servo-digital',
-     'tier': 2, 'short': 'M04 쌍집게', 'name': '1-서보 대칭 집게 크러셔 (Dual Gripper)',
-     'pinMode': '대칭 쌍핀 (±10)', 'hooks': 6, 'rig': 'H', 'range': [30, 150], 'rest': 90,
-     'summary': '서보 가이드 ±10 mm 양쪽 핀으로 좌·우 집게(~51°) 동시 개폐',
-     'kin': {'type': 'dualGripper', 'S': [0, 20], 'R': 10, 'PL': [-25, -10], 'PR': [25, -10], 'Rout': 20, 'L': 30, 'jawLen': 50}},
-    {'code': 'M05', 'guide': 'servo', 'guidePart': 'wheel-guide-30-servo', 'motorPart': 'servo-digital',
+     'pinMode': '모터가이드 단일 핀 (R=9.5)', 'hooks': 4, 'rig': 'H', 'range': [20, 160], 'rest': 90,
+     'summary': '모터가이드 140° 회전 동안 끝단 플랫폼이 기울어짐 0.0° 수평 유지',
+     'kin': {'type': 'parallel4', 'S': [-20, 0], 'R': 9.5, 'P': [20, 0], 'L': 40}},
+    {'code': 'M04', 'guide': 'servo', 'guidePart': 'motor-guide', 'motorPart': 'servo-digital',
+     'tier': 2, 'short': 'M04 쌍집게', 'name': '1-서보 단일핀 대칭 집게 (Dual Gripper)',
+     'pinMode': '단일 핀 적층 (R=9.5 · L1+L2)', 'hooks': 5, 'rig': 'H', 'range': [15, 165], 'rest': 90,
+     'summary': '모터가이드 1구멍에 좌·우 커플러 적층 → 서보 1개로 양쪽 집게 동시 개폐',
+     'kin': {'type': 'dualGripper1', 'S': [0, 20], 'R': 9.5, 'PL': [-25, -10], 'PR': [25, -10], 'Rout': 20, 'L': 40, 'jawLen': 50}},
+    {'code': 'M05', 'guide': 'servo', 'guidePart': 'motor-guide', 'motorPart': 'servo-digital',
      'tier': 2, 'short': 'M05 평행집게', 'name': '평행 턱 1-서보 그리퍼 (Parallel-Jaw)',
-     'pinMode': '대칭 쌍핀 (±10)', 'hooks': 10, 'rig': 'H', 'range': [30, 150], 'rest': 90,
-     'summary': '좌·우 평행사변형 결합 → 물체 파지 시 두 집게발 항상 0° 평행 유지',
-     'kin': {'type': 'parallelGripper', 'S': [0, 20], 'R': 10, 'PL': [-25, -10], 'PR': [25, -10], 'Rout': 20, 'L': 30, 'parDx': 20, 'jawLen': 40}},
-    {'code': 'M06', 'guide': 'servo', 'guidePart': 'wheel-guide-30-servo', 'motorPart': 'servo-digital',
+     'pinMode': '단일 핀 적층 (R=9.5 · L1+L2)', 'hooks': 9, 'rig': 'H', 'range': [15, 165], 'rest': 90,
+     'summary': '모터가이드 단일 핀 + 좌·우 평행사변형 → 두 집게발 항상 0° 평행 파지',
+     'kin': {'type': 'parallelGripper1', 'S': [0, 20], 'R': 9.5, 'PL': [-25, -10], 'PR': [25, -10], 'Rout': 20, 'L': 40, 'parDx': 20, 'jawLen': 40}},
+    {'code': 'M06', 'guide': 'servo', 'guidePart': 'motor-guide', 'motorPart': 'servo-digital',
      'tier': 2, 'short': 'M06 양날개', 'name': '양날개 날갯짓 메커니즘 (Flapping Wing)',
-     'pinMode': '대칭 쌍핀 (±10)', 'hooks': 6, 'rig': 'V_WING', 'range': [30, 150], 'rest': 90,
-     'summary': '수직 타워 + ±10 쌍핀 → 좌·우 118 mm 날개 ~51° 동시 상하 펄럭임',
-     'kin': {'type': 'flappingWing', 'S': [0, 40.6], 'R': 10, 'PL': [-25, 70.6], 'PR': [25, 70.6], 'Rout': 20, 'L': 30, 'wingLen': 90}},
-    {'code': 'M07', 'guide': 'servo', 'guidePart': 'wheel-guide-30-servo', 'motorPart': 'servo-digital',
+     'pinMode': '단일 핀 적층 (R=9.5 · 수직)', 'hooks': 5, 'rig': 'V_WING', 'range': [15, 165], 'rest': 90,
+     'summary': '수직 타워 + 모터가이드 1구멍 상하 왕복 → 좌·우 90 mm 날개 대칭 펄럭임',
+     'kin': {'type': 'flappingWing1', 'S': [0, 40.6], 'R': 9.5, 'PL': [-25, 70.6], 'PR': [25, 70.6], 'Rout': 20, 'L': 40, 'wingLen': 90}},
+    {'code': 'M07', 'guide': 'servo', 'guidePart': 'motor-guide', 'motorPart': 'servo-digital',
      'tier': 3, 'short': 'M07 슬라이더', 'name': '크랭크-슬라이더 직선 피스톤 (Crank-Slider)',
-     'pinMode': '단일 핀 (R=10)', 'hooks': 2, 'rig': 'H', 'range': [0, 180], 'rest': 90,
-     'summary': '서보 0°~180° 회전 → 축가이드 레일 위 직선 왕복 스트로크 20.0 mm',
-     'kin': {'type': 'slider', 'S': [-30, 0], 'R': 10, 'L': 50, 'railY': 0}},
-    {'code': 'M08', 'guide': 'servo', 'guidePart': 'wheel-guide-30-servo', 'motorPart': 'servo-digital',
-     'tier': 3, 'short': 'M08 쌍피스톤', 'name': '대향 쌍발 피스톤 / 양방향 펀처 (Dual Slider)',
-     'pinMode': '대칭 쌍핀 (±10)', 'hooks': 4, 'rig': 'H', 'range': [0, 180], 'rest': 90,
-     'summary': '±10 쌍핀 → 좌·우 축가이드 슬라이더 교대 왕복(±20 mm 양방향 펀치)',
-     'kin': {'type': 'dualSlider', 'S': [0, 0], 'R': 10, 'L': 40}},
-    {'code': 'M09', 'guide': 'servo', 'guidePart': 'wheel-guide-30-servo', 'motorPart': 'servo-digital',
+     'pinMode': '모터가이드 단일 핀 (R=9.5)', 'hooks': 2, 'rig': 'H', 'range': [0, 180], 'rest': 90,
+     'summary': '모터가이드 0°~180° 회전 → 축가이드 레일 위 직선 왕복 스트로크 19.0 mm',
+     'kin': {'type': 'slider', 'S': [-30, 0], 'R': 9.5, 'L': 50, 'railY': 0}},
+    {'code': 'M08', 'guide': 'servo', 'guidePart': 'motor-guide', 'motorPart': 'servo-digital',
+     'tier': 3, 'short': 'M08 쌍피스톤', 'name': '단일핀 대향 교대 피스톤 (Dual Slider)',
+     'pinMode': '단일 핀 적층 (R=9.5 · 좌/우)', 'hooks': 3, 'rig': 'H', 'range': [0, 180], 'rest': 90,
+     'summary': '모터가이드 1구멍에서 좌·우 레일 동시 구동 → 19 mm 교대 복싱 펀치',
+     'kin': {'type': 'dualSlider1', 'S': [0, 0], 'R': 9.5, 'L': 40}},
+    {'code': 'M09', 'guide': 'servo', 'guidePart': 'motor-guide', 'motorPart': 'servo-digital',
      'tier': 3, 'short': 'M09 토글', 'name': '오버센터 토글 클램프 (Self-Locking Toggle)',
-     'pinMode': '단일 핀 (R=10)', 'hooks': 5, 'rig': 'H', 'range': [0, 145], 'rest': 60,
-     'summary': '무릎 관절이 180° 일직선을 +7.4 mm 넘어 기계식 자가잠금 & 고배율 압착',
-     'kin': {'type': 'toggle', 'S': [0, -30], 'R': 10, 'P': [-30, 0], 'L1': 30, 'L2': 30, 'L3': 30, 'railZ': 0}},
-    {'code': 'M10', 'guide': 'servo', 'guidePart': 'wheel-guide-30-servo', 'motorPart': 'servo-digital',
+     'pinMode': '모터가이드 단일 핀 (R=9.5)', 'hooks': 5, 'rig': 'H', 'range': [0, 145], 'rest': 60,
+     'summary': '무릎 관절이 180° 일직선을 넘어 기계식 자가잠금 & 고배율 압착',
+     'kin': {'type': 'toggle', 'S': [0, -30], 'R': 9.5, 'P': [-30, 0], 'L1': 30, 'L2': 30, 'L3': 30, 'railZ': 0}},
+    {'code': 'M10', 'guide': 'servo', 'guidePart': 'motor-guide', 'motorPart': 'servo-digital',
      'tier': 3, 'short': 'M10 직선', 'name': '와트 무레일 직선 링크 (Watt Straight-Line)',
-     'pinMode': '단일 핀 + R30 암', 'hooks': 4, 'rig': 'H', 'range': [0, 180], 'rest': 90,
+     'pinMode': '모터가이드 + R30 연장 암', 'hooks': 4, 'rig': 'H', 'range': [0, 180], 'rest': 90,
      'summary': '슬라이더 레일 0개 · 순수 S후크 4절만으로 중심점이 25 mm 근사 직선 운동',
      'kin': {'type': 'wattLine', 'S': [-30, 0], 'P': [30, 0], 'R1': 30, 'R2': 30, 'Lc': 20, 'thMin': -32, 'thMax': 32}},
-    {'code': 'M11', 'guide': 'servo', 'guidePart': 'wheel-guide-30-servo', 'motorPart': 'servo-digital',
+    {'code': 'M11', 'guide': 'servo', 'guidePart': 'motor-guide', 'motorPart': 'servo-digital',
      'tier': 4, 'short': 'M11 시저스', 'name': '3단 시저스 팬터그래프 신축 암 (Scissor-Lift)',
-     'pinMode': '확장 크랭크 (R=20)', 'hooks': 11, 'rig': 'H', 'range': [15, 165], 'rest': 90,
+     'pinMode': '모터가이드 + R20 연장 암', 'hooks': 11, 'rig': 'H', 'range': [15, 165], 'rest': 90,
      'summary': 'X자 3단 교차 S후크(11개) → 입력 변위를 +90.6 mm(2.35×) 초장거리 신축',
      'kin': {'type': 'scissor', 'S': [-50, 0], 'R': 20, 'Ldrv': 50, 'Lbar': 60, 'stages': 3, 'baseX': -30}},
-    {'code': 'M12', 'guide': 'servo', 'guidePart': 'wheel-guide-30-servo', 'motorPart': 'servo-digital',
+    {'code': 'M12', 'guide': 'servo', 'guidePart': 'motor-guide', 'motorPart': 'servo-digital',
      'tier': 4, 'short': 'M12 보행', 'name': '1-서보 6절 보행 다리 모듈 (Walking Leg)',
-     'pinMode': '단일 핀 (R=10)', 'hooks': 6, 'rig': 'V_LEG', 'range': [0, 180], 'rest': 90,
-     'summary': '삼각 커플러(중6 PCB) + 보조 링크 → 발끝이 D자 보행 궤적 생성',
-     'kin': {'type': 'walkingLeg', 'S': [-10, 60.6], 'R': 10, 'P': [10, 60.6], 'Rout': 30, 'Lc': 30, 'footU': 30, 'footV': -35}},
-    {'code': 'M13', 'guide': 'servo', 'guidePart': 'wheel-guide-30-servo', 'motorPart': 'servo-digital',
-     'tier': 4, 'short': 'M13 90° 2단', 'name': '90° 직교 쌍핀 2단 시퀀스 (1-Servo 2-Stage)',
-     'pinMode': '직교 쌍핀 (0°, 90°)', 'hooks': 5, 'rig': 'H', 'range': [0, 180], 'rest': 90,
-     'summary': '서보 1개의 0°~90°에서 A 해치 개방, 90°~180°에서 B 푸셔 돌출(2동작 순차)',
-     'kin': {'type': 'dualStage90', 'S': [-10, 0], 'R': 10, 'LA': 40, 'LB': 40, 'PA': [-10, -40], 'RA': 20}},
-    {'code': 'M14', 'guide': 'servo', 'guidePart': 'wheel-guide-30-servo', 'motorPart': 'servo-digital',
+     'pinMode': '모터가이드 단일 핀 (R=9.5)', 'hooks': 6, 'rig': 'V_LEG', 'range': [0, 180], 'rest': 90,
+     'summary': '모터가이드 + 삼각 커플러 → 발끝이 D자 보행 궤적 생성',
+     'kin': {'type': 'walkingLeg', 'S': [-10, 60.6], 'R': 9.5, 'P': [10, 60.6], 'Rout': 30, 'Lc': 30, 'footU': 30, 'footV': -35}},
+    {'code': 'M13', 'guide': 'servo', 'guidePart': 'motor-guide', 'motorPart': 'servo-digital',
+     'tier': 4, 'short': 'M13 2축연동', 'name': '단일핀 2축 시퀀스 연동 (1-Pin Dual-Axis)',
+     'pinMode': '단일 핀 적층 (R=9.5 · 2축)', 'hooks': 4, 'rig': 'H', 'range': [0, 180], 'rest': 90,
+     'summary': '모터가이드 1구멍이 해치 로커(38°) + 직선 푸셔(19 mm)를 동시에 직교 연동',
+     'kin': {'type': 'dualStage1', 'S': [-10, 0], 'R': 9.5, 'LA': 40, 'LB': 40, 'PA': [-10, -40], 'RA': 20}},
+    {'code': 'M14', 'guide': 'servo', 'guidePart': 'motor-guide', 'motorPart': 'servo-digital',
      'tier': 5, 'short': 'M14 6절스쿱', 'name': '6절 자동 스쿱-앤-리프트 (Watt 6-Bar Loader)',
-     'pinMode': '단일 핀 (R=10)', 'hooks': 6, 'rig': 'V_SCOOP', 'range': [0, 180], 'rest': 90,
-     'summary': '1차 4절 붐 승강(-18°→+41°) + 2차 연동 링크가 그랩 버킷을 퍼올림→운반→자동 투하',
-     'kin': {'type': 'scoop6', 'S': [-40, 60.6], 'R': 10, 'P1': [0, 60.6], 'Rtab': 20, 'Ldrv': 40, 'Lboom': 60, 'P2': [-10, 80.6], 'Lsec': 70, 'Rsc': 20}},
-    {'code': 'M15', 'guide': 'servo', 'guidePart': 'wheel-guide-30-servo', 'motorPart': 'servo-digital',
+     'pinMode': '모터가이드 단일 핀 (R=9.5)', 'hooks': 6, 'rig': 'V_SCOOP', 'range': [0, 180], 'rest': 90,
+     'summary': '모터가이드 1차 붐 승강 + 2차 연동 링크가 그랩 버킷을 퍼올림→운반→자동 투하',
+     'kin': {'type': 'scoop6', 'S': [-40, 60.6], 'R': 9.5, 'P1': [0, 60.6], 'Rtab': 20, 'Ldrv': 40, 'Lboom': 60, 'P2': [-10, 80.6], 'Lsec': 70, 'Rsc': 20}},
+    {'code': 'M15', 'guide': 'servo', 'guidePart': 'motor-guide', 'motorPart': 'servo-digital',
      'tier': 5, 'short': 'M15 3D래칫', 'name': '3D 직각 벨크랭크 + 래칫 스텝퍼 (180°→360°)',
-     'pinMode': '단일 핀 (R=10)', 'hooks': 5, 'rig': 'V_RATCHET', 'range': [0, 180], 'rest': 90,
-     'summary': '90° 벨크랭크 방향 전환 + 폴(Pawl)이 12톱니 휠을 1회 왕복당 +30°씩 360° 무한 전진',
-     'kin': {'type': 'ratchet3d', 'S': [-40, 50.6], 'R': 10, 'PB': [-10, 50.6], 'RB1': 20, 'RB2': 20, 'L1': 30, 'PW': [30, 50.6], 'RW': 30, 'teeth': 12}},
+     'pinMode': '모터가이드 단일 핀 (R=9.5)', 'hooks': 5, 'rig': 'V_RATCHET', 'range': [0, 180], 'rest': 90,
+     'summary': '모터가이드 → 90° 벨크랭크 + 폴(Pawl)이 12톱니 휠을 360° 무한 전진',
+     'kin': {'type': 'ratchet3d', 'S': [-40, 50.6], 'R': 9.5, 'PB': [-10, 50.6], 'RB1': 20, 'RB2': 20, 'L1': 30, 'PW': [30, 50.6], 'RW': 30, 'teeth': 12}},
 ]
 
 # ── DC 모터 + 휠 가이드 15종 (W01~W15 · 전수 0°~360° 엄격 그라쇼프 연속 회전!)
@@ -341,10 +341,12 @@ def eval_2d(spec, deg):
         err = abs(math.hypot(Q[0] - C[0], Q[1] - C[1]) - L)
         return {'pts': {'S': S, 'C': C, 'Q': Q, 'P': P, 'M': M}, 'bars': [('C', 'Q', 1), ('P', 'Q', 2)], 'pins': ['C', 'Q', 'P'], 'trace': M, 'outVal': 0.0, 'err': err}
 
-    if t in ('dualGripper', 'parallelGripper'):
+    if t in ('dualGripper', 'parallelGripper', 'dualGripper1', 'parallelGripper1'):
         S, PL, PR, R, Ro, L = k['S'], k['PL'], k['PR'], k['R'], k['Rout'], k['L']
-        C1 = (S[0] + R * math.cos(th), S[1] + R * math.sin(th))
-        C2 = (S[0] - R * math.cos(th), S[1] - R * math.sin(th))
+        single = t.endswith('1')
+        rad = (deg - 90.0) * DEG if single else th
+        C1 = (S[0] + R * math.cos(rad), S[1] + R * math.sin(rad))
+        C2 = C1 if single else (S[0] - R * math.cos(th), S[1] - R * math.sin(th))
         QL = ci(C1[0], C1[1], L, PL[0], PL[1], Ro, -1)
         QR = ci(C2[0], C2[1], L, PR[0], PR[1], Ro, +1)
         aL = math.atan2(QL[1] - PL[1], QL[0] - PL[0]) + math.pi
@@ -354,8 +356,8 @@ def eval_2d(spec, deg):
         err = max(abs(math.hypot(QL[0] - C1[0], QL[1] - C1[1]) - L), abs(math.hypot(QR[0] - C2[0], QR[1] - C2[1]) - L))
         pts = {'S': S, 'C1': C1, 'C2': C2, 'QL': QL, 'QR': QR, 'PL': PL, 'PR': PR, 'JL': JL, 'JR': JR}
         bars = [('C1', 'QL', 1), ('C2', 'QR', 2), ('QL', 'JL', 2), ('QR', 'JR', 2)]
-        pins = ['C1', 'C2', 'QL', 'QR', 'PL', 'PR']
-        if t == 'parallelGripper':
+        pins = ['C1', 'QL', 'QR', 'PL', 'PR'] if single else ['C1', 'C2', 'QL', 'QR', 'PL', 'PR']
+        if t.startswith('parallelGripper'):
             dx = k['parDx']
             PL2 = (PL[0] - dx, PL[1]); PR2 = (PR[0] + dx, PR[1])
             JL2 = (JL[0] - dx, JL[1]); JR2 = (JR[0] + dx, JR[1])
@@ -364,10 +366,12 @@ def eval_2d(spec, deg):
             pins += ['PL2', 'PR2', 'JL', 'JR']
         return {'pts': pts, 'bars': bars, 'pins': pins, 'trace': JR, 'outVal': math.hypot(JR[0] - JL[0], JR[1] - JL[1]), 'err': err}
 
-    if t == 'flappingWing':
+    if t in ('flappingWing', 'flappingWing1'):
         S, PL, PR, R, Ro, L = k['S'], k['PL'], k['PR'], k['R'], k['Rout'], k['L']
-        C1 = (S[0] + R * math.cos(th), S[1] + R * math.sin(th))
-        C2 = (S[0] - R * math.cos(th), S[1] - R * math.sin(th))
+        single = t.endswith('1')
+        rad = (deg - 90.0) * DEG if single else th
+        C1 = (S[0] + R * math.cos(rad), S[1] + R * math.sin(rad))
+        C2 = C1 if single else (S[0] - R * math.cos(th), S[1] - R * math.sin(th))
         QL = ci(C1[0], C1[1], L, PL[0], PL[1], Ro, +1)
         QR = ci(C2[0], C2[1], L, PR[0], PR[1], Ro, -1)
         aL = math.atan2(QL[1] - PL[1], QL[0] - PL[0]) - math.pi / 2
@@ -375,9 +379,10 @@ def eval_2d(spec, deg):
         WL = (PL[0] + k['wingLen'] * math.cos(aL), PL[1] + k['wingLen'] * math.sin(aL))
         WR = (PR[0] + k['wingLen'] * math.cos(aR), PR[1] + k['wingLen'] * math.sin(aR))
         err = max(abs(math.hypot(QL[0] - C1[0], QL[1] - C1[1]) - L), abs(math.hypot(QR[0] - C2[0], QR[1] - C2[1]) - L))
+        pins = ['C1', 'QL', 'QR', 'PL', 'PR'] if single else ['C1', 'C2', 'QL', 'QR', 'PL', 'PR']
         return {'pts': {'S': S, 'C1': C1, 'C2': C2, 'QL': QL, 'QR': QR, 'PL': PL, 'PR': PR, 'WL': WL, 'WR': WR},
                 'bars': [('C1', 'QL', 1), ('C2', 'QR', 2), ('PL', 'QL', 2), ('PR', 'QR', 2), ('PL', 'WL', 2), ('PR', 'WR', 2)],
-                'pins': ['C1', 'C2', 'QL', 'QR', 'PL', 'PR'], 'trace': WR, 'outVal': math.degrees(aR), 'err': err}
+                'pins': pins, 'trace': WR, 'outVal': math.degrees(aR), 'err': err}
 
     if t == 'slider':
         S, R, L = k['S'], k['R'], k['L']
@@ -393,14 +398,16 @@ def eval_2d(spec, deg):
         X = (sx_, rz)
         return {'pts': {'S': S, 'C': C, 'X': X}, 'bars': [('C', 'X', 1)], 'pins': ['C', 'X'], 'trace': X, 'outVal': sx_, 'err': abs(math.hypot(X[0] - C[0], X[1] - C[1]) - L)}
 
-    if t == 'dualSlider':
+    if t in ('dualSlider', 'dualSlider1'):
         S, R, L = k['S'], k['R'], k['L']
+        single = t.endswith('1')
         C1 = (S[0] + R * math.cos(th), S[1] + R * math.sin(th))
-        C2 = (S[0] - R * math.cos(th), S[1] - R * math.sin(th))
+        C2 = C1 if single else (S[0] - R * math.cos(th), S[1] - R * math.sin(th))
         xR = C1[0] + math.sqrt(max(0.0, L * L - (C1[1] - S[1])**2))
         xL = C2[0] - math.sqrt(max(0.0, L * L - (C2[1] - S[1])**2))
         XR, XL = (xR, S[1]), (xL, S[1])
-        return {'pts': {'S': S, 'C1': C1, 'C2': C2, 'XR': XR, 'XL': XL}, 'bars': [('C1', 'XR', 1), ('C2', 'XL', 1)], 'pins': ['C1', 'C2', 'XR', 'XL'], 'trace': XR, 'outVal': xR - xL, 'err': max(abs(math.hypot(XR[0] - C1[0], XR[1] - C1[1]) - L), abs(math.hypot(XL[0] - C2[0], XL[1] - C2[1]) - L))}
+        pins = ['C1', 'XR', 'XL'] if single else ['C1', 'C2', 'XR', 'XL']
+        return {'pts': {'S': S, 'C1': C1, 'C2': C2, 'XR': XR, 'XL': XL}, 'bars': [('C1', 'XR', 1), ('C2', 'XL', 2 if single else 1)], 'pins': pins, 'trace': XR, 'outVal': xR - xL, 'err': max(abs(math.hypot(XR[0] - C1[0], XR[1] - C1[1]) - L), abs(math.hypot(XL[0] - C2[0], XL[1] - C2[1]) - L))}
 
     if t == 'vTwin90':
         S, R, L = k['S'], k['R'], k['L']
@@ -486,17 +493,19 @@ def eval_2d(spec, deg):
                 'pins': ['C1', 'C2', 'QR', 'QL', 'PR', 'PL', 'FR', 'FL'], 'trace': FR, 'outVal': FR[1] - FL[1],
                 'err': max(abs(math.hypot(QR[0] - C1[0], QR[1] - C1[1]) - Lc), abs(math.hypot(QL[0] - C2[0], QL[1] - C2[1]) - Lc))}
 
-    if t == 'dualStage90':
+    if t in ('dualStage90', 'dualStage1'):
         S, R, LA, LB, PA, RA = k['S'], k['R'], k['LA'], k['LB'], k['PA'], k['RA']
+        single = t.endswith('1')
         CA = (S[0] + R * math.cos(th), S[1] + R * math.sin(th))
-        CB = (S[0] + R * math.cos(th - math.pi / 2), S[1] + R * math.sin(th - math.pi / 2))
+        CB = CA if single else (S[0] + R * math.cos(th - math.pi / 2), S[1] + R * math.sin(th - math.pi / 2))
         QA = ci(CA[0], CA[1], LA, PA[0], PA[1], RA, +1)
         xB = CB[0] + math.sqrt(max(0.0, LB * LB - (CB[1] - S[1])**2))
         XB = (xB, S[1])
         aA = math.atan2(QA[1] - PA[1], QA[0] - PA[0])
         hatch = (PA[0] + 50 * math.cos(aA), PA[1] + 50 * math.sin(aA))
+        pins = ['CA', 'QA', 'PA', 'XB'] if single else ['CA', 'CB', 'QA', 'PA', 'XB']
         return {'pts': {'S': S, 'CA': CA, 'CB': CB, 'QA': QA, 'PA': PA, 'hatch': hatch, 'XB': XB},
-                'bars': [('CA', 'QA', 1), ('PA', 'hatch', 2), ('CB', 'XB', 2)], 'pins': ['CA', 'CB', 'QA', 'PA', 'XB'], 'trace': XB, 'outVal': xB,
+                'bars': [('CA', 'QA', 1), ('PA', 'hatch', 2), ('CB', 'XB', 2)], 'pins': pins, 'trace': XB, 'outVal': xB,
                 'err': max(abs(math.hypot(QA[0] - CA[0], QA[1] - CA[1]) - LA), abs(math.hypot(XB[0] - CB[0], XB[1] - CB[1]) - LB))}
 
     if t == 'scoop6':
@@ -569,17 +578,17 @@ for sp in ALL_SPECS:
         add_h_bench(st_parts, sx, sz, motor_id=mid)
         if k['type'] in ('rocker4', 'parallel4', 'dragLink', 'hoeken360'):
             add_h_pedestal(st_parts, k['P'][0], k['P'][1], side_x=1, name='출력 피벗 받침')
-        elif k['type'] in ('dualGripper', 'parallelGripper'):
+        elif k['type'] in ('dualGripper', 'parallelGripper', 'dualGripper1', 'parallelGripper1'):
             add_h_pedestal(st_parts, k['PL'][0], k['PL'][1], side_x=-1, name='왼 집게 피벗')
             add_h_pedestal(st_parts, k['PR'][0], k['PR'][1], side_x=+1, name='오른 집게 피벗')
-            if k['type'] == 'parallelGripper':
+            if k['type'].startswith('parallelGripper'):
                 add_h_pedestal(st_parts, k['PL'][0] - k['parDx'], k['PL'][1], side_x=-1, name='왼 평행 피벗')
                 add_h_pedestal(st_parts, k['PR'][0] + k['parDx'], k['PR'][1], side_x=+1, name='오른 평행 피벗')
         elif k['type'] == 'slider':
             add_h_rail(st_parts, 25, 0, axis='x', name='슬라이더 가이드')
         elif k['type'] == 'offsetSlider':
             add_h_rail(st_parts, 20, k['railZ'], axis='x', name='오프셋 슬라이더')
-        elif k['type'] == 'dualSlider':
+        elif k['type'] in ('dualSlider', 'dualSlider1'):
             add_h_rail(st_parts, 40, 0, axis='x', name='오른 슬라이더')
             add_h_rail(st_parts, -40, 0, axis='x', name='왼 슬라이더')
         elif k['type'] == 'vTwin90':
@@ -593,7 +602,7 @@ for sp in ALL_SPECS:
         elif k['type'] == 'scissor':
             add_h_pedestal(st_parts, k['baseX'], 0, side_x=-1, name='시저스 고정 축')
             add_h_rail(st_parts, 5, 0, axis='x', name='시저스 구동 레일')
-        elif k['type'] == 'dualStage90':
+        elif k['type'] in ('dualStage90', 'dualStage1'):
             add_h_pedestal(st_parts, k['PA'][0], k['PA'][1], side_x=-1, name='A 해치 피벗')
             add_h_rail(st_parts, 35, 0, axis='x', name='B 푸셔 레일')
     elif rig == 'V_WEDGE':
@@ -619,7 +628,7 @@ for sp in ALL_SPECS:
         sx, sy = k['S'][0], k['S'][1]
         add_v_tower(st_parts, sx, sy, motor_id=mid)
         pivs = []
-        if k['type'] == 'flappingWing':
+        if k['type'] in ('flappingWing', 'flappingWing1'):
             pivs = [('왼 날개 피벗', k['PL']), ('오른 날개 피벗', k['PR'])]
         elif k['type'] in ('walkingLeg', 'hammer360', 'dwellPress6'):
             pivs = [('출력 피벗', k['P'])]
@@ -688,12 +697,22 @@ def draw_mech_svg(res, ox, oy, w, h, compact=False):
     Spt = res['rm']['pts'].get('S')
     if Spt:
         sx_, sy_ = P(Spt)
-        gR = 20.0 if sp['guidePart'] == 'wheel-guide-40-yellow' else 15.0
-        gFill = '#fef9c3' if sp['guidePart'] == 'wheel-guide-40-yellow' else ('#e2e8f0' if sp['guidePart'] == 'wheel-guide-30-nylon' else '#f7f9fc')
-        gStroke = '#ca8a04' if sp['guidePart'] == 'wheel-guide-40-yellow' else ('#334155' if sp['guidePart'] == 'wheel-guide-30-nylon' else '#2f6fe0')
-        out.append(f'<circle cx="{sx_:.1f}" cy="{sy_:.1f}" r="{gR*sc:.1f}" fill="{gFill}" stroke="{gStroke}" stroke-width="{1.2 if compact else 2.0}"/>')
-        out.append(f'<circle cx="{sx_:.1f}" cy="{sy_:.1f}" r="{10*sc:.1f}" fill="none" stroke="{gStroke}" stroke-width="1" stroke-opacity="0.55" stroke-dasharray="3 2"/>')
-        out.append(f'<circle cx="{sx_:.1f}" cy="{sy_:.1f}" r="{2.5 if compact else 4}" fill="{gStroke}"/>')
+        if sp['guidePart'] == 'motor-guide':
+            # 실제 motor-guide(모터가이드 20×11 검은 레버 암 + 반지름 9.5 mm 원호 궤적) 표시!
+            out.append(f'<circle cx="{sx_:.1f}" cy="{sy_:.1f}" r="{9.5*sc:.1f}" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>')
+            Cpt = res['r1']['pts'].get('C') or res['r1']['pts'].get('C1') or res['r1']['pts'].get('CA')
+            if Cpt:
+                cx_, cy_ = P(Cpt)
+                out.append(f'<line x1="{sx_:.1f}" y1="{sy_:.1f}" x2="{cx_:.1f}" y2="{cy_:.1f}" stroke="#111827" stroke-width="{5.5 if compact else 9.0}" stroke-linecap="round"/>')
+            out.append(f'<circle cx="{sx_:.1f}" cy="{sy_:.1f}" r="{4.5*sc:.1f}" fill="#111827" stroke="#475569" stroke-width="1"/>')
+            out.append(f'<circle cx="{sx_:.1f}" cy="{sy_:.1f}" r="{2.0 if compact else 3.2}" fill="#e2e8f0"/>')
+        else:
+            gR = 20.0 if sp['guidePart'] == 'wheel-guide-40-yellow' else 15.0
+            gFill = '#fef9c3' if sp['guidePart'] == 'wheel-guide-40-yellow' else '#e2e8f0'
+            gStroke = '#ca8a04' if sp['guidePart'] == 'wheel-guide-40-yellow' else '#334155'
+            out.append(f'<circle cx="{sx_:.1f}" cy="{sy_:.1f}" r="{gR*sc:.1f}" fill="{gFill}" stroke="{gStroke}" stroke-width="{1.2 if compact else 2.0}"/>')
+            out.append(f'<circle cx="{sx_:.1f}" cy="{sy_:.1f}" r="{10*sc:.1f}" fill="none" stroke="{gStroke}" stroke-width="1" stroke-opacity="0.55" stroke-dasharray="3 2"/>')
+            out.append(f'<circle cx="{sx_:.1f}" cy="{sy_:.1f}" r="{2.5 if compact else 4}" fill="{gStroke}"/>')
 
     if sp['kin']['type'] == 'ratchet3d':
         wx_, wy_ = P(sp['kin']['PW'])
@@ -749,13 +768,13 @@ def write_matrix_svg(fname, title, sub, items):
 SERVO_RES = [r for r in RESULTS if r['spec']['guide'] == 'servo']
 WHEEL_RES = [r for r in RESULTS if r['spec']['guide'] == 'wheel']
 
-write_matrix_svg('00.svg', '서보 가이드(Ø30) + S후크 메커니즘 15종 (M01~M15)', '서보모터 1개(0°~180°) · 기구학 폐루프 오차 0.0000 mm · ★1 기초 → ★5 복합', SERVO_RES)
+write_matrix_svg('00.svg', '서보 가이드(모터가이드 · 단일 핀 R=9.5) + S후크 메커니즘 15종 (M01~M15)', '서보모터 1개 + motor-guide(단일 M3 구멍) · 기구학 폐루프 오차 0.0000 mm · ★1 기초 → ★5 복합', SERVO_RES)
 write_matrix_svg('00w.svg', 'DC 모터 + 휠 가이드(Ø30/Ø40) + S후크 메커니즘 15종 (W01~W15)', 'DC 130rpm 1개(360° 연속 그라쇼프) · 기구학 폐루프 오차 0.0000 mm · ★1 기초 → ★5 간헐', WHEEL_RES)
 
 def write_single_svg(fname, res):
     sp = res['spec']
     tc = TIER_COL[sp['tier']]
-    g_label = '서보 1개 + Ø30 서보 가이드' if sp['guide'] == 'servo' else f'DC 130rpm 1개 + {sp["guidePart"]}'
+    g_label = '서보 1개 + 모터가이드 (motor-guide · R=9.5)' if sp['guide'] == 'servo' else f'DC 130rpm 1개 + {sp["guidePart"]}'
     svg = [
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="Pretendard,Apple SD Gothic Neo,sans-serif">',
         '<rect width="960" height="560" fill="#f8fafc"/>',
@@ -803,7 +822,7 @@ md = [
     '로보로보 7호 실물 부품으로 구현한 **서보 가이드 15종(0°~180° 정밀 왕복)** + **DC 모터 휠 가이드 15종(360° 연속 그라쇼프)** = 총 **30종** 설계도입니다.',
     '다시 만들기: `python3 tools/mechlab_blueprint.py` · 인터랙티브 뷰어: [`blueprint.html`](blueprint.html)',
     '',
-    '## Part 1. 서보 가이드 15종 (M01~M15 · `servo-digital` + `wheel-guide-30-servo`)',
+    '## Part 1. 서보 가이드 15종 (M01~M15 · `servo-digital` + `motor-guide` 모터가이드 · 단일 핀 R=9.5)',
     '',
     '![서보 가이드 15종](sheets/00.svg)',
     '',

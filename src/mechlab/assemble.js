@@ -11,7 +11,7 @@ export const MECHLAB_PART_IDS = [
   'motor-frame-3x3', 'l-frame-2x2', 'hinge-3x3',
   'axle-guide', 'shaft-75', 'support-spacer',
   'servo-digital', 'dc-motor-130-rs',
-  'wheel-guide-30-servo', 'wheel-guide-30-nylon', 'wheel-guide-40-yellow',
+  'motor-guide', 'wheel-guide-30-nylon', 'wheel-guide-40-yellow',
   's-hook-35', 'battle-g', 'grab', 'caterpillar-sprocket',
   'bolt-m3x6', 'bolt-m3x10', 'bolt-m26x10', 'nut-m3',
 ];
@@ -145,10 +145,12 @@ export function solveMech(spec, deg) {
     };
   }
 
-  if (t === 'dualGripper' || t === 'parallelGripper') {
+  if (t === 'dualGripper' || t === 'parallelGripper' || t === 'dualGripper1' || t === 'parallelGripper1') {
     const { S, PL, PR, R, Rout, L, jawLen } = k;
-    const C1 = [S[0] + R * Math.cos(th), S[1] + R * Math.sin(th)];
-    const C2 = [S[0] - R * Math.cos(th), S[1] - R * Math.sin(th)];
+    const single = t.endsWith('1');
+    const rad = single ? (deg - 90) * DEG : th;
+    const C1 = [S[0] + R * Math.cos(rad), S[1] + R * Math.sin(rad)];
+    const C2 = single ? C1 : [S[0] - R * Math.cos(th), S[1] - R * Math.sin(th)];
     const QL = ci(C1[0], C1[1], L, PL[0], PL[1], Rout, -1);
     const QR = ci(C2[0], C2[1], L, PR[0], PR[1], Rout, +1);
     const aL = Math.atan2(QL[1] - PL[1], QL[0] - PL[0]) + Math.PI;
@@ -157,11 +159,13 @@ export function solveMech(spec, deg) {
     const JR = [PR[0] + jawLen * Math.cos(aR), PR[1] + jawLen * Math.sin(aR)];
     const pts = { S, C1, C2, QL, QR, PL, PR, JL, JR };
     const links = [
-      { a: 'C1', b: 'QL', L, lay: 1 }, { a: 'C2', b: 'QR', L, lay: 1 },
-      { a: 'QL', b: 'JL', L: Rout + jawLen, lay: 2 }, { a: 'QR', b: 'JR', L: Rout + jawLen, lay: 2 },
+      { a: 'C1', b: 'QL', L, lay: 1 }, { a: 'C2', b: 'QR', L, lay: single ? 2 : 1 },
+      { a: 'QL', b: 'JL', L: Rout + jawLen, lay: 2 }, { a: 'QR', b: 'JR', L: Rout + jawLen, lay: single ? 3 : 2 },
     ];
-    const pins = [{ p: 'C1', lay: 1 }, { p: 'C2', lay: 1 }, { p: 'QL', lay: 2 }, { p: 'QR', lay: 2 }, { p: 'PL', lay: 2 }, { p: 'PR', lay: 2 }];
-    if (t === 'parallelGripper') {
+    const pins = single
+      ? [{ p: 'C1', lay: 2 }, { p: 'QL', lay: 2 }, { p: 'QR', lay: 3 }, { p: 'PL', lay: 2 }, { p: 'PR', lay: 3 }]
+      : [{ p: 'C1', lay: 1 }, { p: 'C2', lay: 1 }, { p: 'QL', lay: 2 }, { p: 'QR', lay: 2 }, { p: 'PL', lay: 2 }, { p: 'PR', lay: 2 }];
+    if (t.startsWith('parallelGripper')) {
       const dx = k.parDx;
       pts.PL2 = [PL[0] - dx, PL[1]]; pts.PR2 = [PR[0] + dx, PR[1]];
       pts.JL2 = [JL[0] - dx, JL[1]]; pts.JR2 = [JR[0] + dx, JR[1]];
@@ -169,16 +173,18 @@ export function solveMech(spec, deg) {
       pins.push({ p: 'PL2', lay: 2 }, { p: 'PR2', lay: 2 }, { p: 'JL', lay: 3 }, { p: 'JR', lay: 3 });
     }
     return {
-      crankRad: th, pts, links, pins, trace: JR,
+      crankRad: rad, pts, links, pins, trace: JR,
       statLabel: '집게간격', statVal: `${Math.hypot(JR[0] - JL[0], JR[1] - JL[1]).toFixed(1)} mm`,
       err: Math.max(Math.abs(Math.hypot(QL[0] - C1[0], QL[1] - C1[1]) - L), Math.abs(Math.hypot(QR[0] - C2[0], QR[1] - C2[1]) - L)),
     };
   }
 
-  if (t === 'flappingWing') {
+  if (t === 'flappingWing' || t === 'flappingWing1') {
     const { S, PL, PR, R, Rout, L, wingLen } = k;
-    const C1 = [S[0] + R * Math.cos(th), S[1] + R * Math.sin(th)];
-    const C2 = [S[0] - R * Math.cos(th), S[1] - R * Math.sin(th)];
+    const single = t.endsWith('1');
+    const rad = single ? (deg - 90) * DEG : th;
+    const C1 = [S[0] + R * Math.cos(rad), S[1] + R * Math.sin(rad)];
+    const C2 = single ? C1 : [S[0] - R * Math.cos(th), S[1] - R * Math.sin(th)];
     const QL = ci(C1[0], C1[1], L, PL[0], PL[1], Rout, +1);
     const QR = ci(C2[0], C2[1], L, PR[0], PR[1], Rout, -1);
     const aL = Math.atan2(QL[1] - PL[1], QL[0] - PL[0]) - Math.PI / 2;
@@ -186,13 +192,15 @@ export function solveMech(spec, deg) {
     const WL = [PL[0] + wingLen * Math.cos(aL), PL[1] + wingLen * Math.sin(aL)];
     const WR = [PR[0] + wingLen * Math.cos(aR), PR[1] + wingLen * Math.sin(aR)];
     return {
-      crankRad: th, pts: { S, C1, C2, QL, QR, PL, PR, WL, WR },
+      crankRad: rad, pts: { S, C1, C2, QL, QR, PL, PR, WL, WR },
       links: [
-        { a: 'C1', b: 'QL', L, lay: 1 }, { a: 'C2', b: 'QR', L, lay: 1 },
+        { a: 'C1', b: 'QL', L, lay: 1 }, { a: 'C2', b: 'QR', L, lay: single ? 2 : 1 },
         { a: 'PL', b: 'QL', L: Rout, lay: 2 }, { a: 'PR', b: 'QR', L: Rout, lay: 2 },
         { a: 'PL', b: 'WL', L: wingLen, lay: 3 }, { a: 'PR', b: 'WR', L: wingLen, lay: 3 },
       ],
-      pins: [{ p: 'C1', lay: 1 }, { p: 'C2', lay: 1 }, { p: 'QL', lay: 2 }, { p: 'QR', lay: 2 }, { p: 'PL', lay: 3 }, { p: 'PR', lay: 3 }],
+      pins: single
+        ? [{ p: 'C1', lay: 2 }, { p: 'QL', lay: 2 }, { p: 'QR', lay: 2 }, { p: 'PL', lay: 3 }, { p: 'PR', lay: 3 }]
+        : [{ p: 'C1', lay: 1 }, { p: 'C2', lay: 1 }, { p: 'QL', lay: 2 }, { p: 'QR', lay: 2 }, { p: 'PL', lay: 3 }, { p: 'PR', lay: 3 }],
       trace: WR, statLabel: '날개각', statVal: `${(aR / DEG).toFixed(1)}°`,
       err: Math.max(Math.abs(Math.hypot(QL[0] - C1[0], QL[1] - C1[1]) - L), Math.abs(Math.hypot(QR[0] - C2[0], QR[1] - C2[1]) - L)),
     };
@@ -214,17 +222,20 @@ export function solveMech(spec, deg) {
     };
   }
 
-  if (t === 'dualSlider') {
+  if (t === 'dualSlider' || t === 'dualSlider1') {
     const { S, R, L } = k;
+    const single = t.endsWith('1');
     const C1 = [S[0] + R * Math.cos(th), S[1] + R * Math.sin(th)];
-    const C2 = [S[0] - R * Math.cos(th), S[1] - R * Math.sin(th)];
+    const C2 = single ? C1 : [S[0] - R * Math.cos(th), S[1] - R * Math.sin(th)];
     const xR = C1[0] + Math.sqrt(Math.max(0, L * L - (C1[1] - S[1]) ** 2));
     const xL = C2[0] - Math.sqrt(Math.max(0, L * L - (C2[1] - S[1]) ** 2));
     const XR = [xR, S[1]], XL = [xL, S[1]];
     return {
       crankRad: th, pts: { S, C1, C2, XR, XL },
-      links: [{ a: 'C1', b: 'XR', L, lay: 1 }, { a: 'C2', b: 'XL', L, lay: 1 }],
-      pins: [{ p: 'C1', lay: 1 }, { p: 'C2', lay: 1 }, { p: 'XR', lay: 2 }, { p: 'XL', lay: 2 }],
+      links: [{ a: 'C1', b: 'XR', L, lay: 1 }, { a: 'C2', b: 'XL', L, lay: single ? 2 : 1 }],
+      pins: single
+        ? [{ p: 'C1', lay: 2 }, { p: 'XR', lay: 2 }, { p: 'XL', lay: 2 }]
+        : [{ p: 'C1', lay: 1 }, { p: 'C2', lay: 1 }, { p: 'XR', lay: 2 }, { p: 'XL', lay: 2 }],
       sliders: [{ p: 'XR', axis: 'x' }, { p: 'XL', axis: 'x' }],
       trace: XR, statLabel: '양측폭', statVal: `${(xR - xL).toFixed(1)} mm`,
       err: Math.max(Math.abs(Math.hypot(XR[0] - C1[0], XR[1] - C1[1]) - L), Math.abs(Math.hypot(XL[0] - C2[0], XL[1] - C2[1]) - L)),
@@ -375,10 +386,11 @@ export function solveMech(spec, deg) {
     };
   }
 
-  if (t === 'dualStage90') {
+  if (t === 'dualStage90' || t === 'dualStage1') {
     const { S, R, LA, LB, PA, RA } = k;
+    const single = t.endsWith('1');
     const CA = [S[0] + R * Math.cos(th), S[1] + R * Math.sin(th)];
-    const CB = [S[0] + R * Math.cos(th - Math.PI / 2), S[1] + R * Math.sin(th - Math.PI / 2)];
+    const CB = single ? CA : [S[0] + R * Math.cos(th - Math.PI / 2), S[1] + R * Math.sin(th - Math.PI / 2)];
     const QA = ci(CA[0], CA[1], LA, PA[0], PA[1], RA, +1);
     const xB = CB[0] + Math.sqrt(Math.max(0, LB * LB - (CB[1] - S[1]) ** 2));
     const XB = [xB, S[1]];
@@ -386,10 +398,12 @@ export function solveMech(spec, deg) {
     const hatch = [PA[0] + 50 * Math.cos(aA), PA[1] + 50 * Math.sin(aA)];
     return {
       crankRad: th, pts: { S, CA, CB, QA, PA, hatch, XB },
-      links: [{ a: 'CA', b: 'QA', L: LA, lay: 1 }, { a: 'PA', b: 'hatch', L: 50, lay: 2 }, { a: 'CB', b: 'XB', L: LB, lay: 1 }],
-      pins: [{ p: 'CA', lay: 1 }, { p: 'CB', lay: 1 }, { p: 'QA', lay: 2 }, { p: 'PA', lay: 2 }, { p: 'XB', lay: 2 }],
+      links: [{ a: 'CA', b: 'QA', L: LA, lay: 1 }, { a: 'PA', b: 'hatch', L: 50, lay: 2 }, { a: 'CB', b: 'XB', L: LB, lay: single ? 2 : 1 }],
+      pins: single
+        ? [{ p: 'CA', lay: 2 }, { p: 'QA', lay: 2 }, { p: 'PA', lay: 2 }, { p: 'XB', lay: 2 }]
+        : [{ p: 'CA', lay: 1 }, { p: 'CB', lay: 1 }, { p: 'QA', lay: 2 }, { p: 'PA', lay: 2 }, { p: 'XB', lay: 2 }],
       sliders: [{ p: 'XB', axis: 'x' }],
-      trace: XB, statLabel: deg < 90 ? '1단 해치' : '2단 푸셔', statVal: deg < 90 ? `${(aA / DEG).toFixed(0)}°` : `${xB.toFixed(1)} mm`,
+      trace: XB, statLabel: deg < 90 ? '해치각' : '푸셔X', statVal: deg < 90 ? `${(aA / DEG).toFixed(0)}°` : `${xB.toFixed(1)} mm`,
       err: Math.max(Math.abs(Math.hypot(QA[0] - CA[0], QA[1] - CA[1]) - LA), Math.abs(Math.hypot(XB[0] - CB[0], XB[1] - CB[1]) - LB)),
     };
   }
@@ -513,8 +527,9 @@ function buildSingleRig(spec, mods) {
     const crankPivot = new THREE.Group();
     crankPivot.position.set(k.linkX, k.SY, k.SZ);
     root.add(crankPivot);
+    // 실제 motor-guide(모터가이드): 고리 중심 local x=-4.5 → z=+4.5 오프셋 배치 시 M3 구멍이 정확히 (0, 0, +9.5)에 정합!
     crankPivot.add(
-      makePart(mods, 'wheel-guide-30-servo', [0, 0, 0], [0, 0, 1], [-1, 0, 0]).g,
+      makePart(mods, 'motor-guide', [0, 0, 4.5], [0, 0, 1], [-1, 0, 0]).g,
       makePart(mods, 'bolt-m26x10', [0.3, 0, 0], null, [1, 0, 0]).g,
       makePart(mods, 's-hook-35', [1.6, 0, k.R], null, [1, 0, 0]).g,
     );
@@ -534,21 +549,29 @@ function buildSingleRig(spec, mods) {
     return { root, setAngle };
   }
 
-  // 공통 수평(H) / 수직(V) 크랭크 허브: 서보 가이드 / Ø30 나일론 / Ø40 노랑 휠 가이드 자동 정합!
+  // 공통 수평(H) / 수직(V) 크랭크 허브: 실제 모터가이드(motor-guide) vs 휠가이드(Ø30 나일론 / Ø40 노랑) 정확 분리!
   const sx = k.S[0], sy = (k.type === 'wattLine') ? -10 : k.S[1];
   const crankPivot = new THREE.Group();
   crankPivot.position.set(sx, rig === 'H' ? 51.6 : sy, rig === 'H' ? sy : -40.0);
   root.add(crankPivot);
 
-  const gid = spec.guidePart || 'wheel-guide-30-servo';
-  const isYellow40 = (gid === 'wheel-guide-40-yellow');
-  // wheel-guide-40-yellow은 허브가 -Y 아래로 돌출, 평면 윗면이 y=+2.4 → 평면을 crankPivot=0에 맞추기 위해 오프셋 -2.4!
-  const wgPos = isYellow40 ? (rig === 'H' ? [0, -2.4, 0] : [0, 0, 2.4]) : [0, 0, 0];
-  const wgUp = isYellow40 ? (rig === 'H' ? [0, 1, 0] : [0, 0, -1]) : (rig === 'H' ? [0, -1, 0] : [0, 0, 1]);
-  crankPivot.add(
-    makePart(mods, gid, wgPos, [1, 0, 0], wgUp).g,
-    makePart(mods, 'bolt-m26x10', rig === 'H' ? [0, 0.3, 0] : [0, 0, -0.3], null, rig === 'H' ? [0, 1, 0] : [0, 0, -1]).g,
-  );
+  const gid = spec.guidePart || 'motor-guide';
+  if (gid === 'motor-guide') {
+    // motor-guide: 고리 중심 local x=-4.5 → x=+4.5 배치 시 육각 고리가 서보축(0)에 동축, M3 구멍이 (+9.5, 0, 0)에 0.000 mm 정합!
+    const mgUp = rig === 'H' ? [0, -1, 0] : [0, 0, 1];
+    crankPivot.add(
+      makePart(mods, 'motor-guide', [4.5, 0, 0], [1, 0, 0], mgUp).g,
+      makePart(mods, 'bolt-m26x10', rig === 'H' ? [0, 0.3, 0] : [0, 0, -0.3], null, rig === 'H' ? [0, 1, 0] : [0, 0, -1]).g,
+    );
+  } else {
+    const isYellow40 = (gid === 'wheel-guide-40-yellow');
+    const wgPos = isYellow40 ? (rig === 'H' ? [0, -2.4, 0] : [0, 0, 2.4]) : [0, 0, 0];
+    const wgUp = isYellow40 ? (rig === 'H' ? [0, 1, 0] : [0, 0, -1]) : (rig === 'H' ? [0, -1, 0] : [0, 0, 1]);
+    crankPivot.add(
+      makePart(mods, gid, wgPos, [1, 0, 0], wgUp).g,
+      makePart(mods, 'bolt-m26x10', rig === 'H' ? [0, 0.3, 0] : [0, 0, -0.3], null, rig === 'H' ? [0, 1, 0] : [0, 0, -1]).g,
+    );
+  }
 
   const linkObjs = rRest.links.map((lk) => {
     const bs = barSpecFor(lk.L);
