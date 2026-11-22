@@ -805,7 +805,7 @@ async function openRobot(id) {
   $("#exVal").textContent = "0%";
   $("#bolts").hidden = !A.hasBolts;
   if (A.hasBolts) A.setBolts(st.bolts);
-  $("#modeSw").hidden = !!A.fnOnly;
+  $("#modeSw").hidden = !!A.fnOnly || !A.fn;
   tbStep.config({ min: 0, max: A.N, value: 0, marks: A.N <= 24 ? A.N : 0 });
   buildMods();
   view.controls.autoRotate = false;
@@ -860,6 +860,11 @@ $("#back").addEventListener("click", () => {
 
 // ───────── 조립 ↔ 기능 전환 ─────────
 var fnBars = {}, fnSegs = {}, fnStatT = 0;
+function refreshFnLayout() {
+  const on = $("#pages .page:not(.off)");
+  if (on) $("#pages").style.height = `${on.offsetHeight}px`;
+  for (const b of Object.values(fnBars)) b.tb.resize();
+}
 function setPages(to, instant) {
   const pages = $("#pages"), on = to === "fn" ? $("#pageFn") : $("#pageAsm"), off = to === "fn" ? $("#pageAsm") : $("#pageFn");
   const h0 = pages.offsetHeight;
@@ -883,18 +888,16 @@ function setPages(to, instant) {
     void pages.offsetWidth;
     pages.style.height = `${h1}px`;
   }
+  if (to === "fn") for (const b of Object.values(fnBars)) b.tb.resize();
 }
 new ResizeObserver(() => {
   const on = $("#pages .page:not(.off)");
   if (on) $("#pages").style.height = `${on.offsetHeight}px`;
 }).observe($("#player"));
 function setModeLabel() {
-  const lab = $(".mslab");
-  $("#modeLab").textContent = mode === "fn" ? "조립 단계로" : "기능 조작";
-  $("#modeSub").textContent = mode === "fn" ? "다시 한 단계씩 조립을 봐요" : "조립이 끝나면 자동으로 넘어가요";
-  lab.classList.remove("swap");
-  void lab.offsetWidth;
-  lab.classList.add("swap");
+  $("#modeSw").querySelectorAll("button[data-to]").forEach((b) => {
+    b.setAttribute("aria-pressed", String(b.dataset.to === mode));
+  });
 }
 function setMode(m, instant) {
   mode = m;
@@ -906,19 +909,18 @@ function setMode(m, instant) {
 function buildFnUI(F) {
   fnBars = {};
   fnSegs = {};
-  $("#fnTitle").textContent = F.title || "";
-  const ft = $("#fnTitle").closest(".ftitle"); if (ft) ft.hidden = !F.title;
   const grid = $("#fnGrid");
-  grid.innerHTML = F.items.map((it, k) => {
-    const d = `style="animation-delay:${0.06 + k * 0.045}s"` + (it.col ? ` data-col="${it.col}"` : "");
-    if (it.type === "bar") return `<div class="frow" ${d}><div class="fhead"><span class="flab">${it.label}</span><output data-out="${it.id}"></output></div><div class="tb sm" data-bar="${it.id}" role="slider" tabindex="0" aria-label="${it.label}"><canvas></canvas></div></div>`;
-    if (it.type === "seg") return `<div class="frow${it.inline ? " inline" : ""}${it.wide ? " wide" : ""}" ${d}><span class="flab">${it.label}</span><div class="seg" data-seg="${it.id}" role="group" aria-label="${it.label}"><i class="pill"></i>${it.options.map(([val, t]) => `<button type="button" data-v="${val}" aria-pressed="false">${t}</button>`).join("")}</div></div>`;
-    if (it.type === "toggles") return `<div class="frow facts" ${d}>${it.items.map((t) => `<button type="button" class="ftog" data-tog="${t.id}" aria-pressed="false"><i class="lamp"></i>${t.label}</button>`).join("")}</div>`;
-    if (it.type === "actions") return `<div class="frow facts" ${d}>${it.items.map((t) => `<button type="button" class="act${t.hot ? " hot" : ""}" data-act="${t.id}">${t.label}</button>`).join("")}</div>`;
-    if (it.type === "note") return `<div class="frow fnote" ${d}>${esc(it.text)}</div>`;
+  const items = F.items.filter((it) => it.id !== "drive");
+  grid.innerHTML = items.map((it, k) => {
+    const d = `style="animation-delay:${0.04 + k * 0.035}s"` + (it.col ? ` data-col="${it.col}"` : "");
+    if (it.type === "bar") return `<div class="frow fn-bar" ${d}><div class="fhead"><span class="flab">${it.label}</span><output data-out="${it.id}"></output></div><div class="tb sm" data-bar="${it.id}" role="slider" tabindex="0" aria-label="${it.label}"><canvas></canvas></div></div>`;
+    if (it.type === "seg") return `<div class="frow fn-ctrl${it.inline ? " inline" : ""}${it.wide ? " wide" : ""}" ${d}><span class="flab">${it.label}</span><div class="seg" data-seg="${it.id}" role="group" aria-label="${it.label}"><i class="pill"></i>${it.options.map(([val, t]) => `<button type="button" data-v="${val}" aria-pressed="false">${t}</button>`).join("")}</div></div>`;
+    if (it.type === "toggles") return `<div class="frow fn-ctrl facts" ${d}>${it.items.map((t) => `<button type="button" class="ftog" data-tog="${t.id}" aria-pressed="false"><i class="lamp"></i>${t.label}</button>`).join("")}</div>`;
+    if (it.type === "actions") return `<div class="frow fn-ctrl facts" ${d}>${it.items.map((t) => `<button type="button" class="act${t.hot ? " hot" : ""}" data-act="${t.id}">${t.label}</button>`).join("")}</div>`;
+    if (it.type === "note") return `<div class="frow fn-ctrl fnote" ${d}>${esc(it.text)}</div>`;
     return "";
   }).join("");
-  for (const it of F.items) {
+  for (const it of items) {
     if (it.type === "bar") {
       const out = grid.querySelector(`[data-out="${it.id}"]`);
       out.textContent = it.fmt(F.v[it.id]);
@@ -947,11 +949,8 @@ function syncFnUI(F) {
     seg.classList.toggle("go", F.v[id] !== "stop");
   }
   $("#fnGrid").querySelectorAll("[data-tog]").forEach((b) => b.setAttribute("aria-pressed", String(!!F.v[b.dataset.tog])));
-  updateFnStats(F);
 }
-function updateFnStats(F) {
-  $("#fnStats").innerHTML = F.stats().map(([k, val, cls]) => `<span class="${cls || ""}">${k} <b>${esc(val)}</b></span>`).join("");
-}
+function updateFnStats() {}
 $("#fnGrid").addEventListener("click", (ev) => {
   const F = A?.fn;
   if (!F) return;
@@ -970,9 +969,7 @@ $("#fnGrid").addEventListener("click", (ev) => {
   } else return;
   if (ret === "rebuild") {
     buildFnUI(F);
-    $("#nowText").textContent = `기능 조작 · ${F.title}`;
-    const on = $("#pages .page:not(.off)");
-    if (on) $("#pages").style.height = `${on.offsetHeight}px`;
+    refreshFnLayout();
     invalidate(true);
     return;
   }
@@ -1001,8 +998,6 @@ async function enterFn(instant) {
   A.pose(A.N);
   buildFnUI(F);
   setMode("fn", instant);
-  $("#nowText").textContent = `기능 조작 · ${F.title}`;
-  $("#now").classList.add("done");
   if (F.enter) {
     const ld = $("#loading");
     ld.hidden = false;
@@ -1035,11 +1030,13 @@ function leaveFn(instant) {
   lastPoseKey = "";
   invalidate(true);
 }
-$("#modeSw").addEventListener("click", () => {
+$("#modeSw").addEventListener("click", (ev) => {
   if (!A) return;
+  const b = ev.target.closest("button[data-to]");
+  if (!b || b.dataset.to === mode) return;
   buzz();
-  if (mode === "fn") leaveFn();
-  else enterFn();
+  if (b.dataset.to === "fn") enterFn();
+  else leaveFn();
 });
 
 // ───────── 재생기 ─────────
@@ -1295,30 +1292,36 @@ window.__mode = () => mode;
 
 
 
-// ───────── 컨트롤러 접기 (오른쪽 위 버튼) · 접으면 재생 버튼 + 단계 한 줄 ─────────
+// ───────── 컨트롤러 접기 (조립: 한 줄 미니 · 기능: 펼침=ON/OFF 버튼 / 접힘=조절바) ─────────
 (function () {
   const player = $("#player"), btn = $("#fold");
+  const syncLabel = () => {
+    const v = player.classList.contains("folded");
+    const fn = player.dataset.mode === "fn";
+    btn.setAttribute("aria-expanded", String(!v));
+    btn.setAttribute("aria-label", fn ? (v ? "버튼 조작 펼치기" : "조절바로 접기") : (v ? "컨트롤러 펼치기" : "컨트롤러 접기"));
+  };
   const set = (v, save = true) => {
     player.classList.toggle("folded", v);
-    btn.setAttribute("aria-expanded", String(!v));
-    btn.setAttribute("aria-label", v ? "컨트롤러 펼치기" : "컨트롤러 접기");
+    syncLabel();
     if (save) try { localStorage.setItem("roborobo-player-folded", v ? "1" : "0"); } catch (e) {}
-    if (!v) { const on = $("#pages .page:not(.off)"); if (on) $("#pages").style.height = `${on.offsetHeight}px`; }
+    if (!v || player.dataset.mode === "fn") refreshFnLayout();
   };
   btn.addEventListener("click", () => { buzz(); set(!player.classList.contains("folded")); });
   $("#miniPlay").addEventListener("click", () => $("#play").click());
   let folded = false;
   try { folded = localStorage.getItem("roborobo-player-folded") === "1"; } catch (e) {}
   set(folded, false);
-  // 접힌 줄: 지금 단계 · 이름 (기능 조작 화면에서는 제목)
+  // 접힌 줄(조립 전용): 지금 단계 · 이름
   const sync = () => {
     const fn = player.dataset.mode === "fn";
-    $("#miniStep").innerHTML = fn ? "기능 조작" : $("#stepText").innerHTML;
-    $("#miniName").textContent = fn ? ($("#fnTitle").textContent || "") : $("#stepName").textContent;
+    $("#miniStep").innerHTML = $("#stepText").innerHTML;
+    $("#miniName").textContent = $("#stepName").textContent;
     $("#miniPlay").hidden = fn;
+    syncLabel();
   };
   const mo = new MutationObserver(sync);
-  for (const el of [$("#stepText"), $("#stepName"), $("#fnTitle")]) mo.observe(el, { childList: true, characterData: true, subtree: true });
+  for (const el of [$("#stepText"), $("#stepName")]) mo.observe(el, { childList: true, characterData: true, subtree: true });
   new MutationObserver(sync).observe(player, { attributes: true, attributeFilter: ["data-mode"] });
   sync();
 })();

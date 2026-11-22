@@ -1,13 +1,13 @@
 {
-  "updated": "2026-11-22T03:00:26.453Z",
+  "updated": "2026-11-22T03:45:43.630Z",
   "robots": [
     {
       "id": "eagle",
       "name": "독수리 로봇",
       "mods": 6,
       "file": "eagle.js",
-      "version": "69a89aa565",
-      "size": 89730,
+      "version": "e4cdde3bad",
+      "size": 94531,
       "parts": 34
     },
     {
@@ -15,8 +15,8 @@
       "name": "배틀로봇 썬더 웨지 V3",
       "mods": 6,
       "file": "bot.js",
-      "version": "414675be77",
-      "size": 244923,
+      "version": "8fb1fd5ab0",
+      "size": 244706,
       "parts": 43
     },
     {
@@ -24,8 +24,8 @@
       "name": "협동 기차 하나로 열차",
       "mods": 4,
       "file": "train.js",
-      "version": "b24b49c843",
-      "size": 170829,
+      "version": "eb151982f5",
+      "size": 176151,
       "parts": 31
     },
     {
@@ -33,8 +33,8 @@
       "name": "배틀로봇 썬더 타이탄 6륜",
       "mods": 7,
       "file": "bigbot.js",
-      "version": "dfa2a02130",
-      "size": 85536,
+      "version": "acdd38ad15",
+      "size": 86921,
       "parts": 33
     },
     {
@@ -42,8 +42,8 @@
       "name": "썬더 개틀링 6연장 v3",
       "mods": 5,
       "file": "gatling.js",
-      "version": "2356bb5827",
-      "size": 190020,
+      "version": "e1f0967d95",
+      "size": 189173,
       "parts": 31
     },
     {
@@ -51,8 +51,8 @@
       "name": "크림슨 스콜피온 v4",
       "mods": 6,
       "file": "scorpion.js",
-      "version": "3241684eef",
-      "size": 247135,
+      "version": "281d35f95e",
+      "size": 246967,
       "parts": 38
     },
     {
@@ -61,8 +61,8 @@
       "mods": 5,
       "fnOnly": true,
       "file": "mechlab.js",
-      "version": "aae8220ec2",
-      "size": 259416,
+      "version": "7aefa8270e",
+      "size": 259568,
       "parts": 28
     }
   ]
