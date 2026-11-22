@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-22T04:45:58.516Z",
+  "updated": "2026-11-22T08:39:33.893Z",
   "robots": [
     {
       "id": "eagle",
@@ -57,13 +57,23 @@
     },
     {
       "id": "mechlab",
-      "name": "서보·휠 메커니즘 30종",
+      "name": "서보 메커니즘",
       "mods": 5,
       "fnOnly": true,
       "file": "mechlab.js",
-      "version": "ddd62f70c8",
-      "size": 255948,
-      "parts": 28
+      "version": "7bdb7701a3",
+      "size": 383957,
+      "parts": 24
+    },
+    {
+      "id": "motorlab",
+      "name": "모터 메커니즘",
+      "mods": 5,
+      "fnOnly": true,
+      "file": "motorlab.js",
+      "version": "14485887a0",
+      "size": 377419,
+      "parts": 21
     }
   ]
 }
