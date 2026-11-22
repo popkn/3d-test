@@ -39,7 +39,7 @@ var I = {
 var FCOLORS = [["#e8432a", "빨강"], ["#f2a516", "노랑"], ["#1f8a50", "초록"], ["#2f6fdb", "파랑"], ["#7a4cc2", "보라"], ["#63615c", "회색"]];
 
 // ───────── 저장소 (이름 · 제작자 · 폴더) ─────────
-var ROBOT_DEFS = (await initRobots()).map((r) => ({ id: r.id, name: r.name, mods: r.mods }));
+var ROBOT_DEFS = (await initRobots()).map((r) => ({ id: r.id, name: r.name, mods: r.mods, fnOnly: !!r.fnOnly }));
 var STORE_KEY = "roborobo-home-v2";
 var store = { names: {}, folders: [], inFolder: {}, active: "all" };
 try {
@@ -153,8 +153,8 @@ function renderCards() {
       <span class="lbl">제작자</span><span class="maker${r.maker ? "" : " none"}">${r.maker ? esc(r.maker) : "미입력"}</span></div>
       <div class="mini"><button type="button" class="ibtn pr" data-edit="${r.id}" aria-expanded="false" aria-label="${esc(r.name)} 정보 수정">${I.edit}</button>
         <button type="button" class="ibtn pr dl" data-dl="${r.id}" aria-label="${esc(r.name)} 조립 보기 HTML 내려받기">${I.download}</button></div></div>
-    <div class="meta"><span>모듈 ${r.mods}</span>${r.count ? `<span>부품 ${r.count}</span>` : ""}</div>
-    <button type="button" class="primary pr" data-open="${r.id}">${I.play}조립 보기</button>
+    <div class="meta"><span>${r.fnOnly ? `단계 ★1~★${r.mods}` : `모듈 ${r.mods}`}</span>${r.count ? `<span>${r.fnOnly ? `메커니즘 ${r.count}종` : `부품 ${r.count}`}</span>` : ""}</div>
+    <button type="button" class="primary pr" data-open="${r.id}">${I.play}${r.fnOnly ? "기능 조작" : "조립 보기"}</button>
   </div></article>`;
   }).join("");
 }
@@ -834,7 +834,7 @@ function ensureAdapter(id) {
       r.count = ad.count;
       attachPreview(id, ad);
       const meta = document.querySelector(`.card[data-id="${id}"] .meta`);
-      if (meta && ad.count) meta.innerHTML = `<span>모듈 ${r.mods}</span><span>부품 ${ad.count}</span>`;
+      if (meta && ad.count) meta.innerHTML = r.fnOnly ? `<span>단계 ★1~★${r.mods}</span><span>메커니즘 ${ad.count}종</span>` : `<span>모듈 ${r.mods}</span><span>부품 ${ad.count}</span>`;
       updateThumb(id);
       return ad;
     }).catch((err) => {
@@ -1043,9 +1043,9 @@ async function openRobot(id) {
   $("#exVal").textContent = "0%";
   $("#bolts").hidden = !A.hasBolts;
   if (A.hasBolts) A.setBolts(st.bolts);
+  $("#modeSw").hidden = !!A.fnOnly;
   tbStep.config({ min: 0, max: A.N, value: 0, marks: A.N <= 24 ? A.N : 0 });
   buildMods();
-  setMode("asm", true);
   view.controls.autoRotate = false;
   view.controls.zoomToCursor = true;
   view.frame(A.full, A.frameOpts);
@@ -1055,6 +1055,12 @@ async function openRobot(id) {
   lastDone = null;
   lastStepTxt = "";
   lastPoseKey = "";
+  if (A.fnOnly && A.fn) {
+    mode = "asm";
+    await enterFn(true);
+    return;
+  }
+  setMode("asm", true);
   A.pose(0);
   invalidate(true);
   setPlay(true);
@@ -1146,6 +1152,7 @@ function buildFnUI(F) {
     if (it.type === "seg") return `<div class="frow${it.inline ? " inline" : ""}${it.wide ? " wide" : ""}" ${d}><span class="flab">${it.label}</span><div class="seg" data-seg="${it.id}" role="group" aria-label="${it.label}"><i class="pill"></i>${it.options.map(([val, t]) => `<button type="button" data-v="${val}" aria-pressed="false">${t}</button>`).join("")}</div></div>`;
     if (it.type === "toggles") return `<div class="frow facts" ${d}>${it.items.map((t) => `<button type="button" class="ftog" data-tog="${t.id}" aria-pressed="false"><i class="lamp"></i>${t.label}</button>`).join("")}</div>`;
     if (it.type === "actions") return `<div class="frow facts" ${d}>${it.items.map((t) => `<button type="button" class="act${t.hot ? " hot" : ""}" data-act="${t.id}">${t.label}</button>`).join("")}</div>`;
+    if (it.type === "note") return `<div class="frow fnote" ${d}>${esc(it.text)}</div>`;
     return "";
   }).join("");
   for (const it of F.items) {
@@ -1186,17 +1193,26 @@ $("#fnGrid").addEventListener("click", (ev) => {
   const F = A?.fn;
   if (!F) return;
   const sb = ev.target.closest(".seg button"), tg = ev.target.closest("[data-tog]"), ac = ev.target.closest("[data-act]");
+  let ret;
   if (sb) {
     buzz();
-    F.set(sb.closest(".seg").dataset.seg, sb.dataset.v);
+    ret = F.set(sb.closest(".seg").dataset.seg, sb.dataset.v);
   } else if (tg) {
     buzz();
-    F.set(tg.dataset.tog, !F.v[tg.dataset.tog]);
+    ret = F.set(tg.dataset.tog, !F.v[tg.dataset.tog]);
   } else if (ac) {
     buzz();
-    F.set(ac.dataset.act, true);
+    ret = F.set(ac.dataset.act, true);
     ac.animate([{ transform: "scale(.94)" }, { transform: "scale(1)" }], { duration: 260, easing: "cubic-bezier(.3,1.5,.4,1)" });
   } else return;
+  if (ret === "rebuild") {
+    buildFnUI(F);
+    $("#nowText").textContent = `기능 조작 · ${F.title}`;
+    const on = $("#pages .page:not(.off)");
+    if (on) $("#pages").style.height = `${on.offsetHeight}px`;
+    invalidate(true);
+    return;
+  }
   for (const [id, b] of Object.entries(fnBars)) {
     b.tb.set(F.v[id]);
     b.out.textContent = b.it.fmt(F.v[id]);
@@ -1204,7 +1220,7 @@ $("#fnGrid").addEventListener("click", (ev) => {
   syncFnUI(F);
   invalidate(true);
 });
-async function enterFn() {
+async function enterFn(instant) {
   if (!A || mode === "fn" || !A.fn) return;
   const F = A.fn, ad = A, token = loadToken;
   setPlay(false);
@@ -1221,7 +1237,7 @@ async function enterFn() {
   A.setExplode(0);
   A.pose(A.N);
   buildFnUI(F);
-  setMode("fn");
+  setMode("fn", instant);
   $("#nowText").textContent = `기능 조작 · ${F.title}`;
   $("#now").classList.add("done");
   if (F.enter) {
@@ -1473,7 +1489,7 @@ function tickFn(dt) {
   const F = A.fn;
   if (F.update(dt)) invalidate(true);
   for (const [id, b] of Object.entries(fnBars)) {
-    if (F.live[id] === void 0 || b.tb.dragging) continue;
+    if (!F.live || F.live[id] === void 0 || b.tb.dragging) continue;
     const lv = F.live[id];
     if (Math.abs(lv - b.tb.v) > 1e-3) {
       b.tb.set(lv, true);
