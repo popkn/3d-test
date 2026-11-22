@@ -80,6 +80,7 @@ export async function makeAdapter(ctx) {
       return buildItems();
     },
     v: state,
+    live: state,
     set(id, val) {
       if (id === 'guide') {
         state.guide = val;
