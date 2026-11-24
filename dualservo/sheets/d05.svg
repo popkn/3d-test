@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="Pretendard,Apple SD Gothic Neo,sans-serif">
+<rect width="960" height="560" fill="#f8fafc"/>
+<rect x="16" y="16" width="928" height="54" rx="10" fill="#1f9d60"/>
+<text x="34" y="42" fill="#fff" font-size="19" font-weight="800">D05 · 2축 독립 직교 XY 피스톤 (Dual XY Sliders)</text>
+<text x="34" y="60" fill="#f1f5f9" font-size="12">난이도 ★2 · Hole B × 2 (R=10 · ±78.1°) · X/Z 직교 레일 · S후크 4개 · 2D 오차 0.0000 mm</text>
+<rect x="16" y="82" width="600" height="462" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.2"/>
+<line x1="38.1" y1="94" x2="38.1" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="79.6" y1="94" x2="79.6" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="121.0" y1="94" x2="121.0" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="162.5" y1="94" x2="162.5" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="204.0" y1="94" x2="204.0" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="245.4" y1="94" x2="245.4" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="286.9" y1="94" x2="286.9" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="328.3" y1="94" x2="328.3" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="369.8" y1="94" x2="369.8" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="411.2" y1="94" x2="411.2" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="452.7" y1="94" x2="452.7" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="494.1" y1="94" x2="494.1" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="535.6" y1="94" x2="535.6" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="577.0" y1="94" x2="577.0" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="99.2" x2="604" y2="99.2" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="140.6" x2="604" y2="140.6" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="182.1" x2="604" y2="182.1" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="223.5" x2="604" y2="223.5" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="265.0" x2="604" y2="265.0" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="306.4" x2="604" y2="306.4" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="347.9" x2="604" y2="347.9" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="389.3" x2="604" y2="389.3" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="430.8" x2="604" y2="430.8" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="472.2" x2="604" y2="472.2" stroke="#eef1f6" stroke-width="1"/>
+<circle cx="100.3" cy="223.5" r="41.5" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="100.3" cy="223.5" r="17.4" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="100.3" cy="223.5" r="3.0" fill="#e2e8f0"/>
+<circle cx="494.1" cy="202.8" r="41.5" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="494.1" cy="202.8" r="17.4" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="494.1" cy="202.8" r="3.0" fill="#e2e8f0"/>
+<polyline points="307.6,223.5 307.2,223.5 306.1,223.5 304.4,223.5 302.2,223.5 299.6,223.5 296.7,223.5 293.7,223.5 290.8,223.5 288.0,223.5 285.5,223.5 283.4,223.5 281.6,223.5 280.4,223.5 279.6,223.5 279.3,223.5 279.6,223.5 280.4,223.5 281.6,223.5 283.4,223.5 285.5,223.5 288.0,223.5 290.8,223.5 293.7,223.5 296.7,223.5 299.6,223.5 302.2,223.5 304.4,223.5 306.1,223.5 307.2,223.5 307.6,223.5 307.2,223.5 306.1,223.5 304.4,223.5 302.2,223.5 299.6,223.5 296.7,223.5 293.7,223.5 290.8,223.5 288.0,223.5 285.5,223.5 283.4,223.5 281.6,223.5 280.4,223.5 279.6,223.5 279.3,223.5 279.6,223.5 280.4,223.5 281.6,223.5 283.4,223.5 285.5,223.5 288.0,223.5 290.8,223.5 293.7,223.5 296.7,223.5 299.6,223.5 302.2,223.5 304.4,223.5 306.1,223.5 307.2,223.5 307.6,223.5" fill="none" stroke="#1f9d60" stroke-width="2.2" stroke-opacity="0.75" stroke-dasharray="5 3"/>
+<line x1="117.8" y1="186.0" x2="279.3" y2="223.5" stroke="#3b82f6" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="531.7" y1="220.3" x2="494.1" y2="381.8" stroke="#3b82f6" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="141.8" y1="223.5" x2="307.6" y2="223.5" stroke="#64748b" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="494.1" y1="244.2" x2="494.1" y2="410.0" stroke="#64748b" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="117.8" y1="261.1" x2="279.3" y2="223.5" stroke="#e03636" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="456.5" y1="220.3" x2="494.1" y2="381.8" stroke="#e03636" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<circle cx="117.8" cy="261.1" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="124.8" y="256.1" font-size="10" font-weight="700" fill="#1d2230">C1</text>
+<circle cx="279.3" cy="223.5" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="286.3" y="218.5" font-size="10" font-weight="700" fill="#1d2230">X1</text>
+<circle cx="456.5" cy="220.3" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="463.5" y="215.3" font-size="10" font-weight="700" fill="#1d2230">C2</text>
+<circle cx="494.1" cy="381.8" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="501.1" y="376.8" font-size="10" font-weight="700" fill="#1d2230">Z2</text>
+<text x="34" y="532" fill="#64748b" font-size="11">파랑 점선 = 최소각 · 회색 = 중립 · 빨강 실선 = 최대각 · 노랑 점 = S후크(2장 밀착) · 점선 = 2D 궤적</text>
+<rect x="630" y="82" width="314" height="462" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="648" y="110" fill="#0f172a" font-size="14" font-weight="800">2축 기구학 · 검증 명세</text>
+<text x="648" y="136" fill="#334155" font-size="11.5">• 구동부: 서보 2개 + 서보 가이드 2개</text>
+<text x="648" y="156" fill="#334155" font-size="11.5">• 서보1 (X축 피스톤): 25°~155°</text>
+<text x="648" y="176" fill="#334155" font-size="11.5">• 서보2 (Z축 피스톤): 25°~155°</text>
+<text x="648" y="196" fill="#334155" font-size="11.5">• S후크: 4개 (전원 2장 밀착)</text>
+<text x="648" y="216" fill="#15803d" font-size="11.5" font-weight="700">✔ 2D 전 격자 오차: 0.000000 mm</text>
+<text x="648" y="236" fill="#15803d" font-size="11.5" font-weight="700">✔ Hole B 최대 상대각: 78.1° (≤90°)</text>
+<text x="648" y="256" fill="#15803d" font-size="11.5" font-weight="700">✔ 전선 미구현 · 충돌 0건</text>
+</svg>

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="Pretendard,Apple SD Gothic Neo,sans-serif">
+<rect width="960" height="560" fill="#f8fafc"/>
+<rect x="16" y="16" width="928" height="54" rx="10" fill="#8b46d9"/>
+<text x="34" y="42" fill="#fff" font-size="19" font-weight="800">D12 · 2자유도 5절 관절 보행 다리 (2-DOF Leg)</text>
+<text x="34" y="60" fill="#f1f5f9" font-size="12">난이도 ★4 · 수직 타워 · Hole A R20 × 2 + 1.6mm 심 · S후크 3개 · 2D 오차 0.0000 mm</text>
+<rect x="16" y="82" width="600" height="462" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.2"/>
+<line x1="67.4" y1="94" x2="67.4" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="117.1" y1="94" x2="117.1" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="166.8" y1="94" x2="166.8" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="216.5" y1="94" x2="216.5" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="266.3" y1="94" x2="266.3" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="316.0" y1="94" x2="316.0" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="365.7" y1="94" x2="365.7" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="415.5" y1="94" x2="415.5" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="465.2" y1="94" x2="465.2" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="514.9" y1="94" x2="514.9" y2="502" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="456.1" x2="604" y2="456.1" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="406.3" x2="604" y2="406.3" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="356.6" x2="604" y2="356.6" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="306.9" x2="604" y2="306.9" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="257.1" x2="604" y2="257.1" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="207.4" x2="604" y2="207.4" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="157.7" x2="604" y2="157.7" stroke="#eef1f6" stroke-width="1"/>
+<line x1="28" y1="108.0" x2="604" y2="108.0" stroke="#eef1f6" stroke-width="1"/>
+<circle cx="241.4" cy="179.6" r="49.7" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="241.4" cy="179.6" r="20.9" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="241.4" cy="179.6" r="3.0" fill="#e2e8f0"/>
+<circle cx="390.6" cy="179.6" r="49.7" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="390.6" cy="179.6" r="20.9" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="390.6" cy="179.6" r="3.0" fill="#e2e8f0"/>
+<polyline points="316.0,402.4 313.3,407.9 311.6,411.8 311.3,414.2 312.3,415.5 314.3,416.0 316.5,415.9 318.2,415.8 318.6,415.9 317.6,416.2 316.0,416.4 314.9,416.4 315.5,415.9 318.4,415.0 323.7,413.4 330.8,411.2 338.8,408.2 347.0,404.7 354.5,400.7 360.6,396.6 365.1,392.8 367.7,389.7 368.2,387.6 366.8,386.7 363.5,387.1 358.4,388.5 351.7,390.9 343.7,393.9 334.8,397.0 325.4,400.0 316.0,402.4 307.1,404.1 299.2,404.8 292.3,404.7 286.6,403.8 281.7,402.4 277.5,400.7 273.9,398.8 270.7,396.9 268.3,395.0 266.9,392.8 266.9,390.2 268.5,387.1 272.0,383.1 277.1,378.3 283.4,372.6 290.4,366.4 297.6,359.9 304.5,353.7 310.7,348.6 316.0,345.0 320.4,343.6 323.8,344.7 326.1,348.1 327.5,353.7 327.8,361.1 327.0,369.6 325.2,378.6 322.4,387.4 319.2,395.5 316.0,402.4" fill="none" stroke="#8b46d9" stroke-width="2.2" stroke-opacity="0.75" stroke-dasharray="5 3"/>
+<line x1="241.4" y1="179.6" x2="184.4" y2="261.0" stroke="#3b82f6" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="184.4" y1="261.0" x2="316.0" y2="331.2" stroke="#3b82f6" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="390.6" y1="179.6" x2="447.6" y2="261.0" stroke="#3b82f6" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="447.6" y1="261.0" x2="316.0" y2="331.2" stroke="#3b82f6" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45" stroke-dasharray="4 3"/>
+<line x1="241.4" y1="179.6" x2="241.4" y2="279.0" stroke="#64748b" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="241.4" y1="279.0" x2="316.0" y2="408.2" stroke="#64748b" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="390.6" y1="179.6" x2="390.6" y2="279.0" stroke="#64748b" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="390.6" y1="279.0" x2="316.0" y2="408.2" stroke="#64748b" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.45"/>
+<line x1="241.4" y1="179.6" x2="283.4" y2="269.7" stroke="#e03636" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="283.4" y1="269.7" x2="316.0" y2="415.3" stroke="#e03636" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="390.6" y1="179.6" x2="348.6" y2="269.7" stroke="#e03636" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="348.6" y1="269.7" x2="316.0" y2="415.3" stroke="#e03636" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<circle cx="283.4" cy="269.7" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="290.4" y="264.7" font-size="10" font-weight="700" fill="#1d2230">C1</text>
+<circle cx="348.6" cy="269.7" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="355.6" y="264.7" font-size="10" font-weight="700" fill="#1d2230">C2</text>
+<circle cx="316.0" cy="415.3" r="4.5" fill="#f2b51c" stroke="#1d2230" stroke-width="1.4"/>
+<text x="323.0" y="410.3" font-size="10" font-weight="700" fill="#1d2230">K</text>
+<text x="34" y="532" fill="#64748b" font-size="11">파랑 점선 = 최소각 · 회색 = 중립 · 빨강 실선 = 최대각 · 노랑 점 = S후크(2장 밀착) · 점선 = 2D 궤적</text>
+<rect x="630" y="82" width="314" height="462" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="648" y="110" fill="#0f172a" font-size="14" font-weight="800">2축 기구학 · 검증 명세</text>
+<text x="648" y="136" fill="#334155" font-size="11.5">• 구동부: 서보 2개 + 서보 가이드 2개</text>
+<text x="648" y="156" fill="#334155" font-size="11.5">• 서보1 (앞 고관절): 55°~115°</text>
+<text x="648" y="176" fill="#334155" font-size="11.5">• 서보2 (뒤 고관절): 55°~115°</text>
+<text x="648" y="196" fill="#334155" font-size="11.5">• S후크: 3개 (전원 2장 밀착)</text>
+<text x="648" y="216" fill="#15803d" font-size="11.5" font-weight="700">✔ 2D 전 격자 오차: 0.000000 mm</text>
+<text x="648" y="236" fill="#15803d" font-size="11.5" font-weight="700">✔ Hole B 최대 상대각: 0.0° (≤90°)</text>
+<text x="648" y="256" fill="#15803d" font-size="11.5" font-weight="700">✔ 전선 미구현 · 충돌 0건</text>
+</svg>

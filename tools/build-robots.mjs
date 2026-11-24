@@ -25,6 +25,7 @@ const ROBOTS = {
   scorpion: async () => (await imp('src/scorpion/assembly.js')).default.map((a) => a.id),
   mechlab: async () => (await imp('src/mechlab/assemble.js')).SERVO_PART_IDS,
   motorlab: async () => (await imp('src/mechlab/assemble.js')).MOTOR_PART_IDS,
+  dualservo: async () => (await imp('src/dualservo/assemble.js')).DUAL_SERVO_PART_IDS,
 };
 
 rmSync(gen, { recursive: true, force: true });

@@ -1,0 +1,411 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 840" font-family="Pretendard,Apple SD Gothic Neo,sans-serif">
+<rect width="1200" height="840" fill="#f8fafc"/>
+<rect x="16" y="16" width="1168" height="58" rx="12" fill="#0f172a"/>
+<text x="36" y="43" fill="#fff" font-size="20" font-weight="800">서보 2축 메커니즘 — 서보 2개 × 서보 가이드 15종 (D01~D15)</text>
+<text x="36" y="63" fill="#94a3b8" font-size="12">servo-digital × 2 + motor-guide × 2 전용 · Hole A 고정 · Hole B ±90° · S후크 2장 밀착 · 전선 0 · 오차 0.0000 mm</text>
+<rect x="20" y="88" width="224" height="236" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1.2"/>
+<rect x="20" y="88" width="224" height="28" rx="10" fill="#2f6fe0"/>
+<rect x="20" y="104" width="224" height="12" fill="#2f6fe0"/>
+<text x="30" y="107" fill="#fff" font-size="12" font-weight="800">D01 · ★1</text>
+<text x="234" y="107" fill="#fff" font-size="10.5" font-weight="600" text-anchor="end">S후크 6개</text>
+<circle cx="84.0" cy="232.0" r="13.7" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="84.0" cy="232.0" r="5.8" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="84.0" cy="232.0" r="2.0" fill="#e2e8f0"/>
+<circle cx="180.0" cy="232.0" r="13.7" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="180.0" cy="232.0" r="5.8" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="180.0" cy="232.0" r="2.0" fill="#e2e8f0"/>
+<polyline points="140.2,161.8 140.2,162.0 140.3,161.5 140.7,160.5 141.2,159.2 141.7,158.0 142.2,157.1 142.5,156.6 142.5,156.6 142.2,157.1 141.7,158.0 141.2,159.2 140.7,160.5 140.3,161.5 140.2,162.0 140.2,161.8 140.5,161.0 141.0,159.7 141.7,158.1 142.5,156.6 143.3,155.4 143.9,154.5 144.2,154.0 144.2,154.0 143.9,154.5 143.3,155.4 142.5,156.6 141.7,158.1 141.0,159.7 140.5,161.0 140.2,161.8 140.2,162.0 140.3,161.5 140.7,160.5 141.2,159.2 141.7,158.0 142.2,157.1 142.5,156.6 142.5,156.6 142.2,157.1 141.7,158.0 141.2,159.2 140.7,160.5 140.3,161.5 140.2,162.0 140.2,161.8 140.5,161.0 141.0,159.7 141.7,158.1 142.5,156.6 143.3,155.4 143.9,154.5 144.2,154.0 144.2,154.0 143.9,154.5 143.3,155.4 142.5,156.6 141.7,158.1 141.0,159.7 140.5,161.0 140.2,161.8" fill="none" stroke="#2f6fe0" stroke-width="1.6" stroke-opacity="0.75" stroke-dasharray="5 3"/>
+<line x1="72.1" y1="225.2" x2="73.9" y2="184.1" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="73.9" y1="184.1" x2="121.4" y2="156.5" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="169.5" y1="223.2" x2="188.4" y2="186.6" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="188.4" y1="186.6" x2="144.2" y2="154.0" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="94.5" y1="223.2" x2="75.6" y2="186.6" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="75.6" y1="186.6" x2="119.8" y2="154.0" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="191.9" y1="225.2" x2="190.1" y2="184.1" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="190.1" y1="184.1" x2="142.6" y2="156.5" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<circle cx="94.5" cy="223.2" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="75.6" cy="186.6" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="97.7" cy="170.3" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="191.9" cy="225.2" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="190.1" cy="184.1" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="166.3" cy="170.3" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<text x="30" y="282" fill="#0f172a" font-size="11.5" font-weight="700">D01 쌍집게</text>
+<text x="30" y="298" fill="#475569" font-size="9.5">서보가이드 Hole B × 2 (R=10 · ±77.2°)</text>
+<text x="30" y="313" fill="#15803d" font-size="9.5" font-weight="700">✔ 2D 오차 0.0000 mm · 2서보 독립</text>
+<rect x="254" y="88" width="224" height="236" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1.2"/>
+<rect x="254" y="88" width="224" height="28" rx="10" fill="#2f6fe0"/>
+<rect x="254" y="104" width="224" height="12" fill="#2f6fe0"/>
+<text x="264" y="107" fill="#fff" font-size="12" font-weight="800">D02 · ★1</text>
+<text x="468" y="107" fill="#fff" font-size="10.5" font-weight="600" text-anchor="end">S후크 3개</text>
+<circle cx="335.2" cy="231.7" r="13.9" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="335.2" cy="231.7" r="5.8" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="335.2" cy="231.7" r="2.0" fill="#e2e8f0"/>
+<polyline points="401.3,154.3 401.8,155.9 402.9,159.6 403.9,164.6 404.6,170.0 404.8,174.7 404.8,178.1 404.7,179.8 404.7,179.8 404.8,178.1 404.8,174.7 404.6,170.0 403.9,164.6 402.9,159.6 401.8,155.9 401.3,154.3 401.5,154.9 402.3,157.3 403.1,160.7 403.8,164.4 404.3,167.7 404.6,170.2 404.7,171.5 404.7,171.5 404.6,170.2 404.3,167.7 403.8,164.4 403.1,160.7 402.3,157.3 401.5,154.9 401.3,154.3 401.8,155.9 402.9,159.6 403.9,164.6 404.6,170.0 404.8,174.7 404.8,178.1 404.7,179.8 404.7,179.8 404.8,178.1 404.8,174.7 404.6,170.0 403.9,164.6 402.9,159.6 401.8,155.9 401.3,154.3 401.5,154.9 402.3,157.3 403.1,160.7 403.8,164.4 404.3,167.7 404.6,170.2 404.7,171.5 404.7,171.5 404.6,170.2 404.3,167.7 403.8,164.4 403.1,160.7 402.3,157.3 401.5,154.9 401.3,154.3" fill="none" stroke="#2f6fe0" stroke-width="1.6" stroke-opacity="0.75" stroke-dasharray="5 3"/>
+<line x1="348.6" y1="228.1" x2="363.0" y2="174.3" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="335.2" y1="176.0" x2="404.7" y2="171.7" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="327.2" y1="220.3" x2="363.0" y2="177.6" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="335.2" y1="176.0" x2="404.7" y2="180.0" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<circle cx="327.2" cy="220.3" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="363.0" cy="177.6" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="335.2" cy="176.0" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<text x="264" y="282" fill="#0f172a" font-size="11.5" font-weight="700">D02 팬-틸트</text>
+<text x="264" y="298" fill="#475569" font-size="9.5">서보1 Hole A 팬 + 서보2 Hole B 틸트(±75°)</text>
+<text x="264" y="313" fill="#15803d" font-size="9.5" font-weight="700">✔ 2D 오차 0.0000 mm · 2서보 독립</text>
+<rect x="488" y="88" width="224" height="236" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1.2"/>
+<rect x="488" y="88" width="224" height="28" rx="10" fill="#2f6fe0"/>
+<rect x="488" y="104" width="224" height="12" fill="#2f6fe0"/>
+<text x="498" y="107" fill="#fff" font-size="12" font-weight="800">D03 · ★1</text>
+<text x="702" y="107" fill="#fff" font-size="10.5" font-weight="600" text-anchor="end">S후크 6개</text>
+<circle cx="576.6" cy="216.1" r="9.4" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="576.6" cy="216.1" r="3.9" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="576.6" cy="216.1" r="2.0" fill="#e2e8f0"/>
+<circle cx="623.4" cy="216.1" r="9.4" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="623.4" cy="216.1" r="3.9" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="623.4" cy="216.1" r="2.0" fill="#e2e8f0"/>
+<polyline points="674.3,200.5 674.9,199.3 675.9,197.1 676.9,194.4 677.8,191.7 678.4,189.4 678.8,187.7 679.0,186.8 679.0,186.8 678.8,187.7 678.4,189.4 677.8,191.7 676.9,194.4 675.9,197.1 674.9,199.3 674.3,200.5 674.2,200.5 674.9,199.3 675.9,197.1 676.9,194.5 677.8,191.9 678.3,190.0 678.5,188.9 678.5,188.9 678.3,190.0 677.8,191.9 676.9,194.5 675.9,197.1 674.9,199.3 674.2,200.5 674.3,200.5 674.9,199.3 675.9,197.1 676.9,194.4 677.8,191.7 678.4,189.4 678.8,187.7 679.0,186.8 679.0,186.8 678.8,187.7 678.4,189.4 677.8,191.7 676.9,194.4 675.9,197.1 674.9,199.3 674.3,200.5 674.2,200.5 674.9,199.3 675.9,197.1 676.9,194.5 677.8,191.9 678.3,190.0 678.5,188.9 678.5,188.9 678.3,190.0 677.8,191.9 676.9,194.5 675.9,197.1 674.9,199.3 674.2,200.5 674.3,200.5" fill="none" stroke="#2f6fe0" stroke-width="1.6" stroke-opacity="0.75" stroke-dasharray="5 3"/>
+<line x1="585.4" y1="212.9" x2="585.7" y2="175.4" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="585.7" y1="175.4" x2="521.0" y2="186.6" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="629.5" y1="208.9" x2="614.5" y2="174.6" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="614.5" y1="174.6" x2="678.6" y2="188.8" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="570.5" y1="208.9" x2="585.5" y2="174.6" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="585.5" y1="174.6" x2="521.4" y2="188.8" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="614.6" y1="212.9" x2="614.3" y2="175.4" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="614.3" y1="175.4" x2="679.0" y2="186.6" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<circle cx="570.5" cy="208.9" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="585.5" cy="174.6" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="567.2" cy="178.6" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="614.6" cy="212.9" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="614.3" cy="175.4" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="632.8" cy="178.6" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<text x="498" y="282" fill="#0f172a" font-size="11.5" font-weight="700">D03 쌍날개</text>
+<text x="498" y="298" fill="#475569" font-size="9.5">수직 타워 · Hole B × 2 (R=10 · ±69.6°)</text>
+<text x="498" y="313" fill="#15803d" font-size="9.5" font-weight="700">✔ 2D 오차 0.0000 mm · 2서보 독립</text>
+<rect x="722" y="88" width="224" height="236" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1.2"/>
+<rect x="722" y="88" width="224" height="28" rx="10" fill="#1f9d60"/>
+<rect x="722" y="104" width="224" height="12" fill="#1f9d60"/>
+<text x="732" y="107" fill="#fff" font-size="12" font-weight="800">D04 · ★2</text>
+<text x="936" y="107" fill="#fff" font-size="10.5" font-weight="600" text-anchor="end">S후크 3개</text>
+<circle cx="802.7" cy="148.7" r="10.4" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="802.7" cy="148.7" r="4.4" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="802.7" cy="148.7" r="2.0" fill="#e2e8f0"/>
+<circle cx="865.3" cy="148.7" r="10.4" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="865.3" cy="148.7" r="4.4" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="865.3" cy="148.7" r="2.0" fill="#e2e8f0"/>
+<polyline points="834.0,221.2 836.0,214.3 837.5,206.6 838.4,198.6 838.6,191.0 838.3,184.2 837.6,178.6 836.8,174.3 835.9,171.6 835.0,170.5 834.0,171.4 832.5,174.2 830.4,178.6 827.3,184.1 823.4,190.0 818.7,195.7 813.9,200.8 809.3,205.1 805.6,208.5 803.1,211.3 801.9,213.6 801.8,215.5 802.7,217.3 804.2,219.0 806.4,220.6 809.1,222.1 812.5,223.3 816.8,223.9 822.0,223.8 827.8,222.9 834.0,221.2 840.2,218.8 846.0,216.1 851.2,213.4 855.6,211.1 859.4,209.5 862.4,208.5 864.6,208.5 866.0,209.3 866.6,211.0 866.1,213.6 864.5,216.8 861.6,220.6 857.6,224.5 852.7,228.3 847.3,231.4 842.1,233.9 837.8,235.6 834.9,236.6 833.8,237.2 834.0,237.3 834.7,237.1 835.0,236.9 834.4,236.7 833.1,236.6 831.4,236.4 830.2,235.6 829.8,234.0 830.4,231.1 832.0,226.8 834.0,221.2" fill="none" stroke="#1f9d60" stroke-width="1.6" stroke-opacity="0.75" stroke-dasharray="5 3"/>
+<line x1="802.7" y1="148.7" x2="818.3" y2="175.9" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="818.3" y1="175.9" x2="834.0" y2="236.5" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="865.3" y1="148.7" x2="849.7" y2="175.9" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="849.7" y1="175.9" x2="834.0" y2="236.5" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="802.7" y1="148.7" x2="771.8" y2="154.2" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="771.8" y1="154.2" x2="834.0" y2="161.9" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="865.3" y1="148.7" x2="896.2" y2="154.2" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="896.2" y1="154.2" x2="834.0" y2="161.9" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<circle cx="771.8" cy="154.2" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="896.2" cy="154.2" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="834.0" cy="161.9" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<text x="732" y="282" fill="#0f172a" font-size="11.5" font-weight="700">D04 XY플로터</text>
+<text x="732" y="298" fill="#475569" font-size="9.5">Hole A 1볼트 고정 R30 × 2 + 1.6mm 심</text>
+<text x="732" y="313" fill="#15803d" font-size="9.5" font-weight="700">✔ 2D 오차 0.0000 mm · 2서보 독립</text>
+<rect x="956" y="88" width="224" height="236" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1.2"/>
+<rect x="956" y="88" width="224" height="28" rx="10" fill="#1f9d60"/>
+<rect x="956" y="104" width="224" height="12" fill="#1f9d60"/>
+<text x="966" y="107" fill="#fff" font-size="12" font-weight="800">D05 · ★2</text>
+<text x="1170" y="107" fill="#fff" font-size="10.5" font-weight="600" text-anchor="end">S후크 4개</text>
+<circle cx="996.1" cy="168.2" r="13.8" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="996.1" cy="168.2" r="5.8" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="996.1" cy="168.2" r="2.0" fill="#e2e8f0"/>
+<circle cx="1127.4" cy="161.3" r="13.8" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="1127.4" cy="161.3" r="5.8" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="1127.4" cy="161.3" r="2.0" fill="#e2e8f0"/>
+<polyline points="1065.2,168.2 1065.1,168.2 1064.7,168.2 1064.1,168.2 1063.4,168.2 1062.5,168.2 1061.6,168.2 1060.6,168.2 1059.6,168.2 1058.7,168.2 1057.8,168.2 1057.1,168.2 1056.5,168.2 1056.1,168.2 1055.9,168.2 1055.8,168.2 1055.9,168.2 1056.1,168.2 1056.5,168.2 1057.1,168.2 1057.8,168.2 1058.7,168.2 1059.6,168.2 1060.6,168.2 1061.6,168.2 1062.5,168.2 1063.4,168.2 1064.1,168.2 1064.7,168.2 1065.1,168.2 1065.2,168.2 1065.1,168.2 1064.7,168.2 1064.1,168.2 1063.4,168.2 1062.5,168.2 1061.6,168.2 1060.6,168.2 1059.6,168.2 1058.7,168.2 1057.8,168.2 1057.1,168.2 1056.5,168.2 1056.1,168.2 1055.9,168.2 1055.8,168.2 1055.9,168.2 1056.1,168.2 1056.5,168.2 1057.1,168.2 1057.8,168.2 1058.7,168.2 1059.6,168.2 1060.6,168.2 1061.6,168.2 1062.5,168.2 1063.4,168.2 1064.1,168.2 1064.7,168.2 1065.1,168.2 1065.2,168.2" fill="none" stroke="#1f9d60" stroke-width="1.6" stroke-opacity="0.75" stroke-dasharray="5 3"/>
+<line x1="1001.9" y1="155.7" x2="1055.8" y2="168.2" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="1139.9" y1="167.1" x2="1127.4" y2="220.9" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="1001.9" y1="180.7" x2="1055.8" y2="168.2" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="1114.8" y1="167.1" x2="1127.4" y2="220.9" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<circle cx="1001.9" cy="180.7" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="1055.8" cy="168.2" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="1114.8" cy="167.1" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="1127.4" cy="220.9" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<text x="966" y="282" fill="#0f172a" font-size="11.5" font-weight="700">D05 XY피스톤</text>
+<text x="966" y="298" fill="#475569" font-size="9.5">Hole B × 2 (R=10 · ±78.1°) · X/Z 직교 레일</text>
+<text x="966" y="313" fill="#15803d" font-size="9.5" font-weight="700">✔ 2D 오차 0.0000 mm · 2서보 독립</text>
+<rect x="20" y="334" width="224" height="236" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1.2"/>
+<rect x="20" y="334" width="224" height="28" rx="10" fill="#1f9d60"/>
+<rect x="20" y="350" width="224" height="12" fill="#1f9d60"/>
+<text x="30" y="353" fill="#fff" font-size="12" font-weight="800">D06 · ★2</text>
+<text x="234" y="353" fill="#fff" font-size="10.5" font-weight="600" text-anchor="end">S후크 4개</text>
+<circle cx="110.1" cy="439.0" r="10.9" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="110.1" cy="439.0" r="4.6" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="110.1" cy="439.0" r="2.0" fill="#e2e8f0"/>
+<circle cx="153.9" cy="439.0" r="10.9" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="153.9" cy="439.0" r="4.6" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="153.9" cy="439.0" r="2.0" fill="#e2e8f0"/>
+<polyline points="208.5,439.0 208.1,439.0 207.1,439.0 205.6,439.0 204.1,439.0 202.7,439.0 201.7,439.0 201.1,439.0 201.1,439.0 201.7,439.0 202.7,439.0 204.1,439.0 205.6,439.0 207.1,439.0 208.1,439.0 208.5,439.0 208.1,439.0 207.1,439.0 205.6,439.0 204.1,439.0 202.7,439.0 201.7,439.0 201.1,439.0 201.1,439.0 201.7,439.0 202.7,439.0 204.1,439.0 205.6,439.0 207.1,439.0 208.1,439.0 208.5,439.0 208.1,439.0 207.1,439.0 205.6,439.0 204.1,439.0 202.7,439.0 201.7,439.0 201.1,439.0 201.1,439.0 201.7,439.0 202.7,439.0 204.1,439.0 205.6,439.0 207.1,439.0 208.1,439.0 208.5,439.0 208.1,439.0 207.1,439.0 205.6,439.0 204.1,439.0 202.7,439.0 201.7,439.0 201.1,439.0 201.1,439.0 201.7,439.0 202.7,439.0 204.1,439.0 205.6,439.0 207.1,439.0 208.1,439.0 208.5,439.0" fill="none" stroke="#1f9d60" stroke-width="1.6" stroke-opacity="0.75" stroke-dasharray="5 3"/>
+<line x1="105.5" y1="448.9" x2="62.9" y2="439.0" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="158.5" y1="429.1" x2="201.1" y2="439.0" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="105.5" y1="429.1" x2="62.9" y2="439.0" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="158.5" y1="448.9" x2="201.1" y2="439.0" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<circle cx="105.5" cy="429.1" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="62.9" cy="439.0" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="158.5" cy="448.9" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="201.1" cy="439.0" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<text x="30" y="528" fill="#0f172a" font-size="11.5" font-weight="700">D06 대향피스톤</text>
+<text x="30" y="544" fill="#475569" font-size="9.5">Hole B × 2 (R=10 · ±78.1°) · 좌/우 레일</text>
+<text x="30" y="559" fill="#15803d" font-size="9.5" font-weight="700">✔ 2D 오차 0.0000 mm · 2서보 독립</text>
+<rect x="254" y="334" width="224" height="236" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1.2"/>
+<rect x="254" y="334" width="224" height="28" rx="10" fill="#e87a1e"/>
+<rect x="254" y="350" width="224" height="12" fill="#e87a1e"/>
+<text x="264" y="353" fill="#fff" font-size="12" font-weight="800">D07 · ★3</text>
+<text x="468" y="353" fill="#fff" font-size="10.5" font-weight="600" text-anchor="end">S후크 3개</text>
+<circle cx="355.1" cy="414.5" r="11.7" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="355.1" cy="414.5" r="4.9" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="355.1" cy="414.5" r="2.0" fill="#e2e8f0"/>
+<circle cx="425.3" cy="414.5" r="11.7" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="425.3" cy="414.5" r="4.9" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="425.3" cy="414.5" r="2.0" fill="#e2e8f0"/>
+<polyline points="335.1,407.3 333.4,406.9 331.6,406.6 329.4,406.3 327.0,406.0 324.5,405.7 322.0,405.4 319.6,405.2 317.3,405.0 315.1,404.9 312.9,404.9 310.6,405.3 308.1,406.1 305.5,407.5 302.7,409.5 300.0,412.2 297.5,415.4 295.4,419.1 294.0,422.9 293.3,426.4 293.4,429.0 294.2,430.3 295.7,430.2 297.9,428.9 300.9,426.5 304.7,423.5 309.3,420.0 314.8,416.5 321.0,413.1 327.9,410.0 335.1,407.3 342.4,405.2 349.7,403.6 356.8,402.4 363.5,401.7 369.9,401.4 375.9,401.3 381.6,401.6 386.8,402.2 391.2,402.8 394.3,403.2 395.7,403.0 395.4,402.0 393.5,400.6 390.2,399.0 385.8,397.7 380.8,396.9 375.5,396.7 370.1,397.2 364.9,398.3 360.1,399.7 355.8,401.4 351.9,403.1 348.6,404.6 345.7,405.9 343.2,406.9 341.2,407.5 339.4,407.8 337.9,407.8 336.5,407.6 335.1,407.3" fill="none" stroke="#e87a1e" stroke-width="1.6" stroke-opacity="0.75" stroke-dasharray="5 3"/>
+<line x1="355.1" y1="414.5" x2="375.2" y2="443.2" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="383.7" y1="477.3" x2="363.9" y2="397.8" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="425.3" y1="414.5" x2="438.7" y2="433.7" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="438.7" y1="433.7" x2="383.7" y2="477.3" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="355.1" y1="414.5" x2="335.0" y2="443.2" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="353.7" y1="472.9" x2="310.0" y2="403.7" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="425.3" y1="414.5" x2="411.9" y2="433.7" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="411.9" y1="433.7" x2="353.7" y2="472.9" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<circle cx="335.0" cy="443.2" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="411.9" cy="433.7" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="353.7" cy="472.9" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<text x="264" y="528" fill="#0f172a" font-size="11.5" font-weight="700">D07 SCARA암</text>
+<text x="264" y="544" fill="#475569" font-size="9.5">Hole A 고정 어깨(R30) + 팔꿈치(R20) + 1.6mm 심</text>
+<text x="264" y="559" fill="#15803d" font-size="9.5" font-weight="700">✔ 2D 오차 0.0000 mm · 2서보 독립</text>
+<rect x="488" y="334" width="224" height="236" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1.2"/>
+<rect x="488" y="334" width="224" height="28" rx="10" fill="#e87a1e"/>
+<rect x="488" y="350" width="224" height="12" fill="#e87a1e"/>
+<text x="498" y="353" fill="#fff" font-size="12" font-weight="800">D08 · ★3</text>
+<text x="702" y="353" fill="#fff" font-size="10.5" font-weight="600" text-anchor="end">S후크 3개</text>
+<circle cx="573.0" cy="392.4" r="9.0" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="573.0" cy="392.4" r="3.8" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="573.0" cy="392.4" r="2.0" fill="#e2e8f0"/>
+<circle cx="627.0" cy="392.4" r="9.0" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="627.0" cy="392.4" r="3.8" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="627.0" cy="392.4" r="2.0" fill="#e2e8f0"/>
+<polyline points="612.8,467.3 615.6,460.6 618.0,453.1 619.6,445.5 620.5,438.2 620.8,431.8 620.6,426.6 620.1,422.7 619.4,420.5 618.5,420.0 617.3,421.3 615.7,424.4 613.3,429.1 610.0,434.8 605.8,440.8 601.1,446.7 596.1,452.0 591.5,456.4 587.7,460.0 584.9,462.7 583.4,464.9 583.1,466.6 583.7,468.1 585.0,469.3 586.9,470.4 589.4,471.3 592.7,471.8 596.8,471.8 601.6,471.1 607.0,469.6 612.8,467.3 618.5,464.6 623.8,461.6 628.5,458.7 632.5,456.3 635.7,454.6 638.2,453.7 639.9,453.8 640.9,454.8 641.0,456.8 640.1,459.7 638.1,463.3 634.9,467.4 630.8,471.6 625.8,475.6 620.4,479.1 615.2,481.8 610.9,483.7 607.9,484.8 606.4,485.4 606.2,485.5 606.5,485.3 606.8,484.9 606.6,484.6 605.9,484.2 605.3,483.6 605.1,482.4 605.8,480.4 607.5,477.4 609.9,473.0 612.8,467.3" fill="none" stroke="#e87a1e" stroke-width="1.6" stroke-opacity="0.75" stroke-dasharray="5 3"/>
+<line x1="573.0" y1="392.4" x2="584.4" y2="416.8" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="584.4" y1="416.8" x2="605.2" y2="485.6" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="627.0" y1="392.4" x2="615.6" y2="416.8" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="615.6" y1="416.8" x2="600.0" y2="468.4" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="573.0" y1="392.4" x2="547.0" y2="399.4" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="547.0" y1="399.4" x2="617.7" y2="412.6" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="627.0" y1="392.4" x2="653.0" y2="399.4" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="653.0" y1="399.4" x2="600.0" y2="409.3" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<circle cx="547.0" cy="399.4" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="653.0" cy="399.4" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="600.0" cy="409.3" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<text x="498" y="528" fill="#0f172a" font-size="11.5" font-weight="700">D08 팬터그래프</text>
+<text x="498" y="544" fill="#475569" font-size="9.5">Hole A 고정 R30 × 2 + 연장 팁(L=80)</text>
+<text x="498" y="559" fill="#15803d" font-size="9.5" font-weight="700">✔ 2D 오차 0.0000 mm · 2서보 독립</text>
+<rect x="722" y="334" width="224" height="236" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1.2"/>
+<rect x="722" y="334" width="224" height="28" rx="10" fill="#e87a1e"/>
+<rect x="722" y="350" width="224" height="12" fill="#e87a1e"/>
+<text x="732" y="353" fill="#fff" font-size="12" font-weight="800">D09 · ★3</text>
+<text x="936" y="353" fill="#fff" font-size="10.5" font-weight="600" text-anchor="end">S후크 3개</text>
+<circle cx="784.6" cy="417.2" r="10.9" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="784.6" cy="417.2" r="4.6" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="784.6" cy="417.2" r="2.0" fill="#e2e8f0"/>
+<circle cx="855.4" cy="395.4" r="10.9" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="855.4" cy="395.4" r="4.6" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="855.4" cy="395.4" r="2.0" fill="#e2e8f0"/>
+<polyline points="856.5,482.4 862.6,482.2 868.8,480.4 874.5,477.2 879.0,473.4 882.0,470.0 883.4,467.7 883.3,467.1 881.9,468.1 879.2,470.5 875.3,473.8 870.3,477.3 864.6,480.3 858.4,482.2 852.3,482.6 846.5,481.4 841.5,478.8 837.3,475.3 834.0,471.3 831.7,467.6 830.3,464.5 829.9,462.7 830.4,462.4 831.8,463.4 833.9,465.6 836.6,468.7 839.7,472.1 843.3,475.7 847.2,478.8 851.6,481.2 856.5,482.4 861.7,482.3 867.2,480.8 872.4,478.0 876.9,474.5 880.3,471.1 882.0,468.7 882.0,468.0 880.0,469.3 876.3,472.2 871.0,475.7 864.6,479.1 857.6,481.5 850.9,482.4 844.9,481.8 839.9,479.8 836.1,476.9 833.5,473.4 831.7,470.0 830.8,466.9 830.5,464.7 830.7,463.4 831.5,463.1 832.6,464.0 834.2,465.9 836.3,468.5 838.9,471.8 842.2,475.2 846.1,478.5 850.9,481.0 856.5,482.4" fill="none" stroke="#e87a1e" stroke-width="1.6" stroke-opacity="0.75" stroke-dasharray="5 3"/>
+<line x1="792.9" y1="410.2" x2="856.2" y2="427.0" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="855.4" y1="395.4" x2="870.9" y2="410.9" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="870.9" y1="410.9" x2="826.8" y2="459.2" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="790.0" y1="426.7" x2="855.1" y2="433.4" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="855.4" y1="395.4" x2="844.5" y2="414.3" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="844.5" y1="414.3" x2="876.2" y2="471.5" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<circle cx="790.0" cy="426.7" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="855.1" cy="433.4" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="844.5" cy="414.3" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<text x="732" y="528" fill="#0f172a" font-size="11.5" font-weight="700">D09 가변행정</text>
+<text x="732" y="544" fill="#475569" font-size="9.5">서보1 Hole B(±66°) + 서보2 Hole A 가동 지점(R20)</text>
+<text x="732" y="559" fill="#15803d" font-size="9.5" font-weight="700">✔ 2D 오차 0.0000 mm · 2서보 독립</text>
+<rect x="956" y="334" width="224" height="236" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1.2"/>
+<rect x="956" y="334" width="224" height="28" rx="10" fill="#e87a1e"/>
+<rect x="956" y="350" width="224" height="12" fill="#e87a1e"/>
+<text x="966" y="353" fill="#fff" font-size="12" font-weight="800">D10 · ★3</text>
+<text x="1170" y="353" fill="#fff" font-size="10.5" font-weight="600" text-anchor="end">S후크 6개</text>
+<circle cx="1047.7" cy="391.7" r="8.6" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="1047.7" cy="391.7" r="3.6" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="1047.7" cy="391.7" r="2.0" fill="#e2e8f0"/>
+<circle cx="1099.3" cy="426.1" r="8.6" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="1099.3" cy="426.1" r="3.6" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="1099.3" cy="426.1" r="2.0" fill="#e2e8f0"/>
+<polyline points="1053.5,486.0 1050.8,486.1 1048.4,486.1 1046.4,486.0 1044.9,485.9 1043.8,485.7 1043.3,485.5 1043.3,485.2 1043.7,484.9 1044.6,484.6 1046.0,484.2 1047.8,483.7 1050.2,483.1 1053.0,482.2 1056.2,481.1 1059.5,479.8 1062.9,478.2 1066.1,476.6 1068.9,475.0 1071.1,473.7 1072.8,472.9 1073.9,472.6 1074.3,473.0 1073.9,474.0 1072.9,475.5 1071.2,477.5 1068.8,479.6 1065.7,481.7 1062.0,483.6 1057.9,485.0 1053.5,486.0 1049.0,486.3 1044.6,485.9 1040.5,485.1 1036.8,483.8 1033.7,482.3 1031.2,480.7 1029.4,479.2 1028.4,478.0 1028.1,477.3 1028.7,477.2 1030.2,477.6 1032.5,478.5 1035.5,479.7 1039.0,481.0 1043.0,482.2 1047.1,483.2 1051.2,483.8 1054.9,484.2 1058.3,484.3 1061.0,484.2 1063.1,484.1 1064.5,484.0 1065.2,483.9 1065.2,484.0 1064.5,484.2 1063.2,484.5 1061.3,484.9 1058.9,485.3 1056.3,485.7 1053.5,486.0" fill="none" stroke="#e87a1e" stroke-width="1.6" stroke-opacity="0.75" stroke-dasharray="5 3"/>
+<line x1="1047.7" y1="391.7" x2="1056.3" y2="406.6" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="1047.7" y1="426.1" x2="1056.3" y2="441.0" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="1056.3" y1="406.6" x2="1056.3" y2="441.0" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="1099.3" y1="426.1" x2="1107.9" y2="441.0" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="1107.9" y1="441.0" x2="1059.2" y2="458.0" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="1056.3" y1="432.4" x2="1062.1" y2="483.6" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="1047.7" y1="391.7" x2="1039.1" y2="406.6" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="1047.7" y1="426.1" x2="1039.1" y2="441.0" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="1039.1" y1="406.6" x2="1039.1" y2="441.0" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="1099.3" y1="426.1" x2="1090.7" y2="441.0" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="1090.7" y1="441.0" x2="1042.0" y2="458.0" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="1039.1" y1="432.4" x2="1044.9" y2="483.6" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<circle cx="1039.1" cy="406.6" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="1047.7" cy="426.1" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="1039.1" cy="441.0" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="1039.1" cy="432.4" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="1090.7" cy="441.0" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="1042.0" cy="458.0" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<text x="966" y="528" fill="#0f172a" font-size="11.5" font-weight="700">D10 리치+집게</text>
+<text x="966" y="544" fill="#475569" font-size="9.5">Hole A R20 × 2 · 평행 캐리어 + 독립 턱</text>
+<text x="966" y="559" fill="#15803d" font-size="9.5" font-weight="700">✔ 2D 오차 0.0000 mm · 2서보 독립</text>
+<rect x="20" y="580" width="224" height="236" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1.2"/>
+<rect x="20" y="580" width="224" height="28" rx="10" fill="#8b46d9"/>
+<rect x="20" y="596" width="224" height="12" fill="#8b46d9"/>
+<text x="30" y="599" fill="#fff" font-size="12" font-weight="800">D11 · ★4</text>
+<text x="234" y="599" fill="#fff" font-size="10.5" font-weight="600" text-anchor="end">S후크 8개</text>
+<circle cx="168.3" cy="636.0" r="7.5" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="168.3" cy="636.0" r="3.1" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="168.3" cy="636.0" r="2.0" fill="#e2e8f0"/>
+<circle cx="97.3" cy="636.0" r="7.5" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="97.3" cy="636.0" r="3.1" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="97.3" cy="636.0" r="2.0" fill="#e2e8f0"/>
+<polyline points="110.7,720.9 109.4,720.2 108.0,719.5 106.5,718.9 105.0,718.6 103.7,718.5 102.7,718.7 101.9,719.3 101.5,720.2 101.5,721.4 101.9,722.8 102.6,724.4 103.6,726.1 104.8,727.8 105.9,729.3 106.8,730.7 107.5,731.9 107.7,732.8 107.6,733.5 107.1,733.9 106.6,734.0 106.2,734.0 106.2,733.7 106.7,733.3 107.5,732.6 108.5,731.7 109.5,730.4 110.3,728.7 110.8,726.6 110.9,724.0 110.7,720.9 110.2,717.3 109.7,713.5 109.2,709.4 108.8,705.3 108.6,701.4 108.6,697.9 108.8,695.1 109.2,693.2 109.7,692.4 110.3,692.7 111.0,694.1 111.9,696.4 112.7,699.3 113.6,702.5 114.4,705.8 115.0,708.9 115.3,711.7 115.4,714.2 115.3,716.3 115.0,718.1 114.5,719.5 114.1,720.6 113.8,721.4 113.6,722.0 113.4,722.4 113.2,722.5 112.9,722.4 112.4,722.0 111.7,721.5 110.7,720.9" fill="none" stroke="#8b46d9" stroke-width="1.6" stroke-opacity="0.75" stroke-dasharray="5 3"/>
+<line x1="97.3" y1="636.0" x2="102.4" y2="650.0" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="168.3" y1="636.0" x2="176.9" y2="648.2" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="176.9" y1="648.2" x2="147.1" y2="650.9" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="102.4" y1="650.0" x2="131.2" y2="684.5" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="132.2" y1="650.9" x2="101.4" y2="683.6" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="101.4" y1="683.6" x2="130.1" y2="718.1" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="131.2" y1="684.5" x2="100.4" y2="717.2" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="97.3" y1="636.0" x2="91.0" y2="649.5" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="168.3" y1="636.0" x2="162.0" y2="649.5" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="162.0" y1="649.5" x2="132.1" y2="650.9" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="91.0" y1="649.5" x2="115.2" y2="687.3" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="117.2" y1="650.9" x2="89.0" y2="685.9" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="89.0" y1="685.9" x2="113.3" y2="723.6" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="115.2" y1="687.3" x2="87.1" y2="722.2" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<circle cx="91.0" cy="649.5" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="162.0" cy="649.5" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="132.1" cy="650.9" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="117.2" cy="650.9" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="103.1" cy="668.4" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="101.2" cy="704.8" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="89.0" cy="685.9" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="115.2" cy="687.3" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<text x="30" y="774" fill="#0f172a" font-size="11.5" font-weight="700">D11 조향시저스</text>
+<text x="30" y="790" fill="#475569" font-size="9.5">Hole A R20 × 2 + 1.6mm 심 · 2단 X-시저스</text>
+<text x="30" y="805" fill="#15803d" font-size="9.5" font-weight="700">✔ 2D 오차 0.0000 mm · 2서보 독립</text>
+<rect x="254" y="580" width="224" height="236" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1.2"/>
+<rect x="254" y="580" width="224" height="28" rx="10" fill="#8b46d9"/>
+<rect x="254" y="596" width="224" height="12" fill="#8b46d9"/>
+<text x="264" y="599" fill="#fff" font-size="12" font-weight="800">D12 · ★4</text>
+<text x="468" y="599" fill="#fff" font-size="10.5" font-weight="600" text-anchor="end">S후크 3개</text>
+<circle cx="343.0" cy="648.5" r="15.3" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="343.0" cy="648.5" r="6.4" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="343.0" cy="648.5" r="2.0" fill="#e2e8f0"/>
+<circle cx="389.0" cy="648.5" r="15.3" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="389.0" cy="648.5" r="6.4" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="389.0" cy="648.5" r="2.0" fill="#e2e8f0"/>
+<polyline points="366.0,717.2 365.2,718.8 364.6,720.1 364.5,720.8 364.9,721.2 365.5,721.3 366.2,721.3 366.7,721.3 366.8,721.3 366.5,721.4 366.0,721.5 365.7,721.5 365.8,721.3 366.7,721.0 368.4,720.6 370.6,719.9 373.0,719.0 375.5,717.9 377.8,716.6 379.8,715.4 381.1,714.2 381.9,713.3 382.1,712.6 381.7,712.3 380.6,712.4 379.0,712.9 377.0,713.6 374.5,714.5 371.8,715.5 368.9,716.4 366.0,717.2 363.3,717.7 360.8,717.9 358.7,717.9 356.9,717.6 355.4,717.2 354.2,716.6 353.0,716.1 352.1,715.5 351.3,714.9 350.9,714.2 350.9,713.4 351.4,712.4 352.4,711.2 354.0,709.7 356.0,708.0 358.1,706.1 360.3,704.1 362.5,702.2 364.4,700.6 366.0,699.5 367.3,699.1 368.4,699.4 369.1,700.4 369.5,702.2 369.6,704.4 369.4,707.1 368.8,709.8 368.0,712.6 367.0,715.0 366.0,717.2" fill="none" stroke="#8b46d9" stroke-width="1.6" stroke-opacity="0.75" stroke-dasharray="5 3"/>
+<line x1="343.0" y1="648.5" x2="325.4" y2="673.6" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="325.4" y1="673.6" x2="366.0" y2="695.2" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="389.0" y1="648.5" x2="406.6" y2="673.6" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="406.6" y1="673.6" x2="366.0" y2="695.2" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="343.0" y1="648.5" x2="356.0" y2="676.3" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="356.0" y1="676.3" x2="366.0" y2="721.1" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="389.0" y1="648.5" x2="376.0" y2="676.3" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="376.0" y1="676.3" x2="366.0" y2="721.1" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<circle cx="356.0" cy="676.3" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="376.0" cy="676.3" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="366.0" cy="721.1" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<text x="264" y="774" fill="#0f172a" font-size="11.5" font-weight="700">D12 2관절다리</text>
+<text x="264" y="790" fill="#475569" font-size="9.5">수직 타워 · Hole A R20 × 2 + 1.6mm 심</text>
+<text x="264" y="805" fill="#15803d" font-size="9.5" font-weight="700">✔ 2D 오차 0.0000 mm · 2서보 독립</text>
+<rect x="488" y="580" width="224" height="236" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1.2"/>
+<rect x="488" y="580" width="224" height="28" rx="10" fill="#8b46d9"/>
+<rect x="488" y="596" width="224" height="12" fill="#8b46d9"/>
+<text x="498" y="599" fill="#fff" font-size="12" font-weight="800">D13 · ★4</text>
+<text x="702" y="599" fill="#fff" font-size="10.5" font-weight="600" text-anchor="end">S후크 6개</text>
+<circle cx="581.7" cy="678.5" r="11.9" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="581.7" cy="678.5" r="5.0" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="581.7" cy="678.5" r="2.0" fill="#e2e8f0"/>
+<circle cx="617.3" cy="678.5" r="11.9" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="617.3" cy="678.5" r="5.0" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="617.3" cy="678.5" r="2.0" fill="#e2e8f0"/>
+<polyline points="672.8,693.4 673.9,692.6 674.7,692.2 675.0,692.2 675.0,692.6 674.7,693.2 674.3,693.8 674.0,694.2 674.0,694.2 674.3,693.8 674.7,693.2 675.0,692.6 675.0,692.2 674.7,692.2 673.9,692.6 672.8,693.4 671.3,694.2 669.8,695.1 668.2,695.9 666.7,696.5 665.6,697.0 664.8,697.3 664.3,697.4 664.3,697.4 664.8,697.3 665.6,697.0 666.7,696.5 668.2,695.9 669.8,695.1 671.3,694.2 672.8,693.4 673.9,692.6 674.7,692.2 675.0,692.2 675.0,692.6 674.7,693.2 674.3,693.8 674.0,694.2 674.0,694.2 674.3,693.8 674.7,693.2 675.0,692.6 675.0,692.2 674.7,692.2 673.9,692.6 672.8,693.4 671.3,694.2 669.8,695.1 668.2,695.9 666.7,696.5 665.6,697.0 664.8,697.3 664.3,697.4 664.3,697.4 664.8,697.3 665.6,697.0 666.7,696.5 668.2,695.9 669.8,695.1 671.3,694.2 672.8,693.4" fill="none" stroke="#8b46d9" stroke-width="1.6" stroke-opacity="0.75" stroke-dasharray="5 3"/>
+<line x1="569.8" y1="678.5" x2="525.0" y2="694.2" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="552.0" y1="672.6" x2="536.2" y2="690.3" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="617.3" y1="690.4" x2="664.3" y2="697.4" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="647.0" y1="672.6" x2="652.5" y2="695.7" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="581.7" y1="690.4" x2="534.7" y2="697.4" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="552.0" y1="672.6" x2="546.5" y2="695.7" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="629.2" y1="678.5" x2="674.0" y2="694.2" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="647.0" y1="672.6" x2="662.8" y2="690.3" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<circle cx="581.7" cy="690.4" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="546.5" cy="695.7" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="552.0" cy="672.6" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="629.2" cy="678.5" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="662.8" cy="690.3" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="647.0" cy="672.6" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<text x="498" y="774" fill="#0f172a" font-size="11.5" font-weight="700">D13 2족독립보행</text>
+<text x="498" y="790" fill="#475569" font-size="9.5">수직 타워 · Hole B × 2 (R=10 · ±81.5°)</text>
+<text x="498" y="805" fill="#15803d" font-size="9.5" font-weight="700">✔ 2D 오차 0.0000 mm · 2서보 독립</text>
+<rect x="722" y="580" width="224" height="236" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1.2"/>
+<rect x="722" y="580" width="224" height="28" rx="10" fill="#e03636"/>
+<rect x="722" y="596" width="224" height="12" fill="#e03636"/>
+<text x="732" y="599" fill="#fff" font-size="12" font-weight="800">D14 · ★5</text>
+<text x="936" y="599" fill="#fff" font-size="10.5" font-weight="600" text-anchor="end">S후크 6개</text>
+<circle cx="828.8" cy="729.4" r="10.4" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="828.8" cy="729.4" r="4.3" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="828.8" cy="729.4" r="2.0" fill="#e2e8f0"/>
+<circle cx="782.2" cy="693.2" r="10.4" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="782.2" cy="693.2" r="4.3" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="782.2" cy="693.2" r="2.0" fill="#e2e8f0"/>
+<polyline points="870.1,679.2 869.7,677.9 869.6,676.8 869.8,675.9 870.4,675.3 871.3,675.1 872.4,675.2 873.7,675.6 874.9,676.3 876.0,677.3 876.9,678.5 877.5,679.8 877.7,681.1 877.6,682.2 877.0,683.2 876.2,683.8 875.1,684.1 873.9,684.0 872.5,683.6 871.1,682.9 869.7,681.9 868.2,681.0 866.8,680.0 865.6,679.1 864.6,678.4 864.1,677.9 864.1,677.7 864.7,677.8 865.9,678.1 867.8,678.6 870.1,679.2 872.8,679.9 875.6,680.7 878.4,681.5 881.0,682.5 883.4,683.5 885.5,684.6 887.2,685.8 888.5,687.2 889.5,688.7 890.0,690.3 890.1,691.9 889.9,693.6 889.4,695.1 888.6,696.3 887.6,697.2 886.5,697.7 885.3,697.8 884.2,697.6 883.1,696.9 882.0,695.9 880.9,694.6 879.8,693.1 878.6,691.5 877.3,689.7 875.9,687.8 874.5,686.0 873.2,684.1 871.9,682.3 870.9,680.7 870.1,679.2" fill="none" stroke="#e03636" stroke-width="1.6" stroke-opacity="0.75" stroke-dasharray="5 3"/>
+<line x1="838.8" y1="726.8" x2="837.6" y2="695.7" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="818.5" y1="703.6" x2="876.0" y2="680.1" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="782.2" y1="693.2" x2="789.5" y2="685.9" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="789.5" y1="685.9" x2="868.5" y2="660.7" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="868.5" y1="660.7" x2="883.5" y2="699.4" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="824.4" y1="720.1" x2="834.7" y2="690.7" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="818.5" y1="703.6" x2="867.3" y2="665.1" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="782.2" y1="693.2" x2="777.9" y2="683.8" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="777.9" y1="683.8" x2="853.4" y2="649.8" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="853.4" y1="649.8" x2="881.2" y2="680.5" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<circle cx="824.4" cy="720.1" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="834.7" cy="690.7" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="818.5" cy="703.6" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="777.9" cy="683.8" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="853.4" cy="649.8" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="867.3" cy="665.1" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<text x="732" y="774" fill="#0f172a" font-size="11.5" font-weight="700">D14 굴착기암</text>
+<text x="732" y="790" fill="#475569" font-size="9.5">수직 타워 · 서보1 Hole B(±77.2°) + 서보2 Hole A</text>
+<text x="732" y="805" fill="#15803d" font-size="9.5" font-weight="700">✔ 2D 오차 0.0000 mm · 2서보 독립</text>
+<rect x="956" y="580" width="224" height="236" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1.2"/>
+<rect x="956" y="580" width="224" height="28" rx="10" fill="#e03636"/>
+<rect x="956" y="596" width="224" height="12" fill="#e03636"/>
+<text x="966" y="599" fill="#fff" font-size="12" font-weight="800">D15 · ★5</text>
+<text x="1170" y="599" fill="#fff" font-size="10.5" font-weight="600" text-anchor="end">S후크 4개</text>
+<circle cx="1142.3" cy="650.5" r="11.4" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 2"/>
+<circle cx="1142.3" cy="650.5" r="4.8" fill="#111827" stroke="#475569" stroke-width="1"/>
+<circle cx="1142.3" cy="650.5" r="2.0" fill="#e2e8f0"/>
+<polyline points="994.6,715.0 994.8,713.7 995.0,712.4 995.3,711.1 995.5,709.9 995.7,708.7 996.0,707.6 996.2,706.6 996.4,705.7 996.6,704.9 996.8,704.2 997.0,703.6 997.1,703.1 997.2,702.8 997.3,702.6 997.3,702.5 997.3,702.6 997.2,702.8 997.1,703.1 997.0,703.6 996.8,704.2 996.6,704.9 996.4,705.7 996.2,706.6 996.0,707.6 995.7,708.7 995.5,709.9 995.3,711.1 995.0,712.4 994.8,713.7 994.6,715.0 994.5,716.3 994.3,717.6 994.2,718.9 994.1,720.2 994.0,721.3 993.9,722.5 993.8,723.5 993.8,724.4 993.8,725.3 993.8,726.0 993.8,726.6 993.7,727.1 993.7,727.4 993.7,727.7 993.7,727.7 993.7,727.7 993.7,727.4 993.7,727.1 993.8,726.6 993.8,726.0 993.8,725.3 993.8,724.4 993.8,723.5 993.9,722.5 994.0,721.3 994.1,720.2 994.2,718.9 994.3,717.6 994.5,716.3 994.6,715.0" fill="none" stroke="#e03636" stroke-width="1.6" stroke-opacity="0.75" stroke-dasharray="5 3"/>
+<line x1="1130.9" y1="651.3" x2="1068.0" y2="700.8" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="1085.1" y1="727.7" x2="993.7" y2="727.7" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="1130.9" y1="651.3" x2="1068.0" y2="700.8" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="1085.1" y1="727.7" x2="993.7" y2="727.7" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+<line x1="1134.3" y1="642.3" x2="1076.1" y2="697.1" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="1085.1" y1="727.7" x2="997.3" y2="702.5" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="1134.3" y1="642.3" x2="1076.1" y2="697.1" stroke="#1e293b" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.95"/>
+<line x1="1085.1" y1="727.7" x2="997.3" y2="702.5" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.95"/>
+<circle cx="1134.3" cy="642.3" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="1076.1" cy="697.1" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="1134.3" cy="642.3" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<circle cx="1076.1" cy="697.1" r="2.6" fill="#f2b51c" stroke="#1d2230" stroke-width="0.8"/>
+<text x="966" y="774" fill="#0f172a" font-size="11.5" font-weight="700">D15 쌍배틀웨지</text>
+<text x="966" y="790" fill="#475569" font-size="9.5">경첩 3×3 × 2 + 서보가이드 Hole B × 2 (±89.3°)</text>
+<text x="966" y="805" fill="#15803d" font-size="9.5" font-weight="700">✔ 2D 오차 0.0000 mm · 2서보 독립</text>
+</svg>

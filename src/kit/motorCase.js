@@ -104,19 +104,7 @@ export function makeMotorCase({ shaft = 'top', hubColor = M.bluePlastic, sticker
     g.add(st);
   }
 
-  // 전선 (빨강/검정) + 2핀 커넥터
-  const start = new THREE.Vector3(L / 2 - 4, H - 3, -W / 2 + 4);
-  const pts = [start, new THREE.Vector3(L / 2 + 6, H + 6, -W / 2 - 4), new THREE.Vector3(L / 2 + 22, H - 2, -6),
-    new THREE.Vector3(L / 2 + 30, H - 12, 4), new THREE.Vector3(L / 2 + 38, H - 16, 10)];
-  const curve = new THREE.CatmullRomCurve3(pts);
-  for (const [off, mat] of [[-0.65, M.wireRed], [0.65, M.wireBlack]]) {
-    const shifted = new THREE.CatmullRomCurve3(curve.points.map((p) => p.clone().add(new THREE.Vector3(0, 0, off))));
-    g.add(mesh(new THREE.TubeGeometry(shifted, 40, 0.65, 8, false), mat));
-  }
-  const end = pts[pts.length - 1];
-  const plug = box(5.2, 2.6, 5.2, M.blackPlastic, end.x + 2.4, end.y - 1.3, end.z);
-  g.add(plug);
-
+  // 전선(케이블) · 커넥터는 조립 규칙 10.8에 따라 구현하지 않는다.
   g.userData = { hubs };
   return g;
 }

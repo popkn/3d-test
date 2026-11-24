@@ -43,22 +43,12 @@ export function build() {
   const label = box(30, 0.1, 18, M.matteBlack, 0, 2, D / 2);
   lidPivot.add(label);
   root.add(lidPivot);
-  // 전선 + 커넥터
-  const curve = new THREE.CatmullRomCurve3([new THREE.Vector3(W / 2 - 4, 8, D / 2), new THREE.Vector3(W / 2 + 6, 6, D / 2 + 14), new THREE.Vector3(W / 2 - 6, 3, D / 2 + 34), new THREE.Vector3(W / 2 - 22, 3, D / 2 + 40)]);
-  for (const [off, mat] of [[-0.7, M.wireRed], [0.7, M.wireBlack]]) {
-    const c = new THREE.CatmullRomCurve3(curve.points.map((p) => p.clone().add(new THREE.Vector3(0, off, 0))));
-    root.add(mesh(new THREE.TubeGeometry(c, 40, 0.6, 8, false), mat));
-  }
-  const plug = jst({ pins: 2, height: 5 });
-  plug.rotation.z = Math.PI / 2;
-  plug.position.set(W / 2 - 24, 3, D / 2 + 40);
-  root.add(plug);
+  // 전선(케이블) · 커넥터는 조립 규칙 10.8에 따라 구현하지 않는다.
   return {
     object3d: root,
     labels: [
       { name: 'LID', sub: '열어서 건전지 교체', object: lid, anchor: [0, 1, 0], off: [60, -80] },
       { name: 'AA ×4', sub: '직렬 = 6V', object: cells[1], anchor: [0, 7, 0], off: [-150, -60] },
-      { name: 'POWER LEAD', sub: '24AWG · 빨강(+) 검정(-)', object: plug, anchor: [0, 0, 0], off: [60, 30] },
       { name: 'MOUNT EAR', sub: '프레임 고정', object: root, anchor: [-W / 2 - 5, 2.5, 16], off: [-120, 30] },
     ],
     handles: { cells, lidPivot },
