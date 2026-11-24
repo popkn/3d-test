@@ -1,13 +1,13 @@
 {
-  "updated": "2026-11-22T08:39:33.893Z",
+  "updated": "2026-11-24T06:20:15.258Z",
   "robots": [
     {
       "id": "eagle",
       "name": "독수리 로봇",
       "mods": 6,
       "file": "eagle.js",
-      "version": "e4cdde3bad",
-      "size": 94531,
+      "version": "de1acb6706",
+      "size": 93546,
       "parts": 34
     },
     {
@@ -15,8 +15,8 @@
       "name": "배틀로봇 썬더 웨지 V3",
       "mods": 6,
       "file": "bot.js",
-      "version": "8fb1fd5ab0",
-      "size": 244706,
+      "version": "3e2f4526d7",
+      "size": 243713,
       "parts": 43
     },
     {
@@ -24,8 +24,8 @@
       "name": "협동 기차 하나로 열차",
       "mods": 4,
       "file": "train.js",
-      "version": "eb151982f5",
-      "size": 176151,
+      "version": "f1f959504a",
+      "size": 175165,
       "parts": 31
     },
     {
@@ -33,8 +33,8 @@
       "name": "배틀로봇 썬더 타이탄 6륜",
       "mods": 7,
       "file": "bigbot.js",
-      "version": "acdd38ad15",
-      "size": 86921,
+      "version": "f1c0de4142",
+      "size": 85937,
       "parts": 33
     },
     {
@@ -42,8 +42,8 @@
       "name": "썬더 개틀링 6연장 v3",
       "mods": 5,
       "file": "gatling.js",
-      "version": "e1f0967d95",
-      "size": 189173,
+      "version": "13b8e8ee27",
+      "size": 188180,
       "parts": 31
     },
     {
@@ -51,8 +51,8 @@
       "name": "크림슨 스콜피온 v4",
       "mods": 6,
       "file": "scorpion.js",
-      "version": "281d35f95e",
-      "size": 246967,
+      "version": "80f0b69358",
+      "size": 243383,
       "parts": 38
     },
     {
@@ -61,8 +61,8 @@
       "mods": 5,
       "fnOnly": true,
       "file": "mechlab.js",
-      "version": "7bdb7701a3",
-      "size": 383957,
+      "version": "6af7e0fafc",
+      "size": 383506,
       "parts": 24
     },
     {
@@ -71,9 +71,19 @@
       "mods": 5,
       "fnOnly": true,
       "file": "motorlab.js",
-      "version": "14485887a0",
-      "size": 377419,
+      "version": "cd145cf0a3",
+      "size": 376968,
       "parts": 21
+    },
+    {
+      "id": "dualservo",
+      "name": "서보 2축 메커니즘",
+      "mods": 5,
+      "fnOnly": true,
+      "file": "dualservo.js",
+      "version": "476e7a6995",
+      "size": 168594,
+      "parts": 23
     }
   ]
 }
